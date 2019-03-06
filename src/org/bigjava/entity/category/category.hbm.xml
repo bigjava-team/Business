@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="org.bigjava.entity.category">
+	<class name="Category" table="category"><!-- 一级分类表 -->
+		<id name="c_id" type="java.lang.Integer"><!-- 一级分类表、类的id属性 -->
+			<generator class="native"></generator>
+		</id>
+		<property name="c_name" not-null="true" /><!-- 一级分类表、类的属性名 -->
+		
+		<set name="setCS"><!-- 指向二级分类 -->
+			<key column="c_id"></key><!-- 与二级分类连接的id名 -->
+			<one-to-many class="org.bigjava.entity.categorysecond.CategorySecond"/><!-- 一对多指向二级分类类 -->
+		</set>
+	</class>
+</hibernate-mapping>

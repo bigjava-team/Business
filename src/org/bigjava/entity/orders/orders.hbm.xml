@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.bigjava.entity.orders">
+	<class name="Orders" table="orders"><!-- 订单类 -->
+		<id name="o_id" type="java.lang.Integer"><!-- 订单id -->
+			<generator class="native"></generator>
+		</id>
+		<property name="total" not-null="true" /><!-- 订单总金额 -->
+		<property name="ordertim" not-null="true" /><!-- 订单时间 -->
+		<property name="state" not-null="true" /><!-- 订单状态 -->
+		<property name="o_name" not-null="true" /><!-- 订单人姓名 -->
+		<property name="o_phone" not-null="true" /><!-- 订单人电话号 -->
+		<property name="o_addr" not-null="true" /><!-- 订单人的收货地址 -->
+		
+		<many-to-one name="user" column="u_id" class="org.bigjava.entity.user.User" lazy="false" /><!-- 多对一订单表指向用户表 -->
+	
+		<set name="setO"><!-- 指向订单项表 -->
+			<key column="item_id" /><!-- 连接订单项表的外键名 -->
+			<one-to-many class="org.bigjava.entity.orderitem.Orderitem" /><!-- 连接的订单项类 -->
+		</set>	
+	</class>
+</hibernate-mapping>   

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.bigjava.entity.addr">
+	<class name="Addr" table="addr"><!-- 用户收货地址表 -->
+		<id name="a_id" type="java.lang.Integer"><!-- 用户收货地址id -->
+			<generator class="native" />
+		</id>
+		<property name="address" not-null="true" /><!-- 用户收货地址 -->
+		
+		<many-to-one name="user" class="org.bigjava.entity.user.User" column="u_id" lazy="false" /><!-- 多对一addr类指向user类 -->
+	</class>
+</hibernate-mapping>
