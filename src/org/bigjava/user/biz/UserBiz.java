@@ -18,6 +18,11 @@ public interface UserBiz {
 	public void registerUser(User user);
 	
 	/**
+	 * 登录用户
+	 */
+	public List<User> loginUser(User user);
+	
+	/**
 	 * 修改用户信息
 	 */
 	public void updateUser(User user,User users);

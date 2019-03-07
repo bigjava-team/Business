@@ -17,27 +17,41 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	// 注册用户
 	@Override
 	public void registerUser(User user) {
-		// TODO Auto-generated method stub
 		System.out.println("dao开始注册");
 		user.setRoot(1);// 默认用户权限为1(普通用户)
 		user.setU_is_freeze(1);//	默认用户为解冻状态(解冻状态)
 		this.getHibernateTemplate().save(user);//	user保存入数据库中
 	}
+	
+	//登录用户
+	@Override
+	public List<User> loginUser(User user) {
+		String hql = "from User where username = ? and password = ? ";
+		List<User> userList = getHibernateTemplate().find(hql, new String[] { user.getUsername(), user.getPassword() });
+		System.out.println("userList>>>" + userList);
+		return userList;
+	}
 
 	// 修改
 	@Override
 	public void updateUser(User user, User users) {
-		// TODO Auto-generated method stub
 		System.out.println("dao开始修改");
 		users.setUsername(user.getUsername());// 将用户名存入User中
 		users.setSex(user.getSex());//	将性别存入User中
 		this.getHibernateTemplate().update(users);//	将user中的值对比数据库中的值进行修改
 	}
+	
+	//修改密码
+	@Override
+	public void updatePassword(User user) {
+		System.out.println("dao修改密码开始。。");
+		
+	}
+
 
 	// 通过id查询用户
 	@Override
 	public User demend(int id) {
-		// TODO Auto-generated method stub
 		System.out.println("dao通过id查询");
 		User user = this.getHibernateTemplate().get(User.class, id);//	通过id查询用户
 		return user;
@@ -101,5 +115,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		System.out.println("用户名已存在");
 		return true;// 查询到用户时返回true
 	}
+
+	
 	
 }

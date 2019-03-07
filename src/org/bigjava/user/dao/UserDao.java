@@ -18,9 +18,19 @@ public interface UserDao {
 	public void registerUser(User user); 
 	
 	/**
+	 * 登录用户
+	 */
+	public List<User> loginUser(User user);
+	
+	/**
 	 * 修改
 	 */
 	public void updateUser(User user, User users);
+	
+	/**
+	 * 修改密码
+	 */
+	public void updatePassword(User user);
 	
 	/**
 	 * 通过id查询用户
