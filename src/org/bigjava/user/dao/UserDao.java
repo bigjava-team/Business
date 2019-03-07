@@ -1,4 +1,4 @@
-package org.bigjava.user.biz;
+package org.bigjava.user.dao;
 
 import java.util.List;
 
@@ -7,28 +7,28 @@ import org.bigjava.user.entity.User;
 
 /**
  * 用户操作
- * @author Mr.Man
+ * @author Administrator
  *
  */
-public interface UserBiz {
+public interface UserDao {
 	
 	/**
-	 * 用户注册
+	 * 注册用户
 	 */
-	public void registerUser(User user);
+	public void registerUser(User user); 
 	
 	/**
-	 * 修改用户信息
+	 * 修改
 	 */
-	public void updateUser(User user,User users);
+	public void updateUser(User user, User users);
 	
 	/**
-	 * 通过ID查询用户
+	 * 通过id查询用户
 	 */
 	public User demend(int id);
 	
 	/**
-	 * 通过ID删除用户
+	 * 通过id删除用户
 	 */
 	public void deleteUser(User user);
 	
@@ -40,11 +40,13 @@ public interface UserBiz {
 	/**
 	 * 管理员通过模糊查询总页数
 	 */
-	public  int demendPages(String username);
+	public int demendPages(String username);
 	
 	/**
-	 * 检验用户名
+	 * 校验用户名是否已存在
 	 */
 	public boolean checkUsername(String username);
 	
+	
+
 }

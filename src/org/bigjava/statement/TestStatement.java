@@ -2,10 +2,10 @@ package org.bigjava.statement;
 
 import java.util.Scanner;
 
-import org.bigjava.dao.user.UserDao;
-import org.bigjava.entity.user.User;
 import org.bigjava.function.Paging;
 import org.bigjava.function.SendMail;
+import org.bigjava.user.dao.UserDao;
+import org.bigjava.user.entity.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

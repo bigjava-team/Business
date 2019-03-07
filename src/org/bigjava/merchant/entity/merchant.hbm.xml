@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.bigjava.merchant.entity">
+	<class name="Merchant" table="merchant"><!-- 店铺类、表名 -->
+		<id name="m_id" type="java.lang.Integer"><!-- 店铺类、表id名 -->
+			<generator class="native" />
+		</id>
+		<property name="m_name" not-null="true" /><!-- 店铺类、表的属性名 -->
+		<property name="m_image" /><!-- 店铺类、表的图片路径名  -->
+		<property name="m_time" not-null="true" /><!-- 店铺类、表的创建时间名 -->
+		<property name="m_is_freeze" not-null="true" /><!-- 店铺类、表的店铺状态名 -->
+		
+		<one-to-one name="user" property-ref="merchant" /><!-- 一对一指向 -->
+	</class>
+</hibernate-mapping>

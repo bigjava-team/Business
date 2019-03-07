@@ -21,7 +21,11 @@
 	
 	<bean name="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
-		<property name="mappingLocations" value="classpath:org/bigjava/entity/*/*.hbm.xml"></property><!-- 解析实体层的配置文件 -->
+		
+		<!-- 加载映射文件 -->
+		<property name="mappingLocations"
+			value="classpath:org/bigjava/*/entity/*.hbm.xml"></property>
+		
 		<property name="hibernateProperties">
 			<value>
 				hibernate.dialect=org.hibernate.dialect.MySQL5Dialect<!-- 设置数据库方言 -->
@@ -36,7 +40,7 @@
 	
 	<!-- <bean name="biz" class="org.bigjava.biz.Biz" autowire="byName"></bean> -->
 	
-	<bean name="userDaoImpl" class="org.bigjava.dao.impl.userImpl.UserDaoImpl" autowire="byName" ></bean>
+	<bean name="userDaoImpl" class="org.bigjava.user.dao.impl.UserDaoImpl" autowire="byName" ></bean>
 	
 	<bean name="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -50,7 +54,7 @@
 	</tx:advice>
 	
 	<aop:config>
-		<aop:pointcut expression="execution(* org.bigjava.dao.impl.*.*(..))" id="pointcut"/>
+		<aop:pointcut expression="execution(* org.bigjava.*.dao.impl.*.*(..))" id="pointcut"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
 	</aop:config>
 </beans>
