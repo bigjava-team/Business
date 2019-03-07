@@ -4,40 +4,40 @@ import java.util.List;
 
 import org.bigjava.function.Paging;
 import org.bigjava.user.biz.UserBiz;
+import org.bigjava.user.dao.UserDao;
 import org.bigjava.user.entity.User;
 
 public class UserBizImpl implements UserBiz {
 	
-	
+	//×¢ÈëUserDao
+	private UserDao userDao;
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
 
 	@Override
 	public void registerUser(User user) {
-		// TODO Auto-generated method stub
-
+		userDao.registerUser(user);
 	}
 
 	@Override
 	public void updateUser(User user, User users) {
-		// TODO Auto-generated method stub
-
+		userDao.updateUser(user, users);
 	}
 
 	@Override
 	public User demend(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.demend(id);
 	}
 
 	@Override
 	public void deleteUser(User user) {
-		// TODO Auto-generated method stub
-
+		userDao.deleteUser(user);
 	}
 
 	@Override
 	public List<User> limitDemend(String username, Paging page) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.limitDemend(username, page);
 	}
 
 	@Override
