@@ -13,6 +13,6 @@
 		<property name="m_time" not-null="true" /><!-- 店铺类、表的创建时间名 -->
 		<property name="m_is_freeze" not-null="true" /><!-- 店铺类、表的店铺状态名 -->
 		
-		<one-to-one name="user" property-ref="merchant" /><!-- 一对一指向 -->
+		<many-to-one name="user" column="u_id" class="org.bigjava.user.entity.User" lazy="false" /><!-- 一对一指向店铺类 -->
 	</class>
 </hibernate-mapping>

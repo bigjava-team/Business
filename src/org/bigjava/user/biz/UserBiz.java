@@ -25,7 +25,7 @@ public interface UserBiz {
 	/**
 	 * 通过ID查询用户
 	 */
-	public User demend(int id);
+	public User query(int id);
 	
 	/**
 	 * 通过ID删除用户

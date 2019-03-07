@@ -25,7 +25,7 @@ public interface UserDao {
 	/**
 	 * 通过id查询用户
 	 */
-	public User demend(int id);
+	public User query(int id);
 	
 	/**
 	 * 通过id删除用户
@@ -40,13 +40,21 @@ public interface UserDao {
 	/**
 	 * 管理员通过模糊查询总页数
 	 */
-	public int demendPages(String username);
+	public int queryPages(String username);
 	
 	/**
 	 * 校验用户名是否已存在
 	 */
 	public boolean checkUsername(String username);
 	
+	/**
+	 * 修改用户密码
+	 */
+	public void updateUserPassword(String password, User user);
 	
-
+	/**
+	 * 登录
+	 */
+	public boolean loginUser(String username, String password);
+	
 }

@@ -26,8 +26,8 @@ public class UserBizImpl implements UserBiz {
 	}
 
 	@Override
-	public User demend(int id) {
-		return userDao.demend(id);
+	public User query(int id) {
+		return userDao.query(id);
 	}
 
 	@Override

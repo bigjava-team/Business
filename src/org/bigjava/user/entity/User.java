@@ -32,7 +32,7 @@ public class User {
 
 	private Set<Comment> setCom = new HashSet<Comment>();// 指向评论类
 	
-	private Merchant merchant;// 指向店铺类
+	private Merchant merchant;
 	
 	public Merchant getMerchant() {
 		return merchant;
