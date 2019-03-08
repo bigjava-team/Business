@@ -3,6 +3,10 @@ package org.bigjava.statement;
 import java.util.Date;
 import java.util.Scanner;
 
+import org.bigjava.category.dao.CategoryDao;
+import org.bigjava.category.entity.Category;
+import org.bigjava.categorysecond.dao.CategorySecondDao;
+import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.function.Paging;
 import org.bigjava.function.SendMail;
 import org.bigjava.merchant.dao.MerchantDao;
@@ -19,8 +23,90 @@ public class TestStatement {
 	public static ApplicationContext app = new ClassPathXmlApplicationContext("app.xml");
 	public static UserDao userDao = (UserDao) app.getBean("userDaoImpl");
 	public static MerchantDao merchantDao = (MerchantDao) app.getBean("merchantDaoImpl");
-	public static ProductDao productDao = (ProductDao) app.getBean("ProductDaoImpl");
+//	public static ProductDao productDao = (ProductDao) app.getBean("ProductDaoImpl");
+	public static CategoryDao categoryDao = (CategoryDao) app.getBean("categoryDaoImpl");
+	public static CategorySecondDao categorySecondDao = (CategorySecondDao) app.getBean("categorySecondDaoImpl");
 	public static Scanner input = new Scanner(System.in);
+	
+	// 模糊查询二級分类
+	public static void likeQueryCategorySecond() {
+		System.out.println("开始查询");
+		System.out.println("输入搜索的二级分类名");
+		String search_name = input.next();
+		
+		int totalNumber = categorySecondDao.queryCategorySecondNumber(search_name);
+		System.out.println("输入当前页数");
+		int presentPage = input.nextInt();
+		Paging paging = new Paging(presentPage, totalNumber);
+		
+		categorySecondDao.queryAllCategorySecond(search_name, paging);
+	}
+	
+	// 删除二级分类
+	public static void deleteCategorySecond() {
+		System.out.println("输入删除的二级分类的id");
+		int c_id = input.nextInt();
+		
+		CategorySecond categorySecond = categorySecondDao.queryCategorySecond(c_id);
+		categorySecondDao.deleteCategorySecond(categorySecond);
+	}
+	
+	// 通过id查询二级分类
+	public static void queryCategorySecond() {
+		System.out.println("输入查询的二级分类id");
+		int c_id = input.nextInt();
+		
+		categorySecondDao.queryCategorySecond(c_id);
+	}
+	
+	// 添加二级分类
+	public static void addCategorySecond() {
+		System.out.println("添加二级分类名");
+		String c_name = input.next();
+		
+		CategorySecond categorySecond = new CategorySecond();
+		categorySecond.setCs_name(c_name);
+		
+		System.out.println("输入连接的一级分类的id");
+		int c_id = input.nextInt();
+		Category category = categoryDao.queryCategory(c_id);
+		
+		categorySecondDao.addCategorySecond(categorySecond, category);
+	}
+	
+	// 删除一级分类
+	public static void deleteCategory() {
+		System.out.println("输入删除的一级分类的id");
+		int c_id = input.nextInt();
+		
+		Category category = categoryDao.queryCategory(c_id);
+		categoryDao.deleteCategory(category);
+	}
+	
+	// 通过id查询一级分类
+	public static void queryCategory() {
+		System.out.println("输入查询的一级分类id");
+		int c_id = input.nextInt();
+		
+		categoryDao.queryCategory(c_id);
+	}
+	
+	// 查询全部一级分类
+	public static void queryAllCategory() {
+		categoryDao.queryAllCategory();
+		
+	}
+	
+	// 添加一级分类
+	public static void addCategory() {
+		System.out.println("添加一级分类名");
+		String c_name = input.next();
+		
+		Category category = new Category();
+		category.setC_name(c_name);
+		
+		categoryDao.addCategory(category);
+	}
 	
 	// 添加商品
 	public static void addProduct() {
@@ -142,7 +228,7 @@ public class TestStatement {
 	}
 	
 	// 注册用户
-	public static void register() {
+	public static void registerUser() {
 		User user = new User();
 		System.out.println("开始注册");
 		System.out.println("用户名:");
@@ -223,8 +309,6 @@ public class TestStatement {
 		Paging paging = new Paging(presentPage, totalNumber);
 		
 		userDao.limitDemend(username, paging);
-		
-		
 	}
 
 }

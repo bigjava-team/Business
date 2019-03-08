@@ -20,6 +20,11 @@ public class CategorySecond {
 	
 	private Set<Product> setProduct = new HashSet<Product>();// 指向多的一方(商品)
 
+	@Override
+	public String toString() {
+		return "CategorySecond [cs_id=" + cs_id + ", cs_name=" + cs_name + ", category=" + category + "]";
+	}
+
 	public int getCs_id() {
 		return cs_id;
 	}
