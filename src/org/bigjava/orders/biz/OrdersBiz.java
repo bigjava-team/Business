@@ -1,5 +1,5 @@
 package org.bigjava.orders.biz;
 
-public class OrdersBiz {
+public interface OrdersBiz {
 
 }

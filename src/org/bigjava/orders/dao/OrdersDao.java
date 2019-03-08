@@ -1,5 +1,5 @@
 package org.bigjava.orders.dao;
 
-public class OrdersDao {
+public interface OrdersDao {
 
 }

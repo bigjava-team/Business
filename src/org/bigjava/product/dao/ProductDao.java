@@ -1,5 +1,5 @@
 package org.bigjava.product.dao;
 
-public class ProductDao {
+public interface ProductDao {
 
 }

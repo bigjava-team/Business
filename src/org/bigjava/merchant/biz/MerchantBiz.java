@@ -1,5 +1,40 @@
 package org.bigjava.merchant.biz;
 
-public class MerchantBiz {
+import org.bigjava.merchant.entity.Merchant;
+import org.bigjava.user.entity.User;
+
+/**
+ * 店铺操作
+ * @author Mr.Man
+ *
+ */
+public interface MerchantBiz {
+	 
+	/**
+	 * 用户店铺注册
+	 */
+	public void registerMerchant(Merchant merchant , User user);
+	
+	/**
+	 * 通过ID查询用户信息
+	 */
+	public User queryUser(int u_id);
+	
+	/**
+	 * 通过店铺ID查询店铺用户
+	 */
+	public Merchant queryMerchant(int m_id);
+	
+	
+	/**
+	 * 删除店铺
+	 */
+	public void deleteMerchant(Merchant merchant);
+	
+	/**
+	 * 修改店铺
+	 */
+	public void updateMerchant(Merchant merchant ,Merchant updateMerchant);
+	
 
 }
