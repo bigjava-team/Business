@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.comment.entity.Comment;
+import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.orderitem.entity.Orderitem;
 
 /**
@@ -25,11 +26,21 @@ public class Product {
 	private int is_hot;// 是否为热门商品
 	private Date p_date;// 商品上架时间
 
-	private CategorySecond categorySecond;// 指向多的一方的类
+	private CategorySecond categorySecond;// 一对多指向二级分类的一方
 	
 	private Orderitem orderItem;// 一对一指向订单表
 	
+	private Merchant merchant;// 多对一指向店铺类
+	
 	private Set<Comment> setCom = new HashSet<Comment>();// 指向Comment类
+	
+	public Merchant getMerchant() {
+		return merchant;
+	}
+
+	public void setMerchant(Merchant merchant) {
+		this.merchant = merchant;
+	}
 	
 	public Set<Comment> getSetCom() {
 		return setCom;

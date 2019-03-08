@@ -1,6 +1,7 @@
 package org.bigjava.merchant.dao;
 
 import org.bigjava.merchant.entity.Merchant;
+import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
 
 /**
@@ -31,8 +32,13 @@ public interface MerchantDao {
 	public void deleteMerchant(Merchant merchant);
 	
 	/**
-	 * 修改店铺
+	 * 修改店铺信息
 	 */
 	public void  updateMerchant(Merchant merchant, Merchant updateMerchant);
+	
+	/**
+	 * 添加商品
+	 */
+	public void addProduct(Product product, Merchant merchant);
 
 }

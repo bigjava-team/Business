@@ -7,6 +7,8 @@ import org.bigjava.function.Paging;
 import org.bigjava.function.SendMail;
 import org.bigjava.merchant.dao.MerchantDao;
 import org.bigjava.merchant.entity.Merchant;
+import org.bigjava.product.dao.ProductDao;
+import org.bigjava.product.entity.Product;
 import org.bigjava.user.dao.UserDao;
 import org.bigjava.user.entity.User;
 import org.springframework.context.ApplicationContext;
@@ -17,7 +19,35 @@ public class TestStatement {
 	public static ApplicationContext app = new ClassPathXmlApplicationContext("app.xml");
 	public static UserDao userDao = (UserDao) app.getBean("userDaoImpl");
 	public static MerchantDao merchantDao = (MerchantDao) app.getBean("merchantDaoImpl");
+	public static ProductDao productDao = (ProductDao) app.getBean("ProductDaoImpl");
 	public static Scanner input = new Scanner(System.in);
+	
+	// 添加商品
+	public static void addProduct() {
+		System.out.println("输入要添加商品的店铺id");
+		int id = input.nextInt();
+		System.out.println("输入商品名");
+		String product_name = input.next();
+		System.out.println("输入商品价格");
+		Double product_price = input.nextDouble();
+		System.out.println("输入商品市场价格");
+		Double product_market = input.nextDouble();
+		System.out.println("输入商品描述");
+		String p_desc = input.next();
+		int is_hot = 0;
+		Date p_date = new Date();
+		
+		Product product = new Product();
+		product.setP_name(product_name);
+		product.setP_price(product_price);
+		product.setMarket(product_market);
+		product.setP_desc(p_desc);
+		product.setIs_hot(is_hot);
+		product.setP_date(p_date);
+		
+		Merchant merchant = merchantDao.queryMerchant(id);
+		merchantDao.addProduct(product, merchant);
+	}
 	
 	// 修改店铺信息
 	public static void updateMerchant() {

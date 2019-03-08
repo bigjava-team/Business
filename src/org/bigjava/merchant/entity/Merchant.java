@@ -1,7 +1,10 @@
 package org.bigjava.merchant.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
 
 /**
@@ -19,6 +22,16 @@ public class Merchant {
 	
 	private User user;// 指向用户表
 	
+	Set<Product> setProduct = new HashSet<Product>();
+	
+	public Set<Product> getSetProduct() {
+		return setProduct;
+	}
+
+	public void setSetProduct(Set<Product> setProduct) {
+		this.setProduct = setProduct;
+	}
+
 	public int getM_id() {
 		return m_id;
 	}
