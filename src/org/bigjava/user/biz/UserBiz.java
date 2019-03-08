@@ -30,7 +30,7 @@ public interface UserBiz {
 	/**
 	 * 通过ID查询用户
 	 */
-	public User demend(int id);
+	public User query(int id);
 	
 	/**
 	 * 通过ID删除用户
@@ -45,7 +45,7 @@ public interface UserBiz {
 	/**
 	 * 管理员通过模糊查询总页数
 	 */
-	public  int demendPages(String username);
+	public  int queryPages(String username);
 	
 	/**
 	 * 检验用户名

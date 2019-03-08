@@ -32,8 +32,8 @@ public class UserBizImpl implements UserBiz {
 	}
 
 	@Override
-	public User demend(int id) {
-		return userDao.demend(id);
+	public User query(int id) {
+		return userDao.query(id);
 	}
 
 	@Override
@@ -47,8 +47,8 @@ public class UserBizImpl implements UserBiz {
 	}
 
 	@Override
-	public int demendPages(String username) {
-		return userDao.demendPages(username);
+	public int queryPages(String username) {
+		return userDao.queryPages(username);
 	}
 
 	@Override

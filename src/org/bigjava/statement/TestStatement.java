@@ -63,7 +63,7 @@ public class TestStatement {
 		System.out.println("输入要修改的用户id");
 		int u_id = input.nextInt();
 		
-		User users = userDao.demend(u_id);
+		User users = userDao.query(u_id);
 		if (users == null) {
 			System.out.println("没有此用户");
 			return;
@@ -87,7 +87,7 @@ public class TestStatement {
 		System.out.println("输入要删除的用户id");
 		int u_id = input.nextInt();
 		
-		User user = userDao.demend(u_id);
+		User user = userDao.query(u_id);
 		if (user == null) {
 			System.out.println("没有此用户");
 			return;
@@ -105,7 +105,7 @@ public class TestStatement {
 			System.out.println("没有此昵称");
 		}
 		
-		int totalNumber = userDao.demendPages(username);
+		int totalNumber = userDao.queryPages(username);
 		System.out.println("输入当前页数");
 		int presentPage = input.nextInt();
 		Paging paging = new Paging(presentPage, totalNumber);

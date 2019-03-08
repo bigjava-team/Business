@@ -40,18 +40,10 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		users.setSex(user.getSex());//	将性别存入User中
 		this.getHibernateTemplate().update(users);//	将user中的值对比数据库中的值进行修改
 	}
-	
-	//修改密码
-	@Override
-	public void updatePassword(User user) {
-		System.out.println("dao修改密码开始。。");
-		
-	}
-
 
 	// 通过id查询用户
 	@Override
-	public User demend(int id) {
+	public User query(int id) {
 		System.out.println("dao通过id查询");
 		User user = this.getHibernateTemplate().get(User.class, id);//	通过id查询用户
 		return user;
@@ -90,7 +82,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	// 管理员通过模糊分页查询总页数
 	@Override
-	public int demendPages(String username) {
+	public int queryPages(String username) {
 		// TODO Auto-generated method stub
 		System.out.println("管理员通过模糊分页查询总页数");
 		int totalNumber = 0;
