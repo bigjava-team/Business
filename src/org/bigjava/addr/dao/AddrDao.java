@@ -1,5 +1,5 @@
 package org.bigjava.addr.dao;
 
-public class AddrDao {
+public interface AddrDao {
 
 }

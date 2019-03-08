@@ -130,7 +130,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	public String checkUsername() throws Exception {
 		System.out.println("进入UserAction....checkUsername方法");
 		if (userBiz.checkUsername(user.getUsername())) {
-			user.setResult("用户名已存在");
+			String result = "用户名已存在";
 		}
 		return SUCCESS;
 	}

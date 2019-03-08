@@ -27,24 +27,13 @@ public class User {
 	private String image;// 用户头像图片路径
 	private int u_is_freeze;// 用户当前状态
 
-	// 异步校验返回值
-	private String result;
-
-	public String getResult() {
-		return result;
-	}
-
-	public void setResult(String result) {
-		this.result = result;
-	}
-
 	private Set<Addr> setAddr = new HashSet<Addr>();// 指向用户地址类
 
 	private Set<Orders> setOrders = new HashSet<Orders>();// 指向订单类
 
 	private Set<Comment> setCom = new HashSet<Comment>();// 指向评论类
 
-	private Merchant merchant;
+	private Merchant merchant;// 指向店铺类
 
 	public Merchant getMerchant() {
 		return merchant;

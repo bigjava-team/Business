@@ -22,7 +22,7 @@ public interface MerchantDao {
 	public User queryUser(int u_id);
 	
 	/**
-	 * 通过店铺id查询店铺用户
+	 * 通过店铺id查询店铺
 	 */
 	public Merchant queryMerchant(int m_id);
 	
@@ -34,7 +34,7 @@ public interface MerchantDao {
 	/**
 	 * 修改店铺信息
 	 */
-	public void  updateMerchant(Merchant merchant, Merchant updateMerchant);
+	public void updateMerchant(Merchant merchant, Merchant updateMerchant);
 	
 	/**
 	 * 添加商品
