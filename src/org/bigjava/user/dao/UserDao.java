@@ -28,11 +28,6 @@ public interface UserDao {
 	public void updateUser(User user, User users);
 	
 	/**
-	 * 修改密码
-	 */
-	public void updatePassword(User user);
-	
-	/**
 	 * 通过id查询用户
 	 */
 	public User query(int id);
