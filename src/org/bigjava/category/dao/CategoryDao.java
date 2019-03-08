@@ -1,6 +1,6 @@
 package org.bigjava.category.dao;
 
-public class CategoryDao {
+public interface CategoryDao {
 	
 	/**
 	 * 添加一级分类
