@@ -24,6 +24,8 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	public void setUserBiz(UserBiz userBiz) {
 		this.userBiz = userBiz;
 	}
+	
+	
 
 	/**
 	 * 登录用户
@@ -96,11 +98,12 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	/**
 	 * 修改用户密码
 	 */
-//	public String updatePassword() throws Exception {
-//		System.out.println("进入UserAction....updatePassword方法");
-//		userBiz.updatePassword(user);
-//		return "updatePasswordSuccess";
-//	}
+	public String updatePassword() throws Exception {
+		System.out.println("进入UserAction....updatePassword方法");
+		User user = new User();
+		userBiz.updateUserPassword(user.getPassword(), user);
+		return "updatePasswordSuccess";
+	}
 	
 	/**
 	 * 冻结用户，解冻用户
@@ -127,7 +130,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	public String checkUsername() throws Exception {
 		System.out.println("进入UserAction....checkUsername方法");
 		if (userBiz.checkUsername(user.getUsername())) {
-//			user.setResult("用户名已存在");
+			user.setResult("用户名已存在");
 		}
 		return SUCCESS;
 	}

@@ -52,4 +52,9 @@ public interface UserBiz {
 	 */
 	public boolean checkUsername(String username);
 	
+	/**
+	 * ĞŞ¸ÄÃÜÂë
+	 */
+	public void updateUserPassword(String password, User user);
+	
 }
