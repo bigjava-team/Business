@@ -19,6 +19,12 @@ public class UserBizImpl implements UserBiz {
 	public void registerUser(User user) {
 		userDao.registerUser(user);
 	}
+	
+	@Override
+	public List<User> loginUser(User user) {
+		return userDao.loginUser(user);
+	}
+
 
 	@Override
 	public void updateUser(User user, User users) {
@@ -48,14 +54,7 @@ public class UserBizImpl implements UserBiz {
 
 	@Override
 	public boolean checkUsername(String username) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public List<User> loginUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.checkUsername(username);
 	}
 
 }
