@@ -40,7 +40,7 @@ public interface UserBiz {
 	/**
 	 * 管理员通过模糊查询总页数
 	 */
-	public  int demendPages(String username);
+	public  int queryPages(String username);
 	
 	/**
 	 * 检验用户名

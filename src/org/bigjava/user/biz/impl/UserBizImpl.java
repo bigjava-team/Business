@@ -41,9 +41,9 @@ public class UserBizImpl implements UserBiz {
 	}
 
 	@Override
-	public int demendPages(String username) {
+	public int queryPages(String username) {
 		// TODO Auto-generated method stub
-		return 0;
+		return userDao.queryPages(username);
 	}
 
 	@Override
