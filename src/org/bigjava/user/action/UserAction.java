@@ -75,7 +75,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	 */
 	public String getUserById() throws Exception {
 		System.out.println("进入UserAction....getUserById方法");
-		userBiz.demend(user.getU_id());
+		userBiz.query(user.getU_id());
 		return "getUserById";
 	}
 
@@ -84,7 +84,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	 */
 	public String update() throws Exception {
 		System.out.println("进入UserAction....update方法");
-		User users = userBiz.demend(user.getU_id());
+		User users = userBiz.query(user.getU_id());
 		if (users == null) {
 			System.out.println("没有此用户");
 			return "updateError";

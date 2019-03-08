@@ -71,7 +71,11 @@ public class TestStatement {
 		System.out.println("ÃÜÂë");
 		String password = input.next();
 		
-		userDao.loginUser(username, password);
+		User user = new User();
+		user.setUsername(username);
+		user.setPassword(password);
+		
+		userDao.loginUser(user);
 	}
 	
 	// ×¢²áµêÆÌ
