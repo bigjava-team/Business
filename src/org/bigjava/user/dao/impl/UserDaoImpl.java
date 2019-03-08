@@ -108,6 +108,13 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		return true;// 查询到用户时返回true
 	}
 
-	
-	
+	// 修改用户密码
+	public void updateUserPassword(String password, User user) {
+		// TODO Auto-generated method stub
+		System.out.println("开始修改密码");
+		user.setPassword(password);// 替换实体层中的密码
+		
+		this.getHibernateTemplate().update(user);// 将用户信息修改
+	}
+
 }

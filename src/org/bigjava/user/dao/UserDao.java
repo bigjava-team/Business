@@ -52,6 +52,9 @@ public interface UserDao {
 	 */
 	public boolean checkUsername(String username);
 	
+	/**
+	 * ĞŞ¸ÄÓÃ»§ÃÜÂë
+	 */
+	public void updateUserPassword(String password, User user);
 	
-
 }

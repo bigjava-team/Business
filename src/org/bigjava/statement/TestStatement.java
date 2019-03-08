@@ -1,9 +1,12 @@
 package org.bigjava.statement;
 
+import java.util.Date;
 import java.util.Scanner;
 
 import org.bigjava.function.Paging;
 import org.bigjava.function.SendMail;
+import org.bigjava.merchant.dao.MerchantDao;
+import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.user.dao.UserDao;
 import org.bigjava.user.entity.User;
 import org.springframework.context.ApplicationContext;
@@ -13,7 +16,86 @@ public class TestStatement {
 	
 	public static ApplicationContext app = new ClassPathXmlApplicationContext("app.xml");
 	public static UserDao userDao = (UserDao) app.getBean("userDaoImpl");
+	public static MerchantDao merchantDao = (MerchantDao) app.getBean("merchantDaoImpl");
 	public static Scanner input = new Scanner(System.in);
+	
+	// 修改店铺信息
+	public static void updateMerchant() {
+		System.out.println("输入修改的店铺的id");
+		int m_id = input.nextInt();
+		System.out.println("输入修改的店铺名");
+		String m_name = input.next();
+		System.out.println("输入修改的店铺权限");
+		int m_is_freeze = input.nextInt();
+		
+		Merchant merchant = merchantDao.queryMerchant(m_id);
+		
+		Merchant updateMerchant = new Merchant();
+		updateMerchant.setM_name(m_name);
+		updateMerchant.setM_is_freeze(m_is_freeze);
+		
+		merchantDao.updateMerchant(merchant, updateMerchant);
+	}
+	
+	// 删除店铺信息
+	public static void deleteMerchant() {
+		System.out.println("输入删除店铺的id");
+		int id = input.nextInt();
+		
+		Merchant merchant = merchantDao.queryMerchant(id);
+		
+		merchantDao.deleteMerchant(merchant);
+	}
+	
+	// 修改密码
+	public static void updateUserPassword() {
+		System.out.println("修改密码用户的id");
+		int id = input.nextInt();
+		System.out.println("修改后密码");
+		String newPassword = input.next();
+		
+		User user = userDao.query(id);
+		
+		if (user == null || user.equals("")) {
+			System.out.println("没有此用户");
+			return;
+		}
+		
+		userDao.updateUserPassword(newPassword, user);
+	}
+	
+	// 登录
+	public static void loginUser() {
+		System.out.println("用户名");
+		String username = input.next();
+		System.out.println("密码");
+		String password = input.next();
+		
+		User user = new User();
+		user.setUsername(username);
+		user.setPassword(password);
+		
+		userDao.loginUser(user);
+	}
+	
+	// 注册店铺
+	public static void registerMerchant() {
+		System.out.println("输入id");
+		int u_id = input.nextInt();
+		System.out.println("输入店铺名");
+		String m_name = input.next();
+		Date m_time = new Date();
+		int m_is_freeze = 1;
+		
+		Merchant merchant = new Merchant();
+		merchant.setM_name(m_name);
+		merchant.setM_time(m_time);
+		merchant.setM_is_freeze(m_is_freeze);
+		
+		User user = merchantDao.queryUser(u_id);
+		
+		merchantDao.registerMerchant(merchant, user);
+	}
 	
 	// 查询用户是否已存在
 	public static void checkUsername() {

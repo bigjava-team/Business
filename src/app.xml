@@ -42,6 +42,8 @@
 	
 	<bean name="userDaoImpl" class="org.bigjava.user.dao.impl.UserDaoImpl" autowire="byName" ></bean>
 	
+	<bean name="merchantDaoImpl" class="org.bigjava.merchant.dao.impl.MerchantDaoImpl" autowire="byName" ></bean>
+	
 	<bean name="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>

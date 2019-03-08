@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC 
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="org.bigjava.product.entity"> <!-- 声明映射文件的包 -->
 	<class name="Product" table="product"> <!-- 声明映射文件的类，表 -->
 		<id name="p_id" type="java.lang.Integer"> <!-- p_id为类的属性、表的属性名 -->
@@ -20,7 +20,7 @@
 	
 		<many-to-one name="orderItem" class="org.bigjava.orderitem.entity.Orderitem" column="item_id" lazy="false" /><!-- 一对一商品表指向订单项类 -->
 	
-		<set name="setCom">
+		<set name="setCom" cascade="all" >
 			<key column="p_id" /><!-- p_id为Product表与Comment表的外键连接 -->
 			<one-to-many class="org.bigjava.comment.entity.Comment" /><!-- 一对多指向Comment类 -->
 		</set>

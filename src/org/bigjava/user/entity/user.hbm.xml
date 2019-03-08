@@ -18,21 +18,21 @@
 		<property name="image"></property> <!-- 用户头像的类、表的属性名  -->
 		<property name="u_is_freeze" not-null="true"></property> <!-- 用户状态的类、表的属性名  -->
 		
-		<set name="setAddr">
+		<set name="setAddr" cascade="all">
 			<key column="u_id" /><!-- 链接的外键id名 -->
 			<one-to-many class="org.bigjava.addr.entity.Addr" /><!-- 一对多指向Addr类 -->
 		</set>
-		
-		<set name="setOrders">
+		 
+		<set name="setOrders" cascade="all">
 			<key column="u_id" /><!-- 连接的外键id名 -->
 			<one-to-many class="org.bigjava.orders.entity.Orders"/><!-- 一对多指向Orders类 -->
 		</set>
 		
-		<set name="setCom">
+		<set name="setCom" cascade="all">
 			<key column="u_id" /><!-- 连接的外键id名 -->
 			<one-to-many class="org.bigjava.comment.entity.Comment"/><!-- 一对多指向Comment类 -->
 		</set>
 		
-		<many-to-one name="merchant" column="m_id" class="org.bigjava.merchant.entity.Merchant" lazy="false" /><!-- 一对一指向Merchant类  -->
+		<one-to-one name="merchant" property-ref="user" cascade="all" /><!-- 一对一指向店铺类 -->
 	</class>
 </hibernate-mapping>

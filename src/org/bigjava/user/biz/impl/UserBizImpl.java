@@ -48,6 +48,7 @@ public class UserBizImpl implements UserBiz {
 
 	@Override
 	public int queryPages(String username) {
+		// TODO Auto-generated method stub
 		return userDao.queryPages(username);
 	}
 
@@ -55,6 +56,5 @@ public class UserBizImpl implements UserBiz {
 	public boolean checkUsername(String username) {
 		return userDao.checkUsername(username);
 	}
-
 
 }

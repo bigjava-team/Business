@@ -18,7 +18,7 @@ public class Merchant {
 	private int m_is_freeze;// 店铺的状态
 	
 	private User user;// 指向用户表
-
+	
 	public int getM_id() {
 		return m_id;
 	}
