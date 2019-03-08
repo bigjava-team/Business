@@ -112,20 +112,4 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		this.getHibernateTemplate().update(user);// 将用户信息修改
 	}
 
-	// 登录
-	@Override
-	public boolean loginUser(String username, String password) {
-		// TODO Auto-generated method stub
-		System.out.println("开始登录");
-		
-		String sql = "from User where username = ? and password = ?";
-		
-		List<User> user = this.getHibernateTemplate().find(sql,new Object[]{username, password});// 通过用户和密码查询用户信息
-		if (user.size() == 0 || user == null) {// 排除查询到的用户不为空
-			System.out.println("用户名或密码错误");
-			return true;
-		}
-		return false;
-	}
-	
 }

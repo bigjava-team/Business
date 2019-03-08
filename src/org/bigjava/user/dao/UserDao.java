@@ -52,9 +52,4 @@ public interface UserDao {
 	 */
 	public void updateUserPassword(String password, User user);
 	
-	/**
-	 * µÇÂ¼
-	 */
-	public boolean loginUser(String username, String password);
-	
 }

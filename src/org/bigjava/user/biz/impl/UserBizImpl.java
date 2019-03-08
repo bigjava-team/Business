@@ -52,4 +52,10 @@ public class UserBizImpl implements UserBiz {
 		return false;
 	}
 
+	@Override
+	public List<User> loginUser(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
