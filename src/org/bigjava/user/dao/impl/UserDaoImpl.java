@@ -16,7 +16,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	// 注册用户
 	@Override
-	public void registerUser(User user) {
+	public void registerUser(User user) {// 注册时注册的信息
 		System.out.println("dao开始注册");
 		user.setRoot(1);// 默认用户权限为1(普通用户)
 		user.setU_is_freeze(1);//	默认用户为解冻状态(解冻状态)
@@ -25,16 +25,16 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	
 	//登录用户
 	@Override
-	public List<User> loginUser(User user) {
+	public List<User> loginUser(User user) {// 登录时传入的信息
 		String hql = "from User where username = ? and password = ? ";
-		List<User> userList = getHibernateTemplate().find(hql, new String[] { user.getUsername(), user.getPassword() });
+		List<User> userList = getHibernateTemplate().find(hql, new String[] { user.getUsername(), user.getPassword() });// 通过username和password查询对应的用户信息
 		System.out.println("userList>>>" + userList);
 		return userList;
 	}
 
 	// 修改
 	@Override
-	public void updateUser(User user, User users) {
+	public void updateUser(User user, User users) {// user为修改的内容、users为数据库中的用户信息
 		System.out.println("dao开始修改");
 		users.setUsername(user.getUsername());// 将用户名存入User中
 		users.setSex(user.getSex());//	将性别存入User中
@@ -43,7 +43,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	// 通过id查询用户
 	@Override
-	public User query(int id) {
+	public User query(int id) {// 查询用户的id
 		System.out.println("dao通过id查询");
 		User user = this.getHibernateTemplate().get(User.class, id);//	通过id查询用户
 		return user;
@@ -51,7 +51,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	// 通过id删除用户
 	@Override
-	public void deleteUser(User user) {
+	public void deleteUser(User user) {// 删除用户的id
 		// TODO Auto-generated method stub
 		System.out.println("dao通过id删除用户");
 		
@@ -60,7 +60,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	// 管理员通过模糊分页查询用户
 	@Override
-	public List<User> limitDemend(final String username, final Paging page) {
+	public List<User> limitDemend(final String username, final Paging page) {// username为查询的内容、page为Paging中的内容
 		// TODO Auto-generated method stub
 		System.out.println("dao管理员通过模糊分页查询用户");
 		List<User> list = this.getHibernateTemplate().executeFind(new HibernateCallback() {
@@ -82,7 +82,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	// 管理员通过模糊分页查询总页数
 	@Override
-	public int queryPages(String username) {
+	public int queryPages(String username) {// name为查询的内容
 		// TODO Auto-generated method stub
 		System.out.println("管理员通过模糊分页查询总页数");
 		int totalNumber = 0;
@@ -96,7 +96,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	// 校验用户名是否已存在
 	@Override
-	public boolean checkUsername(String username) {
+	public boolean checkUsername(String username) {// username为查询的用户
 		// TODO Auto-generated method stub
 		System.out.println("开始校验");
 		List<User> list = this.getHibernateTemplate().find("from User where username = ?", username);// 通过用户名查询用户
@@ -109,7 +109,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	}
 
 	// 修改用户密码
-	public void updateUserPassword(String password, User user) {
+	public void updateUserPassword(String password, User user) {// password修改后的密码、user为数据库中的用户数据
 		// TODO Auto-generated method stub
 		System.out.println("开始修改密码");
 		user.setPassword(password);// 替换实体层中的密码
