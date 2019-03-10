@@ -10,9 +10,27 @@ import org.bigjava.user.entity.User;
 public class Addr {
 	
 	private int a_id;// 收货地址id
+	private String a_name;// 收件人
+	private String a_phone;// 手机号码
 	private String address;// 收货地址
 	
 	private User user;// 指向用户类
+
+	public String getA_name() {
+		return a_name;
+	}
+
+	public void setA_name(String a_name) {
+		this.a_name = a_name;
+	}
+
+	public String getA_phone() {
+		return a_phone;
+	}
+
+	public void setA_phone(String a_phone) {
+		this.a_phone = a_phone;
+	}
 
 	public int getA_id() {
 		return a_id;
@@ -36,6 +54,11 @@ public class Addr {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	@Override
+	public String toString() {
+		return "Addr [a_id=" + a_id + ", a_name=" + a_name + ", a_phone=" + a_phone + ", address=" + address + "]";
 	}
 
 }

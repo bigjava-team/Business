@@ -7,7 +7,10 @@
 		<id name="a_id" type="java.lang.Integer"><!-- 用户收货地址id -->
 			<generator class="native" />
 		</id>
+		<property name="a_name" not-null="true" /><!-- 收件人 -->
+		<property name="a_phone" not-null="true" /><!-- 手机号码 -->
 		<property name="address" not-null="true" /><!-- 用户收货地址 -->
+		
 		
 		<many-to-one name="user" class="org.bigjava.user.entity.User" column="u_id" lazy="false" /><!-- 多对一addr类指向user类 -->
 	</class>

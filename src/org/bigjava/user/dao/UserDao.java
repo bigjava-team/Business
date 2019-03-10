@@ -24,6 +24,9 @@ public interface UserDao {
 	
 	/**
 	 * 修改
+	 * user为数据库中的用户数据
+	 * users为修改的用户数据
+	 * 
 	 */
 	public void updateUser(User user, User users);
 	

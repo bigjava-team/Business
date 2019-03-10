@@ -34,10 +34,23 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	// 修改
 	@Override
-	public void updateUser(User user, User users) {// user为修改的内容、users为数据库中的用户信息
+	public void updateUser(User user, User users) {// users为修改的内容、user为数据库中的用户信息
 		System.out.println("dao开始修改");
-		users.setUsername(user.getUsername());// 将用户名存入User中
-		users.setSex(user.getSex());//	将性别存入User中
+		if (users.getUsername() == null || users.getUsername().equals("")) {// 判断修改的用户名不能为空
+			
+		} else {
+			if (!users.getUsername().equals(user.getUsername())) {// 如果修改的用户名与数据库中的用户名不一样将其保存至user中
+				user.setUsername(users.getUsername());
+			}
+		}
+		
+		if (users.getSex() == null || users.getSex().equals("")) {// 判断修改的用户性别不能为空
+			
+		} else {
+			if (!users.getSex().equals(user.getSex())) {// 如果修改的用户性别与数据库中的用户性别不一样将其保存至user中
+				user.setSex(users.getSex());
+			}
+		}
 		this.getHibernateTemplate().update(users);//	将user中的值对比数据库中的值进行修改
 	}
 

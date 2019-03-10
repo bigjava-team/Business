@@ -3,6 +3,8 @@ package org.bigjava.statement;
 import java.util.Date;
 import java.util.Scanner;
 
+import org.bigjava.addr.dao.AddrDao;
+import org.bigjava.addr.entity.Addr;
 import org.bigjava.category.dao.CategoryDao;
 import org.bigjava.category.entity.Category;
 import org.bigjava.categorysecond.dao.CategorySecondDao;
@@ -26,7 +28,83 @@ public class TestStatement {
 //	public static ProductDao productDao = (ProductDao) app.getBean("ProductDaoImpl");
 	public static CategoryDao categoryDao = (CategoryDao) app.getBean("categoryDaoImpl");
 	public static CategorySecondDao categorySecondDao = (CategorySecondDao) app.getBean("categorySecondDaoImpl");
+	public static AddrDao addrDaoImpl = (AddrDao) app.getBean("addrDaoImpl");
 	public static Scanner input = new Scanner(System.in);
+	
+	// 分页查询收货地址
+	public static void pagingQueryAddr() {
+		System.out.println("输入查询收货地址的用户id");
+		int u_id = input.nextInt();
+		
+		User user = userDao.query(u_id);
+		
+		int totalNumber = addrDaoImpl.queryAllAddrNumber(user);
+		System.out.println("输入从哪页开始查");
+		int presentPage = input.nextInt();
+		Paging page = new Paging(presentPage, totalNumber);
+		
+		addrDaoImpl.queryAllAddr(page, user);
+	}
+	
+	// 删除收货地址
+	public static void deleteAddr() {
+		System.out.println("输入要删除的收货地址id");
+		int a_id = input.nextInt();
+		
+		Addr addr = addrDaoImpl.queryAddr_id(a_id);
+		addrDaoImpl.deleteAddr(addr);
+	}
+	
+	// 通过收货地址id查询收货地址
+	public static void queryAddr_Id() {
+		System.out.println("输入要查询的收货地址id");
+		int a_id = input.nextInt();
+		
+		Addr addr = addrDaoImpl.queryAddr_id(a_id);
+		System.out.println("查询到的收货地址" + addr);
+	}
+	
+	// 修改收货地址
+	public static void updateAddr() {
+		System.out.println("输入要修改的收货地址id");
+		int a_id = input.nextInt();
+		Addr addr = addrDaoImpl.queryAddr_id(a_id);
+		
+		System.out.println("输入修改的收货地址名");
+		String a_address = input.next();
+		System.out.println("输入修改的收货人");
+		String a_name = input.next();
+		
+		Addr updateAddr = new Addr();
+		updateAddr.setAddress(a_address);
+		updateAddr.setA_name(a_name);
+		
+		addrDaoImpl.updateAddr(addr, updateAddr);
+	}
+	
+	// 添加收货地址
+	public static void addAddr() {
+		System.out.println("输入添加收货地址的用户id");
+		int u_id = input.nextInt();
+		
+		User user = new User();
+		user.setU_id(u_id);
+		
+		System.out.println("输入收货人姓名");
+		String a_name = input.next();
+		System.out.println("输入收货人的电话号码");
+		String a_phone = input.next();
+		System.out.println("输入收货人的收货地址");
+		String a_address = input.next();
+		
+		Addr addr = new Addr();
+		addr.setA_name(a_name);
+		addr.setA_phone(a_phone);
+		addr.setAddress(a_address);
+		
+		addrDaoImpl.addAddr(addr, user);
+		
+	}
 	
 	// 模糊查询二級分类
 	public static void likeQueryCategorySecond() {

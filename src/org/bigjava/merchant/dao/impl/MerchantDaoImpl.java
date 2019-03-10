@@ -53,10 +53,10 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 		// TODO Auto-generated method stub
 		System.out.println("开始修改店铺名");
 		
-		if (updateMerchant.getM_name() == null || updateMerchant.getM_name().equals("")) {// 判断修改的店铺用户名不能为空
+		if (updateMerchant.getM_name() == null || updateMerchant.getM_name().equals("")) {// 判断修改的店铺名不能为空
 			
 		} else {
-			if (!updateMerchant.getM_name().equals(merchant.getM_name())) {// 如果修改的店铺用户名不一样将其保存至merchant中
+			if (!updateMerchant.getM_name().equals(merchant.getM_name())) {// 如果修改的店铺名与数据库中的店铺名不一样将其保存至merchant中
 				merchant.setM_name(updateMerchant.getM_name());
 			}
 		}
@@ -64,7 +64,7 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 		if (updateMerchant.getM_image() == null || updateMerchant.getM_image().equals("")) {// 判断修改的店铺图片路径不能为空
 			
 		} else {
-			if (!updateMerchant.getM_image().equals(merchant.getM_image())) {// 如果修改的店铺图片路径不一样将其保存至merchant中
+			if (!updateMerchant.getM_image().equals(merchant.getM_image())) {// 如果修改的店铺图片路径与数据库中的店铺图片路径不一样将其保存至merchant中
 				merchant.setM_image(updateMerchant.getM_image());
 			}
 		}
@@ -72,7 +72,7 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 		if (updateMerchant.getM_is_freeze() == 0) {// 判断修改的店铺状态不能为0
 			
 		} else {
-			if (updateMerchant.getM_is_freeze() != merchant.getM_is_freeze()) {// 如果修改的店铺状态不一样将其保存至merchant中
+			if (updateMerchant.getM_is_freeze() != merchant.getM_is_freeze()) {// 如果修改的店铺状态与数据库中的店铺状态不一样将其保存至merchant中
 				merchant.setM_is_freeze(updateMerchant.getM_is_freeze());	
 			}
 		}

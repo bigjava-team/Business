@@ -33,6 +33,9 @@ public interface MerchantDao {
 	
 	/**
 	 * 修改店铺信息
+	 * merchant为数据库中店铺数据
+	 * updateMerchant为修改的店铺数据
+	 * 
 	 */
 	public void updateMerchant(Merchant merchant, Merchant updateMerchant);
 	
