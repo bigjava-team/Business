@@ -13,6 +13,10 @@ import org.bigjava.function.Paging;
 import org.bigjava.function.SendMail;
 import org.bigjava.merchant.dao.MerchantDao;
 import org.bigjava.merchant.entity.Merchant;
+import org.bigjava.orderitem.dao.OrderItemDao;
+import org.bigjava.orderitem.entity.Orderitem;
+import org.bigjava.orders.dao.OrdersDao;
+import org.bigjava.orders.entity.Orders;
 import org.bigjava.product.dao.ProductDao;
 import org.bigjava.product.entity.Product;
 import org.bigjava.user.dao.UserDao;
@@ -25,11 +29,121 @@ public class TestStatement {
 	public static ApplicationContext app = new ClassPathXmlApplicationContext("app.xml");
 	public static UserDao userDao = (UserDao) app.getBean("userDaoImpl");
 	public static MerchantDao merchantDao = (MerchantDao) app.getBean("merchantDaoImpl");
-//	public static ProductDao productDao = (ProductDao) app.getBean("ProductDaoImpl");
 	public static CategoryDao categoryDao = (CategoryDao) app.getBean("categoryDaoImpl");
 	public static CategorySecondDao categorySecondDao = (CategorySecondDao) app.getBean("categorySecondDaoImpl");
-	public static AddrDao addrDaoImpl = (AddrDao) app.getBean("addrDaoImpl");
+	public static AddrDao addrDao = (AddrDao) app.getBean("addrDaoImpl");
+	public static ProductDao productDao = (ProductDao) app.getBean("productDaoImpl");
+	public static OrderItemDao orderItemDao = (OrderItemDao) app.getBean("orderItemDaoImpl");
+	public static OrdersDao ordersDao = (OrdersDao) app.getBean("orders");
 	public static Scanner input = new Scanner(System.in);
+	
+	// 添加订单
+	public static void addOrders() {
+		System.out.println("输入用户的id");
+		int u_id = input.nextInt();
+		System.out.println("输入商品的id");
+		int p_id =input.nextInt();
+		System.out.println("输入家庭地址的id");
+		int a_id = input.nextInt();
+		
+		User user = userDao.query(u_id);
+		Product product = productDao.queryProduct_id(p_id);
+		Addr addr = addrDao.queryAddr_id(a_id);
+		
+		Orders orders = new Orders();
+		orders.setOrdertim(new Date());
+		orders.setState(2);
+		
+		ordersDao.addOrders(orders, user, addr, product);
+			
+	}
+	
+	// 分页查询订单项
+	public static void queryAllOrderItem() {
+		System.out.println("输入要查询订单项的用户id");
+		int u_id = input.nextInt();
+		
+		User user = userDao.query(u_id);
+		
+		int totalNumber = orderItemDao.queryOrderItemNumber(user);
+		
+		System.out.println("输入开始查询的页数");
+		int page = input.nextInt();
+		
+		Paging pages = new Paging(page, totalNumber, 2);
+		orderItemDao.queryAllOrderItem(user, pages);
+	}
+	
+	// 删除订单项
+	public static void deleteOrderItem() {
+		System.out.println("输入要删除的订单id");
+		int o_id = input.nextInt();
+		
+		Orderitem orderItem = orderItemDao.queryOrderItem_id(o_id);
+		orderItemDao.deleteOrderItem(orderItem);
+	}
+	
+	// 通过订单项id获取的订单项内容
+	public static void queryOrderItem_id() {
+		System.out.println("输入订单的id");
+		int o_id = input.nextInt();
+		
+		Orderitem orderitem = orderItemDao.queryOrderItem_id(o_id);
+		System.out.println(orderitem);
+	}
+	
+	// 添加订单项
+	public static void addOrderitem() {
+		System.out.println("输入添加的订单的用户id");
+		int u_id  = input.nextInt();
+		System.out.println("输入添加的订单商品的id");
+		int p_id = input.nextInt();
+		System.out.println("输入购买商品的数量");
+		int p_number = input.nextInt();
+		
+		User user = userDao.query(u_id);
+		Product product = productDao.queryProduct_id(p_id);
+		Orderitem orderItem = new Orderitem();
+		orderItem.setCount(p_number);
+		orderItem.setSubtotal(p_number*product.getP_price());
+		
+		orderItemDao.addOrderItem(orderItem, user, product);
+	}
+	
+	// 分页查询商品
+	public static void pagingQueryProduct() {
+		System.out.println("输入搜索内容");
+		String searchProduct = input.next();
+		
+		int totalNumber = productDao.queryProductNumber(searchProduct);
+		
+		System.out.println("输入从哪页开始查");
+		int presentPage = input.nextInt();
+		Paging page = new Paging(presentPage, totalNumber, 2);
+		
+		productDao.queryAllProduct(searchProduct, page);
+	}
+	
+	// 修改商品内容
+	public static void udpateProdcut() {
+		System.out.println("输入要修改的商品id");
+		int p_id = input.nextInt();
+		Product product = productDao.queryProduct_id(p_id);
+		
+		System.out.println("输入修改的商品名");
+		String p_name = input.next();
+		
+		Product updateProduct = new Product();
+		product.setP_name(p_name);
+		productDao.updateProduct(product, updateProduct);
+	}
+	
+	// 通过商品id查询商品
+	public static void queryProduct_id() {
+		System.out.println("输入查询的商品id");
+		int id = input.nextInt();
+		productDao.queryProduct_id(id);
+	}
 	
 	// 分页查询收货地址
 	public static void pagingQueryAddr() {
@@ -38,12 +152,12 @@ public class TestStatement {
 		
 		User user = userDao.query(u_id);
 		
-		int totalNumber = addrDaoImpl.queryAllAddrNumber(user);
+		int totalNumber = addrDao.queryAllAddrNumber(user);
 		System.out.println("输入从哪页开始查");
 		int presentPage = input.nextInt();
-		Paging page = new Paging(presentPage, totalNumber);
+		Paging page = new Paging(presentPage, totalNumber, 1);
 		
-		addrDaoImpl.queryAllAddr(page, user);
+		addrDao.queryAllAddr(page, user);
 	}
 	
 	// 删除收货地址
@@ -51,8 +165,8 @@ public class TestStatement {
 		System.out.println("输入要删除的收货地址id");
 		int a_id = input.nextInt();
 		
-		Addr addr = addrDaoImpl.queryAddr_id(a_id);
-		addrDaoImpl.deleteAddr(addr);
+		Addr addr = addrDao.queryAddr_id(a_id);
+		addrDao.deleteAddr(addr);
 	}
 	
 	// 通过收货地址id查询收货地址
@@ -60,7 +174,7 @@ public class TestStatement {
 		System.out.println("输入要查询的收货地址id");
 		int a_id = input.nextInt();
 		
-		Addr addr = addrDaoImpl.queryAddr_id(a_id);
+		Addr addr = addrDao.queryAddr_id(a_id);
 		System.out.println("查询到的收货地址" + addr);
 	}
 	
@@ -68,7 +182,7 @@ public class TestStatement {
 	public static void updateAddr() {
 		System.out.println("输入要修改的收货地址id");
 		int a_id = input.nextInt();
-		Addr addr = addrDaoImpl.queryAddr_id(a_id);
+		Addr addr = addrDao.queryAddr_id(a_id);
 		
 		System.out.println("输入修改的收货地址名");
 		String a_address = input.next();
@@ -79,7 +193,7 @@ public class TestStatement {
 		updateAddr.setAddress(a_address);
 		updateAddr.setA_name(a_name);
 		
-		addrDaoImpl.updateAddr(addr, updateAddr);
+		addrDao.updateAddr(addr, updateAddr);
 	}
 	
 	// 添加收货地址
@@ -102,7 +216,7 @@ public class TestStatement {
 		addr.setA_phone(a_phone);
 		addr.setAddress(a_address);
 		
-		addrDaoImpl.addAddr(addr, user);
+		addrDao.addAddr(addr, user);
 		
 	}
 	
@@ -115,7 +229,7 @@ public class TestStatement {
 		int totalNumber = categorySecondDao.queryCategorySecondNumber(search_name);
 		System.out.println("输入当前页数");
 		int presentPage = input.nextInt();
-		Paging paging = new Paging(presentPage, totalNumber);
+		Paging paging = new Paging(presentPage, totalNumber, 1);
 		
 		categorySecondDao.queryAllCategorySecond(search_name, paging);
 	}
@@ -190,6 +304,8 @@ public class TestStatement {
 	public static void addProduct() {
 		System.out.println("输入要添加商品的店铺id");
 		int id = input.nextInt();
+		System.out.println("输入添加商品属于二级分类的id");
+		int cs_id = input.nextInt();
 		System.out.println("输入商品名");
 		String product_name = input.next();
 		System.out.println("输入商品价格");
@@ -198,7 +314,8 @@ public class TestStatement {
 		Double product_market = input.nextDouble();
 		System.out.println("输入商品描述");
 		String p_desc = input.next();
-		int is_hot = 0;
+		int is_hot = 1;
+		int p_freeze = 1;
 		Date p_date = new Date();
 		
 		Product product = new Product();
@@ -208,9 +325,11 @@ public class TestStatement {
 		product.setP_desc(p_desc);
 		product.setIs_hot(is_hot);
 		product.setP_date(p_date);
+		product.setP_freeze(p_freeze);
 		
 		Merchant merchant = merchantDao.queryMerchant(id);
-		merchantDao.addProduct(product, merchant);
+		CategorySecond categorySecond = categorySecondDao.queryCategorySecond(cs_id);
+		productDao.addProduct(product, merchant, categorySecond);
 	}
 	
 	// 修改店铺信息
@@ -274,7 +393,7 @@ public class TestStatement {
 	
 	// 注册店铺
 	public static void registerMerchant() {
-		System.out.println("输入id");
+		System.out.println("输入注册店铺的id");
 		int u_id = input.nextInt();
 		System.out.println("输入店铺名");
 		String m_name = input.next();
@@ -375,18 +494,20 @@ public class TestStatement {
 	// 模糊查询总条数
 	public static void demendPages() {
 		System.out.println("开始查询");
+		System.out.println("输入插叙的权限");
+		int root = input.nextInt();
 		System.out.println("输入查询的username");
 		String username = input.next();
 		if (username.equals("") || username.equals(null)) {
 			System.out.println("没有此昵称");
 		}
 		
-		int totalNumber = userDao.queryPages(username);
+		int totalNumber = userDao.queryPages(username, root);
 		System.out.println("输入当前页数");
 		int presentPage = input.nextInt();
-		Paging paging = new Paging(presentPage, totalNumber);
+		Paging paging = new Paging(presentPage, totalNumber, 1);
 		
-		userDao.limitDemend(username, paging);
+		userDao.limitDemend(username, paging, root);
 	}
 
 }

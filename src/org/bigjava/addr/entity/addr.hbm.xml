@@ -13,5 +13,7 @@
 		
 		
 		<many-to-one name="user" class="org.bigjava.user.entity.User" column="u_id" lazy="false" /><!-- 多对一addr类指向user类 -->
+
+		<one-to-one name="orders" property-ref="addr" /><!-- 连接orders订单项类 -->
 	</class>
 </hibernate-mapping>

@@ -1,5 +1,6 @@
 package org.bigjava.merchant.dao.impl;
 
+import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.merchant.dao.MerchantDao;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.product.entity.Product;
@@ -79,17 +80,6 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 		
 		this.getHibernateTemplate().update(merchant);// 修改数据库中店铺的内容
 		
-	}
-
-	// 添加商品
-	@Override
-	public void addProduct(Product product, Merchant merchant) {// product为商品内容、merchant为添加商品的店铺
-		// TODO Auto-generated method stub
-		System.out.println("开始添加商品");
-		
-		product.setMerchant(merchant);// 添加外键id
-		
-		this.getHibernateTemplate().save(product);// 添加商品
 	}
 
 }

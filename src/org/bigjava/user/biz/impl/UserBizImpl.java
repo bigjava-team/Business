@@ -47,15 +47,15 @@ public class UserBizImpl implements UserBiz {
 
 	//管理员通过模糊分页查询用户
 	@Override
-	public List<User> limitDemend(String username, Paging page) {
-		return userDao.limitDemend(username, page);
+	public List<User> limitDemend(String username, Paging page, int u_root) {
+		return userDao.limitDemend(username, page, u_root);
 	}
 
 	//管理员通过模糊查询总页数
 	@Override
-	public int queryPages(String username) {
+	public int queryPages(String username, int u_root) {
 		// TODO Auto-generated method stub
-		return userDao.queryPages(username);
+		return userDao.queryPages(username, u_root);
 	}
 
 	//校验用户名

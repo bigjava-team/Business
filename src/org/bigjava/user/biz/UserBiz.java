@@ -40,12 +40,12 @@ public interface UserBiz {
 	/**
 	 * 管理员通过模糊分页查询用户
 	 */
-	public List<User> limitDemend(String username, Paging page);
+	public List<User> limitDemend(String username, Paging page, int u_root);
 	
 	/**
 	 * 管理员通过模糊查询总页数
 	 */
-	public  int queryPages(String username);
+	public  int queryPages(String username, int u_root);
 	
 	/**
 	 * 检验用户名

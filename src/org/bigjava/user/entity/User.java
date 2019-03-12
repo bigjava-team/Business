@@ -6,6 +6,7 @@ import java.util.Set;
 import org.bigjava.addr.entity.Addr;
 import org.bigjava.comment.entity.Comment;
 import org.bigjava.merchant.entity.Merchant;
+import org.bigjava.orderitem.entity.Orderitem;
 import org.bigjava.orders.entity.Orders;
 
 /**
@@ -34,6 +35,16 @@ public class User {
 	private Set<Comment> setCom = new HashSet<Comment>();// 指向评论类
 
 	private Merchant merchant;// 指向店铺类
+	
+	private Set<Orderitem> setOrderItem = new HashSet<Orderitem>();// 指向订单项类
+	
+	public Set<Orderitem> getSetOrderItem() {
+		return setOrderItem;
+	}
+
+	public void setSetOrderItem(Set<Orderitem> setOrderItem) {
+		this.setOrderItem = setOrderItem;
+	}
 
 	public Merchant getMerchant() {
 		return merchant;

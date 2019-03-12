@@ -43,12 +43,12 @@ public interface UserDao {
 	/**
 	 * 管理员通过模糊分页查询用户
 	 */
-	public List<User> limitDemend(String username, Paging page);
+	public List<User> limitDemend(String username, Paging page, int root);
 	
 	/**
 	 * 管理员通过模糊查询总页数
 	 */
-	public int queryPages(String username);
+	public int queryPages(String username, int root);
 	
 	/**
 	 * 校验用户名是否已存在

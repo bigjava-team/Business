@@ -1,5 +1,6 @@
 package org.bigjava.addr.entity;
 
+import org.bigjava.orders.entity.Orders;
 import org.bigjava.user.entity.User;
 
 /**
@@ -15,6 +16,16 @@ public class Addr {
 	private String address;// 收货地址
 	
 	private User user;// 指向用户类
+	
+	private Orders orders;// 一对一指向订单类
+	
+ 	public Orders getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Orders orders) {
+		this.orders = orders;
+	}
 
 	public String getA_name() {
 		return a_name;
