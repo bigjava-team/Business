@@ -31,14 +31,14 @@
 				hibernate.dialect=org.hibernate.dialect.MySQL5Dialect<!-- 设置数据库方言 -->
 				hibernate.show_sql=true<!-- 显示数据库语句 -->
 				hibernate.format_sql=true<!-- 使数据库语句自动换行 -->
-				<!-- hibernate.hbm2ddl.auto=update --><!-- 自动建表时变为修改表 -->
+				hibernate.hbm2ddl.auto=create<!-- 自动建表时变为修改表 -->
 			</value>
 		</property>
 	</bean>
 	
-	<!-- <bean name="action" class="org.bigjava.action.Action" autowire="byName" scope="prototype" ></bean> -->
+	<bean name="userAction" class="org.bigjava.user.action.UserAction" autowire="byName" scope="prototype" />
 	
-	<!-- <bean name="biz" class="org.bigjava.biz.Biz" autowire="byName"></bean> -->
+	<bean name="userBiz" class="org.bigjava.user.biz.UserBiz" autowire="byName" />
 	
 	<bean name="userDaoImpl" class="org.bigjava.user.dao.impl.UserDaoImpl" autowire="byName" />
 	
@@ -49,6 +49,16 @@
 	<bean name="categorySecondDaoImpl" class="org.bigjava.categorysecond.dao.impl.CategorySecondDaoImpl" autowire="byName" />
 	
 	<bean name="addrDaoImpl" class="org.bigjava.addr.dao.impl.AddrDaoImpl" autowire="byName" />
+	
+	<bean name="productDaoImpl" class="org.bigjava.product.dao.impl.ProductDaoImpl" autowire="byName" />
+	
+	<bean name="orderItemDaoImpl" class="org.bigjava.orderitem.dao.impl.OrderItemDaoImpl" autowire="byName" />
+	
+	<bean name="orders" class="org.bigjava.orders.dao.impl.OrdersDaoImpl" autowire="byName" />
+	
+	<bean name="comment" class="org.bigjava.comment.dao.impl.CommentDaoImpl" autowire="byName" />
+	
+	<bean name="images" class="org.bigjava.image.dao.impl.ImageDaoImpl" autowire="byName" />
 	
 	<bean name="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>

@@ -73,7 +73,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	// 管理员通过模糊分页查询用户
 	@Override
-	public List<User> limitDemend(final String username, final Paging page) {// username为查询的内容、page为Paging中的内容
+	public List<User> limitDemend(final String username, final Paging page, final int root) {// username为查询的内容、page为Paging中的内容
 		// TODO Auto-generated method stub
 		System.out.println("dao管理员通过模糊分页查询用户");
 		List<User> list = this.getHibernateTemplate().executeFind(new HibernateCallback() {
@@ -81,7 +81,14 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 				public Object doInHibernate(Session session) throws HibernateException, 
 						SQLException {// 通过hibernateTemplate回调sessionFactory方法
 					// TODO Auto-generated method stub
-					Query query = session.createQuery("from User where username like ?").setString(0, username+"%");// 模糊查询
+					Query query = null;
+					String hql = "from User where username like ?";
+					if (root != 0) {
+						hql += " and root = ?";
+						query = session.createQuery(hql).setString(0, username+"%").setInteger(1, root);// 模糊查询规定权限的用户信息
+					} else {
+						query = session.createQuery(hql).setString(0, username+"%");// 模糊查询
+					}
 					query.setFirstResult(page.getStart());// 分页查询从哪一条开始查
 					query.setMaxResults(page.getPagesize());// 分页查询查多少条
 					
@@ -95,11 +102,18 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	// 管理员通过模糊分页查询总页数
 	@Override
-	public int queryPages(String username) {// name为查询的内容
+	public int queryPages(String username, int u_root) {// name为查询的内容
 		// TODO Auto-generated method stub
 		System.out.println("管理员通过模糊分页查询总页数");
 		int totalNumber = 0;
-		List<Long> list = this.getHibernateTemplate().find("select count(*) from User where username like ?",username+"%");// 模糊查询一共有多少条数据
+		String hql = "select count(*) from User where username like ?";
+		List<Long> list = null;
+		if (u_root != 0) {
+			hql += " and root = ?";
+			list = this.getHibernateTemplate().find(hql, new Object[]{username+"%", u_root});// 通过模糊搜索查询规定权限的用户一共有多少条
+		} else {
+			list = this.getHibernateTemplate().find(hql,username+"%");// 模糊查询一共有多少条数据
+		}
 		if (list != null && list.size() != 0) {
 			totalNumber = list.get(0).intValue();//获取查询到的数据条数
 		}

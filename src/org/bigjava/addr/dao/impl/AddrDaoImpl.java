@@ -69,7 +69,6 @@ public class AddrDaoImpl extends HibernateDaoSupport implements AddrDao {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行deleteAddr方法");
 		this.getHibernateTemplate().delete(addr);
-		
 	}
 
 	// 根据用户权限，分页查询收货地址
@@ -96,7 +95,7 @@ public class AddrDaoImpl extends HibernateDaoSupport implements AddrDao {
 			}
 		});
 		System.out.println("查询到的数据" + list);
-		return null;
+		return list;
 	}
 
 	// 根据用户权限，查询收货地址的条数

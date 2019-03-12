@@ -6,8 +6,10 @@ import java.util.Set;
 
 import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.comment.entity.Comment;
+import org.bigjava.image.entity.Images;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.orderitem.entity.Orderitem;
+import org.bigjava.orders.entity.Orders;
 
 /**
  * 商品表
@@ -20,20 +22,48 @@ public class Product {
 	private String p_name;// 商品名
 	private double p_price;// 商品价格
 	private double market;// 市场价格
-	private String p_image;// 商品图片
 	private String p_desc;// 商品描述
 	private int sale_volume;// 商品月售量
 	private int is_hot;// 是否为热门商品
 	private Date p_date;// 商品上架时间
+	private int p_freeze;// 商品的状态(1、上架 2、下架)
 
 	private CategorySecond categorySecond;// 一对多指向二级分类的一方
-	
-	private Orderitem orderItem;// 一对一指向订单表
 	
 	private Merchant merchant;// 多对一指向店铺类
 	
 	private Set<Comment> setCom = new HashSet<Comment>();// 指向Comment类
 	
+	private Orderitem orderitem;// 指向订单项类
+	
+	private Orders orders;// 指向订单表
+	
+	private Set<Images> setImages = new HashSet<Images>();// 指向Images类
+	
+	public Set<Images> getSetImages() {
+		return setImages;
+	}
+
+	public void setSetImages(Set<Images> setImages) {
+		this.setImages = setImages;
+	}
+
+	public Orders getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Orders orders) {
+		this.orders = orders;
+	}
+
+	public Orderitem getOrderitem() {
+		return orderitem;
+	}
+
+	public void setOrderitem(Orderitem orderitem) {
+		this.orderitem = orderitem;
+	}
+
 	public Merchant getMerchant() {
 		return merchant;
 	}
@@ -48,14 +78,6 @@ public class Product {
 
 	public void setSetCom(Set<Comment> setCom) {
 		this.setCom = setCom;
-	}
-
-	public Orderitem getOrderItem() {
-		return orderItem;
-	}
-
-	public void setOrderItem(Orderitem orderItem) {
-		this.orderItem = orderItem;
 	}
 
 	public void setP_price(double p_price) {
@@ -98,14 +120,6 @@ public class Product {
 		this.market = market;
 	}
 
-	public String getP_image() {
-		return p_image;
-	}
-
-	public void setP_image(String p_image) {
-		this.p_image = p_image;
-	}
-
 	public String getP_desc() {
 		return p_desc;
 	}
@@ -146,4 +160,18 @@ public class Product {
 		this.categorySecond = categorySecond;
 	}
 	
+	public int getP_freeze() {
+		return p_freeze;
+	}
+
+	public void setP_freeze(int p_freeze) {
+		this.p_freeze = p_freeze;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [p_id=" + p_id + ", p_name=" + p_name + ", p_price=" + p_price + ", market=" + market
+				+ ", p_desc=" + p_desc + ", sale_volume=" + sale_volume + ", is_hot=" + is_hot
+				+ ", p_date=" + p_date + ", p_freeze=" + p_freeze + "]";
+	}
 }

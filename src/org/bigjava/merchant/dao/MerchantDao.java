@@ -1,5 +1,6 @@
 package org.bigjava.merchant.dao;
 
+import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
@@ -39,9 +40,4 @@ public interface MerchantDao {
 	 */
 	public void updateMerchant(Merchant merchant, Merchant updateMerchant);
 	
-	/**
-	 * ÃÌº”…Ã∆∑
-	 */
-	public void addProduct(Product product, Merchant merchant);
-
 }

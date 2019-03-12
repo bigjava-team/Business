@@ -1,7 +1,9 @@
 package org.bigjava.orderitem.entity;
 
+import org.bigjava.addr.entity.Addr;
 import org.bigjava.orders.entity.Orders;
 import org.bigjava.product.entity.Product;
+import org.bigjava.user.entity.User;
 
 /**
  * 订单项表
@@ -14,9 +16,27 @@ public class Orderitem {
 	private int count;// 订单项表的订单商品的数量
 	private double subtotal;// 订单项表商品的小计
 	
-	private Orders Orders;// 多对一指向订单表
+	private User user;// 指向用户类
 	
-	private Product product;// 一对一指向商品
+	private Product product;// 指向商品类
+	
+	private Addr addr;// 指向收货地址类
+	
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public int getItem_id() {
 		return item_id;
@@ -42,20 +62,9 @@ public class Orderitem {
 		this.subtotal = subtotal;
 	}
 
-	public Orders getOrders() {
-		return Orders;
-	}
-
-	public void setOrders(Orders orders) {
-		Orders = orders;
-	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
+	@Override
+	public String toString() {
+		return "Orderitem [item_id=" + item_id + ", count=" + count + ", subtotal=" + subtotal + "]";
 	}
 
 }

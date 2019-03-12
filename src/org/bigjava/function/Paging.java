@@ -3,14 +3,15 @@ package org.bigjava.function;
 public class Paging {
 	
 	private int page;//	总页数
-	private int pagesize = 2;// 每页显示多少条
+	private int pagesize;// 每页显示多少条
 	private int start;// 从哪条开始查
 	private int presentPage;// 当前页数
 	private int totalNumber;// 总条数
 	
-	public Paging(int _presentPage, int _totalNumber) {
+	public Paging(int _presentPage, int _totalNumber, int _pagesize) {
 		this.presentPage = _presentPage;// 获取当前页数
 		this.totalNumber = _totalNumber;// 获取总条数
+		this.pagesize = _pagesize;// 获取当前页
 		this.page = this.totalNumber%pagesize!=0 ? (this.totalNumber/pagesize) + 1 : this.totalNumber/pagesize;// 获取总页数
 		if (this.presentPage < 1)// 判断当前页不能小于1
 			this.presentPage = 1;

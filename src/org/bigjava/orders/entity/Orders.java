@@ -4,7 +4,9 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.bigjava.addr.entity.Addr;
 import org.bigjava.orderitem.entity.Orderitem;
+import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
 
 /**
@@ -18,20 +20,19 @@ public class Orders {
 	private double total;// 订单的总金额
 	private Date ordertim;// 订单时间
 	private int state;// 订单的状态(1为未支付，2为已支付、3是订单已发货、4为订单结束)
-	private String o_name;// 订单人
-	private String o_phone;// 订单人的电话号
-	private String o_addr;// 订单人的收货地址
+	
+	private Addr addr;// 一对一指向收货地址类
 	
 	private User user;// 多对一指向用户类
 	
-	private Set<Orderitem> setO = new HashSet<Orderitem>();// 一对多指向订单项表
-
-	public Set<Orderitem> getSetO() {
-		return setO;
+	private Product product;// 指向商品类
+	
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setSetO(Set<Orderitem> setO) {
-		this.setO = setO;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public void setTotal(double total) {
@@ -70,28 +71,12 @@ public class Orders {
 		this.state = state;
 	}
 
-	public String getO_name() {
-		return o_name;
+	public Addr getAddr() {
+		return addr;
 	}
 
-	public void setO_name(String o_name) {
-		this.o_name = o_name;
-	}
-
-	public String getO_phone() {
-		return o_phone;
-	}
-
-	public void setO_phone(String o_phone) {
-		this.o_phone = o_phone;
-	}
-
-	public String getO_addr() {
-		return o_addr;
-	}
-
-	public void setO_addr(String o_addr) {
-		this.o_addr = o_addr;
+	public void setAddr(Addr addr) {
+		this.addr = addr;
 	}
 
 	public User getUser() {
@@ -102,5 +87,8 @@ public class Orders {
 		this.user = user;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Orders [o_id=" + o_id + ", total=" + total + ", ordertim=" + ordertim + ", state=" + state + "]";
+	}
 }
