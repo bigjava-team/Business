@@ -96,7 +96,7 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 		// 获取当前页
 		int pageNo = page.getPresentPage();
 
-		Paging paging = new Paging(pageNo, totalNumber);
+		Paging paging = new Paging(pageNo, totalNumber, 2);
 
 		categorySecondBiz.queryAllCategorySecond(searchCategorySecond, paging);
 		return "findAllBySearchNameSuccess";
