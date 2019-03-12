@@ -8,6 +8,9 @@ public class Paging {
 	private int presentPage;// 当前页数
 	private int totalNumber;// 总条数
 	
+	public Paging() {
+	}
+
 	public Paging(int _presentPage, int _totalNumber) {
 		this.presentPage = _presentPage;// 获取当前页数
 		this.totalNumber = _totalNumber;// 获取总条数
