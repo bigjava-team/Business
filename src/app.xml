@@ -21,14 +21,6 @@
 		<property name="jdbcUrl" value="${url}"></property><!-- 数据库连接的url地址 -->
 	</bean>
 	
-	
-	<!-- <bean name="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>数据库连接DriverClassName
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/business"></property>数据库连接的url地址
-		<property name="username" value="root"></property>数据库连接的用户名
-		<property name="password" value="root"></property>数据库连接的密码
-	</bean> -->
-	
 	<bean name="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		
@@ -41,7 +33,7 @@
 				hibernate.dialect=org.hibernate.dialect.MySQL5Dialect<!-- 设置数据库方言 -->
 				hibernate.show_sql=true<!-- 显示数据库语句 -->
 				hibernate.format_sql=true<!-- 使数据库语句自动换行 -->
-				hibernate.hbm2ddl.auto=create<!-- 自动建表时变为修改表 -->
+				<!-- hibernate.hbm2ddl.auto=create --><!-- 自动建表时变为修改表 -->
 			</value>
 		</property>
 	</bean>
