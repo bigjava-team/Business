@@ -14,6 +14,9 @@
 		
 		<many-to-one name="user" class="org.bigjava.user.entity.User" column="u_id" lazy="false" /><!-- 多对一addr类指向user类 -->
 
-		<one-to-one name="orders" property-ref="addr" /><!-- 连接orders订单项类 -->
+		<set name="setOrders"><!-- 一对多指向Orders类 -->
+			<key column="a_id" /><!-- Orders类连接的外键 -->
+			<one-to-many class="org.bigjava.orders.entity.Orders" />
+		</set>
 	</class>
 </hibernate-mapping>

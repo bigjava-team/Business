@@ -14,8 +14,14 @@
 		
 		<many-to-one name="user" column="u_id" class="org.bigjava.user.entity.User" lazy="false" /><!-- 多对一订单表指向用户表 -->
 	
-		<many-to-one name="addr" column="a_id" class="org.bigjava.addr.entity.Addr" lazy="false" /><!-- 设置外键连接收货地址表 -->
+		<many-to-one name="addr" column="a_id" class="org.bigjava.addr.entity.Addr" lazy="false" /><!-- 多对一订单表指向收货地址表 -->
 		
-		<many-to-one name="product" column="p_id" class="org.bigjava.product.entity.Product" lazy="false" /><!-- 设置外键连接订单表 -->
+		<!-- name为指向的Product类、table为hibernate的中间表 -->
+		<set name="setProduct" table="product_orders" inverse="false" >
+			<!-- column为hibernate中间表中外键p_id -->
+			<key column="o_id" not-null="true" />
+			<!-- 中间表连接Product类的外键 -->
+			<many-to-many class="org.bigjava.product.entity.Product" column="p_id" />
+		</set>
 	</class>
 </hibernate-mapping>   

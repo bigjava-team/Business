@@ -21,18 +21,18 @@ public class Orders {
 	private Date ordertim;// 订单时间
 	private int state;// 订单的状态(1为未支付，2为已支付、3是订单已发货、4为订单结束)
 	
-	private Addr addr;// 一对一指向收货地址类
+	private Addr addr;// 多对一指向收货地址类
 	
 	private User user;// 多对一指向用户类
 	
-	private Product product;// 指向商品类
+	private Set<Product> setProduct = new HashSet<Product>();// 多对多指向商品类
 	
-	public Product getProduct() {
-		return product;
+	public Set<Product> getSetProduct() {
+		return setProduct;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setSetProduct(Set<Product> setProduct) {
+		this.setProduct = setProduct;
 	}
 
 	public void setTotal(double total) {

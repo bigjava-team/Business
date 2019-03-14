@@ -22,7 +22,7 @@ public interface OrderItemDao {
 	/**
 	 * 通过订单项id查询订单项
 	 */
-	public Orderitem queryOrderItem_id(int o_id);
+	public Orderitem queryOrderItem_id(int item_id);
 	
 	/**
 	 * 分页条件查询订单项

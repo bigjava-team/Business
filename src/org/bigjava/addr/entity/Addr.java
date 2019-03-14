@@ -1,5 +1,8 @@
 package org.bigjava.addr.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.bigjava.orders.entity.Orders;
 import org.bigjava.user.entity.User;
 
@@ -17,14 +20,14 @@ public class Addr {
 	
 	private User user;// 指向用户类
 	
-	private Orders orders;// 一对一指向订单类
+	private Set<Orders> setOrders = new HashSet<Orders>();// 一对多指向订单类
 	
- 	public Orders getOrders() {
-		return orders;
+	public Set<Orders> getSetOrders() {
+		return setOrders;
 	}
 
-	public void setOrders(Orders orders) {
-		this.orders = orders;
+	public void setSetOrders(Set<Orders> setOrders) {
+		this.setOrders = setOrders;
 	}
 
 	public String getA_name() {

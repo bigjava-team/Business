@@ -1,6 +1,8 @@
 package org.bigjava.statement;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 import org.bigjava.addr.dao.AddrDao;
@@ -39,6 +41,12 @@ public class TestStatement {
 	
 	// 添加订单
 	public static void addOrders() {
+		System.out.println("输入购买的订单项的id");
+		int item_id = input.nextInt();
+		System.out.println("输入再次购买的订单项id");
+		int item_id2 = input.nextInt();
+		List<Integer> listItem_id = new ArrayList<Integer>(); 
+		listItem_id.add(item_id);
 		System.out.println("输入用户的id");
 		int u_id = input.nextInt();
 		System.out.println("输入商品的id");
@@ -50,9 +58,20 @@ public class TestStatement {
 		Product product = productDao.queryProduct_id(p_id);
 		Addr addr = addrDao.queryAddr_id(a_id);
 		
+		List<Orderitem> listOrderItem = new ArrayList<Orderitem>();
+		for (int i=0; i<listItem_id.size(); i++) {
+			Orderitem orderItem = orderItemDao.queryOrderItem_id(listItem_id.get(i));
+			listOrderItem.add(orderItem);
+		}
+		
 		Orders orders = new Orders();
+		Double total = 0.0;
 		orders.setOrdertim(new Date());
 		orders.setState(2);
+		for (int i=0; i<listOrderItem.size(); i++) {
+			total += listOrderItem.get(i).getSubtotal();
+		}
+		orders.setTotal(total);
 		
 		ordersDao.addOrders(orders, user, addr, product);
 			
@@ -79,8 +98,8 @@ public class TestStatement {
 		System.out.println("输入要删除的订单id");
 		int o_id = input.nextInt();
 		
-		Orderitem orderItem = orderItemDao.queryOrderItem_id(o_id);
-		orderItemDao.deleteOrderItem(orderItem);
+		Orderitem orderitem = orderItemDao.queryOrderItem_id(o_id);
+		orderItemDao.deleteOrderItem(orderitem);
 	}
 	
 	// 通过订单项id获取的订单项内容
@@ -88,8 +107,8 @@ public class TestStatement {
 		System.out.println("输入订单的id");
 		int o_id = input.nextInt();
 		
-		Orderitem orderitem = orderItemDao.queryOrderItem_id(o_id);
-		System.out.println(orderitem);
+		Orderitem Orderitem = orderItemDao.queryOrderItem_id(o_id);
+		System.out.println(Orderitem);
 	}
 	
 	// 添加订单项

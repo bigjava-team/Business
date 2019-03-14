@@ -34,9 +34,9 @@ public class Product {
 	
 	private Set<Comment> setCom = new HashSet<Comment>();// 指向Comment类
 	
-	private Orderitem orderitem;// 指向订单项类
+	private Set<Orderitem> setOrderitem = new HashSet<Orderitem>();// 指向订单项类
 	
-	private Orders orders;// 指向订单表
+	private Set<Orders> setOrders = new HashSet<Orders>();// 多对多指向订单表
 	
 	private Set<Images> setImages = new HashSet<Images>();// 指向Images类
 	
@@ -48,20 +48,20 @@ public class Product {
 		this.setImages = setImages;
 	}
 
-	public Orders getOrders() {
-		return orders;
+	public Set<Orders> getSetOrders() {
+		return setOrders;
 	}
 
-	public void setOrders(Orders orders) {
-		this.orders = orders;
+	public void setSetOrders(Set<Orders> setOrders) {
+		this.setOrders = setOrders;
 	}
 
-	public Orderitem getOrderitem() {
-		return orderitem;
+	public Set<Orderitem> getSetOrderitem() {
+		return setOrderitem;
 	}
 
-	public void setOrderitem(Orderitem orderitem) {
-		this.orderitem = orderitem;
+	public void setSetOrderitem(Set<Orderitem> setOrderitem) {
+		this.setOrderitem = setOrderitem;
 	}
 
 	public Merchant getMerchant() {

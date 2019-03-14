@@ -25,7 +25,7 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 		
 		orders.setUser(user);// 添加与User类的外键
 		orders.setAddr(addr);// 添加与Addr类的外键
-		orders.setProduct(product);// 添加与Product类的外键
+		orders.getSetProduct().add(product);// 将product的 外键id添加到hibernate的中间表
 		
 		this.getHibernateTemplate().save(orders);// 添加订单信息
 		

@@ -38,7 +38,7 @@
 	
 	<bean name="userAction" class="org.bigjava.user.action.UserAction" autowire="byName" scope="prototype" />
 	
-	<bean name="userBiz" class="org.bigjava.user.biz.UserBiz" autowire="byName" />
+	<bean name="userBizImpl" class="org.bigjava.user.biz.impl.UserBizImpl" autowire="byName" />
 	
 	<bean name="userDaoImpl" class="org.bigjava.user.dao.impl.UserDaoImpl" autowire="byName" />
 	

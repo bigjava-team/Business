@@ -13,6 +13,6 @@
 		
 		<many-to-one name="user" column="u_id" class="org.bigjava.user.entity.User" not-null="true" /><!-- 多对一指向用户类 -->
 		
-		<many-to-one name="product" column="p_id" class="org.bigjava.product.entity.Product" not-null="true" /><!-- 一对一指向商品类 -->
+		<many-to-one name="product" column="p_id" class="org.bigjava.product.entity.Product" not-null="true" /><!-- 多对一指向商品类 -->
 	</class>	
 </hibernate-mapping>   

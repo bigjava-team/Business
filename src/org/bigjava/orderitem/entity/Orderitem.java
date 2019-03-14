@@ -61,6 +61,14 @@ public class Orderitem {
 	public void setSubtotal(double subtotal) {
 		this.subtotal = subtotal;
 	}
+	
+	public Addr getAddr() {
+		return addr;
+	}
+
+	public void setAddr(Addr addr) {
+		this.addr = addr;
+	}
 
 	@Override
 	public String toString() {

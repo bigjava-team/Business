@@ -38,10 +38,10 @@ public class OrderItemDaoImpl extends HibernateDaoSupport implements OrderItemDa
 
 	// 通过订单项id查询订单项
 	@Override
-	public Orderitem queryOrderItem_id(int o_id) {
+	public Orderitem queryOrderItem_id(int item_id) {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行queryOrderItem_id方法");
-		return this.getHibernateTemplate().get(Orderitem.class, o_id);
+		return this.getHibernateTemplate().get(Orderitem.class, item_id);
 	}
 
 	// 分页条件查询订单项
