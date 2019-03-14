@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.ModelDriven;
 
 public class MerchantAction extends ActionSupport implements ModelDriven<Merchant> {
 
-	private Merchant merchant;
+	private Merchant merchant = new Merchant();
 	private MerchantBiz merchantBiz;
 
 	public void setMerchantBiz(MerchantBiz merchantBiz) {
