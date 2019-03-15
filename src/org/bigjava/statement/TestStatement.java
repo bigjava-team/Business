@@ -51,10 +51,10 @@ public class TestStatement {
 		System.out.println("输入收货地址的id");
 		int a_id = input.nextInt();
 		
-		Orderitem orderItem = new Orderitem();
+		List<Orderitem> listOrderItem = new ArrayList<Orderitem>();
 		
 		for (int i=0; i<listItem_id.size(); i++) {
-			orderItem = orderItemDao.queryOrderItem_id(listItem_id.get(i));
+			listOrderItem.add(orderItemDao.queryOrderItem_id(listItem_id.get(i)));// 通过订单项表
 		}
 		
 //		ordersDao.addOrders(orders, user, addr);

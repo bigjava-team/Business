@@ -11,7 +11,7 @@ public class UserTest {
 		ApplicationContext app = new ClassPathXmlApplicationContext("app.xml");
 //		UserDao userDao = (UserDao) app.getBean("userDaoImpl");
 		
-		TestStatement.registerUser();
+//		TestStatement.registerUser();
 	}
 
 }
