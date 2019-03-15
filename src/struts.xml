@@ -8,9 +8,25 @@
 	<constant name="stuts.i18n.encoding" value="utf-8" />
 	
 	<!-- 用户模块 -->
-	<package name="user" extends="struts-default" namespace="/user">
-	<action name="User_*" class="org.bigjava.user.action.UserAction" method="{1}">
-	
+	<package name="user" extends="struts-default" namespace="/">
+	<action name="User_*" class="userAction" method="login">
+		<!-- 登录情况 -->
+		<!-- 返回值为adminlogin，则是管理员登录成功  -->
+		<result name="adminLogin">
+			/admin/home.jsp
+		</result>
+		
+		<!-- 返回值为loginSuccess为普通用户登录成功 -->
+		<result name="loginSuccess">
+			
+		</result>
+		
+		<!-- 返回值为loginStore，为店长登录 -->
+		<result name="loginStore"> 
+			
+		</result>
+		
+		<!-- 返回值为 -->
 	
 	</action>
 	
