@@ -36,8 +36,6 @@ public class Product {
 	
 	private Set<Orderitem> setOrderitem = new HashSet<Orderitem>();// 指向订单项类
 	
-	private Set<Orders> setOrders = new HashSet<Orders>();// 多对多指向订单表
-	
 	private Set<Images> setImages = new HashSet<Images>();// 指向Images类
 	
 	public Set<Images> getSetImages() {
@@ -46,14 +44,6 @@ public class Product {
 
 	public void setSetImages(Set<Images> setImages) {
 		this.setImages = setImages;
-	}
-
-	public Set<Orders> getSetOrders() {
-		return setOrders;
-	}
-
-	public void setSetOrders(Set<Orders> setOrders) {
-		this.setOrders = setOrders;
 	}
 
 	public Set<Orderitem> getSetOrderitem() {

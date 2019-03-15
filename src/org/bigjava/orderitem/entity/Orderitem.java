@@ -1,5 +1,8 @@
 package org.bigjava.orderitem.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.bigjava.addr.entity.Addr;
 import org.bigjava.orders.entity.Orders;
 import org.bigjava.product.entity.Product;
@@ -22,6 +25,16 @@ public class Orderitem {
 	
 	private Addr addr;// 指向收货地址类
 	
+	private Orders orders;
+	
+	public Orders getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Orders orders) {
+		this.orders = orders;
+	}
+
 	public Product getProduct() {
 		return product;
 	}

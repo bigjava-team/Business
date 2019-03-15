@@ -33,4 +33,12 @@ public interface OrderItemDao {
 	 * 条件查询订单项个数
 	 */
 	public int queryOrderItemNumber(User user);
+	
+	/**
+	 * 修改订单项
+	 * orderItem为数据库中的订单项
+	 * updateOrderItem为修改的订单项内容
+	 * 
+	 */
+	public void updateOrderItem(Orderitem orderItem, Orderitem updateOrderItem);
 }

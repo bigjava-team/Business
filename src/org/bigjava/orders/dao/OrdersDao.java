@@ -13,7 +13,7 @@ public interface OrdersDao {
 	/**
 	 * 添加订单类
 	 */
-	public void addOrders(Orders orders, User user, Addr addr, List<Product> product);
+	public void addOrders(Orders orders, User user, Addr addr);
 	
 	/**
 	 * 删除订单表(退货)

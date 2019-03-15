@@ -47,34 +47,17 @@ public class TestStatement {
 		int item_id2 = input.nextInt();
 		List<Integer> listItem_id = new ArrayList<Integer>(); 
 		listItem_id.add(item_id);
-//		System.out.println("输入用户的id");
-//		int u_id = input.nextInt();
-//		System.out.println("输入商品的id");
-//		int p_id =input.nextInt();
-		System.out.println("输入家庭地址的id");
+		listItem_id.add(item_id2);
+		System.out.println("输入收货地址的id");
 		int a_id = input.nextInt();
 		
-//		User user = userDao.query(u_id);
-//		Product product = productDao.queryProduct_id(p_id);
-		Addr addr = addrDao.queryAddr_id(a_id);
+		Orderitem orderItem = new Orderitem();
 		
-		List<Orderitem> listOrderItem = new ArrayList<Orderitem>();
 		for (int i=0; i<listItem_id.size(); i++) {
-			Orderitem orderItem = orderItemDao.queryOrderItem_id(listItem_id.get(i));
-			listOrderItem.add(orderItem);
-//			user = userDao.query(orderItem.get);
+			orderItem = orderItemDao.queryOrderItem_id(listItem_id.get(i));
 		}
 		
-		Orders orders = new Orders();
-		Double total = 0.0;
-		orders.setOrdertim(new Date());
-		orders.setState(2);
-		for (int i=0; i<listOrderItem.size(); i++) {
-			total += listOrderItem.get(i).getSubtotal();
-		}
-		orders.setTotal(total);
-		
-//		ordersDao.addOrders(orders, user, addr, product);
+//		ordersDao.addOrders(orders, user, addr);
 			
 	}
 	

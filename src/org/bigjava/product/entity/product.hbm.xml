@@ -30,14 +30,9 @@
 			<one-to-many class="org.bigjava.orderitem.entity.Orderitem" />
 		</set>
 		
-		<set name="setOrders" table="product_orders" inverse="true"><!-- 多对多指向订单表、table为连接product_orders的中间表 -->
-			<key column="p_id" not-null="true" /><!-- column值为hibernate中间表的外键 -->
-			<many-to-many class="org.bigjava.orders.entity.Orders" column="o_id" /><!-- column项告诉hibernate对Orders表中查找o_id值对应的orders记录 -->
-		</set>
-		
-		<set name="setImages" cascade="all">
-			<key column="p_id" />
-			<one-to-many class="org.bigjava.image.entity.Images" />
+		<set name="setImages" cascade="all"><!-- 一对多指向images表 -->
+			<key column="p_id" /><!-- column为images连接的外键id -->
+			<one-to-many class="org.bigjava.image.entity.Images" /><!-- 指向Images类的路径 -->
 		</set>
 	</class>
 </hibernate-mapping>

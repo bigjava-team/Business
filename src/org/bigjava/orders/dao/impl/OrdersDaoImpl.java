@@ -19,15 +19,12 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 
 	// 添加订单
 	@Override
-	public void addOrders(Orders orders, User user, Addr addr, List<Product> listProduct) {
+	public void addOrders(Orders orders, User user, Addr addr) {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行addOrders方法");
 		
 		orders.setUser(user);// 添加与User类的外键
 		orders.setAddr(addr);// 添加与Addr类的外键
-		for (int i=0; i<listProduct.size(); i++) {
-			orders.getSetProduct().add(listProduct.get(i));// 将product的 外键id添加到hibernate的中间表
-		}
 		
 		this.getHibernateTemplate().save(orders);// 添加订单信息
 		

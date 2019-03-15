@@ -14,5 +14,7 @@
 		<many-to-one name="user" column="u_id" class="org.bigjava.user.entity.User" not-null="true" /><!-- 多对一指向用户类 -->
 		
 		<many-to-one name="product" column="p_id" class="org.bigjava.product.entity.Product" not-null="true" /><!-- 多对一指向商品类 -->
+	
+		<many-to-one name="orders" column="o_id" class="org.bigjava.orders.entity.Orders" /><!-- 多对一指向Orders类，column为连接的外键 -->
 	</class>	
 </hibernate-mapping>   

@@ -25,14 +25,14 @@ public class Orders {
 	
 	private User user;// 多对一指向用户类
 	
-	private Set<Product> setProduct = new HashSet<Product>();// 多对多指向商品类
+	private Set<Orderitem> setOrderItem = new HashSet<Orderitem>();
 	
-	public Set<Product> getSetProduct() {
-		return setProduct;
+	public Set<Orderitem> getSetOrderItem() {
+		return setOrderItem;
 	}
 
-	public void setSetProduct(Set<Product> setProduct) {
-		this.setProduct = setProduct;
+	public void setSetOrderItem(Set<Orderitem> setOrderItem) {
+		this.setOrderItem = setOrderItem;
 	}
 
 	public void setTotal(double total) {

@@ -83,13 +83,36 @@ public class OrderItemDaoImpl extends HibernateDaoSupport implements OrderItemDa
 			listNumber = this.getHibernateTemplate().find(hql);
 		} else {
 			hql += " where u_id = ?";
-			listNumber = this.getHibernateTemplate().find(hql, user.getU_id());// 
+			listNumber = this.getHibernateTemplate().find(hql, user.getU_id());// 通过连接用户类的外键u_id查询订单项的条数 
 		}
 		if (listNumber.size() !=0 ) {
 			totalNumber = listNumber.get(0).intValue();
 		}
 		System.out.println("查询到"+totalNumber+"条");
 		return totalNumber;
+	}
+
+	// 修改订单项
+	@Override
+	public void updateOrderItem(Orderitem orderItem, Orderitem updateOrderItem) {
+		// TODO Auto-generated method stub
+		System.out.println("开始执行updateOrderItem方法");
+		if (updateOrderItem.getCount() == 0) {// 判断修改的订单项表的属性count商品数量不能为空
+		} else {
+			orderItem.setCount(updateOrderItem.getCount());// 将修改的订单项表的属性count商品数量替换数据库中的count属性
+		}
+		
+		if (updateOrderItem.getSubtotal() == 0) {// 判断修改的订单项表的属性subtotal商品小计不能为空
+		} else {
+			orderItem.setSubtotal(updateOrderItem.getSubtotal());// 将修改的订单项表的属性subtotal商品小计替换数据库中的count属性
+		}
+		
+		if (updateOrderItem.getOrders() == null || updateOrderItem.getOrders().equals("")) {// 判断修改的订单项表的属性o_id外键不能为空
+		} else {
+			orderItem.setOrders(updateOrderItem.getOrders());// 将修改的订单项表的属性o_id外键替换数据库中的o_id外键属性
+		}
+		
+		this.getHibernateTemplate().update(orderItem);// 将修改的内容存放入数据库中
 	}
 	
 	
