@@ -1,0 +1,32 @@
+后台页面 admin
+	后台登录	index.jsp
+	后台主页	home.jsp
+				主页顶部	top.jsp
+				主页中左部	left.jsp
+				主页中右部	right.jsp
+				主页底部	bottom.jsp
+	
+	后台用户管理	admin -> user
+		后台用户列表	list.jsp
+	
+	后台店铺管理	admin -> merchant
+		后台店铺列表	list.jsp
+		后台店铺商品列表	m_product.jsp
+	
+	后台一级分类管理	admin -> category
+		后台一级分类列表	list.jsp
+		后台一级分类添加	add.jsp
+		后台一级分类编辑(修改)	edit.jsp
+	
+	后台二级分类管理	admin -> categorysecond
+		后台二级分类列表	list.jsp
+		后台二级分类添加	add.jsp
+		后台二级分类编辑(修改)	edit.jsp
+	
+	后台商品管理	admin -> product
+		后台商品列表	list.jsp
+	
+	后台订单管理	admin -> user
+		后台订单列表	list.jsp
+		后台订单列表 -> 订单详情	orderitem.jsp
+		
