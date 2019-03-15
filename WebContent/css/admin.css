@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+/* admin主页面 */
+/* home_top.jsp */
+
+#home_top_body{
+	MARGIN: 0px;
+	BACKGROUND-COLOR: #ffffff;
+	FONT-SIZE: 12px;
+	COLOR: #000000
+}
+
+#home_top_body div{
+	margin: 0px;
+	padding: 0px;
+}
+
+/* home_right.jsp */
+
+#home_right_body{
+	margin: 0px;
+}
+
+#home_right_body #divSY{
+	 width: 100%;
+	 line-height: 25px;
+	 text-align: center;
+	 height: 25px;
+	 margin: 3px 2px 10px 2px;
+	 background: #acd6ff;
+}
+
+
+/* home_bottom.jsp */
+
+#admin_bottom_body{
+	text-align:center;
+	font-size: 12px;
+}
+
+/*
+admin_list
+*/
+
+#admin_list_body{
+	padding: 0px 2px 0px 2px;
+	margin: 0px;
+}
+
+#admin_list_div_top{
+	width: 100%;
+	line-height: 25px;
+	text-align: center;
+	height: 25px;
+	margin: 25px 0px 10px 0px;
+	background: #acd6ff;
+}
+
+#admin_list_table{
+	background-color: #f5fafe;
+	margin-bottom: 3px;
+}
+
+#admin_list_tr1{
+	font-weight: bold;
+	font-size: 12px;
+	height: 25px;
+	background-color: #acd6ff;
+}
+
+#admin_list_tr2{
+	font-size: 12px;
+}
+
+#admin_list_div_page{
+	width: 100%;
+	background: #afd1f3;
+	font-size: 14px;
+	text-align: center;
+	padding: 3px;
+}
+
+/* 
+admin_add/edit
+*/
+#admin_add_div_top{
+	 width: 100%;
+	 line-height: 25px;
+	 text-align: center;
+	 height: 25px;
+	 margin: 25px 0px 10px 0px;
+	 background: #acd6ff;
+}
+
+.admin_add_div_middle{
+	width: 50%;
+	height: 30px;
+	background: #f5fafe;
+	text-align: center;
+	line-height:30px;
+	font-size: 14px;
+	float: left;
+}
+
+#admin_add_div_bottom{
+	width: 100%;
+	height: 25px;
+	background: #f5fafe;
+	text-align: center;
+	padding: 6px 0px 6px 0px;
+	font-size: 14px;
+	clear: both;
+}
