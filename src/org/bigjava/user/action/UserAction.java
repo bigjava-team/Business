@@ -10,28 +10,30 @@ import org.bigjava.user.entity.User;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-public class UserAction extends ActionSupport implements ModelDriven<User> {
+public class UserAction extends ActionSupport {
 
 	private IsEmpty isEmpty = new IsEmpty();
-	private User user = new User();
+	private User user;
 	private UserBiz userBiz;
+	
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-	@Override
-	public User getModel() {
+	public User getUser() {
 		return user;
 	}
 
 	public void setUserBiz(UserBiz userBiz) {
 		this.userBiz = userBiz;
 	}
-	
-	
 
 	/**
 	 * 登录用户
 	 */
-	public String login() throws Exception {
+	public String login() {
 		System.out.println("进入UserAction....login方法");
+		System.out.println(user);
 		if (isEmpty.isEmpty(user.getUsername()) || isEmpty.isEmpty(user.getPassword())) {
 			System.out.println("用户名或密码不能为空");
 			return "loginError";
@@ -66,7 +68,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	/**
 	 * 注册用户
 	 */
-	public String register() throws Exception {
+	public String register() {
 		System.out.println("进入UserAction....register方法");
 		userBiz.registerUser(user);
 		return "registerSuccess";
