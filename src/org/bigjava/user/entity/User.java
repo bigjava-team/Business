@@ -34,10 +34,20 @@ public class User {
 
 	private Set<Comment> setCom = new HashSet<Comment>();// 指向评论类
 
-	private Merchant merchant;// 指向店铺类
+	private Merchant merchant;// 指向用户开的店铺类
+	
+	private Set<Merchant> collectMerchant = new HashSet<Merchant>();// 指向用户的收藏的店铺
 	
 	private Set<Orderitem> setOrderItem = new HashSet<Orderitem>();// 指向订单项类
 	
+	public Set<Merchant> getCollectMerchant() {
+		return collectMerchant;
+	}
+
+	public void setCollectMerchant(Set<Merchant> collectMerchant) {
+		this.collectMerchant = collectMerchant;
+	}
+
 	public Set<Orderitem> getSetOrderItem() {
 		return setOrderItem;
 	}

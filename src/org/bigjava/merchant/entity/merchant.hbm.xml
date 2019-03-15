@@ -15,9 +15,14 @@
 		
 		<many-to-one name="user" column="u_id" class="org.bigjava.user.entity.User" lazy="false" /><!-- 一对一指向用户类 -->
 		
-		<set name="setProduct">
+		<set name="setProduct"><!-- Merchant类关联User类的属性名 -->
 			<key column="m_id" /><!-- 连接的外键名 -->
 			<one-to-many class="org.bigjava.product.entity.Product" /><!-- 指向商品类 -->
+		</set>
+		
+		<set name="collectUser" cascade="all" table="user_merchant" inverse="true"><!-- name关联用户类的属性名、连接user表和merchant表的表名 -->
+			<key column="m_id" not-null="true" /><!-- hibernate表中的外键名 -->
+			<many-to-many class="org.bigjava.user.entity.User" column="u_id" /><!-- 指向User类 -->
 		</set>
 	</class>
 </hibernate-mapping>

@@ -20,10 +20,20 @@ public class Merchant {
 	private Date m_time;// 店铺创建的时间
 	private int m_is_freeze;// 店铺的状态
 	
-	private User user;// 指向用户表
+	private User user;// 指向用户表中的店家
+	
+	private Set<User> collectUser = new HashSet<User>();// 多对多指向收藏该店铺的用户
 	
 	Set<Product> setProduct = new HashSet<Product>();
 	
+	public Set<User> getCollectUser() {
+		return collectUser;
+	}
+
+	public void setCollectUser(Set<User> collectUser) {
+		this.collectUser = collectUser;
+	}
+
 	public Set<Product> getSetProduct() {
 		return setProduct;
 	}

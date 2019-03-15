@@ -39,5 +39,10 @@
 		</set>
 		
 		<one-to-one name="merchant" property-ref="user" cascade="all" /><!-- 一对一指向店铺类 -->
+		
+		<set name="collectMerchant" table="user_merchant" inverse="false" ><!-- 多对多指向店铺类 -->
+			<key column="u_id" not-null="true" /><!-- hibernate表中的外键u_id -->
+			<many-to-many class="org.bigjava.merchant.entity.Merchant" column="m_id" />
+		</set>
 	</class>
 </hibernate-mapping>

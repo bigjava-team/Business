@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.bigjava.function.Paging;
+import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.user.dao.UserDao;
 import org.bigjava.user.entity.User;
 import org.hibernate.HibernateException;
@@ -142,6 +143,28 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		user.setPassword(password);// 替换实体层中的密码
 		
 		this.getHibernateTemplate().update(user);// 将用户信息修改
+	}
+
+	// 收藏店铺
+	@Override
+	public void collectMerchant(User user, Merchant merchant) {
+		// TODO Auto-generated method stub
+		System.out.println("开始执行collectMerchant方法");
+		
+		user.getCollectMerchant().add(merchant);// 将店铺set进User类中CollectMerchant中
+		
+		this.getHibernateTemplate().save(user);
+	}
+
+	// 删除收藏的店铺
+	@Override
+	public void deleteCollectMerchant(User user, Merchant merchant) {
+		// TODO Auto-generated method stub
+		System.out.println("开始执行deleteCollectMerchant方法");
+		
+		user.getCollectMerchant().add(merchant);// 将店铺set进User类中CollectMerchant中
+		
+		this.getHibernateTemplate().delete(user);// 删除
 	}
 
 }
