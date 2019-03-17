@@ -7,6 +7,7 @@ import org.bigjava.function.IsEmpty;
 import org.bigjava.user.biz.UserBiz;
 import org.bigjava.user.entity.User;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -15,7 +16,17 @@ public class UserAction extends ActionSupport {
 	private IsEmpty isEmpty = new IsEmpty();
 	private User user;
 	private UserBiz userBiz;
-	
+	private String searchText; // 搜索的参数值
+	private List<User> users; // 接收搜索的用户列表
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
@@ -26,6 +37,24 @@ public class UserAction extends ActionSupport {
 
 	public void setUserBiz(UserBiz userBiz) {
 		this.userBiz = userBiz;
+	}
+
+	public String getSearchText() {
+		return searchText;
+	}
+
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
+	}
+
+	/**
+	 * 获取参数
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public String getParam(String key) {
+		return ServletActionContext.getRequest().getParameter(key);
 	}
 
 	/**
@@ -106,7 +135,7 @@ public class UserAction extends ActionSupport {
 		userBiz.updateUserPassword(user.getPassword(), user);
 		return "updatePasswordSuccess";
 	}
-	
+
 	/**
 	 * 冻结用户，解冻用户
 	 */
@@ -120,11 +149,25 @@ public class UserAction extends ActionSupport {
 	/**
 	 * 展示全部
 	 */
-//	public String showAll() throws Exception {
-//		System.out.println("进入UserAction....showAll方法");
-//		userBiz.showAllUser();
-//		return "showAllSuccess";
-//	}
+	public String showAll() throws Exception {
+		System.out.println("进入UserAction....showAll方法");
+		int u_root = user.getRoot();
+		System.out.println("用户权限为：" + u_root);
+		searchText = getParam(searchText); // 获取前台搜索框内的参数，传给注入的searchText
+		
+		if (searchText.equals("") || searchText.equals(null)) {
+			System.out.println("没有此昵称");
+		}
+		
+		int totalNumber = userBiz.queryPages(searchText, u_root);
+		
+		//接收搜索到的用户列表
+//		users = userBiz.limitDemend(searchText, page, u_root);
+		//将users存入session中
+		ActionContext.getContext().getSession().put("showUser", users);
+
+		return "showAllSuccess";
+	}
 
 	/**
 	 * 校验

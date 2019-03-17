@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,10 +69,9 @@
 	<div id="admin_list_div_top">
 		用户列表
 	</div>
-	
-	<form action="" method="post">
+	<!-- 根据姓名查询，若不输入，则查询全部 -->
+	<form action="User_showAll.action" method="post">
 		<div class="input-group">
-			
 			<select id="select">
 				<option class="option" value="s1">全部</option>
 				<option class="option" value="s2">姓名</option>
@@ -79,11 +79,11 @@
 				<option class="option" value="s4">店长</option>
 				<option class="option" value="s5">普通用户</option>
 			</select>
-			
-			<input type="text" id="input" class=" " placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " v-model="searchValue">
+			<!-- 搜索框 -->
+			<input type="text"  name="queryText" id="input" class=" " placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
 			<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
 			<span class=" ">
-				<button id="button" class="bs" type="submit" @click="goToSearch">搜索</button>
+				<button id="button" class="bs" type="submit" click="goToSearch">搜索</button>
 			</span>
 		</div>
 	</form>
@@ -102,20 +102,23 @@
 				<td width="8%" align="center">身份</td>
 				<td width="10%" align="center">状态</td>
 			</tr>
+			<!-- 迭代器遍历用户 -->
+			<s:iterator var="user" value="#session.showUser" status="status">
 			<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-				<td align="center">100</td>
-				<td align="center">1</td>
-				<td align="center">用户头像</td>
-				<td align="center">阿三阿</td>
-				<td align="center">1233456</td>
-				<td align="center">张三</td>
-				<td align="center">1234567890@qq.com</td>
-				<td align="center">7910-12345678</td>
-				<td align="center">管理员用户</td>
+				<td align="center"><s:property value="#status.count"/> </td>
+				<td align="center">${user.u_id }</td>
+				<td align="center">${user.image }</td>
+				<td align="center">${user.username } </td>
+				<td align="center">${user.password }</td>
+				<td align="center">${user.u_name }</td>
+				<td align="center">${user.email }</td>
+				<td align="center">${user.phone }</td>
+				<td align="center">${user.root }</td>
 				<td align="center">
 					<input id="td1" type="button" value="冻结" />
 				</td>
 			</tr>
+			</s:iterator>
 			
 		</table>
 		
