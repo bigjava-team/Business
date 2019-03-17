@@ -40,27 +40,27 @@
 	
 	<bean name="userAction" class="org.bigjava.user.action.UserAction" autowire="byName" scope="prototype" />
 	
-	<bean name="userBizImpl" class="org.bigjava.user.biz.impl.UserBizImpl" autowire="byName" />
+	<bean name="userBiz" class="org.bigjava.user.biz.impl.UserBizImpl" autowire="byName" />
 	
-	<bean name="userDaoImpl" class="org.bigjava.user.dao.impl.UserDaoImpl" autowire="byName" />
+	<bean name="userDao" class="org.bigjava.user.dao.impl.UserDaoImpl" autowire="byName" />
 	
-	<bean name="merchantDaoImpl" class="org.bigjava.merchant.dao.impl.MerchantDaoImpl" autowire="byName" />
+	<bean name="merchantDao" class="org.bigjava.merchant.dao.impl.MerchantDaoImpl" autowire="byName" />
 	
-	<bean name="categoryDaoImpl" class="org.bigjava.category.dao.impl.CategoryDaoImpl" autowire="byName" />
+	<bean name="categoryDao" class="org.bigjava.category.dao.impl.CategoryDaoImpl" autowire="byName" />
 	
-	<bean name="categorySecondDaoImpl" class="org.bigjava.categorysecond.dao.impl.CategorySecondDaoImpl" autowire="byName" />
+	<bean name="categorySecondDao" class="org.bigjava.categorysecond.dao.impl.CategorySecondDaoImpl" autowire="byName" />
 	
-	<bean name="addrDaoImpl" class="org.bigjava.addr.dao.impl.AddrDaoImpl" autowire="byName" />
+	<bean name="addrDao" class="org.bigjava.addr.dao.impl.AddrDaoImpl" autowire="byName" />
 	
-	<bean name="productDaoImpl" class="org.bigjava.product.dao.impl.ProductDaoImpl" autowire="byName" />
+	<bean name="productDao" class="org.bigjava.product.dao.impl.ProductDaoImpl" autowire="byName" />
 	
-	<bean name="orderItemDaoImpl" class="org.bigjava.orderitem.dao.impl.OrderItemDaoImpl" autowire="byName" />
+	<bean name="orderItemDao" class="org.bigjava.orderitem.dao.impl.OrderItemDaoImpl" autowire="byName" />
 	
-	<bean name="orders" class="org.bigjava.orders.dao.impl.OrdersDaoImpl" autowire="byName" />
+	<bean name="ordersDao" class="org.bigjava.orders.dao.impl.OrdersDaoImpl" autowire="byName" />
 	
-	<bean name="comment" class="org.bigjava.comment.dao.impl.CommentDaoImpl" autowire="byName" />
+	<bean name="commentDao" class="org.bigjava.comment.dao.impl.CommentDaoImpl" autowire="byName" />
 	
-	<bean name="images" class="org.bigjava.image.dao.impl.ImageDaoImpl" autowire="byName" />
+	<bean name="imagesDao" class="org.bigjava.image.dao.impl.ImageDaoImpl" autowire="byName" />
 	
 	<bean name="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
