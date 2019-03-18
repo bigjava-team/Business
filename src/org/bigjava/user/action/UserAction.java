@@ -15,10 +15,28 @@ import com.opensymphony.xwork2.ModelDriven;
 public class UserAction extends ActionSupport {
 
 	private IsEmpty isEmpty = new IsEmpty();
-	private User user = new User();
+	private User user;
 	private UserBiz userBiz;
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
+
+	private String check;// 校验用户名已存在返回的信息
+	
+	public String getCheck() {
+		return check;
+	}
+
+	public void setCheck(String check) {
+		this.check = check;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public List<User> getUsers() {
 		return users;
@@ -26,14 +44,6 @@ public class UserAction extends ActionSupport {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public User getUser() {
-		return user;
 	}
 
 	public void setUserBiz(UserBiz userBiz) {
@@ -110,16 +120,16 @@ public class UserAction extends ActionSupport {
 	/**
 	 * 根据ID获取用户信息
 	 */
-	public String getUserById() {
+	/*public String getUserById()  {
 		System.out.println("进入UserAction....getUserById方法");
 		userBiz.query(user.getU_id());
 		return "getUserById";
-	}
+	}*/
 
 	/**
 	 * 修改信息
 	 */
-	public String update() throws Exception {
+	public String update()  {
 		System.out.println("进入UserAction....update方法");
 		User users = userBiz.query(user.getU_id());
 		if (users == null) {
@@ -133,7 +143,7 @@ public class UserAction extends ActionSupport {
 	/**
 	 * 修改用户密码
 	 */
-	public String updatePassword() throws Exception {
+	public String updatePassword() {
 		System.out.println("进入UserAction....updatePassword方法");
 		User user = new User();
 		userBiz.updateUserPassword(user.getPassword(), user);
@@ -143,7 +153,7 @@ public class UserAction extends ActionSupport {
 	/**
 	 * 冻结用户，解冻用户
 	 */
-	public String updateUserStates() throws Exception {
+	public String updateUserStates()  {
 		System.out.println("进入冻结用户，解冻用户的方法。。。。");
 
 		return "";
@@ -153,7 +163,7 @@ public class UserAction extends ActionSupport {
 	/**
 	 * 展示全部
 	 */
-	public String showAll() throws Exception {
+	public String showAll() {
 		System.out.println("进入UserAction....showAll方法");
 		int u_root = user.getRoot();
 		System.out.println("用户权限为：" + u_root);
@@ -181,11 +191,11 @@ public class UserAction extends ActionSupport {
 	/**
 	 * 校验
 	 */
-	public String checkUsername() throws Exception {
+	public String checkUsername(){
 		System.out.println("进入UserAction....checkUsername方法");
 		System.out.println(user.getUsername());
-		if (userBiz.checkUserByUsername(user.getUsername())) {
-			user.setResult("用户名已存在");
+		if (userBiz.checkUsername(user.getUsername())) {
+			check = "用户名已存在";
 		}
 		return SUCCESS;
 	}
@@ -193,7 +203,7 @@ public class UserAction extends ActionSupport {
 	/**
 	 * 注销用户
 	 */
-	public String close() throws Exception {
+	public String close()  {
 		System.out.println("注销用户");
 		ServletActionContext.getRequest().getSession().invalidate();
 		return "close";
