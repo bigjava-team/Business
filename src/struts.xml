@@ -64,11 +64,8 @@
 
 		</action>
 
-
-
-
-
 	</package>
+
 
 	<!-- ajax 异步校验 -->
 	<package name="json" extends="json-default" namespace="/">
