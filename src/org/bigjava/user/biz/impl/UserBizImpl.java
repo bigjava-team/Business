@@ -60,7 +60,7 @@ public class UserBizImpl implements UserBiz {
 
 	//校验用户名
 	@Override
-	public boolean checkUsername(String username) {
+	public boolean checkUserByUsername(String username) {
 		return userDao.checkUsername(username);
 	}
 

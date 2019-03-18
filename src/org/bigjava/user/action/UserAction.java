@@ -19,7 +19,6 @@ public class UserAction extends ActionSupport {
 	private UserBiz userBiz;
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
-	
 
 	public List<User> getUsers() {
 		return users;
@@ -76,7 +75,7 @@ public class UserAction extends ActionSupport {
 				return "loginError";
 			} else {
 				User user = userList.get(0);
-				//将user存入session中
+				// 将user存入session中
 				ActionContext.getContext().getSession().put("loginUser", user);
 				if (user.getRoot() == 1) {
 					System.out.println("普通用户登录");
@@ -111,7 +110,7 @@ public class UserAction extends ActionSupport {
 	/**
 	 * 根据ID获取用户信息
 	 */
-	public String getUserById() throws Exception {
+	public String getUserById() {
 		System.out.println("进入UserAction....getUserById方法");
 		userBiz.query(user.getU_id());
 		return "getUserById";
@@ -159,21 +158,21 @@ public class UserAction extends ActionSupport {
 		int u_root = user.getRoot();
 		System.out.println("用户权限为：" + u_root);
 		searchText = getParam(searchText); // 获取前台搜索框内的参数，传给注入的searchText
-		
+
 		if (searchText.equals("") || searchText.equals(null)) {
 			System.out.println("没有此昵称");
 		}
-		
-		//根据搜索的内容与权限查询可搜索的总条数
+
+		// 根据搜索的内容与权限查询可搜索的总条数
 		int totalNumber = userBiz.queryPages(searchText, u_root);
-		
-		//当前页数
+
+		// 当前页数
 		int presentPage = 1;
-		
+
 		Paging paging = new Paging(presentPage, totalNumber, 1);
-		//接收搜索到的用户列表
+		// 接收搜索到的用户列表
 		users = userBiz.limitDemend(searchText, paging, u_root);
-		//将users存入session中
+		// 将users存入session中
 		ActionContext.getContext().getSession().put("showUser", users);
 
 		return "showAllSuccess";
@@ -184,8 +183,8 @@ public class UserAction extends ActionSupport {
 	 */
 	public String checkUsername() throws Exception {
 		System.out.println("进入UserAction....checkUsername方法");
-		if (userBiz.checkUsername(user.getUsername())) {
-			System.out.println("1");
+		System.out.println(user.getUsername());
+		if (userBiz.checkUserByUsername(user.getUsername())) {
 			user.setResult("用户名已存在");
 		}
 		return SUCCESS;
