@@ -11,11 +11,11 @@
 		<property name="username" not-null="true"></property> <!-- 用户名的类、表的属性名  -->
 		<property name="password" not-null="true"></property> <!-- 用户密码吗的类、表的属性名  -->
 		<property name="sex"></property> <!-- 用户性别的类、表的属性名  -->
-		<property name="u_name" not-null="true"></property> <!-- 用户真实姓名的类、表的属性名  -->
+		<property name="u_name" ></property> <!-- 用户真实姓名的类、表的属性名  -->
 		<property name="email" not-null="true"></property> <!-- 用户电子邮箱的类、表的属性名  -->
-		<property name="phone" not-null="true"></property> <!-- 用户电话号码的类、表的属性名  -->
+		<property name="phone" ></property> <!-- 用户电话号码的类、表的属性名  -->
 		<property name="root" not-null="true"></property> <!-- 用户权限的类、表的属性名  -->
-		<property name="image"></property> <!-- 用户头像的类、表的属性名  -->
+		<property name="image" ></property> <!-- 用户头像的类、表的属性名  -->
 		<property name="u_is_freeze" not-null="true"></property> <!-- 用户状态的类、表的属性名  -->
 		
 		<set name="setAddr" cascade="all">
@@ -40,7 +40,7 @@
 		
 		<one-to-one name="merchant" property-ref="user" cascade="all" /><!-- 一对一指向店铺类 -->
 		
-		<set name="collectMerchant" table="user_merchant" inverse="false" ><!-- 多对多指向店铺类 -->
+		<set name="collectMerchant" table="user_merchant" inverse="false" ><!-- 多对多指向收藏店铺类 -->
 			<key column="u_id" not-null="true" /><!-- hibernate表中的外键u_id -->
 			<many-to-many class="org.bigjava.merchant.entity.Merchant" column="m_id" />
 		</set>

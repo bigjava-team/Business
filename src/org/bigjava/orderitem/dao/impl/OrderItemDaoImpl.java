@@ -6,6 +6,7 @@ import java.util.List;
 import org.bigjava.function.Paging;
 import org.bigjava.orderitem.dao.OrderItemDao;
 import org.bigjava.orderitem.entity.Orderitem;
+import org.bigjava.orders.entity.Orders;
 import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
 import org.hibernate.HibernateException;
@@ -107,12 +108,21 @@ public class OrderItemDaoImpl extends HibernateDaoSupport implements OrderItemDa
 			orderItem.setSubtotal(updateOrderItem.getSubtotal());// 将修改的订单项表的属性subtotal商品小计替换数据库中的count属性
 		}
 		
-		if (updateOrderItem.getOrders() == null || updateOrderItem.getOrders().equals("")) {// 判断修改的订单项表的属性o_id外键不能为空
-		} else {
-			orderItem.setOrders(updateOrderItem.getOrders());// 将修改的订单项表的属性o_id外键替换数据库中的o_id外键属性
+		this.getHibernateTemplate().update(orderItem);// 将修改的内容存放入数据库中
+	}
+
+	// 添加连接订单项的外键
+	@Override
+	public void addOrders_id(List<Orderitem> listOrderItem, Orders orders) {
+		// TODO Auto-generated method stub
+		System.out.println("开始执行addOrders_id方法");
+		for (int i=0; i<listOrderItem.size(); i++) {
+			Orderitem orderItem = listOrderItem.get(i);
+			
+			orderItem.setOrders(orders);
+			this.getHibernateTemplate().update(orderItem);
 		}
 		
-		this.getHibernateTemplate().update(orderItem);// 将修改的内容存放入数据库中
 	}
 	
 	
