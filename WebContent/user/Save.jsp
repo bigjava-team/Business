@@ -277,6 +277,9 @@ img {
 		});
 		
 		
+		/* 
+			校验用户名是否存在
+		*/
 		$("input[name=username]").keyup(function(){
 			 var username_val = $(this).val();
 			 
@@ -294,7 +297,7 @@ img {
 				 type : "post",
 				 data : params,
 				 dataType : "json",
-				 success:function(data , textStatus){
+				 success:function(data, textStatus){
 					 console.log(data);
 					 $("#checkUsername").html(data.result);
 				 },
