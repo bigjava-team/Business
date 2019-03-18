@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
 import org.bigjava.function.IsEmpty;
+import org.bigjava.function.Paging;
 import org.bigjava.user.biz.UserBiz;
 import org.bigjava.user.entity.User;
 
@@ -18,6 +19,7 @@ public class UserAction extends ActionSupport {
 	private UserBiz userBiz;
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
+	
 
 	public List<User> getUsers() {
 		return users;
@@ -64,6 +66,7 @@ public class UserAction extends ActionSupport {
 		System.out.println("进入UserAction....login方法");
 		System.out.println(user);
 		if (isEmpty.isEmpty(user.getUsername()) || isEmpty.isEmpty(user.getPassword())) {
+			System.out.println("1");
 			System.out.println("用户名或密码不能为空");
 			return "loginError";
 		} else {
@@ -73,6 +76,8 @@ public class UserAction extends ActionSupport {
 				return "loginError";
 			} else {
 				User user = userList.get(0);
+				//将user存入session中
+				ActionContext.getContext().getSession().put("loginUser", user);
 				if (user.getRoot() == 1) {
 					System.out.println("普通用户登录");
 					return "loginSuccess";
@@ -159,10 +164,15 @@ public class UserAction extends ActionSupport {
 			System.out.println("没有此昵称");
 		}
 		
+		//根据搜索的内容与权限查询可搜索的总条数
 		int totalNumber = userBiz.queryPages(searchText, u_root);
 		
+		//当前页数
+		int presentPage = 1;
+		
+		Paging paging = new Paging(presentPage, totalNumber, 1);
 		//接收搜索到的用户列表
-//		users = userBiz.limitDemend(searchText, page, u_root);
+		users = userBiz.limitDemend(searchText, paging, u_root);
 		//将users存入session中
 		ActionContext.getContext().getSession().put("showUser", users);
 
@@ -175,7 +185,7 @@ public class UserAction extends ActionSupport {
 	public String checkUsername() throws Exception {
 		System.out.println("进入UserAction....checkUsername方法");
 		if (userBiz.checkUsername(user.getUsername())) {
-			String result = "用户名已存在";
+			user.setResult("用户名已存在");
 		}
 		return SUCCESS;
 	}

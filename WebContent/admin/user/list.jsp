@@ -70,14 +70,14 @@
 		用户列表
 	</div>
 	<!-- 根据姓名查询，若不输入，则查询全部 -->
-	<form action="User_showAll.action" method="post">
+	<form action="showAll.action" method="post">
 		<div class="input-group">
 			<select id="select">
 				<option class="option" value="s1">全部</option>
 				<option class="option" value="s2">姓名</option>
-				<option class="option" value="s3">管理员</option>
-				<option class="option" value="s4">店长</option>
-				<option class="option" value="s5">普通用户</option>
+				<option class="option" value="3">管理员</option>
+				<option class="option" value="2">店长</option>
+				<option class="option" value="1">普通用户</option>
 			</select>
 			<!-- 搜索框 -->
 			<input type="text"  name="queryText" id="input" class=" " placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
