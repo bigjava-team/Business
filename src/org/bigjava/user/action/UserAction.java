@@ -15,7 +15,7 @@ import com.opensymphony.xwork2.ModelDriven;
 public class UserAction extends ActionSupport {
 
 	private IsEmpty isEmpty = new IsEmpty();
-	private User user;
+	private User user = new User();
 	private UserBiz userBiz;
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
@@ -185,6 +185,7 @@ public class UserAction extends ActionSupport {
 	public String checkUsername() throws Exception {
 		System.out.println("进入UserAction....checkUsername方法");
 		if (userBiz.checkUsername(user.getUsername())) {
+			System.out.println("1");
 			user.setResult("用户名已存在");
 		}
 		return SUCCESS;

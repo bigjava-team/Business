@@ -10,8 +10,8 @@
 	<!-- 用户模块 -->
 	<package name="user" extends="struts-default" namespace="/">
 		<action name="User_*" class="userAction" method="{1}">
-			<!-- 登录情况 -->
-			<!-- 返回值为adminlogin，则是管理员登录成功 -->
+			<!-- 登录情况
+			返回值为adminlogin，则是管理员登录成功 -->
 			<result name="adminLogin">
 				/admin/home.jsp
 			</result>
@@ -26,9 +26,9 @@
 
 			</result>
 
-			<!-- 返回值为 -->
+			<!-- 返回值为
 			
-			<!-- 注册，返回值为 registerSuccess-->
+			注册，返回值为 registerSuccess -->
 			<result name="registerSuccess">
 				/user/login.jsp
 			</result>
@@ -46,7 +46,7 @@
 	
 	<!-- ajax 异步校验 -->
 	<package name="json" extends="json-default" namespace="/">
-		<action name="ajax_*" class="userAction" method="{1}">
+		<action name="ajax_*" class="org.bigjava.user.action.UserAction" method="{1}">
 			<result type="json"></result>
 		</action>
 	</package>

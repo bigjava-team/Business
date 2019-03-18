@@ -261,7 +261,7 @@ img {
 	}
 
 </script>
-<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+<script type="text/javascript" src="/Business/js/jquery-3.1.1.min.js" ></script>
 <script type="text/javascript">
 	
 	$(function(){
@@ -288,24 +288,27 @@ img {
 				return false;
 			 }
 			 
-			 var params={
-				username : username_val,					 
+			 var params = {
+				username : username_val	 
 			 }
-			 
-			 $.ajax({
-				 url : "ajax_checkUsername",
-				 type : "post",
-				 data : params,
-				 dataType : "json",
+			 console.log(username_val);
+			 console.log(params);
+
+			$.ajax({
+				 url: "ajax_checkUsername",
+				 type: "post",
+				 data: params,
+				 dataType: "json",
 				 success:function(data, textStatus){
 					 console.log(data);
 					 $("#checkUsername").html(data.result);
 				 },
 				 error:function(data, textStatus){
+					console.log(data);
 					alert("错误");
 					return false;
 				}
-			 });
+			 }); 
 		});
 	});
 </script>
