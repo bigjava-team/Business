@@ -51,7 +51,7 @@ public interface UserBiz {
 	/**
 	 * 校验用户名是否存在
 	 */
-	public boolean checkUserByUsername(String username);
+	public boolean checkUsername(String username);
 
 	/**
 	 * 修改密码
