@@ -326,6 +326,7 @@ img {
 		<div class="geshi">&nbsp;<br /> 用户名
 			<div class="kuang">
 				<input type="text" name="username" class="mytxt" id="inputname" placeholder="用户名">
+				<span id="checkUsername" style="color:red"></span>
 			</div>
 		</div><br/>
 	
