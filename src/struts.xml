@@ -7,50 +7,82 @@
 	<constant name="struts.devMode" value="true" />
 	<constant name="stuts.i18n.encoding" value="utf-8" />
 
-	<!-- 用户模块 -->
-	<package name="user" extends="struts-default" namespace="/">
+	<package name="shop" extends="struts-default" namespace="/">
+
+		<!-- 配置自定义拦截器 -->
+		<interceptors>
+			<interceptor name="privilegeInterceptor"
+				class="org.bigjava.function.PrivilegeInterceptor" />
+		</interceptors>
+
+		<!-- 全局result返回结果 -->
+		<global-results>
+			<result name="login">/user/login.jsp</result>
+		</global-results>
+
+
+
+		<!-- 用户模块 action -->
 		<action name="User_*" class="userAction" method="{1}">
-			<!-- 登录情况
-			返回值为adminlogin，则是管理员登录成功 -->
+			<!-- 登录情况返回值为adminlogin，则是管理员登录成功 -->
 			<result name="adminLogin">
 				/admin/home.jsp
 			</result>
-
+			<!-- 登录情况 -->
+			<!-- 返回值为adminlogin，则是管理员登录成功 -->
+			<result name="adminLogin"> /admin/home.jsp </result>
 			<!-- 返回值为loginSuccess为普通用户登录成功 -->
 			<result name="loginSuccess">
-
 			</result>
 
 			<!-- 返回值为loginStore，为店长登录 -->
 			<result name="loginStore">
-
 			</result>
-
-			<!-- 返回值为
-			
-			注册，返回值为 registerSuccess -->
+			<!-- 返回值为注册，返回值为 registerSuccess -->
 			<result name="registerSuccess">
 				/user/login.jsp
 			</result>
+			<!-- 返回值为 -->
+
+			<!-- 注册，返回值为 registerSuccess -->
+			<result name="registerSuccess"> /user/login.jsp </result>
 		</action>
-		
-		
+
+
 		<!-- 搜索的action -->
-		<action name="*" class="userAction" method="{1}">
-			<!-- 返回值为 showAllSuccess -->
+		<!-- <action name="*" class="userAction" method="{1}">
+			返回值为 showAllSuccess
 			<result name="showAllSuccess">
 				/admin/user/list.jsp
 			</result>
+
+			<interceptor-ref name="privilegeInterceptor" />
+			<interceptor-ref name="defaultStack" />
+		</action> -->
+
+		<!-- 后台一级分类管理Action -->
+		<action name="Category_*" class="categoryAction" method="{1}">
+			<result name="addCategorySuccess" type="redirectAction">Category_showCategorySuccess
+			</result>
+			<result name="deleteCategorySuccess" type="redirectAction">Category_showCategorySuccess
+			</result>
+			<result name="showCategorySuccess">/admin/category/list.jsp</result>
+
 		</action>
+
+
+
+
+
 	</package>
-	
+
 	<!-- ajax 异步校验 -->
 	<package name="json" extends="json-default" namespace="/">
 		<action name="ajax_*" class="org.bigjava.user.action.UserAction" method="{1}">
 			<result type="json"></result>
 		</action>
 	</package>
-	
+
 </struts>
 
 

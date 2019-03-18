@@ -54,7 +54,7 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 	/**
 	 * 添加二级分类
 	 */
-	public String saveCategorySecond() throws Exception {
+	public String saveCategorySecond()  {
 		categorySecondBiz.saveCategorySecond(categorySecond, category);
 		return "saveCategorySecondSuccess";
 	}
@@ -62,7 +62,7 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 	/**
 	 * 删除二级分类
 	 */
-	public String deleteCategorySecond() throws Exception {
+	public String deleteCategorySecond() {
 		categorySecondBiz.deleteCategorySecond(categorySecond);
 		return "deleteCategorySecondSuccess";
 	}
@@ -70,7 +70,7 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 	/**
 	 * 修改二级分类
 	 */
-	public String editCategorySecond() throws Exception {
+	public String editCategorySecond() {
 		
 		CategorySecond updatecategorySecond = null; //修改的二级分类
 		
@@ -81,7 +81,7 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 	/**
 	 * 通过id查询对应的二级分类
 	 */
-	public String findCategorySecondById() throws Exception {
+	public String findCategorySecondById()  {
 		categorySecondBiz.queryCategorySecond(categorySecond.getCs_id());
 		return "findSuccess";
 	}
@@ -89,7 +89,7 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 	/**
 	 * 模糊分页查询所有二级分类
 	 */
-	public String findAllBySearchName() throws Exception {
+	public String findAllBySearchName() {
 
 		// 获取二级分类的总条数
 		int totalNumber = categorySecondBiz.queryCategorySecondNumber(searchCategorySecond);

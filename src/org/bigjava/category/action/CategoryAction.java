@@ -23,7 +23,7 @@ public class CategoryAction extends ActionSupport implements ModelDriven<Categor
 	/**
 	 * 添加一级分类
 	 */
-	public String addCategory() throws Exception {
+	public String addCategory() {
 		categoryBiz.saveCategory(category);
 		return "addCategorySuccess";
 	}
@@ -31,7 +31,7 @@ public class CategoryAction extends ActionSupport implements ModelDriven<Categor
 	/**
 	 * 删除一级分类
 	 */
-	public String deleteCategory() throws Exception {
+	public String deleteCategory() {
 		categoryBiz.deleteCategory(category);
 		return "deleteCategorySuccess";
 	}
@@ -39,15 +39,15 @@ public class CategoryAction extends ActionSupport implements ModelDriven<Categor
 	/**
 	 * 查询全部一级分类
 	 */
-	public String showCategory() throws Exception {
+	public String showCategory() {
 		categoryBiz.showAllCategory();
 		return "showCategorySuccess";
 	}
-	
+
 	/**
 	 * 通过id查询对应的一级分类
 	 */
-	public String findCategoryById() throws Exception {
+	public String findCategoryById() {
 		categoryBiz.queryCategoryById(category.getC_id());
 		return "findCategoryByIdSuccess";
 	}
