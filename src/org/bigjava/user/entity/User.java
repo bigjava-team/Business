@@ -38,8 +38,6 @@ public class User {
 		this.result = result;
 	}
 	
-	
-
 	private Set<Addr> setAddr = new HashSet<Addr>();// 指向用户地址类
 
 	private Set<Orders> setOrders = new HashSet<Orders>();// 指向订单类
@@ -187,6 +185,7 @@ public class User {
 	public String toString() {
 		return "User [u_id=" + u_id + ", username=" + username + ", password=" + password + ", sex=" + sex + ", u_name="
 				+ u_name + ", email=" + email + ", phone=" + phone + ", root=" + root + ", image=" + image
-				+ ", u_is_freeze=" + u_is_freeze + "]";
+				+ ", u_is_freeze=" + u_is_freeze + ", result=" + result + "]";
 	}
+	
 }
