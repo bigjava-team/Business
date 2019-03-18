@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,42 +24,32 @@
 	
 	<table id="admin_list_table" cellspacing="0" cellpadding="1" rules="all" width="100%" border="1" bordercolor="gray">
 		<tr id="admin_list_tr1">
-			<td width="36%" align="center">序号</td>
+			<td width="18%" align="center">序号</td>
+			<td width="18%" align="center">列表ID</td>
 			<td width="36%" align="center">一级分类列表</td>
 			<td width="14%" align="center">编辑</td>
 			<td width="14%" align="center">删除</td>
 		</tr>
-		<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-			<td width="36%" align="center">1</td>
-			<td width="36%" align="center">服装</td>
-			<td width="14%" align="center">
-				<%-- <a href="${pageContext.request.contextPath}/adminCategory_edit.action?cid=<s:property value="#c.cid"/>"> --%>
-				<a href="${pageContext.request.contextPath}/admin/category/edit.jsp">
-					<img src="${pageContext.request.contextPath}/images/i_edit.gif" border="0" style="CURSOR: hand">
-				</a>
-			</td>
-			<td width="14%" align="center">
-				<a>
-					<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
-				</a>
-			</td>
-		</tr>
 		
-		<tr onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';" style="font-size: 12px;">
-			<td width="36%" align="center">2</td>
-			<td width="36%" align="center">家电</td>
+		<!-- 迭代器遍历用户 -->
+		<s:iterator var="category" value="#session.showCategory" status="status">
+		
+		<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
+			<td width="18%" align="center"><s:property value="#status.count"/></td>
+			<td width="18%" align="center">${category.c_id}</td>
+			<td width="36%" align="center">${category.c_name}</td>
 			<td width="14%" align="center">
-				<%-- <a href="${pageContext.request.contextPath}/adminCategory_edit.action?cid=<s:property value="#c.cid"/>"> --%>
-				<a href="${pageContext.request.contextPath}/admin/category/edit.jsp">
+				<a href="Category_findCategoryById.action?c_id=${category.c_id}">
 					<img src="${pageContext.request.contextPath}/images/i_edit.gif" border="0" style="CURSOR: hand">
 				</a>
 			</td>
 			<td width="14%" align="center">
-				<a>
+				<a href="Category_deleteCategory.action?c_id=${category.c_id}">
 					<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
 				</a>
 			</td>
 		</tr>
+		</s:iterator>
 		
 	</table>
 	

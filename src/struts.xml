@@ -62,10 +62,11 @@
 
 		<!-- 后台一级分类管理Action -->
 		<action name="Category_*" class="categoryAction" method="{1}">
-			<result name="addCategorySuccess" type="redirectAction">Category_showCategorySuccess
+			<result name="addCategorySuccess" type="redirectAction">Category_showCategory
 			</result>
-			<result name="deleteCategorySuccess" type="redirectAction">Category_showCategorySuccess
+			<result name="deleteCategorySuccess" type="redirectAction">Category_showCategory
 			</result>
+			<result name="findCategoryByIdSuccess">/admin/category/edit.jsp</result>
 			<result name="showCategorySuccess">/admin/category/list.jsp</result>
 
 		</action>

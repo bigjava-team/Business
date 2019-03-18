@@ -22,7 +22,7 @@
 			d.add('010201','0102','店铺管理','${pageContext.request.contextPath}/admin/merchant/list.jsp','','mainFrame');
 			
 			d.add('0103','01','一级分类管理');
-			d.add('010301','0103','一级分类管理','${pageContext.request.contextPath}/admin/category/list.jsp','','mainFrame');
+			d.add('010301','0103','一级分类管理','${pageContext.request.contextPath}/Category_showCategory.action','','mainFrame');
 			
 			d.add('0104','01','二级分类管理');
 			d.add('010401','0104','二级分类管理','${pageContext.request.contextPath}/admin/categorysecond/list.jsp','','mainFrame');
