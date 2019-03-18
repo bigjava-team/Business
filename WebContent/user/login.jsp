@@ -201,6 +201,27 @@ img {
 	margin-top:70px;
 	color: #424c50;
 }
+
+.log_code{
+	width: 90px;
+	height: 30px;
+	border-radius: 10px;
+}
+.input_code {
+	height: 30px;
+	width: 80px;
+	border-radius: 5px;
+}
+
+.log_code_main{
+	height: 50px;
+	width: 250px;
+	margin-left: 50px;
+	
+}
+
+
+
 </style>
 
 
@@ -219,8 +240,57 @@ img {
 			}
 			return true;
 		}
+		
+		
+		  //产生验证码  
+      window.onload = function() {
+          createCode();
+      }
+      var code; //在全局定义验证码  
+      function createCode() {
+          code = "";
+          var codeLength = 4; //验证码的长度  
+          var checkCode = document.getElementById("code");
+          
+          var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+              'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //随机数 
+               
+          for(var i = 0; i < codeLength; i++) { //循环操作  
+              var index = Math.floor(Math.random() * 36); //取得随机数的索引（0~35）  
+              code += random[index]; //根据索引取得随机数加到code上  
+          }
+          checkCode.value = code; //把code值赋给验证码  
+      }
+    	//校验验证码  
+      function validate(){
+      	var yan = document.getElementById("text_code").value.toUpperCase();
+          if(yan == null || yan==""){
+          	alert("验证码不能为空");
+          	//document.getElementById("p").innerHTML="验证码不能为空";
+          	return false;
+          }
+          if(yan != code){
+          	alert("验证码错误");
+          	//document.getElementById("p").innerHTML="验证码错误";
+          	return false;
+          }
+          return true;
+      }
+    	
+    	
+    
+      function checkAll() {
+        	
+    		if (checkFrom() && validate()) {
+    			return true;
+    		}
+			return false;           		
+    	}
+	
 	
 	</script>
+	
+	
 
 
 </head>
@@ -241,9 +311,9 @@ img {
 
 		
 <div class="zhongjian">
-			<div id="menu" class="left" >
+			<div id="menu" class="left" > 	
 			
-			<form action="User_login.action" method="post" align="center" class="inleft" onsubmit="return checkFrom()">
+			<form action="User_login.action" method="post" align="center" class="inleft" onsubmit=" return checkAll()">
 		
 				<div class="geshi">
 					&nbsp;<br /> 
@@ -261,6 +331,13 @@ img {
 							placeholder="密码">
 					</div>
 				</div><br/>
+				
+				<div class="log_code_main">
+		            <input type="text" id="text_code" placeholder="请输入验证码" class="log_code" />
+		            <input type="button" id="code" onclick="createCode()" class="input_code"  />
+		          <!--   <span id="p" class="login_span">*</span>  -->
+	            
+	     		 </div>
 
 
 				<div class="anniu">
