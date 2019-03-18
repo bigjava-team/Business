@@ -202,6 +202,27 @@ img {
 	color: #424c50;
 }
 </style>
+
+
+	<script type="text/javascript">
+		
+		function checkFrom(){
+			var username = document.getElementById("inputname").value;
+			var password = document.getElementById("password").value;
+			
+			if (username == null || username == "") {
+				alert("请输入用户名!");
+				return false;
+			}else if (password == null || password == "") {
+				alert("请输入密码!");
+				return false;
+			}
+			return true;
+		}
+	
+	</script>
+
+
 </head>
 
 <body style="margin:0px; padding:0px">
@@ -222,36 +243,34 @@ img {
 <div class="zhongjian">
 			<div id="menu" class="left" >
 			
-			<form align="center" class="inleft">
+			<form action="User_login.action" method="post" align="center" class="inleft" onsubmit="return checkFrom()">
 		
 				<div class="geshi">
-					&nbsp;<br /> 用户名
+					&nbsp;<br /> 
 					<div class="kuang">
 					<img src="TuPian/tubiao.jpg" width="27px" height="25px">
 					
-						<input type="text" class="mytxt" id="inputname" placeholder="用户名" >
+						<input type="text" name="user.username" class="mytxt" id="inputname" placeholder="用户名" >
 					</div>
 				</div><br/>
 
 				<div class="geshi">
-					密码
 					<div class="kuang">
 					<img src="TuPian/suo.jpg" width="27px" height="25px">
-						<input type="password" class="mytxt" id="password"
+						<input type="password" name="user.password" class="mytxt" id="password"
 							placeholder="密码">
 					</div>
 				</div><br/>
 
 
 				<div class="anniu">
-					<button class="button"
-					style="vertical-align:middle" id="zhuce" disabled="true"
-						>
+					<!-- <button class="button" style="vertical-align:middle" id="zhuce" disabled="true">
 						<span>登录</span>
-					</button>
+					</button> -->
+					<input type="submit" value="login" />
 				</div>
 				<div class="orange">
-				<a href="Save.jsp"><font class="ziti1"> 还没有账号？点我去注册!</font></a>
+					<a href="user/Save.jsp"><font class="ziti1"> 还没有账号？点我去注册!</font></a>
 				</div>
 			</form>
 </div>

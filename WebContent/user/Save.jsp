@@ -248,12 +248,68 @@ img {
 	}
 </script>
 
+<script type="text/javascript">
+	function checkPassword(){
+		var pwd = document.getElementsByName("password")[0].value;
+		var rePwd = document.getElementsByName("rePassword")[0].value;
+	
+		if(pwd != rePwd){
+		alert("亲，两次输入的密码不一致，请重新输入！！！");
+			return false;
+		}
+		return true;
+	}
 
-
+</script>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+<script type="text/javascript">
+	
+	$(function(){
+		
+		$("form").submit(function(){
+			
+			var text = $("#checkUsername").text();
+			if(text == "用户名已存在"){
+				alert("用户名已存在");
+				return false;
+			}
+			return true;
+		});
+		
+		
+		$("input[name=username]").keyup(function(){
+			 var username_val = $(this).val();
+			 
+			 if(username_val == null || username_val == "") {
+				alert("用户名不能为空");
+				return false;
+			 }
+			 
+			 var params={
+				username : username_val,					 
+			 }
+			 
+			 $.ajax({
+				 url : "ajax_checkUsername",
+				 type : "post",
+				 data : params,
+				 dataType : "json",
+				 success:function(data , textStatus){
+					 console.log(data);
+					 $("#checkUsername").html(data.result);
+				 },
+				 error:function(data, textStatus){
+					alert("错误");
+					return false;
+				}
+			 });
+		});
+	});
+</script>
+</head>
 <body>
 
 	<div id="all">
-
 		<div id="header" align="center" class="tou">
 			<a href="loginn.jsp"><img src="TuPian/logo.jpg"></a><img
 				src="TuPian/nuli.gif">
@@ -261,95 +317,83 @@ img {
 		</div>
 	
 	
-			<div class="zhongjian">
-<div class="left">
-<div class="inleft">
-
-<div class="geshi">
-					&nbsp;<br /> 用户名
-					<div class="kuang">
-						<input type="text" class="mytxt" id="inputname" placeholder="用户名">
-					</div>
-				</div><br/>
-
-				<div class="geshi">
-					真实姓名
-					<div class="kuang">
-						<input type="text" class="mytxt" id="rename" placeholder="真实姓名">
-					</div>
-				</div><br/>
-				
-				
-				
-				
-				
-					<div class="geshi">
-					电话号码
-					<div class="kuang">
-						<input type="text" class="mytxt" id="phone" placeholder="电话号码">
-					</div><br/>
-					
-					</div>
-</div>
-<div class="inright">
-
-<div class="geshi">
-					密码
-					<div class="kuang">
-						<input type="password" class="mytxt" id="password"
-							placeholder="密码">
-					</div>
-				</div><br/>
-
-				<div class="geshi">
-					再次输入密码
-					<div class="kuang">
-						<input type="password" class="mytxt" id="repassword"
-							placeholder="再次输入密码">
-					</div>
-				</div><br/>
-
-				
-
-				<div class="geshi">
-					注册邮箱
-					<div class="kuang">
-						<input type="text" class="mytxt" id="email" placeholder="注册邮箱">
-						<br/>
-						
-					</div>
-				</div><br/>
-
-					
-					</div>
-				<div class="yangshi">
-				<button class="yanzhen">点击发送验证码</button><br/>
-					
-					邮箱验证码<br/>
-						<div class="kuang">
-						<input type="text" class="mytxt" id="emailpassword"
-							placeholder="邮箱验证码">
-							<br/>
-						</div>	
-					 	<div class="kuang">
-						<input type="checkBox"
-							onclick="if (this.checked) {tongyi()} else {butongyi()} 
-								 if (this.checked) {yingcang()} else {xianshi()}
-							">
-						我同意协议<br />
-					</div>
-				<div class="anniu">
-					<button class="button"
-					style="vertical-align:middle" id="zhuce" disabled="true"
-						>
-						<span>注 册 </span>
-					</button>
-				</div>
-				
-				
-				</div>
+	<div class="zhongjian">
+	
+	<form action="User_register.action" method="post" onsubmit="return checkPassword()">
+	
+	<div class="left">
+	<div class="inleft">
+		<div class="geshi">&nbsp;<br /> 用户名
+			<div class="kuang">
+				<input type="text" name="username" class="mytxt" id="inputname" placeholder="用户名">
 			</div>
+		</div><br/>
+	
+		<div class="geshi">
+			真实姓名
+			<div class="kuang">
+				<input type="text" class="mytxt" id="rename" placeholder="真实姓名">
+			</div>
+		</div><br/>
+		
+		<div class="geshi">
+			电话号码
+			<div class="kuang">
+				<input type="text" class="mytxt" id="phone" placeholder="电话号码">
+			</div><br/>
+			
+		</div>
+	</div>
+	
+	<div class="inright">
+		<div class="geshi">
+			密码
+			<div class="kuang">
+				<input type="password" name="password" class="mytxt" id="password" placeholder="密码">
+			</div>
+		</div><br/>
 
+		<div class="geshi">
+			再次输入密码
+			<div class="kuang">
+				<input type="password" name="rePassword" class="mytxt" id="repassword" placeholder="再次输入密码">
+			</div>
+		</div><br/>
+
+		<div class="geshi">
+			注册邮箱
+			<div class="kuang">
+				<input type="text" class="mytxt" id="email" placeholder="注册邮箱">
+				<br/>
+			</div>
+		</div><br/>
+	</div>
+	
+	<div class="yangshi">
+		<button class="yanzhen">点击发送验证码</button><br/>
+		
+		邮箱验证码<br/>
+		<div class="kuang">
+			<input type="text" class="mytxt" id="emailpassword" placeholder="邮箱验证码"> <br/>
+		</div>	
+		
+		 <div class="kuang">
+			<input type="checkBox"
+				onclick="if (this.checked) {tongyi()} else {butongyi()} 
+					 if (this.checked) {yingcang()} else {xianshi()}
+				">
+			我同意协议<br />
+		</div>
+		
+		<div class="anniu">
+			<button class="button"
+			style="vertical-align:middle" id="zhuce" disabled="true">
+				<span>注 册 </span>
+			</button>
+		</div>
+	</div>
+	</div>
+</form>
 
 <div class="right">
 <textarea cols="53" rows="22" disabled="disabled" id="xieyi"
@@ -369,8 +413,6 @@ img {
 
 阅读协议的过程中，如果您不同意相关协议或其中任何条款约定，您应立即停止注册程序
 </textarea>
-
-
 
 </div>
 

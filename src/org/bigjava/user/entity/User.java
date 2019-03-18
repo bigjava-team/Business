@@ -27,6 +27,18 @@ public class User {
 	private int root;// 用户权限
 	private String image;// 用户头像图片路径
 	private int u_is_freeze;// 用户当前状态
+	
+	private String result; //设置异步校验值
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+	
+	
 
 	private Set<Addr> setAddr = new HashSet<Addr>();// 指向用户地址类
 
