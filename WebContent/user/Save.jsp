@@ -289,22 +289,17 @@ img {
 			 }
 			 
 			 var params = {
-				username : username_val	 
+				"user.username" : username_val	 
 			 }
-			 console.log(username_val);
-			 console.log(params);
-
 			$.ajax({
 				 url: "ajax_checkUsername",
 				 type: "post",
 				 data: params,
 				 dataType: "json",
 				 success:function(data, textStatus){
-					 console.log(data);
-					 $("#checkUsername").html(data.result);
+					 $("#checkUsername").html(data.check);
 				 },
 				 error:function(data, textStatus){
-					console.log(data);
 					alert("错误");
 					return false;
 				}

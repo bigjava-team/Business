@@ -15,11 +15,28 @@ import com.opensymphony.xwork2.ModelDriven;
 public class UserAction extends ActionSupport {
 
 	private IsEmpty isEmpty = new IsEmpty();
-	private User user = new User();
+	private User user;
 	private UserBiz userBiz;
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
 	
+	private String check;// 校验用户名已存在返回的信息
+	
+	public String getCheck() {
+		return check;
+	}
+
+	public void setCheck(String check) {
+		this.check = check;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public List<User> getUsers() {
 		return users;
@@ -27,14 +44,6 @@ public class UserAction extends ActionSupport {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public User getUser() {
-		return user;
 	}
 
 	public void setUserBiz(UserBiz userBiz) {
@@ -111,11 +120,11 @@ public class UserAction extends ActionSupport {
 	/**
 	 * 根据ID获取用户信息
 	 */
-	public String getUserById() throws Exception {
+	/*public String getUserById() throws Exception {
 		System.out.println("进入UserAction....getUserById方法");
 		userBiz.query(user.getU_id());
 		return "getUserById";
-	}
+	}*/
 
 	/**
 	 * 修改信息
@@ -184,9 +193,9 @@ public class UserAction extends ActionSupport {
 	 */
 	public String checkUsername() throws Exception {
 		System.out.println("进入UserAction....checkUsername方法");
+		System.out.println(user.getUsername());
 		if (userBiz.checkUsername(user.getUsername())) {
-			System.out.println("1");
-			user.setResult("用户名已存在");
+			check = "用户名已存在";
 		}
 		return SUCCESS;
 	}
