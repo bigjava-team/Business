@@ -11,7 +11,8 @@ public interface CategorySecondBiz {
 	/**
 	 * 添加二级分类
 	 */
-	public void saveCategorySecond(CategorySecond categorySecond, Category category);
+//	public void saveCategorySecond(CategorySecond categorySecond, Category category);
+	public void saveCategorySecond(CategorySecond categorySecond);
 
 	/**
 	 * 模糊分页查询所有二级分类

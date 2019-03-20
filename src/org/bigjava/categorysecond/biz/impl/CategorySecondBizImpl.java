@@ -19,8 +19,11 @@ public class CategorySecondBizImpl implements CategorySecondBiz {
 
 	// 添加二级分类
 	@Override
-	public void saveCategorySecond(CategorySecond categorySecond, Category category) {
-		categorySecondDao.addCategorySecond(categorySecond, category);
+//	public void saveCategorySecond(CategorySecond categorySecond, Category category) {
+//		categorySecondDao.addCategorySecond(categorySecond, category);
+//	}
+	public void saveCategorySecond(CategorySecond categorySecond) {
+		categorySecondDao.addCategorySecond(categorySecond);
 	}
 
 	// 模糊分页查询所有二级分类

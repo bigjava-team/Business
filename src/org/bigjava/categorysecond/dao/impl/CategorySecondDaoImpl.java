@@ -18,12 +18,14 @@ public class CategorySecondDaoImpl extends HibernateDaoSupport implements Catego
 
 	// 添加二级分类
 	@Override
-	public void addCategorySecond(CategorySecond categorySecond, Category category) {
-		// TODO Auto-generated method stub
+//	public void addCategorySecond(CategorySecond categorySecond, Category category) {
+//		System.out.println("开始执行addCategorySecond方法");
+//		categorySecond.setCategory(category);
+//		this.getHibernateTemplate().save(categorySecond);// 添加二级分类名
+//	}
+	
+	public void addCategorySecond(CategorySecond categorySecond) {
 		System.out.println("开始执行addCategorySecond方法");
-		
-		categorySecond.setCategory(category);
-		
 		this.getHibernateTemplate().save(categorySecond);// 添加二级分类名
 	}
 
@@ -50,7 +52,6 @@ public class CategorySecondDaoImpl extends HibernateDaoSupport implements Catego
 	// 模糊查询所有二级分类总条数
 	@Override
 	public int queryCategorySecondNumber(String searchCategorySecond) {
-		// TODO Auto-generated method stub
 		System.out.println("开始执行queryCategorySecondNumber方法");
 		int totalNumber = 0;
 		List<Long> list = this.getHibernateTemplate().find("select count(*) from CategorySecond where cs_name like ?",searchCategorySecond+"%");// 模糊查询一共有多少条数据

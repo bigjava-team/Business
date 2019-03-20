@@ -1,11 +1,15 @@
 package org.bigjava.categorysecond.action;
 
+import java.util.List;
+
 import org.apache.struts2.ServletActionContext;
+import org.bigjava.category.biz.CategoryBiz;
 import org.bigjava.category.entity.Category;
 import org.bigjava.categorysecond.biz.CategorySecondBiz;
 import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.function.Paging;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -20,6 +24,7 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 	private Paging page = new Paging();
 	// 注入categorysecondbiz
 	private CategorySecondBiz categorySecondBiz;
+	private CategoryBiz categoryBiz;
 
 	// 前台输入的值
 	private String searchCategorySecond;
@@ -34,6 +39,10 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 
 	public void setCategorySecondBiz(CategorySecondBiz categorySecondBiz) {
 		this.categorySecondBiz = categorySecondBiz;
+	}
+
+	public void setCategoryBiz(CategoryBiz categoryBiz) {
+		this.categoryBiz = categoryBiz;
 	}
 
 	@Override
@@ -52,10 +61,29 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 	}
 
 	/**
+	 * 跳转到天津页面的方法:
+	 * 
+	 * @return
+	 */
+	public String addPage() {
+		// 查询所有一级分类.
+		List<Category> c_List = categoryBiz.showAllCategory();
+		// 将集合存入到值栈中.
+		ActionContext.getContext().getValueStack().set("c_List", c_List);
+		// 页面跳转:
+		return "addPage";
+	}
+
+	/**
 	 * 添加二级分类
 	 */
-	public String saveCategorySecond()  {
-		categorySecondBiz.saveCategorySecond(categorySecond, category);
+	public String saveCategorySecond() {
+//		//获取前台一级分类的ID；
+//		String c_id = getParam("c_id");
+//		int id = Integer.parseInt(c_id);
+//		Category category = categoryBiz.queryCategoryById(id);
+//		categorySecondBiz.saveCategorySecond(categorySecond, category);
+		categorySecondBiz.saveCategorySecond(categorySecond);
 		return "saveCategorySecondSuccess";
 	}
 
@@ -71,9 +99,9 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 	 * 修改二级分类
 	 */
 	public String editCategorySecond() {
-		
-		CategorySecond updatecategorySecond = null; //修改的二级分类
-		
+
+		CategorySecond updatecategorySecond = null; // 修改的二级分类
+
 		categorySecondBiz.updateCategorySecond(categorySecond, updatecategorySecond);
 		return "editCategorySecondSuccess";
 	}
@@ -81,7 +109,7 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 	/**
 	 * 通过id查询对应的二级分类
 	 */
-	public String findCategorySecondById()  {
+	public String findCategorySecondById() {
 		categorySecondBiz.queryCategorySecond(categorySecond.getCs_id());
 		return "findSuccess";
 	}

@@ -287,7 +287,7 @@ public class TestStatement {
 		int c_id = input.nextInt();
 		Category category = categoryDao.queryCategory(c_id);
 		
-		categorySecondDao.addCategorySecond(categorySecond, category);
+//		categorySecondDao.addCategorySecond(categorySecond, category);
 	}
 	
 	// 删除一级分类

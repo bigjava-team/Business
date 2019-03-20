@@ -10,15 +10,11 @@
 	<package name="shop" extends="struts-default" namespace="/">
 
 		<!-- 配置自定义拦截器 -->
-		<!-- <interceptors>
-			<interceptor name="privilegeInterceptor"
-				class="org.bigjava.function.PrivilegeInterceptor" />
-		</interceptors> -->
+		<!-- <interceptors> <interceptor name="privilegeInterceptor" class="org.bigjava.function.PrivilegeInterceptor" 
+			/> </interceptors> -->
 
 		<!-- 全局result返回结果 -->
-		<!-- <global-results>
-			<result name="login">/user/login.jsp</result>
-		</global-results> -->
+		<!-- <global-results> <result name="login">/user/login.jsp</result> </global-results> -->
 
 
 
@@ -50,23 +46,32 @@
 
 
 		<!-- 搜索的action -->
-		<!-- <action name="*" class="userAction" method="{1}">
-			返回值为 showAllSuccess
-			<result name="showAllSuccess">
-				/admin/user/list.jsp
-			</result>
-
-			<interceptor-ref name="privilegeInterceptor" />
-			<interceptor-ref name="defaultStack" />
-		</action> -->
+		<!-- <action name="*" class="userAction" method="{1}"> 返回值为 showAllSuccess 
+			<result name="showAllSuccess"> /admin/user/list.jsp </result> <interceptor-ref 
+			name="privilegeInterceptor" /> <interceptor-ref name="defaultStack" /> </action> -->
 
 		<!-- 后台一级分类管理Action -->
 		<action name="Category_*" class="categoryAction" method="{1}">
-			<result name="addCategorySuccess" type="redirectAction">Category_showCategorySuccess
+			<result name="addCategorySuccess" type="redirectAction">Category_showCategory
 			</result>
-			<result name="deleteCategorySuccess" type="redirectAction">Category_showCategorySuccess
+			<result name="deleteCategorySuccess" type="redirectAction">Category_showCategory
 			</result>
+			<result name="findCategoryByIdSuccess">/admin/category/edit.jsp</result>
 			<result name="showCategorySuccess">/admin/category/list.jsp</result>
+
+		</action>
+
+		<!-- 后台二级分类管理Action -->
+		<action name="CategorySecond_*" class="categorySecondAction" method="{1}">
+			<result name="saveCategorySecondSuccess" type="redirectAction">CategorySecond_findAllBySearchNameSuccess
+			</result>
+			<result name="deleteCategorySecondSuccess" type="redirectAction">CategorySecond_findAllBySearchNameSuccess
+			</result>
+			<result name="editCategorySecondSuccess" type="redirectAction">CategorySecond_findAllBySearchNameSuccess
+			</result>
+			<result name="addPage">/admin/categorysecond/add.jsp</result>
+			<result name="findCategorySecondById">/admin/categorysecond/edit.jsp</result>
+			<result name="findAllBySearchNameSuccess">/admin/categorysecond/list.jsp</result>
 
 		</action>
 
@@ -75,7 +80,8 @@
 
 	<!-- ajax 异步校验 -->
 	<package name="json" extends="json-default" namespace="/">
-		<action name="ajax_*" class="org.bigjava.user.action.UserAction" method="{1}">
+		<action name="ajax_*"
+			class="org.bigjava.user.action.UserAction" method="{1}">
 			<result type="json"></result>
 		</action>
 	</package>

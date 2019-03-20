@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,22 +14,22 @@
 		添加二级分类
 	</div>
 	
-	<form action="" method="post">
+	<form action="CategorySecond_saveCategorySecond.action" method="post">
 		<div class="admin_add_div_middle">
-			二级分类名称:&emsp;&emsp;&emsp;<input type="text" name="cname">
+			二级分类名称:&emsp;&emsp;&emsp;<input type="text" name="cs_name">
 		</div>
 		
 		<div class="admin_add_div_middle">
 			所属的一级分类:&emsp;&emsp;&emsp;
-			<select>
-				<option value="男装">男装</option>
-				<option value="女装">女装</option>
-				<option value="手机">手机</option>
+			<select name="category.c_id">
+				<s:iterator var="c" value="c_List">
+					<option value="<s:property value="#c.c_id"/>"><s:property value="#c.c_name"/></option>
+				</s:iterator>
 			</select>
 		</div>
 		
 		<div id="admin_add_div_bottom">
-			<input type="button" value="确定" style="margin-right: 80px;" />
+			<input type="submit" value="确定" style="margin-right: 80px;" />
 			<input type="reset" value="重置" style="margin-right: 80px;" />
 			<input type="button" onclick="history.go(-1)" value="返回" />
 		</div>

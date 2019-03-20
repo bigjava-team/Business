@@ -7,7 +7,7 @@
 <link href="${pageContext.request.contextPath}/css/admin.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript">
 function addCategorySecond(){
-	window.location.href = "${pageContext.request.contextPath}/admin/categorysecond/add.jsp";
+	window.location.href = "${pageContext.request.contextPath}/CategorySecond_addPage.action";
 }
 </script>
 </head>
