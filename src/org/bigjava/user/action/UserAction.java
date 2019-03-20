@@ -120,11 +120,11 @@ public class UserAction extends ActionSupport {
 	/**
 	 * 根据ID获取用户信息
 	 */
-	/*public String getUserById()  {
+	public String queryUserId()  {
 		System.out.println("进入UserAction....getUserById方法");
 		userBiz.query(user.getU_id());
 		return "getUserById";
-	}*/
+	}
 
 	/**
 	 * 修改信息

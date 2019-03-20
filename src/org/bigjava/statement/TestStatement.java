@@ -429,7 +429,7 @@ public class TestStatement {
 		merchant.setM_time(m_time);
 		merchant.setM_is_freeze(m_is_freeze);
 		
-		User user = merchantDao.queryUser(u_id);
+		User user = userDao.query(u_id);
 		
 		merchantDao.registerMerchant(merchant, user);
 	}

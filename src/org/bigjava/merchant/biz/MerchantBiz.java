@@ -16,11 +16,6 @@ public interface MerchantBiz {
 	public void registerMerchant(Merchant merchant , User user);
 	
 	/**
-	 * 通过ID查询用户信息
-	 */
-	public User queryUser(int u_id);
-	
-	/**
 	 * 通过店铺ID查询店铺用户
 	 */
 	public Merchant queryMerchant(int m_id);

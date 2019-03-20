@@ -21,15 +21,6 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 		
 	}
 	
-	// 通过id查询用户
-	@Override
-	public User queryUser(int id) {
-		// TODO Auto-generated method stub
-		System.out.println("通过id查询");
-		User user = this.getHibernateTemplate().get(User.class, id);//	通过id查询用户
-		return user;
-	}
-
 	// 删除店铺
 	@Override
 	public void deleteMerchant(Merchant merchant) {
