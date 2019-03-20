@@ -14,6 +14,7 @@ public class CategoryAction extends ActionSupport implements ModelDriven<Categor
 
 	private Category category = new Category();
 	private CategoryBiz categoryBiz;
+
 	/**
 	 * 获取参数
 	 * 
@@ -55,7 +56,7 @@ public class CategoryAction extends ActionSupport implements ModelDriven<Categor
 	/**
 	 * 查询全部一级分类
 	 */
-	public String showCategory() { 
+	public String showCategory() {
 		System.out.println("categoryAction .... showCategory()....");
 		List<Category> listCategory = categoryBiz.showAllCategory();
 		ActionContext.getContext().getSession().put("showCategory", listCategory);

@@ -74,13 +74,12 @@
 		<div class="input-group">
 			<select id="select">
 				<option class="option" value="s1">全部</option>
-				<option class="option" value="s2">姓名</option>
 				<option class="option" value="3">管理员</option>
 				<option class="option" value="2">店长</option>
 				<option class="option" value="1">普通用户</option>
 			</select>
 			<!-- 搜索框 -->
-			<input type="text"  name="queryText" id="input" class=" " placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
+			<input type="text" name="queryText" id="input" class=" " placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
 			<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
 			<span class=" ">
 				<button id="button" class="bs" type="submit" click="goToSearch">搜索</button>
@@ -121,7 +120,7 @@
 			</s:iterator>
 			
 		</table>
-		
+		</form>
 		<div id="admin_list_div_page">
 			第<s:property value="pageBean.page"/>页/<s:property value="pageBean.totalPage"/>页&nbsp;&nbsp;&nbsp;&nbsp;
 			<s:if test="pageBean.page != 1">
@@ -133,6 +132,5 @@
 				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.totalPage"/>">尾页</a>
 			</s:if>
 		</div>
-	</form>
 </body>
 </html>

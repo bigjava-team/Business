@@ -42,36 +42,6 @@ function addCategorySecond(){
 				</a>
 			</td>
 		</tr>
-		
-		<tr onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';" style="font-size: 12px;">
-			<td width="36%" align="center">2</td>
-			<td width="36%" align="center">女装</td>
-			<td width="14%" align="center">
-				<a>
-					<img src="${pageContext.request.contextPath}/images/i_edit.gif" border="0" style="CURSOR: hand">
-				</a>
-			</td>
-			<td width="14%" align="center">
-				<a>
-					<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
-				</a>
-			</td>
-		</tr>
-		
-		<tr onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';" style="font-size: 12px;">
-			<td width="36%" align="center">3</td>
-			<td width="36%" align="center">电冰箱</td>
-			<td width="14%" align="center">
-				<a>
-					<img src="${pageContext.request.contextPath}/images/i_edit.gif" border="0" style="CURSOR: hand">
-				</a>
-			</td>
-			<td width="14%" align="center">
-				<a>
-					<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
-				</a>
-			</td>
-		</tr>
 	</table>
 	
 	<div id="admin_list_div_page">
