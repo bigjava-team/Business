@@ -1,6 +1,7 @@
 package org.bigjava.user.action;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 import org.bigjava.function.IsEmpty;
@@ -10,7 +11,6 @@ import org.bigjava.user.entity.User;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 
 public class UserAction extends ActionSupport {
 
@@ -19,6 +19,25 @@ public class UserAction extends ActionSupport {
 	private UserBiz userBiz;
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
+	private Paging paging;// 声明Paging类
+	
+	public Paging getPaging() {
+		return paging;
+	}
+
+	public void setPaging(Paging paging) {
+		this.paging = paging;
+	}
+
+	private Map<String, Object> session;// 声明Map数组
+	
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
 
 	private String check;// 校验用户名已存在返回的信息
 	
@@ -165,25 +184,34 @@ public class UserAction extends ActionSupport {
 	 */
 	public String showAll() {
 		System.out.println("进入UserAction....showAll方法");
-		int u_root = user.getRoot();
+		session = ActionContext.getContext().getSession();
+		int u_root = 0;
+		if (user.getRoot() != 0) {
+			u_root = user.getRoot();
+		}
+		
 		System.out.println("用户权限为：" + u_root);
-		searchText = getParam(searchText); // 获取前台搜索框内的参数，传给注入的searchText
-
-		if (searchText.equals("") || searchText.equals(null)) {
-			System.out.println("没有此昵称");
+//		searchText = getParam(searchText); // 获取前台搜索框内的参数，传给注入的searchText
+		System.out.println("搜索的值" + searchText);
+		
+		if (isEmpty.isEmpty(searchText)) {
+			searchText = "";
 		}
 
 		// 根据搜索的内容与权限查询可搜索的总条数
 		int totalNumber = userBiz.queryPages(searchText, u_root);
 
 		// 当前页数
-		int presentPage = 1;
+		int presentPage = paging.getPresentPage();
 
 		Paging paging = new Paging(presentPage, totalNumber, 1);
 		// 接收搜索到的用户列表
 		users = userBiz.limitDemend(searchText, paging, u_root);
 		// 将users存入session中
-		ActionContext.getContext().getSession().put("showUser", users);
+		System.out.println(users);
+		session.put("showUser", users);
+		session.put("paging", paging);
+		session.put("userRoot", u_root);
 
 		return "showAllSuccess";
 	}

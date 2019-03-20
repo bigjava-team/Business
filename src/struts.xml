@@ -41,14 +41,11 @@
 			<!-- 返回值为 -->
 
 			<!-- 注册，返回值为 registerSuccess -->
-			<result name="registerSuccess"> /user/login.jsp </result>
+			<result name="registerSuccess">/user/login.jsp </result>
+			
+			<!-- 模糊搜索分页查询页面 -->
+			<result name="showAllSuccess">/admin/user/list.jsp</result>
 		</action>
-
-
-		<!-- 搜索的action -->
-		<!-- <action name="*" class="userAction" method="{1}"> 返回值为 showAllSuccess 
-			<result name="showAllSuccess"> /admin/user/list.jsp </result> <interceptor-ref 
-			name="privilegeInterceptor" /> <interceptor-ref name="defaultStack" /> </action> -->
 
 		<!-- 后台一级分类管理Action -->
 		<action name="Category_*" class="categoryAction" method="{1}">
