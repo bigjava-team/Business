@@ -10,7 +10,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>My JSP 'test.jsp' starting page</title>
+<title>测试页面</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -20,334 +20,225 @@
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
-
-
 <style type="text/css">
-.bb {
-	text-align: center;
-	margin-top: 40px;
-	color: #4F4F4F;
+* {
+	padding: 0;
+	margin: 0;
 }
 
-.button {
-	background-color: #4CAF50; /* Green */
-	border: none;
-	color: white;
-	padding: 16px 32px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	margin: 4px 2px;
-	-webkit-transition-duration: 0.4s; /* Safari */
-	transition-duration: 0.4s;
-	cursor: pointer;
-}
-
-.button1 {
-	background-color: white;
-	color: black;
-	border: 2px solid #008CBA;
-}
-
-.button1:hover {
-	background-color: #008CBA;
-	color: white;
-}
-
-.button2 {
-	display: inline-block;
-	border-radius: 4px;
-	background-color: #FF9900;
-	border: none;
-	color: #FFFFFF;
-	text-align: center;
-	font-size: 20px;
-	padding: 20px;
-	width: 140px;
-	transition: all 0.5s;
-	cursor: pointer;
-	margin: 5px;
-}
-
-.button2 span {
-	cursor: pointer;
-	display: inline-block;
+#demo {
+	display: block;
+	width: 400px;
+	height: 400px;
+	margin: 50px;
 	position: relative;
-	transition: 0.5s;
+	border: 1px solid #ccc;
+	float:left;
 }
 
-.button2 span:after {
-	content: '»';
-	position: absolute;
-	opacity: 0;
-	top: 0;
-	right: -20px;
-	transition: 0.5s;
-}
-
-.button2:hover span {
-	padding-right: 25px;
-}
-
-.button2:hover span:after {
-	opacity: 1;
-	right: 0;
-}
-
-.button3 {
-	display: inline-block;
-	border-radius: 4px;
-	background-color: #FF9900;
-	border: none;
-	color: #FFFFFF;
-	text-align: center;
-	font-size: 20px;
-	padding: 20px;
-	width: 140px;
-	transition: all 0.5s;
-	cursor: pointer;
-	margin: 5px;
-}
-
-.button3 span {
-	cursor: pointer;
-	display: inline-block;
+#float-box {
+	width: 400px;
+	height: 400px;
 	position: relative;
-	transition: 0.5s;
+	z-index: 1;
 }
 
-.button3 span:after {
-	content: '»';
+#small-box {
+	display: none;
+	width: 160px;
+	height: 120px;
 	position: absolute;
-	opacity: 0;
+	background: #ffffcc;
+	border: 1px solid #ccc;
+	filter: alpha(opacity = 50);
+	opacity: 0.5;
+	cursor: move;
+}
+
+#big-box {
+	display: none;
+	position: absolute;
 	top: 0;
-	right: -20px;
-	transition: 0.5s;
+	left: 420px;
+	width: 400px;
+	height: 400px;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	z-index: 1;
 }
 
-.button3:hover span {
-	padding-right: 25px;
+#big-box img {
+	position: absolute;
+	z-index: 5;
+}
+.bigtu{
+		width:400px;
+		height: 400px;
 }
 
-.button3:hover span:after {
-	opacity: 1;
-	right: 0;
+.smalltu{
+		width:800px;
+		height:800px;
 }
 
-.cc {
-	width: 1022px;
-	border: 1px solid #33CC33;
-	background: #eee;
-	color: #4F4F4F;
+.all{
+	width:100%;
+	height:800px;
+
+
 }
 
-.biaoge {
-	border-collapse: collapse;
-	cellspacing: 0;
-	cellpadding: 0;
-	border: 0;
-	width: 1022px;
-	height: 130px; vertical-align : middle;
-	text-align: center;
-	vertical-align: middle;
+.one{
+	float: left;
+	clear: right;
+	width:468px;
+	height:882px;
+	border: 1px solid #ccc;
 }
 
-.tr1 {
-	background: #eee;
+.two{
+	width:468px;
+	height:69px;
+	background:#FFDAC8;
+	border:1px;
+	margin-top:20px;
+	
+}
+.twoleft{
+	width:80%;
+	text-align:center;
+	float:left;
 }
 
-.dd {
-	margin-top: 40px;
+.tworight{
+	text-align:center;
+	width:20%;
+	float:right;
 }
 
-.ee {
-	border: 1px solid #9D9D9D;
-	width: 940px;
-	height: auto;
-	line-height: 170%;
+.three{
+	border:1px;
+	height:42px;
+	background:red;
+	line-height:42px;
 }
-
-.ff {
-
-	color: red;
-	line-height: 170%;
-	width: 940px;
-	margin-top: 30px;
+.right{
+	float:left;
+	width:200px;
+	height:347px;
+	border: 1px solid #FFCC00;
+	margin-left:200px;
 }
-
-.gg {
-	margin-top: 40px;
-	margin-left: 50px;
+.buttom{
+	margin-top:300px;
+	
 }
-
-.ziti {
-	color: black;
-}
-.lianjie{
-	text-decoration:none;
-	color:#00FF66;
-}
-
-
 </style>
-
-
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		var titles = $("div.title >a");
-		var conts = $("div.content >div.aa");
-		titles.first().addClass("now").siblings().removeClass("now"); //默认第一个标题添加样式
-		conts.first().show().nextAll().hide(); //默认第一个内容显示，其他隐藏
-		titles.each(function(index) {
-			$(this).click(function() {
-				$(this).addClass("now").siblings().removeClass("now"); //给鼠标悬浮上的第index个（即当前）标题添加样式
-				conts.eq(index).show().siblings().hide(); //第index个内容显示，其他隐藏
-			});
-		});
-	});
 
-	function one() {
-		var dtx = document.getElementById('first');
-		dtx.click();
-	}
-
-
-	function two() {
-		var dtx = document.getElementById('two');
-		dtx.click();
-	}
-
-
-	function three() {
-		var dtx = document.getElementById('three');
-		dtx.click();
-
-	}
-
-
+window.onload = function(){
+  
+//获取到需要的元素
+var demo = document.getElementById('demo');
+var smallBbox = document.getElementById('small-box');
+var floatBox = document.getElementById('float-box');
+var bigBox = document.getElementById('big-box');
+var bigBoxImg = bigBox.getElementsByTagName('img')[0];
+  
+  
+floatBox.onmouseover = function(){
+smallBbox.style.display = "block";
+bigBox.style.display = "block";
+}
+floatBox.onmouseout = function(){
+smallBbox.style.display = "none";
+bigBox.style.display = "none";
+}
+floatBox.onmousemove = function(e){
+var _event = e || event;
+console.log(_event.clientY);
+var l = _event.clientX - demo.offsetLeft - floatBox.offsetLeft - smallBbox.offsetWidth/2;//除2是因为让鼠标点出现在放大遮罩的中心位置
+var t = _event.clientY - demo.offsetTop - floatBox.offsetTop - smallBbox.offsetHeight/2;
+  
+var demoWidth = demo.offsetWidth;
+var demoHeight = demo.offsetHeight;
+  
+  
+var smallBboxWidth = smallBbox.offsetWidth;
+var smallBboxHeight = smallBbox.offsetHeight;
+//鼠标可以移动的最大XY的距离
+var maxX = demoWidth - smallBboxWidth;
+var maxY = demoHeight - smallBboxHeight;
+  
+  
+l = Math.min(maxX,Math.max(0,l));
+t = Math.min(maxY,Math.max(0,t));
+smallBbox.style.left = l +"px";
+smallBbox.style.top = t +"px";
+  
+  
+var percentX = l / (floatBox.offsetWidth - smallBboxWidth);//求出小图遮罩的坐标占可移动区域的比例
+var percentY = t / (floatBox.offsetHeight - smallBboxHeight);
+  
+  
+bigBoxImg.style.left = -percentX *(bigBoxImg.offsetWidth - bigBox.offsetWidth) +"px";//大图对的移动方向和小图遮罩的移动方向相反
+bigBoxImg.style.top = -percentY*(bigBoxImg.offsetHeight - bigBox.offsetHeight)+"px";
+  
+}
+}
 </script>
 </head>
 <body>
-	<div class="title" style="display:none">
-		<a id="first" href="javascript:void(0)">div一号</a> <a id="two"
-			href="javascript:void(0)">div二号</a> <a id="three"
-			href="javascript:void(0)">div三号</a>
-	</div>
-
-	<div class="content">
-
-		<div class="aa">
-			<div class="bb">
-				<img src="TuPian/TouXiang.png" style="height:200px;width:200px"><br />
-				<h2>个人店铺</h2>
-				自己通过个人账号创建的店铺为个人店铺。<br />
-				<br />
-				<button class="button button1" onclick="two();">创建个人店铺</button>
-				<br />
-				<br />
-				<br />
-			</div>
+<div class="all">
+	<div id="demo">
+		<div id="float-box">
+			<div id="small-box"></div>
+			<img src="TuPian/logo2.jpg"class="bigtu">
 		</div>
-		<div class="aa">
-
-			<div class="ee">
-				<div class="gg">
-					<div class="ziti">
-						<b>1、我在光光已经开了个店了，我用别人的身份证再开一个店可以吗？</b>
-					</div>
-					<br />
-
-					答：不可以。未经光光平台同意，将本人光光账号提供给他人做开店使用，由此导致相关争议，诉讼及因店铺经营中的违法违规行为导致一切人身，财产权益损害，均由本人自行承担全部民事、行政及刑事责任。
-					<br />
-					<br />
-					<br />
-
-					<div class="ziti">
-						<b>2、我可以开多个店铺吗？</b>
-					</div>
-					<br /> 答：同一会员已开设的店铺均须同时满足以下要求，才能获得多店权益：<br />
-					（一）近365天无出售假冒商品违规、严重违规、一般违规扣分达12分（含）以上等违规记录，且无其他风险特征；<br />
-					（二）满足一定经营条件（如近365天确认收货金额>=120万且近12个自然月持续有成交）<br /> <br />
-					<br />	
-					<div class="ziti">
-						<b>3、我已经开过店铺，现在想要注销原来的店铺重新开店，可以吗?</b>
-					</div>
-					<br /> 答：满足条件就可以注销。
-					<br />
-					<br />
+		<div id="big-box">
+			<img src="TuPian/logo2.jpg" class="smalltu">
+		</div>
+		</div>
+		
+		
+	<div class="one">
+	<font size="4px"><b>索尼PS4主机 PS4pro 国行 港版slim500G/1TB 荒野大镖客2 5亿限定</b></font> <!-- 标题 -->
+	<div class="two">
+	<div class="twoleft">
+				<font color="black" size="6px">价格:</font>&nbsp&nbsp&nbsp
+				<font color="red" size="6px"><b>¥0.00 - 4899.00</b></font>
+	</div>
+	
+	<div class="tworight">
+	<a href="#"></a>
+			<font color="#6C6C6C" onclick="javascript:document.getElementById('tiaozhuan').scrollIntoView()">8888</font></br>
+			累计评论
+			</div>
 				</div>
-			</div>
-
-			<div class="ff">1、淘宝网在任何情况下都不会用QQ与您取得联系, 任何使用QQ联系您的"工作人员"都是骗子。
-			<br/>
-				2、消费者保障协议变更内容将于2017年12月01日零点生效，
-				主要变更点可见协议公示通知（<a class="lianjie" href="https://hot.bbs.taobao.com/detail.html?postId=8115168" >https://hot.bbs.taobao.com/detail.html?postId=8115168</a>）。
-				相关重要条款我们已以粗体下划线的方式特别标注，请重点阅读。</div>
-			<button class="button2" style="vertical-align:middle"
-				onclick="one();">
-				<span>上一步</span>
-			</button>
-			<button class="button3" style="vertical-align:middle"
-				onclick="three();">
-				<span>下一步</span>
-			</button>
-
-
-
-
-
-
-
+				<hr width="100%" >
+		<div class="three" >
+		内存容量:
+				
+				
+				
 		</div>
-
-		<div class="aa">
-			<div class="cc">
-				<br /> 您已绑定邮箱:<font color="red">#后台邮箱号</font><br />
-				<br /> 开店类型必须与邮箱认证类型一致，否则可能无法创建店铺。<br />
-				<br />
-			</div>
-
-			<div class="dd">
-				<table class="biaoge">
-
-					<tr>
-						<td class="tr1">认证名称</td>
-						<td class="tr1">状态</td>
-						<td class="tr1">提示</td>
-						<td class="tr1">账号</td>
-					</tr>
-
-					<tr>
-						<td>邮箱认证</td>
-						<td><font color="green">已通过</font></td>
-						<td>认证成功</td>
-						<td>#账户邮箱</td>
-					</tr>
-
-					<tr>
-						<td class="tr1">店铺类型认证</td>
-						<td class="tr1">#后台状况</td>
-						<td class="tr1">#审核君审核中 or <font color="green">#已通过</font></td>
-						<td class="tr1">个人店铺</td>
-					</tr>
-
-				</table>
-
-				<br /> <br /> <br />
-				<button class="button2" style="vertical-align:middle"
-					onclick="two();">
-					<span>上一步</span>
-				</button>
-				<button class="button3" style="vertical-align:middle">
-					<span>提交</span>
-				</button>
-			</div>
-
-		</div>
+				
 	</div>
+		<div class="right">
+		asdasda
+	
+	
+	</div>
+	
+	</div>
+	
+	
+	<div class="buttom">
+	<div  id="tiaozhuan">
 
+	test 评论!
+	</div>
+	</div>
+	
 </body>
 </html>

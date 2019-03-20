@@ -22,6 +22,10 @@
 	-->
 
 <style type="text/css">
+body {
+	overflow-x: hidden;
+}
+
 a {
 	text-decoration: none;
 	color: #424c50;
@@ -30,13 +34,13 @@ a {
 font {
 	color: black;
 }
-.orange{
-	margin-top: 10px;
+
+.orange {
+	margin-top: 3%;
 }
 
-.ziti1{
-	color:orange;
-
+.ziti1 {
+	color: orange;
 }
 
 .button {
@@ -47,8 +51,8 @@ font {
 	color: #FFFFFF;
 	text-align: center;
 	font-size: 28px;
-	padding: 10px;
-	width: 140px;
+	padding: 1%;
+	width: 39%;
 	transition: all 0.5s;
 	cursor: pointer;
 	margin: 5px;
@@ -66,12 +70,12 @@ font {
 	position: absolute;
 	opacity: 0;
 	top: 0;
-	right: -20px;
+	right: -2%;
 	transition: 0.5s;
 }
 
 .button:hover span {
-	padding-right: 25px;
+	padding-right: 20%;
 }
 
 .button:hover span:after {
@@ -86,11 +90,11 @@ img {
 .left {
 	text-align: center;
 	float: right;
-	margin-right:150px;
-	margin-top: 50px;
-	width: 350px;
-	left: 20px;
-	height: 329px;
+	margin-right: 10%;
+	margin-top: 5%;
+	width: 23%;
+	left: 2%;
+	height: 56%;
 	border: #909090 1px solid;
 	background: #fff;
 	color: #333;
@@ -102,46 +106,44 @@ img {
 }
 
 .inleft {
-	margin-top: 10px;
+	margin-top: 1%;
 }
 
 .kuang {
-	margin-top: 10px;
+	margin-top: 1%;
 }
 
-.zhongjian{
-	margin-top:20px;
+.zhongjian {
+	margin-top: 2%;
 	background-image: url(TuPian/test1.jpg);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    -moz-background-size: 100% 100%;
-	height:450px;
-	width:100%;
-}
-
-
-.tou{
-	margin-right:150px;
-	float:right;
-	width:auto;
-	height:80px;
-	background:borwn;
 	background-repeat: no-repeat;
-    background-size: 100% 100%;
+	background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	height: 60%;
+	width: 100%;
 }
 
-
-.toubuwenzi{
-		color:brown;
-		font-size:33px;
+.tou {
+	margin-top: 2%;
+	margin-right: 15%;
+	float: right;
+	width: auto;
+	height: 8%;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
 
-.toubuwenzi1{
-		margin-left:20px;
+.toubuwenzi {
+	color: brown;
+	font-size: 33px;
+}
+
+.toubuwenzi1 {
+	margin-left: 2%;
 }
 
 .mytxt {
-	width: 200px;
+	width: 50%;
 	color: #333;
 	line-height: normal;
 	font-family: "Microsoft YaHei", Tahoma, Verdana, SimSun;
@@ -198,28 +200,60 @@ img {
 }
 
 .foot {
-	margin-top:70px;
+	margin-top: 3%;
 	color: #424c50;
+}
+
+.win{
+	text-align: center;
+	margin-right: 10%;
+	margin-top: 5%;
+	border: #909090 1px solid;
+	background: #fff;
+	color: #333;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090,
+		direction=120, strength=4);
+	-moz-box-shadow: 2px 2px 10px #909090;
+	-webkit-box-shadow: 2px 2px 10px #909090;
+	box-shadow: 2px 2px 10px #909090;
+	
+	POSITION:absolute;
+}
+
+.win a{
+		color:blue;
+	text-decoration: none;
+	}
+.win a:hover {
+	color:red;
 }
 </style>
 
+<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
 
-	<script type="text/javascript">
-		
-		function checkFrom(){
-			var username = document.getElementById("inputname").value;
-			var password = document.getElementById("password").value;
-			
-			if (username == null || username == "") {
-				alert("请输入用户名!");
-				return false;
-			}else if (password == null || password == "") {
-				alert("请输入密码!");
-				return false;
-			}
-			return true;
+	function checkFrom() {
+		var username = document.getElementById("inputname").value;
+		var password = document.getElementById("password").value;
+
+		if (username == null || username == "") {
+			alert("请输入用户名!");
+			return false;
+		} else if (password == null || password == "") {
+			alert("请输入密码!");
+			return false;
 		}
-	
+		return true;
+	}
+
+	function openLogin() {
+		document.getElementById("win").style.display = "";
+	}
+
+	function closeLogin() {
+		document.getElementById("win").style.display = "none";
+	}
+
 	</script>
 
 
@@ -230,56 +264,58 @@ img {
 
 		<div id="header" align="center">
 			<a href="Save.jsp"><img src="TuPian/logo.jpg"></a><img
-				src="TuPian/nuli.gif"><br/>
-						<font size="33px"><b>用户登录</b></font>
+				src="TuPian/nuli.gif"><br /> <font size="33px"><b>用户登录</b></font>
 			<div class="tou">
-			<div class="wenti">
-			<a href=""><font class="toubuwenzi">返回首页&nbsp;&nbsp;&nbsp;</font></a>
-			</div>
+				<a href=""><font class="toubuwenzi">返回首页&nbsp;&nbsp;&nbsp;</font></a>
+
 			</div>
 		</div>
 
-		
-<div class="zhongjian">
-			<div id="menu" class="left" >
-			
-			<form action="User_login.action" method="post" align="center" class="inleft" onsubmit="return checkFrom()">
-		
-				<div class="geshi">
-					&nbsp;<br /> 
-					<div class="kuang">
-					<img src="TuPian/tubiao.jpg" width="27px" height="25px">
-					
-						<input type="text" name="user.username" class="mytxt" id="inputname" placeholder="用户名" >
+
+		<div class="zhongjian">
+			<div id="menu" class="left">
+
+				<form action="User_login.action" method="post"
+					 onsubmit="return checkFrom()">
+
+					<div class="geshi">
+						&nbsp;<br />
+						<div class="kuang">
+							<img src="TuPian/tubiao.jpg" width="8%" height="8%"> <input
+								type="text" name="user.username" class="mytxt" id="inputname"
+								placeholder="用户名">
+						</div>
 					</div>
-				</div><br/>
+					<br />
 
-				<div class="geshi">
-					<div class="kuang">
-					<img src="TuPian/suo.jpg" width="27px" height="25px">
-						<input type="password" name="user.password" class="mytxt" id="password"
-							placeholder="密码">
+					<div class="geshi">
+						<div class="kuang">
+							<img src="TuPian/suo.jpg" width="8%" height="8%"> <input
+								type="password" name="user.password" class="mytxt" id="password"
+								placeholder="密码">
+						</div>
 					</div>
-				</div><br/>
+					<br />
 
 
-				<div class="anniu">
-					<!-- <button class="button" style="vertical-align:middle" id="zhuce" disabled="true">
-						<span>登录</span>
-					</button> -->
-					<input type="submit" value="login" />
-				</div>
-				<div class="orange">
-					<a href="user/Save.jsp"><font class="ziti1"> 还没有账号？点我去注册!</font></a>
-				</div>
-			</form>
-</div>
-</div>
+					<div class="anniu">
+						<button class="button" style="vertical-align:middle" id="zhuce">
+							<span>登录</span>
+						</button>
+
+					</div>
+					<div class="orange">
+						<a href="user/Save.jsp"><font class="ziti1">
+								还没有账号？点我去注册!</font></a>
+					</div>
+				</form>
+			</div>
+		</div>
 		
-		<div id="footer" style="clear:both;text-align:center;">
+			<div id="footer" style="clear:both;text-align:center;">
 
-			
-				<div class="footer-hd">
+
+			<div class="footer-hd">
 				<div class="foot">
 					<hr width="100%">
 					<p>
@@ -312,6 +348,6 @@ img {
 				</div>
 			</div>
 		</div>
-		</div>
-  </body>
+	</div>
+</body>
 </html>
