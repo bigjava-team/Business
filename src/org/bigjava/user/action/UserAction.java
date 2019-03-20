@@ -212,6 +212,7 @@ public class UserAction extends ActionSupport {
 		session.put("showUser", users);
 		session.put("paging", paging);
 		session.put("userRoot", u_root);
+		session.put("searchText", searchText);
 
 		return "showAllSuccess";
 	}

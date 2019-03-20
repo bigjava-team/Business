@@ -83,22 +83,6 @@
 		用户列表
 	</div>
 	<!-- 根据姓名查询，若不输入，则查询全部 -->
-	<form action="showAll.action" method="post">
-		<div class="input-group">
-			<select id="select">
-				<option class="option" value="s1">全部</option>
-				<option class="option" value="3">管理员</option>
-				<option class="option" value="2">店长</option>
-				<option class="option" value="1">普通用户</option>
-			</select>
-			<!-- 搜索框 -->
-			<input type="text" name="queryText" id="input" class=" " placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
-			<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
-			<span class=" ">
-				<button id="button" class="bs" type="submit" click="goToSearch">搜索</button>
-			</span>
-		</div>
-	</form>
 	<div class="input-group">
 		<select id="select">
 			<option class="option" value="0">全部</option>
@@ -151,12 +135,12 @@
 		<div id="admin_list_div_page">
 			第<s:property value="#session.paging.presentPage"/>页/<s:property value="#session.paging.page"/>页&nbsp;&nbsp;&nbsp;&nbsp;
 			<s:if test="#session.paging.presentPage != 1">
-				<a href="${pageContext.request.contextPath }/User_showAll.action?paging.presentPage=1&user.root=${session.userRoot}">首页</a>
-				<a href="${pageContext.request.contextPath }/User_showAll.action?paging.presentPage=<s:property value="#session.paging.presentPage-1"/>&user.root=${session.userRoot}">上一页</a>
+				<a href="${pageContext.request.contextPath }/User_showAll.action?paging.presentPage=1&user.root=${session.userRoot}&searchText=${session.searchText}">首页</a>
+				<a href="${pageContext.request.contextPath }/User_showAll.action?paging.presentPage=<s:property value="#session.paging.presentPage-1"/>&user.root=${session.userRoot}&searchText=${session.searchText}">上一页</a>
 			</s:if>
 			<s:if test="#session.paging.presentPage != #session.paging.page">
-				<a href="${pageContext.request.contextPath }/User_showAll.action?paging.presentPage=<s:property value="#session.paging.presentPage+1"/>&user.root=${session.userRoot}">下一页</a>
-				<a href="${pageContext.request.contextPath }/User_showAll.action?paging.presentPage=<s:property value="#session.paging.page"/>&user.root=${session.userRoot}">尾页</a>
+				<a href="${pageContext.request.contextPath }/User_showAll.action?paging.presentPage=<s:property value="#session.paging.presentPage+1"/>&user.root=${session.userRoot}&searchText=${session.searchText}">下一页</a>
+				<a href="${pageContext.request.contextPath }/User_showAll.action?paging.presentPage=<s:property value="#session.paging.page"/>&user.root=${session.userRoot}&searchText=${session.searchText}">尾页</a>
 			</s:if>
 		</div>
 </body>
