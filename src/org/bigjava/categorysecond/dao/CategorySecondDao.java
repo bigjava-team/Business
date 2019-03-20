@@ -11,7 +11,8 @@ public interface CategorySecondDao {
 	/**
 	 * 添加二级分类
 	 */
-	public void addCategorySecond(CategorySecond categorySecond, Category category);
+//	public void addCategorySecond(CategorySecond categorySecond, Category category);
+	public void addCategorySecond(CategorySecond categorySecond);
 	
 	/**
 	 * 模糊分页查询所有二级分类

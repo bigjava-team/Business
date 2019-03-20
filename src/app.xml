@@ -53,6 +53,8 @@
 	<bean name="categoryDao" class="org.bigjava.category.dao.impl.CategoryDaoImpl" autowire="byName" />
 	
 	<!-- 二级分类 -->
+	<bean name="categorySecondAction" class="org.bigjava.categorysecond.action.CategorySecondAction" autowire="byName" scope="prototype" />
+	<bean name="categorySecondBiz" class="org.bigjava.categorysecond.biz.impl.CategorySecondBizImpl" autowire="byName" />
 	<bean name="categorySecondDao" class="org.bigjava.categorysecond.dao.impl.CategorySecondDaoImpl" autowire="byName" />
 	
 	<!-- 收货地址 -->
