@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.bigjava.addr.entity.Addr;
+import org.bigjava.collectMerchant.entity.CollectMerchant;
+import org.bigjava.collectProduct.entity.CollectProduct;
 import org.bigjava.comment.entity.Comment;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.orderitem.entity.Orderitem;
@@ -36,16 +38,26 @@ public class User {
 
 	private Merchant merchant;// 指向用户开的店铺类
 	
-	private Set<Merchant> collectMerchant = new HashSet<Merchant>();// 指向用户的收藏的店铺
-	
 	private Set<Orderitem> setOrderItem = new HashSet<Orderitem>();// 指向订单项类
 	
-	public Set<Merchant> getCollectMerchant() {
-		return collectMerchant;
+	private Set<CollectMerchant> setCollectMerchant = new HashSet<CollectMerchant>();// 一对多指向CollectMerchant类
+	
+	private Set<CollectProduct> setCollectProduct = new HashSet<CollectProduct>();// 一对多指向CollectProduct类
+	
+	public Set<CollectProduct> getSetCollectProduct() {
+		return setCollectProduct;
 	}
 
-	public void setCollectMerchant(Set<Merchant> collectMerchant) {
-		this.collectMerchant = collectMerchant;
+	public void setSetCollectProduct(Set<CollectProduct> setCollectProduct) {
+		this.setCollectProduct = setCollectProduct;
+	}
+
+	public Set<CollectMerchant> getSetCollectMerchant() {
+		return setCollectMerchant;
+	}
+
+	public void setSetCollectMerchant(Set<CollectMerchant> setCollectMerchant) {
+		this.setCollectMerchant = setCollectMerchant;
 	}
 
 	public Set<Orderitem> getSetOrderItem() {

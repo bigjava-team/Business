@@ -20,9 +20,10 @@
 			<one-to-many class="org.bigjava.product.entity.Product" /><!-- 指向商品类 -->
 		</set>
 		
-		<set name="collectUser" cascade="all" table="user_merchant" inverse="true"><!-- name关联用户类的属性名、连接user表和merchant表的表名 -->
-			<key column="m_id" not-null="true" /><!-- hibernate表中的外键名 -->
-			<many-to-many class="org.bigjava.user.entity.User" column="u_id" /><!-- 指向User类 -->
+		<set name="setCollectMerchant" cascade="delete">
+			<key column="m_id" />
+			<one-to-many class="org.bigjava.collectMerchant.entity.CollectMerchant" />
 		</set>
+		
 	</class>
 </hibernate-mapping>

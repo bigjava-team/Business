@@ -40,9 +40,15 @@
 		
 		<one-to-one name="merchant" property-ref="user" cascade="all" /><!-- 一对一指向店铺类 -->
 		
-		<set name="collectMerchant" table="user_merchant" inverse="false" ><!-- 多对多指向收藏店铺类 -->
-			<key column="u_id" not-null="true" /><!-- hibernate表中的外键u_id -->
-			<many-to-many class="org.bigjava.merchant.entity.Merchant" column="m_id" />
+		<set name="setCollectMerchant" cascade="delete">
+			<key column="u_id" /><!-- 连接CollectMerchant表的外键名 -->
+			<one-to-many class="org.bigjava.collectMerchant.entity.CollectMerchant" /><!-- 一对多指向CollectMerchant类 -->
 		</set>
+		
+		<set name="setCollectProduct" cascade="delete">
+			<key column="u_id" /><!-- 连接CollectMerchant表的外键名 -->
+			<one-to-many class="org.bigjava.collectProduct.entity.CollectProduct" /><!-- 一对多指向CollectProduct类 -->
+		</set>
+		
 	</class>
 </hibernate-mapping>

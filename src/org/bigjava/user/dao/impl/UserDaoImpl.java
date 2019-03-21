@@ -28,7 +28,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	@Override
 	public List<User> loginUser(User user) {// 登录时传入的信息
 		String hql = "from User where username = ? and password = ? ";
-		List<User> userList = getHibernateTemplate().find(hql, new String[] { user.getUsername(), user.getPassword() });// 通过username和password查询对应的用户信息
+		List<User> userList = this.getHibernateTemplate().find(hql, new String[] { user.getUsername(), user.getPassword() });// 通过username和password查询对应的用户信息
 		System.out.println("userList>>>" + userList);
 		return userList;
 	}
@@ -150,9 +150,6 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行collectMerchant方法");
 		
-		user.getCollectMerchant().add(merchant);// 将店铺set进User类中CollectMerchant中
-		
-		this.getHibernateTemplate().save(user);
 	}
 
 	// 删除收藏的店铺
@@ -161,9 +158,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行deleteCollectMerchant方法");
 		
-		user.getCollectMerchant().add(merchant);// 将店铺set进User类中CollectMerchant中
 		
-		this.getHibernateTemplate().delete(user);// 删除
 	}
 
 }
