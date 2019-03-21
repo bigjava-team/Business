@@ -87,7 +87,7 @@ img {
 	margin-top: 5%;
 	width: 23%;
 	left: 2%;
-	height: 56%;
+	height: 80%;
 	border: #909090 1px solid;
 	background: #fff;
 	color: #333;
@@ -242,7 +242,7 @@ img {
 
 </style>
 
-<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 
 	function checkFrom() {

@@ -30,5 +30,10 @@ public interface CategoryBiz {
 	 * 删除一级分类
 	 */
 	public void deleteCategory(Category category);
+	
+	/**
+	 * 修改一级分类
+	 */
+	public void updateCategory(Category category, Category updateCategory);
 
 }

@@ -92,6 +92,8 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 	 * 删除二级分类
 	 */
 	public String deleteCategorySecond() {
+		System.out.println(categorySecond);
+		categorySecond = categorySecondBiz.queryCategorySecond(categorySecond.getCs_id());
 		categorySecondBiz.deleteCategorySecond(categorySecond);
 		return "deleteCategorySecondSuccess";
 	}

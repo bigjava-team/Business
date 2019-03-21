@@ -53,6 +53,8 @@
 			</result>
 			<result name="deleteCategorySuccess" type="redirectAction">Category_showCategory
 			</result>
+			<result name="updateCategorySuccess" type="redirectAction">Category_showCategory
+			</result>
 			<result name="findCategoryByIdSuccess">/admin/category/edit.jsp</result>
 			<result name="showCategorySuccess">/admin/category/list.jsp</result>
 
@@ -60,14 +62,14 @@
 
 		<!-- 后台二级分类管理Action -->
 		<action name="CategorySecond_*" class="categorySecondAction" method="{1}">
-			<result name="saveCategorySecondSuccess" type="redirectAction">CategorySecond_findAllBySearchNameSuccess
+			<result name="saveCategorySecondSuccess" type="redirectAction">CategorySecond_findAllBySearchName?paging.presentPage=0
 			</result>
-			<result name="deleteCategorySecondSuccess" type="redirectAction">CategorySecond_findAllBySearchNameSuccess
+			<result name="deleteCategorySecondSuccess" type="redirectAction">CategorySecond_findAllBySearchName?paging.presentPage=0
 			</result>
-			<result name="editCategorySecondSuccess" type="redirectAction">CategorySecond_findAllBySearchNameSuccess
+			<result name="editCategorySecondSuccess" type="redirectAction">CategorySecond_findAllBySearchName?paging.presentPage=0
 			</result>
 			<result name="addPage">/admin/categorysecond/add.jsp</result>
-			<result name="findCategorySecondById">/admin/categorysecond/edit.jsp</result>
+			<result name="findSuccess">/admin/categorysecond/edit.jsp</result>
 			<result name="findAllBySearchNameSuccess">/admin/categorysecond/list.jsp</result>
 
 		</action>
