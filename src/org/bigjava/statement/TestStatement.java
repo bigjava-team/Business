@@ -29,14 +29,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TestStatement {
 	
 	public static ApplicationContext app = new ClassPathXmlApplicationContext("app.xml");
-	public static UserDao userDao = (UserDao) app.getBean("userDaoImpl");
-	public static MerchantDao merchantDao = (MerchantDao) app.getBean("merchantDaoImpl");
-	public static CategoryDao categoryDao = (CategoryDao) app.getBean("categoryDaoImpl");
-	public static CategorySecondDao categorySecondDao = (CategorySecondDao) app.getBean("categorySecondDaoImpl");
-	public static AddrDao addrDao = (AddrDao) app.getBean("addrDaoImpl");
-	public static ProductDao productDao = (ProductDao) app.getBean("productDaoImpl");
-	public static OrderItemDao orderItemDao = (OrderItemDao) app.getBean("orderItemDaoImpl");
-	public static OrdersDao ordersDao = (OrdersDao) app.getBean("orders");
+	public static UserDao userDao = (UserDao) app.getBean("userDao");
+	public static MerchantDao merchantDao = (MerchantDao) app.getBean("merchantDao");
+	public static CategoryDao categoryDao = (CategoryDao) app.getBean("categoryDao");
+	public static CategorySecondDao categorySecondDao = (CategorySecondDao) app.getBean("categorySecondDao");
+	public static AddrDao addrDao = (AddrDao) app.getBean("addrDao");
+	public static ProductDao productDao = (ProductDao) app.getBean("productDao");
+	public static OrderItemDao orderItemDao = (OrderItemDao) app.getBean("orderItemDao");
+	public static OrdersDao ordersDao = (OrdersDao) app.getBean("ordersDao");
 	public static Scanner input = new Scanner(System.in);
 	
 	// 添加订单
@@ -51,13 +51,34 @@ public class TestStatement {
 		System.out.println("输入收货地址的id");
 		int a_id = input.nextInt();
 		
-		List<Orderitem> listOrderItem = new ArrayList<Orderitem>();
+		
+		Orders orders = new Orders();
+		double total = 0.0;
+		orders.setOrdertim(new Date());
+		
+		List<Orderitem> listOrderItem = new ArrayList<Orderitem>();// 查询到的订单项
 		
 		for (int i=0; i<listItem_id.size(); i++) {
 			listOrderItem.add(orderItemDao.queryOrderItem_id(listItem_id.get(i)));// 通过订单项表
+			total += listOrderItem.get(i).getSubtotal();
 		}
 		
-//		ordersDao.addOrders(orders, user, addr);
+		Addr addr = addrDao.queryAddr_id(a_id);// 选择添加的收货地址
+		
+		User user = listOrderItem.get(0).getUser();
+		
+		System.out.println("输入订单号");
+		String orderNumber = input.next();
+		orders.setTotal(total);
+		orders.setOrderNumber(orderNumber);
+		orders.setState(1);
+		
+		ordersDao.addOrders(orders, user, addr);
+		
+		Orders updateOrderItem = ordersDao.queryOrders_orderNumber(orderNumber);
+		
+		orderItemDao.addOrders_id(listOrderItem, updateOrderItem);
+		
 			
 	}
 	
@@ -266,7 +287,7 @@ public class TestStatement {
 		int c_id = input.nextInt();
 		Category category = categoryDao.queryCategory(c_id);
 		
-		categorySecondDao.addCategorySecond(categorySecond, category);
+//		categorySecondDao.addCategorySecond(categorySecond, category);
 	}
 	
 	// 删除一级分类
@@ -408,7 +429,7 @@ public class TestStatement {
 		merchant.setM_time(m_time);
 		merchant.setM_is_freeze(m_is_freeze);
 		
-		User user = merchantDao.queryUser(u_id);
+		User user = userDao.query(u_id);
 		
 		merchantDao.registerMerchant(merchant, user);
 	}

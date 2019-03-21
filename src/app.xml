@@ -38,28 +38,41 @@
 		</property>
 	</bean>
 	
+
+	<!-- 用户 -->
 	<bean name="userAction" class="org.bigjava.user.action.UserAction" autowire="byName" scope="prototype" />
-	
 	<bean name="userBiz" class="org.bigjava.user.biz.impl.UserBizImpl" autowire="byName" />
-	
 	<bean name="userDao" class="org.bigjava.user.dao.impl.UserDaoImpl" autowire="byName" />
 	
+	<!-- 店铺 -->
 	<bean name="merchantDao" class="org.bigjava.merchant.dao.impl.MerchantDaoImpl" autowire="byName" />
 	
+	<!-- 配置后台一级管理 -->
+	<bean name="categoryAction" class="org.bigjava.category.action.CategoryAction" autowire="byName" scope="prototype" />
+	<bean name="categoryBiz" class="org.bigjava.category.biz.impl.CategoryBizImpl" autowire="byName" />
 	<bean name="categoryDao" class="org.bigjava.category.dao.impl.CategoryDaoImpl" autowire="byName" />
 	
+	<!-- 二级分类 -->
+	<bean name="categorySecondAction" class="org.bigjava.categorysecond.action.CategorySecondAction" autowire="byName" scope="prototype" />
+	<bean name="categorySecondBiz" class="org.bigjava.categorysecond.biz.impl.CategorySecondBizImpl" autowire="byName" />
 	<bean name="categorySecondDao" class="org.bigjava.categorysecond.dao.impl.CategorySecondDaoImpl" autowire="byName" />
 	
+	<!-- 收货地址 -->
 	<bean name="addrDao" class="org.bigjava.addr.dao.impl.AddrDaoImpl" autowire="byName" />
 	
+	<!-- 商品 -->
 	<bean name="productDao" class="org.bigjava.product.dao.impl.ProductDaoImpl" autowire="byName" />
 	
+	<!-- 订单项 -->
 	<bean name="orderItemDao" class="org.bigjava.orderitem.dao.impl.OrderItemDaoImpl" autowire="byName" />
 	
+	<!-- 订单 -->
 	<bean name="ordersDao" class="org.bigjava.orders.dao.impl.OrdersDaoImpl" autowire="byName" />
 	
+	<!-- 评论 -->
 	<bean name="commentDao" class="org.bigjava.comment.dao.impl.CommentDaoImpl" autowire="byName" />
 	
+	<!-- 商品图片 -->
 	<bean name="imagesDao" class="org.bigjava.image.dao.impl.ImageDaoImpl" autowire="byName" />
 	
 	<bean name="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">

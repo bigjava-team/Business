@@ -49,7 +49,7 @@
 		outline: none;
 	}
 
-	button[type="submit"] {
+	.bs {
 		height: 25px;
 		width: 50px;
 		background: #acd6ff;
@@ -60,8 +60,21 @@
 	
 </style>
 
-<script type="text/javascript" src="../../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
+
+	$(document).ready(function() {
+		
+		$("#button").click(function() {
+			
+			var userRoot = $("#select option:selected").val();// 获取下拉列表的值
+			
+			var searchText = $("#input").val();// 获取搜索文本框的值
+			
+			window.location.href="User_showAll?user.root="+userRoot+"&searchText="+searchText+"&paging.presentPage=0";
+		});
+		
+	});
 	
 </script>
 </head>
@@ -70,23 +83,20 @@
 		用户列表
 	</div>
 	<!-- 根据姓名查询，若不输入，则查询全部 -->
-	<form action="showAll.action" method="post">
-		<div class="input-group">
-			<select id="select">
-				<option class="option" value="s1">全部</option>
-				<option class="option" value="s2">姓名</option>
-				<option class="option" value="3">管理员</option>
-				<option class="option" value="2">店长</option>
-				<option class="option" value="1">普通用户</option>
-			</select>
-			<!-- 搜索框 -->
-			<input type="text"  name="queryText" id="input" class=" " placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
-			<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
-			<span class=" ">
-				<button id="button" class="bs" type="submit" click="goToSearch">搜索</button>
-			</span>
-		</div>
-	</form>
+	<div class="input-group">
+		<select id="select">
+			<option class="option" value="0">全部</option>
+			<option class="option" value="3">管理员</option>
+			<option class="option" value="2">店长</option>
+			<option class="option" value="1">普通用户</option>
+		</select>
+		<!-- 搜索框 -->
+		<input type="text" name="queryText" id="input" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
+		<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
+		<span class=" ">
+			<button id="button" class="bs">搜索</button>
+		</span>
+	</div>
 	
 	<form action="" method="post">
 		<table id="admin_list_table" cellspacing="0" cellpadding="0" rules="all" width="100%" border="1" bordercolor="gray">
@@ -103,36 +113,35 @@
 				<td width="10%" align="center">状态</td>
 			</tr>
 			<!-- 迭代器遍历用户 -->
-			<s:iterator var="user" value="#session.showUser" status="status">
-			<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-				<td align="center"><s:property value="#status.count"/> </td>
-				<td align="center">${user.u_id }</td>
-				<td align="center">${user.image }</td>
-				<td align="center">${user.username } </td>
-				<td align="center">${user.password }</td>
-				<td align="center">${user.u_name }</td>
-				<td align="center">${user.email }</td>
-				<td align="center">${user.phone }</td>
-				<td align="center">${user.root }</td>
-				<td align="center">
-					<input id="td1" type="button" value="冻结" />
-				</td>
-			</tr>
+			<s:iterator value="#session.showUser" status="status" var="user">
+				<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
+					<td align="center"><s:property value="#status.count"/></td>
+					<td align="center"><s:property value="#user.u_id" /></td>
+					<td align="center"><s:property value="#user.image" /></td>
+					<td align="center"><s:property value="#user.username" /></td>
+					<td align="center"><s:property value="#user.password" /></td>
+					<td align="center"><s:property value="#user.u_name" /></td>
+					<td align="center"><s:property value="#user.email" /></td>
+					<td align="center"><s:property value="#user.phone" /></td>
+					<td align="center"><s:property value="#user.root" /></td>
+					<td align="center">
+						<input id="td1" type="button" value="冻结" />
+					</td>
+				</tr>
 			</s:iterator>
 			
 		</table>
-		
+		</form>
 		<div id="admin_list_div_page">
-			第<s:property value="pageBean.page"/>页/<s:property value="pageBean.totalPage"/>页&nbsp;&nbsp;&nbsp;&nbsp;
-			<s:if test="pageBean.page != 1">
-				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=1">首页</a>
-				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page-1"/>">上一页</a>
+			第<s:property value="#session.paging.presentPage"/>页/<s:property value="#session.paging.page"/>页&nbsp;&nbsp;&nbsp;&nbsp;
+			<s:if test="#session.paging.presentPage != 1">
+				<a href="${pageContext.request.contextPath }/User_showAll.action?paging.presentPage=1&user.root=${session.userRoot}&searchText=${session.searchText}">首页</a>
+				<a href="${pageContext.request.contextPath }/User_showAll.action?paging.presentPage=<s:property value="#session.paging.presentPage-1"/>&user.root=${session.userRoot}&searchText=${session.searchText}">上一页</a>
 			</s:if>
-			<s:if test="pageBean.page != pageBean.totalPage">
-				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page+1"/>">下一页</a>
-				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.totalPage"/>">尾页</a>
+			<s:if test="#session.paging.presentPage != #session.paging.page">
+				<a href="${pageContext.request.contextPath }/User_showAll.action?paging.presentPage=<s:property value="#session.paging.presentPage+1"/>&user.root=${session.userRoot}&searchText=${session.searchText}">下一页</a>
+				<a href="${pageContext.request.contextPath }/User_showAll.action?paging.presentPage=<s:property value="#session.paging.page"/>&user.root=${session.userRoot}&searchText=${session.searchText}">尾页</a>
 			</s:if>
 		</div>
-	</form>
 </body>
 </html>

@@ -7,54 +7,55 @@ import org.bigjava.user.entity.User;
 
 /**
  * 用户操作
+ * 
  * @author Mr.Man
  *
  */
 public interface UserBiz {
-	
+
 	/**
 	 * 用户注册
 	 */
 	public void registerUser(User user);
-	
+
 	/**
 	 * 登录用户
 	 */
 	public List<User> loginUser(User user);
-	
+
 	/**
 	 * 修改用户信息
 	 */
-	public void updateUser(User user,User users);
-	
+	public void updateUser(User user, User users);
+
 	/**
 	 * 通过ID查询用户
 	 */
 	public User query(int id);
-	
+
 	/**
 	 * 通过ID删除用户
 	 */
 	public void deleteUser(User user);
-	
+
 	/**
 	 * 管理员通过模糊分页查询用户
 	 */
 	public List<User> limitDemend(String username, Paging page, int u_root);
-	
+
 	/**
 	 * 管理员通过模糊查询总页数
 	 */
-	public  int queryPages(String username, int u_root);
-	
+	public int queryPages(String username, int u_root);
+
 	/**
-	 * 检验用户名
+	 * 校验用户名是否存在
 	 */
 	public boolean checkUsername(String username);
-	
+
 	/**
 	 * 修改密码
 	 */
 	public void updateUserPassword(String password, User user);
-	
+
 }

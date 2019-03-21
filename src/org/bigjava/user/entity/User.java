@@ -28,18 +28,6 @@ public class User {
 	private String image;// 用户头像图片路径
 	private int u_is_freeze;// 用户当前状态
 	
-	private String result; //设置异步校验值
-
-	public String getResult() {
-		return result;
-	}
-
-	public void setResult(String result) {
-		this.result = result;
-	}
-	
-	
-
 	private Set<Addr> setAddr = new HashSet<Addr>();// 指向用户地址类
 
 	private Set<Orders> setOrders = new HashSet<Orders>();// 指向订单类
@@ -189,4 +177,5 @@ public class User {
 				+ u_name + ", email=" + email + ", phone=" + phone + ", root=" + root + ", image=" + image
 				+ ", u_is_freeze=" + u_is_freeze + "]";
 	}
+	
 }

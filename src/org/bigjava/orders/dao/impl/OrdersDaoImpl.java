@@ -93,4 +93,17 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 		return totalNumber;
 	}
 
+	// 通过订单编号查询订单
+	@Override
+	public Orders queryOrders_orderNumber(String orderNumber) {
+		// TODO Auto-generated method stub
+		System.out.println("开始执行queryOrders_orderNumber方法");
+		List<Orders> listOrders = this.getHibernateTemplate().find("from Orders where orderNumber = ?", orderNumber);
+		if (listOrders.size() == 0) {
+			System.out.println("没有此订单");
+			return null;
+		}
+		return listOrders.get(0);
+	}
+
 }

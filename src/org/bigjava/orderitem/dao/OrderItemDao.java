@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.bigjava.function.Paging;
 import org.bigjava.orderitem.entity.Orderitem;
+import org.bigjava.orders.entity.Orders;
 import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
 
@@ -35,10 +36,17 @@ public interface OrderItemDao {
 	public int queryOrderItemNumber(User user);
 	
 	/**
-	 * 修改订单项
+	 * 修改订单项(除连接订单项的外键)
 	 * orderItem为数据库中的订单项
 	 * updateOrderItem为修改的订单项内容
 	 * 
 	 */
-	public void updateOrderItem(Orderitem orderItem, Orderitem updateOrderItem);
+	public void updateOrderItem(Orderitem OrderItem, Orderitem updateOrderItem);
+	
+	/**
+	 * 添加连接订单项的外键
+	 * 
+	 */
+	public void addOrders_id(List<Orderitem> listOrderItem, Orders orders);
+	
 }

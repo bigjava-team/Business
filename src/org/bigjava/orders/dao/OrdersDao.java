@@ -34,5 +34,10 @@ public interface OrdersDao {
 	 * 条件查询订单的数量
 	 */
 	public int queryAllOrdersNumber(User user);
+	
+	/**
+	 * 通过订单编号插叙订单
+	 */
+	public Orders queryOrders_orderNumber(String orderNumber);
 
 }

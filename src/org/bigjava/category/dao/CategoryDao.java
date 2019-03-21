@@ -26,4 +26,12 @@ public interface CategoryDao {
 	 */
 	public void deleteCategory(Category category);
 	
+	/**
+	 * 修改一级分类
+	 * category为数据库的一级分类
+	 * updateCateogry为修改的一级分类
+	 * 
+	 */
+	public void updateCategory(Category category, Category updateCategory);
+	
 }

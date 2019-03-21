@@ -17,6 +17,7 @@ import org.bigjava.user.entity.User;
 public class Orders {
 	
 	private int o_id;// 订单的id
+	private String orderNumber;// 订单编号
 	private double total;// 订单的总金额
 	private Date ordertim;// 订单时间
 	private int state;// 订单的状态(1为未支付，2为已支付、3是订单已发货、4为订单结束)
@@ -27,6 +28,14 @@ public class Orders {
 	
 	private Set<Orderitem> setOrderItem = new HashSet<Orderitem>();
 	
+	public String getOrderNumber() {
+		return orderNumber;
+	}
+
+	public void setOrderNumber(String orderNumber) {
+		this.orderNumber = orderNumber;
+	}
+
 	public Set<Orderitem> getSetOrderItem() {
 		return setOrderItem;
 	}
@@ -89,6 +98,8 @@ public class Orders {
 
 	@Override
 	public String toString() {
-		return "Orders [o_id=" + o_id + ", total=" + total + ", ordertim=" + ordertim + ", state=" + state + "]";
+		return "Orders [o_id=" + o_id + ", orderNumber=" + orderNumber + ", total=" + total + ", ordertim=" + ordertim
+				+ ", state=" + state + "]";
 	}
+
 }

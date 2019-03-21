@@ -18,11 +18,6 @@ public interface MerchantDao {
 	public void registerMerchant(Merchant merchant, User user);
 	
 	/**
-	 * 通过id查询用户信息
-	 */
-	public User queryUser(int u_id);
-	
-	/**
 	 * 通过店铺id查询店铺
 	 */
 	public Merchant queryMerchant(int m_id);

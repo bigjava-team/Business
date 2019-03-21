@@ -44,4 +44,17 @@ public class CategoryDaoImpl extends HibernateDaoSupport implements CategoryDao 
 		this.getHibernateTemplate().delete(category);// 删除一级分类
 	}
 
+	// 修改一级分类
+	@Override
+	public void updateCategory(Category category, Category updateCategory) {
+		// TODO Auto-generated method stub
+		System.out.println("开始执行updateCategory方法");
+		if (updateCategory.getC_name() == null || updateCategory.getC_name().equals("")){// 判断要修改的Category的一级分类名不能为空
+			
+		} else {
+			category.setC_name(updateCategory.getC_name());// 将修改的updateCategory的一级分类set进从数据库中获得的category中
+		}
+		this.getHibernateTemplate().update(category);// 将Category表的内容修改为category
+	}
+
 }

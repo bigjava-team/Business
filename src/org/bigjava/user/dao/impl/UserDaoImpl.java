@@ -127,13 +127,12 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	public boolean checkUsername(String username) {// username为查询的用户
 		// TODO Auto-generated method stub
 		System.out.println("开始校验");
-		List<User> list = this.getHibernateTemplate().find("from User where username = ?", username);// 通过用户名查询用户
-		if (list == null || list.size() == 0) {// 当没有查询到用户时
-			System.out.println("用户名符合");
-			return false;// 返回false
+		String hql = "from User u where u.username=?";
+		List<User> list = this.getHibernateTemplate().find(hql, username);// 通过用户名查询用户
+		if (list.size() != 0) {
+			return true;
 		}
-		System.out.println("用户名已存在");
-		return true;// 查询到用户时返回true
+		return false;
 	}
 
 	// 修改用户密码
