@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>开店成功</title>
+    <title>注册成功</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -20,10 +20,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
+
+
 <style >
  body { margin: 0;
        	padding: 0;
-        background: url('TuPian/d.jpg') no-repeat fixed;
+        background: url('TuPian/h.jpg') no-repeat fixed;
         -webkit-background-size: cover;
         }
         
@@ -38,15 +40,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
     </style>
 
+
   </head>
   
   <body>
-   
-  <div  style="text-align:center;margin-top:15%;">
-  <font size="6px">恭喜你!你是光光网第<font color="red">#后台商家id</font>个开店成功的卖家</font><br/>
-		<font size="5px">店铺名为:</font><font size="17px" color="yellow">#店铺名</font>
+  <div  style="text-align:center;margin-top: 100px;">
+  <font size="6px">恭喜你!你是光光网第<font color="red">#用户id</font>个成功注册的用户</font><br/>
+		<font size="5px">用户名为:</font><font size="17px" color="yellow">#用户名</font>
 		<br/><br/> 
-		<img src="TuPian/tu.png" height="50" width="50" align="top"><a href="???">设置店铺!</a><br/><br/>
+		<img src="TuPian/tu.png" height="50" width="50" align="top"><a href="Update.jsp">完善个人信息!</a><br/><br/>
 		<img src="TuPian/tu.png" height="50" width="50" align="top"><a href="???">返回光光网!</a>
 		 </div>
   </body>
