@@ -303,14 +303,14 @@ img {
 				src="TuPian/nuli.gif"><br/>
 						<font size="33px"><b>用户登录</b></font>
 			<div class="tou">
-			<div class="wenti">
-			<a href=""><font class="toubuwenzi">返回首页&nbsp;&nbsp;&nbsp;</font></a>
-			</div>
+				<div class="wenti">
+					<a href=""><font class="toubuwenzi">返回首页&nbsp;&nbsp;&nbsp;</font></a>
+				</div>
 			</div>
 		</div>
 
 		
-<div class="zhongjian">
+	<div class="zhongjian">
 			<div id="menu" class="left" > 	
 			
 			<form action="User_login.action" method="post" align="center" class="inleft" onsubmit=" return checkAll()">

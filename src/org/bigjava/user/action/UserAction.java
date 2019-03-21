@@ -78,16 +78,6 @@ public class UserAction extends ActionSupport {
 	}
 
 	/**
-	 * 获取参数
-	 * 
-	 * @param key
-	 * @return
-	 */
-	public String getParam(String key) {
-		return ServletActionContext.getRequest().getParameter(key);
-	}
-
-	/**
 	 * 登录用户
 	 */
 	public String login() {
@@ -191,7 +181,6 @@ public class UserAction extends ActionSupport {
 		}
 		
 		System.out.println("用户权限为：" + u_root);
-//		searchText = getParam(searchText); // 获取前台搜索框内的参数，传给注入的searchText
 		System.out.println("搜索的值" + searchText);
 		
 		if (isEmpty.isEmpty(searchText)) {
