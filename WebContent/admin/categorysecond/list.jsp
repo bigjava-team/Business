@@ -6,10 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <link href="${pageContext.request.contextPath}/css/admin.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 function addCategorySecond(){
 	window.location.href = "${pageContext.request.contextPath}/CategorySecond_addPage.action";
 }
+
+
+
+$(document).ready(function() {
+	
+	$("#button").click(function() {
+		
+		var searchText = $("#input").val();// 获取搜索文本框的值
+		alert(searchText);
+		
+		window.location.href="CategorySecond_findAllBySearchName?searchCategorySecond="+searchText+"&paging.presentPage=0";
+	});
+	
+});
 </script>
 <style type="text/css">
 	.input-group {
@@ -81,12 +96,12 @@ function addCategorySecond(){
 			<td width="36%" align="center"><s:property value="#status.count"/></td>
 			<td width="36%" align="center"><s:property value="#categorySecond.cs_name"/></td>
 			<td width="14%" align="center">
-				<a href="${pageContext.request.contextPath}/admin/categorysecond/edit.jsp">
+				<a href="${pageContext.request.contextPath}/CategorySecond_findCategorySecondById.action?cs_id=${categorySecond.cs_id}">
 					<img src="${pageContext.request.contextPath}/images/i_edit.gif" border="0" style="CURSOR: hand">
 				</a>
 			</td>
 			<td width="14%" align="center">
-				<a>
+				<a href="${pageContext.request.contextPath}/CategorySecond_deleteCategorySecond.action?cs_id=${categorySecond.cs_id}">
 					<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
 				</a>
 			</td>
@@ -100,9 +115,9 @@ function addCategorySecond(){
 			<a href="${pageContext.request.contextPath }/CategorySecond_findAllBySearchName.action?paging.presentPage=1&searchCategorySecond=${session.searchCategorySecond}">首页</a>
 			<a href="${pageContext.request.contextPath }/CategorySecond_findAllBySearchName.action?paging.presentPage=<s:property value="#session.paging.presentPage-1"/>&searchCategorySecond=${session.searchCategorySecond}">上一页</a>
 		</s:if>
-		<s:if test="#session.paging.presentPage != pageBean.totalPage">
+		<s:if test="#session.paging.presentPage != #session.paging.page">
 			<a href="${pageContext.request.contextPath }/CategorySecond_findAllBySearchName.action?paging.presentPage=<s:property value="#session.paging.presentPage+1"/>&searchCategorySecond=${session.searchCategorySecond}">下一页</a>
-			<a href="${pageContext.request.contextPath }/CategorySecond_findAllBySearchName.action?page=<s:property value="pageBean.totalPage"/>">尾页</a>
+			<a href="${pageContext.request.contextPath }/CategorySecond_findAllBySearchName.action?paging.presentPage=<s:property value="#session.paging.page"/>&searchText=${session.searchText}">尾页</a>
 		</s:if>
 	</div>
 	

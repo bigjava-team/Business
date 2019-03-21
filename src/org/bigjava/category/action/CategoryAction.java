@@ -46,13 +46,24 @@ public class CategoryAction extends ActionSupport implements ModelDriven<Categor
 	 * 删除一级分类
 	 */
 	public String deleteCategory() {
-		String id = getParam("c_id");
-		int c_id = Integer.parseInt(id);
-		Category category = categoryBiz.queryCategoryById(c_id);
+		category = categoryBiz.queryCategoryById(category.getC_id());
 		categoryBiz.deleteCategory(category);
 		return "deleteCategorySuccess";
 	}
-
+	
+	/**
+	 * 修改一级分类
+	 */
+	public String updateCatergory() {
+		Category updateCategory = new Category();
+		updateCategory.setC_name(category.getC_name());
+		
+		category = categoryBiz.queryCategoryById(category.getC_id());
+		
+		categoryBiz.updateCategory(category, updateCategory);
+		return "updateCategorySuccess";
+	}
+	
 	/**
 	 * 查询全部一级分类
 	 */
@@ -67,7 +78,8 @@ public class CategoryAction extends ActionSupport implements ModelDriven<Categor
 	 * 通过id查询对应的一级分类
 	 */
 	public String findCategoryById() {
-		categoryBiz.queryCategoryById(category.getC_id());
+		Category editCategory = categoryBiz.queryCategoryById(category.getC_id());
+		ActionContext.getContext().getSession().put("editCategory", editCategory);
 		return "findCategoryByIdSuccess";
 	}
 

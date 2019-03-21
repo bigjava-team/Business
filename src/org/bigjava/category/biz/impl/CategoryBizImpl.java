@@ -37,4 +37,10 @@ public class CategoryBizImpl implements CategoryBiz {
 		categoryDao.deleteCategory(category);
 	}
 
+	//ÐÞ¸Ä
+	@Override
+	public void updateCategory(Category category, Category updateCategory) {
+		categoryDao.updateCategory(category, updateCategory);
+	}
+
 }

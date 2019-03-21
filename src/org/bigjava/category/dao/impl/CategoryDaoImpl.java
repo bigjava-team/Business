@@ -40,7 +40,7 @@ public class CategoryDaoImpl extends HibernateDaoSupport implements CategoryDao 
 	@Override
 	public void deleteCategory(Category category) {
 		// TODO Auto-generated method stub
-		System.out.println("开始执行deleteCategory方法");
+		System.out.println("开始执行deleteCategory方法" + category);
 		this.getHibernateTemplate().delete(category);// 删除一级分类
 	}
 
