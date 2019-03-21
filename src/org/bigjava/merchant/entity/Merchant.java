@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.bigjava.collectMerchant.entity.CollectMerchant;
 import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
 
@@ -22,18 +23,18 @@ public class Merchant {
 	
 	private User user;// 指向用户表中的店家
 	
-	private Set<User> collectUser = new HashSet<User>();// 多对多指向收藏该店铺的用户
+	private Set<CollectMerchant> setCollectMerchant = new HashSet<CollectMerchant>();
 	
+	public Set<CollectMerchant> getSetCollectMerchant() {
+		return setCollectMerchant;
+	}
+
+	public void setSetCollectMerchant(Set<CollectMerchant> setCollectMerchant) {
+		this.setCollectMerchant = setCollectMerchant;
+	}
+
 	Set<Product> setProduct = new HashSet<Product>();
 	
-	public Set<User> getCollectUser() {
-		return collectUser;
-	}
-
-	public void setCollectUser(Set<User> collectUser) {
-		this.collectUser = collectUser;
-	}
-
 	public Set<Product> getSetProduct() {
 		return setProduct;
 	}
@@ -88,6 +89,12 @@ public class Merchant {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	@Override
+	public String toString() {
+		return "Merchant [m_id=" + m_id + ", m_name=" + m_name + ", m_image=" + m_image + ", m_time=" + m_time
+				+ ", m_is_freeze=" + m_is_freeze + "]";
 	}
 	
 }

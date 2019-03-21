@@ -66,6 +66,44 @@ CREATE TABLE `categorysecond` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `collectmerchant`
+--
+
+DROP TABLE IF EXISTS `collectmerchant`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `collectmerchant` (
+  `CM_id` int(11) NOT NULL AUTO_INCREMENT,
+  `u_id` int(11) NOT NULL,
+  `m_id` int(11) NOT NULL,
+  PRIMARY KEY (`CM_id`),
+  KEY `FKD4C260F2AC71ABAE` (`u_id`),
+  KEY `FKD4C260F2BE59A0B0` (`m_id`),
+  CONSTRAINT `FKD4C260F2AC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
+  CONSTRAINT `FKD4C260F2BE59A0B0` FOREIGN KEY (`m_id`) REFERENCES `merchant` (`m_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `collectproduct`
+--
+
+DROP TABLE IF EXISTS `collectproduct`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `collectproduct` (
+  `CP_id` int(11) NOT NULL AUTO_INCREMENT,
+  `u_id` int(11) NOT NULL,
+  `p_id` int(11) NOT NULL,
+  PRIMARY KEY (`CP_id`),
+  KEY `FK8A08A885AC71ABAE` (`u_id`),
+  KEY `FK8A08A885E7217C83` (`p_id`),
+  CONSTRAINT `FK8A08A885AC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
+  CONSTRAINT `FK8A08A885E7217C83` FOREIGN KEY (`p_id`) REFERENCES `product` (`p_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `comment`
 --
 
@@ -155,6 +193,7 @@ DROP TABLE IF EXISTS `orders`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orders` (
   `o_id` int(11) NOT NULL AUTO_INCREMENT,
+  `orderNumber` varchar(255) NOT NULL,
   `total` double NOT NULL,
   `ordertim` datetime NOT NULL,
   `state` int(11) NOT NULL,
@@ -207,31 +246,13 @@ CREATE TABLE `user` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `sex` varchar(255) DEFAULT NULL,
-  `u_name` varchar(255) NOT NULL,
+  `u_name` varchar(255) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
-  `phone` varchar(255) NOT NULL,
+  `phone` varchar(255) DEFAULT NULL,
   `root` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `u_is_freeze` int(11) NOT NULL,
   PRIMARY KEY (`u_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `user_merchant`
---
-
-DROP TABLE IF EXISTS `user_merchant`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_merchant` (
-  `m_id` int(11) NOT NULL,
-  `u_id` int(11) NOT NULL,
-  PRIMARY KEY (`u_id`,`m_id`),
-  KEY `FKE4E523BCAC71ABAE` (`u_id`),
-  KEY `FKE4E523BCBE59A0B0` (`m_id`),
-  CONSTRAINT `FKE4E523BCAC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
-  CONSTRAINT `FKE4E523BCBE59A0B0` FOREIGN KEY (`m_id`) REFERENCES `merchant` (`m_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -244,4 +265,4 @@ CREATE TABLE `user_merchant` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-15 15:57:54
+-- Dump completed on 2019-03-21 19:32:12

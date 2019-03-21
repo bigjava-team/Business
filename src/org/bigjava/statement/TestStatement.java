@@ -39,6 +39,32 @@ public class TestStatement {
 	public static OrdersDao ordersDao = (OrdersDao) app.getBean("ordersDao");
 	public static Scanner input = new Scanner(System.in);
 	
+	// 删除收藏的店铺
+	public static void deleteCollectMerchant() {
+		System.out.println("输入要删除收藏的店铺的用户ID");
+		int u_id = input.nextInt();
+		
+		System.out.println("输入要删除的收藏店铺的ID");
+		int m_id = input.nextInt();
+		
+		
+	}
+	
+	// 收藏店铺
+	public static void CollectMerchant() {
+		System.out.println("输入收藏店铺的用户ID");
+		int u_id = input.nextInt();
+		
+		User user = userDao.query(u_id);
+		
+		System.out.println("输入需要收藏的店铺ID");
+		int m_id = input.nextInt();
+		
+		Merchant merchant = merchantDao.queryMerchant(m_id);
+		
+		userDao.collectMerchant(user, merchant);
+	}
+	
 	// 添加订单
 	public static void addOrders() {
 		System.out.println("输入购买的订单项的id");

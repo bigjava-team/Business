@@ -10,7 +10,7 @@
 		</id>
 		<property name="c_name" not-null="true" /><!-- 一级分类表、类的属性名 -->
 		
-		<set name="setCS" cascade="all"><!-- 指向二级分类 -->
+		<set name="setCS" cascade="save-update,delete" inverse="true" ><!-- 指向二级分类 -->
 			<key column="c_id"></key><!-- 与二级分类连接的id名 -->
 			<one-to-many class="org.bigjava.categorysecond.entity.CategorySecond"/><!-- 一对多指向二级分类类 -->
 		</set>

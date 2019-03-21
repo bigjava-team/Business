@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.bigjava.categorysecond.entity.CategorySecond;
+import org.bigjava.collectProduct.entity.CollectProduct;
 import org.bigjava.comment.entity.Comment;
 import org.bigjava.image.entity.Images;
 import org.bigjava.merchant.entity.Merchant;
@@ -38,6 +39,16 @@ public class Product {
 	
 	private Set<Images> setImages = new HashSet<Images>();// 指向Images类
 	
+	private Set<CollectProduct> setCollectProduct = new HashSet<CollectProduct>();// 指向CollectProduct类
+	
+	public Set<CollectProduct> getSetCollectProduct() {
+		return setCollectProduct;
+	}
+
+	public void setSetCollectProduct(Set<CollectProduct> setCollectProduct) {
+		this.setCollectProduct = setCollectProduct;
+	}
+
 	public Set<Images> getSetImages() {
 		return setImages;
 	}

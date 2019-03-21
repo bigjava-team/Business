@@ -2,12 +2,13 @@ package org.bigjava.categorysecond.action;
 
 import java.util.List;
 
-import org.apache.struts2.ServletActionContext;
 import org.bigjava.category.biz.CategoryBiz;
 import org.bigjava.category.entity.Category;
 import org.bigjava.categorysecond.biz.CategorySecondBiz;
 import org.bigjava.categorysecond.entity.CategorySecond;
+import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
+import org.bigjava.function.Param;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -18,14 +19,16 @@ import com.opensymphony.xwork2.ModelDriven;
  */
 public class CategorySecondAction extends ActionSupport implements ModelDriven<CategorySecond> {
 
+	private Param param = new Param();
 	// 注入categorysecond,category实体
 	private CategorySecond categorySecond = new CategorySecond();
 	private Category category = new Category();
-	private Paging page = new Paging();
+	private Paging paging;
 	// 注入categorysecondbiz
 	private CategorySecondBiz categorySecondBiz;
 	private CategoryBiz categoryBiz;
-
+	// 校验值不能为空
+	private IsEmpty isEmpty = new IsEmpty();
 	// 前台输入的值
 	private String searchCategorySecond;
 
@@ -45,19 +48,17 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 		this.categoryBiz = categoryBiz;
 	}
 
+	public Paging getPaging() {
+		return paging;
+	}
+
+	public void setPaging(Paging paging) {
+		this.paging = paging;
+	}
+
 	@Override
 	public CategorySecond getModel() {
 		return categorySecond;
-	}
-
-	/**
-	 * 获取参数
-	 * 
-	 * @param key
-	 * @return
-	 */
-	public String getParam(String key) {
-		return ServletActionContext.getRequest().getParameter(key);
 	}
 
 	/**
@@ -91,6 +92,8 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 	 * 删除二级分类
 	 */
 	public String deleteCategorySecond() {
+		System.out.println(categorySecond);
+		categorySecond = categorySecondBiz.queryCategorySecond(categorySecond.getCs_id());
 		categorySecondBiz.deleteCategorySecond(categorySecond);
 		return "deleteCategorySecondSuccess";
 	}
@@ -118,15 +121,24 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 	 * 模糊分页查询所有二级分类
 	 */
 	public String findAllBySearchName() {
-
+		System.out.println("进入categorySecondAction.....findAll()..");
+		if (isEmpty.isEmpty(searchCategorySecond)) {
+			searchCategorySecond = "";
+		}
 		// 获取二级分类的总条数
 		int totalNumber = categorySecondBiz.queryCategorySecondNumber(searchCategorySecond);
 		// 获取当前页
-		int pageNo = page.getPresentPage();
+		int presentPage = paging.getPresentPage();
+		System.out.println("当前页" + presentPage);
 
-		Paging paging = new Paging(pageNo, totalNumber, 2);
+		Paging paging = new Paging(presentPage, totalNumber, 2);
 
-		categorySecondBiz.queryAllCategorySecond(searchCategorySecond, paging);
+		List<CategorySecond> categorySecond = categorySecondBiz.queryAllCategorySecond(searchCategorySecond, paging);
+		//将值存入session中
+		ActionContext.getContext().getSession().put("showCategorySecond",categorySecond );
+		ActionContext.getContext().getSession().put("paging", paging);
+		ActionContext.getContext().getSession().put("searchCategorySecond", searchCategorySecond);
+		
 		return "findAllBySearchNameSuccess";
 	}
 

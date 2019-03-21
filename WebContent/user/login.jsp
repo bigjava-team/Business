@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 <title>登录页面</title>
 
 <style type="text/css">
@@ -79,7 +78,7 @@ img {
 	margin-top: 5%;
 	width: 23%;
 	left: 2%;
-	height: 56%;
+	height: 80%;
 	border: #909090 1px solid;
 	background: #fff;
 	color: #333;
@@ -234,7 +233,7 @@ img {
 
 </style>
 
-<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 
 	function checkFrom() {
@@ -304,13 +303,7 @@ img {
     		}
 			return false;           		
     	}
-	
-	
 	</script>
-	
-	
-
-
 </head>
 
 <body style="margin:0px; padding:0px">
@@ -320,20 +313,17 @@ img {
 			<a href="Save.jsp"><img src="TuPian/logo.jpg"></a><img
 				src="TuPian/nuli.gif"><br /> <font size="33px"><b>用户登录</b></font>
 			<div class="tou">
-				<a href=""><font class="toubuwenzi">返回首页&nbsp;&nbsp;&nbsp;</font></a>
+					<a href=""><font class="toubuwenzi">返回首页&nbsp;&nbsp;&nbsp;</font></a>
 			</div>
 		</div>
 
 	<div class="zhongjian">
 			<div id="menu" class="left" > 	
-			
 			<form action="User_login.action" method="post" align="center" class="inleft" onsubmit="return checkAll()">
-		
 				<div class="geshi">
 					&nbsp;<br /> 
 					<div class="kuang">
 					<img src="TuPian/tubiao.jpg" width="8%" height="8%">
-					
 						<input type="text" name="user.username" class="mytxt" id="inputname" placeholder="用户名" >
 					</div>
 				</div><br/>
@@ -345,15 +335,12 @@ img {
 								placeholder="密码">
 						</div>
 					</div>
-					
 					<br/>
 
 				
 				<div class="log_code_main">
 		            <input type="text" id="text_code" placeholder="请输入验证码" class="log_code" />
 		            <input type="button" id="code" onclick="createCode()" class="input_code"  />
-		          <!--   <span id="p" class="login_span">*</span>  -->
-	            
 	     		 </div>
 
 					<div class="anniu">
@@ -369,10 +356,10 @@ img {
 				</form>
 			</div>
 		</div>
-		<!-- </div> -->
 		
 			<div id="footer" style="clear:both;text-align:center;">
 
+		<div id="footer" style="clear:both;text-align:center;">
 			<div class="footer-hd">
 				<div class="foot">
 					<hr width="100%">
