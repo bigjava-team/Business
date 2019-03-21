@@ -25,7 +25,7 @@
 			d.add('010301','0103','一级分类管理','${pageContext.request.contextPath}/Category_showCategory.action','','mainFrame');
 			
 			d.add('0104','01','二级分类管理');
-			d.add('010401','0104','二级分类管理','${pageContext.request.contextPath}/admin/categorysecond/list.jsp','','mainFrame');
+			d.add('010401','0104','二级分类管理','${pageContext.request.contextPath}/CategorySecond_findAllBySearchName.action?paging.presentPage=0','','mainFrame');
 			
 			d.add('0105','01','商品管理');
 			d.add('010501','0105','商品管理','${pageContext.request.contextPath}/admin/product/list.jsp','','mainFrame');
