@@ -1,25 +1,10 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<base href="<%=basePath%>">
-
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>登录页面</title>
-
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
-<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
 
 <style type="text/css">
 body {
@@ -353,22 +338,6 @@ img {
 					</div>
 				</div><br/>
 
-		<!-- <div class="zhongjian">
-			<div id="menu" class="left">
-
-				<form action="User_login.action" method="post"
-					 onsubmit="return checkFrom()">
-
-					<div class="geshi">
-						&nbsp;<br />
-						<div class="kuang">
-							<img src="TuPian/tubiao.jpg" width="8%" height="8%"> <input
-								type="text" name="user.username" class="mytxt" id="inputname"
-								placeholder="用户名">
-						</div>
-					</div>
-					<br /> -->
-
 					<div class="geshi">
 						<div class="kuang">
 							<img src="TuPian/suo.jpg" width="8%" height="8%"> <input
@@ -403,7 +372,6 @@ img {
 		<!-- </div> -->
 		
 			<div id="footer" style="clear:both;text-align:center;">
-
 
 			<div class="footer-hd">
 				<div class="foot">
