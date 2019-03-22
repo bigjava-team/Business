@@ -70,4 +70,10 @@ public class UserBizImpl implements UserBiz {
 		userDao.updateUserPassword(password, user);
 	}
 
+	//ÐÞ¸ÄÓÃ»§×´Ì¬
+	@Override
+	public void updateUserFreeze(int freeze, User user) {
+		userDao.updateFreeze(freeze, user);
+	}
+
 }

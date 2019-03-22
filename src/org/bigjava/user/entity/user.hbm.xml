@@ -16,7 +16,7 @@
 		<property name="phone" ></property> <!-- 用户电话号码的类、表的属性名  -->
 		<property name="root" not-null="true"></property> <!-- 用户权限的类、表的属性名  -->
 		<property name="image" ></property> <!-- 用户头像的类、表的属性名  -->
-		<property name="u_is_freeze" not-null="true"></property> <!-- 用户状态的类、表的属性名  -->
+		<property name="u_is_freeze" ></property> <!-- 用户状态的类、表的属性名  -->
 		
 		<set name="setAddr" cascade="all">
 			<key column="u_id" /><!-- 链接的外键id名 -->
