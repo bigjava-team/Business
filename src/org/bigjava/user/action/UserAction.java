@@ -20,7 +20,7 @@ public class UserAction extends ActionSupport {
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
 	private Paging paging;// 声明Paging类
-	
+
 	public Paging getPaging() {
 		return paging;
 	}
@@ -30,7 +30,7 @@ public class UserAction extends ActionSupport {
 	}
 
 	private Map<String, Object> session;// 声明Map数组
-	
+
 	public Map<String, Object> getSession() {
 		return session;
 	}
@@ -40,7 +40,7 @@ public class UserAction extends ActionSupport {
 	}
 
 	private String check;// 校验用户名已存在返回的信息
-	
+
 	public String getCheck() {
 		return check;
 	}
@@ -129,7 +129,7 @@ public class UserAction extends ActionSupport {
 	/**
 	 * 根据ID获取用户信息
 	 */
-	public String queryUserId()  {
+	public String queryUserId() {
 		System.out.println("进入UserAction....getUserById方法");
 		userBiz.query(user.getU_id());
 		return "getUserById";
@@ -138,7 +138,7 @@ public class UserAction extends ActionSupport {
 	/**
 	 * 修改信息
 	 */
-	public String update()  {
+	public String update() {
 		System.out.println("进入UserAction....update方法");
 		User users = userBiz.query(user.getU_id());
 		if (users == null) {
@@ -162,11 +162,19 @@ public class UserAction extends ActionSupport {
 	/**
 	 * 冻结用户，解冻用户
 	 */
-	public String updateUserStates()  {
+	public String updateUserStates() {
 		System.out.println("进入冻结用户，解冻用户的方法。。。。");
-
-		return "";
-
+		user = userBiz.query(user.getU_id());
+		int freeze = user.getU_is_freeze();
+		if (freeze == 1) {
+			freeze = 2;
+		} else if (freeze == 2) {
+			freeze = 1;
+		}
+		user.setU_is_freeze(freeze);
+		System.out.println(user);
+		userBiz.updateUserFreeze(freeze, user);
+		return "updateUserStatesSuccess";
 	}
 
 	/**
@@ -179,10 +187,10 @@ public class UserAction extends ActionSupport {
 		if (user.getRoot() != 0) {
 			u_root = user.getRoot();
 		}
-		
+
 		System.out.println("用户权限为：" + u_root);
 		System.out.println("搜索的值" + searchText);
-		
+
 		if (isEmpty.isEmpty(searchText)) {
 			searchText = "";
 		}
@@ -209,7 +217,7 @@ public class UserAction extends ActionSupport {
 	/**
 	 * 校验
 	 */
-	public String checkUsername(){
+	public String checkUsername() {
 		System.out.println("进入UserAction....checkUsername方法");
 		System.out.println(user.getUsername());
 		if (userBiz.checkUsername(user.getUsername())) {
@@ -221,7 +229,7 @@ public class UserAction extends ActionSupport {
 	/**
 	 * 注销用户
 	 */
-	public String close()  {
+	public String close() {
 		System.out.println("注销用户");
 		ServletActionContext.getRequest().getSession().invalidate();
 		return "close";

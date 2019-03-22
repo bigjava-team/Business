@@ -10,41 +10,46 @@
 	<package name="shop" extends="struts-default" namespace="/">
 
 		<!-- 配置自定义拦截器 -->
-		<!-- <interceptors> <interceptor name="privilegeInterceptor" class="org.bigjava.function.PrivilegeInterceptor" 
-			/> </interceptors> -->
+		<!-- <interceptors>
+			<interceptor name="privilegeInterceptor"
+				class="org.bigjava.function.PrivilegeInterceptor" />
+		</interceptors> -->
 
 		<!-- 全局result返回结果 -->
-		<!-- <global-results> <result name="login">/user/login.jsp</result> </global-results> -->
+		<!-- <global-results>
+			<result name="login">/user/login.jsp</result>
+		</global-results> -->
 
 
 
 		<!-- 用户模块 action -->
 		<action name="User_*" class="userAction" method="{1}">
-			<!-- 登录情况返回值为adminlogin，则是管理员登录成功 -->
-			<result name="adminLogin">
-				/admin/home.jsp
-			</result>
 			<!-- 登录情况 -->
-			<!-- 返回值为adminlogin，则是管理员登录成功 -->
+			<!-- 登录情况返回值为adminlogin，则是管理员登录成功 -->
 			<result name="adminLogin"> /admin/home.jsp </result>
+
 			<!-- 返回值为loginSuccess为普通用户登录成功 -->
-			<result name="loginSuccess">
+			<result name="loginSuccess">/user/test.jsp
 			</result>
 
 			<!-- 返回值为loginStore，为店长登录 -->
 			<result name="loginStore">
 			</result>
+
 			<!-- 返回值为注册，返回值为 registerSuccess -->
-			<result name="registerSuccess">
-				/user/login.jsp
-			</result>
+			<result name="registerSuccess"> /user/login.jsp </result>
+
 			<!-- 返回值为 -->
 
 			<!-- 注册，返回值为 registerSuccess -->
 			<result name="registerSuccess">/user/login.jsp </result>
-			
+
 			<!-- 模糊搜索分页查询页面 -->
 			<result name="showAllSuccess">/admin/user/list.jsp</result>
+			
+			<!-- 冻结用户，解冻用户 -->
+			<result name="updateUserStatesSuccess" type="redirectAction">User_showAll?user.root=0&amp;paging.presentPage=0
+			</result>
 		</action>
 
 		<!-- 后台一级分类管理Action -->
@@ -61,10 +66,12 @@
 		</action>
 
 		<!-- 后台二级分类管理Action -->
-		<action name="CategorySecond_*" class="categorySecondAction" method="{1}">
+		<action name="CategorySecond_*" class="categorySecondAction"
+			method="{1}">
 			<result name="saveCategorySecondSuccess" type="redirectAction">CategorySecond_findAllBySearchName?paging.presentPage=0
 			</result>
-			<result name="deleteCategorySecondSuccess" type="redirectAction">CategorySecond_findAllBySearchName?paging.presentPage=0
+			<result name="deleteCategorySecondSuccess"
+				type="redirectAction">CategorySecond_findAllBySearchName?paging.presentPage=0
 			</result>
 			<result name="editCategorySecondSuccess" type="redirectAction">CategorySecond_findAllBySearchName?paging.presentPage=0
 			</result>
