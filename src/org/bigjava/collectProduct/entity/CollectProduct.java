@@ -42,7 +42,7 @@ public class CollectProduct {
 
 	@Override
 	public String toString() {
-		return "CollectProduct [CP_id=" + CP_id + "]";
+		return "CollectProduct [CP_id=" + CP_id + ", product=" + product + "]";
 	}
-	
+
 }

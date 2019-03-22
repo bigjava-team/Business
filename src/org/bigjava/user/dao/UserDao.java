@@ -78,20 +78,6 @@ public interface UserDao {
 	public void updateUserPassword(String password, User user);
 
 	/**
-	 * 收藏店铺
-	 * user为收藏店铺的用户信息 merchant为收藏的店铺信息
-	 * 
-	 */
-	public void collectMerchant(User user, Merchant merchant);
-
-	/**
-	 * 删除收藏的店铺
-	 * user为删除店铺的用户信息 merchant为删除的店铺信息
-	 * 
-	 */
-	public void deleteCollectMerchant(User user, Merchant merchant);
-	
-	/**
 	 * 冻结用户，修改用户的u_is_freeze，
 	 * 为1时用户冻结，用户不能登录，为2时用户没冻结，可以登录
 	 */
