@@ -5,15 +5,6 @@
 
 <title>登录页面</title>
 
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
-<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
 <style type="text/css">
 body {
 	overflow-x: hidden;
@@ -366,6 +357,8 @@ img {
 			</div>
 		</div>
 		
+			<div id="footer" style="clear:both;text-align:center;">
+
 		<div id="footer" style="clear:both;text-align:center;">
 			<div class="footer-hd">
 				<div class="foot">
