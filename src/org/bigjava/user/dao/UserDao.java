@@ -90,4 +90,10 @@ public interface UserDao {
 	 * 
 	 */
 	public void deleteCollectMerchant(User user, Merchant merchant);
+	
+	/**
+	 * 冻结用户，修改用户的u_is_freeze，
+	 * 为1时用户冻结，用户不能登录，为2时用户没冻结，可以登录
+	 */
+	public void updateFreeze(int freeze, User user);
 }

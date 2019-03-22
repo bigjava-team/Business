@@ -65,7 +65,7 @@
 
 	$(document).ready(function() {
 		
-		$("#button").click(function() {
+		$("#search").click(function() {
 			
 			var userRoot = $("#select option:selected").val();// 获取下拉列表的值
 			
@@ -76,6 +76,12 @@
 		
 	});
 	
+	/* $(function(){
+		$("#td1").click(function() {
+			window.location.href="User_updateUserStates.action";		
+		});
+	});
+	 */
 </script>
 </head>
 <body id="admin_list_body">
@@ -94,11 +100,9 @@
 		<input type="text" name="queryText" id="input" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
 		<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
 		<span class=" ">
-			<button id="button" class="bs">搜索</button>
+			<button id="search" class="bs">搜索</button>
 		</span>
 	</div>
-	
-	<form action="" method="post">
 		<table id="admin_list_table" cellspacing="0" cellpadding="0" rules="all" width="100%" border="1" bordercolor="gray">
 			<tr id="admin_list_tr1">
 				<td width="8%" align="center">序号</td>
@@ -125,13 +129,19 @@
 					<td align="center"><s:property value="#user.phone" /></td>
 					<td align="center"><s:property value="#user.root" /></td>
 					<td align="center">
-						<input id="td1" type="button" value="冻结" />
+					
+						<s:if test="#user.u_is_freeze == 1">
+							<a href="User_updateUserStates.action?user.u_id=<s:property value="#user.u_id" />">冻结</a>
+						</s:if> 
+						<s:elseif test="#user.u_is_freeze == 2"> 
+							<a href="User_updateUserStates.action?user.u_id=<s:property value="#user.u_id" />">解冻</a>
+	     				</s:elseif> 
+						
 					</td>
 				</tr>
 			</s:iterator>
 			
 		</table>
-		</form>
 		<div id="admin_list_div_page">
 			第<s:property value="#session.paging.presentPage"/>页/<s:property value="#session.paging.page"/>页&nbsp;&nbsp;&nbsp;&nbsp;
 			<s:if test="#session.paging.presentPage != 1">

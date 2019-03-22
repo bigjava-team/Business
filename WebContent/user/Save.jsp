@@ -1,25 +1,10 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<base href="<%=basePath%>">
-
-<title>注册页面</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
-
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>test</title>
 
 <style type="text/css">
 a {
@@ -35,7 +20,6 @@ body {
 	margin: 0;
 	padding: 0;
 }
-
 .button {
 	display: inline-block;
 	border-radius: 4px;
@@ -77,7 +61,8 @@ body {
 }
 
 .geshi {
-	height: 10%;
+	width:90%;
+	height:auto;
 	margin-left: 10%;
 	margin-top: 1%;
 	color: #272727;
@@ -85,13 +70,8 @@ body {
 }
 
 .zhongjian {
+	width:100%;
 	margin-top: 2%;
-	background-image: url(TuPian/图5.jpg);
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	-moz-background-size: 100% 100%;
-	height: 100%;
-	width: 100%;
 }
 
 .right {
@@ -106,7 +86,7 @@ body {
 	float: right;
 	width: 20%;
 	left: 2%;
-	height: 65%;
+	height: 85%;
 	border: #909090 1px solid;
 	background: #fff;
 	color: #333;
@@ -120,12 +100,12 @@ body {
 .neirong {
 	margin-right: 1%;
 	margin-top: 2%;
-	width: auto;
-	height: auto;
 	float: right;
+	
 }
 
 .mytxt {
+	
 	width: 100%;
 	color: #333;
 	line-height: normal;
@@ -290,7 +270,7 @@ img {
 	 
 </script>
 <body>
-	<form action="SaveSuccess.jsp" method="post" onsubmit="return checkFrom();return test()">
+	<form action="SaveSuccess.jsp" method="post" onsubmit="return checkFrom();">
 		<div id="all">
 
 			<div id="header" align="center" class="tou">
@@ -299,8 +279,7 @@ img {
 				<h2>用户注册</h2>
 			</div>
 
-
-			<div class="zhongjian">
+			<div class="zhongjian" style="background:url(TuPian/5.jpg); overflow: hidden;">
 				<div class="left">
 					<div class="neirong">
 
@@ -310,7 +289,7 @@ img {
 							<div class="kuang">
 
 								<div class="tubiao">
-									<img src="TuPian/图1.png" width="140%" height="60%">
+									<img src="TuPian/1.jpg" width="140%" height="60%">
 								</div>
 								<div class="inkuang">
 									<input type="text" class="mytxt" id="email"
@@ -323,12 +302,11 @@ img {
 						</div>
 						<br />
 
-
-						<div class="geshi">
-							用户名
+								<div class="geshi">
+									用户名
 							<div class="kuang">
 								<div class="tubiao">
-									<img src="TuPian/图4.png" width="140%" height="60%">
+									<img src="TuPian/4.jpg" width="140%" height="60%">
 								</div>
 								<div class="inkuang">
 									<input type="text" class="mytxt" id="inputname"
@@ -336,13 +314,13 @@ img {
 								</div>
 							</div>
 						</div>
-						<br />
+						<br /><br />
 
 						<div class="geshi">
 							密码
 							<div class="kuang">
 								<div class="tubiao">
-									<img src="TuPian/图2.png" width="140%" height="60%">
+									<img src="TuPian/2.jpg" width="140%" height="60%">
 								</div>
 								<div class="inkuang">
 									<input type="password" class="mytxt" id="password"
@@ -352,19 +330,20 @@ img {
 
 						</div>
 
-						<br />
+						<br /><br />
 
 						<div class="geshi">
 							邮箱验证码
 							<div class="kuang">
 								<div class="tubiao">
-									<img src="TuPian/图3.png" width="140%" height="60%">
+									<img src="TuPian/3.jpg" width="140%" height="60%">
 								</div>
 								<div class="inkuang">
 									<input type="text" class="mytxt" id="emailpassword"
 										placeholder="填写邮箱验证码">
 								</div>
 								<br />
+							</div>
 							</div>
 							<br />
 							<div class="anniu">
@@ -383,7 +362,6 @@ img {
 									disabled="true" value="注册"  />
 							</div>
 
-						</div>
 
 
 					</div>
