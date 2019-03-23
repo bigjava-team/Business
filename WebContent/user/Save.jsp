@@ -4,14 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>test</title>
+<title>注册页面</title>
+
+
 
 <style type="text/css">
 a {
 	text-decoration: none;
 	color: #424c50;
 }
-
 font {
 	color: grey;
 }
@@ -20,35 +21,12 @@ body {
 	margin: 0;
 	padding: 0;
 }
+.center{
+	width:100%;
+	background:url(TuPian/5.jpg);
+}
 .button {
-	display: inline-block;
-	border-radius: 4px;
-	background-color: #88ada6;
-	border: none;
-	color: #FFFFFF;
-	text-align: center;
-	font-size: 28px;
-	padding: 1%;
-	width: 39%;
-	transition: all 0.5s;
-	cursor: pointer;
-	margin: 5px;
-}
-
-.button span {
-	cursor: pointer;
-	display: inline-block;
-	position: relative;
-	transition: 0.5s;
-}
-
-.button span:after {
-	content: '»';
-	position: absolute;
-	opacity: 0;
-	top: 0;
-	right: -2%;
-	transition: 0.5s;
+	width:20%;
 }
 
 .button:hover span {
@@ -59,54 +37,18 @@ body {
 	opacity: 1;
 	right: 0;
 }
-
-.geshi {
-	width:90%;
-	height:auto;
-	margin-left: 10%;
-	margin-top: 1%;
-	color: #272727;
-	font-family: "宋体";
-}
-
-.zhongjian {
-	width:100%;
+.foot {
 	margin-top: 2%;
+	color: #424c50;
 }
-
-.right {
-	margin-top: 5%;
-	margin-left: 10%;
-	float: left;
-}
-
-.left {
-	margin-right: 10%;
-	margin-top: 7%;
-	float: right;
-	width: 20%;
-	left: 2%;
-	height: 85%;
-	border: #909090 1px solid;
-	background: #fff;
-	color: #333;
-	filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090,
-		direction=120, strength=4);
-	-moz-box-shadow: 2px 2px 10px #909090;
-	-webkit-box-shadow: 2px 2px 10px #909090;
-	box-shadow: 2px 2px 10px #909090;
-}
-
-.neirong {
-	margin-right: 1%;
-	margin-top: 2%;
-	float: right;
-	
+.left{
+	float:left;
+	width:60%;
 }
 
 .mytxt {
-	
-	width: 100%;
+	height:20%;
+	width: 155%;
 	color: #333;
 	line-height: normal;
 	font-family: "Microsoft YaHei", Tahoma, Verdana, SimSun;
@@ -117,7 +59,7 @@ body {
 	font-weight: normal;
 	margin-top: 0px;
 	margin-bottom: 0px;
-	margin-left: 0px;
+	margin-left: 10px;
 	padding-top: 4px;
 	padding-right: 4px;
 	padding-bottom: 4px;
@@ -161,9 +103,19 @@ body {
 	-moz-box-shadow: 0px 0px 5px #007eff;
 	box-shadow: 0px 0px 5px #007eff;
 }
-
-.kuang {
-	margin-top: 10px;
+.right{
+	margin-right: 8%;
+	margin-top:2%;
+	float: right;
+	width: 20%;
+	border: #909090 1px solid;
+	background: #fff;
+	color: #333;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090,
+		direction=120, strength=4);
+	-moz-box-shadow: 2px 2px 10px #909090;
+	-webkit-box-shadow: 2px 2px 10px #909090;
+	box-shadow: 2px 2px 10px #909090;
 }
 
 .yanzhen {
@@ -179,28 +131,26 @@ body {
 	cursor: pointer;
 	border-radius: 12px;
 }
-
-img {
-	vertical-align: text-top;
+.wenzi{
+	margin-left:3%;
+	margin-top: 3%;
+	font-family: "宋体";
 }
 
-.foot {
-	margin-top: 2%;
-	color: #424c50;
+.kuang{
+	margin-top: 5%;
+	float:left;
+	width:50%;
 }
-
-.tubiao {
-	float: left;
-	width: 9%;
+.hebing{
+	width:90%;
+	height:40%;
+	margin-top: 4%;
 }
-
-.inkuang {
-	float: right;
-	margin-right: 10%;
-}
-
-.anniu {
-	text-align: center;
+.tubiao{
+	float:left;
+	width:20%;
+	margin-left: 4%;
 }
 </style>
 
@@ -269,111 +219,20 @@ img {
 	
 	 
 </script>
+</head>
 <body>
-	<form action="SaveSuccess.jsp" method="post" onsubmit="return checkFrom();">
-		<div id="all">
-
-			<div id="header" align="center" class="tou">
-				<a href="loginn.jsp"><img src="TuPian/logo.jpg"></a><img
-					src="TuPian/nuli.gif">
+<form action="SaveSuccess.jsp" method="post" onsubmit="return checkFrom();">
+	<div id="header" align="center" class="tou">
+				<a href="loginn.jsp">
+					<img src="TuPian/logo.jpg">
+				</a>
+					<img src="TuPian/nuli.gif">
 				<h2>用户注册</h2>
-			</div>
+	</div>
 
-			<div class="zhongjian" style="background:url(TuPian/5.jpg); overflow: hidden;">
-				<div class="left">
-					<div class="neirong">
-
-						<div class="geshi">
-							邮箱号码
-
-							<div class="kuang">
-
-								<div class="tubiao">
-									<img src="TuPian/1.jpg" width="140%" height="60%">
-								</div>
-								<div class="inkuang">
-									<input type="text" class="mytxt" id="email"
-										placeholder="填写你常用的邮箱号" >
-
-								</div>
-								<br />
-
-							</div>
-						</div>
-						<br />
-
-								<div class="geshi">
-									用户名
-							<div class="kuang">
-								<div class="tubiao">
-									<img src="TuPian/4.jpg" width="140%" height="60%">
-								</div>
-								<div class="inkuang">
-									<input type="text" class="mytxt" id="inputname"
-										placeholder="用户名最长18个英文">
-								</div>
-							</div>
-						</div>
-						<br /><br />
-
-						<div class="geshi">
-							密码
-							<div class="kuang">
-								<div class="tubiao">
-									<img src="TuPian/2.jpg" width="140%" height="60%">
-								</div>
-								<div class="inkuang">
-									<input type="password" class="mytxt" id="password"
-										placeholder="5-20位英文、数字、符号">
-								</div>
-							</div>
-
-						</div>
-
-						<br /><br />
-
-						<div class="geshi">
-							邮箱验证码
-							<div class="kuang">
-								<div class="tubiao">
-									<img src="TuPian/3.jpg" width="140%" height="60%">
-								</div>
-								<div class="inkuang">
-									<input type="text" class="mytxt" id="emailpassword"
-										placeholder="填写邮箱验证码">
-								</div>
-								<br />
-							</div>
-							</div>
-							<br />
-							<div class="anniu">
-							<input type="submit" class="yanzhen"
-									 value="点击发送验证码"  />
-								
-							</div>
-							<div class="kuang" style="text-align: center">
-								<input type="checkBox"
-									onclick="if (this.checked) {tongyi()} else {butongyi()} 
-								 if (this.checked) {yingcang()} else {xianshi()}
-							">我同意协议<br />
-								<br />
-
-								<input type="submit" style="vertical-align:middle;" id="zhuce"
-									disabled="true" value="注册"  />
-							</div>
-
-
-
-					</div>
-
-
-
-
-				</div>
-
-
-				<div class="right">
-					<textarea cols="70%" rows="30%" disabled="disabled" id="xieyi"
+<div class="center" style="background:url(TuPian/5.jpg); overflow: hidden;">
+<div class="left">
+	<textarea cols="80%" rows="25%" disabled="disabled" id="xieyi"
 						style="border:0px;background:none; float:right; color:#272727;font-size:20px">
 
 注册协议
@@ -390,15 +249,77 @@ img {
 【特别提示】当您按照注册页面提示填写信息、阅读并同意协议且完成全部注册程序后，即表示您已充分阅读、理解并接受协议的全部内容。如您因平台服务与光光发生争议的，适用《光光平台服务协议》处理。如您在使用平台服务过程中与其他用户发生争议的，依您与其他用户达成的协议处理。
 
 阅读协议的过程中，如果您不同意相关协议或其中任何条款约定，您应立即停止注册程序
-</textarea>
+	</textarea>
+</div>
+<div class="right" >
+	<div class="wenzi">
+	邮箱号码
+	</div>
+	<div class="hebing">
+		<div class="tubiao">
+			<img src="TuPian/1.jpg" width="80%" >
+		</div>
+		<div class="kuang">
+			<input type="text" class="mytxt" id="email"placeholder="填写你常用的邮箱号" >
+		</div>
+	</div>
+	<br/><br/><br/>
+	
+	<div class="wenzi">
+		用户名
+	</div>
+	<div class="hebing">
+		<div class="tubiao">
+			<img src="TuPian/2.jpg" width="80%" >
+		</div>
+		<div class="kuang">
+			<input type="text" class="mytxt" id="inputname"placeholder="用户名最长18个英文" >
+		</div>
+	</div>
+	<br/><br/><br/>
+	
+	<div class="wenzi">
+	密码
+	</div>
+	<div class="hebing">
+		<div class="tubiao">
+			<img src="TuPian/3.jpg" width="80%" >
+		</div>
+		<div class="kuang">
+			<input type="password" class="mytxt" id="password"placeholder="5-20位英文、数字、符号" >
+		</div>
+	</div>
+	<br/><br/><br/>
+	
+	<div class="wenzi">
+	邮箱验证码
+	</div>
+	<div class="hebing">
+		<div class="tubiao">
+			<img src="TuPian/4.jpg" width="80%" >
+		</div>
+		<div class="kuang">
+			<input type="text" class="mytxt" id="emailpassword"placeholder="填写邮箱验证码" >
+		</div>
+	</div>
+	<br/><br/><br/>
+	
+		<div style="text-align:center;">
+	<input type="submit" class="yanzhen"value="点击发送验证码"  />
+			<br/>
+	
+		<input type="checkBox"
+		onclick="if (this.checked) {tongyi()} else {butongyi()} 
+				 if (this.checked) {yingcang()} else {xianshi()}">
+								 我同意协议<br/><br/>
+		<input type="submit" class="button" style="vertical-align:middle;" id="zhuce"disabled="true" value="注册"  />
+							
+		</div>	
+		<br/><br/>
+</div>
+</div>
 
-
-
-				</div>
-
-			</div>
-
-			<div id="footer" style="clear:both;text-align:center;">
+<div id="footer" style="clear:both;text-align:center;">
 
 				<div class="foot">
 					<div class="footer-hd">
@@ -433,7 +354,6 @@ img {
 					</div>
 				</div>
 			</div>
-		</div>
-	</form>
+			</form>
 </body>
 </html>
