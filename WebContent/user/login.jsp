@@ -321,7 +321,10 @@ img {
 			<div id="menu" class="left" > 	
 			<form action="User_login.action" method="post" align="center" class="inleft" onsubmit="return checkAll()">
 				<div class="geshi">
-					&nbsp;<br /> 
+					<span style="font-size:12px; color:red;">
+						${session.loginError }
+						${session.loginFreezeError}
+					</span><br /> 
 					<div class="kuang">
 					<img src="TuPian/tubiao.jpg" width="8%" height="8%">
 						<input type="text" name="user.username" class="mytxt" id="inputname" placeholder="用户名" >

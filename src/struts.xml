@@ -10,15 +10,17 @@
 	<package name="shop" extends="struts-default" namespace="/">
 
 		<!-- 配置自定义拦截器 -->
-		<!-- <interceptors>
+		<interceptors>
 			<interceptor name="privilegeInterceptor"
 				class="org.bigjava.function.PrivilegeInterceptor" />
-		</interceptors> -->
+		</interceptors>
 
 		<!-- 全局result返回结果 -->
-		<!-- <global-results>
+		<global-results>
 			<result name="login">/user/login.jsp</result>
-		</global-results> -->
+			<result name="ERROR">/user/login.jsp</result>
+			<result name="loginError">/user/login.jsp</result>
+		</global-results>
 
 
 
@@ -46,7 +48,7 @@
 
 			<!-- 模糊搜索分页查询页面 -->
 			<result name="showAllSuccess">/admin/user/list.jsp</result>
-			
+
 			<!-- 冻结用户，解冻用户 -->
 			<result name="updateUserStatesSuccess" type="redirectAction">User_showAll?user.root=0&amp;paging.presentPage=0
 			</result>

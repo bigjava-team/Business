@@ -86,9 +86,9 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 				String hql = "from User where username like ?";
 				if (root != 0) {
 					hql += " and root = ?";
-					query = session.createQuery(hql).setString(0, username + "%").setInteger(1, root);// 模糊查询规定权限的用户信息
+					query = session.createQuery(hql).setString(0, "%" + username + "%").setInteger(1, root);// 模糊查询规定权限的用户信息
 				} else {
-					query = session.createQuery(hql).setString(0, username + "%");// 模糊查询
+					query = session.createQuery(hql).setString(0, "%" + username + "%");// 模糊查询
 				}
 				query.setFirstResult(page.getStart());// 分页查询从哪一条开始查
 				query.setMaxResults(page.getPagesize());// 分页查询查多少条
@@ -110,9 +110,9 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		List<Long> list = null;
 		if (u_root != 0) {
 			hql += " and root = ?";
-			list = this.getHibernateTemplate().find(hql, new Object[] { username + "%", u_root });// 通过模糊搜索查询规定权限的用户一共有多少条
+			list = this.getHibernateTemplate().find(hql, new Object[] { "%" + username + "%", u_root });// 通过模糊搜索查询规定权限的用户一共有多少条
 		} else {
-			list = this.getHibernateTemplate().find(hql, username + "%");// 模糊查询一共有多少条数据
+			list = this.getHibernateTemplate().find(hql, "%" + username + "%");// 模糊查询一共有多少条数据
 		}
 		if (list != null && list.size() != 0) {
 			totalNumber = list.get(0).intValue();// 获取查询到的数据条数
@@ -147,24 +147,8 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	@Override
 	public void updateFreeze(int freeze, User user) {
 		System.out.println("进入UserdaoImpl...冻结方法");
-		user.setU_is_freeze(freeze); //替换实体层的用户状态
-		this.getHibernateTemplate().update(user); //将用户状态修改
-	}
-
-	// 收藏店铺
-	@Override
-	public void collectMerchant(User user, Merchant merchant) {
-		// TODO Auto-generated method stub
-		System.out.println("开始执行collectMerchant方法");
-
-	}
-
-	// 删除收藏的店铺
-	@Override
-	public void deleteCollectMerchant(User user, Merchant merchant) {
-		// TODO Auto-generated method stub
-		System.out.println("开始执行deleteCollectMerchant方法");
-
+		user.setU_is_freeze(freeze); // 替换实体层的用户状态
+		this.getHibernateTemplate().update(user); // 将用户状态修改
 	}
 
 }

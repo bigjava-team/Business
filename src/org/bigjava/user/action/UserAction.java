@@ -91,24 +91,25 @@ public class UserAction extends ActionSupport {
 			List<User> userList = userBiz.loginUser(user);
 			if (userList.size() == 0) {
 				System.out.println("用户名或密码错误");
+				ActionContext.getContext().getSession().put("loginError", "用户名或密码错误");
 				return "loginError";
 			} else {
 				User user = userList.get(0);
 				// 将user存入session中
 				ActionContext.getContext().getSession().put("loginUser", user);
-				if (user.getRoot() == 1) {
+				if (user.getRoot() == 1 && user.getU_is_freeze() == 1) {
 					System.out.println("普通用户登录");
+					System.out.println("解冻状态");
 					return "loginSuccess";
-				} else if (user.getRoot() == 2) {
+				} else if (user.getRoot() == 2 && user.getU_is_freeze() == 1) {
 					System.out.println("店长登录");
+					System.out.println("解冻状态");
 					return "loginStore";
 				} else if (user.getRoot() == 3) {
 					System.out.println("管理员登录");
 					return "adminLogin";
-				} else if (user.getU_is_freeze() == 1) {
-					System.out.println("解冻状态");
-					return "loginSuccess";
 				} else if (user.getU_is_freeze() == 2) {
+					ActionContext.getContext().getSession().put("loginFreezeError", "用户已冻结");
 					System.out.println("冻结状态，用户不能登录");
 					return "loginError";
 				}

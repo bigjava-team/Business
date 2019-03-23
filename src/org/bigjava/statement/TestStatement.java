@@ -11,6 +11,9 @@ import org.bigjava.category.dao.CategoryDao;
 import org.bigjava.category.entity.Category;
 import org.bigjava.categorysecond.dao.CategorySecondDao;
 import org.bigjava.categorysecond.entity.CategorySecond;
+import org.bigjava.collectMerchant.dao.CollectMerchantDao;
+import org.bigjava.collectMerchant.entity.CollectMerchant;
+import org.bigjava.collectProduct.dao.CollectProductDao;
 import org.bigjava.function.Paging;
 import org.bigjava.function.SendMail;
 import org.bigjava.merchant.dao.MerchantDao;
@@ -37,22 +40,39 @@ public class TestStatement {
 	public static ProductDao productDao = (ProductDao) app.getBean("productDao");
 	public static OrderItemDao orderItemDao = (OrderItemDao) app.getBean("orderItemDao");
 	public static OrdersDao ordersDao = (OrdersDao) app.getBean("ordersDao");
+	public static CollectMerchantDao collectMerchantDao = (CollectMerchantDao) app.getBean("collectMerchantDao");
+	public static CollectProductDao collectProductDao = (CollectProductDao) app.getBean("collectProductDao");
 	public static Scanner input = new Scanner(System.in);
+	
+	// 分页查询
+	public static void queryAllCollectMerchant() {
+		System.out.println("输入查询的收藏用户的id");
+		int u_id = input.nextInt();
+		
+		int totalNumber = collectMerchantDao.queryCollectMerchant_number(u_id);
+		
+		System.out.println("输入开始查询的页数");
+		int page = input.nextInt();
+		
+		Paging paging = new Paging(page, totalNumber, 1);
+		
+		List<CollectMerchant> listCollectMerchant = collectMerchantDao.queryCollectMerchant_Uid(u_id, paging);
+		System.out.println(listCollectMerchant);
+	}
 	
 	// 删除收藏的店铺
 	public static void deleteCollectMerchant() {
-		System.out.println("输入要删除收藏的店铺的用户ID");
-		int u_id = input.nextInt();
+		System.out.println("输入收藏店铺的id");
+		int CM_id = input.nextInt();
 		
-		System.out.println("输入要删除的收藏店铺的ID");
-		int m_id = input.nextInt();
+		CollectMerchant collectMerchant = collectMerchantDao.queryCollectMerchant_id(CM_id);
 		
-		
+		collectMerchantDao.deleteCollectMerchant(collectMerchant);
 	}
 	
 	// 收藏店铺
 	public static void CollectMerchant() {
-		System.out.println("输入收藏店铺的用户ID");
+		System.out.println("输入收藏店铺的用户id");
 		int u_id = input.nextInt();
 		
 		User user = userDao.query(u_id);
@@ -62,7 +82,9 @@ public class TestStatement {
 		
 		Merchant merchant = merchantDao.queryMerchant(m_id);
 		
-		userDao.collectMerchant(user, merchant);
+		CollectMerchant collectMerchant = new CollectMerchant();
+		
+		collectMerchantDao.addCollectMerchant(collectMerchant, user, merchant);
 	}
 	
 	// 添加订单

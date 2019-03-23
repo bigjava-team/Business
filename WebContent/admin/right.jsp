@@ -9,8 +9,12 @@
 </head>
 <body id="home_right_body">
 	<div id="divSY">
-		系统首页
+		管理员后台管理首页
 	</div>
-	<div>进行判断，如果登陆了就登陆成功，否则登录失败</div>
+	<center>
+		<div>登录成功！</div>
+		<div>欢迎您，管理员：${session.loginUser.username } </div>
+	</center>	
+	
 </body>
 </html>

@@ -25,6 +25,7 @@ public class EncodingFilter implements Filter {
 		request.setCharacterEncoding(encoding);
 		response.setCharacterEncoding(encoding);
 		chain.doFilter(request, response);
+		System.out.println(encoding);
 
 	}
 
@@ -32,5 +33,6 @@ public class EncodingFilter implements Filter {
 	public void init(FilterConfig config) throws ServletException {
 		// 接收web.xml配置文件中的初始参数
 		encoding = config.getInitParameter("CharsetEncoding");
+				
 	}
 }

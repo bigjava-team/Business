@@ -9,8 +9,8 @@ public class UserTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ApplicationContext app = new ClassPathXmlApplicationContext("app.xml");
-//		UserDao userDao = (UserDao) app.getBean("userDaoImpl");
 		
+		TestStatement.queryAllCollectMerchant();
 	}
 
 }

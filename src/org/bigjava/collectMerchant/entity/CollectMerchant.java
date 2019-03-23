@@ -42,7 +42,7 @@ public class CollectMerchant {
 
 	@Override
 	public String toString() {
-		return "CollectMerchant [CM_id=" + CM_id + "]";
+		return "CollectMerchant [CM_id=" + CM_id + ", merchant=" + merchant + "]";
 	}
 	
 }
