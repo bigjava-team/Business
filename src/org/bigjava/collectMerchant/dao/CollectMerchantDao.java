@@ -45,6 +45,4 @@ public interface CollectMerchantDao {
 	 */
 	public int queryCollectMerchant_number(int u_id);
 	
-	
-
 }

@@ -121,4 +121,18 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 		System.out.println("查询到的总条数" + totalNumber);
 		return totalNumber;
 	}
+
+	// 查询最新的4个商品
+	@Override
+	public List<Product> queryProduct_time() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	// 查询最热的4个商品
+	@Override
+	public List<Product> queryProduct_hot() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

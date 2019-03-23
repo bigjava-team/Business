@@ -151,20 +151,4 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		this.getHibernateTemplate().update(user); // 将用户状态修改
 	}
 
-	// 收藏店铺
-	@Override
-	public void collectMerchant(User user, Merchant merchant) {
-		// TODO Auto-generated method stub
-		System.out.println("开始执行collectMerchant方法");
-
-	}
-
-	// 删除收藏的店铺
-	@Override
-	public void deleteCollectMerchant(User user, Merchant merchant) {
-		// TODO Auto-generated method stub
-		System.out.println("开始执行deleteCollectMerchant方法");
-
-	}
-
 }

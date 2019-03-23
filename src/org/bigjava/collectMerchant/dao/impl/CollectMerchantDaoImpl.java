@@ -54,13 +54,13 @@ public class CollectMerchantDaoImpl extends HibernateDaoSupport implements Colle
 		List<CollectMerchant> listCollectMerchant = this.getHibernateTemplate().executeFind(new HibernateCallback() {
 
 			@Override
-			public CollectMerchant doInHibernate(Session session) throws HibernateException, SQLException {
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				// TODO Auto-generated method stub
 				String hql = "from CollectMerchant where u_id = ?";
 				Query query = session.createQuery(hql).setInteger(0, u_id);
 				query.setFirstResult(paging.getStart());
 				query.setMaxResults(paging.getPagesize());
-				return (CollectMerchant) query.list();
+				return query.list();
 			}
 		});
 		return listCollectMerchant;
@@ -73,7 +73,7 @@ public class CollectMerchantDaoImpl extends HibernateDaoSupport implements Colle
 		System.out.println("开始执行queryCollectMerchant_number方法");
 		String hql = "select count(*) from CollectMerchant where u_id = ?";
 		int number = 0;
-		List<Integer> listNumber = this.getHibernateTemplate().find(hql, u_id);
+		List<Long> listNumber = this.getHibernateTemplate().find(hql, u_id);
 		if (listNumber.size() !=0 && listNumber != null) {
 			number = listNumber.get(0).intValue();
 		}
