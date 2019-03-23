@@ -38,7 +38,7 @@ public class CategorySecondDaoImpl extends HibernateDaoSupport implements Catego
 			@Override
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {// 通过hibernateTemplate回调sessionFactory方法
 				// TODO Auto-generated method stub
-				Query query = session.createQuery("from CategorySecond where cs_name like ?").setString(0, searchCategorySecond + "%");// 模糊查询
+				Query query = session.createQuery("from CategorySecond where cs_name like ?").setString(0, "%"+searchCategorySecond + "%");// 模糊查询
 				query.setFirstResult(page.getStart());// 分页查询从哪一条开始查
 				query.setMaxResults(page.getPagesize());// 分页查询查多少条
 
