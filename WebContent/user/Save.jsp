@@ -117,7 +117,7 @@ body {
 	font-weight: normal;
 	margin-top: 0px;
 	margin-bottom: 0px;
-	margin-left: 0px;
+	margin-left: 10px;
 	padding-top: 4px;
 	padding-right: 4px;
 	padding-bottom: 4px;
@@ -164,6 +164,7 @@ body {
 
 .kuang {
 	margin-top: 10px;
+	width:100%;
 }
 
 .yanzhen {
@@ -274,30 +275,25 @@ img {
 		<div id="all">
 
 			<div id="header" align="center" class="tou">
-				<a href="loginn.jsp"><img src="TuPian/logo.jpg"></a><img
-					src="TuPian/nuli.gif">
+				<a href="loginn.jsp"><img src="../TuPian/logo.jpg"></a><img
+					src="../TuPian/nuli.gif">
 				<h2>用户注册</h2>
 			</div>
 
-			<div class="zhongjian" style="background:url(TuPian/5.jpg); overflow: hidden;">
+			<div class="zhongjian" style="background:url(../TuPian/5.jpg); overflow: hidden;">
 				<div class="left">
 					<div class="neirong">
 
 						<div class="geshi">
 							邮箱号码
-
 							<div class="kuang">
-
 								<div class="tubiao">
-									<img src="TuPian/1.jpg" width="140%" height="60%">
+									<img src="../TuPian/1.jpg" width="140%" height="60%">
 								</div>
 								<div class="inkuang">
 									<input type="text" class="mytxt" id="email"
 										placeholder="填写你常用的邮箱号" >
-
 								</div>
-								<br />
-
 							</div>
 						</div>
 						<br />
@@ -306,7 +302,7 @@ img {
 									用户名
 							<div class="kuang">
 								<div class="tubiao">
-									<img src="TuPian/4.jpg" width="140%" height="60%">
+									<img src="../TuPian/4.jpg" width="140%" height="60%">
 								</div>
 								<div class="inkuang">
 									<input type="text" class="mytxt" id="inputname"
@@ -320,7 +316,7 @@ img {
 							密码
 							<div class="kuang">
 								<div class="tubiao">
-									<img src="TuPian/2.jpg" width="140%" height="60%">
+									<img src="../TuPian/2.jpg" width="140%" height="60%">
 								</div>
 								<div class="inkuang">
 									<input type="password" class="mytxt" id="password"
@@ -336,7 +332,7 @@ img {
 							邮箱验证码
 							<div class="kuang">
 								<div class="tubiao">
-									<img src="TuPian/3.jpg" width="140%" height="60%">
+									<img src="../TuPian/3.jpg" width="140%" height="60%">
 								</div>
 								<div class="inkuang">
 									<input type="text" class="mytxt" id="emailpassword"
