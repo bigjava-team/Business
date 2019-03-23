@@ -25,8 +25,6 @@ public class EncodingFilter implements Filter {
 		request.setCharacterEncoding(encoding);
 		response.setCharacterEncoding(encoding);
 		chain.doFilter(request, response);
-		System.out.println(encoding);
-
 	}
 
 	// ≥ı ºªØ
