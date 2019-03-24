@@ -93,7 +93,8 @@
 		<font style="float:right;padding-right:10%">
 		<a href="????"><font size="2px">光光网首页</font></a> |   
 		<a href="????"><font size="2px">我买的宝贝</font></a>	|
-		<a href="????"><font size="2px">我卖的宝贝 </font></a>
+		<a href="????"><font size="2px">我卖的宝贝 </font></a>|
+		<a href="????"><font size="2px">店铺管理 </font></a>
 		</font>
 				</div>
 				

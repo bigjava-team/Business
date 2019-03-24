@@ -236,9 +236,9 @@ body {
 			<h2>用户注册</h2>
 		</div>
 		<div class="center"
-			style="background: url(TuPian/5.jpg); overflow: hidden;">
+			style="background: url(../TuPian/5.jpg); overflow: hidden;">
 			<div class="left">
-				<textarea cols="80%" rows="25%" disabled="disabled" id="xieyi"
+				<textarea cols="70%" rows="25%" disabled="disabled" id="xieyi"
 					style="border: 0px; background: none; float: right; color: #272727; font-size: 20px">
 
 注册协议
@@ -261,7 +261,7 @@ body {
 				<div class="wenzi">邮箱号码</div>
 				<div class="hebing">
 					<div class="tubiao">
-						<img src="TuPian/1.jpg" width="80%">
+						<img src="../TuPian/1.jpg" width="80%">
 					</div>
 					<div class="kuang">
 						<input type="text" class="mytxt" id="email"
@@ -273,7 +273,7 @@ body {
 				<div class="wenzi">用户名</div>
 				<div class="hebing">
 					<div class="tubiao">
-						<img src="TuPian/2.jpg" width="80%">
+						<img src="../TuPian/2.jpg" width="80%">
 					</div>
 					<div class="kuang">
 						<input type="text" class="mytxt" id="inputname"
@@ -285,7 +285,7 @@ body {
 				<div class="wenzi">密码</div>
 				<div class="hebing">
 					<div class="tubiao">
-						<img src="TuPian/3.jpg" width="80%">
+						<img src="../TuPian/3.jpg" width="80%">
 					</div>
 					<div class="kuang">
 						<input type="password" class="mytxt" id="password"
@@ -297,7 +297,7 @@ body {
 				<div class="wenzi">邮箱验证码</div>
 				<div class="hebing">
 					<div class="tubiao">
-						<img src="TuPian/4.jpg" width="80%">
+						<img src="../TuPian/4.jpg" width="80%">
 					</div>
 					<div class="kuang">
 						<input type="text" class="mytxt" id="emailpassword"

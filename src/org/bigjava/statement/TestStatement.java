@@ -465,7 +465,7 @@ public class TestStatement {
 	
 	// ×¢²áµêÆÌ
 	public static void registerMerchant() {
-		System.out.println("ÊäÈë×¢²áµêÆÌµÄid");
+		System.out.println("ÊäÈë×¢²áµêÆÌyonghuµÄid");
 		int u_id = input.nextInt();
 		System.out.println("ÊäÈëµêÆÌÃû");
 		String m_name = input.next();
