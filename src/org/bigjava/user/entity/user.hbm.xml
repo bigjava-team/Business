@@ -38,7 +38,7 @@
 			<one-to-many class="org.bigjava.orderitem.entity.Orderitem" /><!-- 一对多指向订单项Orderitem类 -->
 		</set>
 		
-		<one-to-one name="merchant" property-ref="user" cascade="all" /><!-- 一对一指向店铺类 -->
+		<one-to-one name="merchant" class="org.bigjava.merchant.entity.Merchant" property-ref="user" cascade="delete"  /><!-- 一对一指向店铺类 -->
 		
 		<set name="setCollectMerchant" cascade="delete">
 			<key column="u_id" /><!-- 连接CollectMerchant表的外键名 -->

@@ -52,6 +52,7 @@
 			<!-- 冻结用户，解冻用户 -->
 			<result name="updateUserStatesSuccess" type="redirectAction">User_showAll?user.root=0&amp;paging.presentPage=0
 			</result>
+			
 		</action>
 
 		<!-- 后台一级分类管理Action -->
@@ -88,8 +89,7 @@
 
 	<!-- ajax 异步校验 -->
 	<package name="json" extends="json-default" namespace="/">
-		<action name="ajax_*"
-			class="org.bigjava.user.action.UserAction" method="{1}">
+		<action name="ajax_*" class="org.bigjava.user.action.UserAction" method="{1}">
 			<result type="json"></result>
 		</action>
 	</package>
