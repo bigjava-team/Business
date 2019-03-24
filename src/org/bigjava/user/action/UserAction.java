@@ -6,6 +6,8 @@ import java.util.Map;
 import org.apache.struts2.ServletActionContext;
 import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
+import org.bigjava.function.SendMail;
+import org.bigjava.listStore.ListStore;
 import org.bigjava.user.biz.UserBiz;
 import org.bigjava.user.entity.User;
 
@@ -20,6 +22,26 @@ public class UserAction extends ActionSupport {
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
 	private Paging paging;// 声明Paging类
+	
+	private String emailAddress;// 邮箱号
+	
+	private ListStore listStore;// 存储参数的实体层
+	
+	public ListStore getListStore() {
+		return listStore;
+	}
+
+	public void setListStore(ListStore listStore) {
+		this.listStore = listStore;
+	}
+
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
 
 	public Paging getPaging() {
 		return paging;
@@ -235,5 +257,24 @@ public class UserAction extends ActionSupport {
 		ServletActionContext.getRequest().getSession().invalidate();
 		return "close";
 	}
-
+	
+	/**
+	 * 发送邮件
+	 */
+	public String checkEmail() {
+		System.out.println("发送邮件");
+		String content = SendMail.randomNumber();// 验证码
+		String subject = "光光网注册验证码";// 邮箱主题
+		String emailTo = emailAddress;// 收件人的邮箱
+		
+		listStore.setContent(content);
+		
+		if (SendMail.sendMail(emailTo, content, subject)) {
+			System.out.println("发送成功");
+		}
+		
+		System.out.println("参数" + listStore);
+		return SUCCESS;
+	}
+	
 }

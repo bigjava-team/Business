@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib  prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,165 +10,164 @@
 
 
 <style type="text/css">
-a {
-	text-decoration: none;
-	color: #424c50;
-}
-
-font {
-	color: grey;
-}
-
-body {
-	margin: 0;
-	padding: 0;
-}
-
-.center {
-	width: 100%;
-	background: url(TuPian/5.jpg);
-}
-
-.button {
-	width: 20%;
-}
-
-.button:hover span {
-	padding-right: 20%;
-}
-
-.button:hover span:after {
-	opacity: 1;
-	right: 0;
-}
-
-.foot {
-	margin-top: 2%;
-	color: #424c50;
-}
-
-.left {
-	float: left;
-	width: 60%;
-}
-
-.mytxt {
-	height: 20%;
-	width: 155%;
-	color: #333;
-	line-height: normal;
-	font-family: "Microsoft YaHei", Tahoma, Verdana, SimSun;
-	font-style: normal;
-	font-variant: normal;
-	font-size-adjust: none;
-	font-stretch: normal;
-	font-weight: normal;
-	margin-top: 0px;
-	margin-bottom: 0px;
-	margin-left: 10px;
-	padding-top: 4px;
-	padding-right: 4px;
-	padding-bottom: 4px;
-	padding-left: 4px;
-	font-size: 15px;
-	outline-width: medium;
-	outline-style: none;
-	outline-color: invert;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
-	border-bottom-left-radius: 3px;
-	border-bottom-right-radius: 3px;
-	text-shadow: 0px 1px 2px #fff;
-	background-attachment: scroll;
-	background-repeat: repeat-x;
-	background-position-x: left;
-	background-position-y: top;
-	background-size: auto;
-	background-origin: padding-box;
-	background-clip: border-box;
-	background-color: rgb(255, 255, 255);
-	margin-right: 8px;
-	border-top-color: #ccc;
-	border-right-color: #ccc;
-	border-bottom-color: #ccc;
-	border-left-color: #ccc;
-	border-top-width: 1px;
-	border-right-width: 1px;
-	border-bottom-width: 1px;
-	border-left-width: 1px;
-	border-top-style: solid;
-	border-right-style: solid;
-	border-bottom-style: solid;
-	border-left-style: solid;
-	font-family: "Microsoft YaHei", Tahoma, Verdana, SimSun;
-}
-
-.mytxt:focus {
-	border: 1px solid #fafafa;
-	-webkit-box-shadow: 0px 0px 6px #007eff;
-	-moz-box-shadow: 0px 0px 5px #007eff;
-	box-shadow: 0px 0px 5px #007eff;
-}
-
-.kuang {
-	margin-top: 10px;
-	width: 100%;
-}
-
-.right {
-	margin-right: 8%;
-	margin-top: 2%;
-	float: right;
-	width: 20%;
-	border: #909090 1px solid;
-	background: #fff;
-	color: #333;
-	filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090,
-		direction=120, strength=4);
-	-moz-box-shadow: 2px 2px 10px #909090;
-	-webkit-box-shadow: 2px 2px 10px #909090;
-	box-shadow: 2px 2px 10px #909090;
-}
-
-.yanzhen {
-	background-color: #4CAF50;
-	border: none;
-	color: white;
-	padding: 15px 32px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	margin: 4px 2px;
-	cursor: pointer;
-	border-radius: 12px;
-}
-
-.wenzi {
-	margin-left: 3%;
-	margin-top: 3%;
-	font-family: "宋体";
-}
-
-.kuang {
-	margin-top: 5%;
-	float: left;
-	width: 50%;
-}
-
-.hebing {
-	width: 90%;
-	height: 40%;
-	margin-top: 4%;
-}
-
-.tubiao {
-	float: left;
-	width: 20%;
-	margin-left: 4%;
-}
+	a {
+		text-decoration: none;
+		color: #424c50;
+	}
+	
+	font {
+		color: grey;
+	}
+	
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	
+	.center {
+		width: 100%;
+		background: url(../TuPian/5.jpg);
+	}
+	
+	.button {
+		width: 20%;
+	}
+	
+	.button:hover span {
+		padding-right: 20%;
+	}
+	
+	.button:hover span:after {
+		opacity: 1;
+		right: 0;
+	}
+	
+	.foot {
+		margin-top: 2%;
+		color: #424c50;
+	}
+	
+	.left {
+		float: left;
+		width: 60%;
+	}
+	
+	.mytxt {
+		height: 20%;
+		width: 155%;
+		color: #333;
+		line-height: normal;
+		font-family: "Microsoft YaHei", Tahoma, Verdana, SimSun;
+		font-style: normal;
+		font-variant: normal;
+		font-size-adjust: none;
+		font-stretch: normal;
+		font-weight: normal;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		margin-left: 10px;
+		padding-top: 4px;
+		padding-right: 4px;
+		padding-bottom: 4px;
+		padding-left: 4px;
+		font-size: 15px;
+		outline-width: medium;
+		outline-style: none;
+		outline-color: invert;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
+		text-shadow: 0px 1px 2px #fff;
+		background-attachment: scroll;
+		background-repeat: repeat-x;
+		background-position-x: left;
+		background-position-y: top;
+		background-size: auto;
+		background-origin: padding-box;
+		background-clip: border-box;
+		background-color: rgb(255, 255, 255);
+		margin-right: 8px;
+		border-top-color: #ccc;
+		border-right-color: #ccc;
+		border-bottom-color: #ccc;
+		border-left-color: #ccc;
+		border-top-width: 1px;
+		border-right-width: 1px;
+		border-bottom-width: 1px;
+		border-left-width: 1px;
+		border-top-style: solid;
+		border-right-style: solid;
+		border-bottom-style: solid;
+		border-left-style: solid;
+		font-family: "Microsoft YaHei", Tahoma, Verdana, SimSun;
+	}
+	
+	.mytxt:focus {
+		border: 1px solid #fafafa;
+		-webkit-box-shadow: 0px 0px 6px #007eff;
+		-moz-box-shadow: 0px 0px 5px #007eff;
+		box-shadow: 0px 0px 5px #007eff;
+	}
+	
+	.kuang {
+		margin-top: 10px;
+		width: 100%;
+	}
+	
+	.right {
+		margin-right: 8%;
+		margin-top: 2%;
+		float: right;
+		width: 20%;
+		border: #909090 1px solid;
+		background: #fff;
+		color: #333;
+		filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090,
+			direction=120, strength=4);
+		-moz-box-shadow: 2px 2px 10px #909090;
+		-webkit-box-shadow: 2px 2px 10px #909090;
+		box-shadow: 2px 2px 10px #909090;
+	}
+	
+	.check_email {
+		background-color: #4CAF50;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
+		border-radius: 12px;
+	}
+	
+	.wenzi {
+		margin-left: 3%;
+		margin-top: 3%;
+		font-family: "宋体";
+	}
+	
+	.kuang {
+		margin-top: 5%;
+		float: left;
+		width: 50%;
+	}
+	
+	.hebing {
+		width: 90%;
+		height: 40%;
+		margin-top: 4%;
+	}
+	
+	.tubiao {
+		float: left;
+		width: 20%;
+		margin-left: 4%;
+	}
 </style>
-
 <script type="text/javascript">
 	//按钮提示功能
 	function tishi() {
@@ -198,7 +198,11 @@ body {
 		var youxiang = document.getElementById("email").value;
 		var yanzheng = document.getElementById("emailpassword").value;
 		reg = /^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/gi;
-
+		
+		var checkEmail = document.getElementById('checkEmail').value;
+		var text_email = $("#emailpassword").val();// 文本框中输入的验证码
+		alert(checkEmail);
+		
 		if (username == null || username == "") {
 			alert("请输入用户名!");
 			return false;
@@ -220,23 +224,92 @@ body {
 		} else if (!reg.test(email.value)) {
 			alert("邮件格式不正确，请重新输入!");
 			return false;
+		}else if (text_email != checkEmail) {
+			alert("验证码输入错误");
+			return false;
 		}
 
 		return true;
 	}
 </script>
+
+<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		// 发送邮件
+		$(".check_email").click(function() {
+			var email = $("#email").val();
+			reg = /^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/gi;
+			
+			if (!reg.test(email)) {
+				alert("邮件格式不正确，请重新输入!");
+				return;
+			}
+			
+			var params = {
+				emailAddress : email
+			}
+			
+			$.ajax({
+				url: "ajax_checkEmail",
+				type: "post",
+				data: params,
+				dataType: "json",
+				success:function(data, textStatus) {
+					$("input[name='listStore.content']").val(data.listStore.content);
+					alert("成功");
+					
+				},error:function(data, textStatus) {
+					alert("错误");
+					return;
+				}
+			});
+		});
+		
+		// 校验用户名已存在
+		$("input[name='user.username']").keyup(function() {
+			
+			var user_username = document.getElementById("inputname").value;
+			
+			if (user_username == null || user_username == "") {
+				alert("用户名不能为空");
+				return;
+			}
+			
+			var params = {
+				"user.username" : user_username
+			}
+			
+			$.ajax({
+				url: "ajax_checkUsername",
+				type: "post",
+				data: params,
+				dataType: "json",
+				success:function(data, textStatus) {
+					$("#checkUsername").text(data.check);
+					
+				},error:function(data, textStatus) {
+					alert("错误");
+					return;
+				}
+			});
+			
+		});
+	});
+</script>
 </head>
 <body>
-	<form action="SaveSuccess.jsp" method="post"
+	<form action="User_register" method="post"
 		onsubmit="return checkFrom();">
-
+		<input type="hidden" name="listStore.content" id="checkEmail" />
 		<div id="header" align="center" class="tou">
 			<a href="loginn.jsp"><img src="../TuPian/logo.jpg"></a><img
 				src="../TuPian/nuli.gif">
 			<h2>用户注册</h2>
 		</div>
 		<div class="center"
-			style="background: url(TuPian/5.jpg); overflow: hidden;">
+			style="background: url(../TuPian/5.jpg); overflow: hidden;">
 			<div class="left">
 				<textarea cols="80%" rows="25%" disabled="disabled" id="xieyi"
 					style="border: 0px; background: none; float: right; color: #272727; font-size: 20px">
@@ -261,11 +334,10 @@ body {
 				<div class="wenzi">邮箱号码</div>
 				<div class="hebing">
 					<div class="tubiao">
-						<img src="TuPian/1.jpg" width="80%">
+						<img src="../TuPian/1.jpg" width="80%">
 					</div>
 					<div class="kuang">
-						<input type="text" class="mytxt" id="email"
-							placeholder="填写你常用的邮箱号">
+						<input type="text" name="user.email" class="mytxt" id="email" placeholder="填写你常用的邮箱号">
 					</div>
 				</div>
 				<br /> <br /> <br />
@@ -273,11 +345,11 @@ body {
 				<div class="wenzi">用户名</div>
 				<div class="hebing">
 					<div class="tubiao">
-						<img src="TuPian/2.jpg" width="80%">
+						<img src="../TuPian/2.jpg" width="80%">
 					</div>
 					<div class="kuang">
-						<input type="text" class="mytxt" id="inputname"
-							placeholder="用户名最长18个英文">
+						<input type="text" name="user.username" class="mytxt" id="inputname" placeholder="用户名最长18个英文"><br/>
+						<span id="checkUsername" style="color: red;"></span>
 					</div>
 				</div>
 				<br /> <br /> <br />
@@ -285,10 +357,10 @@ body {
 				<div class="wenzi">密码</div>
 				<div class="hebing">
 					<div class="tubiao">
-						<img src="TuPian/3.jpg" width="80%">
+						<img src="../TuPian/3.jpg" width="80%">
 					</div>
 					<div class="kuang">
-						<input type="password" class="mytxt" id="password"
+						<input type="password" name="user.password" class="mytxt" id="password"
 							placeholder="5-20位英文、数字、符号">
 					</div>
 				</div>
@@ -297,7 +369,7 @@ body {
 				<div class="wenzi">邮箱验证码</div>
 				<div class="hebing">
 					<div class="tubiao">
-						<img src="TuPian/4.jpg" width="80%">
+						<img src="../TuPian/4.jpg" width="80%">
 					</div>
 					<div class="kuang">
 						<input type="text" class="mytxt" id="emailpassword"
@@ -307,14 +379,13 @@ body {
 				<br /> <br /> <br />
 
 				<div style="text-align: center;">
-					<input type="submit" class="yanzhen" value="点击发送验证码" /> <br /> <input
-						type="checkBox"
-						onclick="if (this.checked) {tongyi()} else {butongyi()} 
+					<input type="button" class="check_email" value="点击发送验证码" /><br /> 
+					<!-- <input type="checkBox" onclick="if (this.checked) {tongyi()} else {butongyi()} 
 				 if (this.checked) {yingcang()} else {xianshi()}">
 					我同意协议<br /> <br /> <input type="submit" class="button"
 						style="vertical-align: middle;" id="zhuce" disabled="true"
-						value="注册" />
-
+						value="注册" /> -->
+					<input type="submit" class="button" style="vertical-align: middle;" id="zhuce" value="注册" />
 				</div>
 				<br /> <br />
 			</div>

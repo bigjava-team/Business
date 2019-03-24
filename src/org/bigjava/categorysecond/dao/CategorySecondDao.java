@@ -41,5 +41,10 @@ public interface CategorySecondDao {
 	 * 
 	 */
 	public void updateCategorySecond(CategorySecond categorySecond, CategorySecond updatecategorySecond);
+	
+	/**
+	 * 查询全部二级分类
+	 */
+	public List<CategorySecond> showCategorySecond(CategorySecond categorySecond);
 
 }
