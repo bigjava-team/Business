@@ -1,6 +1,122 @@
+/* @charset "UTF-8"; */
+
+/* admin÷˜“≥√Ê */
+/* home_top.jsp */
+
+/* #home_top_body{
+	MARGIN: 0px;
+	BACKGROUND-COLOR: #ffffff;
+	FONT-SIZE: 12px;
+	COLOR: #000000
+}
+
+#home_top_body div{
+	margin: 0px;
+	padding: 0px;
+}
+
+home_right.jsp
+
+#home_right_body{
+	margin: 0px;
+}
+
+#home_right_body #divSY{
+	 width: 100%;
+	 line-height: 25px;
+	 text-align: center;
+	 height: 25px;
+	 margin: 3px 2px 10px 2px;
+	 background: #acd6ff;
+}
+
+
+home_bottom.jsp
+
+#admin_bottom_body{
+	text-align:center;
+	font-size: 12px;
+}
+
+
+admin_list
+
+
+#admin_list_body{
+	padding: 0px 2px 0px 2px;
+	margin: 0px;
+}
+
+#admin_list_div_top{
+	width: 100%;
+	line-height: 25px;
+	text-align: center;
+	height: 25px;
+	margin: 25px 0px 10px 0px;
+	background: #acd6ff;
+}
+
+#admin_list_table{
+	background-color: #f5fafe;
+	margin-bottom: 3px;
+}
+
+#admin_list_tr1{
+	font-weight: bold;
+	font-size: 12px;
+	height: 25px;
+	background-color: #acd6ff;
+}
+
+#admin_list_tr2{
+	font-size: 12px;
+}
+
+#admin_list_div_page{
+	width: 100%;
+	background: #afd1f3;
+	font-size: 14px;
+	text-align: center;
+	padding: 3px;
+} */
+
+/* 
+admin_add/edit
+*/
+/* #admin_add_div_top{
+	 width: 100%;
+	 line-height: 25px;
+	 text-align: center;
+	 height: 25px;
+	 margin: 25px 0px 10px 0px;
+	 background: #acd6ff;
+}
+
+.admin_add_div_middle{
+	width: 50%;
+	height: 30px;
+	background: #f5fafe;
+	text-align: center;
+	line-height:30px;
+	font-size: 14px;
+	float: left;
+}
+
+#admin_add_div_bottom{
+	width: 100%;
+	height: 25px;
+	background: #f5fafe;
+	text-align: center;
+	padding: 6px 0px 6px 0px;
+	font-size: 14px;
+	clear: both;
+} */
+
+
+
 @charset "UTF-8";
 
-/* admin‰∏ªÈ°µÈù¢ */
+/* admin÷˜“≥√Ê */
 /* home_top.jsp */
 
 #home_top_body{
@@ -77,7 +193,7 @@ admin_list
 	background: #afd1f3;
 	font-size: 14px;
 	text-align: center;
-	padding: 3px;
+	padding: 3px 0px;
 }
 
 /* 
@@ -88,11 +204,22 @@ admin_add/edit
 	 line-height: 25px;
 	 text-align: center;
 	 height: 25px;
-	 margin: 25px 0px 10px 0px;
+	 margin: 0px 0px 0px 0px;
 	 background: #acd6ff;
 }
 
 .admin_add_div_middle{
+	width: 49.8%;
+	height: 30px;
+	background: #f5fafe;
+	text-align: center;
+	line-height:30px;
+	font-size: 14px;
+	float: left;
+	border: 1px solid #EEEEEE;
+}
+
+.admin_add_div_middle1{
 	width: 50%;
 	height: 30px;
 	background: #f5fafe;
@@ -100,6 +227,8 @@ admin_add/edit
 	line-height:30px;
 	font-size: 14px;
 	float: left;
+	border: 1px solid #EEEEEE;
+	border-right: none;
 }
 
 #admin_add_div_bottom{
@@ -110,4 +239,105 @@ admin_add/edit
 	padding: 6px 0px 6px 0px;
 	font-size: 14px;
 	clear: both;
+	border: 1px solid #EEEEEE;
+	border-style: none;
+}
+
+.admin_form1{
+	border: 1px solid #8BA7E3;
+}
+
+.admin_body{
+	margin: 0px;
+	padding: 0px;
+}
+
+.admin_body .admin_form1 .admin_add_div_middle .admin_merchant_d1{
+	width: 37%;
+	float: left;
+}
+
+.admin_body .admin_form1 .admin_add_div_middle .admin_merchant_d2{
+	text-align: left;
+}
+
+.admin_body .admin_form1 .admin_add_div_middle .admin_merchant_d3{
+	width: 18.5%;
+	float: left;
+}
+
+.admin_merchant_pd_a_e{
+	width: 100%;
+}
+
+.admin_merchant_pd_a_e_d2{
+	width: 100%;
+	height: 82px;
+	line-height: 90px;
+}
+
+.admin_merchant_pd_l_d1{
+	width: 100%;
+	height: 30px;
+}
+
+.button_add{
+	float: right;
+}
+
+.admin_merchant_pd_immg1{
+	CURSOR: hand;
+}
+
+.admin_m_m_l_d1{
+	width: 100%;
+	height: 30px;
+}
+
+.admin_m_m_l_d1 #add{
+	float: right;
+}
+
+.admin_form1_table{
+	margin: 0px;
+	padding: 0px;
+}
+
+.admin_form1_table #admin_list_tr2 .admin_form1_table_tr_td1{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.admin_form1_table #admin_list_tr2 .admin_form1_table_tr_td2{
+	font-size: 14px;
+	font-weight: bold;
+	padding-top: 4px;
+}
+
+.admin_form1_table #admin_list_tr2 .admin_form1_table_tr_td3{
+	color: #FF5809;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.admin_list_tr3{
+	margin: 0px;
+	padding: 0px;
+	font-size: 12px;
+}
+
+.admin_form1_table_tr_td4{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.admin_form1_table_tr_td5{
+	color: #FF5809;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
 }
