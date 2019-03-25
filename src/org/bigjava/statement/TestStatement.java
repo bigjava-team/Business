@@ -395,7 +395,6 @@ public class TestStatement {
 		product.setP_price(product_price);
 		product.setMarket(product_market);
 		product.setP_desc(p_desc);
-		product.setIs_hot(is_hot);
 		product.setP_date(p_date);
 		product.setP_freeze(p_freeze);
 		

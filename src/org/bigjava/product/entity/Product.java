@@ -14,33 +14,33 @@ import org.bigjava.orders.entity.Orders;
 
 /**
  * 商品表
+ * 
  * @author Administrator
  *
  */
 public class Product {
-	
+
 	private int p_id;// 商品id
 	private String p_name;// 商品名
 	private double p_price;// 商品价格
 	private double market;// 市场价格
 	private String p_desc;// 商品描述
 	private int sale_volume;// 商品月售量
-	private int is_hot;// 是否为热门商品
 	private Date p_date;// 商品上架时间
 	private int p_freeze;// 商品的状态(1、上架 2、下架)
 
 	private CategorySecond categorySecond;// 一对多指向二级分类的一方
-	
+
 	private Merchant merchant;// 多对一指向店铺类
-	
+
 	private Set<Comment> setCom = new HashSet<Comment>();// 指向Comment类
-	
+
 	private Set<Orderitem> setOrderitem = new HashSet<Orderitem>();// 指向订单项类
-	
+
 	private Set<Images> setImages = new HashSet<Images>();// 指向Images类
-	
+
 	private Set<CollectProduct> setCollectProduct = new HashSet<CollectProduct>();// 指向CollectProduct类
-	
+
 	public Set<CollectProduct> getSetCollectProduct() {
 		return setCollectProduct;
 	}
@@ -72,7 +72,7 @@ public class Product {
 	public void setMerchant(Merchant merchant) {
 		this.merchant = merchant;
 	}
-	
+
 	public Set<Comment> getSetCom() {
 		return setCom;
 	}
@@ -137,14 +137,6 @@ public class Product {
 		this.sale_volume = sale_volume;
 	}
 
-	public int getIs_hot() {
-		return is_hot;
-	}
-
-	public void setIs_hot(int is_hot) {
-		this.is_hot = is_hot;
-	}
-
 	public Date getP_date() {
 		return p_date;
 	}
@@ -160,7 +152,7 @@ public class Product {
 	public void setCategorySecond(CategorySecond categorySecond) {
 		this.categorySecond = categorySecond;
 	}
-	
+
 	public int getP_freeze() {
 		return p_freeze;
 	}
@@ -172,7 +164,8 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [p_id=" + p_id + ", p_name=" + p_name + ", p_price=" + p_price + ", market=" + market
-				+ ", p_desc=" + p_desc + ", sale_volume=" + sale_volume + ", is_hot=" + is_hot
-				+ ", p_date=" + p_date + ", p_freeze=" + p_freeze + "]";
+				+ ", p_desc=" + p_desc + ", sale_volume=" + sale_volume + ", p_date=" + p_date + ", p_freeze="
+				+ p_freeze + "]";
 	}
+
 }

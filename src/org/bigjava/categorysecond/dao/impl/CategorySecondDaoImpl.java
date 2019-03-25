@@ -95,7 +95,7 @@ public class CategorySecondDaoImpl extends HibernateDaoSupport implements Catego
 
 	// 查询全部二级分类
 	@Override
-	public List<CategorySecond> showCategorySecond(CategorySecond categorySecond) {
+	public List<CategorySecond> showCategorySecond() {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行showCategorySecond方法");
 		List<CategorySecond> listCategorySecond = this.getHibernateTemplate().find("from CategorySecond");

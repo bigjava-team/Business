@@ -38,5 +38,11 @@ public interface CategorySecondBiz {
 	 * 修改二级分类名
 	 */
 	public void updateCategorySecond(CategorySecond categorySecond , CategorySecond updatecategorySecond);
+	
+	/**
+	 * 查询全部二级分类
+	 */
+	public List<CategorySecond> showCategorySecond();
+
 
 }
