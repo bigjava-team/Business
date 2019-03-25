@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.bigjava.product.entity"> <!-- 声明映射文件的包 -->
+	<class name="Product" table="product"> <!-- 声明映射文件的类，表 -->
+		<id name="p_id" type="java.lang.Integer"> <!-- p_id为类的属性、表的属性名 -->
+			<generator class="native" ></generator>
+		</id>
+		<property name="p_name" not-null="true" /> <!-- p_name为类的属性、表的属性名 -->
+		<property name="p_price" not-null="true" /> <!-- p_price为类的属性、表的属性名 -->
+		<property name="market" not-null="true" /> <!-- market为市场价格 -->
+		<property name="p_desc" /> <!-- describe为类的属性、表的属性名 -->
+		<property name="sale_volume" /> <!-- sale_volume为类的属性、表的属性名 -->
+		<property name="p_date" not-null="true" /><!-- 商品上架时间 -->
+		<property name="p_freeze" not-null="true" /><!-- 商品的状态 -->
+		
+		<many-to-one name="categorySecond" column="cs_id" class="org.bigjava.categorysecond.entity.CategorySecond" lazy="false" not-null="true" /><!-- 多对一指向二级分类类 -->
+	
+		<many-to-one name="merchant" class="org.bigjava.merchant.entity.Merchant" column="m_id" lazy="false" /><!-- 多对一指向店铺类 -->
+	
+		<set name="setCom" cascade="all" >
+			<key column="p_id" /><!-- p_id为Product表与Comment表的外键连接 -->
+			<one-to-many class="org.bigjava.comment.entity.Comment" /><!-- 一对多指向Comment类 -->
+		</set>
+		
+		<set name="setOrderitem"><!-- 一对多指向Orderitem类 -->
+			<key column="p_id" /><!-- Orderitem类连接的外键名 -->
+			<one-to-many class="org.bigjava.orderitem.entity.Orderitem" />
+		</set>
+		
+		<set name="setImages" cascade="all"><!-- 一对多指向images表 -->
+			<key column="p_id" /><!-- column为images连接的外键id -->
+			<one-to-many class="org.bigjava.image.entity.Images" /><!-- 指向Images类的路径 -->
+		</set>
+		
+		<set name="setCollectProduct" cascade="delete"><!-- 一对多指向images表 -->
+			<key column="p_id" /><!-- column为images连接的外键id -->
+			<one-to-many class="org.bigjava.collectProduct.entity.CollectProduct" /><!-- 指向Images类的路径 -->
+		</set>
+	</class>
+</hibernate-mapping>
+

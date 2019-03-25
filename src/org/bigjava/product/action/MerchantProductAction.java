@@ -162,4 +162,32 @@ public class MerchantProductAction extends ActionSupport {
 		return "saveSuccess";
 	}
 
+	// 删除商品的方法:
+	public String delete() {
+		// 根据id查询商品信息
+		product = productBiz.queryProduct_id(product.getP_id());
+		// 页面跳转
+		return "deleteSuccess";
+	}
+
+	// 根据ID获取商品信息
+	public String getProductById() {
+		System.out.println("进入MerchantProductAction...getProductById");
+		System.out.println("p_id"+ product.getP_id());
+		productBiz.queryProduct_id(product.getP_id());
+		return "getProductByIdSuccess";
+	}
+
+	// 修改商品的方法
+	public String updateProduct() {
+		System.out.println("进入MerchantProductAction....updateProduct()");
+		//查询数据库中商品的信息
+		product = productBiz.queryProduct_id(product.getP_id());
+		
+		Product updateProduct = null; // 修改的二级分类
+		
+		productBiz.updateProduct(product, updateProduct);
+		return "updateProductSuccess";
+	}
+
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="org.bigjava.categorysecond.entity">
+	<class name="CategorySecond" table="categorysecond">
+		<id name="cs_id" type="java.lang.Integer"><!-- 二级分类id属性、表名 -->
+			<generator class="native"></generator>
+		</id>
+		<property name="cs_name" not-null="true" type="string" /><!-- 二级分类名属性、表名 -->
+		
+		<many-to-one name="category" class="org.bigjava.category.entity.Category" column="c_id" lazy="false" /><!-- 多对一二级分类类指向一级分类类 -->
+		
+		<set name="setProduct" cascade="all" >	<!-- name为Human中的set order-by是将account倒序 -->
+			<key column="cs_id"/>	<!-- column是连接的外键 -->
+			<one-to-many class="org.bigjava.product.entity.Product" />	<!-- class是连接表的实体类 -->
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.bigjava.comment.entity">
+	<class name="Comment" table="comment"><!-- 评论表 -->
+		<id name="com_id" type="java.lang.Integer"><!-- com_id为评论表、类的属性名 -->
+			<generator class="native" />
+		</id>
+		<property name="comment" not-null="true" /><!-- comment为评论表、类的属性名 -->
+		
+		<many-to-one name="user" class="org.bigjava.user.entity.User" column="u_id" lazy="false"  /><!-- 多对一评价类指向用户类 -->
+		
+		<many-to-one name="product" class="org.bigjava.product.entity.Product" column="p_id" lazy="false" /><!-- 多对一评价类指向商品类 -->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping package="org.bigjava.orderitem.entity">
+	<class name="Orderitem" table="orderitem"> <!-- 映射的类OrderItem -->
+		<id name="item_id" type="java.lang.Integer"><!-- 订单项表的id -->
+			<generator class="native" />
+		</id>
+		<property name="count" not-null="true" /><!-- 订单项表的订单商品数量 -->
+		<property name="subtotal" not-null="true" /><!-- 订单项表的商品的小计 -->
+		
+		<many-to-one name="user" column="u_id" class="org.bigjava.user.entity.User" not-null="true" /><!-- 多对一指向用户类 -->
+		
+		<many-to-one name="product" column="p_id" class="org.bigjava.product.entity.Product" not-null="true" /><!-- 多对一指向商品类 -->
+	
+		<many-to-one name="orders" column="o_id" class="org.bigjava.orders.entity.Orders" /><!-- 多对一指向Orders类，column为连接的外键 -->
+	</class>	
+</hibernate-mapping>   

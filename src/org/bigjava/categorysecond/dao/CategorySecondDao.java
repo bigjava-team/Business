@@ -40,7 +40,8 @@ public interface CategorySecondDao {
 	 * updatecategorySecond为修改的二级分类数据
 	 * 
 	 */
-	public void updateCategorySecond(CategorySecond categorySecond, CategorySecond updatecategorySecond);
+//	public void updateCategorySecond(CategorySecond categorySecond, CategorySecond updatecategorySecond);
+	public void updateCategorySecond(CategorySecond categorySecond);
 	
 	/**
 	 * 查询全部二级分类
