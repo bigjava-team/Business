@@ -81,7 +81,16 @@
 			<result name="addPage">/admin/categorysecond/add.jsp</result>
 			<result name="findSuccess">/admin/categorysecond/edit.jsp</result>
 			<result name="findAllBySearchNameSuccess">/admin/categorysecond/list.jsp</result>
-
+		</action>
+		
+		<!-- 店铺对商品的Action -->
+		<action name="MerchantProduct_*" class="merchantProductAction"
+			method="{1}">
+			<result name="saveSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0
+			</result>
+			<result name="addPageSuccess">/merchant/product/add.jsp</result>
+			<result name="findSuccess">/merchant/product/edit.jsp</result>
+			<result name="findAll">/merchant/product/list.jsp</result>
 		</action>
 
 	</package>

@@ -380,12 +380,12 @@
 
 				<div style="text-align: center;">
 					<input type="button" class="check_email" value="点击发送验证码" /><br /> 
-					<!-- <input type="checkBox" onclick="if (this.checked) {tongyi()} else {butongyi()} 
+					<input type="checkBox" onclick="if (this.checked) {tongyi()} else {butongyi()} 
 				 if (this.checked) {yingcang()} else {xianshi()}">
-					我同意协议<br /> <br /> <input type="submit" class="button"
+					我同意协议<br /> <br /> <!-- <input type="submit" class="button"
 						style="vertical-align: middle;" id="zhuce" disabled="true"
-						value="注册" /> -->
-					<input type="submit" class="button" style="vertical-align: middle;" id="zhuce" value="注册" />
+						value="注册" />  -->
+					<input type="submit" class="button" style="vertical-align: middle;" id="zhuce" disabled="true" value="注册" />
 				</div>
 				<br /> <br />
 			</div>

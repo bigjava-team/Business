@@ -322,8 +322,8 @@ img {
 			<form action="User_login.action" method="post" align="center" class="inleft" onsubmit="return checkAll()">
 				<div class="geshi">
 					<span style="font-size:12px; color:red;">
-						${session.loginError }
-						${session.loginFreezeError}
+						${listStore.loginError }
+						${listStore.loginFreezeError }
 					</span><br /> 
 					<div class="kuang">
 					<img src="TuPian/tubiao.jpg" width="8%" height="8%">

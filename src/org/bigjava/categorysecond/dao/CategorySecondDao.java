@@ -45,6 +45,6 @@ public interface CategorySecondDao {
 	/**
 	 * 查询全部二级分类
 	 */
-	public List<CategorySecond> showCategorySecond(CategorySecond categorySecond);
+	public List<CategorySecond> showCategorySecond();
 
 }
