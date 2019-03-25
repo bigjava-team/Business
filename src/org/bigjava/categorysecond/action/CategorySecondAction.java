@@ -32,6 +32,14 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 	// 前台输入的值
 	private String searchCategorySecond;
 
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 	public String getSearchCategorySecond() {
 		return searchCategorySecond;
 	}
@@ -102,10 +110,13 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 	 * 修改二级分类
 	 */
 	public String editCategorySecond() {
-
-		CategorySecond updatecategorySecond = null; // 修改的二级分类
-
-		categorySecondBiz.updateCategorySecond(categorySecond, updatecategorySecond);
+		System.out.println("进入CategorySecondAction。。editCategorySecond");
+		System.out.println(categorySecond);
+//		String cs_name = categorySecond.getCs_name();
+//		categorySecond = categorySecondBiz.queryCategorySecond(categorySecond.getCs_id());
+//		categorySecond.setCs_name(cs_name);
+// 		categorySecond.setCategory(category); 
+		categorySecondBiz.updateCategorySecond(categorySecond);
 		return "editCategorySecondSuccess";
 	}
 
@@ -113,7 +124,11 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 	 * 通过id查询对应的二级分类
 	 */
 	public String findCategorySecondById() {
-		categorySecondBiz.queryCategorySecond(categorySecond.getCs_id());
+		categorySecond = categorySecondBiz.queryCategorySecond(categorySecond.getCs_id());
+		// 查询所有一级分类.
+		List<Category> c_List = categoryBiz.showAllCategory();
+		// 将集合存入到值栈中.
+		ActionContext.getContext().getValueStack().set("c_List", c_List);
 		return "findSuccess";
 	}
 
@@ -134,11 +149,11 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 		Paging paging = new Paging(presentPage, totalNumber, 2);
 
 		List<CategorySecond> categorySecond = categorySecondBiz.queryAllCategorySecond(searchCategorySecond, paging);
-		//将值存入session中
-		ActionContext.getContext().getSession().put("showCategorySecond",categorySecond );
+		// 将值存入session中
+		ActionContext.getContext().getSession().put("showCategorySecond", categorySecond);
 		ActionContext.getContext().getSession().put("paging", paging);
 		ActionContext.getContext().getSession().put("searchCategorySecond", searchCategorySecond);
-		
+
 		return "findAllBySearchNameSuccess";
 	}
 

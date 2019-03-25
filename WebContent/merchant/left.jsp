@@ -19,8 +19,8 @@
 			d.add('010101','0101','店铺信息','${pageContext.request.contextPath}/merchant/merchants/list.jsp','','mainFrame');
 			
 			d.add('0102','01','商品管理');
-			d.add('010201','0102','商品信息','${pageContext.request.contextPath}/merchant/product/list.jsp','','mainFrame');
-			d.add('010202','0102','添加商品','${pageContext.request.contextPath}/merchant/product/add.jsp','','mainFrame');
+			d.add('010201','0102','商品信息','${pageContext.request.contextPath}/MerchantProduct_findAll.action?paging.presentPage=0','','mainFrame');
+			d.add('010202','0102','添加商品','${pageContext.request.contextPath}/MerchantProduct_addPage.action','','mainFrame');
 			
 			document.write(d);
 		</script>

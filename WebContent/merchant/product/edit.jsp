@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,13 +14,13 @@
 		编辑商品
 	</div>
 	
-	<form class="admin_form1" action="" method="post">
+	<form class="admin_form1" action="MerchantProduct_updateProduct.action" method="post">
 		<div class="admin_add_div_middle">
 			<div class="admin_merchant_d1">
 				商品名称：
 			</div>
 			<div class="admin_merchant_d2">
-				<input type="text" name="pname" />
+				<input type="text" name="product.p_name" />
 			</div>
 		</div>
 		
@@ -27,14 +28,11 @@
 			<div class="admin_merchant_d1">
 				所属的二级分类：
 			</div>
-			<div class="admin_merchant_d2">
-				<select name="categorySecond.csid">
-					<option value="男装">男装</option>
-					<option value="女装">女装</option>
-					<option value="青春手机">青春手机</option>
-					<option value="小霸王">小霸王</option>
+			<select name="categorySecond.cs_id">
+					<s:iterator var="cs" value="csList">
+						<option value="<s:property value="#cs.cs_id"/>"><s:property value="#cs.cs_name"/></option>
+					</s:iterator>
 				</select>
-			</div>
 		</div>
 		
 		<div class="admin_add_div_middle">
@@ -42,7 +40,7 @@
 				商品市场价格：
 			</div>
 			<div class="admin_merchant_d2">
-				<input type="text" name="cname">
+				<input type="text" name="product.market">
 			</div>
 		</div>
 		
@@ -51,7 +49,7 @@
 				商品商场价格：
 			</div>
 			<div class="admin_merchant_d2">
-				<input type="text" name="shop_price" value="" class="bg"/>
+				<input type="text" name="product.p_price" class="bg"/>
 			</div>
 		</div>
 		
@@ -69,7 +67,7 @@
 				商品描述：
 			</div>
 			<div class="admin_merchant_d2">
-				<textarea rows="5" cols="30" name="pdesc"></textarea>
+				<textarea rows="5" cols="30" name="product.p_desc"></textarea>
 			</div>
 		</div>
 		

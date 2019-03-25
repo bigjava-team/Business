@@ -88,8 +88,10 @@
 			method="{1}">
 			<result name="saveSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0
 			</result>
+			<result name="updateProductSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0
+			</result>
 			<result name="addPageSuccess">/merchant/product/add.jsp</result>
-			<result name="findSuccess">/merchant/product/edit.jsp</result>
+			<result name="getProductByIdSuccess">/merchant/product/edit.jsp</result>
 			<result name="findAll">/merchant/product/list.jsp</result>
 		</action>
 

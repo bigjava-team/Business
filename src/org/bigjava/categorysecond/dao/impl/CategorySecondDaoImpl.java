@@ -23,7 +23,7 @@ public class CategorySecondDaoImpl extends HibernateDaoSupport implements Catego
 //		categorySecond.setCategory(category);
 //		this.getHibernateTemplate().save(categorySecond);// 添加二级分类名
 //	}
-	
+
 	public void addCategorySecond(CategorySecond categorySecond) {
 		System.out.println("开始执行addCategorySecond方法");
 		this.getHibernateTemplate().save(categorySecond);// 添加二级分类名
@@ -38,7 +38,8 @@ public class CategorySecondDaoImpl extends HibernateDaoSupport implements Catego
 			@Override
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {// 通过hibernateTemplate回调sessionFactory方法
 				// TODO Auto-generated method stub
-				Query query = session.createQuery("from CategorySecond where cs_name like ?").setString(0, "%"+searchCategorySecond + "%");// 模糊查询
+				Query query = session.createQuery("from CategorySecond where cs_name like ?").setString(0,
+						"%" + searchCategorySecond + "%");// 模糊查询
 				query.setFirstResult(page.getStart());// 分页查询从哪一条开始查
 				query.setMaxResults(page.getPagesize());// 分页查询查多少条
 
@@ -54,9 +55,10 @@ public class CategorySecondDaoImpl extends HibernateDaoSupport implements Catego
 	public int queryCategorySecondNumber(String searchCategorySecond) {
 		System.out.println("开始执行queryCategorySecondNumber方法");
 		int totalNumber = 0;
-		List<Long> list = this.getHibernateTemplate().find("select count(*) from CategorySecond where cs_name like ?",searchCategorySecond+"%");// 模糊查询一共有多少条数据
+		List<Long> list = this.getHibernateTemplate().find("select count(*) from CategorySecond where cs_name like ?",
+				searchCategorySecond + "%");// 模糊查询一共有多少条数据
 		if (list != null && list.size() != 0) {
-			totalNumber = list.get(0).intValue();//获取查询到的数据条数
+			totalNumber = list.get(0).intValue();// 获取查询到的数据条数
 		}
 		System.out.println("查询到的总条数" + totalNumber);
 		return totalNumber;
@@ -80,16 +82,21 @@ public class CategorySecondDaoImpl extends HibernateDaoSupport implements Catego
 
 	// 修改二级分类
 	@Override
-	public void updateCategorySecond(CategorySecond categorySecond, CategorySecond updatecategorySecond) {// categorySecond为数据库中的二级分类数据、updatecategorySecond为修改的二级分类数据
+//	public void updateCategorySecond(CategorySecond categorySecond, CategorySecond updatecategorySecond) {// categorySecond为数据库中的二级分类数据、updatecategorySecond为修改的二级分类数据
+//		// TODO Auto-generated method stub
+//		System.out.println("开始执行updateCategorySecond方法");
+//		if (updatecategorySecond.getCs_name() == null || updatecategorySecond.getCs_name().equals("")) {// 判断修改的店铺用户名不能为空
+//			System.out.println("二级分类名为空");
+//		} else {
+//			if (!updatecategorySecond.getCs_name().equals(categorySecond.getCs_name())) {// 如果修改的店铺用户名与数据库中的店铺用户名不一样将其保存至merchant中
+//				categorySecond.setCs_name(updatecategorySecond.getCs_name());
+//			}
+//		}
+//		this.getHibernateTemplate().update(categorySecond);
+//	}
+	public void updateCategorySecond(CategorySecond categorySecond) {// categorySecond为修改的二级分类数据
 		// TODO Auto-generated method stub
 		System.out.println("开始执行updateCategorySecond方法");
-		if (updatecategorySecond.getCs_name() == null || updatecategorySecond.getCs_name().equals("")) {// 判断修改的店铺用户名不能为空
-			
-		} else {
-			if (!updatecategorySecond.getCs_name().equals(categorySecond.getCs_name())) {// 如果修改的店铺用户名与数据库中的店铺用户名不一样将其保存至merchant中
-				categorySecond.setCs_name(updatecategorySecond.getCs_name());
-			}
-		}
 		this.getHibernateTemplate().update(categorySecond);
 	}
 
