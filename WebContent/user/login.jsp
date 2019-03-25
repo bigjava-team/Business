@@ -307,23 +307,21 @@ img {
 </head>
 
 <body style="margin:0px; padding:0px">
-	<div id="all">
 
-		<div id="header" align="center">
-			<a href="Save.jsp"><img src="TuPian/logo.jpg"></a><img
-				src="TuPian/nuli.gif"><br /> <font size="33px"><b>用户登录</b></font>
-			<div class="tou">
-					<a href=""><font class="toubuwenzi">返回首页&nbsp;&nbsp;&nbsp;</font></a>
-			</div>
+	<div id="header" align="center">
+		<a href="Save.jsp"><img src="TuPian/logo.jpg"></a><img
+			src="TuPian/nuli.gif"><br /> <font size="33px"><b>用户登录</b></font>
+		<div class="tou">
+				<a href=""><font class="toubuwenzi">返回首页&nbsp;&nbsp;&nbsp;</font></a>
 		</div>
+	</div>
 
 	<div class="zhongjian">
 			<div id="menu" class="left" > 	
 			<form action="User_login.action" method="post" align="center" class="inleft" onsubmit="return checkAll()">
 				<div class="geshi">
 					<span style="font-size:12px; color:red;">
-						${session.loginError }
-						${session.loginFreezeError}
+						${check_login }
 					</span><br /> 
 					<div class="kuang">
 					<img src="TuPian/tubiao.jpg" width="8%" height="8%">
@@ -360,7 +358,7 @@ img {
 			</div>
 		</div>
 		
-			<div id="footer" style="clear:both;text-align:center;">
+	<div id="footer" style="clear:both;text-align:center;">
 
 		<div id="footer" style="clear:both;text-align:center;">
 			<div class="footer-hd">

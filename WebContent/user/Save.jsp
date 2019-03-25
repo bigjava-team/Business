@@ -199,7 +199,7 @@
 		var yanzheng = document.getElementById("emailpassword").value;
 		reg = /^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/gi;
 		
-		var checkEmail = document.getElementById('checkEmail').value;
+		var checkEmail = document.getElementById("checkEmail").value;
 		var text_email = $("#emailpassword").val();// 文本框中输入的验证码
 		alert(checkEmail);
 		
@@ -257,7 +257,7 @@
 				data: params,
 				dataType: "json",
 				success:function(data, textStatus) {
-					$("input[name='listStore.content']").val(data.listStore.content);
+					$("#checkEmail").val(data.checkEmail);
 					alert("成功");
 					
 				},error:function(data, textStatus) {
@@ -302,7 +302,7 @@
 <body>
 	<form action="User_register" method="post"
 		onsubmit="return checkFrom();">
-		<input type="hidden" name="listStore.content" id="checkEmail" />
+		<input type="hidden" id="checkEmail">
 		<div id="header" align="center" class="tou">
 			<a href="loginn.jsp"><img src="../TuPian/logo.jpg"></a><img
 				src="../TuPian/nuli.gif">
@@ -380,12 +380,12 @@
 
 				<div style="text-align: center;">
 					<input type="button" class="check_email" value="点击发送验证码" /><br /> 
-					<!-- <input type="checkBox" onclick="if (this.checked) {tongyi()} else {butongyi()} 
+					<input type="checkBox" onclick="if (this.checked) {tongyi()} else {butongyi()} 
 				 if (this.checked) {yingcang()} else {xianshi()}">
-					我同意协议<br /> <br /> <input type="submit" class="button"
+					我同意协议<br /> <br /><!--  <input type="submit" class="button"
 						style="vertical-align: middle;" id="zhuce" disabled="true"
 						value="注册" /> -->
-					<input type="submit" class="button" style="vertical-align: middle;" id="zhuce" value="注册" />
+					<input type="submit" class="button" disabled="true" style="vertical-align: middle;" id="zhuce" value="注册" />
 				</div>
 				<br /> <br />
 			</div>
