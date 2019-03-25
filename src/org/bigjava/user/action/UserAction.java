@@ -7,7 +7,6 @@ import org.apache.struts2.ServletActionContext;
 import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
 import org.bigjava.function.SendMail;
-import org.bigjava.listStore.ListStore;
 import org.bigjava.user.biz.UserBiz;
 import org.bigjava.user.entity.User;
 
@@ -25,14 +24,24 @@ public class UserAction extends ActionSupport {
 	
 	private String emailAddress;// 邮箱号
 	
-	private ListStore listStore;// 存储参数的实体层
+	private String checkEmail;// 邮箱验证码
 	
-	public ListStore getListStore() {
-		return listStore;
+	private String check_login;// 登录的校验
+	
+	public String getCheck_login() {
+		return check_login;
 	}
 
-	public void setListStore(ListStore listStore) {
-		this.listStore = listStore;
+	public void setCheck_login(String check_login) {
+		this.check_login = check_login;
+	}
+
+	public String getCheckEmail() {
+		return checkEmail;
+	}
+
+	public void setCheckEmail(String checkEmail) {
+		this.checkEmail = checkEmail;
 	}
 
 	public String getEmailAddress() {
@@ -112,13 +121,13 @@ public class UserAction extends ActionSupport {
 			List<User> userList = userBiz.loginUser(user);
 			if (userList.size() == 0) {
 				System.out.println("用户名或密码错误");
+				check_login = "用户名或密码错误";
 //				ActionContext.getContext().getSession().put("loginError", "用户名或密码错误");
-				listStore.setLoginError("用户名或密码错误");
 				return "loginError";
 			} else {
 				User user = userList.get(0);
 				// 将user存入session中
-				ActionContext.getContext().getSession().put("loginUser", user);
+//				ActionContext.getContext().getSession().put("loginUser", user);
 				if (user.getRoot() == 1 && user.getU_is_freeze() == 1) {
 					System.out.println("普通用户登录");
 					System.out.println("解冻状态");
@@ -131,8 +140,8 @@ public class UserAction extends ActionSupport {
 					System.out.println("管理员登录");
 					return "adminLogin";
 				} else if (user.getU_is_freeze() == 2) {
+					check_login = "用户已冻结";
 //					ActionContext.getContext().getSession().put("loginFreezeError", "用户已冻结");
-					listStore.setLoginFreezeError( "用户已冻结");
 					System.out.println("冻结状态，用户不能登录");
 					return "loginError";
 				}
@@ -268,13 +277,13 @@ public class UserAction extends ActionSupport {
 		String subject = "光光网注册验证码";// 邮箱主题
 		String emailTo = emailAddress;// 收件人的邮箱
 		
-		listStore.setContent(content);
+		checkEmail = content;
 		
 		if (SendMail.sendMail(emailTo, content, subject)) {
 			System.out.println("发送成功");
 		}
 		
-		System.out.println("参数" + listStore);
+		System.out.println("参数" + checkEmail);
 		return SUCCESS;
 	}
 	
