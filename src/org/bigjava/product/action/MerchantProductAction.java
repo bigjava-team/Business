@@ -156,6 +156,7 @@ public class MerchantProductAction extends ActionSupport {
 		product.setP_date(new Date());
 		// product.setImage(image);
 //		merchant = merchantBiz.queryMerchant(merchant.getM_id());
+		System.out.println(merchant.getM_id());
 		categorySecond = categorySecondBiz.queryCategorySecond(categorySecond.getCs_id());
 		productBiz.addProduct(product, merchant, categorySecond);
 		return "saveSuccess";
