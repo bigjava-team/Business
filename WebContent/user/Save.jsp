@@ -311,7 +311,7 @@
 		<div class="center"
 			style="background: url(../TuPian/5.jpg); overflow: hidden;">
 			<div class="left">
-				<textarea cols="80%" rows="25%" disabled="disabled" id="xieyi"
+				<textarea cols="70%" rows="25%" disabled="disabled" id="xieyi"
 					style="border: 0px; background: none; float: right; color: #272727; font-size: 20px">
 
 注册协议

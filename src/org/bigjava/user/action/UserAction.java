@@ -115,7 +115,6 @@ public class UserAction extends ActionSupport {
 		System.out.println("进入UserAction....login方法");
 		System.out.println(user);
 		if (isEmpty.isEmpty(user.getUsername()) || isEmpty.isEmpty(user.getPassword())) {
-			System.out.println("1");
 			System.out.println("用户名或密码不能为空");
 			return "loginError";
 		} else {
