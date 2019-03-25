@@ -10,8 +10,11 @@ import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.bigjava.categorysecond.biz.CategorySecondBiz;
 import org.bigjava.categorysecond.entity.CategorySecond;
+import org.bigjava.function.FileAction;
 import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
+import org.bigjava.image.biz.ImageBiz;
+import org.bigjava.image.entity.Images;
 import org.bigjava.merchant.biz.MerchantBiz;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.product.biz.ProductBiz;
@@ -37,6 +40,35 @@ public class MerchantProductAction extends ActionSupport {
 	private Merchant merchant;
 	private MerchantBiz merchantBiz;
 	private String searchText; // 搜索的参数值
+	
+	private FileAction fileAction;// 上传图片的功能类
+	
+	private ImageBiz imagesBiz;// 调用对商品图片操作的业务逻辑层
+	private Images images;// 存放商品图片的类
+	
+	public Images getImages() {
+		return images;
+	}
+
+	public void setImages(Images images) {
+		this.images = images;
+	}
+
+	public ImageBiz getImagesBiz() {
+		return imagesBiz;
+	}
+
+	public void setImagesBiz(ImageBiz imagesBiz) {
+		this.imagesBiz = imagesBiz;
+	}
+
+	public FileAction getFileAction() {
+		return fileAction;
+	}
+
+	public void setFileAction(FileAction fileAction) {
+		this.fileAction = fileAction;
+	}
 
 	private Paging paging;// 声明Paging类
 
@@ -94,23 +126,6 @@ public class MerchantProductAction extends ActionSupport {
 		this.categorySecondBiz = categorySecondBiz;
 	}
 
-	// 文件上传需要的三个属性:
-//	private File upload;
-//	private String uploadFileName;
-//	private String uploadContentType;
-//
-//	public void setUpload(File upload) {
-//		this.upload = upload;
-//	}
-//
-//	public void setUploadFileName(String uploadFileName) {
-//		this.uploadFileName = uploadFileName;
-//	}
-//
-//	public void setUploadContentType(String uploadContentType) {
-//		this.uploadContentType = uploadContentType;
-//	}
-
 	// 查询所有的商品
 	public String findAll() {
 
@@ -154,11 +169,21 @@ public class MerchantProductAction extends ActionSupport {
 	public String save() throws IOException {
 		// 将提交的数据添加到数据库中.
 		product.setP_date(new Date());
+		product.setP_freeze(3);
 		// product.setImage(image);
 //		merchant = merchantBiz.queryMerchant(merchant.getM_id());
+		
 		System.out.println(merchant.getM_id());
 		categorySecond = categorySecondBiz.queryCategorySecond(categorySecond.getCs_id());
-		productBiz.addProduct(product, merchant, categorySecond);
+		
+		merchant = merchantBiz.queryMerchant(merchant.getM_id());
+		
+		fileAction.image(merchant.getUser().getUsername());
+		
+		product.setP_image("productImage/" + merchant.getUser().getUsername() + "_" + fileAction.getMyFileFileName());
+		
+		productBiz.addProduct(product, merchant, categorySecond);// 添加商品信息
+		
 		return "saveSuccess";
 	}
 

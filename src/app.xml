@@ -79,6 +79,7 @@
 	
 	<!-- 商品图片 -->
 	<bean name="imagesDao" class="org.bigjava.image.dao.impl.ImageDaoImpl" autowire="byName" />
+	<bean name="imagesBiz" class="org.bigjava.image.biz.impl.ImageBizImpl" autowire="byName" />
 	
 	<!-- 收藏店铺 -->
 	<bean name="collectMerchantDao" class="org.bigjava.collectMerchant.dao.impl.CollectMerchantDaoImpl" autowire="byName" />

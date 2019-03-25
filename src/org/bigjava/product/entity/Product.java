@@ -23,11 +23,12 @@ public class Product {
 	private int p_id;// 商品id
 	private String p_name;// 商品名
 	private double p_price;// 商品价格
+	private String p_image;// 商品首页图片
 	private double market;// 市场价格
 	private String p_desc;// 商品描述
 	private int sale_volume;// 商品月售量
 	private Date p_date;// 商品上架时间
-	private int p_freeze;// 商品的状态(1、上架 2、下架)
+	private int p_freeze;// 商品的状态(1、上架 2、下架3、申请状态)
 
 	private CategorySecond categorySecond;// 一对多指向二级分类的一方
 
@@ -40,6 +41,14 @@ public class Product {
 	private Set<Images> setImages = new HashSet<Images>();// 指向Images类
 
 	private Set<CollectProduct> setCollectProduct = new HashSet<CollectProduct>();// 指向CollectProduct类
+	
+	public String getP_image() {
+		return p_image;
+	}
+
+	public void setP_image(String p_image) {
+		this.p_image = p_image;
+	}
 
 	public Set<CollectProduct> getSetCollectProduct() {
 		return setCollectProduct;

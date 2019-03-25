@@ -44,6 +44,12 @@ public class TestStatement {
 	public static CollectProductDao collectProductDao = (CollectProductDao) app.getBean("collectProductDao");
 	public static Scanner input = new Scanner(System.in);
 	
+	//  查询最新的商品
+	public static void queryProduct_time() {
+		List<Product> list = productDao.queryProduct_time();
+		System.out.println(list);
+	}
+	
 	// 分页查询
 	public static void queryAllCollectMerchant() {
 		System.out.println("输入查询的收藏用户的id");
@@ -334,8 +340,9 @@ public class TestStatement {
 		System.out.println("输入连接的一级分类的id");
 		int c_id = input.nextInt();
 		Category category = categoryDao.queryCategory(c_id);
+		categorySecond.setCategory(category);
 		
-//		categorySecondDao.addCategorySecond(categorySecond, category);
+		categorySecondDao.addCategorySecond(categorySecond);
 	}
 	
 	// 删除一级分类
