@@ -35,13 +35,13 @@ public interface ProductDao {
 	public int queryProductNumber(String searchProduct);
 	
 	/**
-	 * 查询最新的4个商品
+	 * 查询最新的10件商品
 	 * 
 	 */
 	public List<Product> queryProduct_time();
 	
 	/**
-	 * 查询最热的4个商品
+	 * 查询最热的10件商品
 	 * 
 	 */
 	public List<Product> queryProduct_hot();

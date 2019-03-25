@@ -1,6 +1,7 @@
 package org.bigjava.product.dao.impl;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bigjava.categorysecond.entity.CategorySecond;
@@ -122,17 +123,25 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 		return totalNumber;
 	}
 
-	// 查询最新的4个商品
+	// 查询最新的10件商品
 	@Override
 	public List<Product> queryProduct_time() {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("查询最新的10件商品");
+		
+		String hql = "from Product order by p_date desc";
+		List<Product> list = new ArrayList<Product>();
+		list = this.getHibernateTemplate().find(hql);
+		list = list.subList(0, 10);
+		System.out.println(list);
+		return list;
 	}
 
-	// 查询最热的4个商品
+	// 查询最热的10件商品
 	@Override
 	public List<Product> queryProduct_hot() {
 		// TODO Auto-generated method stub
+		System.out.println("查询最热的10件商品");
 		return null;
 	}
 }
