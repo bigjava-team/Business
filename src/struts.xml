@@ -35,7 +35,7 @@
 			</result>
 
 			<!-- 返回值为loginStore，为店长登录 -->
-			<result name="loginStore">
+			<result name="loginStore">/user/Maijia.jsp
 			</result>
 
 			<!-- 返回值为注册，返回值为 registerSuccess -->
@@ -52,6 +52,7 @@
 			<!-- 冻结用户，解冻用户 -->
 			<result name="updateUserStatesSuccess" type="redirectAction">User_showAll?user.root=0&amp;paging.presentPage=0
 			</result>
+			
 		</action>
 
 		<!-- 后台一级分类管理Action -->
@@ -80,7 +81,17 @@
 			<result name="addPage">/admin/categorysecond/add.jsp</result>
 			<result name="findSuccess">/admin/categorysecond/edit.jsp</result>
 			<result name="findAllBySearchNameSuccess">/admin/categorysecond/list.jsp</result>
-
+		</action>
+		
+		<!-- 店铺对商品的Action -->
+		<action name="MerchantProduct_*" class="merchantProductAction" method="{1}">
+			<result name="saveSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0&amp;merchant.m_id=${merchant.m_id}
+			</result>
+			<result name="updateProductSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0
+			</result>
+			<result name="addPageSuccess">/merchant/product/add.jsp</result>
+			<result name="getProductByIdSuccess">/merchant/product/edit.jsp</result>
+			<result name="findAll">/merchant/product/list.jsp</result>
 		</action>
 
 	</package>
@@ -88,8 +99,7 @@
 
 	<!-- ajax 异步校验 -->
 	<package name="json" extends="json-default" namespace="/">
-		<action name="ajax_*"
-			class="org.bigjava.user.action.UserAction" method="{1}">
+		<action name="ajax_*" class="org.bigjava.user.action.UserAction" method="{1}">
 			<result type="json"></result>
 		</action>
 	</package>

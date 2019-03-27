@@ -96,5 +96,5 @@ public class Merchant {
 		return "Merchant [m_id=" + m_id + ", m_name=" + m_name + ", m_image=" + m_image + ", m_time=" + m_time
 				+ ", m_is_freeze=" + m_is_freeze + "]";
 	}
-	
+
 }

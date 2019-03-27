@@ -52,8 +52,17 @@ public class CategorySecondBizImpl implements CategorySecondBiz {
 
 	// ÐÞ¸Ä
 	@Override
-	public void updateCategorySecond(CategorySecond categorySecond , CategorySecond updatecategorySecond ) {
-		categorySecondDao.updateCategorySecond(categorySecond, updatecategorySecond);;
+//	public void updateCategorySecond(CategorySecond categorySecond , CategorySecond updatecategorySecond ) {
+//		categorySecondDao.updateCategorySecond(categorySecond, updatecategorySecond);;
+//	}
+	public void updateCategorySecond(CategorySecond categorySecond) {
+		categorySecondDao.updateCategorySecond(categorySecond);;
+	}
+
+	@Override
+	public List<CategorySecond> showCategorySecond() {
+		// TODO Auto-generated method stub
+		return categorySecondDao.showCategorySecond();
 	}
 
 }

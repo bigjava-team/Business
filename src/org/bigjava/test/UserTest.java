@@ -10,7 +10,7 @@ public class UserTest {
 		// TODO Auto-generated method stub
 		ApplicationContext app = new ClassPathXmlApplicationContext("app.xml");
 		
-		TestStatement.queryAllCollectMerchant();
+		TestStatement.addCategory();
 	}
 
 }

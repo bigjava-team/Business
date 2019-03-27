@@ -46,6 +46,8 @@
 	
 	<!-- 店铺 -->
 	<bean name="merchantDao" class="org.bigjava.merchant.dao.impl.MerchantDaoImpl" autowire="byName" />
+	<bean name="merchantBiz" class="org.bigjava.merchant.biz.impl.MerchantBizImpl" autowire="byName" />
+	<bean name="merchantAction" class="org.bigjava.merchant.action.MerchantAction" autowire="byName" scope="prototype" />
 	
 	<!-- 配置后台一级管理 -->
 	<bean name="categoryAction" class="org.bigjava.category.action.CategoryAction" autowire="byName" scope="prototype" />
@@ -62,6 +64,9 @@
 	
 	<!-- 商品 -->
 	<bean name="productDao" class="org.bigjava.product.dao.impl.ProductDaoImpl" autowire="byName" />
+	<bean name="productBiz" class="org.bigjava.product.biz.impl.ProductBizImpl" autowire="byName" />
+	<bean name="productAction" class="org.bigjava.product.action.ProductAction" autowire="byName" scope="prototype" />
+	<bean name="merchantProductAction" class="org.bigjava.product.action.MerchantProductAction" autowire="byName" scope="prototype" />
 	
 	<!-- 订单项 -->
 	<bean name="orderItemDao" class="org.bigjava.orderitem.dao.impl.OrderItemDaoImpl" autowire="byName" />
@@ -74,12 +79,15 @@
 	
 	<!-- 商品图片 -->
 	<bean name="imagesDao" class="org.bigjava.image.dao.impl.ImageDaoImpl" autowire="byName" />
+	<bean name="imagesBiz" class="org.bigjava.image.biz.impl.ImageBizImpl" autowire="byName" />
 	
 	<!-- 收藏店铺 -->
 	<bean name="collectMerchantDao" class="org.bigjava.collectMerchant.dao.impl.CollectMerchantDaoImpl" autowire="byName" />
 	
 	<!-- 收藏商品 -->
 	<bean name="collectProductDao" class="org.bigjava.collectProduct.dao.impl.CollectProductDaoImpl" autowire="byName" />
+	
+	<bean name="fileAction" class="org.bigjava.function.FileAction" autowire="byName" />
 	
 	<bean name="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>

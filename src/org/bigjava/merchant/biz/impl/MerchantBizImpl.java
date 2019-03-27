@@ -20,7 +20,7 @@ public class MerchantBizImpl implements MerchantBiz {
 		merchantDao.registerMerchant(merchant, user);
 	}
 
-	//通过店铺ID查询店铺用户
+	//通过店铺ID查询店铺
 	@Override
 	public Merchant queryMerchant(int m_id) {
 		return merchantDao.queryMerchant(m_id);

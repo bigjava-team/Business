@@ -44,6 +44,12 @@ public class TestStatement {
 	public static CollectProductDao collectProductDao = (CollectProductDao) app.getBean("collectProductDao");
 	public static Scanner input = new Scanner(System.in);
 	
+	//  查询最新的商品
+	public static void queryProduct_time() {
+		List<Product> list = productDao.queryProduct_time();
+		System.out.println(list);
+	}
+	
 	// 分页查询
 	public static void queryAllCollectMerchant() {
 		System.out.println("输入查询的收藏用户的id");
@@ -187,13 +193,16 @@ public class TestStatement {
 		System.out.println("输入搜索内容");
 		String searchProduct = input.next();
 		
-		int totalNumber = productDao.queryProductNumber(searchProduct);
+		System.out.println("输入店铺的id");
+		int m_id = input.nextInt();
+		
+		int totalNumber = productDao.queryProductNumber(searchProduct, m_id);
 		
 		System.out.println("输入从哪页开始查");
 		int presentPage = input.nextInt();
 		Paging page = new Paging(presentPage, totalNumber, 2);
 		
-		productDao.queryAllProduct(searchProduct, page);
+		productDao.queryAllProduct(searchProduct, page, m_id);
 	}
 	
 	// 修改商品内容
@@ -334,8 +343,9 @@ public class TestStatement {
 		System.out.println("输入连接的一级分类的id");
 		int c_id = input.nextInt();
 		Category category = categoryDao.queryCategory(c_id);
+		categorySecond.setCategory(category);
 		
-//		categorySecondDao.addCategorySecond(categorySecond, category);
+		categorySecondDao.addCategorySecond(categorySecond);
 	}
 	
 	// 删除一级分类
@@ -395,7 +405,6 @@ public class TestStatement {
 		product.setP_price(product_price);
 		product.setMarket(product_market);
 		product.setP_desc(p_desc);
-		product.setIs_hot(is_hot);
 		product.setP_date(p_date);
 		product.setP_freeze(p_freeze);
 		
@@ -465,7 +474,7 @@ public class TestStatement {
 	
 	// 注册店铺
 	public static void registerMerchant() {
-		System.out.println("输入注册店铺的id");
+		System.out.println("输入注册店铺yonghu的id");
 		int u_id = input.nextInt();
 		System.out.println("输入店铺名");
 		String m_name = input.next();
