@@ -84,16 +84,23 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 		this.getHibernateTemplate().update(product);
 	}
 
-	// 模糊分页查询所有二级分类
+	// 模糊分页查询所有商品
 	@Override
-	public List<Product> queryAllProduct(final String searchProduct, final Paging page) {
+	public List<Product> queryAllProduct(final String searchProduct, final Paging page, final int m_id) {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行queryAllProduct方法");
 		List<Product> list = this.getHibernateTemplate().executeFind(new HibernateCallback() {
 			@Override
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {// 通过hibernateTemplate回调sessionFactory方法
 				// TODO Auto-generated method stub
-				Query query = session.createQuery("from Product where p_name like ?").setString(0, searchProduct + "%");// 模糊查询
+				String hql = "from Product where p_name like ? ";
+				Query query = null;
+				if (m_id!=0) {
+					hql += "and m_id = ?";
+					query = session.createQuery(hql).setString(0, searchProduct + "%").setInteger(1, m_id);// 模糊查询
+				} else {
+					query = session.createQuery(hql).setString(0, searchProduct + "%");// 模糊查询
+				}
 				query.setFirstResult(page.getStart());// 分页查询从哪一条开始查
 				query.setMaxResults(page.getPagesize());// 分页查询查多少条
 
@@ -104,14 +111,22 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 		return list;
 	}
 
-	// 模糊查询所有二级分类总条数
+	// 模糊查询所有商品
 	@Override
-	public int queryProductNumber(String searchProduct) {
+	public int queryProductNumber(String searchProduct, int m_id) {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行queryProductNumber方法");
 		int totalNumber = 0;
-		List<Long> list = this.getHibernateTemplate().find("select count(*) from Product where p_name like ?",
-				searchProduct + "%");// 模糊查询一共有多少条数据
+		String hql = "select count(*) from Product where p_name like ?";
+		List<Long> list = null;
+		if (m_id != 0) {
+			hql += " and m_id = ?";
+			list = this.getHibernateTemplate().find(hql,
+					new Object[]{searchProduct + '%', m_id});// 模糊查询一共有多少条数据
+		} else {
+			list = this.getHibernateTemplate().find(hql,
+					searchProduct + '%');// 模糊查询一共有多少条数据
+		}
 		if (list != null && list.size() != 0) {
 			totalNumber = list.get(0).intValue();// 获取查询到的数据条数
 		}

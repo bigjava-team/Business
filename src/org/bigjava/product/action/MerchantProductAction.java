@@ -34,7 +34,6 @@ public class MerchantProductAction extends ActionSupport {
 
 	private CategorySecondBiz categorySecondBiz;
 	private Merchant merchant;
-	private MerchantBiz merchantBiz;
 	private String searchText; // 搜索的参数值
 	
 	private FileAction fileAction;// 上传图片的功能类
@@ -42,6 +41,16 @@ public class MerchantProductAction extends ActionSupport {
 	private ImageBiz imagesBiz;// 调用对商品图片操作的业务逻辑层
 	private Images images;// 存放商品图片的类
 	
+	private List<Product> productList;// 存放对应店铺内的所有商品
+	
+	public List<Product> getProductList() {
+		return productList;
+	}
+
+	public void setProductList(List<Product> productList) {
+		this.productList = productList;
+	}
+
 	public FileAction getFileAction() {
 		return fileAction;
 	}
@@ -67,13 +76,13 @@ public class MerchantProductAction extends ActionSupport {
 	}
 
 	private Paging paging;// 声明Paging类
+	
+	public Merchant getMerchant() {
+		return merchant;
+	}
 
 	public void setMerchant(Merchant merchant) {
 		this.merchant = merchant;
-	}
-
-	public void setMerchantBiz(MerchantBiz merchantBiz) {
-		this.merchantBiz = merchantBiz;
 	}
 
 	public Paging getPaging() {
@@ -132,19 +141,18 @@ public class MerchantProductAction extends ActionSupport {
 			searchText = "";
 		}
 		// 根据搜索的内容与权限查询可搜索的总条数
-		int totalNumber = productBiz.queryProductNumber(searchText);
+		int totalNumber = productBiz.queryProductNumber(searchText, merchant.getM_id());
 		// 当前页数
 		int presentPage = paging.getPresentPage();
 		System.out.println("当前页" + presentPage);
 
-		Paging paging = new Paging(presentPage, totalNumber, 2);
+		paging = new Paging(presentPage, totalNumber, 2);
 
 		// 接收搜索到的商品列表
-		List<Product> productList = productBiz.queryAllProduct(searchText, paging);
+		productList = productBiz.queryAllProduct(searchText, paging, merchant.getM_id());
 
 		// 将参数存入session中
 		System.out.println(productList);
-		session.put("showProduct", productList);
 		session.put("paging", paging);
 		session.put("searchText", searchText);
 
@@ -167,11 +175,11 @@ public class MerchantProductAction extends ActionSupport {
 		product.setP_date(new Date());
 		product.setP_freeze(3);
 		
+		System.out.println("上传图片" + fileAction);
+		
 		fileAction.image(product.getP_name());
 		
 		product.setP_image("productImage/" + fileAction.getMyFileFileName());
-		System.out.println("数据库图片地址" + product.getP_image());
-		System.out.println("image" + product.getP_image());
 		
 		productBiz.addProduct(product, merchant, categorySecond);// 添加商品信息
 		

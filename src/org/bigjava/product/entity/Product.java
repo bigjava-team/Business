@@ -172,9 +172,9 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [p_id=" + p_id + ", p_name=" + p_name + ", p_price=" + p_price + ", market=" + market
-				+ ", p_desc=" + p_desc + ", sale_volume=" + sale_volume + ", p_date=" + p_date + ", p_freeze="
-				+ p_freeze + "]";
+		return "Product [p_id=" + p_id + ", p_name=" + p_name + ", p_price=" + p_price + ", p_image=" + p_image
+				+ ", market=" + market + ", p_desc=" + p_desc + ", sale_volume=" + sale_volume + ", p_date=" + p_date
+				+ ", p_freeze=" + p_freeze + "]";
 	}
 
 }

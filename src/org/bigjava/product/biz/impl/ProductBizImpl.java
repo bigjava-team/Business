@@ -38,14 +38,14 @@ public class ProductBizImpl implements ProductBiz {
 
 	// 模糊分页查询所有商品
 	@Override
-	public List<Product> queryAllProduct(String searchProduct, Paging page) {
-		return productDao.queryAllProduct(searchProduct, page);
+	public List<Product> queryAllProduct(String searchProduct, Paging page, int m_id) {
+		return productDao.queryAllProduct(searchProduct, page, m_id);
 	}
 
 	// 模糊查询商品的总条数
 	@Override
-	public int queryProductNumber(String searchProduct) {
-		return productDao.queryProductNumber(searchProduct);
+	public int queryProductNumber(String searchProduct, int m_id) {
+		return productDao.queryProductNumber(searchProduct, m_id);
 	}
 
 	// 查询最新的4个商品

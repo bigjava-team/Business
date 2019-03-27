@@ -27,12 +27,14 @@ public interface ProductDao {
 	/**
 	 * 模糊分页查询所有商品
 	 */
-	public List<Product> queryAllProduct(String searchProduct, Paging page);
+	public List<Product> queryAllProduct(String searchProduct, Paging page, int m_id);
 	
 	/**
 	 * 模糊查询商品的总条数
+	 * searchProduct为搜索框输入的商品信息 
+	 * m_id为商品对应的店铺id
 	 */
-	public int queryProductNumber(String searchProduct);
+	public int queryProductNumber(String searchProduct, int m_id);
 	
 	/**
 	 * 查询最新的10件商品
