@@ -234,7 +234,7 @@ public class UserAction extends ActionSupport {
 		// 当前页数
 		int presentPage = paging.getPresentPage();
 
-		Paging paging = new Paging(presentPage, totalNumber, 1);
+		Paging paging = new Paging(presentPage, totalNumber, 3);
 		// 接收搜索到的用户列表
 		users = userBiz.limitDemend(searchText, paging, u_root);
 		// 将users存入session中
