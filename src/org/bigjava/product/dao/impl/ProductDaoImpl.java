@@ -129,7 +129,7 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 		List<Product> list = new ArrayList<Product>();
 		list = this.getHibernateTemplate().find(hql);
 		list = list.subList(0, 10);
-		System.out.println(list);
+		
 		return list;
 	}
 
@@ -138,6 +138,12 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 	public List<Product> queryProduct_hot() {
 		// TODO Auto-generated method stub
 		System.out.println("查询最热的10件商品");
-		return null;
+		
+		String hql = "from Product order by sale_volume desc";
+		List<Product> list = new ArrayList<Product>();
+		list = this.getHibernateTemplate().find(hql);
+		list.subList(0, 10);
+		
+		return list;
 	}
 }
