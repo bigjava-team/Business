@@ -1,13 +1,9 @@
 package org.bigjava.product.action;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.struts2.ServletActionContext;
 import org.bigjava.categorysecond.biz.CategorySecondBiz;
 import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.function.FileAction;
@@ -46,6 +42,14 @@ public class MerchantProductAction extends ActionSupport {
 	private ImageBiz imagesBiz;// 调用对商品图片操作的业务逻辑层
 	private Images images;// 存放商品图片的类
 	
+	public FileAction getFileAction() {
+		return fileAction;
+	}
+
+	public void setFileAction(FileAction fileAction) {
+		this.fileAction = fileAction;
+	}
+
 	public Images getImages() {
 		return images;
 	}
@@ -60,14 +64,6 @@ public class MerchantProductAction extends ActionSupport {
 
 	public void setImagesBiz(ImageBiz imagesBiz) {
 		this.imagesBiz = imagesBiz;
-	}
-
-	public FileAction getFileAction() {
-		return fileAction;
-	}
-
-	public void setFileAction(FileAction fileAction) {
-		this.fileAction = fileAction;
 	}
 
 	private Paging paging;// 声明Paging类
@@ -166,21 +162,16 @@ public class MerchantProductAction extends ActionSupport {
 	}
 
 	// 保存商品的方法:
-	public String save() throws IOException {
+	public String save() {
 		// 将提交的数据添加到数据库中.
 		product.setP_date(new Date());
 		product.setP_freeze(3);
-		// product.setImage(image);
-//		merchant = merchantBiz.queryMerchant(merchant.getM_id());
 		
-		System.out.println(merchant.getM_id());
-		categorySecond = categorySecondBiz.queryCategorySecond(categorySecond.getCs_id());
+		fileAction.image(product.getP_name());
 		
-		merchant = merchantBiz.queryMerchant(merchant.getM_id());
-		
-		fileAction.image(merchant.getUser().getUsername());
-		
-		product.setP_image("productImage/" + merchant.getUser().getUsername() + "_" + fileAction.getMyFileFileName());
+		product.setP_image("productImage/" + fileAction.getMyFileFileName());
+		System.out.println("数据库图片地址" + product.getP_image());
+		System.out.println("image" + product.getP_image());
 		
 		productBiz.addProduct(product, merchant, categorySecond);// 添加商品信息
 		

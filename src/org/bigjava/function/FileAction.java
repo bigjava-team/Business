@@ -12,7 +12,7 @@ public class FileAction {
 	private String myFileFileName;// 上传的图片名字
 	private String destPath;// 上传的地址
 	
-	public String image(String u_username) {// 上传图片的用户的用户名
+	public void image(String username) {// 上传图片的用户的用户名
 		System.out.println("开始上传");
 		
 		destPath = "E:/软件/Tomcat/wtpwebapps/ImageIOTransition/image/";
@@ -22,7 +22,7 @@ public class FileAction {
 		System.out.println("图片名" + myFileFileName);
 		System.out.println("图片地址" + destPath);
 		
-		this.myFileFileName = u_username +"_"+ myFileFileName;// 生成动态的图片名
+		this.myFileFileName = username +"_"+ myFileFileName;// 生成动态的图片名
 		System.out.println("当前图片名" + myFileFileName);
 		
 		File file = new File(destPath, myFileFileName);
@@ -31,10 +31,7 @@ public class FileAction {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "file_error";
 		}
-		
-		return "file_success";
 	}
 
 	public File getMyFile() {

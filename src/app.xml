@@ -87,6 +87,8 @@
 	<!-- 收藏商品 -->
 	<bean name="collectProductDao" class="org.bigjava.collectProduct.dao.impl.CollectProductDaoImpl" autowire="byName" />
 	
+	<bean name="fileAction" class="org.bigjava.function.FileAction" autowire="byName" />
+	
 	<bean name="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
