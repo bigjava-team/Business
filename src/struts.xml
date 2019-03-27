@@ -85,7 +85,7 @@
 		
 		<!-- 店铺对商品的Action -->
 		<action name="MerchantProduct_*" class="merchantProductAction" method="{1}">
-			<result name="saveSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0
+			<result name="saveSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0&amp;merchant.m_id=${merchant.m_id}
 			</result>
 			<result name="updateProductSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0
 			</result>
