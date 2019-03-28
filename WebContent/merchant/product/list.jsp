@@ -64,7 +64,7 @@
 		<s:iterator value="productList" status="status" var="product">
 		<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
 			<td align="center">${product.p_id}</td>
-			<td align="center">${product.p_image }</td>
+			<td align="center"><img src='${pageContext.request.contextPath }/${product.p_image}' /></td>
 			<td align="center">${product.p_name }</td>
 			<td align="center">${product.p_price }</td>
 			<td align="center">${product.market }</td>

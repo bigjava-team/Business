@@ -15,7 +15,7 @@ public class FileAction {
 	public void image(String username) {// 上传图片的用户的用户名
 		System.out.println("开始上传");
 		
-		destPath = "E:/软件/Tomcat/wtpwebapps/Business/productImage/";
+		destPath = "C:/Users/Mr.Man/Desktop/Business/WebContent/productImage/";
 		
 		System.out.println("图片" + myFile);
 		System.out.println("图片类型" + myFileContentType);
