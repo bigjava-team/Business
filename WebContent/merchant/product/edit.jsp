@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <link href="${pageContext.request.contextPath}/css/admin.css" rel="stylesheet" type="text/css"/>
 </head>
-<body class="admin_body">
+<body class="admin_body" style="margin: 1% 1%;">
 	
 	<div id="admin_add_div_top">
 		编辑商品
@@ -28,11 +28,13 @@
 			<div class="admin_merchant_d1">
 				所属的二级分类：
 			</div>
-			<select name="categorySecond.cs_id">
+			<div class="admin_merchant_d2">
+				<select name="categorySecond.cs_id">
 					<s:iterator var="cs" value="csList">
 						<option value="<s:property value="#cs.cs_id"/>"><s:property value="#cs.cs_name"/></option>
 					</s:iterator>
 				</select>
+			</div>
 		</div>
 		
 		<div class="admin_add_div_middle">
