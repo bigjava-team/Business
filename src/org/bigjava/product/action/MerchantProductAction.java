@@ -1,17 +1,17 @@
 package org.bigjava.product.action;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import org.bigjava.categorysecond.biz.CategorySecondBiz;
 import org.bigjava.categorysecond.entity.CategorySecond;
-import org.bigjava.function.FileAction;
+import org.bigjava.function.FileImageAction;
 import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
 import org.bigjava.image.biz.ImageBiz;
 import org.bigjava.image.entity.Images;
-import org.bigjava.merchant.biz.MerchantBiz;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.product.biz.ProductBiz;
 import org.bigjava.product.entity.Product;
@@ -36,7 +36,7 @@ public class MerchantProductAction extends ActionSupport {
 	private Merchant merchant;
 	private String searchText; // 搜索的参数值
 	
-	private FileAction fileAction;// 上传图片的功能类
+	private FileImageAction fileImageAction;// 上传图片的功能类
 	
 	private ImageBiz imagesBiz;// 调用对商品图片操作的业务逻辑层
 	private Images images;// 存放商品图片的类
@@ -51,12 +51,12 @@ public class MerchantProductAction extends ActionSupport {
 		this.productList = productList;
 	}
 
-	public FileAction getFileAction() {
-		return fileAction;
+	public FileImageAction getFileImageAction() {
+		return fileImageAction;
 	}
 
-	public void setFileAction(FileAction fileAction) {
-		this.fileAction = fileAction;
+	public void setFileImageAction(FileImageAction fileImageAction) {
+		this.fileImageAction = fileImageAction;
 	}
 
 	public Images getImages() {
@@ -170,16 +170,12 @@ public class MerchantProductAction extends ActionSupport {
 	}
 
 	// 保存商品的方法:
-	public String save() {
+	public String save() throws IOException {
+		fileImageAction.fileImage();
 		// 将提交的数据添加到数据库中.
 		product.setP_date(new Date());
 		product.setP_freeze(3);
-		
-		System.out.println("上传图片" + fileAction);
-		
-		fileAction.image(product.getP_name());
-		
-		product.setP_image("productImage/" + fileAction.getMyFileFileName());
+		product.setP_image(fileImageAction.getFileImageFileName());// 图片名
 		
 		productBiz.addProduct(product, merchant, categorySecond);// 添加商品信息
 		
