@@ -13,7 +13,7 @@ public class FileImageAction {
 	private String fileImageContentType;// 图片类型(格式：input标签file属性的name加上ContentType)
 	private String savePath;// 保存路径
 	
-	private String urlImage;// 图片存放url地址
+	private String urlImage = "http://localhost:8080/Img/";// 图片存放url地址
 	
 	public String getSavePath() {
 		return savePath;
@@ -25,7 +25,7 @@ public class FileImageAction {
 		return urlImage;
 	}
 	public void setUrlImage(String urlImage) {
-		this.urlImage = "http://localhost:8080/Img/";
+		this.urlImage = urlImage;
 	}
 	public File getFileImage() {
 		return fileImage;
