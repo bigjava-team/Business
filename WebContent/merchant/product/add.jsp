@@ -60,7 +60,7 @@
 				商品图片：
 			</div>
 			<div class="admin_merchant_d2">
-				<input type="file" name="fileAction.myFile">
+				<input type="file" name="fileImageAction.fileImage">
 			</div>
 		</div>
 		
