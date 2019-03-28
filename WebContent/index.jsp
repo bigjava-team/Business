@@ -15,8 +15,7 @@
 	margin-left: auto;
 }
 
-#index #main #main_right_top {
-	background-color: #03C;
+#index #main #member {
 	margin-top: 1%;
 	margin-right: 1%;
 	margin-bottom: 1%;
@@ -25,12 +24,23 @@
 	width: 23%;
 }
 
+#index #main #member #member-bd {
+	background-color: #0F0;
+	height: 70%;
+	width: 100%;
+}
+
+#index #main #member #member-ft {
+	background-color: #009;
+	height: 30%;
+	width: 100%;
+}
+
 #index #main #main_right_foot {
 	float: left;
 	margin-right: 1%;
 	margin-bottom: 1%;
 	width: 23%;
-	background-color: #0FF;
 	height: 52%;
 }
 
@@ -187,11 +197,6 @@ body {
 	line-height: 30px;
 }
 
-#index #main #main_left ul li {
-	list-style-type: none;
-	margin-top: 8%;
-}
-
 #index #top ul li {
 	list-style-type: none;
 	float: left;
@@ -202,10 +207,32 @@ body {
 	margin-left: auto;
 }
 
+#index #main #main_left ul div li {
+	margin-bottom: 7%;
+	list-style-type: none;
+}
+
+#index #main #main_left ul div {
+	width: 90%;
+	margin-left: -8%;
+}
+
+#index #main #main_right_foot #tell_main {
+	background-color: #0F9;
+	height: 90%;
+	width: 100%;
+}
+
 #index #main #main_left #biaoti {
 	font-size: 18px;
 	background-color: #9C0;
 	height: 6%;
+}
+
+#index #main #main_right_foot #tell {
+	background-color: #F09;
+	height: 10%;
+	width: 100%;
 }
 </style>
 </head>
@@ -242,20 +269,48 @@ body {
 			<div id="main_left">
 				<div id="biaoti">商品分类</div>
 				<ul>
-					<li>衣服饰品</li>
-					<li>男装/女装/内衣</li>
-					<li>鞋靴/箱包/配件</li>
-					<li>户外商品</li>
-					<li>运动/户外/乐器</li>
-					<li>游戏/动漫/影视</li>
-					<li>美食/生鲜/零食</li>
-					<li>电子产品</li>
-					<li>冰箱/数码/手机</li>
-					<li>美妆/洗护/保健品</li>
-					<li>珠宝/眼镜/手表</li>
-					<li>家用电器</li>
-					<li>工具/装修/建材</li>
-					<li>家具/家饰/家纺</li>
+					<div>
+						<li>衣服饰品</li>
+					</div>
+					<div>
+						<li>男装/女装/内衣</li>
+					</div>
+					<div>
+						<li>鞋靴/箱包/配件</li>
+					</div>
+					<div>
+						<li>户外商品</li>
+					</div>
+					<div>
+						<li>运动/户外/乐器</li>
+					</div>
+					<div>
+						<li>游戏/动漫/影视</li>
+					</div>
+					<div>
+						<li>美食/生鲜/零食</li>
+					</div>
+					<div>
+						<li>电子产品</li>
+					</div>
+					<div>
+						<li>冰箱/数码/手机</li>
+					</div>
+					<div>
+						<li>美妆/洗护/保健品</li>
+					</div>
+					<div>
+						<li>珠宝/眼镜/手表</li>
+					</div>
+					<div>
+						<li>家用电器</li>
+					</div>
+					<div>
+						<li>工具/装修/建材</li>
+					</div>
+					<div>
+						<li>家具/家饰/家纺</li>
+					</div>
 				</ul>
 			</div>
 			<div id="main_top">
@@ -270,8 +325,15 @@ body {
 				</ul>
 			</div>
 			<div id="main_img">图片伦播</div>
-			<div id="main_right_top">个人信息</div>
-			<div id="main_right_foot">告示</div>
+			<div id="member">
+				<div id="member-bd">个人信息</div>
+				<div id="member-ft"></div>
+			</div>
+			<div id="main_right_foot">
+				<div id="tell">告示</div>
+				<div id="tell_main"></div>
+
+			</div>
 
 		</div>
 
@@ -310,4 +372,5 @@ body {
 		<div id="foot">底部</div>
 	</div>
 </body>
+
 </html>
