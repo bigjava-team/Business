@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <link href="${pageContext.request.contextPath}/css/admin.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/admin-jQuery-js.js"></script>
 <script type="text/javascript">
 	function addCategory(){
 		window.location.href = "${pageContext.request.contextPath}/admin/category/add.jsp";
@@ -17,9 +19,8 @@
 		一级分类列表
 	</div>
 	
-	<div style="width: 100%; height: 30px;">
-		<button type="button" id="add" name="add" value="添加" class="button_add" onclick="addCategory()" 
-			style="float: right; "> 添加 </button>
+	<div id="admin_list_moddle">
+		<button type="button" id="add" name="add" value="添加" class="button_add button-group_button_add" onclick="addCategory()"> 添加 </button>
 	</div>
 	
 	<table id="admin_list_table" cellspacing="0" cellpadding="1" rules="all" width="100%" border="1" bordercolor="gray">
@@ -40,12 +41,12 @@
 			<td width="36%" align="center">${category.c_name}</td>
 			<td width="14%" align="center">
 				<a href="Category_findCategoryById.action?c_id=${category.c_id}">
-					<img src="${pageContext.request.contextPath}/images/i_edit.gif" border="0" style="CURSOR: hand">
+					<img class="admin_list_tr2_img1" src="${pageContext.request.contextPath}/images/i_edit.gif" border="0">
 				</a>
 			</td>
 			<td width="14%" align="center">
 				<a href="Category_deleteCategory.action?c_id=${category.c_id}">
-					<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
+					<img class="admin_list_tr2_img1" src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0">
 				</a>
 			</td>
 		</tr>

@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <link href="${pageContext.request.contextPath}/css/admin.css" rel="stylesheet" type="text/css"/>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/admin-jQuery-js.js"></script>
 <script type="text/javascript">
 	function addCategory(){
 		window.location.href = "${pageContext.request.contextPath}/merchant/merchants/edit.jsp";
@@ -17,7 +20,7 @@
 	</div>
 	
 	<div class="admin_m_m_l_d1">
-		<button type="button" id="add" name="add" value="添加" class="button_add" onclick="addCategory()"> 编辑 </button>
+		<button type="button" id="add" name="add" value="添加" class="button_add button-group_button_add" onclick="addCategory()"> 编辑 </button>
 	</div>
 	
 	<div id="admin_add_div_top">
@@ -40,7 +43,7 @@
 				<td class="admin_form1_table_tr_td3" align="center">名称</td>
 				<td class="admin_form1_table_tr_td3" align="center">光光商城</td>
 			</tr>
-			<tr id="admin_list_tr2" style="margin: 0px; padding: 0px;">
+			<tr id="admin_list_tr2">
 				<td class="admin_form1_table_tr_td1" align="center">创建时间</td>
 				<td class="admin_form1_table_tr_td3" align="center">2018:10:10 10:10:10</td>
 				<td class="admin_form1_table_tr_td3" align="center">店铺状态</td>

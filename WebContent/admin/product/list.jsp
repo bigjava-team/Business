@@ -11,6 +11,27 @@
 		商品列表
 	</div>
 	
+	<!-- 根据姓名查询，若不输入，则查询全部 -->
+	<div class="input-group4">
+		<select class="input-group_select4">
+			<option class="option" value="0">全部</option>
+			<option class="option" value="3">编号</option>
+			<option class="option" value="2">名称</option>
+			<option class="option" value="1">月销售量</option>
+			<option class="option" value="1">是否热门</option>
+		</select>
+		<!-- 搜索框 -->
+		<input type="text" name="queryText" id="input" class="input-group_input4" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
+		
+		<input type="text" name="queryText" id="input" class="input-group_input5" placeholder="最低价格"  value="">
+		<div class="input-group4_d4">
+			&nbsp; - &nbsp;
+		</div>
+		<input type="text" name="queryText" id="input" class="input-group_input6" placeholder="最高价格"  value="">
+		<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
+		<button id="search" class="input-group_button4">搜索</button>
+	</div>
+	
 	<table id="admin_list_table" cellspacing="0" cellpadding="0" rules="all" width="100%" border="1" bordercolor="gray">
 		<tr id="admin_list_tr1">
 			<td width="10%" align="center">序号</td>
@@ -34,7 +55,7 @@
 			<td align="center">是</td>
 			<td align="center">
 				<a>
-					<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
+					<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" class="admin_merchant_pd_immg1">
 				</a>
 			</td>
 		</tr>

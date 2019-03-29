@@ -5,12 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <link href="${pageContext.request.contextPath}/css/admin.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body id="admin_list_body">
 	<div id="admin_list_div_top">
 		店铺列表
 	</div>
 	
+	<div class="admin_list_div_moddle2">
+		<!-- 根据查询值，若不输入，则查询全部 -->
+		<div class="input-group2">
+			<!-- 搜索框 -->
+			<input type="text" id="input" class="input-group_input2" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchCategorySecond}">
+			<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
+			<button id="button" class="input-group_button2">搜索</button>
+		</div>
+	</div>
+		
 	<form action="" method="post">
 	
 		<table id="admin_list_table" cellspacing="0" cellpadding="0" rules="all" width="100%" border="1" bordercolor="gray">
