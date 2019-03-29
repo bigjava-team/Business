@@ -8,13 +8,13 @@
 <title>Insert title here</title>
 <link href="${pageContext.request.contextPath}/css/admin.css" rel="stylesheet" type="text/css"/>
 </head>
-<body>
+<body class="admin_body" style="margin: 1% 1%;">
 	
 	<div id="admin_add_div_top">
 		编辑二级分类
 	</div>
 	
-	<form action="CategorySecond_editCategorySecond.action?cs_id=${model.cs_id }" method="post">
+	<form class="admin_form1" action="CategorySecond_editCategorySecond.action?cs_id=${model.cs_id }" method="post">
 		<div class="admin_add_div_middle">
 			二级分类名称:&emsp;&emsp;&emsp;<input type="text" name="cs_name" value='<s:property value="model.cs_name" />'/>
 		</div>

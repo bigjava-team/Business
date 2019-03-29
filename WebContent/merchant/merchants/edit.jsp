@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <link href="${pageContext.request.contextPath}/css/admin.css" rel="stylesheet" type="text/css"/>
 </head>
-<body class="admin_body">
+<body class="admin_body" style="margin: 1% 1%;">
 	
 	<div id="admin_add_div_top">
 		编辑店铺信息
