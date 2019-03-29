@@ -217,8 +217,8 @@ body {
 	position: fixed;
 	top: 25%;
 	left: 36%;
-	width: 26%;
-	height: 22%;
+	width: 30%;
+	height: 27%;
 	padding: 1%;
 	border: 10px solid #ddd;
 	background-color: lightblue;
@@ -432,7 +432,7 @@ td {
 }
 </style>
 
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var titles = $("div.title >a");
@@ -565,7 +565,7 @@ td {
 
 					<div class="aa">
 						<div class="bb">
-							<img src="TuPian/TouXiang.png"
+							<img src="../TuPian/TouXiang.png"
 								style="height: 200px; width: 200px"><br />
 							<h2>个人店铺</h2>
 							自己通过个人账号创建的店铺为个人店铺。<br /> <br />
@@ -664,7 +664,7 @@ td {
 							<br /> <br /> <br />
 							<div class="anniudiv2">
 								<button class="button2" style="vertical-align: middle"
-									onclick="one();">
+									onclick="two();">
 									<span>上一步</span>
 								</button>
 								<button class="button2"

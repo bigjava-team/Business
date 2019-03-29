@@ -93,7 +93,7 @@ img {
 
 .zhongjian {
 	margin-top: 2%;
-	background-image: url(TuPian/test2.jpg);
+	background-image: url(../TuPian/test2.jpg);
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	-moz-background-size: 100% 100%;
@@ -321,8 +321,8 @@ img {
 		<div id="all">
 
 			<div id="header">
-				<a href="Save.jsp"><img src="TuPian/logo.jpg"></a><img
-					src="TuPian/nuli.gif"><br /> <font size="33px"><b>修改信息</b></font>
+				<a href="Save.jsp"><img src="../TuPian/logo.jpg"></a><img
+					src="../TuPian/nuli.gif"><br /> <font size="33px"><b>修改信息</b></font>
 				<div class="tou">
 					<div class="wenti">
 						<a href=""><font class="toubuwenzi">首页&nbsp;&nbsp;&nbsp;</font></a>
