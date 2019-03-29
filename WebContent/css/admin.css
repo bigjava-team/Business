@@ -70,6 +70,8 @@ admin_list
 
 #admin_list_tr2{
 	font-size: 12px;
+	margin: 0px;
+	padding: 0px;
 }
 
 #admin_list_div_page{
@@ -132,7 +134,7 @@ admin_add/edit
 }
 
 .admin_body{
-	margin: 0px;
+	margin: 1% 1%;
 	padding: 0px;
 }
 
@@ -226,4 +228,305 @@ admin_add/edit
 	font-size: 14px;
 	font-weight: bold;
 	text-align: left;
+	padding-left: 1%;
+}
+
+#admin_list_moddle{
+	width: 100%;
+	height: 36px;
+}
+
+.admin_list_tr2_img1{
+	CURSOR: hand;
+}
+
+/* 搜索框和添加按钮的样式 */
+.input-group1 {
+	width: 28%;
+	height: 25px;
+	margin: 0 auto;
+	margin-top: 0px;
+	margin-bottom: 8px;
+	border: 2px solid #acd6ff;
+	padding: 0px;
+	float: left;
+	margin-left: 36%;
+	border-radius: 3px;
+}
+
+.input-group_input1 {
+	height: 23px;
+	width: 81%;
+	background: #FFFFFF;
+	font-size: 12px;
+	float: left;
+	border: 0px solid #FFF;
+	border-left: 1px solid #c0c0c0;
+	padding-left: 8px;
+	outline: none;
+	border-radius: 1px;
+}
+
+.input-group_button1 {
+	height: 25px;
+	width: 16%;
+	background: #acd6ff;
+	border: 0px solid #ff7496;
+	float: right;
+	cursor: pointer;
+}
+
+.admin_list_body_moddle1{
+	width: 100%;
+	height: 30px;
+}
+
+.button-group1{
+	padding-top: 3px;
+}
+
+.button-group_button_add1{
+	float: right;
+}
+
+/* 只有搜索框样式 */
+.input-group2 {
+	width: 28%;
+	height: 25px;
+	margin: 0 auto;
+	margin-top: 0px;
+	margin-bottom: 8px;
+	border: 2px solid #acd6ff;
+	padding: 0px;
+	float: left;
+	margin-left: 36%;
+	border-radius: 3px;
+}
+
+.input-group_input2 {
+	height: 23px;
+	width: 81%;
+	background: #FFFFFF;
+	font-size: 12px;
+	float: left;
+	border: 0px solid #FFF;
+	border-left: 1px solid #c0c0c0;
+	padding-left: 8px;
+	outline: none;
+	border-radius: 1px;
+}
+
+.input-group_button2 {
+	height: 25px;
+	width: 16%;
+	background: #acd6ff;
+	border: 0px solid #ff7496;
+	float: right;
+	cursor: pointer;
+}
+
+/* 可以分类查询的搜索框样式 */
+.input-group_select3{
+	width: 23.5%;;
+	height: 108%;
+	margin: 0 auto;
+	margin-top: -1px;
+	margin-left: -1px;
+	margin-bottom: 0px;
+	padding: 0px;
+	float: left;
+	border: 1px solid #acd6ff;
+}
+
+.input-group3 {
+	width: 29%;
+	height: 25px;
+	margin: 0 auto;
+	margin-top: 0px;
+	margin-bottom: 8px;
+	border: 2px solid #acd6ff;
+	padding: 0px;
+	background: red;
+	border-radius: 3px;
+	margin-left: 35%;
+}
+
+.input-group_input3 {
+	height: 23px;
+	width: 60%;
+	background: #FFFFFF;
+	font-size: 12px;
+	float: left;
+	border: 0px solid #FFF;
+	border-left: 1px solid #c0c0c0;
+	padding-left: 2%;
+	outline: none;
+
+}
+
+.input-group_button3 {
+	height: 25px;
+	width: 14.5%;
+	background: #acd6ff;
+	border: 0px solid #ff7496;
+	float: right;
+	cursor: pointer;
+}
+
+/* 有分类查询和价格区间的搜索框  右侧没有添加、上架功能 */
+.input-group4 {
+	width: 40%;
+	height: 25px;
+	margin: 0 auto;
+	margin-top: 0px;
+	margin-bottom: 8px;
+	border: 2px solid #acd6ff;
+	padding: 0px;
+	border-radius: 3px;
+}
+
+.input-group_select4{
+	width: 16%;;
+	height: 108%;
+	margin: 0 auto;
+	margin-top: -1px;
+	margin-left: -1px;
+	margin-bottom: 0px;
+	padding: 0px;
+	float: left;
+	border: 1px solid #acd6ff;
+}
+
+.input-group_input4 {
+	height: 23px;
+	width: 40%;
+	background: #FFFFFF;
+	font-size: 12px;
+	float: left;
+	border: 0px solid #FFF;
+	border-left: 1px solid #c0c0c0;
+	padding-left: 2%;
+	outline: none;
+}
+
+.input-group_input5 {
+	height: 23px;
+	width: 12%;
+	font-size: 12px;
+	float: left;
+	border: 0px solid #FFF;
+	border-left: 1px solid #c0c0c0;
+	padding-left: 0px;
+	outline: none;
+	background: #acd6ff;
+	text-align: center;
+}
+
+.input-group_input6 {
+	height: 23px;
+	width: 12%;
+	background: #FFFFFF;
+	font-size: 12px;
+	float: left;
+	border: 0px solid #FFF;
+	border-left: 1px solid #c0c0c0;
+	padding-left: 0px;
+	outline: none;
+	background: #acd6ff;
+	text-align: center;
+}
+
+.input-group_button4 {
+	height: 25px;
+	width: 12%;
+	background: #acd6ff;
+	border: 0px solid #ff7496;
+	float: right;
+	cursor: pointer;
+}
+
+.input-group4_d4{
+	float: left;
+}
+
+/* 有分类查询和价格区间的搜索框  右侧有添加、上架功能 */
+.input-group5 {
+	width: 40%;
+	height: 25px;
+	margin: 0 auto;
+	margin-top: 0px;
+	margin-bottom: 8px;
+	border: 2px solid #acd6ff;
+	padding: 0px;
+	border-radius: 3px;
+	float: left;
+	margin-left: 30%;
+}
+
+.input-group_select5{
+	width: 16%;;
+	height: 108%;
+	margin: 0 auto;
+	margin-top: -1px;
+	margin-left: -1px;
+	margin-bottom: 0px;
+	padding: 0px;
+	float: left;
+	border: 1px solid #acd6ff;
+}
+
+.input-group_input7 {
+	height: 23px;
+	width: 40%;
+	background: #FFFFFF;
+	font-size: 12px;
+	float: left;
+	border: 0px solid #FFF;
+	border-left: 1px solid #c0c0c0;
+	padding-left: 2%;
+	outline: none;
+}
+
+.input-group_input8 {
+	height: 23px;
+	width: 12%;
+	font-size: 12px;
+	float: left;
+	border: 0px solid #FFF;
+	border-left: 1px solid #c0c0c0;
+	padding-left: 0px;
+	outline: none;
+	background: #acd6ff;
+	text-align: center;
+}
+
+.input-group_input9 {
+	height: 23px;
+	width: 12%;
+	background: #FFFFFF;
+	font-size: 12px;
+	float: left;
+	border: 0px solid #FFF;
+	border-left: 1px solid #c0c0c0;
+	padding-left: 0px;
+	outline: none;
+	background: #acd6ff;
+	text-align: center;
+}
+
+.input-group_button5 {
+	height: 25px;
+	width: 12%;
+	background: #acd6ff;
+	border: 0px solid #ff7496;
+	float: right;
+	cursor: pointer;
+}
+
+.input-group5_d1{
+	float: left;
+}
+
+.input-group5d1{
+	float: right;
 }

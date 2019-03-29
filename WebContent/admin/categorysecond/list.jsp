@@ -7,59 +7,29 @@
 <meta charset="UTF-8">
 <link href="${pageContext.request.contextPath}/css/admin.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/admin-jQuery-js.js"></script>
 <script type="text/javascript">
-function addCategorySecond(){
-	window.location.href = "${pageContext.request.contextPath}/CategorySecond_addPage.action";
-}
-
-
-
-$(document).ready(function() {
+	function addCategorySecond(){
+		window.location.href = "${pageContext.request.contextPath}/CategorySecond_addPage.action";
+	}
 	
-	$("#button").click(function() {
-		
-		var searchText = $("#input").val();// 获取搜索文本框的值
-		alert(searchText);
-		
-		window.location.href="CategorySecond_findAllBySearchName?searchCategorySecond="+searchText+"&paging.presentPage=0";
+	$(document).ready(function() {
+		$("#button").click(function() {
+			var searchText = $("#input").val();// 获取搜索文本框的值
+			alert(searchText);
+			window.location.href="CategorySecond_findAllBySearchName?searchCategorySecond="+searchText+"&paging.presentPage=0";
+		});
 	});
 	
-});
-</script>
-<style type="text/css">
-	.input-group {
-		width: 346px;
-		height: 25px;
-		margin: 0 auto;
-		margin-top: 0px;
-		margin-bottom: 8px;
-		border: 2px solid #acd6ff;
-		padding: 0px;
-	}
-
-	input[type="text"] {
-		height: 25px;
-		width: 200px;
-		background: #FFFFFF;
-		font-size: 12px;
-		float: left;
-		border: 0px solid #FFF;
-		border-left: 1px solid #c0c0c0;
-		padding-left: 15px;
-		outline: none;
-
-	}
-
-	.bs {
-		height: 25px;
-		width: 50px;
-		background: #acd6ff;
-		border: 0px solid #ff7496;
-		float: right;
-		cursor: pointer;
-	}
+	/* $(function(){
+		$(".button-group_button_add").hover(function(){
+			$(".button-group_button_add").css("color", "#D26900").css("font-size","14px").css("font-weight","bold");
+		}, function(){
+			$(".button-group_button_add").css("color", "#000").css("font-size","12px").css("font-weight","normal");
+		});
+	}); */
 	
-</style>
+</script>
 
 </head>
 <body id="admin_list_body">
@@ -67,20 +37,18 @@ $(document).ready(function() {
 		二级分类列表
 	</div>
 	
-	<!-- 根据查询值，若不输入，则查询全部 -->
-	<div class="input-group">
-		<!-- 搜索框 -->
-		<input type="text" id="input" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchCategorySecond}">
-		<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
-		<span class=" ">
-			<button id="button" class="bs">搜索</button>
-		</span>
-	</div>
+	<div class="admin_list_body_moddle1">
+		<!-- 根据查询值，若不输入，则查询全部 -->
+		<div class="input-group1">
+			<!-- 搜索框 -->
+			<input type="text" id="input" class="input-group_input1" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchCategorySecond}">
+			<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
+			<button id="button" class="input-group_button1">搜索</button>
+		</div>
 	
-	
-	<div style="width: 100%; height: 30px;">
-		<button type="button" id="add" name="add" value="添加" class="button_add" onclick="addCategorySecond();" 
-			style="float: right; "> 添加 </button>
+		<div class="button-group1">
+			<button type="button" id="add" name="add" value="添加" class="button-group_button_add1 button-group_button_add" onclick="addCategorySecond();"> 添加 </button>
+		</div>
 	</div>
 	
 	<table id="admin_list_table" cellspacing="0" cellpadding="0" rules="all" width="100%" border="1" bordercolor="gray">

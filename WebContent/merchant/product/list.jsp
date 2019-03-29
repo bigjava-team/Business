@@ -7,23 +7,21 @@
 <meta charset="UTF-8">
 <link href="${pageContext.request.contextPath}/css/admin.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/admin-jQuery-js.js"></script>
 <script type="text/javascript">
 	function addCategory(){
 		window.location.href = "${pageContext.request.contextPath}/MerchantProduct_addPage.action";
 	}
 
 	$(document).ready(function() {
-		
 		$("#button").click(function() {
-			
 			var searchText = $("#input").val();// 获取搜索文本框的值
 			alert(searchText);
-			
 			window.location.href="MerchantProduct_findAll?method=post&searchText="+searchText+"&paging.presentPage=0";
 		});
-		
 	});
 </script>
+
 </head>
 <body id="admin_list_body">
 
@@ -33,13 +31,28 @@
 	<!-- 根据查询值，若不输入，则查询全部 -->
 	
 	<div class="admin_merchant_pd_l_d1">
-		<div style="float: left;">
+		<!-- 根据姓名查询，若不输入，则查询全部 -->
+		<div class="input-group5">
+			<select class="input-group_select5">
+				<option class="option" value="0">全部</option>
+				<option class="option" value="3">编号</option>
+				<option class="option" value="2">名称</option>
+				<option class="option" value="1">月销售量</option>
+				<option class="option" value="1">是否热门</option>
+			</select>
 			<!-- 搜索框 -->
-			<input type="text" id="input" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
-			<button id="button" class="bs">搜索</button>
+			<input type="text" name="queryText" id="input" class="input-group_input7" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
+			
+			<input type="text" name="queryText" id="input" class="input-group_input8" placeholder="最低价格"  value="">
+			<div class="input-group5_d1">
+				&nbsp; - &nbsp;
+			</div>
+			<input type="text" name="queryText" id="input" class="input-group_input9" placeholder="最高价格"  value="">
+			<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
+			<button id="search" class="input-group_button5">搜索</button>
 		</div>
-		<div>
-			<button type="button" id="add" name="add" value="添加" class="button_add" onclick="addCategory()">
+		<div class="input-group5d1">
+			<button type="button" id="add" name="add" value="添加" class="button_add button-group_button_add" onclick="addCategory()">
 				 上架 
 			</button>
 		</div>

@@ -37,24 +37,24 @@
 	
 	//创建异步交互对象
 	function createXmlHttp(){
-		   var xmlHttp;
-		   try{ // Firefox, Opera 8.0+, Safari
-		        xmlHttp=new XMLHttpRequest();
-		    }
+		var xmlHttp;
+		try{ // Firefox, Opera 8.0+, Safari
+			xmlHttp=new XMLHttpRequest();
+		}
+		catch (e){
+			try{ // Internet Explorer
+				xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+			}
 		    catch (e){
-			   try{ // Internet Explorer
-			         xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
-			      }
-			    catch (e){
-			      try{
-			         xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-			      }
-			      catch (e){}
-			      }
-		    }
+		      try{
+		         xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+		      }
+		      catch (e){}
+		      }
+	    }
 
-			return xmlHttp;
-		 }
+		return xmlHttp;
+	 }
 </script>
 </head>
 <body id="admin_list_body">
@@ -62,6 +62,16 @@
 	<form action="" method="post">
 		<div id="admin_list_div_top">
 			订单列表
+		</div>
+		
+		<div class="admin_list_div_moddle2">
+			<!-- 根据查询值，若不输入，则查询全部 -->
+			<div class="input-group2">
+				<!-- 搜索框 -->
+				<input type="text" id="input" class="input-group_input2" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchCategorySecond}">
+				<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
+				<button id="button" class="input-group_button2">搜索</button>
+			</div>
 		</div>
 		
 		<table id="admin_list_table" cellspacing="0" cellpadding="0" rules="all" width="100%" border="1" bordercolor="gray">
