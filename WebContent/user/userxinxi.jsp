@@ -187,7 +187,7 @@ body {
 					+ ':' + s + '</font>' + '<br/>' + '<font color="#55b46c">'
 					+ '星期 ' + day + '<br/>' + year + '.' + mon + '.' + da
 					+ '</font>';
-		}, 1000)
+		}, 1000)}
 	
 	
 	function Over(o){o.style.backgroundColor='#fff'; o.style.border='1px solid #c31414';}
