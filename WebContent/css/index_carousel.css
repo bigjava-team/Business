@@ -1,0 +1,71 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+#carousel {
+	display: table;
+	float: left;
+	overflow: hidden;
+	position: relative;
+	width: 74%;
+	height: 100%;
+	line-height: 100%;
+	margin-top: 5px;
+	margin-right: 1%;
+	padding-top: 0px;
+	background: red;
+	border: 1px solid blue;
+}
+
+#carousel_ul {
+	/* 清楚ul的点 */
+	list-style: none;
+	/* 开启绝对定位 */
+	position: absolute;
+	display: table-cell;
+	vertical-align: middle;
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+}
+
+#carousel_ul li {
+	/* 设置浮动 */
+	float: left;
+	/* 设置左右边距 */
+	margin: 0 0;
+	height: 100%;
+}
+
+#carousel_ul li img {
+	width: 100%;
+	height: 100%;
+}
+
+#navDiv {
+	position: absolute;
+	/* 设置 */
+	bottom: 4%;
+	width: 14%;
+	height: 3.5%;
+}
+
+#navDiv a {
+	/* 设置超链接浮动 */
+	float: left;
+	/* 设置超链接长宽 */
+	width: 12%;
+	height: 98%;
+	border-radius: 5px;
+	background-color: red;
+	margin: 0 4%;
+	/* 设置透明度 */
+	opacity: 0.5;
+	/* 兼容IE */
+	/* filter: alpha(opacity=50); */
+}
+
+#navDiv a:hover {
+	background-color: black;
+}
