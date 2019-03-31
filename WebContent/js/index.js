@@ -54,9 +54,9 @@
     Carousel.prototype = {
         //设置上一张和下一张大小
         setDirect:function(){
-            var prev = $("<div></div>").addClass("content-btn prev-btn").append($("<img/>").attr("src","TuPian/left.png").addClass("btn-img"));
+            var prev = $("<div></div>").addClass("content-btn prev-btn").append($("<img/>").attr("src","../TuPian/left.png").addClass("btn-img"));
             this.con.prepend(prev);
-            var next = $("<div></div>").addClass("content-btn next-btn").append($("<img/>").attr("src","TuPian/right.png").addClass("btn-img"));
+            var next = $("<div></div>").addClass("content-btn next-btn").append($("<img/>").attr("src","../TuPian/right.png").addClass("btn-img"));
             this.con.append(next);
         },
         //自动播放函数
