@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/*第一版块*/
+.contentone{ background:#F0F0F0; width:100%; padding: 7px 6% 7px 6%;}
+/*导航栏目z的文字*/
+.wenziz{float: left; text-align:left; color:#666; font-size:14px; margin:0 10 0 30 ;word-spacing:33px;word-spacing:22px; word-spacing:22px;}
+.wenziz2{ text-align:right; color:#666; font-size:14px; margin:0 50 0 10 ; word-spacing:22px;}
+
+
+/*第二版块*/
+.contenttwo{ background:#FFF; padding-left: 8%; padding-top: 10px; }
+
+/*索搜*/
+* {box-sizing: border-box;}
+.search {padding: 15px 0;}
+#contenttwo_form {position: relative;width: 24%;margin: 0 auto;}
+.contenttwo_input, .contenttwo_button{border: none;outline: none;}
+.contenttwo_input{width: 100%;height: 42px; padding-left: 13px;}
+ .contenttwo_button{height: 100%; width: 22%; cursor: pointer;position: absolute;}
+/*搜索框7*/
+.bar7 #contenttwo_form {height:40px; margin-left: 66%;}
+.bar7 .contenttwo_input{width:100%; border-radius: 42px;border: -2px solid #324B4E;background: #F9F0DA;transition: .3s linear;float: right;}
+.bar7 .contenttwo_input:focus {width: 115%;}
+.bar7 .contenttwo_button{background: none;top: 1px;right: 0;}
+.bar7 .contenttwo_button:before{content: "\f002";font-family: FontAwesome;color: #324b4e;}
