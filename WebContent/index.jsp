@@ -39,34 +39,6 @@
 		});
 	});
 	
-	/* $(function(){
-		$(".d0101").html("<p>haha</p>" + "<p>" + "hehehe" + "</p>");
-	}); */
-	
-	/* $(function(){
-		$(".aaa_d1").mouseover(function(){
-			$(".xuanfu").html("盛唐时代，据说有一天，丝绸之路来了一帮西域商贾，傍晚在客栈住宿，见有一女子斥责一老者。商人上前责问：“你何故这般打骂老人？”那女子道：“我训自己的孙子，与你何干？”闻者皆大吃一惊。原来，此女子已200多岁，老汉也已是九旬之人。他受责打是因为不肯遵守族规服用草药，弄得未老先衰、两眼昏花。商人惊诧之余忙向女寿星讨教高寿的秘诀？女寿星见使者一片真诚，便告诉他自己四季服用枸杞。后来枸杞传入中东和西方，被那里的人誉为东方神草。");
-		});
-	}); */
-	
-	$(function(){
-		$(".aaa_d1").mouseover(function(){
-			$(".xuanfu").html(	"<div style='background: red; float: left; width: 64.5%; height: 100%;'>" +
-									"<div style='background: #369; width: 100%; height: 33.33%'>" +
-										"<div>1" +
-										"</div>" +
-										"<div>2" +
-										"</div>" +
-									"</div>" +
-									"<div style='background: #693; width: 100%; height: 33.33%'>" +
-									"</div>" +
-									"<div style='background: #936; width: 100%; height: 33.33%'>" +
-									"</div>" +
-								"</div>" +
-								"<div style='background: yellow; float: left; width: 35.5%;'>hehe</div>");
-		});
-	});
-	
 </script>
 </head>
 <body style="background: #F4F4F4; margin: 0px; padding: 0px;">
@@ -85,9 +57,15 @@
 			主题市场
 		</div>
 		<div style="background: #FF8300; color: #FFF; width: 84%; height: 30px; line-height: 30px; float: left;">
-			<a>淘宝</a>
-			<a>天猫</a>
-			<a>京东</a>
+			<a href="#" style="text-decoration: none;">&emsp;淘宝&emsp;|&emsp;</a>
+			<a href="#" style="text-decoration: none;">天猫&emsp;|&emsp;</a>
+			<a href="#" style="text-decoration: none;">京东&emsp;|&emsp;</a>
+			<a href="#" style="text-decoration: none;">亚马逊&emsp;|&emsp;</a>
+			<a href="#" style="text-decoration: none;">唯品会&emsp;|&emsp;</a>
+			<a href="#" style="text-decoration: none;">拼多多&emsp;|&emsp;</a>
+			<a href="#" style="text-decoration: none;">蘑菇街&emsp;|&emsp;</a>
+			<a href="#" style="text-decoration: none;">苏宁易购&emsp;|&emsp;</a>
+			<a href="#" style="text-decoration: none;">聚美优品&emsp;</a>
 		</div>
 		<div class="aaa" style="background: #FFF; width: 16%; float: left; color: #666666">
 			<!-- 此div 做边距处理，空出位置 遍历时请勿删除 -->
@@ -217,20 +195,20 @@
 					</div>
 				</div>
 				<div style="background: #FF8000; float: left; width: 23.5%; height: 10%; height: 100%; margin-top: 8px;">
-					广告
+					<img alt="" src="${pageContext.request.contextPath }/images/products/bbb006.jpg" width="100%" height="100%">
 				</div>
 			</div>
 			
-			<div style="background: yellow; overflow: hidden; height: 7%;">
-				介绍
+			<div style="background: yellow; overflow: hidden; height: 7%; font-size: 18px; font-weight: bold; padding-top: 1%;">
+				欢迎开店
 			</div>
 			<!-- 284 520 -->
 			<div style="background: aqua; overflow: hidden; height: 39%;">
 				<div style="background: #FF8000; float: left; width: 74%; height: 100%; margin-right: 1%;">
-					图片轮播
+					<img alt="" src="${pageContext.request.contextPath }/images/products/ddd004.jpg" width="100%" height="100%">
 				</div>
-				<div style="background: #D26900; float: left; width: 23.5%; height: 100%;">
-					广告
+				<div style="background: #D26900; float: left; width: 23.92%; height: 100%;">
+					<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" width="100%" height="100%">
 				</div>
 			</div>
 		</div>
@@ -238,8 +216,105 @@
 			下右侧
 		</div>
 		
+		<!-- 隐藏的div -->
 		<div class="xuanfu" style="background: #FFF; display: none; position: absolute; width: 52.7%; float: left; margin-left: 14.1%; margin-top: 30px; border: 2px solid red; padding: 1% 1.5% 1% 1.8%;">
-		
+			<div style="background: #FFF; width: 64.5%; height: 100%; float: left;">
+				<div style="background: #369; width: 100%; height: 33.33%;">
+					<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #545454">
+						女装
+					</div>
+					<div style="background: #FFF; width: 100%; height: 79%; color: #666666; font-size: 12px; padding-right: 2%; overflow: hidden;">
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">看上新</a> </div>
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">连衣裙</a> </div>
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">T恤</a> </div>
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">衬衫</a> </div>
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">裤子</a> </div>
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">牛仔裤</a> </div>
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">西装</a> </div>
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">短外套</a> </div>
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">台上盆</a> </div>
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">毛巾杆</a> </div>
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">普通马桶</a> </div>
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">龙头</a> </div>
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">浴缸</a> </div>
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">墙纸</a> </div>
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">壁纸</a> </div>
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">墙布</a> </div>
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">背景墙</a> </div>
+					</div>
+				</div>
+				<div style="background: #369; width: 100%; height: 33.33%;">
+					<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #545454">
+						男装
+					</div>
+					<div style="background: #FFF; width: 100%; height: 79%; color: #666666; font-size: 12px; padding-right: 2%; overflow: hidden;">
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">看上新</a> </div>
+					</div>
+				</div>
+				<div style="background: #369; width: 100%; height: 33.33%;">
+					<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #545454">
+						内衣
+					</div>
+					<div style="background: #FFF; width: 100%; height: 79%; color: #666666; font-size: 12px; padding-right: 2%; overflow: hidden;">
+						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">看上新</a> </div>
+					</div>
+				</div>
+			</div>
+			<div style="background: #FFF; width: 35.5%; height: 100%; float: left;">
+				<div style="background: #FFF; width: 100%; height: 33.33%;">
+					<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #545454; text-align: center;">
+						猜你喜欢
+					</div>
+					<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
+						<div style="margin-left: 12%; margin-right: 6%;">
+							<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+						</div>
+						<div style="margin-left: 12%; margin-right: 6%;">
+							商品图片商品图片商品图片商品图片商品图片商品图片
+						</div>
+					</div>
+					<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
+						<div style="margin-left: 6%; margin-right: 12%;">
+							<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+						</div>
+						<div style="margin-left: 6%; margin-right: 12%;">
+							商品图片商品图片商品图片商品图片商品图片商品图片
+						</div>
+					</div>
+					<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
+						<div style="margin-left: 12%; margin-right: 6%;">
+							<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+						</div>
+						<div style="margin-left: 12%; margin-right: 6%;">
+							商品图片商品图片商品图片商品图片商品图片商品图片
+						</div>
+					</div>
+					<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
+						<div style="margin-left: 6%; margin-right: 12%;">
+							<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+						</div>
+						<div style="margin-left: 6%; margin-right: 12%;">
+							商品图片商品图片商品图片商品图片商品图片商品图片
+						</div>
+					</div>
+					<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
+						<div style="margin-left: 12%; margin-right: 6%;">
+							<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+						</div>
+						<div style="margin-left: 12%; margin-right: 6%;">
+							商品图片商品图片商品图片商品图片商品图片商品图片
+						</div>
+					</div>
+					<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left;  margin-bottom: 11%;">
+						<div style="margin-left: 6%; margin-right: 12%;">
+							<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+						</div>
+						<div style="margin-left: 6%; margin-right: 12%;">
+							商品图片商品图片商品图片商品图片商品图片商品图片
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	
