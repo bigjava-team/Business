@@ -1,13 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 	<!--板块1-->
 	<div class="contentone">
 		<div class=wenziz>
-			中国大陆 亲，请登录 免费注册
+			中国大陆 
+			<s:if test="session.loginUser != null">
+				欢迎您：${session.loginUser.username};
+				<a href="">退出</a>
+			</s:if>
+			<s:else >
+				<a href="user/login.jsp">亲，请登录</a> 
+				<a href="user/Save.jsp">免费注册</a>
+			</s:else>
 		</div>
+		
+		
 		<div class=wenziz2>
-			购物车 收藏夹 商品分类卖家中心 联系客服 网站导航
+			<a>购物车</a> 
+			<a>收藏夹</a> 
+			<a>商品分类</a>
+			<a>卖家中心</a> 
 		</div>
 	</div>
 	
