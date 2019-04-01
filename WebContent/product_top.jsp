@@ -7,9 +7,8 @@
 	<div class="contentone">
 		<div class=wenziz>
 			中国大陆 
-			<s:if test="session.loginUser != null">
-				欢迎您：${session.loginUser.username};
-				<a href="">退出</a>
+			<s:if test="user != null">
+				欢迎您：${user.username};
 			</s:if>
 			<s:else >
 				<a href="user/login.jsp">亲，请登录</a> 
@@ -19,17 +18,28 @@
 		
 		
 		<div class=wenziz2>
+			<s:if test="user != null">
+				<a>我的主页</a>
+			</s:if>
+			
+			<s:if test="merchant != null">
+				<a>我的店铺</a>
+			</s:if>
+			
 			<a>购物车</a> 
 			<a>收藏夹</a> 
 			<a>商品分类</a>
 			<a>卖家中心</a> 
+			<s:if test="user != null">
+				<a href=""></a>退出
+			</s:if>
 		</div>
 	</div>
 	
 	<!--板块2-->
     <div class="contenttwo">
-		<img src="images/logo.jpg" height="60px" width="240px" align="left">
-		<!-- <img alt="" src="images/1 (11).png" height="50px" width="520px" align="left"> -->
+		<img src="${pageContext.request.contextPath }/images/logo.jpg" height="60px" width="240px" align="left">
+		<img alt="" src="${pageContext.request.contextPath }/images/1 (11).png" height="50px" width="520px" align="left">
 		<div class="search bar7">
 			<form id="contenttwo_form">
 				<input class="contenttwo_input" type="text" placeholder="欢迎来到光光网...">

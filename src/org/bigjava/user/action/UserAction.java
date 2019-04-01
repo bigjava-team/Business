@@ -125,7 +125,7 @@ public class UserAction extends ActionSupport {
 //				ActionContext.getContext().getSession().put("loginError", "用户名或密码错误");
 				return "loginError";
 			} else {
-				User user = userList.get(0);
+				user = userList.get(0);
 				// 将user存入session中
 //				ActionContext.getContext().getSession().put("loginUser", user);
 				if (user.getRoot() == 1 && user.getU_is_freeze() == 1) {

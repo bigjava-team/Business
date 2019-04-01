@@ -5,14 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="css/product_top.css" rel="stylesheet" type="text/css">
-<link href="css/menu_bottom.css" rel="stylesheet" type="text/css">
-<link href="css/index_carousel.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="js/tools.js"></script>
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="js/index_carousel.js"></script>
+<link href="${pageContext.request.contextPath }/css/product_top.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/css/menu_bottom.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/css/index_carousel.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/tools.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/index_carousel.js"></script>
 
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
 		var a = $(".aaa").height();
@@ -179,12 +179,12 @@
 				</div> --%>
 				<div id="carousel">
 					<ul id="carousel_ul">
-						<li><img src="images/index/1.jpg" name="carousel_ul_img"  /></li>
-						<li><img src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" name="carousel_ul_img" /></li>
-						<li><img src="images/index/3.jpg" name="carousel_ul_img" /></li>
-						<li><img src="images/index/4.jpg" name="carousel_ul_img" /></li>
-						<li><img src="images/index/5.jpg" name="carousel_ul_img" /></li>
-						<li><img src="images/index/1.jpg" name="carousel_ul_img" /></li> 
+						<li><img src="${pageContext.request.contextPath }/images/index/1.jpg" name="carousel_ul_img"  /></li>
+						<li><img src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" name="carousel_ul_img" /></li>
+						<li><img src="${pageContext.request.contextPath }/images/index/3.jpg" name="carousel_ul_img" /></li>
+						<li><img src="${pageContext.request.contextPath }/images/index/4.jpg" name="carousel_ul_img" /></li>
+						<li><img src="${pageContext.request.contextPath }/images/index/5.jpg" name="carousel_ul_img" /></li>
+						<li><img src="${pageContext.request.contextPath }/images/index/1.jpg" name="carousel_ul_img" /></li> 
 					</ul>
 					<div id="navDiv">
 						<a href="javascript:;" name="navDiv_a" ></a>
