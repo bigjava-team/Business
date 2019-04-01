@@ -3,126 +3,157 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>我的订单页面</title>
-	<link href="css/cart.css" rel="stylesheet" type="text/css">
-	<link href="css/common.css" rel="stylesheet" type="text/css">
+<meta charset="UTF-8">
+<title>我的订单</title>
+<link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="css/menu_bottom.css" rel="stylesheet" type="text/css">
+<link href="css/cart.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var jian = $(".cart_d4_d2_d5_d1_d1_a1").text();
+		var jia = $(".cart_d4_d2_d5_d1_d2_a1").text();
+		var input = $(".cart_d4_d2_d5_d1_input").val();
+		$(".cart_d4_d2_d5_d1_d1_a1").click(function(){
+			/* $(".cart_d4_d2_d5_d1_input").val(input * 1 - 1); */
+			if (input > 1 ) {
+				$(".cart_d4_d2_d5_d1_input").attr("value", input * 1 - 1);
+			}
+		})
+	})
+</script>
+
 </head>
-<body>
+<body id="cart_body">
 
-	<div class="container header">
-		<div class="span5">
-			<div class="logo">
-				<img src="images/logo.jpg" alt="光光商城">
-			</div>
+	<div class="cart_d1">
+		<div class="cart_d1_d1">
+			尊敬的：用户昵称 您好!
 		</div>
-		
-		<div class="span9">
-			<div class="headerAd">
-				<img src="images/header.jpg" width="320" height="50" alt="正品保障" title="正品保障">
-			</div>	
-		</div>
-		
-		<%@ include file="menu_top.jsp" %>
-		
-	</div>
-
-	<div class="container cart">
-
-		<div class="span24">
-		
-			<div class="step step1">
-				<ul>
-					<li  class="current"></li>
-					<li>我的订单的显示</li>
-				</ul>
-			</div>
-		
-			<table>
-				<tbody>
-					<s:iterator var="order" value="pageBean.list">
-						<tr>
-							<th colspan="5">订单编号:<s:property value="#order.oid" />&nbsp;&nbsp;&nbsp;&nbsp;
-								订单状态:
-								<s:if test="#order.state == 1">
-									<a href="${pageContext.request.contextPath }/order_findByOid.action?oid=<s:property value="#order.oid" />"><font color="red">付款</font></a>
-								</s:if>
-								<s:if test="#order.state == 2">
-									已经付款
-								</s:if>
-								<s:if test="#order.state == 3">
-									<a href="${pageContext.request.contextPath }/order_updateState.action?oid=<s:property value="#order.oid" />"><font color="red">确认收货</font></a>
-								</s:if>
-								<s:if test="#order.state == 4">
-									交易完成
-								</s:if>
-							</th>
-						</tr>
-						
-						<tr>
-							<th>图片</th>
-							<th>商品</th>
-							<th>价格</th>
-							<th>数量</th>
-							<th>小计</th>
-						</tr>
-						
-						<s:iterator var="orderItem" value="#order.orderItems">
-							<tr>
-								<td width="60">
-									<input type="hidden" name="id" value="22"/>
-									<img src="商品图片"/>
-								</td>
-								<td>
-									<a target="_blank">女装</a>
-								</td>
-								<td>
-									50
-								</td>
-								<td class="quantity" width="60">
-									2
-								</td>
-								<td width="140">
-									<span class="subtotal">￥100</span>
-								</td>
-							</tr>
-						</s:iterator>
-					</s:iterator>
-					<tr>
-						<th colspan="5">
-							<div class="pagination">
-									<span>第<s:property value="pageBean.page"/>/<s:property value="pageBean.totalPage"/>页</span>
-								
-									<!-- 判断如果不是第一页就显示  否则就隐藏 -->
-									<s:if test="pageBean.page != 1">
-										<a href="#" class="firstPage">&nbsp;</a>
-										<a href="#" class="previousPage">&nbsp;</a>
-									</s:if>
-									
-									<s:iterator var="i" begin="1" end="pageBean.totalPage">
-										<s:if test="pageBean.page != #i"><!-- 不是当前页  能点 -->
-											<a href="#">1</a>
-										</s:if>
-										<s:else><!-- 是当前页  不能点 -->
-											<span class="currentPage">2</span>
-										</s:else>
-									</s:iterator>
-									
-									<!-- 判断如果不是最后一页就显示  否则就隐藏 -->
-									<s:if test="pageBean.page != pageBean.totalPage">
-										<a class="nextPage" href="${pageContext.request.contextPath}/order_findByUid.action?page=<s:property value="pageBean.page+1" />">&nbsp;</a>
-										<a class="lastPage" href="${pageContext.request.contextPath}/order_findByUid.action?page=<s:property value="pageBean.totalPage" />">&nbsp;</a>
-									</s:if>
-								
-							</div>
-						</th>
-					</tr>
-				</tbody>
-			</table>
+		<div class="cart_d1_d2">
+			<ul class="cart_d1_d2_ul1">
+				<li>光光网首页</li>
+				<li>|</li>
+				<li>我的订单</li>
+				<li>|</li>
+				<li>购物车</li>
+				<li>|</li>
+				<li>收藏夹</li>
+				<li>|</li>
+				<li>商品分类</li>
+				<li>|</li>
+				<li>免费开店</li>
+				<li>|</li>
+				<li>联系客服</li>
+				<li>|</li>
+				<li>网站导航</li>
+			</ul>
 		</div>
 	</div>
 	
-	<%@ include file="menu_bottom.jsp" %>
+	<!--板块2-->
+    <div class="contenttwo" style="margin-left: 13%; margin-right: 13%;">
+		<img src="images/logo.jpg" height="60px" width="240px" align="left">
+		<div class="search bar7">
+			<form id="contenttwo_form">
+				<input class="contenttwo_input" type="text" placeholder="欢迎来到光光网...">
+				<button class="contenttwo_button" type="submit"></button>
+			</form>
+		</div>
+	</div>
+	
+	<hr class="cart_hr1" />
+	
+	<div class="cart_d3 myOrderList_d1">
+		我的订单
+	</div>
+	
+	<div class="cart_d4 myOrderList_d2">
+		<div class="myOrderList_d2_d1">
+			<div class="myOrderList_d2_d1_d1">
+				<font class="myOrderList_d2_d1_d1_font1">2019-03-24 </font> &nbsp;订单编号：1234
+			</div>
+			<div class="myOrderList_d2_d1_d2">
+				订单状态：<font class="myOrderList_d2_d1_d2_font1">确认收货</font>
+			</div>
+		</div>
+	
+		<div class="cart_d4_d1 myOrderList_d2_d2">
+			<div class="cart_d4_d1_d1 myOrderList_d2_d2_d1">
+				商品信息
+			</div>
+			<div class="cart_d4_d1_d2 myOrderList_d2_d2_d2">
+				价格
+			</div>
+			<div class="cart_d4_d1_d2 myOrderList_d2_d2_d2">
+				数量
+			</div>
+			<div class="cart_d4_d1_d2 myOrderList_d2_d2_d2">
+				小计
+			</div>
+		</div>
+		<div class="cart_d4_d2 myOrderList_d2_d3">
+			<div class="cart_d4_d2_d1 myOrderList_d2_d3_d1">
+				<img class="cart_d4_d2_d1_img1" alt="商品图片" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50%">
+			</div>
+			
+			<div class="cart_d4_d2_d2 myOrderList_d2_d3_d2">
+				<div class="cart_d4_d2_d2_d1">
+					男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套
+				</div>
+			</div>
+			
+			<div class="cart_d4_d2_d3 myOrderList_d2_d3_d3">
+				颜色：红
+			</div>
+			
+			<div class="cart_d4_d2_d4 myOrderList_d2_d3_d3">
+				<font class="cart_d4_d2_d4_font2">¥100.00</font>
+			</div>
+			
+			<div class="cart_d4_d2_d5 myOrderList_d2_d3_d3">
+				10
+			</div>
+			
+			<div class="cart_d4_d2_d6 myOrderList_d2_d3_d3">
+				¥100.00
+			</div>
+			
+		</div>
 		
+		<div class="cart_d4_d2 myOrderList_d2_d3">
+			<div class="cart_d4_d2_d1 myOrderList_d2_d3_d1">
+				<img class="cart_d4_d2_d1_img1" alt="商品图片" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50%">
+			</div>
+			
+			<div class="cart_d4_d2_d2 myOrderList_d2_d3_d2">
+				<div class="cart_d4_d2_d2_d1">
+					男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套
+				</div>
+			</div>
+			
+			<div class="cart_d4_d2_d3 myOrderList_d2_d3_d3">
+				颜色：红
+			</div>
+			
+			<div class="cart_d4_d2_d4 myOrderList_d2_d3_d3">
+				<font class="cart_d4_d2_d4_font2">¥100.00</font>
+			</div>
+			
+			<div class="cart_d4_d2_d5 myOrderList_d2_d3_d3">
+				10
+			</div>
+			
+			<div class="cart_d4_d2_d6 myOrderList_d2_d3_d3">
+				¥100.00
+			</div>
+			
+		</div>
+		
+	</div>
+	
+	<%@ include file="menu_bottom.jsp" %>
+
 </body>
 </html>

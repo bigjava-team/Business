@@ -3,129 +3,269 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>订单页面</title>
-	<link href="css/cart.css" rel="stylesheet" type="text/css">
-	<link href="css/common.css" rel="stylesheet" type="text/css">
+<meta charset="UTF-8">
+<title>订单页面</title>
+<link href="css/cart.css" rel="stylesheet" type="text/css">
+<link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="css/menu_bottom.css" rel="stylesheet" type="text/css">
 </head>
-<body>
-	<div class="container header">
-		<div class="span5">
-			<div class="logo">
-				<img src="images/logo.jpg" alt="光光商城">
-			</div>
+<body id="cart_body">
+	<div class="cart_d1">
+		<div class="cart_d1_d1">
+			尊敬的：用户昵称 您好!
 		</div>
-		
-		<div class="span9">
-			<div class="headerAd">
-				<img src="images/header.jpg" width="320" height="50" alt="正品保障" title="正品保障">
-			</div>	
+		<div class="cart_d1_d2">
+			<ul class="cart_d1_d2_ul1">
+				<li>光光网首页</li>
+				<li>|</li>
+				<li>我的订单</li>
+				<li>|</li>
+				<li>购物车</li>
+				<li>|</li>
+				<li>收藏夹</li>
+				<li>|</li>
+				<li>商品分类</li>
+				<li>|</li>
+				<li>免费开店</li>
+				<li>|</li>
+				<li>联系客服</li>
+				<li>|</li>
+				<li>网站导航</li>
+			</ul>
 		</div>
-		
-		<%@ include file="menu_top.jsp" %>
-		
 	</div>
-
-	<div class="container cart">
 	
-		<div class="span24">
-			
-			<div class="step step1">
-				<ul>
-					
-					<li  class="current"></li>
-					<li  >生成订单成功</li>
-				</ul>
-			</div>
-		
-			<table>
-				<tbody>
-					<tr>
-						<th>图片</th>
-						<th>商品</th>
-						<th>价格</th>
-						<th>数量</th>
-						<th>小计</th>
-						<th>操作</th>
-					</tr>
-				
-					<tr>
-						<td width="60">
-							<input type="hidden" name="id" value="22"/>
-							<img src=""/>
-						</td>
-						<td>
-							<a target="_blank">男装</a>
-						</td>
-						<td>
-							100
-						</td>
-						<td class="quantity" width="60">
-							<input type="text" name="count" value="1" maxlength="4" onpaste="return false;"/>
-						</td>
-						<td width="140">
-							<span class="subtotal">￥100</span>
-						</td>
-						<td>
-							<a href="" class="delete">删除</a>
-						</td>
-					</tr>
-				
-				</tbody>
-			</table>
-			
-			<dl id="giftItems" class="hidden" style="display: none;">
-			</dl>
-			
-			<div class="total">
-				<em id="promotion"></em>
-				商品金额: <strong id="effectivePrice">￥100元</strong>
-			</div>
-			
-			<form id="orderForm" action="./order_payOrder.action" method="post">
-				<input type="hidden" name="order.oid" value=""/>
-				<div class="span24">
-					<p>
-						收货地址：<input name="order.user.addr" type="text" value="" style="width:350px" />
-							<br />
-						收货人&nbsp;&nbsp;&nbsp;：<input name="order.user.username" type="text" value="" style="width:150px" />
-							<br /> 
-						联系方式：<input name="order.user.phone" type="text"value="" style="width:150px" />
-					</p>
-					<hr />
-					<p>
-						选择银行：<br/>
-						<input type="radio" name="pd_FrpId" value="ICBC-NET-B2C" checked="checked"/>工商银行
-						<img src="bank_image/icbc.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="pd_FrpId" value="BOC-NET-B2C"/>中国银行
-						<img src="bank_image/bc.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="pd_FrpId" value="ABC-NET-B2C"/>农业银行
-						<img src="bank_image/abc.bmp" align="middle"/>
-						<br/>
-						<input type="radio" name="pd_FrpId" value="BOCO-NET-B2C"/>交通银行
-						<img src="bank_image/bcc.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="pd_FrpId" value="PINGANBANK-NET"/>平安银行
-						<img src="bank_image/pingan.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="pd_FrpId" value="CCB-NET-B2C"/>建设银行
-						<img src="bank_image/ccb.bmp" align="middle"/>
-						<br/>
-						<input type="radio" name="pd_FrpId" value="CEB-NET-B2C"/>光大银行
-						<img src="bank_image/guangda.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="pd_FrpId" value="CMBCHINA-NET-B2C"/>招商银行
-						<img src="bank_image/cmb.bmp" align="middle"/>
-					</p>
-					<hr />
-					<p style="text-align:right">
-						<a href="javascript:document.getElementById('orderForm').submit();">
-							<img src="images/finalbutton.gif" width="204" height="51" border="0" />
-						</a>
-					</p>
-				</div>
+	<!--板块2-->
+    <div class="contenttwo" style="margin-left: 13%; margin-right: 13%;">
+		<img src="images/logo.jpg" height="60px" width="240px" align="left">
+		<div class="search bar7">
+			<form id="contenttwo_form">
+				<input class="contenttwo_input" type="text" placeholder="欢迎来到光光网...">
+				<button class="contenttwo_button" type="submit"></button>
 			</form>
 		</div>
 	</div>
-
+	
+	<hr class="cart_hr1" />
+	
+	<div class="cart_d3 myOrderList_d1">
+		确认订单信息
+	</div>
+	
+	<div class="cart_d4 myOrderList_d2">
+		<div class="myOrderList_d2_d1">
+			<div class="myOrderList_d2_d1_d1 order_myOrderList_d2_d1_d1">
+				<font class="myOrderList_d2_d1_d1_font1">2019-03-24 </font> &nbsp;订单编号：1234
+			</div>
+			
+		</div>
+	
+		<div class="cart_d4_d1 myOrderList_d2_d2">
+			<div class="cart_d4_d1_d1 myOrderList_d2_d2_d1">
+				商品信息
+			</div>
+			<div class="cart_d4_d1_d2 myOrderList_d2_d2_d2">
+				价格
+			</div>
+			<div class="cart_d4_d1_d2 myOrderList_d2_d2_d2">
+				数量
+			</div>
+			<div class="cart_d4_d1_d2 myOrderList_d2_d2_d2">
+				小计
+			</div>
+		</div>
+		<div class="cart_d4_d2 myOrderList_d2_d3">
+			<div class="cart_d4_d2_d1 myOrderList_d2_d3_d1">
+				<img class="cart_d4_d2_d1_img1" alt="商品图片" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50%">
+			</div>
+			
+			<div class="cart_d4_d2_d2 myOrderList_d2_d3_d2">
+				<div class="cart_d4_d2_d2_d1">
+					男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套
+				</div>
+			</div>
+			
+			<div class="cart_d4_d2_d3 myOrderList_d2_d3_d3">
+				颜色：红
+			</div>
+			
+			<div class="cart_d4_d2_d4 myOrderList_d2_d3_d3">
+				<font class="cart_d4_d2_d4_font2">¥100.00</font>
+			</div>
+			
+			<div class="cart_d4_d2_d5 myOrderList_d2_d3_d3">
+				10
+			</div>
+			
+			<div class="cart_d4_d2_d6 myOrderList_d2_d3_d3">
+				¥100.00
+			</div>
+			
+		</div>
+		
+		<div class="cart_d4_d2 myOrderList_d2_d3">
+			<div class="cart_d4_d2_d1 myOrderList_d2_d3_d1">
+				<img class="cart_d4_d2_d1_img1" alt="商品图片" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50%">
+			</div>
+			
+			<div class="cart_d4_d2_d2 myOrderList_d2_d3_d2">
+				<div class="cart_d4_d2_d2_d1">
+					男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套
+				</div>
+			</div>
+			
+			<div class="cart_d4_d2_d3 myOrderList_d2_d3_d3">
+				颜色：红
+			</div>
+			
+			<div class="cart_d4_d2_d4 myOrderList_d2_d3_d3">
+				<font class="cart_d4_d2_d4_font2">¥100.00</font>
+			</div>
+			
+			<div class="cart_d4_d2_d5 myOrderList_d2_d3_d3">
+				10
+			</div>
+			
+			<div class="cart_d4_d2_d6 myOrderList_d2_d3_d3">
+				¥100.00
+			</div>
+			
+		</div>
+		
+		<div style="border-top: 1px solid #8082FF; border-bottom: 1px solid #8082FF; margin: 0px; padding: 0px; border-top-style: dotted; border-bottom-style: dotted; color: #333333;">
+			<div style="background: #F2F7FF; border: 1px solid #FFF; font-size: 14px; padding-top: 7px; padding-bottom: 7px; padding-left: 4%;">
+				运送方式：&emsp; 普通配送 快递 免邮
+			</div>
+			
+			<div style="background: #F2F7FF; border: 1px solid #FFF; font-size: 14px; padding-top: 7px; padding-bottom: 7px; padding-left: 4%;">
+				运费险：&emsp;&emsp; <font style="background: #53FF53">运费险</font> 卖家送,确认收货前退货可赔
+			</div>
+			
+			<div style="background: #F2F7FF; border: 1px solid #FFF; font-size: 14px; padding-top: 10px; padding-bottom: 10px; padding-left: 4%; text-align: right; padding-right: 1%;">
+				商品金额(免运费)：<font style="color: #FF4400; font-size: 18px; font-weight: bold;">¥1000.10</font>
+			</div>
+		</div>
+		
+	</div>
+	
+	<!-- <div style="margin: 0px 13%;">
+		<div style="width: 50%; float: left;">
+			确认收货地址
+		</div>
+		<div style="width: 50%; float: left;">
+			管理收货地址
+		</div>
+	</div>
+	
+	<div style="margin: 1px 13%; background: yellow;">
+		jiangxi
+	</div> -->
+	
+	<hr class="cart_hr1" />
+	
+	<div class="cart_d3 myOrderList_d1">
+		<div style="margin-left: 13%; margin-right: 13%; padding-left: 5%;">
+			确认收货地址
+			<div style="text-align: right; float: right; font-size: 12px; margin-top: 4px;">
+				<a href="#" style="text-decoration: none;">管理收货地址</a>
+			</div>
+		</div>
+	</div>
+	
+	<div class="cart_d4 myOrderList_d2">
+		<div class="myOrderList_d2_d1">
+			<div style="color: #FF4400; margin-left: 2%; font-weight: bold;">
+				寄送至：
+			</div>
+			<div style="color: #3C3C3C; margin-left: 8%; padding-bottom: 8px;">
+				<input type="radio" name="dizhi" value="dizhi1">江西省 南昌市 南昌县 昌东镇 紫阳大道318号江西制造职业技术学院 (张三 收) 15180161308<br />
+				<input type="radio" name="dizhi" value="dizhi2">江西省 南昌市 南昌县 昌东镇 紫阳大道318号江西制造职业技术学院 (张三 收) 15180161308<br />
+				<input type="radio" name="dizhi" value="dizhi3">江西省 南昌市 南昌县 昌东镇 紫阳大道318号江西制造职业技术学院 (张三 收) 15180161308<br />
+				<input type="radio" name="dizhi" value="dizhi4">江西省 南昌市 南昌县 昌东镇 紫阳大道318号江西制造职业技术学院 (张三 收) 15180161308<br />
+			</div>
+		</div>
+	</div>
+	
+	<hr class="cart_hr1" />
+	
+	<div class="cart_d3 myOrderList_d1">
+		<div style="margin-left: 13%; margin-right: 13%;">
+			订单支付
+		</div>
+	</div>
+	
+	<div class="cart_d4 myOrderList_d2">
+		<div style="width: 50%; float: left; margin-bottom: 10px; padding-bottom: 10px; border: 1px solid #CCCCCC;">
+			<div style="color: #FF4400; margin-left: 2%; font-weight: bold; font-size: 16px; margin-top: 5px; margin-bottom: 10px;">
+				选择银行：
+			</div>
+			<div style="color: #3C3C3C; margin: 0%;">
+				<font style="font-size: 14px;"><input type="radio" name="pd_FrpId" value="ICBC-NET-B2C" checked="checked"/>工商银行</font>
+				<img src="${pageContext.request.contextPath}/bank_img/icbc.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
+				<font style="font-size: 14px;"><input type="radio" name="pd_FrpId" value="BOC-NET-B2C"/>中国银行</font>
+				<img src="${pageContext.request.contextPath}/bank_img/bc.bmp" align="middle"/>
+				<br/><br/>
+				<font style="font-size: 14px;"><input type="radio" name="pd_FrpId" value="ABC-NET-B2C"/>农业银行</font>
+				<img src="${pageContext.request.contextPath}/bank_img/abc.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
+				<font style="font-size: 14px;"><input type="radio" name="pd_FrpId" value="BOCO-NET-B2C"/>交通银行</font>
+				<img src="${pageContext.request.contextPath}/bank_img/bcc.bmp" align="middle"/>
+				<br/><br/>
+				<font style="font-size: 14px;"><input type="radio" name="pd_FrpId" value="PINGANBANK-NET"/>平安银行</font>
+				<img src="${pageContext.request.contextPath}/bank_img/pingan.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
+				<font style="font-size: 14px;"><input type="radio" name="pd_FrpId" value="CCB-NET-B2C"/>建设银行</font>
+				<img src="${pageContext.request.contextPath}/bank_img/ccb.bmp" align="middle"/>
+				<br/><br/>
+				<font style="font-size: 14px;"><input type="radio" name="pd_FrpId" value="CEB-NET-B2C"/>光大银行</font>
+				<img src="${pageContext.request.contextPath}/bank_img/guangda.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
+				<font style="font-size: 14px;"><input type="radio" name="pd_FrpId" value="CMBCHINA-NET-B2C"/>招商银行</font>
+				<img src="${pageContext.request.contextPath}/bank_img/cmb.bmp" align="middle"/>
+			</div>
+		</div>
+		
+		<div style="margin-left: -1px; width: 50%; height: 245px; float: left; border: 1px solid #CCCCCC;">
+			
+		</div>
+	</div>
+	
+	<hr class="cart_hr1" />
+	
+	<div class="cart_d3 myOrderList_d1">
+		<div style="margin-left: 13%; margin-right: 13%; background: red;">
+			<div style="border: 1px solid #FF4400; overflow: hidden; display: inline; text-align: right; float: right; padding: 20px 2%;">
+				<div>
+					<font style="font-size: 14px; font-weight: bold;">实付款：</font>
+					<font style="font-size: 24px; font-weight: bold;">¥596.00</font>
+				</div>
+				<div>
+					<font style="font-size: 14px; font-weight: bold;">寄送至：</font>
+					<font style="font-size: 14px; font-weight: normal;">江西省 南昌市 南昌县 昌东镇 紫阳大道318号江西制造职业技术学院</font>
+				</div>
+				<div>
+					<font style="font-size: 14px; font-weight: bold;">收货人：</font>
+					<font style="font-size: 14px; font-weight: normal;">张三 15180161308</font>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<hr class="cart_hr1" style="margin-bottom: 0px; padding-top: 0px; border-top:1px double #FFFFFF;" />
+	
+	<div class="cart_d3 myOrderList_d1" style="padding: 8px 0px 8px 52%; margin-left: 13%; margin-right: 13%; margin-top: -1px; text-align: right;">
+		<div style="float: left; font-size: 14px;">
+			<a href="" style="text-decoration: none;">☚ 返回购物车</a>
+		</div>
+		<div style="">
+			<font style="background: #FF4400; padding: 8px 14%; color: #FCFCFC">提交订单</font>
+		</div>
+	</div>
+	
+	<div style="margin-left: 13%; margin-right: 13%; text-align: right; font-size: 14px; color: #3C3C3C; margin-bottom: 50px;">
+		<font style="color: #FF4400; font-size: 18px;">♤</font> 若价格变动，请在提交订单后联系卖家改价，并查看已买到的宝贝
+	</div>
+	
+	
 	<%@ include file="menu_bottom.jsp" %>
-
+	
 </body>
 </html>

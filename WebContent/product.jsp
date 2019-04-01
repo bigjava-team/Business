@@ -5,11 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>商品详情页</title>
+<link href="css/product_top.css" rel="stylesheet" type="text/css">
+<link href="css/menu_bottom.css" rel="stylesheet" type="text/css">
+<link href="css/product.css" rel="stylesheet" type="text/css">
+<link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-<style>
-	body{background: red; margin: 0px; padding: 0px;}
-	.now{background: blue}
-</style>
+
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -24,17 +25,23 @@
 			});
 		});
 	});
+	
+	$(function(){
+		var ld = $(".leftDiv").height();
+		$(".rightDiv").height(ld);
+	})
 </script>
 
-<body>
-	<div style="width: 100%; height: 150px; background: blue; margin-bottom: 50px;">顶部</div>
+<body id="product_body">
+
+	<%@ include file="product_top.jsp" %>
 	
-	<div style="width: 84%; height: 501px; background: yellow; margin-left: 8%; margin-bottom: 25px;">
-		<div style="width: 38%; height: 501px; background: blue; float: left">
-			<div style="background: #ADADAD; width: 92%; height: 80%; margin-top: 20px; margin-left: 4%; margin-right: 4%; margin-bottom: 15px;">
+	<div id="product_div1">
+		<div id="product_div1_div1">
+			<div id="product_div1_div1_div1">
 				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%;" height="100%;">
 			</div>
-			<div style="background: #ADADAD; width: 100%; height: 60px;">
+			<div id="product_div1_div1_div2">
 				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60px;" height="60px;">
 				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60px;" height="60px;">
 				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60px;" height="60px;">
@@ -43,29 +50,29 @@
 			</div>
 		</div>
 		
-		<div style="width: 45%; height: 501px; background: grey; float: left">
-			<div style="height: 50px; margin-left: 3%; margin-right: 5%; margin-bottom: 2%; margin-top: 20px;">
-				<font style="font-size: 18px; font-weight: bold;">商品名品名称商品名称商品名称商品名称商品名称商品名称商品名称</font>
+		<div id="product_div1_div2">
+			<div id="product_div1_div2_div1">
+				<font id="product_div1_div2_div1_font">商品名品名称商品名称商品名称商品名称商品名称商品名称商品名称</font>
 			</div>
 			
-			<div style="background: red; margin: 0% 5% 0% 3%; font-size: 14px; padding: 5px 10px 5px 10px;">
+			<div id="product_div1_div2_div2">
 				<div>
-					市场价: &emsp;<font style="font-size: 18px; text-decoration: line-through;">¥500.00</font>
+					市场价: &emsp;<font id="font1">¥500.00</font>
 				</div>
 				<div>
-					光光价: &emsp;<font style="font-size: 30px; font-weight: bold;">¥499.00</font>
+					光光价: &emsp;<font id="font2">¥499.00</font>
 				</div>
 			</div>
 			
-			<div style="background: yellow; margin: 10px 5% 12px 3%; font-size: 14px; padding: 5px 10px 5px 10px;">
-				优惠: &emsp;&emsp;已优惠&emsp;<font style="font-size: 18px; font-weight: bold;">¥1.00</font>
+			<div id="product_div1_div2_div3">
+				优惠: &emsp;&emsp;已优惠&emsp;<font class="product_div1_div2_div3_font">¥1.00</font>
 			</div>
-			<div style="background: red; margin: 0px 5% 12px 3%; font-size: 14px; padding: 5px 10px 5px 10px;">
+			<div id="product_div1_div2_div3">
 				配送: &emsp;&emsp;快递 : &nbsp; 免运费
 			</div>
-			<div style="background: yellow; margin: 0px 5% 12px 3%; padding: 5px 10px 5px 10px; font-size: 14px;">
-				<div style="background: blue; width: 14%; float: left;">颜色: </div>
-				<div style="width: 100%; height: 50px; background: green">
+			<div id="product_div1_div2_div3">
+				<div class="product_div1_div2_div3_div1">颜色: </div>
+				<div class="product_div1_div2_div3_div2">
 					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px;" height="50px;">
 					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px;" height="50px;">
 					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px;" height="50px;">
@@ -74,121 +81,386 @@
 					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px;" height="50px;">
 				</div>
 			</div>
-			<form action="" method="post">
-				<div style="background: yellow; margin: 0px 5% 12px 3%; padding: 5px 10px 5px 10px; font-size: 14px;">
-					<div style="background: blue; width: 14%; float: left;">数量: </div>
-					<div style="width: 100%; height: 26px; background: green">
-						<input type="text" style="width: 50px; height: 20px;" /> 件
+			<form id="product_div1_div2_form" action="" method="post">
+				<div class="product_div1_div2_form_div1">
+					<div class="product_div1_div2_form_div1_div1">数量: </div>
+					<div class="product_div1_div2_form_div1_div2">
+						<select onchange="document.getElementById('input').value=this.value">
+						 	<option value="1">1</option> 
+						 	<option value="2">2</option>
+						 	<option value="3">3</option> 
+						</select>
+						<input id="input" name="input" class="iInput"> / 件
 					</div>
 				</div>
-				<div style="background: yellow; margin: 0px 5% 15px 3%; padding: 0px 10px 0px 10px; font-size: 14px;">
-					<input type="submit" value="加入购物车"  style="width: 120px; height: 45px;" />
+				<div class="product_div1_div2_form_div2">
+					<div class="product_div1_div2_form_div2_div1" style="position: absolute; z-index: 10; background-image: url(images/product_gwc.png); background-repeat: no-repeat; background-position: 10% 8%; width: 20%; height: 30%;"></div>
+					<input class="product_div1_div2_form_div2_input1" type="submit" value="加入购物车"/>
 				</div>
 			</form>
 			
-			<div style="background: yellow; height: 62px; margin: 0px 5% 10px 3%; padding: 5px 10px 5px 10px; font-size: 14px;">
-				<div style="background: blue; width: 14%; height: 30px; line-height: 30px; float: left;">承诺: </div>
-				<div style="width: 86%; height: 30px; line-height: 30px; background: green; float: left">
+			<div class="product_div1_div2_div4">
+				<div class="product_div1_div2_div4_div1">承诺: </div>
+				<div class="product_div1_div2_div4_div2">
 					7天退货&emsp;运费险&emsp;公益宝贝
 				</div>
-				<div style="background: blue; width: 14%; height: 30px; line-height: 30px; clear: none; float: left;">支付: </div>
-				<div style="width: 86%; height: 30px; line-height: 30px; background: green; float: left">
+				<div class="product_div1_div2_div4_div3">支付: </div>
+				<div class="product_div1_div2_div4_div2">
 					银行卡 &emsp; 支付宝
 				</div>
 			</div>
 		</div>
 		
-		<div style="width: 17%; height: 100%; background: #ADFEDC; float: left;">
-			<div style="width: 100%; height: 320px; background: yellow;">
-				<div style="background: blue; width: 100%; height: 40px; font-size: 16px; font-weight: bold; text-align: center; line-height: 40px;">
+		<div class="product_div1_div3">
+			<div class="product_div1_div3_div1">
+				<div class="product_div1_div3_div1_div1">
 					店铺名称
 				</div>
-				<div style="background: green; border:1px solid #666; height:250px; width:90%; margin-left: 5%; margin-top: 15px; position:relative;">
-					<h3 style="background:#FFF; display:block; height:20px; width:50px; position:absolute; left:60%; top:-20px; text-align:center; font-size: 10px;">店铺详情</h3>
-					<div style="background: red; font-size: 14px; margin-left: 10%; margin-right: 10%; margin-top: 20px;">
+				<div class="product_div1_div3_div1_div2">
+					<h3>店铺详情</h3>
+					<div>
 						<img alt="店铺图片" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%" height="100%">
 					</div>
-					<div style="font-size: 14px; margin-left: 10%; margin-top: 20px;">
+					<div>
 						掌柜: 张三
 					</div>
-					<div style="font-size: 14px; margin-left: 10%; margin-top: 20px;">
+					<div>
 						开店时间: 1111
 					</div>
 					
 				</div>
 			</div>
-			<div style="width: 100%; height: 181px; background: #FFBF59;">
-			
+			<div class="product_div1_div3_div2">
+				<div class="product_div1_div3_div2_div1">
+					本店公告
+				</div>
+				<div class="product_div1_div3_div2_div2">
+					&emsp;&emsp;热情载客舟迎风扬帆，诚信便民店喜庆开业我们用热忱的心和负责的态度竭诚为您服务。<br />
+					&emsp;&emsp;您用满意的微笑让我们做得更好，我们一起让这个地方变成和谐而充满生机的家园。
+				</div>
 			</div>
 		</div>
 	</div>
 	
-	<div style="width: 84%; height: 300px; background: blue; margin-left: 7%;">
+	<div id="product_div2">
 		
-		<div style="width: 18%; background: white; float: left">
-			<div class="title"  style="width: 100%; height: 43px; background: yellow;">
+		<div class="leftDiv">
+			<div class="product_div2_leftDiv_d1">
 				店铺宝贝
 			</div>
-			<div style="width: 100%; height: 30px; background: blue; font-size: 14px;">
+			<div class="product_div2_leftDiv_d2">
 				查看所有宝贝
 			</div>
-			<div style="width: 100%; height: 30px; background: yellow; font-size: 14px;">
-				羽绒服
+			<div class="product_div2_leftDiv_d3">
+				<div>羽绒服</div>
+				<div>男装</div>
+				<div>女装</div>
 			</div>
 			
-			<div style="width: 100%; height: 30px; background: red; font-size: 14px;">
-				毛呢大衣
-			</div>
+			<hr />
 			
-			<div style="width: 100%; height: 30px; background: blue; font-size: 14px;">
+			<div class="product_div2_leftDiv_d4">
 				宝贝最新榜
 			</div>
-			
-			<div style="background: #CCCC99; width: 100%; height: 200px;">
-				<div style="background: #808040; width: 100%; height: 50px;">
-					<div style="background: yellow; width: 30%; height: 50px; float: left;">
-					
+			<hr />
+			<div class="product_div2_leftDiv_d5">
+				<div class="product_div2_leftDiv_d5_d1">
+					<div class="product_div2_leftDiv_d5_d1_d1">
+						<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60%">
 					</div>
-					<div style="background: red; width: 30%; height: 50px; float: left;">
-					
-					</div>
-				</div>
-				<div style="background: #808040; width: 100%; height: 50px;">
-					<div style="background: yellow; width: 30%; height: 50px; float: left;">
-					
-					</div>
-					<div style="background: red; width: 30%; height: 50px; float: left;">
-					
+					<div class="product_div2_leftDiv_d5_d1_d2">
+						<div>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</div>
+						<div>¥100.00</div>
 					</div>
 				</div>
+				
+				<hr />
+				
+				<div class="product_div2_leftDiv_d5_d1">
+					<div class="product_div2_leftDiv_d5_d1_d1">
+						<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60%">
+					</div>
+					<div class="product_div2_leftDiv_d5_d1_d2">
+						<div>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</div>
+						<div>¥100.00</div>
+					</div>
+				</div>
+				
+				<hr />
+				
 			</div>
+			<hr />
 			
-			
-			<div style="width: 100%; height: 30px; background: #E2C2DE; font-size: 14px;">
+			<div class="product_div2_leftDiv_d4">
 				宝贝最热榜
 			</div>
+			
+			<hr />
+			
+			<div class="product_div2_leftDiv_d5">
+				<div class="product_div2_leftDiv_d5_d1">
+					<div class="product_div2_leftDiv_d5_d1_d1">
+						<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60%">
+					</div>
+					<div class="product_div2_leftDiv_d5_d1_d2">
+						<div>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</div>
+						<div>¥100.00</div>
+					</div>
+				</div>
+				
+				<hr />
+				
+				<div class="product_div2_leftDiv_d5_d1">
+					<div class="product_div2_leftDiv_d5_d1_d1">
+						<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60%">
+					</div>
+					<div class="product_div2_leftDiv_d5_d1_d2">
+						<div>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</div>
+						<div>¥100.00</div>
+					</div>
+				</div>
+				
+				<hr />
+				
+			</div>
+			
+			<hr />
+			
 		</div>
 		
-		<div style="width: 82%; height: 300px; background: #FFBD9D; float: left">
+		<div class="centerDiv">
 			
-			<div class="title"  style="width: 100%; height: 43px; background: black;">
-				<a href="#">宝贝详情</a>
-				<a href="#">用户评论</a>
-				<a href="#">专项服务</a>
+			<div class="title">
+				<a class="a" href="#aa">宝贝详情</a>
+				<a class="a" href="#aa">用户评论 100</a>
+				<a class="a" href="#aa">专项服务</a>
 			</div>
 			
-			<div class="content"  style="width: 100%; background: green;">
-				<div class="aa"><div>宝贝详情的内容</div>宝贝详情的内容</div>
-				<div class="aa">用户评论的内容</div>
-				<div class="aa">专项服务的内容</div>
+			<div class="content">
+				<div class="aa">
+					<div class="div1">
+						<div class="div1_d1">
+							<div class="div1_d1_d1">名称：</div>
+							<div> 貂皮大衣</div>
+						</div>
+						<div class="div1_d1">
+							<div class="div1_d1_d1">月销量：</div>
+							<div> 100 件</div>
+						</div>
+						<div class="div1_d1">
+							<div class="div1_d1_d1">描述：</div>
+							<div> 此貂皮大衣绝对正品，冬暖夏凉，适合各种季节、各种天气。描述: 此貂皮大衣绝对正品，冬暖夏凉，适合各种季节、各种天气。</div>
+						</div>
+					</div>
+					<div class="div2">
+						<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%" height="680px;">
+						<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%" height="680px;">
+					</div>
+					
+					<div class="div3">
+						<font class="font1">价格说明</font>
+						
+						<hr />
+						
+						<h5>
+							<font class="font2">划线价格<br /></font>
+							指商品的专柜价、吊牌价、正品零售价、厂商指导价或该商品的曾经展示过的销售价等，并非原价，仅供参考。
+						</h5>
+						<h5>
+							<font class="font2">未划线价格<br /></font>
+							指商品的<font class="font3">实时标价，</font>不因表述的差异改变性质。具体成交价格根据商品参加活动，或会员使用优惠券、积分等发生变化，最终以订单结算页价格为准。
+						</h5>
+						<h5>
+							商家详情页（含主图）以图片或文字形式标注的一口价、促销价、优惠价等价格可能是在使用优惠券、满减或特定优惠活动和时段等情形下的价格，具体请以结算页面的标价、优惠条件或活动规则为准。
+						</h5>
+						<h5>
+							此说明仅当出现价格比较时有效，具体请参见《光光商城价格发布规范》。若商家单独对划线价格进行说明的，以商家的表述为准。
+						</h5>
+						<div class="div3_d1">
+							<div class="div3_d1_d1">
+								安全提示： 
+							</div>
+							<div class="div3_d1_d2">
+								交易中请勿使用阿里旺旺以外的聊天工具沟通，不要接收可疑文件和不要点击不明来源的链接，支付前核实好域名和支付详情。 淘宝不会以订单有问题，让您提供任何银行卡、密码、手机验证码！遇到可疑情况可在钱盾“诈骗举报”中进行举报, 安全推荐
+								推荐安全软件：  钱盾钱盾  UC浏览器UC浏览器
+							</div>
+							<div class="div3_d1_d3">
+								内容申明： 
+							</div>
+							<div class="div3_d1_d4">
+								淘宝为第三方交易平台及互联网信息服务提供者，淘宝（含网站、客户端等）所展示的商品/服务的标题、价格、详情等信息内容系由店铺经营者发布，其真实性、准确性和合法性均由店铺经营者负责。淘宝提醒用户购买商品/服务前注意谨慎核实。如用户对商品/服务的标题、价格、详情等任何信息有任何疑问的，请在购买前通过阿里旺旺与店铺经营者沟通确认；淘宝存在海量店铺，如用户发现店铺内有任何违法/侵权信息，请立即向淘宝举报并提供有效线索。
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- 用户评论 -->
+				<div class="aa">
+					<div class="div4">
+						<div class="div4_d1">
+							<div>
+								<img alt="用户头像"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px" height="50px;">
+							</div>
+							<div class="div4_d1_d1">
+								用户名
+							</div>
+						</div>
+						<div class="div4_d2">
+							<div class="div4_d2_d1">
+								光光商城衣服质量真的很不错，而且价格实惠。
+							</div>
+							<div>
+								<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="40px" height="40px;">
+								<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="40px" height="40px;">
+							</div>
+							<div class="div4_d2_d2">
+								2018-10-10
+							</div>
+							
+						</div>
+					</div>
+					
+					<hr />
+					
+					<div class="div4">
+						<div class="div4_d1">
+							<div>
+								<img alt="用户头像"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px" height="50px;">
+							</div>
+							<div class="div4_d1_d1">
+								用户名
+							</div>
+						</div>
+						<div class="div4_d2">
+							<div class="div4_d2_d1">
+								光光商城衣服质量真的很不错，而且价格实惠。
+							</div>
+							<div>
+								<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="40px" height="40px;">
+								<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="40px" height="40px;">
+							</div>
+							<div class="div4_d2_d2">
+								2018-10-10
+							</div>
+							
+						</div>
+					</div>
+					
+					<hr />
+					
+					<div class="div3">
+						<font class="font1">价格说明</font>
+						
+						<hr />
+						
+						<h5>
+							<font class="font2">划线价格<br /></font>
+							指商品的专柜价、吊牌价、正品零售价、厂商指导价或该商品的曾经展示过的销售价等，并非原价，仅供参考。
+						</h5>
+						<h5>
+							<font class="font2">未划线价格<br /></font>
+							指商品的<font class="font3">实时标价，</font>不因表述的差异改变性质。具体成交价格根据商品参加活动，或会员使用优惠券、积分等发生变化，最终以订单结算页价格为准。
+						</h5>
+						<h5>
+							商家详情页（含主图）以图片或文字形式标注的一口价、促销价、优惠价等价格可能是在使用优惠券、满减或特定优惠活动和时段等情形下的价格，具体请以结算页面的标价、优惠条件或活动规则为准。
+						</h5>
+						<h5>
+							此说明仅当出现价格比较时有效，具体请参见《光光商城价格发布规范》。若商家单独对划线价格进行说明的，以商家的表述为准。
+						</h5>
+						<div class="div3_d1">
+							<div class="div3_d1_d1">
+								安全提示： 
+							</div>
+							<div class="div3_d1_d2">
+								交易中请勿使用阿里旺旺以外的聊天工具沟通，不要接收可疑文件和不要点击不明来源的链接，支付前核实好域名和支付详情。 淘宝不会以订单有问题，让您提供任何银行卡、密码、手机验证码！遇到可疑情况可在钱盾“诈骗举报”中进行举报, 安全推荐
+								推荐安全软件：  钱盾钱盾  UC浏览器UC浏览器
+							</div>
+							<div class="div3_d1_d3">
+								内容申明： 
+							</div>
+							<div class="div3_d1_d4">
+								淘宝为第三方交易平台及互联网信息服务提供者，淘宝（含网站、客户端等）所展示的商品/服务的标题、价格、详情等信息内容系由店铺经营者发布，其真实性、准确性和合法性均由店铺经营者负责。淘宝提醒用户购买商品/服务前注意谨慎核实。如用户对商品/服务的标题、价格、详情等任何信息有任何疑问的，请在购买前通过阿里旺旺与店铺经营者沟通确认；淘宝存在海量店铺，如用户发现店铺内有任何违法/侵权信息，请立即向淘宝举报并提供有效线索。
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 专项服务 -->
+				<div class="aa">
+					<div class="div5">
+						<font class="div5_font">&emsp;//////////////////////////////////////////////////////&emsp;<font class="div5_font_font">卖家承诺以下服务</font>&emsp;//////////////////////////////////////////////////////&emsp;</font>
+					</div>
+					<div class="div6">
+						<div class="div6_d1">
+							<img alt="8天退货"  src="${pageContext.request.contextPath }/images/products/products_zx01.png">
+						</div>
+						<div class="div6_d2">
+							<font class="div6_d2_font">8天退货</font><br />
+						</div>
+						<div class="div6_d3">
+							退货条件：在商品签收8天内，商品包装完好、吊牌齐全、未洗涤，可提出退货申请。<br />
+							邮费说明：包邮商品发货邮费卖家承担；非包邮商品发货邮费买家承担；退货邮费买家承担。
+						</div>
+					</div>
+					
+					<div class="div6">
+						<div class="div6_d1">
+							<img alt="消费保障" src="${pageContext.request.contextPath }/images/products/products_zx02.png">
+						</div>
+						<div class="div6_d2">
+							<font class="div6_d2_font">消费者保障服务</font><br />
+						</div>
+						<div class="div6_d3">
+							该卖家已缴纳 2000.0 元保证金。<br />
+							在确认收货 15 天内，如有商品质量问题、描述不符或未收到货等，您有权申请退款或退货，来回邮费由卖家承担。
+						</div>
+					</div>
+					
+					<div class="div3">
+						<font class="font1">价格说明</font>
+						
+						<hr />
+						
+						<h5>
+							<font class="font2">划线价格<br /></font>
+							指商品的专柜价、吊牌价、正品零售价、厂商指导价或该商品的曾经展示过的销售价等，并非原价，仅供参考。
+						</h5>
+						<h5>
+							<font class="font2">未划线价格<br /></font>
+							指商品的<font class="font3">实时标价，</font>不因表述的差异改变性质。具体成交价格根据商品参加活动，或会员使用优惠券、积分等发生变化，最终以订单结算页价格为准。
+						</h5>
+						<h5>
+							商家详情页（含主图）以图片或文字形式标注的一口价、促销价、优惠价等价格可能是在使用优惠券、满减或特定优惠活动和时段等情形下的价格，具体请以结算页面的标价、优惠条件或活动规则为准。
+						</h5>
+						<h5>
+							此说明仅当出现价格比较时有效，具体请参见《光光商城价格发布规范》。若商家单独对划线价格进行说明的，以商家的表述为准。
+						</h5>
+						<div class="div3_d1">
+							<div class="div3_d1_d1">
+								安全提示： 
+							</div>
+							<div class="div3_d1_d2">
+								交易中请勿使用阿里旺旺以外的聊天工具沟通，不要接收可疑文件和不要点击不明来源的链接，支付前核实好域名和支付详情。 淘宝不会以订单有问题，让您提供任何银行卡、密码、手机验证码！遇到可疑情况可在钱盾“诈骗举报”中进行举报, 安全推荐
+								推荐安全软件：  钱盾钱盾  UC浏览器UC浏览器
+							</div>
+							<div class="div3_d1_d3">
+								内容申明： 
+							</div>
+							<div class="div3_d1_d4">
+								淘宝为第三方交易平台及互联网信息服务提供者，淘宝（含网站、客户端等）所展示的商品/服务的标题、价格、详情等信息内容系由店铺经营者发布，其真实性、准确性和合法性均由店铺经营者负责。淘宝提醒用户购买商品/服务前注意谨慎核实。如用户对商品/服务的标题、价格、详情等任何信息有任何疑问的，请在购买前通过阿里旺旺与店铺经营者沟通确认；淘宝存在海量店铺，如用户发现店铺内有任何违法/侵权信息，请立即向淘宝举报并提供有效线索。
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+			
+		</div>
+		
+		<div class="rightDiv">
 			
 		</div>
 		
 	</div>
 	
-	<div style="width: 100%; height: 200px; margin-top: 100px; background: blue;">
-		尾部
-	</div>
+	<%@ include file="menu_bottom.jsp" %>
 </body>
 </html>
