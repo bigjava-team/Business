@@ -1,12 +1,12 @@
 package org.bigjava.comment.dao.impl;
 
 import java.sql.SQLException;
+
 import java.util.List;
 
 import org.bigjava.comment.dao.CommentDao;
 import org.bigjava.comment.entity.Comment;
 import org.bigjava.function.Paging;
-import org.bigjava.orders.entity.Orders;
 import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
 import org.hibernate.HibernateException;
@@ -91,6 +91,12 @@ public class CommentDaoImpl extends HibernateDaoSupport implements CommentDao {
 			totalNumber = list.get(0).intValue();
 		}
 		return totalNumber;
+	}
+
+	// 查询推荐的12件商品
+	@Override
+	public List<Comment> queryCommentByNumberOneToTwelve() {
+		return this.getHibernateTemplate().find("from Comment");
 	}
 
 }

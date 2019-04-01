@@ -5,6 +5,7 @@ import org.bigjava.user.entity.User;
 
 /**
  * 评价表
+ * 
  * @author Administrator
  *
  */
@@ -12,11 +13,11 @@ public class Comment {
 
 	private int com_id;// 评价表的id
 	private String comment;// 评价表评价的内容
-	
+
 	private User user;// 多对一指向用户表
-	
+
 	private Product product;// 多对一指向商品表
-	
+
 	public Product getProduct() {
 		return product;
 	}
@@ -48,7 +49,10 @@ public class Comment {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Comment [com_id=" + com_id + ", comment=" + comment + ", product=" + product + "]";
+	}
+
 }

@@ -75,4 +75,10 @@ public class FileImageAction {
 		
 		return "file_success";
 	}
+	@Override
+	public String toString() {
+		return "FileImageAction [fileImage=" + fileImage + ", fileImageFileName=" + fileImageFileName
+				+ ", fileImageContentType=" + fileImageContentType + ", savePath=" + savePath + ", urlImage=" + urlImage
+				+ "]";
+	}
 }

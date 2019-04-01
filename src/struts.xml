@@ -93,6 +93,10 @@
 			<result name="getProductByIdSuccess">/merchant/product/edit.jsp</result>
 			<result name="findAll">/merchant/product/list.jsp</result>
 		</action>
+		
+		<action name="index_*" class="productAction" method="{1}">
+			<result name="success">/index.jsp</result>
+		</action>
 
 	</package>
 
