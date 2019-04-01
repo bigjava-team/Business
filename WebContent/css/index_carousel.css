@@ -11,11 +11,10 @@
 	width: 74%;
 	height: 100%;
 	line-height: 100%;
-	margin-top: 5px;
+	margin-top: 8px;
 	margin-right: 1%;
 	padding-top: 0px;
 	background: red;
-	border: 1px solid blue;
 }
 
 #carousel_ul {
@@ -63,7 +62,7 @@
 	/* 设置透明度 */
 	opacity: 0.5;
 	/* 兼容IE */
-	/* filter: alpha(opacity=50); */
+	filter: alpha(opacity=50);
 }
 
 #navDiv a:hover {
