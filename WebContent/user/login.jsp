@@ -99,7 +99,7 @@ img {
 
 .zhongjian {
 	margin-top: 2%;
-	background-image: url(../TuPian/test1.jpg);
+	background-image: url(${pageContext.request.contextPath }/TuPian/test1.jpg);
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	-moz-background-size: 100% 100%;
@@ -309,8 +309,8 @@ img {
 <body style="margin:0px; padding:0px">
 
 	<div id="header" align="center">
-		<a href="Save.jsp"><img src="../TuPian/logo.jpg"></a><img
-			src="../TuPian/nuli.gif"><br /> <font size="33px"><b>用户登录</b></font>
+		<a href="Save.jsp"><img src="${pageContext.request.contextPath }/TuPian/logo.jpg"></a><img
+			src="${pageContext.request.contextPath }/TuPian/nuli.gif"><br /> <font size="33px"><b>用户登录</b></font>
 		<div class="tou">
 				<a href=""><font class="toubuwenzi">返回首页&nbsp;&nbsp;&nbsp;</font></a>
 		</div>
@@ -324,14 +324,14 @@ img {
 						${check_login }
 					</span><br /> 
 					<div class="kuang">
-					<img src="../TuPian/tubiao.jpg" width="8%" height="8%">
+					<img src="${pageContext.request.contextPath }/TuPian/tubiao.jpg" width="8%" height="8%">
 						<input type="text" name="user.username" class="mytxt" id="inputname" placeholder="用户名" >
 					</div>
 				</div><br/>
 
 					<div class="geshi">
 						<div class="kuang">
-							<img src="../TuPian/suo.jpg" width="8%" height="8%"> <input
+							<img src="${pageContext.request.contextPath }/TuPian/suo.jpg" width="8%" height="8%"> <input
 								type="password" name="user.password" class="mytxt" id="password"
 								placeholder="密码">
 						</div>
