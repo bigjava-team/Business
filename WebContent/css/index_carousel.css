@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 * {
 	padding: 0;
 	margin: 0;
@@ -11,17 +13,19 @@
 	width: 74%;
 	height: 100%;
 	line-height: 100%;
-	margin-top: 5px;
+	margin-top: 8px;
 	margin-right: 1%;
 	padding-top: 0px;
 	background: red;
-	border: 1px solid blue;
+	border: 0px solid blue;
+	
+	
 }
 
 #carousel_ul {
-	/* 清楚ul的点 */
+	/* 娓呮ul鐨勭偣 */
 	list-style: none;
-	/* 开启绝对定位 */
+	/* 寮�鍚粷瀵瑰畾浣� */
 	position: absolute;
 	display: table-cell;
 	vertical-align: middle;
@@ -31,9 +35,9 @@
 }
 
 #carousel_ul li {
-	/* 设置浮动 */
+	/* 璁剧疆娴姩 */
 	float: left;
-	/* 设置左右边距 */
+	/* 璁剧疆宸﹀彸杈硅窛 */
 	margin: 0 0;
 	height: 100%;
 }
@@ -45,24 +49,24 @@
 
 #navDiv {
 	position: absolute;
-	/* 设置 */
+	/* 璁剧疆 */
 	bottom: 4%;
 	width: 14%;
 	height: 3.5%;
 }
 
 #navDiv a {
-	/* 设置超链接浮动 */
+	/* 璁剧疆瓒呴摼鎺ユ诞鍔� */
 	float: left;
-	/* 设置超链接长宽 */
+	/* 璁剧疆瓒呴摼鎺ラ暱瀹� */
 	width: 12%;
 	height: 98%;
 	border-radius: 5px;
 	background-color: red;
 	margin: 0 4%;
-	/* 设置透明度 */
+	/* 璁剧疆閫忔槑搴� */
 	opacity: 0.5;
-	/* 兼容IE */
+	/* 鍏煎IE */
 	/* filter: alpha(opacity=50); */
 }
 
