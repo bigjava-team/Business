@@ -195,18 +195,21 @@ admin_add/edit
 	font-size: 14px;
 	font-weight: bold;
 	color: #3C3C3C;
+	width: 25%;
 }
 
 .admin_form1_table #admin_list_tr2 .admin_form1_table_tr_td2{
 	font-size: 14px;
 	font-weight: bold;
 	padding-top: 4px;
+	width: 25%;
 }
 
 .admin_form1_table #admin_list_tr2 .admin_form1_table_tr_td3{
 	color: #FF5809;
 	font-size: 14px;
 	font-weight: bold;
+	width: 25%;
 }
 
 .admin_list_tr3{
@@ -221,14 +224,42 @@ admin_add/edit
 	font-size: 14px;
 	font-weight: bold;
 	color: #3C3C3C;
+	width: 25%;
 }
 
 .admin_form1_table_tr_td5{
+	padding-top: 10px;
+	padding-bottom: 10px;
 	color: #FF5809;
 	font-size: 14px;
 	font-weight: bold;
 	text-align: left;
-	padding-left: 1%;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+.admin_form1_table #admin_list_tr2 .admin_form1_table_tr_td6{
+	color: #FF5809;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.admin_form1_table_tr_td7{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #3C3C3C;
+	width: 25%;
+}
+
+.admin_form1_table_tr_td8{
+	font-size: 14px;
+	font-weight: bold;
+	padding-top: 4px;
+	width: 75%;
+	text-align: left;
+	padding-left: 2%;
 }
 
 #admin_list_moddle{
