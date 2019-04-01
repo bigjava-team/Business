@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 * {
 	padding: 0;
 	margin: 0;
@@ -18,7 +20,7 @@
 }
 
 #carousel_ul {
-	/* 清楚ul的点 */
+	/* 清除ul的点 */
 	list-style: none;
 	/* 开启绝对定位 */
 	position: absolute;
@@ -44,7 +46,6 @@
 
 #navDiv {
 	position: absolute;
-	/* 设置 */
 	bottom: 4%;
 	width: 14%;
 	height: 3.5%;

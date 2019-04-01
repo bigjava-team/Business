@@ -217,15 +217,14 @@ body {
 	position: fixed;
 	top: 25%;
 	left: 36%;
-	width: 30%;
-	height: 27%;
-	padding: 1%;
+	width: 28%;
+	height: 25%;
+	padding:1% 1% 0.5% 1%;
 	border: 10px solid #ddd;
 	background-color: lightblue;
 	color: white;
 	z-index: 1;
 	overflow: auto;
-	display: none;
 	line-height: 200%;
 }
 
@@ -430,10 +429,39 @@ td {
 .anniudiv2 {
 	margin-left: 30%;
 }
+ #bg{ 
+	display: none; 
+	position: absolute; 
+	top: 0%; 
+	left: 0%; 
+	width: 100%; 
+	height: 132%; 
+	background-color: black; 
+	z-index:1001; 
+	-moz-opacity: 0.3; 
+	opacity:.30; 
+	filter: alpha(opacity=30);
+}
+ 
+#show{ 
+	display: none; 
+	position: absolute; 
+	z-index:1002; 
+	overflow: auto;
+}
 </style>
 
-<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
+function showDiv() { 
+	document.getElementById("bg").style.display ="block";
+	document.getElementById("show").style.display ="block";
+}
+ 
+function hideDiv(){
+	document.getElementById("bg").style.display ="none";
+	document.getElementById("show").style.display ="none";	
+}
 	$(document).ready(function() {
 		var titles = $("div.title >a");
 		var conts = $("div.content >div.aa");
@@ -616,20 +644,23 @@ td {
 						</div>
 					</div>
 					<div class="aa">
+					<div class="container_div"><!-- 遮罩 -->
+   						 <div id="bg"></div>
+   						 <div id="show">
 						<form action="userxinxi.jsp" method="post"
 							onsubmit="return yanzhen()">
 							<div id="cont_b" class="cont">
 								<b><font color="red">店铺信息填写</font></b><br /> 店铺名:<input
 									type="text" id="name" name="name" placeholder="长度为5-10位 "><br />
 								店铺头像:<input type="file" id="reportXML" name="reportXML"
-									title="输入内容" multiple="multiple"><br /> <input
-									type="button" class="contsubmit"
-									onclick="document.getElementById('cont_b').style.display='none'"
-									style="margin-left: 10%" value="返回"> <input
+									title="输入内容" multiple="multiple"><br /> 
+									 <input type="button" class="contsubmit" value="返回" onclick="hideDiv()" style="margin-left: 10%;"/>
+									<input
 									type="submit" class="contsubmit" style="margin-left: 25%"
 									value="提交申请">
 							</div>
 						</form>
+						</div>
 						<div class="cc">
 							<br /> 您已绑定邮箱:<font color="red">#后台邮箱号</font><br /> <br />
 							开店类型必须与邮箱认证类型一致，否则可能无法创建店铺。<br /> <br />
@@ -667,15 +698,15 @@ td {
 									onclick="two();">
 									<span>上一步</span>
 								</button>
-								<button class="button2"
-									onclick="document.getElementById('cont_b').style.display='block'"
-									style="vertical-align: middle; width: 40%;" onclick="two();">
+								<button class="button2" id="button"
+									
+									style="vertical-align: middle; width: 40%;" onclick="showDiv();">
 									<span>已了解，马上开店</span>
 								</button>
-
+								
 							</div>
 						</div>
-
+</div>
 					</div>
 				</div>
 

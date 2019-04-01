@@ -52,8 +52,13 @@
 			<!-- 冻结用户，解冻用户 -->
 			<result name="updateUserStatesSuccess" type="redirectAction">User_showAll?user.root=0&amp;paging.presentPage=0
 			</result>
+			<!-- 注册验证码错误跳转注册页面 -->
+			<result name="checkcodeFail">/user/login.jsp</result>
 			
 		</action>
+		
+		<!-- 验证码的 Action -->
+		<action name="checkImg" class="checkImgAction"></action>
 
 		<!-- 后台一级分类管理Action -->
 		<action name="Category_*" class="categoryAction" method="{1}">
