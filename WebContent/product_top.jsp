@@ -28,8 +28,8 @@
 	
 	<!--板块2-->
     <div class="contenttwo">
-		<img src="images/logo.jpg" height="60px" width="240px" align="left">
-		<img alt="" src="images/1 (11).png" height="50px" width="520px" align="left">
+		<img src="${pageContext.request.contextPath }/images/logo.jpg" height="60px" width="240px" align="left">
+		<img alt="" src="${pageContext.request.contextPath }/images/1 (11).png" height="50px" width="520px" align="left">
 		<div class="search bar7">
 			<form id="contenttwo_form">
 				<input class="contenttwo_input" type="text" placeholder="欢迎来到光光网...">
