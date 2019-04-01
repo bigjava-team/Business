@@ -134,7 +134,7 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 		return totalNumber;
 	}
 
-	// 查询最新的10件商品
+	// 查询最新的6件商品
 	@Override
 	public List<Product> queryProduct_time() {
 		// TODO Auto-generated method stub
@@ -143,12 +143,12 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 		String hql = "from Product order by p_date desc";
 		List<Product> list = new ArrayList<Product>();
 		list = this.getHibernateTemplate().find(hql);
-		list = list.subList(0, 10);
+		list = list.subList(0, 6);
 		
 		return list;
 	}
 
-	// 查询最热的10件商品
+	// 查询最热的6件商品
 	@Override
 	public List<Product> queryProduct_hot() {
 		// TODO Auto-generated method stub
@@ -157,7 +157,7 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 		String hql = "from Product order by sale_volume desc";
 		List<Product> list = new ArrayList<Product>();
 		list = this.getHibernateTemplate().find(hql);
-		list.subList(0, 10);
+		list.subList(0, 6);
 		
 		return list;
 	}
