@@ -94,7 +94,7 @@
 					</div>
 				</div>
 				<div class="product_div1_div2_form_div2">
-					<div class="product_div1_div2_form_div2_div1" style="position: absolute; z-index: 10; background-image: url(images/product_gwc.png); background-repeat: no-repeat; background-position: 10% 8%; width: 20%; height: 30%;"></div>
+					<div class="product_div1_div2_form_div2_div1" style="position: absolute; z-index: 10; background-image: url(images/product_gwc.png); background-repeat: no-repeat; background-position: 10% 8%; width: 20%; height: 25%;"></div>
 					<input class="product_div1_div2_form_div2_input1" type="submit" value="加入购物车"/>
 				</div>
 			</form>
@@ -124,7 +124,7 @@
 					<div>
 						掌柜: 张三
 					</div>
-					<div>
+					<div style="padding-bottom: 8%;">
 						开店时间: 1111
 					</div>
 					
