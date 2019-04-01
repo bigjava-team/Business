@@ -21,13 +21,20 @@ public class UserAction extends ActionSupport {
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
 	private Paging paging;// 声明Paging类
-	
+
 	private String emailAddress;// 邮箱号
-	
+
 	private String checkEmail;// 邮箱验证码
-	
+
 	private String check_login;// 登录的校验
-	
+
+	// 接收验证码 struts2 中的属性驱动
+	private String checkcode;
+
+	public void setCheckcode(String checkcode) {
+		this.checkcode = checkcode;
+	}
+
 	public String getCheck_login() {
 		return check_login;
 	}
@@ -114,6 +121,15 @@ public class UserAction extends ActionSupport {
 	public String login() {
 		System.out.println("进入UserAction....login方法");
 		System.out.println(user);
+
+		// 判断验证码程序: session 随机验证码 是否和 input 文本框一样
+		// 从 session 中获得验证码的随机值
+		String checkcode1 = (String) ServletActionContext.getRequest().getSession().getAttribute("checkcode");
+		if (!checkcode.equalsIgnoreCase(checkcode1)) {
+			// 添加错误信息
+			this.addActionError("验证码输入错误!");
+			return "checkcodeFail";
+		}
 		if (isEmpty.isEmpty(user.getUsername()) || isEmpty.isEmpty(user.getPassword())) {
 			System.out.println("用户名或密码不能为空");
 			return "loginError";
@@ -122,12 +138,10 @@ public class UserAction extends ActionSupport {
 			if (userList.size() == 0) {
 				System.out.println("用户名或密码错误");
 				check_login = "用户名或密码错误";
-//				ActionContext.getContext().getSession().put("loginError", "用户名或密码错误");
 				return "loginError";
 			} else {
 				user = userList.get(0);
 				// 将user存入session中
-//				ActionContext.getContext().getSession().put("loginUser", user);
 				if (user.getRoot() == 1 && user.getU_is_freeze() == 1) {
 					System.out.println("普通用户登录");
 					System.out.println("解冻状态");
@@ -141,7 +155,6 @@ public class UserAction extends ActionSupport {
 					return "adminLogin";
 				} else if (user.getU_is_freeze() == 2) {
 					check_login = "用户已冻结";
-//					ActionContext.getContext().getSession().put("loginFreezeError", "用户已冻结");
 					System.out.println("冻结状态，用户不能登录");
 					return "loginError";
 				}
@@ -267,7 +280,7 @@ public class UserAction extends ActionSupport {
 		ServletActionContext.getRequest().getSession().invalidate();
 		return "close";
 	}
-	
+
 	/**
 	 * 发送邮件
 	 */
@@ -276,15 +289,15 @@ public class UserAction extends ActionSupport {
 		String content = SendMail.randomNumber();// 验证码
 		String subject = "光光网注册验证码";// 邮箱主题
 		String emailTo = emailAddress;// 收件人的邮箱
-		
+
 		checkEmail = content;
-		
+
 		if (SendMail.sendMail(emailTo, content, subject)) {
 			System.out.println("发送成功");
 		}
-		
+
 		System.out.println("参数" + checkEmail);
 		return SUCCESS;
 	}
-	
+
 }

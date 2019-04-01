@@ -84,10 +84,26 @@
 			<td align="center">${product.sale_volume }</td>
 			<td align="center">${product.p_desc }</td>
 			<td align="center">
-				是
+				<s:if test="product.sale_volume > 500">
+					是
+				</s:if>
+				<s:else>
+					否
+				</s:else>
 			</td>
 			<td align="center">${product.p_date }</td>
-			<td align="center">${product.p_freeze }</td>
+			<td align="center">
+				<s:if test="product.p_freeze ==1">
+					已上架
+				</s:if>
+				<s:elseif test="product.p_freeze ==2">
+					已下架
+				</s:elseif>
+				<s:else>
+					申请中
+				</s:else>
+			
+			</td>
 			<td align="center">
 				<a href="${pageContext.request.contextPath}/MerchantProduct_getProductById.action?product.p_id=${product.p_id}">
 					<img class="admin_merchant_pd_immg1" src="${pageContext.request.contextPath}/images/i_edit.gif" border="0">
