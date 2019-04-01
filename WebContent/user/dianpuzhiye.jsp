@@ -5,9 +5,56 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>店铺主页</title>
-<link rel="stylesheet" href="../css/index.css">
-<link href="../css/style.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/index.css">
+<link href="css/style.css" rel="stylesheet" />
 <style type="text/css">
+.form1 {
+	position:relative;
+	width:100%;
+	margin:0 auto;
+}
+.input1 {
+	width:100%;
+	height:100%;
+	padding-left:13px;
+	border:none;
+	outline:none;
+}
+.button1 {
+	padding-top:5%;
+	cursor:pointer;
+	position:absolute;
+	border:none;
+	outline:none;
+}
+.bar7 form {
+	height:42px;
+}
+.bar7 input {
+	width:250px;
+	border-radius:42px;
+	border:2px solid #324B4E;
+	background:#F9F0DA;
+	transition:.3s linear;
+	float:right;
+}
+.bar7 input:focus {
+	width:300px;
+}
+.bar7 button {
+	background:none;
+	top:-2px;
+	right:20px;
+}
+.bar7 button:before {
+	content:"搜索";
+	font-family:FontAwesome;
+	color:#324b4e;
+	width:100%
+}
+* {
+	box-sizing:border-box;
+}
 .page4 h2 {
 	margin: auto !important;
 	position: absolute !important;
@@ -33,13 +80,23 @@ body {
 
 .head {
 	width: 100%;
-	padding-top: 7%;
-	background-color: red;
+	border: 1px solid gray;
+}
+
+.head a {
+	color: #3C3C3C;
+	text-decoration: none;
+}
+
+.head a:hover {
+	color: #8E8E8E;
 }
 
 .head2 {
-	width: 16.5%;
+	width: 20%;
+	float: left;
 	background-color: #95C0F6;
+	width: 20%;
 	float: left;
 	padding-top: 8.6%;
 }
@@ -49,7 +106,7 @@ body {
 }
 
 .head2di {
-	padding-bottom: 12.7%;
+	padding-bottom: 5%;
 	padding-top: 5%;
 	background-color: #3F7FCE;
 }
@@ -66,13 +123,13 @@ body {
 .two {
 	background-color: yellow;
 	padding-bottom: 6%;
-	padding-top: 5.5%;
+	padding-top: 6%;
 	width: 100%;
 	text-align: center;
 }
 
 .headcenter {
-	width: 66.8%;
+	width: 60%;
 	float: left;
 }
 
@@ -84,7 +141,7 @@ body {
 
 .center3 {
 	margin: 0 auto;
-	width: 66.8%;
+	width: 60%;
 }
 
 .kongge {
@@ -101,7 +158,7 @@ body {
 
 .center4 {
 	margin: 0 auto;
-	width: 66.8%;
+	width: 60%;
 	background-color: red;
 	margin-top: 2%;
 }
@@ -273,8 +330,64 @@ ol .current {
 
 </head>
 <body>
-	<div class="head"></div>
-	<div class="center1">
+	<div class="head">
+		<div
+			style="background-color: #D0D0D0; padding-bottom: 1%; padding-top: 1%;">
+			<div
+				style="float: left; border-right: 1px solid black; padding-left: 12%; padding-right: 2%;">
+				<a href="???">用户名</a>
+			</div>
+			<div style="float: left; padding-left: 2%; padding-right: 2%;">
+				<a href="???">退出</a>
+			</div>
+			<div style="float: left; border-right: 1px solid black; padding-left: 36%; padding-right: 2%;">
+			<a href="???">光光网首页</a>
+			</div>
+			<div style="float: left; border-right: 1px solid black; padding-left: 2%; padding-right: 2%;">
+			<a href="???">我买的宝贝</a>
+			</div>
+			<div style="float: left; border-right: 1px solid black; padding-left: 2%; padding-right: 2%;">
+			<a href="???">我卖的宝贝</a>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div style="width: 100%; padding-top: 1%; padding-bottom: 1%;">
+			<div
+				style="float: left; border-right: 1px solid #d2c8c8; text-align: center;">
+				<a href=""><img src="../TuPian/logo.jpg"
+					style="vertical-align: middle;"></a>
+			</div>
+			<div
+				style="float: left; border-right: 1px solid #d2c8c8; padding-top: 1%; padding-bottom: 0.5%; padding-right: 2%; padding-left: 2%;">
+				#店铺名</div>
+			<div
+				style="float: left; border-right: 1px solid #d2c8c8; text-align: center; padding-right: 2%; padding-left: 2%;">
+				<table>
+					<tr>
+						<td>描述</td>
+						<td>服务</td>
+						<td>物流</td>
+					</tr>
+					<tr>
+						<td><font color="red">#店铺评分</font></td>
+						<td><font color="red">#店铺评分</font></td>
+						<td><font color="red">#店铺评分</font></td>
+					</tr>
+				</table>
+			</div>
+			<div style="float: right;margin-right: 10%;">
+			 <div class="search bar7">
+        <form class="form1" method="post" action="sousuojieguo.jsp">
+            <input class="input1" type="text" placeholder="搜商品" name="crid">
+            <button type="submit" class="button1"></button>
+        </form>
+    </div>
+			</div>
+			
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div>
 		<div class="head2">
 			<div class="head2di"></div>
 		</div>
@@ -289,32 +402,21 @@ ol .current {
 	</div>
 
 	<div class="kongge">
-		<div class="one" style="width: 66.8%; margin: 0 auto">商品轮播</div>
+		<div class="one" style="width: 59.2%; margin: 0 auto">商品轮播</div>
 		<div class="carousel content-main">
 
 			<ul class="list">
-				<li><img src="../TuPian/1.jpg"
-					style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/2.jpg"
-					style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/3.jpg"
-					style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/4.jpg"
-					style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/1.jpg"
-					style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/2.jpg"
-					style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/3.jpg"
-					style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/4.jpg"
-					style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/1.jpg"
-					style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/2.jpg"
-					style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/3.jpg"
-					style="width: 100%; height: 100%;"></li>
+				<li><img src="../TuPian/1.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="../TuPian/2.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="../TuPian/3.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="../TuPian/4.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="../TuPian/1.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="../TuPian/2.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="../TuPian/3.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="../TuPian/4.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="../TuPian/1.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="../TuPian/2.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="../TuPian/3.jpg" style="width: 100%; height: 100%;"></li>
 			</ul>
 		</div>
 		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
@@ -403,8 +505,10 @@ ol .current {
 				</div>
 				<div class="four">
 					<div style="text-align: center; clear: both; margin-top: 1%">
+						<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
+						<script src="/follow.js" type="text/javascript"></script>
 					</div>
-					<iframe frameborder="0" scrolling="no" src="../user/dianpuzhiye_lunbo.jsp" width="100%"
+					<iframe frameborder="0" scrolling="no" src="dianpuzhiye_lunbo.jsp" width="100%"
 						height="500px"></iframe>
 
 				</div>
@@ -547,7 +651,7 @@ ol .current {
 
 
 	</div>
-
+			
 	<script>
 		/**
 		 *
