@@ -55,6 +55,9 @@
 			<!-- 注册验证码错误跳转注册页面 -->
 			<result name="checkcodeFail">/user/login.jsp</result>
 			
+			<!-- 注销用户 -->
+			<result name="close">index.jsp </result>
+			
 		</action>
 		
 		<!-- 验证码的 Action -->
