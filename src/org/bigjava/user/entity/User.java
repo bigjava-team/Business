@@ -29,7 +29,7 @@ public class User {
 	private int root;// 用户权限
 	private String image;// 用户头像图片路径
 	private int u_is_freeze;// 用户当前状态
-	
+
 	private Set<Addr> setAddr = new HashSet<Addr>();// 指向用户地址类
 
 	private Set<Orders> setOrders = new HashSet<Orders>();// 指向订单类
@@ -37,13 +37,13 @@ public class User {
 	private Set<Comment> setCom = new HashSet<Comment>();// 指向评论类
 
 	private Merchant merchant;// 指向用户开的店铺类
-	
+
 	private Set<Orderitem> setOrderItem = new HashSet<Orderitem>();// 指向订单项类
-	
+
 	private Set<CollectMerchant> setCollectMerchant = new HashSet<CollectMerchant>();// 一对多指向CollectMerchant类
-	
+
 	private Set<CollectProduct> setCollectProduct = new HashSet<CollectProduct>();// 一对多指向CollectProduct类
-	
+
 	public Set<CollectProduct> getSetCollectProduct() {
 		return setCollectProduct;
 	}
@@ -183,11 +183,12 @@ public class User {
 	/**
 	 * 设置toString方法，防止参数乱码
 	 */
+
 	@Override
 	public String toString() {
 		return "User [u_id=" + u_id + ", username=" + username + ", password=" + password + ", sex=" + sex + ", u_name="
 				+ u_name + ", email=" + email + ", phone=" + phone + ", root=" + root + ", image=" + image
 				+ ", u_is_freeze=" + u_is_freeze + "]";
 	}
-	
+
 }

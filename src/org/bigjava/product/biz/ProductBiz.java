@@ -35,15 +35,20 @@ public interface ProductBiz {
 	public int queryProductNumber(String searchProduct, int m_id);
 	
 	/**
-	 * 查询最新的4个商品
+	 * 查询最新的6个商品
 	 * 
 	 */
 	public List<Product> queryProduct_time();
 	
 	/**
-	 * 查询最热的4个商品
+	 * 查询最热的6个商品
 	 * 
 	 */
 	public List<Product> queryProduct_hot();
+	
+	/**
+	 * 查询全部的商品
+	 */
+	public List<Product> queryAllCommentProduct();
 
 }

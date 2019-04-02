@@ -79,6 +79,7 @@
 	
 	<!-- 评论 -->
 	<bean name="commentDao" class="org.bigjava.comment.dao.impl.CommentDaoImpl" autowire="byName" />
+	<bean name="commentBiz" class="org.bigjava.comment.biz.impl.CommentBizImpl" autowire="byName" />
 	
 	<!-- 商品图片 -->
 	<bean name="imagesDao" class="org.bigjava.image.dao.impl.ImageDaoImpl" autowire="byName" />
