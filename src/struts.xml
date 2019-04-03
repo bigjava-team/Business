@@ -57,6 +57,9 @@
 
 			<!-- 注销用户 -->
 			<result name="close">index.jsp </result>
+			
+			<!-- 跳转我的首页 -->
+			<result name="gotoUserIndex">/user/userxinxi.jsp</result>
 
 		</action>
 

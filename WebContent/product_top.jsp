@@ -25,7 +25,7 @@
 		
 		<div class=wenziz2>
 			<s:if test="user != null">
-				<a>我的主页</a>
+				<a href="User_gotoUserIndex.action?user.username=${user.username}">我的主页</a>
 			</s:if>
 			
 			<s:if test="merchant != null">
