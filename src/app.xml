@@ -43,7 +43,7 @@
 	<bean name="userAction" class="org.bigjava.user.action.UserAction" autowire="byName" scope="prototype" />
 	<bean name="userBiz" class="org.bigjava.user.biz.impl.UserBizImpl" autowire="byName" />
 	<bean name="userDao" class="org.bigjava.user.dao.impl.UserDaoImpl" autowire="byName" />
-	
+
 	<!-- 验证码 -->
 	<bean name="checkImgAction" class="org.bigjava.user.action.CheckImgAction" autowire="byName" scope="prototype" />
 	

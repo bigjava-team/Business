@@ -15,12 +15,12 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
-	$(function() {
+	 $(function() {
 		var OneToThree = '${check }';
 		if (OneToThree==null || OneToThree == "") {
-			window.location.href = "index_showAll";
+			window.location.href = "index_showAll.action";
 		}
-	});
+	}); 
 
 	$(function(){
 		var a = $(".aaa").height();

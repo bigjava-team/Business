@@ -31,8 +31,6 @@
 			<s:if test="merchant != null">
 				<a>我的店铺</a>
 			</s:if>
-			
-			
 			<a>购物车</a> 
 			<a>收藏夹</a> 
 			<a>商品分类</a>
