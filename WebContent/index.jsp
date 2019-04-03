@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,13 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
+	 $(function() {
+		var OneToThree = '${check }';
+		if (OneToThree==null || OneToThree == "") {
+			window.location.href = "index_showAll.action";
+		}
+	}); 
+
 	$(function(){
 		var a = $(".aaa").height();
 		$(".bbb").height(a);
@@ -172,11 +180,6 @@
 		</div>
 		<div class="bbb" style="background: red; width: 59%; float: left; margin-left: 0.8%;">
 			<div id="middle_carousel" style="background: yellow; overflow: hidden; height: 56%;">
-				<%-- <div style="background: #D26900; display: table; float: left; overflow: hidden; position: relative; width: 74%; height: 100%; line-height: 100%; margin-top: 5px; margin-right: 1%; padding-top: 0px;">
-					<span style="display: table-cell; vertical-align: middle; margin: 0px; padding: 0px;">
-						<img alt="tupian" src="${pageContext.request.contextPath }/images/products/aaa002.jpg" width="100%" height="290px">
-					</span>
-				</div> --%>
 				<div id="carousel">
 					<ul id="carousel_ul">
 						<li><img src="${pageContext.request.contextPath }/images/index/1.jpg" name="carousel_ul_img"  /></li>
@@ -322,101 +325,27 @@
 		<div style="background: #79FF79; width: 43.6%; margin-left: 6%; margin-right: 0.8%; float: left;">
 			<div style="background: #FFF; height: 10%; font-weight: bold; font-size: 18px; color: #FF9F00; padding: 12px 0px 12px 2%; border-bottom: 1px solid #F4F4F4">
 				| 最新商品
-			</div>
+			</div>	
 			<div style="background: red; overflow: hidden; margin: 0px 0%;">
-				<div style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
-					<div style="text-align: center;">
-						<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-					</div>
-					<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-						商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-					</div>
-					<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-						¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-					</div>
-					<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-						销量:12345
-					</div>
-				</div>
-				
-				<div style="background: #FFF; border: 1px solid #FFF; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
-					<div style="text-align: center;">
-						<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-					</div>
-					<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-						商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-					</div>
-					<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-						¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-					</div>
-					<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-						销量:12345
-					</div>
-				</div>
-				
-				<div style="background: #FFF; border: 1px solid #FFF; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
-					<div style="text-align: center;">
-						<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-					</div>
-					<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-						商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-					</div>
-					<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-						¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-					</div>
-					<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-						销量:12345
-					</div>
-				</div>
+				<s:iterator value="listProductTime"  var="listProductTimes">
+					<a href="javascript:;">
+						<div style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd" >
+							<div style="text-align: center; height: 196px; overflow: hidden;">
+								<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="90%" height="100%">
+							</div>
+							<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden; color: black;">
+								${listProductTimes.p_name }
+							</div>
+							<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
+								¥<font style="font-size: 22px; font-weight: bold;">${listProductTimes.p_price }</font>
+							</div>
+							<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
+								销量:${listProductTimes.sale_volume }
+							</div>
+						</div>
+					</a>
+				</s:iterator>
 			</div>
-			
-			<div style="background: red; overflow: hidden; margin: 0px 0%;">
-				<div style="background: #FFF; border: 1px solid red; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
-					<div style="text-align: center;">
-						<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-					</div>
-					<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-						商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-					</div>
-					<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-						¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-					</div>
-					<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-						销量:12345
-					</div>
-				</div>
-				
-				<div style="background: #FFF; border: 1px solid red; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
-					<div style="text-align: center;">
-						<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-					</div>
-					<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-						商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-					</div>
-					<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-						¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-					</div>
-					<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-						销量:12345
-					</div>
-				</div>
-				
-				<div style="background: #FFF; border: 1px solid red; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
-					<div style="text-align: center;">
-						<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-					</div>
-					<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-						商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-					</div>
-					<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-						¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-					</div>
-					<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-						销量:12345
-					</div>
-				</div>
-			</div>
-			
 		</div>
 		
 		<div style="background: #79FF79; width: 43.6%; margin-right: 6%; margin-right: 0.4%; float: left;">
@@ -425,97 +354,22 @@
 					| 最热商品
 				</div>
 				<div style="background: red; overflow: hidden; margin: 0px 0%;">
-					<div style="background: #FFF; border: 1px solid red; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
-						<div style="text-align: center;">
-							<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
+					<s:iterator value="listProductHot"  var="listProductHots">
+						<div style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
+							<div style="text-align: center; height: 196px; overflow: hidden;">
+								<img alt="商品图片" src="${fileImageAction.urlImage }${listProductHots.p_image }" width="90%" height="100%">
+							</div>
+							<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
+								${listProductHots.p_name }
+							</div>
+							<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
+								¥<font style="font-size: 22px; font-weight: bold;">${listProductHots.p_price }</font>
+							</div>
+							<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
+								销量:${listProductHots.sale_volume }
+							</div>
 						</div>
-						<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-							商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-						</div>
-						<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-							¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-						</div>
-						<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-							销量:12345
-						</div>
-					</div>
-					
-					<div style="background: #FFF; border: 1px solid red; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
-						<div style="text-align: center;">
-							<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-						</div>
-						<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-							商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-						</div>
-						<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-							¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-						</div>
-						<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-							销量:12345
-						</div>
-					</div>
-					
-					<div style="background: #FFF; border: 1px solid red; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
-						<div style="text-align: center;">
-							<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-						</div>
-						<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-							商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-						</div>
-						<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-							¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-						</div>
-						<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-							销量:12345
-						</div>
-					</div>
-				</div>
-			
-				<div style="background: red; overflow: hidden; margin: 0px 0%;">
-					<div style="background: #FFF; border: 1px solid red; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
-						<div style="text-align: center;">
-							<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-						</div>
-						<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-							商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-						</div>
-						<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-							¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-						</div>
-						<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-							销量:12345
-						</div>
-					</div>
-					
-					<div style="background: #FFF; border: 1px solid red; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
-						<div style="text-align: center;">
-							<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-						</div>
-						<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-							商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-						</div>
-						<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-							¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-						</div>
-						<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-							销量:12345
-						</div>
-					</div>
-					
-					<div style="background: #FFF; border: 1px solid red; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
-						<div style="text-align: center;">
-							<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-						</div>
-						<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-							商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-						</div>
-						<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-							¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-						</div>
-						<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-							销量:12345
-						</div>
-					</div>
+					</s:iterator>
 				</div>
 			</div>
 		</div>
@@ -526,189 +380,23 @@
 			| 猜你喜欢
 		</div>
 		<div style="background: red; overflow: hidden; margin: 0px 0%;">
-			<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
-				<div style="text-align: center;">
-					<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
+			<s:iterator value="listAllCommentProduct" var="listAllCommentProducts" >
+				<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
+					<div style="text-align: center; height: 196px; overflow: hidden;">
+						<img alt="商品图片" src="${fileImageAction.urlImage }${listAllCommentProducts.p_image}" width="90%" height="100%">
+					</div>
+					<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
+						${listAllCommentProducts.p_name}
+					</div>
+					<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
+						¥<font style="font-size: 22px; font-weight: bold;">${listAllCommentProducts.p_price}</font>
+					</div>
+					<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
+						销量:${listAllCommentProducts.sale_volume}
+					</div>
 				</div>
-				<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-					商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-				</div>
-				<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-					¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-				</div>
-				<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-					销量:12345
-				</div>
-			</div>
-			
-			<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
-				<div style="text-align: center;">
-					<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-				</div>
-				<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-					商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-				</div>
-				<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-					¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-				</div>
-				<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-					销量:12345
-				</div>
-			</div>
-			
-			<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
-				<div style="text-align: center;">
-					<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-				</div>
-				<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-					商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-				</div>
-				<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-					¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-				</div>
-				<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-					销量:12345
-				</div>
-			</div>
-			
-			<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
-				<div style="text-align: center;">
-					<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-				</div>
-				<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-					商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-				</div>
-				<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-					¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-				</div>
-				<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-					销量:12345
-				</div>
-			</div>
-			
-			<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
-				<div style="text-align: center;">
-					<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-				</div>
-				<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-					商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-				</div>
-				<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-					¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-				</div>
-				<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-					销量:12345
-				</div>
-			</div>
-			
-			<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
-				<div style="text-align: center;">
-					<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-				</div>
-				<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-					商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-				</div>
-				<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-					¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-				</div>
-				<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-					销量:12345
-				</div>
-			</div>
+			</s:iterator>
 		</div>
-		
-		<div style="background: red; overflow: hidden; margin: 0px 0%;">
-			<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
-				<div style="text-align: center;">
-					<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-				</div>
-				<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-					商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-				</div>
-				<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-					¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-				</div>
-				<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-					销量:12345
-				</div>
-			</div>
-			
-			<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
-				<div style="text-align: center;">
-					<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-				</div>
-				<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-					商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-				</div>
-				<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-					¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-				</div>
-				<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-					销量:12345
-				</div>
-			</div>
-			
-			<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
-				<div style="text-align: center;">
-					<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-				</div>
-				<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-					商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-				</div>
-				<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-					¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-				</div>
-				<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-					销量:12345
-				</div>
-			</div>
-			
-			<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
-				<div style="text-align: center;">
-					<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-				</div>
-				<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-					商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-				</div>
-				<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-					¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-				</div>
-				<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-					销量:12345
-				</div>
-			</div>
-			
-			<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
-				<div style="text-align: center;">
-					<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-				</div>
-				<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-					商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-				</div>
-				<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-					¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-				</div>
-				<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-					销量:12345
-				</div>
-			</div>
-			
-			<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
-				<div style="text-align: center;">
-					<img alt="商品图片" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="90%">
-				</div>
-				<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-					商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称
-				</div>
-				<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-					¥<font style="font-size: 22px; font-weight: bold;">1999999999.00</font>
-				</div>
-				<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-					销量:12345
-				</div>
-			</div>
-		</div>
-		
 	</div>
 	
 	<%@ include file="menu_bottom.jsp" %>

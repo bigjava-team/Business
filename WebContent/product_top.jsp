@@ -3,6 +3,12 @@
     
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
+
+	<script type="text/javascript">
+	function remove() {
+		window.location.href = "User_close.action";
+	}
+	</script>
 	<!--板块1-->
 	<div class="contentone">
 		<div class=wenziz>
@@ -25,13 +31,12 @@
 			<s:if test="merchant != null">
 				<a>我的店铺</a>
 			</s:if>
-			
 			<a>购物车</a> 
 			<a>收藏夹</a> 
 			<a>商品分类</a>
 			<a>卖家中心</a> 
 			<s:if test="user != null">
-				<a href=""></a>退出
+				<a href="#" onclick="remove()">退出</a>
 			</s:if>
 		</div>
 	</div>

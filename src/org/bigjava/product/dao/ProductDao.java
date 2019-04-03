@@ -48,4 +48,8 @@ public interface ProductDao {
 	 */
 	public List<Product> queryProduct_hot();
 	
+	/**
+	 * 查询全部的商品
+	 */
+	public List<Product> queryAllCommentProduct();
 }

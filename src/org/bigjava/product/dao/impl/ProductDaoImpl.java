@@ -157,8 +157,14 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 		String hql = "from Product order by sale_volume desc";
 		List<Product> list = new ArrayList<Product>();
 		list = this.getHibernateTemplate().find(hql);
-		list.subList(0, 6);
+		list = list.subList(0, 6);
 		
 		return list;
+	}
+
+	// 查询全部的商品
+	@Override
+	public List<Product> queryAllCommentProduct() {
+		return this.getHibernateTemplate().find("from Product");
 	}
 }
