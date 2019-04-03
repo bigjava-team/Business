@@ -60,7 +60,7 @@
 				商品图片：
 			</div>
 			<div class="admin_merchant_d2">
-				<input type="file" name="fileImageAction.fileImage">
+				<input type="file" name="fileImageAction.fileImage" multiple="multiple">
 			</div>
 		</div>
 		
@@ -74,7 +74,7 @@
 		</div>
 		
 		<div id="admin_add_div_bottom">
-			<input type="submit" value="确定" style="margin-right: 80px;" />
+			<input type="submit" value="申请" style="margin-right: 80px;" />
 			<input type="reset" value="重置" style="margin-right: 80px;" />
 			<input type="button" onclick="history.go(-1)" value="返回" />
 		</div>

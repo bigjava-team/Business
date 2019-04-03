@@ -1,0 +1,14 @@
+
+ .bar7 form {height:53px;}
+ .bar7 input {width:100%;border-radius: 42px;border: -2px solid #324B4E;background: #F9F0DA;transition: .3s linear;float: right;}
+ .bar7 input:focus {width: 150%;}
+ .bar7 button {background: none;top: 1px;right: 0;}
+ .bar7 button:before{content: "\f002";font-family: FontAwesome;color: #324b4e;}
+
+* {box-sizing: border-box;}
+#container {width: 50%;height: 50%; margin: 0 auto;}
+ div.search {padding: 25px 0;}
+ form {position: relative;width: 22%;margin: 0 auto;}
+ input, button {border: none;outline: none;}
+ input {width: 100%;height: 80%; padding-left: 13px;}
+ button {height:80%;width: 20%; cursor: pointer;position: absolute;}

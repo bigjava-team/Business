@@ -52,7 +52,7 @@
 			<td align="center">1</td>
 			<td align="center">f</td>
 			<td align="center">1000000000</td>
-			<td align="center">是</td>
+			<td align="center"><a href="${pageContext.request.contextPath }/admin/product/list_product.jsp">查看商品</a></td>
 			<td align="center">
 				<a>
 					<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" class="admin_merchant_pd_immg1">

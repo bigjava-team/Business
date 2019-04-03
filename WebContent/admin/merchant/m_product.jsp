@@ -41,16 +41,22 @@
 		
 	</table>
 	
-	<div id="admin_list_div_page">
-		第<s:property value="pageBean.page"/>页/<s:property value="pageBean.totalPage"/>页&nbsp;&nbsp;&nbsp;&nbsp;
-		<s:if test="pageBean.page != 1">
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=1">首页</a>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page-1"/>">上一页</a>
-		</s:if>
-		<s:if test="pageBean.page != pageBean.totalPage">
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page+1"/>">下一页</a>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.totalPage"/>">尾页</a>
-		</s:if>
+	<div id="admin_list_div_page" style="float: inherit; overflow: hidden;">
+		<div style="float: inherit; text-align: center;">
+			第<s:property value="pageBean.page"/>页/<s:property value="pageBean.totalPage"/>页&nbsp;&nbsp;&nbsp;&nbsp;
+			<s:if test="pageBean.page != 1">
+				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=1">首页</a>
+				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page-1"/>">上一页</a>
+			</s:if>
+			<s:if test="pageBean.page != pageBean.totalPage">
+				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page+1"/>">下一页</a>
+				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.totalPage"/>">尾页</a>
+			</s:if>
+			<div style="float: right;">
+				<input type="submit" onclick="history.go(-1)" value="返回" />
+			</div>
+		</div>
+		
 	</div>
 	
 </body>

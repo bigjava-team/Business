@@ -65,6 +65,13 @@
 				<td class="admin_form1_table_tr_td3" align="center">¥ 199.99</td>
 			</tr>
 			
+			<tr id="admin_list_tr2">
+				<td class="admin_form1_table_tr_td1" align="center">月销售量</td>
+				<td class="admin_form1_table_tr_td3" align="center">199 / 件</td>
+				<td class="admin_form1_table_tr_td7" align="center">是否热门</td>
+				<td class="admin_form1_table_tr_td3" align="center">是</td>
+			</tr>
+			
 			<tr id="admin_list_tr3">
 				<td class="admin_form1_table_tr_td4" align="center">商品描述</td>
 				<td class="admin_form1_table_tr_td5" colspan="3" align="center">本店所有商品打折扣</td>
@@ -87,6 +94,6 @@
 	<div style="margin-top: 5px; text-align: right;">
 		<input type="submit" onclick="history.go(-1)" value="返回" />
 	</div>
-	
+		
 </body>
 </html>
