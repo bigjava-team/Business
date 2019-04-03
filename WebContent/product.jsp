@@ -90,7 +90,7 @@
 						 	<option value="2">2</option>
 						 	<option value="3">3</option> 
 						</select>
-						<input id="input" name="input" class="iInput"> / 件
+						<input id="input" name="input" class="iInput" value="1"> / 件
 					</div>
 				</div>
 				<div class="product_div1_div2_form_div2">
