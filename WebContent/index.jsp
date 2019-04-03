@@ -180,11 +180,6 @@
 		</div>
 		<div class="bbb" style="background: red; width: 59%; float: left; margin-left: 0.8%;">
 			<div id="middle_carousel" style="background: yellow; overflow: hidden; height: 56%;">
-				<%-- <div style="background: #D26900; display: table; float: left; overflow: hidden; position: relative; width: 74%; height: 100%; line-height: 100%; margin-top: 5px; margin-right: 1%; padding-top: 0px;">
-					<span style="display: table-cell; vertical-align: middle; margin: 0px; padding: 0px;">
-						<img alt="tupian" src="${pageContext.request.contextPath }/images/products/aaa002.jpg" width="100%" height="290px">
-					</span>
-				</div> --%>
 				<div id="carousel">
 					<ul id="carousel_ul">
 						<li><img src="${pageContext.request.contextPath }/images/index/1.jpg" name="carousel_ul_img"  /></li>
@@ -333,20 +328,22 @@
 			</div>	
 			<div style="background: red; overflow: hidden; margin: 0px 0%;">
 				<s:iterator value="listProductTime"  var="listProductTimes">
-					<div style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
-						<div style="text-align: center; height: 196px; overflow: hidden;">
-							<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="90%" height="100%">
+					<a href="javascript:;">
+						<div style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd" >
+							<div style="text-align: center; height: 196px; overflow: hidden;">
+								<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="90%" height="100%">
+							</div>
+							<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden; color: black;">
+								${listProductTimes.p_name }
+							</div>
+							<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
+								¥<font style="font-size: 22px; font-weight: bold;">${listProductTimes.p_price }</font>
+							</div>
+							<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
+								销量:${listProductTimes.sale_volume }
+							</div>
 						</div>
-						<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-							${listProductTimes.p_name }
-						</div>
-						<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-							¥<font style="font-size: 22px; font-weight: bold;">${listProductTimes.p_price }</font>
-						</div>
-						<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-							销量:${listProductTimes.sale_volume }
-						</div>
-					</div>
+					</a>
 				</s:iterator>
 			</div>
 		</div>
@@ -388,7 +385,7 @@
 					<div style="text-align: center; height: 196px; overflow: hidden;">
 						<img alt="商品图片" src="${fileImageAction.urlImage }${listAllCommentProducts.p_image}" width="90%" height="100%">
 					</div>
-					<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
+					<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
 						${listAllCommentProducts.p_name}
 					</div>
 					<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">

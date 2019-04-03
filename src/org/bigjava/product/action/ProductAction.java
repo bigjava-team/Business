@@ -11,6 +11,7 @@ import org.bigjava.function.FileImageAction;
 import org.bigjava.function.IsEmpty;
 import org.bigjava.product.biz.ProductBiz;
 import org.bigjava.product.entity.Product;
+import org.bigjava.user.entity.User;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -19,6 +20,7 @@ public class ProductAction extends ActionSupport {
 	
 	/* …Ã∆∑ */
 	private Product product;
+	private User user;
 	
 	private ProductBiz productBiz;
 	private CommentBiz commentBiz;
@@ -33,6 +35,14 @@ public class ProductAction extends ActionSupport {
 	
 	private FileImageAction fileImageAction;
 	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public List<Product> getListAllCommentProduct() {
 		return listAllCommentProduct;
 	}
