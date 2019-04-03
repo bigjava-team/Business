@@ -31,8 +31,9 @@
 			<result name="adminLogin"> /admin/home.jsp </result>
 
 			<!-- 返回值为loginSuccess为普通用户登录成功 -->
-			<result name="loginSuccess">/index.jsp
-			</result>
+			<!-- <result name="loginSuccess">/index.jsp
+			</result> -->
+			<result name="loginSuccess" type="redirectAction">index_showAll?method=post&amp;user.username=${user.username}</result>
 
 			<!-- 返回值为loginStore，为店长登录 -->
 			<result name="loginStore">/user/Maijia.jsp
