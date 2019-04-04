@@ -37,6 +37,28 @@
 		});
 	});
 	
+	$(function() {
+		$(".newestProduct").mouseover(function() {
+			$(this).css("cursor", "pointer");
+		});
+		
+		$(".newestProduct a").css({
+			"text-decoration": "none",
+			"color": "black"
+		});
+		
+		$(".newestProduct a").hover(function() {
+			$(this).css("color", "red");
+		},function() {
+			$(this).css("color", "black");
+		});
+		
+		$(".newestProduct a").click(function() {
+			alert($(".newestProduct").val());
+		});
+	});
+	
+	
 	$(function(){
 		$(".xuanfu").mouseover(function(){
 			$(".xuanfu").css('display','block');
@@ -328,22 +350,20 @@
 			</div>	
 			<div style="background: red; overflow: hidden; margin: 0px 0%;">
 				<s:iterator value="listProductTime"  var="listProductTimes">
-					<a href="javascript:;">
-						<div style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd" >
-							<div style="text-align: center; height: 196px; overflow: hidden;">
-								<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="90%" height="100%">
-							</div>
-							<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden; color: black;">
-								${listProductTimes.p_name }
-							</div>
-							<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-								¥<font style="font-size: 22px; font-weight: bold;">${listProductTimes.p_price }</font>
-							</div>
-							<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-								销量:${listProductTimes.sale_volume }
-							</div>
+					<div class="newestProduct" style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd" >
+						<div style="text-align: center; height: 196px; overflow: hidden;">
+							<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="90%" height="100%">
 						</div>
-					</a>
+						<div class="product_name" style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden; color: black;" value="${listProductTimes.p_id }"> 
+							<a href="javascript:;">${listProductTimes.p_name }</a>
+						</div>
+						<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
+							¥<font style="font-size: 22px; font-weight: bold;">${listProductTimes.p_price }</font>
+						</div>
+						<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
+							销量:${listProductTimes.sale_volume }
+						</div>
+					</div>
 				</s:iterator>
 			</div>
 		</div>
