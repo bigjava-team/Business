@@ -299,5 +299,14 @@ public class UserAction extends ActionSupport {
 		System.out.println("参数" + checkEmail);
 		return SUCCESS;
 	}
+	
+	
+	/**
+	 * 跳转到我的首页
+	 */
+	public String gotoUserIndex() {
+		
+		return "gotoUserIndex";
+	}
 
 }

@@ -31,9 +31,8 @@
 			<result name="adminLogin"> /admin/home.jsp </result>
 
 			<!-- 返回值为loginSuccess为普通用户登录成功 -->
-			<!-- <result name="loginSuccess">/index.jsp
-			</result> -->
-			<result name="loginSuccess" type="redirectAction">index_showAll?method=post&amp;user.username=${user.username}</result>
+			<result name="loginSuccess" type="redirectAction">index_showAll?method=post&amp;user.username=${user.username}
+			</result>
 
 			<!-- 返回值为loginStore，为店长登录 -->
 			<result name="loginStore">/user/Maijia.jsp
@@ -55,12 +54,20 @@
 			</result>
 			<!-- 注册验证码错误跳转注册页面 -->
 			<result name="checkcodeFail">/user/login.jsp</result>
-			
+
 			<!-- 注销用户 -->
 			<result name="close">index.jsp </result>
 			
+			<!-- 跳转我的首页 -->
+			<result name="gotoUserIndex">/user/userxinxi.jsp</result>
+
 		</action>
-		
+
+		<!-- 访问首页的action -->
+		<action name="index_*" class="productAction" method="{1}">
+			<result name="success">/index.jsp</result>
+		</action>
+
 		<!-- 验证码的 Action -->
 		<action name="checkImg" class="checkImgAction"></action>
 
@@ -91,9 +98,10 @@
 			<result name="findSuccess">/admin/categorysecond/edit.jsp</result>
 			<result name="findAllBySearchNameSuccess">/admin/categorysecond/list.jsp</result>
 		</action>
-		
+
 		<!-- 店铺对商品的Action -->
-		<action name="MerchantProduct_*" class="merchantProductAction" method="{1}">
+		<action name="MerchantProduct_*" class="merchantProductAction"
+			method="{1}">
 			<result name="saveSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0&amp;merchant.m_id=${merchant.m_id}
 			</result>
 			<result name="updateProductSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0
@@ -102,17 +110,14 @@
 			<result name="getProductByIdSuccess">/merchant/product/edit.jsp</result>
 			<result name="findAll">/merchant/product/list.jsp</result>
 		</action>
-		
-		<action name="index_*" class="productAction" method="{1}">
-			<result name="success">/index.jsp</result>
-		</action>
 
 	</package>
 
 
 	<!-- ajax 异步校验 -->
 	<package name="json" extends="json-default" namespace="/">
-		<action name="ajax_*" class="org.bigjava.user.action.UserAction" method="{1}">
+		<action name="ajax_*"
+			class="org.bigjava.user.action.UserAction" method="{1}">
 			<result type="json"></result>
 		</action>
 	</package>

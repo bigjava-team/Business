@@ -25,14 +25,12 @@
 		
 		<div class=wenziz2>
 			<s:if test="user != null">
-				<a>我的主页</a>
+				<a href="User_gotoUserIndex.action?user.username=${user.username}">我的主页</a>
 			</s:if>
 			
 			<s:if test="merchant != null">
 				<a>我的店铺</a>
 			</s:if>
-			
-			
 			<a>购物车</a> 
 			<a>收藏夹</a> 
 			<a>商品分类</a>
