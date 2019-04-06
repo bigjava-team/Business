@@ -17,8 +17,9 @@
 <script type="text/javascript">
 	 $(function() {
 		var OneToThree = '${check }';
+		
 		if (OneToThree==null || OneToThree == "") {
-			window.location.href = "index_showAll.action";
+			window.location.href="index_showAll.action";
 		}
 	}); 
 
@@ -53,9 +54,6 @@
 			$(this).css("color", "black");
 		});
 		
-		$(".newestProduct a").click(function() {
-			alert($(".newestProduct").val());
-		});
 	});
 	
 	
@@ -75,12 +73,14 @@
 	<div class="d0101" style="background: red;"></div>
 	<%@ include file="product_top.jsp" %>
 
-	<!-- <div style="background: red; width: 88%; margin-left: 6%; margin-right: 6%; height: 20px;">
+	<!-- 
+	<div style="background: red; width: 88%; margin-left: 6%; margin-right: 6%; height: 20px;">
 		顶部1
 	</div>
 	<div style="background: yellow; width: 88%; margin-left: 6%; margin-right: 6%; height: 70px;">
 		顶部2
-	</div> -->
+	</div> 
+	-->
 	
 	<div style="background: aqua; overflow: hidden; width: 88%; margin-left: 6%; margin-right: 6%; margin-bottom: 8px;">
 		<div style="background: #FF5000; color: #FFF; font-size: 16px; width: 16%; height: 30px; float: left; text-align: center; line-height: 30px;">
@@ -355,7 +355,7 @@
 							<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="90%" height="100%">
 						</div>
 						<div class="product_name" style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden; color: black;" value="${listProductTimes.p_id }"> 
-							<a href="javascript:;">${listProductTimes.p_name }</a>
+							<a href="Product_idQueryProduct?method=post&user.username=${user.username}&product.p_id=${listProductTimes.p_id}" >${listProductTimes.p_name }</a>
 						</div>
 						<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
 							¥<font style="font-size: 22px; font-weight: bold;">${listProductTimes.p_price }</font>

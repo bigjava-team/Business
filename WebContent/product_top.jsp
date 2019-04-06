@@ -13,7 +13,7 @@
 	<div class="contentone">
 		<div class=wenziz>
 			中国大陆 
-			<s:if test="user != null">
+			<s:if test="user != null && user == ''">
 				欢迎您：${user.username};
 			</s:if>
 			<s:else >
