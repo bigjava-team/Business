@@ -87,15 +87,15 @@
 			主题市场
 		</div>
 		<div style="background: #FF8300; color: #FFF; width: 84%; height: 30px; line-height: 30px; float: left;">
-			<a href="#" style="text-decoration: none;">&emsp;淘宝&emsp;|&emsp;</a>
-			<a href="#" style="text-decoration: none;">天猫&emsp;|&emsp;</a>
-			<a href="#" style="text-decoration: none;">京东&emsp;|&emsp;</a>
-			<a href="#" style="text-decoration: none;">亚马逊&emsp;|&emsp;</a>
-			<a href="#" style="text-decoration: none;">唯品会&emsp;|&emsp;</a>
-			<a href="#" style="text-decoration: none;">拼多多&emsp;|&emsp;</a>
-			<a href="#" style="text-decoration: none;">蘑菇街&emsp;|&emsp;</a>
-			<a href="#" style="text-decoration: none;">苏宁易购&emsp;|&emsp;</a>
-			<a href="#" style="text-decoration: none;">聚美优品&emsp;</a>
+			<a href="https://www.taobao.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;淘宝&emsp;</a>|
+			<a href="https://www.tmall.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;天猫&emsp;</a>|
+			<a href="https://www.jd.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;京东&emsp;</a>|
+			<a href="https://www.amazon.cn" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;亚马逊&emsp;</a>|
+			<a href="https://www.vip.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;唯品会&emsp;</a>|
+			<a href="https://www.pinduoduo.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;拼多多&emsp;</a>|
+			<a href="https://www.mogujie.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;蘑菇街&emsp;</a>|
+			<a href="https://www.suning.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;苏宁易购&emsp;</a>|
+			<a href="http://bj.jumei.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;聚美优品&emsp;</a>
 		</div>
 		<div class="aaa" style="background: #FFF; width: 16%; float: left; color: #666666">
 			<!-- 此div 做边距处理，空出位置 遍历时请勿删除 -->
@@ -238,7 +238,9 @@
 			</div>
 		</div>
 		<div class="ccc" style="background: #79FF79; width: 24%; height: 270px; float: left;">
-			下右侧
+			<div style="background: red; font-size: 16px; font-weight: bold; text-align: center;">
+				您好!某某用户
+			</div>
 		</div>
 		
 		<!-- 隐藏的div -->
