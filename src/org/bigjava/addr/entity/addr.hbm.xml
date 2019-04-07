@@ -8,7 +8,7 @@
 			<generator class="native" />
 		</id>
 		<property name="a_name" not-null="true" type="string" /><!-- 收件人 -->
-		<property name="a_phone" not-null="true" /><!-- 手机号码 -->
+		<property name="a_phone" not-null="true" type="string" /><!-- 手机号码 -->
 		<property name="address" not-null="true" /><!-- 用户收货地址 -->
 		
 		

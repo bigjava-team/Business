@@ -141,6 +141,7 @@ public class UserAction extends ActionSupport {
 				return "loginError";
 			} else {
 				user = userList.get(0);
+				ActionContext.getContext().getSession().put("loginUser", user);
 				// 将user存入session中
 				if (user.getRoot() == 1 && user.getU_is_freeze() == 1) {
 					System.out.println("普通用户登录");
@@ -298,6 +299,14 @@ public class UserAction extends ActionSupport {
 
 		System.out.println("参数" + checkEmail);
 		return SUCCESS;
+	}
+
+	/**
+	 * 跳转到我的首页
+	 */
+	public String gotoUserIndex() {
+
+		return "gotoUserIndex";
 	}
 
 }

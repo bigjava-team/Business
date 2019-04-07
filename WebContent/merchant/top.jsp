@@ -23,11 +23,10 @@
 </head>
 <body id="home_top_body">
 	<div style="height: 78px;">
-		<img alt="光光商城管理图片" src="${pageContext.request.contextPath }/images/home_top.jpg">
+		<img alt="光光商城管理图片" src="${pageContext.request.contextPath }/images/home_top.jpg" width="100%">
 	</div>
 	
 	<div style="background: #E6E6E6; width: 100%; height: 26px;">
-	
 		<div style="width: 300px;  margin-top:8px; float: left">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<font color="#000000" id="Date"></font>

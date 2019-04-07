@@ -22,8 +22,6 @@
 			<result name="loginError">/user/login.jsp</result>
 		</global-results>
 
-
-
 		<!-- 用户模块 action -->
 		<action name="User_*" class="userAction" method="{1}">
 			<!-- 登录情况 -->
@@ -57,9 +55,15 @@
 
 			<!-- 注销用户 -->
 			<result name="close">index.jsp </result>
+			
+			<!-- 跳转我的首页 -->
+			<result name="gotoUserIndex">/user/userxinxi.jsp</result>
+			
+			<!-- 修改密码界面 -->
+			<result name="updatePasswordSuccess">/user/login.jsp</result>
 
 		</action>
-
+		
 		<!-- 访问首页的action -->
 		<action name="index_*" class="productAction" method="{1}">
 			<result name="success">/index.jsp</result>
@@ -108,6 +112,10 @@
 			<result name="findAll">/merchant/product/list.jsp</result>
 		</action>
 
+		<action name="Product_*" class="productAction" method="{1}">
+			<result name="idQueryProduct">/product.jsp</result>
+		</action>
+		
 	</package>
 
 

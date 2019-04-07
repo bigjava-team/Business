@@ -17,8 +17,9 @@
 <script type="text/javascript">
 	 $(function() {
 		var OneToThree = '${check }';
+		
 		if (OneToThree==null || OneToThree == "") {
-			window.location.href = "index_showAll.action";
+			window.location.href="index_showAll.action";
 		}
 	}); 
 
@@ -37,6 +38,25 @@
 		});
 	});
 	
+	$(function() {
+		$(".newestProduct").mouseover(function() {
+			$(this).css("cursor", "pointer");
+		});
+		
+		$(".newestProduct a").css({
+			"text-decoration": "none",
+			"color": "black"
+		});
+		
+		$(".newestProduct a").hover(function() {
+			$(this).css("color", "red");
+		},function() {
+			$(this).css("color", "black");
+		});
+		
+	});
+	
+	
 	$(function(){
 		$(".xuanfu").mouseover(function(){
 			$(".xuanfu").css('display','block');
@@ -53,27 +73,29 @@
 	<div class="d0101" style="background: red;"></div>
 	<%@ include file="product_top.jsp" %>
 
-	<!-- <div style="background: red; width: 88%; margin-left: 6%; margin-right: 6%; height: 20px;">
+	<!-- 
+	<div style="background: red; width: 88%; margin-left: 6%; margin-right: 6%; height: 20px;">
 		顶部1
 	</div>
 	<div style="background: yellow; width: 88%; margin-left: 6%; margin-right: 6%; height: 70px;">
 		顶部2
-	</div> -->
+	</div> 
+	-->
 	
 	<div style="background: aqua; overflow: hidden; width: 88%; margin-left: 6%; margin-right: 6%; margin-bottom: 8px;">
 		<div style="background: #FF5000; color: #FFF; font-size: 16px; width: 16%; height: 30px; float: left; text-align: center; line-height: 30px;">
 			主题市场
 		</div>
 		<div style="background: #FF8300; color: #FFF; width: 84%; height: 30px; line-height: 30px; float: left;">
-			<a href="#" style="text-decoration: none;">&emsp;淘宝&emsp;|&emsp;</a>
-			<a href="#" style="text-decoration: none;">天猫&emsp;|&emsp;</a>
-			<a href="#" style="text-decoration: none;">京东&emsp;|&emsp;</a>
-			<a href="#" style="text-decoration: none;">亚马逊&emsp;|&emsp;</a>
-			<a href="#" style="text-decoration: none;">唯品会&emsp;|&emsp;</a>
-			<a href="#" style="text-decoration: none;">拼多多&emsp;|&emsp;</a>
-			<a href="#" style="text-decoration: none;">蘑菇街&emsp;|&emsp;</a>
-			<a href="#" style="text-decoration: none;">苏宁易购&emsp;|&emsp;</a>
-			<a href="#" style="text-decoration: none;">聚美优品&emsp;</a>
+			<a href="https://www.taobao.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;淘宝&emsp;</a>|
+			<a href="https://www.tmall.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;天猫&emsp;</a>|
+			<a href="https://www.jd.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;京东&emsp;</a>|
+			<a href="https://www.amazon.cn" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;亚马逊&emsp;</a>|
+			<a href="https://www.vip.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;唯品会&emsp;</a>|
+			<a href="https://www.pinduoduo.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;拼多多&emsp;</a>|
+			<a href="https://www.mogujie.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;蘑菇街&emsp;</a>|
+			<a href="https://www.suning.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;苏宁易购&emsp;</a>|
+			<a href="http://bj.jumei.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;聚美优品&emsp;</a>
 		</div>
 		<div class="aaa" style="background: #FFF; width: 16%; float: left; color: #666666">
 			<!-- 此div 做边距处理，空出位置 遍历时请勿删除 -->
@@ -216,7 +238,9 @@
 			</div>
 		</div>
 		<div class="ccc" style="background: #79FF79; width: 24%; height: 270px; float: left;">
-			下右侧
+			<div style="background: red; font-size: 16px; font-weight: bold; text-align: center;">
+				您好!某某用户
+			</div>
 		</div>
 		
 		<!-- 隐藏的div -->
@@ -328,22 +352,20 @@
 			</div>	
 			<div style="background: red; overflow: hidden; margin: 0px 0%;">
 				<s:iterator value="listProductTime"  var="listProductTimes">
-					<a href="javascript:;">
-						<div style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd" >
-							<div style="text-align: center; height: 196px; overflow: hidden;">
-								<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="90%" height="100%">
-							</div>
-							<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden; color: black;">
-								${listProductTimes.p_name }
-							</div>
-							<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-								¥<font style="font-size: 22px; font-weight: bold;">${listProductTimes.p_price }</font>
-							</div>
-							<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-								销量:${listProductTimes.sale_volume }
-							</div>
+					<div class="newestProduct" style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd" >
+						<div style="text-align: center; height: 196px; overflow: hidden;">
+							<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="90%" height="100%">
 						</div>
-					</a>
+						<div class="product_name" style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden; color: black;" value="${listProductTimes.p_id }"> 
+							<a href="Product_idQueryProduct?method=post&user.username=${user.username}&product.p_id=${listProductTimes.p_id}" >${listProductTimes.p_name }</a>
+						</div>
+						<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
+							¥<font style="font-size: 22px; font-weight: bold;">${listProductTimes.p_price }</font>
+						</div>
+						<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
+							销量:${listProductTimes.sale_volume }
+						</div>
+					</div>
 				</s:iterator>
 			</div>
 		</div>
