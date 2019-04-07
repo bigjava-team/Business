@@ -58,6 +58,9 @@
 			
 			<!-- 跳转我的首页 -->
 			<result name="gotoUserIndex">/user/userxinxi.jsp</result>
+			
+			<!-- 修改密码界面 -->
+			<result name="updatePasswordSuccess">/user/login.jsp</result>
 
 		</action>
 		
