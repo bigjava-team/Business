@@ -20,6 +20,7 @@ public class Merchant {
 	private String m_image;// 店铺图片路径
 	private Date m_time;// 店铺创建的时间
 	private int m_is_freeze;// 店铺的状态
+	private String notice;// 店铺公告
 	
 	private User user;// 指向用户表中的店家
 	
@@ -41,6 +42,14 @@ public class Merchant {
 
 	public void setSetProduct(Set<Product> setProduct) {
 		this.setProduct = setProduct;
+	}
+	
+	public String getNotice() {
+		return notice;
+	}
+
+	public void setNotice(String notice) {
+		this.notice = notice;
 	}
 
 	public int getM_id() {

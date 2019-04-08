@@ -11,5 +11,7 @@
 		<property name="img_path" not-null="true" />
 		
 		<many-to-one name="product" column="p_id" class="org.bigjava.product.entity.Product"  />
+		
+		<many-to-one name="productAge" class="org.bigjava.productAge.entity.ProductAge" column="pAge_id" /><!-- 多对一指向商品颜色类 -->
 	</class>
 </hibernate-mapping>

@@ -62,5 +62,9 @@ public interface UserBiz {
 	 * 修改用户状态（冻结与解冻用户）
 	 */
 	public void updateUserFreeze(int freeze, User user);
-
+	
+	/**
+	 * 通过用户名获取用户信息
+	 */
+	public User queryUsernameUser(String username);
 }

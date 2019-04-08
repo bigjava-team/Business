@@ -5,8 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>店铺主页</title>
-<link rel="stylesheet" href="css/index.css">
-<link href="css/style.css" rel="stylesheet" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/index.css">
+<link href="${pageContext.request.contextPath }/css/style.css" rel="stylesheet" />
 <style type="text/css">
 .form1 {
 	position:relative;
@@ -335,7 +335,7 @@ ol .current {
 			style="background-color: #D0D0D0; padding-bottom: 1%; padding-top: 1%;">
 			<div
 				style="float: left; border-right: 1px solid black; padding-left: 12%; padding-right: 2%;">
-				<a href="???">用户名</a>
+				${user.username};
 			</div>
 			<div style="float: left; padding-left: 2%; padding-right: 2%;">
 				<a href="???">退出</a>
@@ -354,7 +354,7 @@ ol .current {
 		<div style="width: 100%; padding-top: 1%; padding-bottom: 1%;">
 			<div
 				style="float: left; border-right: 1px solid #d2c8c8; text-align: center;">
-				<a href=""><img src="../TuPian/logo.jpg"
+				<a href=""><img src="${pageContext.request.contextPath }/TuPian/logo.jpg"
 					style="vertical-align: middle;"></a>
 			</div>
 			<div
@@ -402,25 +402,25 @@ ol .current {
 	</div>
 
 	<div class="kongge">
-		<div class="one" style="width: 59.2%; margin: 0 auto">商品轮播</div>
+		<div class="one" style="width: 66.8%; margin: 0 auto">商品轮播</div>
 		<div class="carousel content-main">
 
 			<ul class="list">
-				<li><img src="../TuPian/1.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/2.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/3.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/4.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/1.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/2.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/3.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/4.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/1.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/2.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="../TuPian/3.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="${pageContext.request.contextPath }/TuPian/1.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="${pageContext.request.contextPath }/TuPian/2.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="${pageContext.request.contextPath }/TuPian/3.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="${pageContext.request.contextPath }/TuPian/4.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="${pageContext.request.contextPath }/TuPian/1.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="${pageContext.request.contextPath }/TuPian/2.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="${pageContext.request.contextPath }/TuPian/3.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="${pageContext.request.contextPath }/TuPian/4.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="${pageContext.request.contextPath }/TuPian/1.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="${pageContext.request.contextPath }/TuPian/2.jpg" style="width: 100%; height: 100%;"></li>
+				<li><img src="${pageContext.request.contextPath }/TuPian/3.jpg" style="width: 100%; height: 100%;"></li>
 			</ul>
 		</div>
-		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
-		<script type="text/javascript" src="../js/index.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath }/js/index.js"></script>
 		<script type="text/javascript">
 			var setting = {
 				width : 1000,
@@ -482,9 +482,9 @@ ol .current {
 		<div style="text-align: center; clear: both">
 			<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
 			<script src="/follow.js" type="text/javascript"></script>
-			<script src='../js/mousewheel.js'></script>
-			<script src="../js/jquery.touchSwipe.js"></script>
-			<script src="../js/cubeTransition.js"></script>
+			<script src='${pageContext.request.contextPath }/js/mousewheel.js'></script>
+			<script src="${pageContext.request.contextPath }/js/jquery.touchSwipe.js"></script>
+			<script src="${pageContext.request.contextPath }/js/cubeTransition.js"></script>
 		</div>
 
 		<div class="kongge">
@@ -508,7 +508,7 @@ ol .current {
 						<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
 						<script src="/follow.js" type="text/javascript"></script>
 					</div>
-					<iframe frameborder="0" scrolling="no" src="dianpuzhiye_lunbo.jsp" width="100%"
+					<iframe frameborder="0" scrolling="no" src="user/dianpuzhiye_lunbo.jsp" width="100%"
 						height="500px"></iframe>
 
 				</div>

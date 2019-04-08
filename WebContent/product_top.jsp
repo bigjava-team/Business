@@ -13,8 +13,8 @@
 	<div class="contentone">
 		<div class=wenziz>
 			中国大陆 
-			<s:if test="user != null">
-				欢迎您：${user.username};
+			<s:if test='loginUser.username != null && loginUser.username != ""'>
+					欢迎您：${loginUser.username };
 			</s:if>
 			<s:else >
 				<a href="user/login.jsp">亲，请登录</a> 
@@ -24,15 +24,15 @@
 		
 		
 		<div class=wenziz2>
-			<s:if test="user != null">
-				<a href="User_gotoUserIndex.action?user.username=${user.username}">我的主页</a>
+			<s:if test='loginUser.username != null && loginUser.username != ""'>
+				<a href="User_gotoUserIndex.action?method=post&user.username=${loginUser.username }">我的主页</a>
 			</s:if>
 			
-			<s:if test="merchant != null">
-				<a>我的店铺</a>
+			<s:if test='loginUser.username != null && loginUser.username != ""'>
+				<a href="Merchant_gotoMerchant.action">我的店铺</a>
 			</s:if>
-			<a>购物车</a> 
-			<a>收藏夹</a> 
+			<a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0">购物车</a> 
+			<a href="javascript:;">收藏夹</a> 
 			<a>商品分类</a>
 			<a>卖家中心</a> 
 			<s:if test="user != null">
@@ -43,7 +43,7 @@
 	
 	<!--板块2-->
     <div class="contenttwo">
-		<img src="${pageContext.request.contextPath }/images/logo.jpg" height="60px" width="240px" align="left">
+		<a href="index_showAll.action"><img src="${pageContext.request.contextPath }/images/logo.jpg" height="60px" width="240px" align="left"></a>
 		<img alt="" src="${pageContext.request.contextPath }/images/1 (11).png" height="50px" width="520px" align="left">
 		<div class="search bar7">
 			<form id="contenttwo_form">

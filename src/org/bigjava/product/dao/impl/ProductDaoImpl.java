@@ -134,30 +134,26 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 		return totalNumber;
 	}
 
-	// 查询最新的6件商品
+	// 查询最新的商品
 	@Override
 	public List<Product> queryProduct_time() {
-		// TODO Auto-generated method stub
-		System.out.println("查询最新的10件商品");
+		System.out.println("查询最新的商品");
 		
 		String hql = "from Product order by p_date desc";
 		List<Product> list = new ArrayList<Product>();
 		list = this.getHibernateTemplate().find(hql);
-		list = list.subList(0, 6);
 		
 		return list;
 	}
 
-	// 查询最热的6件商品
+	// 查询最热的商品
 	@Override
 	public List<Product> queryProduct_hot() {
-		// TODO Auto-generated method stub
-		System.out.println("查询最热的10件商品");
+		System.out.println("查询最热的商品");
 		
 		String hql = "from Product order by sale_volume desc";
 		List<Product> list = new ArrayList<Product>();
 		list = this.getHibernateTemplate().find(hql);
-		list = list.subList(0, 6);
 		
 		return list;
 	}
@@ -166,5 +162,20 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 	@Override
 	public List<Product> queryAllCommentProduct() {
 		return this.getHibernateTemplate().find("from Product");
+	}
+
+	// 查询店铺内最新的商品
+	@Override
+	public List<Product> queryMerchantProduct_time(int m_id) {
+		System.out.println("查询店铺内最新的商品");
+		String hql = "from Product where m_id=? order by p_date desc";
+		return (List<Product>) this.getHibernateTemplate().find(hql, m_id);
+	}
+
+	// 查询店铺内最热的商品
+	@Override
+	public List<Product> queryMerchantProduct_hot(int m_id) {
+		String hql = "from Product where m_id=? order by sale_volume desc";
+		return (List<Product>) this.getHibernateTemplate().find(hql, m_id);
 	}
 }

@@ -12,15 +12,14 @@ public class Paging {
 	}
 
 	public Paging(int _presentPage, int _totalNumber, int _pagesize) {
-		this.presentPage = _presentPage;// 获取当前页数
+		this.pagesize = _pagesize;// 获取显示条数
 		this.totalNumber = _totalNumber;// 获取总条数
-		this.pagesize = _pagesize;// 获取当前页
 		this.page = this.totalNumber%pagesize!=0 ? (this.totalNumber/pagesize) + 1 : this.totalNumber/pagesize;// 获取总页数
+		this.presentPage = _presentPage;// 获取当前页数
 		if (this.presentPage < 1)// 判断当前页不能小于1
 			this.presentPage = 1;
 		else if (this.presentPage > this.page)// 判断当前页不能大于总页数
 			this.presentPage = this.page;
-		
 		this.start = (this.presentPage - 1)*this.pagesize;// 获取从哪一页开始查
 	}
 	

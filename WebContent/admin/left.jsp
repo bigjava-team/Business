@@ -16,7 +16,7 @@
 			d.add('01',-1,'光光商城管理系统');
 			
 			d.add('0101','01','用户管理');
-			d.add('010101','0101','用户详情','${pageContext.request.contextPath}/User_showAll.action?user.root=0&paging.presentPage=0','','mainFrame');
+			d.add('010101','0101','用户详情','${pageContext.request.contextPath}/User_showAllUsers.action?user.root=0&paging.presentPage=0','','mainFrame');
 			
 			d.add('0102','01','店铺管理');
 			d.add('010201','0102','店铺详情','${pageContext.request.contextPath}/admin/merchant/list.jsp','','mainFrame');

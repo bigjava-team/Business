@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-<link href="../css/style.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath }/css/style.css" rel="stylesheet" />
 <style>
 
 .page4 h2{
@@ -20,7 +20,7 @@ transition:all 3s;
 transform:scale(3) rotate(360deg) !important;
 }</style>
 
-<script src='../js/jquery-3.1.1.min.js'></script>
+<script src='${pageContext.request.contextPath }/js/jquery-3.1.1.min.js'></script>
 
 </head>
 <body>
@@ -74,9 +74,9 @@ switch(i) {
 }
 }
 </script>
-<script src='../js/mousewheel.js'></script>
-<script src="../js/jquery.touchSwipe.js"></script>
-<script src="../js/cubeTransition.js"></script>
+<script src='${pageContext.request.contextPath }/js/mousewheel.js'></script>
+<script src="${pageContext.request.contextPath }/js/jquery.touchSwipe.js"></script>
+<script src="${pageContext.request.contextPath }/js/cubeTransition.js"></script>
 
 
 </body>

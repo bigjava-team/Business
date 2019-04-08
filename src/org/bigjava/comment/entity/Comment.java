@@ -1,5 +1,7 @@
 package org.bigjava.comment.entity;
 
+import java.util.Date;
+
 import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
 
@@ -13,10 +15,19 @@ public class Comment {
 
 	private int com_id;// 评价表的id
 	private String comment;// 评价表评价的内容
+	private Date commentDate;// 评论的时间
 
 	private User user;// 多对一指向用户表
 
 	private Product product;// 多对一指向商品表
+	
+	public Date getCommentDate() {
+		return commentDate;
+	}
+
+	public void setCommentDate(Date commentDate) {
+		this.commentDate = commentDate;
+	}
 
 	public Product getProduct() {
 		return product;

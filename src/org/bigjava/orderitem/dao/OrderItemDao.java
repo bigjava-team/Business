@@ -13,7 +13,7 @@ public interface OrderItemDao {
 	/**
 	 * 添加订单项 
 	 */
-	public void addOrderItem(Orderitem orderItem, User user, Product product);
+	public void addOrderItem(Orderitem orderitem);
 	
 	/**
 	 * 删除订单项

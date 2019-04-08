@@ -17,8 +17,9 @@
 <script type="text/javascript">
 	 $(function() {
 		var OneToThree = '${check }';
+		
 		if (OneToThree==null || OneToThree == "") {
-			window.location.href = "index_showAll.action";
+			window.location.href="index_showAll.action";
 		}
 	}); 
 
@@ -53,10 +54,12 @@
 			$(this).css("color", "black");
 		});
 		
-		$(".newestProduct a").click(function() {
-			alert($(".newestProduct").val());
-		});
 	});
+	
+	function queryProduct(id) {
+		var username = '${loginUser.username}';
+		window.location.href="Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0";
+	}
 	
 	
 	$(function(){
@@ -75,12 +78,14 @@
 	<div class="d0101" style="background: red;"></div>
 	<%@ include file="product_top.jsp" %>
 
-	<!-- <div style="background: red; width: 88%; margin-left: 6%; margin-right: 6%; height: 20px;">
+	<!-- 
+	<div style="background: red; width: 88%; margin-left: 6%; margin-right: 6%; height: 20px;">
 		顶部1
 	</div>
 	<div style="background: yellow; width: 88%; margin-left: 6%; margin-right: 6%; height: 70px;">
 		顶部2
-	</div> -->
+	</div> 
+	-->
 	
 	<div style="overflow: hidden; width: 88%; margin-left: 6%; margin-right: 6%; margin-bottom: 8px;">
 		<div style="background: #FF5000; color: #FFF; font-size: 16px; width: 16%; height: 30px; float: left; text-align: center; line-height: 30px;">
@@ -360,12 +365,12 @@
 			</div>	
 			<div style="background: red; overflow: hidden; margin: 0px 0%;">
 				<s:iterator value="listProductTime"  var="listProductTimes">
-					<div class="newestProduct" style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd" >
+					<div class="newestProduct" onclick="queryProduct(this.id)" id="${listProductTimes.p_id}" style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd" >
 						<div style="text-align: center; height: 196px; overflow: hidden;">
 							<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="90%" height="100%">
 						</div>
 						<div class="product_name" style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden; color: black;" value="${listProductTimes.p_id }"> 
-							<a href="javascript:;">${listProductTimes.p_name }</a>
+							<a href="javascript:;" >${listProductTimes.p_name }</a>
 						</div>
 						<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
 							¥<font style="font-size: 22px; font-weight: bold;">${listProductTimes.p_price }</font>

@@ -150,4 +150,15 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		this.getHibernateTemplate().update(user); // 将用户状态修改
 	}
 
+	// 通过用户名获取用户信息
+	@Override
+	public User queryUsernameUser(String username) {
+		List<User> listUser = this.getHibernateTemplate().find("from User where username = ?", username);
+		if (listUser.size() == 0) {
+			System.out.println("没有此用户");
+			return null;
+		}
+		return listUser.get(0);
+	}
+	
 }
