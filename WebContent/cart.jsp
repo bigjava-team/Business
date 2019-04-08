@@ -140,10 +140,10 @@
 		<s:iterator value="listOrderitem" var="listOrderitems">
 			<div class="cart_d4_d2">
 				<div class="cart_d4_d2_checkbox">
-					<input type="checkbox" id="" name="check" />
+					<input type="checkbox" id="" name="check"/>
 				</div>
 				<div class="cart_d4_d2_d1">
-					<img class="cart_d4_d2_d1_img1" alt="商品图片" src="${fileImageAction.urlImage }${listOrderitems.product.p_image }" width="70%">
+					<img class="cart_d4_d2_d1_img1" alt="商品图片" src="${fileImageAction.urlImage }${listOrderitems.product.p_image }" height="50px">
 				</div>
 				
 				<div class="cart_d4_d2_d2">
