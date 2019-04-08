@@ -80,5 +80,12 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 //		merchantBiz.updateMerchant(merchant, updateMerchant);
 		return "updateMerchantSuccess";
 	}
+	
+	/**
+	 * 跳转到我的店铺
+	 */
+	public String gotoMerchant() {
+		return "gotoMerchant";
+	}
 
 }

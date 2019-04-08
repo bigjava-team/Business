@@ -29,7 +29,7 @@
 			</s:if>
 			
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
-				<a>我的店铺</a>
+				<a href="Merchant_gotoMerchant.action">我的店铺</a>
 			</s:if>
 			<a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0">购物车</a> 
 			<a href="javascript:;">收藏夹</a> 

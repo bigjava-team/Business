@@ -7,7 +7,7 @@
 <title>二次申请</title>
 <style type="text/css">
 body{
-	background:#fff url(../TuPian/32.jpg) no-repeat left top; 
+	background:#fff url(${pageContext.request.contextPath }/TuPian/32.jpg) no-repeat left top; 
 	background-size:100%;
 }
 .button {
@@ -29,7 +29,7 @@ body{
 	<h1>提交审核</h1>
 	
 	<div style="border:3px solid grey;text-align: center; padding-bottom: 7%;padding-top: 7%">
-	<img src="../TuPian/122.png" align="middle" width="10%" height="10%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="5px"><b>您的资料已经提交审核</b></font>
+	<img src="${pageContext.request.contextPath }/TuPian/122.png" align="middle" width="10%" height="10%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="5px"><b>您的资料已经提交审核</b></font>
 	<h3>请耐心等待管理员审核通过!</h3>
 	<a href="userxinxi.jsp"><button class="button">返回个人信息</button></a>
 	</div>

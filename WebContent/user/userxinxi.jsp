@@ -196,40 +196,42 @@ body {
 	margin: 0 100px 0 10px;
 	word-spacing: 22px;
 }
-.userxinxi_button{
-	background-color: #4CAF50; 
-    border: none;
-    color: white;
-    padding-left:15%;
-    padding-top:15%;
-    padding-bottom:15%;
-    padding-right:15%;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    cursor: pointer;
+
+.userxinxi_button {
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding-left: 15%;
+	padding-top: 15%;
+	padding-bottom: 15%;
+	padding-right: 15%;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
 }
+
 .userxinxi_inbutton {
-    background-color: white;
-    color: black;
-    border: 2px solid #555555;
+	background-color: white;
+	color: black;
+	border: 2px solid #555555;
 }
 
 .userxinxi_inbutton:hover {
-    background-color: #555555;
-    color: white;
+	background-color: #555555;
+	color: white;
 }
+
 .clear {
 	clear: both;
 }
 
-
 .updateps {
-	padding-top:2%;
+	padding-top: 2%;
 	line-height: 200%;
 	padding-left: 24%;
 	margin-top: 4%;
@@ -244,10 +246,12 @@ body {
 	-webkit-box-shadow: 2px 2px 10px #909090;
 	box-shadow: 2px 2px 10px #909090;
 }
+
 .update_anniu {
 	margin-top: 3%;
 	margin-left: 21%;
 }
+
 .update_button {
 	display: inline-block;
 	border-radius: 4px;
@@ -289,7 +293,7 @@ body {
 }
 
 .contsubmit {
-	margin-top:4%;
+	margin-top: 4%;
 	margin-left: 43%;
 	background-color: #3F7FCE;
 	border: 1px solid #3F7FCE;
@@ -303,28 +307,30 @@ body {
 	background-color: #3F7FCE;
 }
 
-
 .update_one {
 	border: 1px solid #dcdee3;
 	padding-top: 1%;
 	padding-bottom: 1%;
 	text-align: center;
 }
+
 .update_dizhi {
 	float: left;
 	width: 100%;
 	margin-top: 2%;
 }
+
 .updatedizhi_jsdiv {
-	float:left;
+	float: left;
 	color: red;
 	width: 43%;
 	text-align: center;
 	padding-bottom: 0.8%;
 	padding-top: 0.8%;
 }
-.update_dizhidiv{
-	float:left;
+
+.update_dizhidiv {
+	float: left;
 	width: 50%;
 	line-height: 270%;
 }
@@ -743,257 +749,266 @@ function dealsubmit3(){
 	<div class="head">
 		<!--板块1-->
 		<div class="contentone">
-			<div class=wenziz>
-				中国大陆
-				欢迎您：${user.username};
-			</div>
+			<div class=wenziz>中国大陆 欢迎您：${user.username};</div>
 			<div class=wenziz2>
-				
-					<a>我的店铺</a>
-				
-				<a>购物车</a> <a>收藏夹</a> <a>商品分类</a> <a>卖家中心</a>
-			
-					<a href="#" onclick="remove()">退出</a>
-				
+				<a>我的店铺</a> <a>购物车</a> <a>收藏夹</a> <a>商品分类</a> <a>卖家中心</a> <a
+					href="#" onclick="remove()">退出</a>
 			</div>
 		</div>
 	</div>
 	<div class="body">
 		<div class="left">
-		<div class="title">
-		<div style="margin-left: 16%"><font style="color: red">全部功能</font></div>
-		<input type="submit" class="userxinxi_button userxinxi_inbutton" value="猜我喜欢" onclick="display(1)"><br/>
- 		<input type="submit" class="userxinxi_button userxinxi_inbutton" value="修改密码" onclick="display(2)"><br/>
- 		<input type="submit" class="userxinxi_button userxinxi_inbutton" value="修改信息" onclick="display(3)"><br/>
- 		<input type="submit" class="userxinxi_button userxinxi_inbutton" value="收货地址" onclick="display(4)"><br/>
- 		<input type="submit" class="userxinxi_button userxinxi_inbutton" value="我的购物车" onclick="display(5)" style="padding-right: 9%;padding-left:9%"><br/>
- 		<input type="submit" class="userxinxi_button userxinxi_inbutton" value="我的收藏" onclick="display(6)"><br/>
- 		<input type="submit" class="userxinxi_button userxinxi_inbutton" value="评价管理" onclick="display(7)"><br/>
-			
-			</div>  
+			<div class="title">
+				<div style="margin-left: 16%">
+					<font style="color: red">全部功能</font>
+				</div>
+				<input type="submit" class="userxinxi_button userxinxi_inbutton"
+					value="猜我喜欢" onclick="display(1)"><br /> <input
+					type="submit" class="userxinxi_button userxinxi_inbutton"
+					value="修改密码" onclick="display(2)"><br /> <input
+					type="submit" class="userxinxi_button userxinxi_inbutton"
+					value="修改信息" onclick="display(3)"><br /> <input
+					type="submit" class="userxinxi_button userxinxi_inbutton"
+					value="收货地址" onclick="display(4)"><br /> <input
+					type="submit" class="userxinxi_button userxinxi_inbutton"
+					value="我的购物车" onclick="display(5)"
+					style="padding-right: 9%; padding-left: 9%"><br /> <input
+					type="submit" class="userxinxi_button userxinxi_inbutton"
+					value="我的收藏" onclick="display(6)"><br /> <input
+					type="submit" class="userxinxi_button userxinxi_inbutton"
+					value="评价管理" onclick="display(7)"><br />
+
+			</div>
 		</div>
 		<div class="center">
 			<div class="centertop">
 				<a href=""> #显示头像 #用户名 </a>
-				<div style="float: right; padding-top: 2%">
-					联系方式
-				</div>
+				<div style="float: right; padding-top: 2%">联系方式</div>
 			</div>
 			<div class="content">
-		<div id="lb1" style="display:block;">
-			<div class="dibu1">
-				<b> 根据浏览，猜我喜欢</b>
-			</div>
-			<div class="dibu2">
-				<div class="shangping" onmouseover=Over(this); onmouseout=Out(this);>
-					#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-						color="black">#商品名称</font><br />
-					<div style="float: right">
-						<font color="#595959">月销:#商品销量</font>
+				<div id="lb1" style="display: block;">
+					<div class="dibu1">
+						<b> 根据浏览，猜我喜欢</b>
+					</div>
+					<div class="dibu2">
+						<div class="shangping" onmouseover=Over(this);
+							onmouseout=Out(this);>
+							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
+								color="black">#商品名称</font><br />
+							<div style="float: right">
+								<font color="#595959">月销:#商品销量</font>
+							</div>
+						</div>
+						<div class="shangping" onmouseover=Over(this);
+							onmouseout=Out(this);>
+							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
+								color="black">#商品名称</font><br />
+							<div style="float: right">
+								<font color="#595959">月销:#商品销量</font>
+							</div>
+						</div>
+						<div class="shangping" onmouseover=Over(this);
+							onmouseout=Out(this);>
+							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
+								color="black">#商品名称</font><br />
+							<div style="float: right">
+								<font color="#595959">月销:#商品销量</font>
+							</div>
+						</div>
+						<div class="shangping" onmouseover=Over(this);
+							onmouseout=Out(this);>
+							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
+								color="black">#商品名称</font><br />
+							<div style="float: right">
+								<font color="#595959">月销:#商品销量</font>
+							</div>
+						</div>
+						<div class="shangping" onmouseover=Over(this);
+							onmouseout=Out(this);>
+							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
+								color="black">#商品名称</font><br />
+							<div style="float: right">
+								<font color="#595959">月销:#商品销量</font>
+							</div>
+						</div>
+						<div class="shangping" onmouseover=Over(this);
+							onmouseout=Out(this);>
+							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
+								color="black">#商品名称</font><br />
+							<div style="float: right">
+								<font color="#595959">月销:#商品销量</font>
+							</div>
+						</div>
+						<div class="clearfloat"></div>
 					</div>
 				</div>
-				<div class="shangping" onmouseover=Over(this); onmouseout=Out(this);>
-					#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-						color="black">#商品名称</font><br />
-					<div style="float: right">
-						<font color="#595959">月销:#商品销量</font>
+				<!-- 第二个div -->
+				<div id="lb2" style="display: none">
+
+					<div
+						style="width: 95.4%; margin-top: 2%; color: #FDE938; background-color: #F30408; padding-top: 1%; padding-bottom: 1%; font-family: FangSong">
+						<font size="5px">修改密码</font>
 					</div>
+					<form action="User_updatePassword.action" method="post"
+						onsubmit="return dealsubmit1()">
+						<div class="updateps">
+							<div style="margin-left: 15.6%; margin-top: 1%; float: left;">
+								<b>旧密码: </b><input type="password" id="jiups" name="jiups"
+									onblur="update_jiups2()" onfocus="update_jiups1()"
+									placeholder="输入旧密码校验身份">
+							</div>
+
+							<div id="update1"
+								style="margin-top: 1%; float: left; color: red; width: 29%; text-align: center;"></div>
+							<div class="clear"></div>
+
+							<div style="margin-left: 15.6%; margin-top: 1%; float: left;">
+								<b>新密码: </b><input type="password" id="newps1" name="newps1"
+									onblur="update_xinps2()" onfocus="update_xinps1()"
+									placeholder="5-20位数字,字母">
+							</div>
+
+							<div id="update2"
+								style="margin-top: 1%; float: left; color: red; width: 29%; text-align: center;"></div>
+							<div class="clear"></div>
+
+							<div style="margin-left: 12.6%; margin-top: 1%; float: left;">
+								<b>确认密码:</b> <input type="password" id="queps" name="queps"
+									onblur="update_queps2()" onfocus="update_queps1()"
+									placeholder="密码要跟新密码一致">
+							</div>
+
+							<div id="tip3"
+								style="margin-top: 1%; float: left; color: red; width: 29%; text-align: center;"></div>
+							<div class="clear"></div>
+							<div class="update_anniu">
+
+								<input type="submit" class="update_button" id="zhuce" value="提交">
+							</div>
+						</div>
+					</form>
 				</div>
-				<div class="shangping" onmouseover=Over(this); onmouseout=Out(this);>
-					#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-						color="black">#商品名称</font><br />
-					<div style="float: right">
-						<font color="#595959">月销:#商品销量</font>
-					</div>
+				<!-- 第三个div -->
+				<div id="lb3" style="display: none">
+					<form action="userxinxi.jsp" method="post"
+						enctype="multipart/form-data" name="HtmlFileForm"
+						onsubmit="return dealsubmit2()">
+						<div
+							style="width: 95.4%; margin-top: 2%; color: white; background-color: black; padding-top: 1%; padding-bottom: 1%;">
+							<font size="5px">修改用户信息</font>
+						</div>
+						<div
+							style="text-align: center; padding-top: 2%; padding-bottom: 2%; line-height: 200%; border: 1px solid #e3e197; background: #ffffdd; width: 95.4%;">
+							<div style="float: left; margin-left: 32%">
+								<b>真实姓名:</b><input type="text" id="name" name="name"
+									onblur="name2()" onfocus="name1()" placeholder="姓名1-10位">
+							</div>
+							<div id="tip1" class="updateuser_jsdiv"></div>
+							<div class="clear"></div>
+
+							<div style="float: left; margin-left: 32%">
+								<b>电话号码:</b><input type="text" id="phone" name="phone"
+									onblur="phone2()" onfocus="phone1()" placeholder="手机号码">
+							</div>
+							<div id="tip2" class="updateuser_jsdiv"></div>
+							<div class="clear"></div>
+
+							<div style="float: left; margin-left: 32%">
+								<b>上传头像:</b> <span id='uploadSpan'> <input type="file"
+									name="file" id="file" unselectable="on"
+									onchange='checkFileType(this.value);' />
+								</span>
+							</div>
+							<div class="clear"></div>
+							<input type="submit" class="updateuser_button" id="zhuce"
+								value="提交">
+
+						</div>
+					</form>
 				</div>
-				<div class="shangping" onmouseover=Over(this); onmouseout=Out(this);>
-					#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-						color="black">#商品名称</font><br />
-					<div style="float: right">
-						<font color="#595959">月销:#商品销量</font>
-					</div>
-				</div>
-				<div class="shangping" onmouseover=Over(this); onmouseout=Out(this);>
-					#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-						color="black">#商品名称</font><br />
-					<div style="float: right">
-						<font color="#595959">月销:#商品销量</font>
-					</div>
-				</div>
-				<div class="shangping" onmouseover=Over(this); onmouseout=Out(this);>
-					#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-						color="black">#商品名称</font><br />
-					<div style="float: right">
-						<font color="#595959">月销:#商品销量</font>
-					</div>
-				</div>
-				<div class="clearfloat"></div>
-			</div>
-		</div>
-		<!-- 第二个div -->
-		<div id="lb2" style="display:none">
-				
-<div style="width: 95.4%;margin-top:2%; color: #FDE938; background-color:#F30408; padding-top: 1%; padding-bottom: 1%;font-family: FangSong">
-					<font size="5px">修改密码</font>
-				</div>
-	<form action="userxinxi.jsp" method="post" onsubmit="return dealsubmit1()">
-
-
-		<div class="updateps">
-			<div  style="margin-left: 15.6%;margin-top: 1%;float: left;">
-				<b>旧密码: </b><input type="password" id="jiups" name="jiups"
-					onblur="update_jiups2()" onfocus="update_jiups1()"
-					placeholder="输入旧密码校验身份">
-			</div>
-
-			<div id="update1" style="margin-top:1%;float: left;color: red;width: 29%;text-align: center;"></div>
-			<div class="clear"></div>
-
-			<div style="margin-left: 15.6%;margin-top: 1%;float: left;">
-				<b>新密码: </b><input type="password" id="newps1" name="newps1"
-					onblur="update_xinps2()" onfocus="update_xinps1()"
-					placeholder="5-20位数字,字母">
-			</div>
-
-			<div id="update2" style="margin-top:1%;float: left;color: red;width: 29%;text-align: center;"></div>
-			<div class="clear"></div>
-
-			<div style="margin-left: 12.6%;margin-top: 1%;float: left;">
-				<b>确认密码:</b> <input type="password" id="queps" name="queps"
-					onblur="update_queps2()" onfocus="update_queps1()"
-					placeholder="密码要跟新密码一致">
-			</div>
-
-			<div id="tip3" style="margin-top:1%;float: left;color: red;width: 29%;text-align: center;"></div>
-			<div class="clear"></div>
-			<div class="update_anniu">
-				
-				<input type="submit" class="update_button" id="zhuce" value="提交">
-			</div>
-		</div>
-	</form>
-		</div>
-		<!-- 第三个div -->
-		<div id="lb3" style="display:none">
-				<form action="userxinxi.jsp" method="post" enctype="multipart/form-data" name="HtmlFileForm" onsubmit="return dealsubmit2()">
-	<div
-		style="width: 95.4%; margin-top: 2%; color: white; background-color: black; padding-top: 1%; padding-bottom: 1%;">
-		<font size="5px">修改用户信息</font>
-	</div>
-	<div
-		style="text-align: center; padding-top: 2%; padding-bottom: 2%; line-height: 200%; border: 1px solid #e3e197; background: #ffffdd; width: 95.4%;">
-		<div style="float: left;margin-left: 32%">
-			<b>真实姓名:</b><input type="text" id="name" name="name" onblur="name2()"
-				onfocus="name1()" placeholder="姓名1-10位">
-		</div>
-		<div id="tip1" class="updateuser_jsdiv"></div>
-		<div class="clear"></div>
-	
-		<div style="float: left;margin-left: 32%">
-			<b>电话号码:</b><input type="text" id="phone" name="phone"
-				onblur="phone2()" onfocus="phone1()" placeholder="手机号码">
-		</div >
-		<div id="tip2" class="updateuser_jsdiv"></div>
-		<div class="clear"></div>
-		
-		<div style="float: left;margin-left: 32%">
-			<b>上传头像:</b> 
-			<span id='uploadSpan'>  
-              <input type="file" name="file" id="file" unselectable="on" onchange='checkFileType(this.value);'/> 
-            </span>  
-		</div>
-		<div class="clear"></div>
-		 <input type="submit" class="updateuser_button" id="zhuce" value="提交" >
-
-	</div>
-	</form>
-		</div>
-		<!-- 第四个div -->
-		<div id="lb4" style="display:none">
-				<form action="userxinxi.jsp" method="post"
-		onsubmit="return dealsubmit3()">
-			<div class="update_dizhi">
-				<div
-					style="width: 95.4%; color: #014d7f; background-color: LightCyan; padding-top: 1%; padding-bottom: 1%;">
-					<font size="5px">收货地址</font>
-				</div>
-				<div style="color: orange; padding-bottom: 2%; padding-top: 2%;">
-					新增收货地址</div>
-				<div>
-					省：<select id="cmbProvince"></select> 市：<select id="cmbCity"></select>
-					区：<select id="cmbArea"></select>
-					<script type="text/javascript">
+				<!-- 第四个div -->
+				<div id="lb4" style="display: none">
+					<form action="userxinxi.jsp" method="post"
+						onsubmit="return dealsubmit3()">
+						<div class="update_dizhi">
+							<div
+								style="width: 95.4%; color: #014d7f; background-color: LightCyan; padding-top: 1%; padding-bottom: 1%;">
+								<font size="5px">收货地址</font>
+							</div>
+							<div style="color: orange; padding-bottom: 2%; padding-top: 2%;">
+								新增收货地址</div>
+							<div>
+								省：<select id="cmbProvince"></select> 市：<select id="cmbCity"></select>
+								区：<select id="cmbArea"></select>
+								<script type="text/javascript">
     addressInit('cmbProvince', 'cmbCity', 'cmbArea', '北京', '市辖区', '东城区');
     addressInit('Select1', 'Select2', 'Select3');
 </script>
-				</div>
-				<div style="margin-top: 2%">
-				<div class="update_dizhidiv">
-					详细地址:<input type="text" id="dizhi" name="dizhi"
-						placeholder="请输入详细地址,例如小区,楼栋号等信息 " onblur="pwdcat()"
-						onfocus="dizhi()"
-						style="width: 78%; height: 25px; margin-left: 2%">
-				</div>	
-					<div id="tip5" class="updatedizhi_jsdiv"></div>
-					<div class="clear"></div>
-				<div class="update_dizhidiv">
-					收货人姓名:<input type="text" id="update_dizhiname" name="update_dizhiname" placeholder="2-8位字符"
-						onblur="nameid()" onfocus="users()"
-						style="width: 75.5%; height: 25px; margin-left: 0.5%">
-				</div>
-					<div id="tip4" class="updatedizhi_jsdiv"></div>
-					<div class="clear"></div>
-				<div class="update_dizhidiv">
-					手机号码:<input type="text" name="dizhiphone" id="dizhiphone"
-						placeholder="收件人的手机号码" onblur="YZphone()" onfocus="phone()"
-						style="width: 78%; height: 25px; margin-left: 2%">
-				</div>
-					<div id="tip6" class="updatedizhi_jsdiv"></div>
-					<div class="clear"></div>
-					<input type="submit" class="contsubmit">
-				</div>
-				<div
-					style="width: 95.4%; color: #014d7f; background-color: LightCyan; padding-top: 1%; padding-bottom: 1%; margin-top: 3%;">
-					<font size="5px">已保存n条地址</font>
-				</div>
+							</div>
+							<div style="margin-top: 2%">
+								<div class="update_dizhidiv">
+									详细地址:<input type="text" id="dizhi" name="dizhi"
+										placeholder="请输入详细地址,例如小区,楼栋号等信息 " onblur="pwdcat()"
+										onfocus="dizhi()"
+										style="width: 78%; height: 25px; margin-left: 2%">
+								</div>
+								<div id="tip5" class="updatedizhi_jsdiv"></div>
+								<div class="clear"></div>
+								<div class="update_dizhidiv">
+									收货人姓名:<input type="text" id="update_dizhiname"
+										name="update_dizhiname" placeholder="2-8位字符" onblur="nameid()"
+										onfocus="users()"
+										style="width: 75.5%; height: 25px; margin-left: 0.5%">
+								</div>
+								<div id="tip4" class="updatedizhi_jsdiv"></div>
+								<div class="clear"></div>
+								<div class="update_dizhidiv">
+									手机号码:<input type="text" name="dizhiphone" id="dizhiphone"
+										placeholder="收件人的手机号码" onblur="YZphone()" onfocus="phone()"
+										style="width: 78%; height: 25px; margin-left: 2%">
+								</div>
+								<div id="tip6" class="updatedizhi_jsdiv"></div>
+								<div class="clear"></div>
+								<input type="submit" class="contsubmit">
+							</div>
+							<div
+								style="width: 95.4%; color: #014d7f; background-color: LightCyan; padding-top: 1%; padding-bottom: 1%; margin-top: 3%;">
+								<font size="5px">已保存n条地址</font>
+							</div>
 
-				<table style="width: 95.4%; margin-top: 4%" cellspacing="0">
-					<tr style="background-color: #ebecf0;">
-						<td class="update_one">收货人</td>
-						<td class="update_one">详细地址</td>
-						<td class="update_one">电话/手机</td>
-						<td class="update_one">操作</td>
-					</tr>
-					<tr>
-						<td class="update_one">#收货人</td>
-						<td class="update_one">#详细地址</td>
-						<td class="update_one">#电话/手机</td>
-						<td class="update_one"><a href="****">修改</a> | <a href="****">删除</a></td>
-					</tr>
-					<tr>
-						<td class="update_one">#收货人</td>
-						<td class="update_one">#详细地址</td>
-						<td class="update_one">#电话/手机</td>
-						<td class="update_one"><a href="****">修改</a> | <a href="****">删除</a></td>
-					</tr>
-				</table>
+							<table style="width: 95.4%; margin-top: 4%" cellspacing="0">
+								<tr style="background-color: #ebecf0;">
+									<td class="update_one">收货人</td>
+									<td class="update_one">详细地址</td>
+									<td class="update_one">电话/手机</td>
+									<td class="update_one">操作</td>
+								</tr>
+								<tr>
+									<td class="update_one">#收货人</td>
+									<td class="update_one">#详细地址</td>
+									<td class="update_one">#电话/手机</td>
+									<td class="update_one"><a href="****">修改</a> | <a
+										href="****">删除</a></td>
+								</tr>
+								<tr>
+									<td class="update_one">#收货人</td>
+									<td class="update_one">#详细地址</td>
+									<td class="update_one">#电话/手机</td>
+									<td class="update_one"><a href="****">修改</a> | <a
+										href="****">删除</a></td>
+								</tr>
+							</table>
+						</div>
+					</form>
+				</div>
+				<!-- 第五个div -->
+				<div id="lb5" style="display: none">购物车页面</div>
+				<!-- 第六个div -->
+				<div id="lb6" style="display: none">我的收藏</div>
+				<!-- 第七个div -->
+				<div id="lb7" style="display: none">评价页面</div>
 			</div>
-	</form>
-		</div>
-		<!-- 第五个div -->
-		<div id="lb5" style="display:none">
-				购物车页面
-		</div>
-		<!-- 第六个div -->
-		<div id="lb6" style="display:none">
-				我的收藏
-		</div>
-		<!-- 第七个div -->
-		<div id="lb7" style="display:none">
-				评价页面
-		</div>
-	</div>
-			
+
 		</div>
 		<div class="right">
 			<div class="shang">我的日历</div>
