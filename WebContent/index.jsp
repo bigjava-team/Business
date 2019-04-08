@@ -82,7 +82,7 @@
 		顶部2
 	</div> -->
 	
-	<div style="background: aqua; overflow: hidden; width: 88%; margin-left: 6%; margin-right: 6%; margin-bottom: 8px;">
+	<div style="overflow: hidden; width: 88%; margin-left: 6%; margin-right: 6%; margin-bottom: 8px;">
 		<div style="background: #FF5000; color: #FFF; font-size: 16px; width: 16%; height: 30px; float: left; text-align: center; line-height: 30px;">
 			主题市场
 		</div>
@@ -200,8 +200,8 @@
 			<!-- 此div 做边距处理，空出位置 遍历时请勿删除 -->
 			<div style="height: 5px;"></div>
 		</div>
-		<div class="bbb" style="background: red; width: 59%; float: left; margin-left: 0.8%;">
-			<div id="middle_carousel" style="background: yellow; overflow: hidden; height: 56%;">
+		<div class="bbb" style="width: 59%; float: left; margin-left: 0.8%;">
+			<div id="middle_carousel" style="overflow: hidden; height: 56%;">
 				<div id="carousel">
 					<ul id="carousel_ul">
 						<li><img src="${pageContext.request.contextPath }/images/index/1.jpg" name="carousel_ul_img"  /></li>
@@ -224,11 +224,11 @@
 				</div>
 			</div>
 			
-			<div style="background: yellow; overflow: hidden; height: 7%; font-size: 18px; font-weight: bold; padding-top: 1%;">
+			<div style="background: red; overflow: hidden; height: 7%; font-size: 18px; font-weight: bold; padding-top: 1%;">
 				欢迎开店
 			</div>
 			<!-- 284 520 -->
-			<div style="background: aqua; overflow: hidden; height: 39%;">
+			<div style="overflow: hidden; height: 39%;">
 				<div style="background: #FF8000; float: left; width: 74%; height: 100%; margin-right: 1%;">
 					<img alt="" src="${pageContext.request.contextPath }/images/products/ddd004.jpg" width="100%" height="100%">
 				</div>
@@ -237,9 +237,17 @@
 				</div>
 			</div>
 		</div>
-		<div class="ccc" style="background: #79FF79; width: 24%; height: 270px; float: left;">
-			<div style="background: red; font-size: 16px; font-weight: bold; text-align: center;">
-				您好!某某用户
+		<div class="ccc" style="background: #79FF79; width: 24.2%; height: 270px; float: left; padding: 0px; margin: 0px;">
+			<div style="background: red; font-size: 16px; font-weight: bold; text-align: center; width: 100%; padding: 2% 0%;">
+				您好！某某用户
+			</div>
+			<div style="background:aqua; width: 100%; height: 49.7%;">
+				<div>
+					<img alt="用户头像" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50%">
+				</div>
+			</div>
+			<div style="background:yellow; width: 100%; height: 7.1%;">
+				haha
 			</div>
 		</div>
 		
