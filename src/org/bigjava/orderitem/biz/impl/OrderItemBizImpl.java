@@ -23,16 +23,25 @@ public class OrderItemBizImpl implements OrderItemBiz {
 		orderItemDao.addOrderItem(orderitem);
 	}
 
+	// 查询用户对应的订单项内容
 	@Override
 	public List<Orderitem> queryAllOrderItem(User user, Paging page) {
 		// TODO Auto-generated method stub
 		return orderItemDao.queryAllOrderItem(user, page);
 	}
 
+	// 查询用户对应的订单项数
 	@Override
 	public int queryOrderItemNumber(User user) {
 		// TODO Auto-generated method stub
 		return orderItemDao.queryOrderItemNumber(user);
+	}
+
+	// 删除订单项
+	@Override
+	public void deleteOrderItem(Orderitem orderItem) {
+		// TODO Auto-generated method stub
+		orderItemDao.deleteOrderItem(orderItem);
 	}
 
 }

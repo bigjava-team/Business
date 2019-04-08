@@ -22,4 +22,9 @@ public interface OrderItemBiz {
 	 * 条件查询订单项个数
 	 */
 	public int queryOrderItemNumber(User user);
+	
+	/**
+	 * 删除订单项
+	 */
+	public void deleteOrderItem(Orderitem orderItem);
 }

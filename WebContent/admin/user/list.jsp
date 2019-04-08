@@ -13,7 +13,7 @@
 		$("#search").click(function() {
 			var userRoot = $("#select option:selected").val();// 获取下拉列表的值
 			var searchText = $("#input").val();// 获取搜索文本框的值
-			window.location.href="User_showAll.action?user.root="+userRoot+"&searchText="+searchText+"&paging.presentPage=0";
+			window.location.href="User_showAll?user.root="+userRoot+"&searchText="+searchText+"&paging.presentPage=0";
 		});
 	});
 	
@@ -32,7 +32,7 @@
 	
 	<!-- 根据姓名查询，若不输入，则查询全部 -->
 	<div class="input-group3">
-		<select class="input-group_select3">
+		<select id="select" class="input-group_select3">
 			<option class="option" value="0">全部</option>
 			<option class="option" value="3">管理员</option>
 			<option class="option" value="2">店长</option>
