@@ -115,12 +115,13 @@ CREATE TABLE `comment` (
   `comment` varchar(255) NOT NULL,
   `u_id` int(11) DEFAULT NULL,
   `p_id` int(11) DEFAULT NULL,
+  `commentDate` datetime DEFAULT NULL,
   PRIMARY KEY (`com_id`),
   KEY `FK38A5EE5FAC71ABAE` (`u_id`),
   KEY `FK38A5EE5FE7217C83` (`p_id`),
   CONSTRAINT `FK38A5EE5FAC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
   CONSTRAINT `FK38A5EE5FE7217C83` FOREIGN KEY (`p_id`) REFERENCES `product` (`p_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,8 +135,11 @@ CREATE TABLE `images` (
   `img_id` int(11) NOT NULL AUTO_INCREMENT,
   `img_path` varchar(255) NOT NULL,
   `p_id` int(11) DEFAULT NULL,
+  `pAge_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`img_id`),
   KEY `FKB95A8278E7217C83` (`p_id`),
+  KEY `FKB95A827887D3E09E` (`pAge_id`),
+  CONSTRAINT `FKB95A827887D3E09E` FOREIGN KEY (`pAge_id`) REFERENCES `productage` (`pAge_id`),
   CONSTRAINT `FKB95A8278E7217C83` FOREIGN KEY (`p_id`) REFERENCES `product` (`p_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -154,10 +158,11 @@ CREATE TABLE `merchant` (
   `m_time` datetime NOT NULL,
   `m_is_freeze` int(11) NOT NULL,
   `u_id` int(11) DEFAULT NULL,
+  `notice` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`m_id`),
   KEY `FKE1E1C9C8AC71ABAE` (`u_id`),
   CONSTRAINT `FKE1E1C9C8AC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +186,7 @@ CREATE TABLE `orderitem` (
   CONSTRAINT `FKE8B2AB6197342528` FOREIGN KEY (`o_id`) REFERENCES `orders` (`o_id`),
   CONSTRAINT `FKE8B2AB61AC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
   CONSTRAINT `FKE8B2AB61E7217C83` FOREIGN KEY (`p_id`) REFERENCES `product` (`p_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -226,12 +231,27 @@ CREATE TABLE `product` (
   `p_freeze` int(11) NOT NULL,
   `cs_id` int(11) NOT NULL,
   `m_id` int(11) DEFAULT NULL,
+  `p_repertory` int(11) NOT NULL,
   PRIMARY KEY (`p_id`),
   KEY `FKED8DCCEFB2EE4401` (`cs_id`),
   KEY `FKED8DCCEFBE59A0B0` (`m_id`),
   CONSTRAINT `FKED8DCCEFB2EE4401` FOREIGN KEY (`cs_id`) REFERENCES `categorysecond` (`cs_id`),
   CONSTRAINT `FKED8DCCEFBE59A0B0` FOREIGN KEY (`m_id`) REFERENCES `merchant` (`m_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `productage`
+--
+
+DROP TABLE IF EXISTS `productage`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `productage` (
+  `pAge_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pAge` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`pAge_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -265,4 +285,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-28 14:55:35
+-- Dump completed on 2019-04-08  8:45:49
