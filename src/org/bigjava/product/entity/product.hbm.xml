@@ -10,6 +10,7 @@
 		<property name="p_name" not-null="true" /> <!-- p_name为类的属性、表的属性名 -->
 		<property name="p_price" not-null="true" /> <!-- p_price为类的属性、表的属性名 -->
 		<property name="p_image" /><!-- 商品首页图片 -->
+		<property name="p_repertory" not-null="true" /><!-- 商品库存 -->
 		<property name="market" not-null="true" /> <!-- market为市场价格 -->
 		<property name="p_desc" /> <!-- describe为类的属性、表的属性名 -->
 		<property name="sale_volume" /> <!-- sale_volume为类的属性、表的属性名 -->

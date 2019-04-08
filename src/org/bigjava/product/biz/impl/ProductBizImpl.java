@@ -48,13 +48,13 @@ public class ProductBizImpl implements ProductBiz {
 		return productDao.queryProductNumber(searchProduct, m_id);
 	}
 
-	// 查询最新的6个商品
+	// 查询最新的商品
 	@Override
 	public List<Product> queryProduct_time() {
 		return productDao.queryProduct_time();
 	}
 
-	// 查询最热的6个商品
+	// 查询最热的商品
 	@Override
 	public List<Product> queryProduct_hot() {
 		return productDao.queryProduct_hot();
@@ -64,6 +64,18 @@ public class ProductBizImpl implements ProductBiz {
 	@Override
 	public List<Product> queryAllCommentProduct() {
 		return productDao.queryAllCommentProduct();
+	}
+
+	// 查询店铺内最新的商品
+	@Override
+	public List<Product> queryMerchantProduct_time(int m_id) {
+		return productDao.queryMerchantProduct_time(m_id);
+	}
+
+	// 查询店铺内最热的商品
+	@Override
+	public List<Product> queryMerchantProduct_hot(int m_id) {
+		return productDao.queryMerchantProduct_hot(m_id);
 	}
 
 }

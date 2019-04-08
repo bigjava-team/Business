@@ -13,8 +13,8 @@
 	<div class="contentone">
 		<div class=wenziz>
 			中国大陆 
-			<s:if test="user != null">
-				欢迎您：${loginUser.username};
+			<s:if test='loginUser.username != null && loginUser.username != ""'>
+					欢迎您：${loginUser.username };
 			</s:if>
 			<s:else >
 				<a href="user/login.jsp">亲，请登录</a> 
@@ -24,11 +24,11 @@
 		
 		
 		<div class=wenziz2>
-			<s:if test="user != null">
-				<a href="User_gotoUserIndex.action?user.username=${loginUser.username}">我的主页</a>
+			<s:if test='loginUser.username != null && loginUser.username != ""'>
+				<a href="User_gotoUserIndex.action?user.username=${loginUser.username }">我的主页</a>
 			</s:if>
 			
-			<s:if test="merchant != null">
+			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<a>我的店铺</a>
 			</s:if>
 			<a>购物车</a> 

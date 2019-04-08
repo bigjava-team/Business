@@ -56,6 +56,11 @@
 		
 	});
 	
+	function queryProduct(id) {
+		var username = '${loginUser.username}';
+		window.location.href="Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0";
+	}
+	
 	
 	$(function(){
 		$(".xuanfu").mouseover(function(){
@@ -352,12 +357,12 @@
 			</div>	
 			<div style="background: red; overflow: hidden; margin: 0px 0%;">
 				<s:iterator value="listProductTime"  var="listProductTimes">
-					<div class="newestProduct" style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd" >
+					<div class="newestProduct" onclick="queryProduct(this.id)" id="${listProductTimes.p_id}" style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd" >
 						<div style="text-align: center; height: 196px; overflow: hidden;">
 							<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="90%" height="100%">
 						</div>
 						<div class="product_name" style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden; color: black;" value="${listProductTimes.p_id }"> 
-							<a href="Product_idQueryProduct?method=post&user.username=${user.username}&product.p_id=${listProductTimes.p_id}" >${listProductTimes.p_name }</a>
+							<a href="javascript:;" >${listProductTimes.p_name }</a>
 						</div>
 						<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
 							¥<font style="font-size: 22px; font-weight: bold;">${listProductTimes.p_price }</font>

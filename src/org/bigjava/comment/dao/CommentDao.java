@@ -38,5 +38,10 @@ public interface CommentDao {
 	 * 通过评论量获取前12的商品
 	 */
 	public List<Comment> queryCommentByNumberOneToTwelve();
+	
+	/**
+	 * 查询商品对应的评论
+	 */
+	public List<Comment> queryProductCommentNumber(int p_id, int presentPage);
 
 }

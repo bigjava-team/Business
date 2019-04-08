@@ -82,4 +82,9 @@ public interface UserDao {
 	 * 为1时用户冻结，用户不能登录，为2时用户没冻结，可以登录
 	 */
 	public void updateFreeze(int freeze, User user);
+	
+	/**
+	 * 通过用户名获取用户信息
+	 */
+	public User queryUsernameUser(String username);
 }
