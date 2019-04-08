@@ -160,7 +160,7 @@ section button:hover {background-color: #ffffff;color: #009ac9;border-color: #00
 
 	</div>
 
-	<%@include file="menu_bottom.jsp"%>
+<%-- 	<%@include file="menu_bottom.jsp"%> --%>
 
 </body>
 </html>

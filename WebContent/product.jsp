@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,17 +30,24 @@
 	$(function(){
 		var ld = $(".leftDiv").height();
 		$(".rightDiv").height(ld);
-	})
+	});
+	
+	function addOrderitem() {
+		var username = '${loginUser.username}';
+		var p_id = '${product.p_id }';
+		var f = document.getElementById("product_div1_div2_form");
+		f.action =  f.action + "?loginUser.username="+username+"&product.p_id="+ p_id +"&orderitem.count=1"+"&paging.presentPage=0";
+		alert(f.action);
+	}
 </script>
 
 <body id="product_body">
-
 	<%@ include file="product_top.jsp" %>
 	
 	<div id="product_div1">
 		<div id="product_div1_div1">
 			<div id="product_div1_div1_div1">
-				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%;" height="100%;">
+				<img alt="${product.p_image }" src="${fileImageAction.urlImage }${product.p_image }" width="100%;" height="100%;">
 			</div>
 			<div id="product_div1_div1_div2">
 				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60px;" height="60px;">
@@ -52,15 +60,15 @@
 		
 		<div id="product_div1_div2">
 			<div id="product_div1_div2_div1">
-				<font id="product_div1_div2_div1_font">商品名品名称商品名称商品名称商品名称商品名称商品名称商品名称</font>
+				<font id="product_div1_div2_div1_font">${product.p_name }</font>
 			</div>
 			
 			<div id="product_div1_div2_div2">
 				<div>
-					市场价: &emsp;<font id="font1">¥500.00</font>
+					市场价: &emsp;<font id="font1">${product.market }</font>
 				</div>
 				<div>
-					光光价: &emsp;<font id="font2">¥499.00</font>
+					光光价: &emsp;<font id="font2">${product.p_price }</font>
 				</div>
 			</div>
 			
@@ -70,6 +78,7 @@
 			<div id="product_div1_div2_div3">
 				配送: &emsp;&emsp;快递 : &nbsp; 免运费
 			</div>
+			
 			<div id="product_div1_div2_div3">
 				<div class="product_div1_div2_div3_div1">颜色: </div>
 				<div class="product_div1_div2_div3_div2">
@@ -81,7 +90,7 @@
 					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px;" height="50px;">
 				</div>
 			</div>
-			<form id="product_div1_div2_form" action="" method="post">
+			<form id="product_div1_div2_form" action="orderitem_addOrderItemAndQueryOrderItem" onsubmit="addOrderitem()" method="post">
 				<div class="product_div1_div2_form_div1">
 					<div class="product_div1_div2_form_div1_div1">数量: </div>
 					<div class="product_div1_div2_form_div1_div2">
@@ -93,10 +102,11 @@
 						<input id="input" name="input" class="iInput" value="1"> / 件
 					</div>
 				</div>
-				<div class="product_div1_div2_form_div2">
+				<!-- <div class="product_div1_div2_form_div2">
 					<div class="product_div1_div2_form_div2_div1" style="position: absolute; z-index: 10; background-image: url(images/product_gwc.png); background-repeat: no-repeat; background-position: 10% 8%; width: 20%; height: 25%;"></div>
 					<input class="product_div1_div2_form_div2_input1" type="submit" value="加入购物车"/>
-				</div>
+				</div> -->
+				<input type="submit" value="加入购物车" />
 			</form>
 			
 			<div class="product_div1_div2_div4">
@@ -119,13 +129,13 @@
 				<div class="product_div1_div3_div1_div2">
 					<h3>店铺详情</h3>
 					<div>
-						<img alt="店铺图片" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%" height="100%">
+						<%-- <img alt="${merchant.m_image }" src="${fileImageAction.urlImage }${merchant.m_image }" width="100%" height="100%"> --%>
 					</div>
 					<div>
-						掌柜: 张三
+						掌柜: ${user.u_name }
 					</div>
 					<div style="padding-bottom: 8%;">
-						开店时间: 1111
+						开店时间: ${merchant.m_time }
 					</div>
 					
 				</div>
@@ -135,8 +145,9 @@
 					本店公告
 				</div>
 				<div class="product_div1_div3_div2_div2">
-					&emsp;&emsp;热情载客舟迎风扬帆，诚信便民店喜庆开业我们用热忱的心和负责的态度竭诚为您服务。<br />
-					&emsp;&emsp;您用满意的微笑让我们做得更好，我们一起让这个地方变成和谐而充满生机的家园。
+					<!-- &emsp;&emsp;热情载客舟迎风扬帆，诚信便民店喜庆开业我们用热忱的心和负责的态度竭诚为您服务。<br />
+					&emsp;&emsp;您用满意的微笑让我们做得更好，我们一起让这个地方变成和谐而充满生机的家园。 -->
+					&emsp;&emsp;${merchant.notice }
 				</div>
 			</div>
 		</div>
@@ -164,30 +175,19 @@
 			</div>
 			<hr />
 			<div class="product_div2_leftDiv_d5">
-				<div class="product_div2_leftDiv_d5_d1">
-					<div class="product_div2_leftDiv_d5_d1_d1">
-						<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60%">
+				<s:iterator value="listProductTime" var="listProductTimes">
+					<div class="product_div2_leftDiv_d5_d1">
+						<div class="product_div2_leftDiv_d5_d1_d1">
+							<img alt="${listProductTimes.p_image }"  src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="60%">
+						</div>
+						<div class="product_div2_leftDiv_d5_d1_d2">
+							<div>${listProductTimes.p_name }</div>
+							<div>${listProductTimes.p_price }</div>
+						</div>
 					</div>
-					<div class="product_div2_leftDiv_d5_d1_d2">
-						<div>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</div>
-						<div>¥100.00</div>
-					</div>
-				</div>
-				
-				<hr />
-				
-				<div class="product_div2_leftDiv_d5_d1">
-					<div class="product_div2_leftDiv_d5_d1_d1">
-						<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60%">
-					</div>
-					<div class="product_div2_leftDiv_d5_d1_d2">
-						<div>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</div>
-						<div>¥100.00</div>
-					</div>
-				</div>
-				
-				<hr />
-				
+					
+					<hr />
+				</s:iterator>
 			</div>
 			<hr />
 			
@@ -198,17 +198,19 @@
 			<hr />
 			
 			<div class="product_div2_leftDiv_d5">
-				<div class="product_div2_leftDiv_d5_d1">
-					<div class="product_div2_leftDiv_d5_d1_d1">
-						<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60%">
+				<s:iterator value="listProductHot" var="listProductHots" >
+					<div class="product_div2_leftDiv_d5_d1">
+						<div class="product_div2_leftDiv_d5_d1_d1">
+							<img alt="${listProductHots.p_image }"  src="${fileImageAction.urlImage }${listProductHots.p_image }" width="60%">
+						</div>
+						<div class="product_div2_leftDiv_d5_d1_d2">
+							<div>${listProductHots.p_name }</div>
+							<div>¥${listProductHots.p_price }</div>
+						</div>
 					</div>
-					<div class="product_div2_leftDiv_d5_d1_d2">
-						<div>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</div>
-						<div>¥100.00</div>
-					</div>
-				</div>
-				
-				<hr />
+					
+					<hr />
+				</s:iterator>
 				
 				<div class="product_div2_leftDiv_d5_d1">
 					<div class="product_div2_leftDiv_d5_d1_d1">
@@ -232,7 +234,7 @@
 			
 			<div class="title">
 				<a class="a" href="#aa">宝贝详情</a>
-				<a class="a" href="#aa">用户评论 100</a>
+				<a class="a" href="javascript:;">用户评论${commentNumber }</a>
 				<a class="a" href="#aa">专项服务</a>
 			</div>
 			
@@ -241,20 +243,19 @@
 					<div class="div1">
 						<div class="div1_d1">
 							<div class="div1_d1_d1">名称：</div>
-							<div> 貂皮大衣</div>
+							<div>${product.p_name }</div>
 						</div>
 						<div class="div1_d1">
 							<div class="div1_d1_d1">月销量：</div>
-							<div> 100 件</div>
+							<div>${product.sale_volume }件</div>
 						</div>
 						<div class="div1_d1">
 							<div class="div1_d1_d1">描述：</div>
-							<div> 此貂皮大衣绝对正品，冬暖夏凉，适合各种季节、各种天气。描述: 此貂皮大衣绝对正品，冬暖夏凉，适合各种季节、各种天气。</div>
+							<div>${product.p_desc }</div>
 						</div>
 					</div>
 					<div class="div2">
-						<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%" height="680px;">
-						<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%" height="680px;">
+						<img alt="${listProductHots.p_image }" src="${fileImageAction.urlImage }${product.p_image }" width="100%" height="680px;">
 					</div>
 					
 					<div class="div3">
@@ -296,57 +297,33 @@
 				
 				<!-- 用户评论 -->
 				<div class="aa">
-					<div class="div4">
-						<div class="div4_d1">
-							<div>
-								<img alt="用户头像"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px" height="50px;">
+					<s:iterator value="listProductAllComment" var="listProductAllComments">
+						<div class="div4">
+							<div class="div4_d1">
+								<%-- <div>
+									<img alt="用户头像"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px" height="50px;">
+								</div> --%>
+								<div class="div4_d1_d1">
+									${listProductAllComments.user.username }
+								</div>
 							</div>
-							<div class="div4_d1_d1">
-								用户名
+							<div class="div4_d2">
+								<div class="div4_d2_d1">
+									${listProductAllComments.comment }
+								</div>
+								<div>
+									<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="40px" height="40px;">
+									<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="40px" height="40px;">
+								</div>
+								<div class="div4_d2_d2">
+									${listProductAllComments.commentDate }
+								</div>
+								
 							</div>
 						</div>
-						<div class="div4_d2">
-							<div class="div4_d2_d1">
-								光光商城衣服质量真的很不错，而且价格实惠。
-							</div>
-							<div>
-								<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="40px" height="40px;">
-								<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="40px" height="40px;">
-							</div>
-							<div class="div4_d2_d2">
-								2018-10-10
-							</div>
-							
-						</div>
-					</div>
 					
-					<hr />
-					
-					<div class="div4">
-						<div class="div4_d1">
-							<div>
-								<img alt="用户头像"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px" height="50px;">
-							</div>
-							<div class="div4_d1_d1">
-								用户名
-							</div>
-						</div>
-						<div class="div4_d2">
-							<div class="div4_d2_d1">
-								光光商城衣服质量真的很不错，而且价格实惠。
-							</div>
-							<div>
-								<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="40px" height="40px;">
-								<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="40px" height="40px;">
-							</div>
-							<div class="div4_d2_d2">
-								2018-10-10
-							</div>
-							
-						</div>
-					</div>
-					
-					<hr />
+						<hr />
+					</s:iterator>
 					
 					<div class="div3">
 						<font class="font1">价格说明</font>

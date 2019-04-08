@@ -29,7 +29,7 @@
 			<result name="adminLogin"> /admin/home.jsp </result>
 
 			<!-- 返回值为loginSuccess为普通用户登录成功 -->
-			<result name="loginSuccess" type="redirectAction">index_showAll?method=post&amp;user.username=${user.username}
+			<result name="loginSuccess" type="redirectAction">index_showAll?method=post&amp;loginUser.username=${user.username}
 			</result>
 
 			<!-- 返回值为loginStore，为店长登录 -->
@@ -114,6 +114,11 @@
 
 		<action name="Product_*" class="productAction" method="{1}">
 			<result name="idQueryProduct">/product.jsp</result>
+		</action>
+		
+		<action name="orderitem_*" class="orderItemAction" method="{1}">
+			<result name="loginError">/user/login.jsp</result>
+			<result name="addOrderItemAndQueryOrderItem">/cart.jsp</result>
 		</action>
 		
 	</package>

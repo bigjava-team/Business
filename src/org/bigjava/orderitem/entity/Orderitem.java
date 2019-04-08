@@ -23,10 +23,19 @@ public class Orderitem {
 	
 	private Product product;// 指向商品类
 	
-	private Addr addr;// 指向收货地址类
-	
 	private Orders orders;
 	
+	public Orderitem() {
+		super();
+	}
+
+	public Orderitem(User user, Product product, Orders orders) {
+		super();
+		this.user = user;
+		this.product = product;
+		this.orders = orders;
+	}
+
 	public Orders getOrders() {
 		return orders;
 	}
@@ -74,18 +83,11 @@ public class Orderitem {
 	public void setSubtotal(double subtotal) {
 		this.subtotal = subtotal;
 	}
-	
-	public Addr getAddr() {
-		return addr;
-	}
-
-	public void setAddr(Addr addr) {
-		this.addr = addr;
-	}
 
 	@Override
 	public String toString() {
-		return "Orderitem [item_id=" + item_id + ", count=" + count + ", subtotal=" + subtotal + "]";
+		return "Orderitem [item_id=" + item_id + ", count=" + count + ", subtotal=" + subtotal + ", user=" + user
+				+ ", product=" + product + ", orders=" + orders + "]";
 	}
-
+	
 }
