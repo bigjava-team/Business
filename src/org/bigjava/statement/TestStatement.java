@@ -185,7 +185,7 @@ public class TestStatement {
 		orderItem.setCount(p_number);
 		orderItem.setSubtotal(p_number*product.getP_price());
 		
-		orderItemDao.addOrderItem(orderItem, user, product);
+		/*orderItemDao.addOrderItem(orderItem, user, product);*/
 	}
 	
 	// 分页查询商品

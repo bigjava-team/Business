@@ -9,6 +9,7 @@
 			<generator class="native" />
 		</id>
 		<property name="comment" not-null="true" /><!-- comment为评论表、类的属性名 -->
+		<property name="commentDate"  /><!-- 评论时间 -->
 		
 		<many-to-one name="user" class="org.bigjava.user.entity.User" column="u_id" lazy="false"  /><!-- 多对一评价类指向用户类 -->
 		

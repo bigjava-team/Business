@@ -76,4 +76,10 @@ public class UserBizImpl implements UserBiz {
 		userDao.updateFreeze(freeze, user);
 	}
 
+	// 通过用户名获取用户信息
+	@Override
+	public User queryUsernameUser(String username) {
+		return userDao.queryUsernameUser(username);
+	}
+
 }

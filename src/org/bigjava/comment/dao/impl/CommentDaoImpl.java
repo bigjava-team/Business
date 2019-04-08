@@ -99,4 +99,36 @@ public class CommentDaoImpl extends HibernateDaoSupport implements CommentDao {
 		return this.getHibernateTemplate().find("from Comment");
 	}
 
+	// 查询商品对应的评论
+	@Override
+	public List<Comment> queryProductCommentNumber(final int p_id, int presentPage) {
+		System.out.println("开始执行queryProductCommentNumber方法");
+		int totalNumber = 0;
+		List<Comment> listComment = null;
+		List<Long> listNumber = null;
+		String hql = "select count(*) from Comment where p_id = ?";
+		listNumber = this.getHibernateTemplate().find(hql, p_id);
+		if (listNumber.size() != 0) {
+			totalNumber = listNumber.get(0).intValue();
+		}
+		
+		final Paging paging = new Paging(presentPage, totalNumber, 10);
+		
+		listComment = this.getHibernateTemplate().executeFind(new HibernateCallback() {
+
+			@Override
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+				// TODO Auto-generated method stub
+				String hql = "from Comment where p_id = ?";
+				Query query = null;
+				query = session.createQuery(hql).setInteger(0, p_id);
+				query.setFirstResult(paging.getStart());
+				query.setMaxResults(paging.getPagesize());
+				return query.list();
+			}
+		});
+		
+		return listComment;
+	}
+
 }

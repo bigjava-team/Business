@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +10,7 @@ body {
 	margin: 0px;
 	padding: 0px;
 	overflow-x: hidden;
+	font-family: "FangSong";
 }
 
 .head {
@@ -31,6 +30,7 @@ body {
 	float: left;
 	width: 10%;
 	height: 25%;
+	line-height: 200%;
 }
 
 .left font {
@@ -195,7 +195,157 @@ body {
 	margin: 0 100px 0 10px;
 	word-spacing: 22px;
 }
+
+.userxinxi_button {
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding-left: 15%;
+	padding-top: 15%;
+	padding-bottom: 15%;
+	padding-right: 15%;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+.userxinxi_inbutton {
+	background-color: white;
+	color: black;
+	border: 2px solid #555555;
+}
+
+.userxinxi_inbutton:hover {
+	background-color: #555555;
+	color: white;
+}
+
+.clear {
+	clear: both;
+}
+
+.updateps {
+	padding-top: 2%;
+	line-height: 200%;
+	padding-left: 24%;
+	margin-top: 4%;
+	padding-bottom: 2%;
+	height: 100%;
+	width: 71%;
+	border: #909090 1px solid;
+	background: #fff;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090,
+		direction=120, strength=4);
+	-moz-box-shadow: 2px 2px 10px #909090;
+	-webkit-box-shadow: 2px 2px 10px #909090;
+	box-shadow: 2px 2px 10px #909090;
+}
+
+.update_anniu {
+	margin-top: 3%;
+	margin-left: 21%;
+}
+
+.update_button {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #88ada6;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 28px;
+	padding: 10px;
+	width: 33%;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+}
+
+.updateuser_button {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #46E2F1;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 28px;
+	padding: 10px;
+	width: 22%;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+}
+
+.updateuser_jsdiv {
+	color: red;
+	width: 29%;
+	height: 20px;
+	text-align: center;
+	padding-bottom: 1%;
+	padding-top: 1%;
+	float: left;
+}
+
+.contsubmit {
+	margin-top: 4%;
+	margin-left: 43%;
+	background-color: #3F7FCE;
+	border: 1px solid #3F7FCE;
+	color: white;
+	padding: 1% 1%;
+	width: 12%;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	cursor: pointer;
+	background-color: #3F7FCE;
+}
+
+.update_one {
+	border: 1px solid #dcdee3;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	text-align: center;
+}
+
+.update_dizhi {
+	float: left;
+	width: 100%;
+	margin-top: 2%;
+}
+
+.updatedizhi_jsdiv {
+	float: left;
+	color: red;
+	width: 43%;
+	text-align: center;
+	padding-bottom: 0.8%;
+	padding-top: 0.8%;
+}
+
+.update_dizhidiv {
+	float: left;
+	width: 50%;
+	line-height: 270%;
+}
+
+.update_one a {
+	text-decoration: none;
+	color: black;
+}
+
+.update_one a:hover {
+	color: orange;
+}
 </style>
+<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../js/jsAddress.js"></script>
+
 <script type="text/javascript">
 	window.onload = function() {
 		setInterval(function() {
@@ -218,6 +368,381 @@ body {
 	function Over(o){o.style.backgroundColor='#fff'; o.style.border='1px solid #c31414';}
 	function Out(o){o.style.backgroundColor='#fff'; o.style.border='1px dotted #CCC';}
 	
+	
+	function display(id){  
+	    var traget1=document.getElementById("lb1");  
+	    var traget2=document.getElementById("lb2");  
+	    var traget3=document.getElementById("lb3");  
+	    var traget4=document.getElementById("lb4");
+	    var traget5=document.getElementById("lb5");
+	    var traget6=document.getElementById("lb6");
+	    var traget7=document.getElementById("lb7");
+	    if(id==1){  
+	        traget1.style.display="block";
+	        traget2.style.display="none";
+	        traget3.style.display="none";
+	        traget4.style.display="none";
+	        traget5.style.display="none";
+	        traget6.style.display="none";
+	        traget7.style.display="none";
+	    }
+	    if(id==2){  
+	        traget1.style.display="none";
+	        traget2.style.display="block";
+	        traget3.style.display="none";
+	        traget4.style.display="none";
+	        traget5.style.display="none";
+	        traget6.style.display="none";
+	        traget7.style.display="none";
+	    }
+	    if(id==3){  
+	        traget1.style.display="none";
+	        traget2.style.display="none";
+	        traget3.style.display="block";
+	        traget4.style.display="none";
+	        traget5.style.display="none";
+	        traget6.style.display="none";
+	        traget7.style.display="none";
+	    }
+	    if(id==4){  
+	        traget1.style.display="none";
+	        traget2.style.display="none";
+	        traget3.style.display="none";
+	        traget4.style.display="block";
+	        traget5.style.display="none";
+	        traget6.style.display="none";
+	        traget7.style.display="none";
+	    }
+	    if(id==5){  
+	        traget1.style.display="none";
+	        traget2.style.display="none";
+	        traget3.style.display="none";
+	        traget4.style.display="none";
+	        traget5.style.display="block";
+	        traget6.style.display="none";
+	        traget7.style.display="none";
+	    }
+	    if(id==6){  
+	        traget1.style.display="none";
+	        traget2.style.display="none";
+	        traget3.style.display="none";
+	        traget4.style.display="none";
+	        traget5.style.display="none";
+	        traget6.style.display="block";
+	        traget7.style.display="none";
+	    }
+	    if(id==7){  
+	        traget1.style.display="none";
+	        traget2.style.display="none";
+	        traget3.style.display="none";
+	        traget4.style.display="none";
+	        traget5.style.display="none";
+	        traget6.style.display="none";
+	        traget7.style.display="block";
+	    }
+	}
+	      
+	//第二个div的js代码
+	function update_jiups1() {
+		var userlabel = document.getElementById("jiups");
+		userlabel.className = "green";
+	}
+
+	function update_jiups2() {
+		var div1 = document.getElementById("update1");
+		var text = document.getElementsByName("jiups").item(0).value;
+		var user = document.getElementById("jiups");
+
+		if (text == "" || text == null) {
+			user.className = "red";
+			div1.innerHTML = "旧密码不能为空!";
+			return false;
+		}
+		if (text.length > 20) {
+			user.className = "red";
+			div1.innerHTML = "旧密码最多不超过20位!";
+			return false;
+		}
+		if (text.length < 5) {
+			user.className = "red";
+			div1.innerHTML = "旧密码最少为5位!";
+			return false;
+		}
+
+		if (5 <= text.length <= 20) {
+			user.className = "black";
+			div1.innerHTML = "";
+			return true;
+		}
+	}
+
+	function update_xinps1() {
+		var userlabel = document.getElementById("newps1");
+		userlabel.className = "green";
+	}
+
+	function update_xinps2() {
+		var div1 = document.getElementById("update2");
+		var text = document.getElementsByName("newps1").item(0).value;
+		var user = document.getElementById("newps1");
+
+		if (text == "" || text == null) {
+			user.className = "red";
+			div1.innerHTML = "新密码不能为空!";
+			return false;
+		}
+		if (text.length > 20) {
+			user.className = "red";
+			div1.innerHTML = "新密码最多不超过20位!";
+			return false;
+		}
+		if (text.length < 5) {
+			user.className = "red";
+			div1.innerHTML = "新密码最少为5位!";
+			return false;
+		}
+
+		if (5 <= text.length <= 20) {
+			user.className = "black";
+			div1.innerHTML = "";
+			return true;
+		}
+	}
+
+	function update_queps1() {
+		var userlabel = document.getElementById("queps");
+		userlabel.className = "green";
+	}
+
+	function update_queps2() {
+		var div1 = document.getElementById("tip3");
+		var text = document.getElementsByName("queps").item(0).value;
+		var user = document.getElementById("queps");
+		var text2 = document.getElementsByName("newps1").item(0).value;
+
+		if (text == "" || text == null) {
+			user.className = "red";
+			div1.innerHTML = "确认密码不能为空!";
+			return false;
+		}
+		if (text == text2) {
+			user.className = "black";
+			div1.innerHTML = "";
+			return true;
+		} else {
+			user.className = "red";
+			div1.innerHTML = "两次密码不一致!";
+			return false;
+		}
+
+	}
+
+	function dealsubmit1() {
+		if (update_jiups2() == false || update_xinps2() == false
+				|| update_queps2() == false) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	//第三个div的js方法
+	function name1() {
+		var userlabel = document.getElementById("name");
+		userlabel.className = "green";
+	}
+
+	function name2() {
+		var div1 = document.getElementById("tip1");
+		var text = document.getElementsByName("name").item(0).value;
+		var user = document.getElementById("name");
+		var reg = /[\u4E00-\u9FA5\uF900-\uFA2D]/;
+
+		if (text == "" || text == null) {
+			user.className = "red";
+			div1.innerHTML = "真实姓名不能为空!";
+			return false;
+		}
+		if (!(reg.test(text))) {
+			  user.className="red";
+			 div1.innerHTML="请输入汉字!";
+			return false;
+	  }
+		if (text.length > 10) {
+			user.className = "red";
+			div1.innerHTML = "真实姓名最多不超过10位!";
+			return false;
+		}
+		if (text.length < 1) {
+			user.className = "red";
+			div1.innerHTML = "真实姓名最少为5位!";
+			return false;
+		}
+
+		if (1 <= text.length <= 10) {
+			user.className = "black";
+			div1.innerHTML = "";
+			return true;
+		}
+	}
+
+	function phone1() {
+		var userlabel = document.getElementById("phone");
+		userlabel.className = "green";
+	}
+
+	function phone2() {
+		var div1 = document.getElementById("tip2");
+		var text = document.getElementsByName("phone").item(0).value;
+		var user = document.getElementById("phone");
+
+		if(text.length==0 || text==""){
+	        user.className="red";
+			 div1.innerHTML="电话号码不能为空!";
+			 return false;
+		  }
+	  if (!(/^1[34578]\d{9}$/.test(text))) {
+			  user.className="red";
+			 div1.innerHTML="电话号码格式错误!";
+			return false;
+	  }
+	  if(1<=text.length){
+		  user.className="black";
+		   div1.innerHTML="";
+		  return true;
+		   }
+	}
+	var html=document.getElementById('uploadSpan').innerHTML;   
+	  
+	function resetFile(){   
+		var file = document.getElementById('file');
+		file.value = ''; 
+	
+	}   
+	
+	function checkFileType(str){  
+	    var pos = str.lastIndexOf(".");  
+	    var lastname = str.substring(pos,str.length);  
+	    var resultName=lastname.toLowerCase();  
+	    if ('.jpg'!=resultName.toString()){
+	    	alert('只能上传jpg文件，您上传的文件类型为'+lastname+'，请重新上传');  
+	    	
+	    	resetFile(); 
+	    }  
+	}  
+
+	
+
+	function dealsubmit2() {
+		if (name2() == false || phone2() == false) {
+			return false;
+		} else if(HtmlFileForm.file.value == "") {  
+	           alert("请选择文件路径");  
+	           return false;  
+	   }else{
+			return true;
+		}
+	}
+	
+	//第四个div的js方法
+	
+function users(){
+	var userlabel=document.getElementById("update_dizhiname");
+	   userlabel.className="green";
+}
+function nameid(){
+	 var div1 =document.getElementById("tip4");
+	  var text=document.getElementsByName("update_dizhiname").item(0).value;
+	  var user=document.getElementById("update_dizhiname");
+	  var reg = /[\u4E00-\u9FA5\uF900-\uFA2D]/;
+	  if(text=="" || text==null){
+		  user.className="red";
+			 div1.innerHTML="收货人姓名不能为空!";
+			return false;
+	  }
+	  if (!(reg.test(text))) {
+		  user.className="red";
+		 div1.innerHTML="请输入汉字!";
+		return false;
+  }
+	  if(text.length>8){
+	        user.className="red";
+			 div1.innerHTML="收获人姓名最多不超过8位!";
+			 return false;
+		  }
+	  if(text.length<2){
+	        user.className="red";
+			 div1.innerHTML="收获人姓名最少为2位!";
+			 return false;
+		  }
+	  
+	  if(2<=text.length<=8){
+		  user.className="black";
+		   div1.innerHTML="";
+		  return true;
+		   }
+}
+ 
+function dizhi(){
+	var userlabel=document.getElementById("dizhi");
+	   userlabel.className="green";
+}
+ 
+function pwdcat(){
+	 var div1 =document.getElementById("tip5");
+	  var text=document.getElementsByName("dizhi").item(0).value;
+	  var user=document.getElementById("dizhi");
+	  var reg = /[\u4E00-\u9FA5\uF900-\uFA2D]/;
+	  
+	  if(text.length==0 || text==""){
+	        user.className="red";
+			 div1.innerHTML="详细地址不能为空!";
+			 return false;
+		  }
+	  if (!(reg.test(text))) {
+		  user.className="red";
+		 div1.innerHTML="请输入汉字!";
+		return false;
+  }
+	  if(1<=text.length){
+		  user.className="black";
+		   div1.innerHTML="";
+		  return true;
+		   }
+}
+
+function phone(){
+	var userlabel=document.getElementById("dizhiphone");
+	   userlabel.className="green";
+}
+ 
+function YZphone(){
+	 var div1 =document.getElementById("tip6");
+	  var text=document.getElementsByName("dizhiphone").item(0).value;
+	  var user=document.getElementById("dizhiphone");
+	  
+	  if(text.length==0 || text==""){
+	        user.className="red";
+			 div1.innerHTML="电话号码不能为空!";
+			 return false;
+		  }
+	  if (!(/^1[34578]\d{9}$/.test(text))) {
+			  user.className="red";
+			 div1.innerHTML="电话号码格式错误!";
+			return false;
+	  }
+	  if(1<=text.length){
+		  user.className="black";
+		   div1.innerHTML="";
+		  return true;
+		   }
+}
+function dealsubmit3(){
+	if(pwdcat()==false  || nameid()==false|| YZphone()==false){
+		return false;
+	}else{
+		return true;
+	}
+}
 </script>
 
 </head>
@@ -225,87 +750,266 @@ body {
 	<div class="head">
 		<!--板块1-->
 		<div class="contentone">
-			<div class=wenziz>
-				中国大陆
-				欢迎您：${user.username};
-			</div>
+			<div class=wenziz>中国大陆 欢迎您：${user.username};</div>
 			<div class=wenziz2>
-				<s:if test="merchant != null">
-					<a>我的店铺</a>
-				</s:if>
-				<a>购物车</a> <a>收藏夹</a> <a>商品分类</a> <a>卖家中心</a>
-				<s:if test="user != null">
-					<a href="#" onclick="remove()">退出</a>
-				</s:if>
+				<a>我的店铺</a> <a>购物车</a> <a>收藏夹</a> <a>商品分类</a> <a>卖家中心</a> <a
+					href="#" onclick="remove()">退出</a>
 			</div>
 		</div>
 	</div>
 	<div class="body">
 		<div class="left">
-			<font ><font style="color: red">全部功能</font><br /> 
-			<a href="user/Update.jsp">修改密码</a><br /> 
-			<a href="***">修改信息</a><br /> 
-			<a href="***">收货地址</a><br /> 
-			<a href="***">我的购物车</a><br /> 
-			<a href="***">我的收藏</a><br /> 
-			<a href="***">评价管理</a><br /> 
-			  </font> 
+			<div class="title">
+				<div style="margin-left: 16%">
+					<font style="color: red">全部功能</font>
+				</div>
+				<input type="submit" class="userxinxi_button userxinxi_inbutton"
+					value="猜我喜欢" onclick="display(1)"><br /> <input
+					type="submit" class="userxinxi_button userxinxi_inbutton"
+					value="修改密码" onclick="display(2)"><br /> <input
+					type="submit" class="userxinxi_button userxinxi_inbutton"
+					value="修改信息" onclick="display(3)"><br /> <input
+					type="submit" class="userxinxi_button userxinxi_inbutton"
+					value="收货地址" onclick="display(4)"><br /> <input
+					type="submit" class="userxinxi_button userxinxi_inbutton"
+					value="我的购物车" onclick="display(5)"
+					style="padding-right: 9%; padding-left: 9%"><br /> <input
+					type="submit" class="userxinxi_button userxinxi_inbutton"
+					value="我的收藏" onclick="display(6)"><br /> <input
+					type="submit" class="userxinxi_button userxinxi_inbutton"
+					value="评价管理" onclick="display(7)"><br />
+
+			</div>
 		</div>
 		<div class="center">
 			<div class="centertop">
 				<a href=""> #显示头像 #用户名 </a>
-				<div style="float: right; padding-top: 2%">
-					联系方式
-				</div>
+				<div style="float: right; padding-top: 2%">联系方式</div>
 			</div>
-			<div class="dibu1">
-				<b> 根据浏览，猜我喜欢</b>
+			<div class="content">
+				<div id="lb1" style="display: block;">
+					<div class="dibu1">
+						<b> 根据浏览，猜我喜欢</b>
+					</div>
+					<div class="dibu2">
+						<div class="shangping" onmouseover=Over(this);
+							onmouseout=Out(this);>
+							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
+								color="black">#商品名称</font><br />
+							<div style="float: right">
+								<font color="#595959">月销:#商品销量</font>
+							</div>
+						</div>
+						<div class="shangping" onmouseover=Over(this);
+							onmouseout=Out(this);>
+							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
+								color="black">#商品名称</font><br />
+							<div style="float: right">
+								<font color="#595959">月销:#商品销量</font>
+							</div>
+						</div>
+						<div class="shangping" onmouseover=Over(this);
+							onmouseout=Out(this);>
+							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
+								color="black">#商品名称</font><br />
+							<div style="float: right">
+								<font color="#595959">月销:#商品销量</font>
+							</div>
+						</div>
+						<div class="shangping" onmouseover=Over(this);
+							onmouseout=Out(this);>
+							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
+								color="black">#商品名称</font><br />
+							<div style="float: right">
+								<font color="#595959">月销:#商品销量</font>
+							</div>
+						</div>
+						<div class="shangping" onmouseover=Over(this);
+							onmouseout=Out(this);>
+							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
+								color="black">#商品名称</font><br />
+							<div style="float: right">
+								<font color="#595959">月销:#商品销量</font>
+							</div>
+						</div>
+						<div class="shangping" onmouseover=Over(this);
+							onmouseout=Out(this);>
+							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
+								color="black">#商品名称</font><br />
+							<div style="float: right">
+								<font color="#595959">月销:#商品销量</font>
+							</div>
+						</div>
+						<div class="clearfloat"></div>
+					</div>
+				</div>
+				<!-- 第二个div -->
+				<div id="lb2" style="display: none">
+
+					<div
+						style="width: 95.4%; margin-top: 2%; color: #FDE938; background-color: #F30408; padding-top: 1%; padding-bottom: 1%; font-family: FangSong">
+						<font size="5px">修改密码</font>
+					</div>
+					<form action="User_updatePassword.action" method="post"
+						onsubmit="return dealsubmit1()">
+						<div class="updateps">
+							<div style="margin-left: 15.6%; margin-top: 1%; float: left;">
+								<b>旧密码: </b><input type="password" id="jiups" name="jiups"
+									onblur="update_jiups2()" onfocus="update_jiups1()"
+									placeholder="输入旧密码校验身份">
+							</div>
+
+							<div id="update1"
+								style="margin-top: 1%; float: left; color: red; width: 29%; text-align: center;"></div>
+							<div class="clear"></div>
+
+							<div style="margin-left: 15.6%; margin-top: 1%; float: left;">
+								<b>新密码: </b><input type="password" id="newps1" name="newps1"
+									onblur="update_xinps2()" onfocus="update_xinps1()"
+									placeholder="5-20位数字,字母">
+							</div>
+
+							<div id="update2"
+								style="margin-top: 1%; float: left; color: red; width: 29%; text-align: center;"></div>
+							<div class="clear"></div>
+
+							<div style="margin-left: 12.6%; margin-top: 1%; float: left;">
+								<b>确认密码:</b> <input type="password" id="queps" name="queps"
+									onblur="update_queps2()" onfocus="update_queps1()"
+									placeholder="密码要跟新密码一致">
+							</div>
+
+							<div id="tip3"
+								style="margin-top: 1%; float: left; color: red; width: 29%; text-align: center;"></div>
+							<div class="clear"></div>
+							<div class="update_anniu">
+
+								<input type="submit" class="update_button" id="zhuce" value="提交">
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- 第三个div -->
+				<div id="lb3" style="display: none">
+					<form action="userxinxi.jsp" method="post"
+						enctype="multipart/form-data" name="HtmlFileForm"
+						onsubmit="return dealsubmit2()">
+						<div
+							style="width: 95.4%; margin-top: 2%; color: white; background-color: black; padding-top: 1%; padding-bottom: 1%;">
+							<font size="5px">修改用户信息</font>
+						</div>
+						<div
+							style="text-align: center; padding-top: 2%; padding-bottom: 2%; line-height: 200%; border: 1px solid #e3e197; background: #ffffdd; width: 95.4%;">
+							<div style="float: left; margin-left: 32%">
+								<b>真实姓名:</b><input type="text" id="name" name="name"
+									onblur="name2()" onfocus="name1()" placeholder="姓名1-10位">
+							</div>
+							<div id="tip1" class="updateuser_jsdiv"></div>
+							<div class="clear"></div>
+
+							<div style="float: left; margin-left: 32%">
+								<b>电话号码:</b><input type="text" id="phone" name="phone"
+									onblur="phone2()" onfocus="phone1()" placeholder="手机号码">
+							</div>
+							<div id="tip2" class="updateuser_jsdiv"></div>
+							<div class="clear"></div>
+
+							<div style="float: left; margin-left: 32%">
+								<b>上传头像:</b> <span id='uploadSpan'> <input type="file"
+									name="file" id="file" unselectable="on"
+									onchange='checkFileType(this.value);' />
+								</span>
+							</div>
+							<div class="clear"></div>
+							<input type="submit" class="updateuser_button" id="zhuce"
+								value="提交">
+
+						</div>
+					</form>
+				</div>
+				<!-- 第四个div -->
+				<div id="lb4" style="display: none">
+					<form action="userxinxi.jsp" method="post"
+						onsubmit="return dealsubmit3()">
+						<div class="update_dizhi">
+							<div
+								style="width: 95.4%; color: #014d7f; background-color: LightCyan; padding-top: 1%; padding-bottom: 1%;">
+								<font size="5px">收货地址</font>
+							</div>
+							<div style="color: orange; padding-bottom: 2%; padding-top: 2%;">
+								新增收货地址</div>
+							<div>
+								省：<select id="cmbProvince"></select> 市：<select id="cmbCity"></select>
+								区：<select id="cmbArea"></select>
+								<script type="text/javascript">
+    addressInit('cmbProvince', 'cmbCity', 'cmbArea', '北京', '市辖区', '东城区');
+    addressInit('Select1', 'Select2', 'Select3');
+</script>
+							</div>
+							<div style="margin-top: 2%">
+								<div class="update_dizhidiv">
+									详细地址:<input type="text" id="dizhi" name="dizhi"
+										placeholder="请输入详细地址,例如小区,楼栋号等信息 " onblur="pwdcat()"
+										onfocus="dizhi()"
+										style="width: 78%; height: 25px; margin-left: 2%">
+								</div>
+								<div id="tip5" class="updatedizhi_jsdiv"></div>
+								<div class="clear"></div>
+								<div class="update_dizhidiv">
+									收货人姓名:<input type="text" id="update_dizhiname"
+										name="update_dizhiname" placeholder="2-8位字符" onblur="nameid()"
+										onfocus="users()"
+										style="width: 75.5%; height: 25px; margin-left: 0.5%">
+								</div>
+								<div id="tip4" class="updatedizhi_jsdiv"></div>
+								<div class="clear"></div>
+								<div class="update_dizhidiv">
+									手机号码:<input type="text" name="dizhiphone" id="dizhiphone"
+										placeholder="收件人的手机号码" onblur="YZphone()" onfocus="phone()"
+										style="width: 78%; height: 25px; margin-left: 2%">
+								</div>
+								<div id="tip6" class="updatedizhi_jsdiv"></div>
+								<div class="clear"></div>
+								<input type="submit" class="contsubmit">
+							</div>
+							<div
+								style="width: 95.4%; color: #014d7f; background-color: LightCyan; padding-top: 1%; padding-bottom: 1%; margin-top: 3%;">
+								<font size="5px">已保存n条地址</font>
+							</div>
+
+							<table style="width: 95.4%; margin-top: 4%" cellspacing="0">
+								<tr style="background-color: #ebecf0;">
+									<td class="update_one">收货人</td>
+									<td class="update_one">详细地址</td>
+									<td class="update_one">电话/手机</td>
+									<td class="update_one">操作</td>
+								</tr>
+								<tr>
+									<td class="update_one">#收货人</td>
+									<td class="update_one">#详细地址</td>
+									<td class="update_one">#电话/手机</td>
+									<td class="update_one"><a href="****">修改</a> | <a
+										href="****">删除</a></td>
+								</tr>
+								<tr>
+									<td class="update_one">#收货人</td>
+									<td class="update_one">#详细地址</td>
+									<td class="update_one">#电话/手机</td>
+									<td class="update_one"><a href="****">修改</a> | <a
+										href="****">删除</a></td>
+								</tr>
+							</table>
+						</div>
+					</form>
+				</div>
+				<!-- 第五个div -->
+				<div id="lb5" style="display: none">购物车页面</div>
+				<!-- 第六个div -->
+				<div id="lb6" style="display: none">我的收藏</div>
+				<!-- 第七个div -->
+				<div id="lb7" style="display: none">评价页面</div>
 			</div>
-			<div class="dibu2">
-				<div class="shangping" onmouseover=Over(this); onmouseout=Out(this);>
-					#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-						color="black">#商品名称</font><br />
-					<div style="float: right">
-						<font color="#595959">月销:#商品销量</font>
-					</div>
-				</div>
-				<div class="shangping" onmouseover=Over(this); onmouseout=Out(this);>
-					#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-						color="black">#商品名称</font><br />
-					<div style="float: right">
-						<font color="#595959">月销:#商品销量</font>
-					</div>
-				</div>
-				<div class="shangping" onmouseover=Over(this); onmouseout=Out(this);>
-					#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-						color="black">#商品名称</font><br />
-					<div style="float: right">
-						<font color="#595959">月销:#商品销量</font>
-					</div>
-				</div>
-				<div class="shangping" onmouseover=Over(this); onmouseout=Out(this);>
-					#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-						color="black">#商品名称</font><br />
-					<div style="float: right">
-						<font color="#595959">月销:#商品销量</font>
-					</div>
-				</div>
-				<div class="shangping" onmouseover=Over(this); onmouseout=Out(this);>
-					#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-						color="black">#商品名称</font><br />
-					<div style="float: right">
-						<font color="#595959">月销:#商品销量</font>
-					</div>
-				</div>
-				<div class="shangping" onmouseover=Over(this); onmouseout=Out(this);>
-					#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-						color="black">#商品名称</font><br />
-					<div style="float: right">
-						<font color="#595959">月销:#商品销量</font>
-					</div>
-				</div>
-				<div class="clearfloat"></div>
-			</div>
+
 		</div>
 		<div class="right">
 			<div class="shang">我的日历</div>

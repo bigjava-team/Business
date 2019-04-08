@@ -90,7 +90,7 @@ CREATE TABLE `categorysecond` (
 
 LOCK TABLES `categorysecond` WRITE;
 /*!40000 ALTER TABLE `categorysecond` DISABLE KEYS */;
-INSERT INTO `categorysecond` VALUES (1,'oppo',1),(2,'1',1);
+INSERT INTO `categorysecond` VALUES (1,'oppo',1),(2,'vivo',1);
 /*!40000 ALTER TABLE `categorysecond` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,12 +162,13 @@ CREATE TABLE `comment` (
   `comment` varchar(255) NOT NULL,
   `u_id` int(11) DEFAULT NULL,
   `p_id` int(11) DEFAULT NULL,
+  `commentDate` datetime DEFAULT NULL,
   PRIMARY KEY (`com_id`),
   KEY `FK38A5EE5FAC71ABAE` (`u_id`),
   KEY `FK38A5EE5FE7217C83` (`p_id`),
   CONSTRAINT `FK38A5EE5FAC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
   CONSTRAINT `FK38A5EE5FE7217C83` FOREIGN KEY (`p_id`) REFERENCES `product` (`p_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,6 +177,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` VALUES (1,'fhdasf',1,15,NULL),(2,'fdad',1,16,NULL),(3,'dfa',1,17,NULL),(4,'dfa',1,18,NULL),(5,'fdawr',1,19,NULL),(6,'ergfd',1,20,NULL),(7,'hffh',1,21,NULL),(8,'ytgff',1,22,NULL),(9,'ytrr',1,23,NULL),(10,'gfj',1,24,NULL),(11,'tew',1,19,NULL),(12,'fght',1,19,NULL),(13,'trey',1,20,NULL),(14,'ytrj',1,20,NULL),(15,'jety',1,20,NULL),(16,'twrt',1,18,NULL),(17,'twgf',1,17,NULL),(18,'hfhfdh',1,16,NULL),(19,'hfg',1,24,NULL);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,8 +192,11 @@ CREATE TABLE `images` (
   `img_id` int(11) NOT NULL AUTO_INCREMENT,
   `img_path` varchar(255) NOT NULL,
   `p_id` int(11) DEFAULT NULL,
+  `pAge_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`img_id`),
   KEY `FKB95A8278E7217C83` (`p_id`),
+  KEY `FKB95A827887D3E09E` (`pAge_id`),
+  CONSTRAINT `FKB95A827887D3E09E` FOREIGN KEY (`pAge_id`) REFERENCES `productage` (`pAge_id`),
   CONSTRAINT `FKB95A8278E7217C83` FOREIGN KEY (`p_id`) REFERENCES `product` (`p_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -219,10 +224,11 @@ CREATE TABLE `merchant` (
   `m_time` datetime NOT NULL,
   `m_is_freeze` int(11) NOT NULL,
   `u_id` int(11) DEFAULT NULL,
+  `notice` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`m_id`),
   KEY `FKE1E1C9C8AC71ABAE` (`u_id`),
   CONSTRAINT `FKE1E1C9C8AC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +237,7 @@ CREATE TABLE `merchant` (
 
 LOCK TABLES `merchant` WRITE;
 /*!40000 ALTER TABLE `merchant` DISABLE KEYS */;
-INSERT INTO `merchant` VALUES (1,'sun',NULL,'2019-03-25 09:36:30',1,1),(2,'sun',NULL,'2019-03-25 19:21:07',1,1);
+INSERT INTO `merchant` VALUES (1,'sun',NULL,'2019-03-25 09:36:30',1,1,'热情载客舟迎风扬帆，诚信便民店喜庆开业我们用热忱的心和负责的态度竭诚为您服务。');
 /*!40000 ALTER TABLE `merchant` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -256,7 +262,7 @@ CREATE TABLE `orderitem` (
   CONSTRAINT `FKE8B2AB6197342528` FOREIGN KEY (`o_id`) REFERENCES `orders` (`o_id`),
   CONSTRAINT `FKE8B2AB61AC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
   CONSTRAINT `FKE8B2AB61E7217C83` FOREIGN KEY (`p_id`) REFERENCES `product` (`p_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -265,6 +271,7 @@ CREATE TABLE `orderitem` (
 
 LOCK TABLES `orderitem` WRITE;
 /*!40000 ALTER TABLE `orderitem` DISABLE KEYS */;
+INSERT INTO `orderitem` VALUES (1,1,2000,1,26,NULL),(2,1,2800,1,23,NULL);
 /*!40000 ALTER TABLE `orderitem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -319,12 +326,13 @@ CREATE TABLE `product` (
   `p_freeze` int(11) NOT NULL,
   `cs_id` int(11) NOT NULL,
   `m_id` int(11) DEFAULT NULL,
+  `p_repertory` int(11) NOT NULL,
   PRIMARY KEY (`p_id`),
   KEY `FKED8DCCEFB2EE4401` (`cs_id`),
   KEY `FKED8DCCEFBE59A0B0` (`m_id`),
   CONSTRAINT `FKED8DCCEFB2EE4401` FOREIGN KEY (`cs_id`) REFERENCES `categorysecond` (`cs_id`),
   CONSTRAINT `FKED8DCCEFBE59A0B0` FOREIGN KEY (`m_id`) REFERENCES `merchant` (`m_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -333,8 +341,31 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'诺基亚',300,NULL,255,'123',0,'2019-03-25 20:20:55',3,1,1),(2,'诺基亚',300,NULL,255,'123',0,'2019-03-25 20:31:30',3,1,1),(3,'oppo20',2000,NULL,1999,'123',0,'2019-03-25 23:24:51',3,1,1),(4,'华为荣耀 ',2800,NULL,2700,'132',0,'2019-03-25 23:37:39',3,2,1),(5,'华为荣耀 23',12222,NULL,10000,'123',0,'2019-03-25 23:48:08',3,2,1),(9,'诺基亚',2666,'productImage/诺基亚_7.png',255,'sca',0,'2019-03-26 09:51:48',3,1,1),(10,'oppo27',2666,'productImage/oppo27_image017_S.png',1999,'123',0,'2019-03-27 10:34:58',3,1,1),(11,'华为荣耀 ',1341,'productImage/华为荣耀 _13.png',13,'1',0,'2019-03-27 10:56:35',3,2,1),(12,'诺基亚',131,'productImage/诺基亚_2.png',31,'31321',0,'2019-03-27 11:45:47',3,2,1),(13,'诺基亚',300,'productImage/诺基亚_4.png',255,'fda',0,'2019-03-27 11:52:22',3,1,1),(14,'诺基亚',300,'productImage/诺基亚_4.png',1999,'fa',0,'2019-03-27 11:56:33',3,1,1),(15,'荣耀',12222,'a0d20662-8dd7-4982-9087-a9e0644efce0.png',1999,'123',0,'2019-03-28 14:32:08',3,2,1);
+INSERT INTO `product` VALUES (15,'荣耀',12222,'a0d20662-8dd7-4982-9087-a9e0644efce0.png',1999,'123',30,'2019-03-28 14:32:08',3,2,1,30),(16,'诺基亚',1123,'3d9d8ad5-56ea-4086-844f-5e97e91aaae5.png',1999,'123',22,'2019-04-01 10:24:08',3,1,1,40),(17,'诺基亚note',300,'c196d158-175a-4eda-b275-612ade91d53a.png',1999,'fafda',355,'2019-04-01 10:40:47',3,1,1,55),(18,'诺基亚1',2000,'6ab9f407-d7a0-4414-baae-beff1c9f6971.png',1999,'fefaf',3344,'2019-04-01 10:41:06',3,1,1,222),(19,'vivo',12222,'1a5b3545-5874-408d-bd58-5085fbc556c9.png',10000,'fad',244,'2019-04-01 10:43:30',3,2,1,55),(20,'vivo27',20000,'c82f373e-bfc8-4305-9feb-ded5876cab54.png',18888,'fds',889,'2019-04-01 10:43:56',3,1,1,44),(21,'vivo20',2500,'290137e8-3110-48ef-84d0-19197c809598.gif',2000,'dasf',233,'2019-04-01 10:43:35',3,1,1,63),(22,'vivo1',2000,'0b26b6b8-ce5f-4e79-b620-d0e01d82c809.gif',1800,'das',455,'2019-04-01 10:44:39',3,1,1,234),(23,'vivo2',2800,'f9eabd53-c2c6-41b2-96aa-2e2770879c63.gif',2333,'fdas',66,'2019-04-01 10:44:51',3,1,1,5765),(24,'vivo3',3000,'289da618-0ba6-4116-9cd4-4b00683b9b98.gif',2666,'fgsd',77,'2019-04-01 10:45:10',3,1,1,31),(25,'vivo4',2666,'63f38105-fc59-436e-95cd-5e45862554ca.png',3222,'fds',0,'2019-04-01 15:54:33',3,2,1,324),(26,'vivo5',2000,'09c3551a-6dc0-4187-87d9-c68f5960d138.png',1777,'fasdf',0,'2019-04-01 15:54:54',3,2,1,235);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `productage`
+--
+
+DROP TABLE IF EXISTS `productage`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `productage` (
+  `pAge_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pAge` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`pAge_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `productage`
+--
+
+LOCK TABLES `productage` WRITE;
+/*!40000 ALTER TABLE `productage` DISABLE KEYS */;
+/*!40000 ALTER TABLE `productage` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -378,4 +409,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-28 14:54:57
+-- Dump completed on 2019-04-08  8:50:09

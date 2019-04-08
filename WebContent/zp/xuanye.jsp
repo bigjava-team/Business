@@ -179,7 +179,7 @@ function fn22(){
 																</td>
 					</tr>
 					<tr>
-						<td>筛选条件	</td>							
+						<td>筛选条件</td>							
 							<td  width="90%" height="10%">					
 									<form>
 										<input type="text" style="width:70%;height:100%;" id="cz">

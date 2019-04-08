@@ -1,10 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link href="${pageContext.request.contextPath}/css/admin.css" rel="stylesheet" type="text/css"/>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#search").click(function() {
+			var userRoot = $("#select option:selected").val();// 获取下拉列表的值
+			var searchText = $("#input").val();// 获取搜索文本框的值
+			var searchText2 = $("#input2").val();// 获取搜索文本框的值
+			var searchText3 = $("#input3").val();// 获取搜索文本框的值
+			window.location.href="";
+		});
+	});
+	
+</script>
 </head>
 <body id="admin_list_body">
 	<div id="admin_list_div_top">
@@ -13,21 +28,20 @@
 	
 	<!-- 根据姓名查询，若不输入，则查询全部 -->
 	<div class="input-group4">
-		<select class="input-group_select4">
+		<select id="select" class="input-group_select4">
 			<option class="option" value="0">全部</option>
 			<option class="option" value="3">编号</option>
 			<option class="option" value="2">名称</option>
-			<option class="option" value="1">月销售量</option>
 			<option class="option" value="1">是否热门</option>
 		</select>
 		<!-- 搜索框 -->
 		<input type="text" name="queryText" id="input" class="input-group_input4" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
 		
-		<input type="text" name="queryText" id="input" class="input-group_input5" placeholder="最低价格"  value="">
+		<input type="text" name="queryText" id="input2" class="input-group_input5" placeholder="最低价格"  value="">
 		<div class="input-group4_d4">
 			&nbsp; - &nbsp;
 		</div>
-		<input type="text" name="queryText" id="input" class="input-group_input6" placeholder="最高价格"  value="">
+		<input type="text" name="queryText" id="input3" class="input-group_input6" placeholder="最高价格"  value="">
 		<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
 		<button id="search" class="input-group_button4">搜索</button>
 	</div>
@@ -44,33 +58,42 @@
 			<td width="10%" align="center">进入商品</td>
 			<td width="10%" align="center">下架商品</td>
 		</tr>
-		<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-			<td align="center">1</td>
-			<td align="center">1</td>
-			<td align="center">1</td>
-			<td align="center">1</td>
-			<td align="center">1</td>
-			<td align="center">f</td>
-			<td align="center">1000000000</td>
-			<td align="center"><a href="${pageContext.request.contextPath }/admin/product/list_product.jsp">查看商品</a></td>
-			<td align="center">
-				<a>
-					<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" class="admin_merchant_pd_immg1">
-				</a>
-			</td>
-		</tr>
+		<s:iterator value="productList" var="product"  status="status" >
+			<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
+				<td align="center"><s:property value="#status.count"/></td>
+				<td align="center">${product.p_id}</td>
+				<td align="center"><img src='<s:property value='fileImageAction.urlImage'/>${product.p_image }' /></td>
+				<td align="center">${product.p_name }</td>
+				<td align="center">${product.p_price }</td>
+				<td align="center">${product.sale_volume }</td>
+				<td align="center">
+					<s:if test="product.sale_volume > 500">
+						是
+					</s:if>
+					<s:else>
+						否
+					</s:else>
+				</td>
+				<td align="center"><a href="${pageContext.request.contextPath }/admin/product/list_product.jsp">查看商品</a></td>
+				<td align="center">
+					<a href="adminProduct_adminDeleteProduct.action?product.p_id=${product.p_id}">
+						<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" class="admin_merchant_pd_immg1">
+					</a>
+				</td>
+			</tr>
+		</s:iterator>
 		
 	</table>
 	
 	<div id="admin_list_div_page">
-		第<s:property value="pageBean.page"/>页/<s:property value="pageBean.totalPage"/>页&nbsp;&nbsp;&nbsp;&nbsp;
-		<s:if test="pageBean.page != 1">
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=1">首页</a>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page-1"/>">上一页</a>
+		第<s:property value="#session.paging.presentPage"/>页/<s:property value="#session.paging.page"/>页&nbsp;&nbsp;&nbsp;&nbsp;
+		<s:if test="#session.paging.presentPage != 1">
+			<a href="${pageContext.request.contextPath }/adminProduct_adminFindAll.action?paging.presentPage=1&user.root=${session.userRoot}&searchText=${session.searchText}&merchant.m_id=0">首页</a>
+			<a href="${pageContext.request.contextPath }/adminProduct_adminFindAll.action?paging.presentPage=<s:property value="#session.paging.presentPage-1"/>&user.root=${session.userRoot}&searchText=${session.searchText}&merchant.m_id=0">上一页</a>
 		</s:if>
-		<s:if test="pageBean.page != pageBean.totalPage">
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page+1"/>">下一页</a>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.totalPage"/>">尾页</a>
+		<s:if test="#session.paging.presentPage != #session.paging.page">
+			<a href="${pageContext.request.contextPath }/adminProduct_adminFindAll.action?paging.presentPage=<s:property value="#session.paging.presentPage+1"/>&user.root=${session.userRoot}&searchText=${session.searchText}&merchant.m_id=0">下一页</a>
+			<a href="${pageContext.request.contextPath }/adminProduct_adminFindAll.action?paging.presentPage=<s:property value="#session.paging.page"/>&user.root=${session.userRoot}&searchText=${session.searchText}&merchant.m_id=0">尾页</a>
 		</s:if>
 	</div>
 	

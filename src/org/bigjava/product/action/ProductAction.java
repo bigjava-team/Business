@@ -1,14 +1,16 @@
 package org.bigjava.product.action;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.struts2.interceptor.SessionAware;
 import org.bigjava.comment.biz.CommentBiz;
 import org.bigjava.comment.entity.Comment;
 import org.bigjava.function.FileImageAction;
 import org.bigjava.function.IsEmpty;
+import org.bigjava.function.Paging;
+import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.product.biz.ProductBiz;
 import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
@@ -20,7 +22,17 @@ public class ProductAction extends ActionSupport {
 	
 	/* 商品 */
 	private Product product;
+	// 用户信息
 	private User user;
+	// 登录用户的信息
+	private User loginUser;
+	// 店铺
+	private Merchant merchant;
+	// 评论
+	private Comment comment;
+	private int commentNumber;
+	// 分页类
+	private Paging paging;
 	
 	private ProductBiz productBiz;
 	private CommentBiz commentBiz;
@@ -35,6 +47,57 @@ public class ProductAction extends ActionSupport {
 	
 	private FileImageAction fileImageAction;
 	
+	// 查询商品对应的评论
+	private List<Comment> listProductAllComment = new ArrayList<Comment>();
+	
+	public int getCommentNumber() {
+		return commentNumber;
+	}
+
+	public void setCommentNumber(int commentNumber) {
+		this.commentNumber = commentNumber;
+	}
+
+	public User getLoginUser() {
+		return loginUser;
+	}
+
+	public void setLoginUser(User loginUser) {
+		this.loginUser = loginUser;
+	}
+
+	public List<Comment> getListProductAllComment() {
+		return listProductAllComment;
+	}
+
+	public void setListProductAllComment(List<Comment> listProductAllComment) {
+		this.listProductAllComment = listProductAllComment;
+	}
+
+	public Comment getComment() {
+		return comment;
+	}
+
+	public void setComment(Comment comment) {
+		this.comment = comment;
+	}
+
+	public Paging getPaging() {
+		return paging;
+	}
+
+	public void setPaging(Paging paging) {
+		this.paging = paging;
+	}
+
+	public Merchant getMerchant() {
+		return merchant;
+	}
+
+	public void setMerchant(Merchant merchant) {
+		this.merchant = merchant;
+	}
+
 	public User getUser() {
 		return user;
 	}
@@ -121,9 +184,10 @@ public class ProductAction extends ActionSupport {
 	}
 	
 	public String showAll() {
-		System.out.println("进入首页index");
+		System.out.println("进入首页index" + loginUser);
 		/* 查询最新的商品 */
 		listProductTime = productBiz.queryProduct_time();
+		listProductTime = listProductTime.subList(0, 6);
 		
 		if (listProductTime != null && listProductTime.size()!=0) {
 			check = "获取页面值成功";
@@ -131,6 +195,7 @@ public class ProductAction extends ActionSupport {
 		
 		/* 查询最热的商品 */
 		listProductHot = productBiz.queryProduct_hot();
+		listProductHot = listProductHot.subList(0, 6);
 		/* 查询推荐的商品 */
 		List<Comment> listComment = commentBiz.queryCommentByNumberOneToTwelve();
 		System.out.println("推荐的商品" + listComment);
@@ -164,10 +229,31 @@ public class ProductAction extends ActionSupport {
 			}
 			listProduct.clear();
 		}
-		 	
+		listCommentNumber = listCommentNumber.subList(0, 12);
+		listAllCommentProduct = listAllCommentProduct.subList(0, 12);
+		
 		return SUCCESS;
 	}
 	
-	
+	// 通过商品id查询商品详情
+	public String idQueryProduct() {
+		System.out.println("进入商品详情");
+		product = productBiz.queryProduct_id(product.getP_id());
+		merchant = product.getMerchant();
+		user = merchant.getUser();
+		
+		// 查询店铺中最新的商品
+		listProductTime = productBiz.queryMerchantProduct_time(merchant.getM_id());
+		listProductTime = listProductTime.subList(0, 2);
+		
+		// 查询店铺中最热的商品
+		listProductHot = productBiz.queryMerchantProduct_hot(merchant.getM_id());
+		listProductHot = listProductHot.subList(0, 2);
+		
+		// 查询商品对应的评论
+		listProductAllComment = commentBiz.queryProductCommentNumber(product.getP_id(), paging.getPresentPage());
+		commentNumber = listProductAllComment.size();
+		return "idQueryProduct";
+	}
 
 }

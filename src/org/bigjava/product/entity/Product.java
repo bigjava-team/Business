@@ -11,6 +11,7 @@ import org.bigjava.image.entity.Images;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.orderitem.entity.Orderitem;
 import org.bigjava.orders.entity.Orders;
+import org.bigjava.productAge.entity.ProductAge;
 
 /**
  * 商品表
@@ -24,6 +25,7 @@ public class Product {
 	private String p_name;// 商品名
 	private double p_price;// 商品价格
 	private String p_image;// 商品首页图片
+	private int p_repertory;// 商品库存
 	private double market;// 市场价格
 	private String p_desc;// 商品描述
 	private int sale_volume;// 商品月售量
@@ -42,6 +44,14 @@ public class Product {
 
 	private Set<CollectProduct> setCollectProduct = new HashSet<CollectProduct>();// 指向CollectProduct类
 	
+	public int getP_repertory() {
+		return p_repertory;
+	}
+
+	public void setP_repertory(int p_repertory) {
+		this.p_repertory = p_repertory;
+	}
+
 	public String getP_image() {
 		return p_image;
 	}
@@ -173,11 +183,8 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [p_id=" + p_id + ", p_name=" + p_name + ", p_price=" + p_price + ", p_image=" + p_image
-				+ ", market=" + market + ", p_desc=" + p_desc + ", sale_volume=" + sale_volume + ", p_date=" + p_date
-				+ ", p_freeze=" + p_freeze + ", categorySecond=" + categorySecond + ", merchant=" + merchant + "]";
+				+ ", p_repertory=" + p_repertory + ", market=" + market + ", p_desc=" + p_desc + ", sale_volume="
+				+ sale_volume + ", p_date=" + p_date + ", p_freeze=" + p_freeze + "]";
 	}
-
-	
-	
 
 }

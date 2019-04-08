@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,19 +11,28 @@
 <link href="css/cart.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
-	$(function(){
+	function minus(id, productMoney) {
 		var jian = $(".cart_d4_d2_d5_d1_d1_a1").text();
-		var jia = $(".cart_d4_d2_d5_d1_d2_a1").text();
-		var input = $(".cart_d4_d2_d5_d1_input").val();
-		$(".cart_d4_d2_d5_d1_d1_a1").click(function(){
-			/* $(".cart_d4_d2_d5_d1_input").val(input * 1 - 1); */
-			if (input > 1 ) {
-				$(".cart_d4_d2_d5_d1_input").attr("value", input * 1 - 1);
-			}
-		});
-	});
+		var input = $("#cart_d4_d2_d5_d1_input_"+id).val();
+		if (input > 1 ) {
+			$("#cart_d4_d2_d5_d1_input_"+id).attr("value", input * 1 - 1);
+			var input = $("#cart_d4_d2_d5_d1_input_"+id).val();
+			var money = productMoney*input;
+			$("#cart_d4_d2_d6_"+id).text("¥"+money);
+		}
+	}
 	
-	
+	function add(id, productMoney) {
+		var jia = $(".cart_d4_d2_d5_d1_d2_a2").text();
+		/* String next = "#cart_d4_d2_d5_d1_input_"+id; */
+		var input = $("#cart_d4_d2_d5_d1_input_"+id).val();
+		if (input < 20 ) {
+			$("#cart_d4_d2_d5_d1_input_"+id).attr("value", input * 1 + 1);
+			var input = $("#cart_d4_d2_d5_d1_input_"+id).val();
+			var money = productMoney*input;
+			$("#cart_d4_d2_d6_"+id).text("¥"+money);
+		}
+	}
 	
 	/* $(function(){
 		$(".cart_d6_d2_a1").mouseover(function(){
@@ -38,28 +48,36 @@
 		});
 	});
 	
-	$(function(){
+	/* $(function(){
 		$(".cart_d4_d2_d7_a1_jquery1").hover(function(){
 			$(".cart_d4_d2_d7_a1_jquery1").css("color","#FF4400").css("text-decoration", "underline");
 		}, function(){
 			$(".cart_d4_d2_d7_a1_jquery1").css("color","#3C3C3C").css("text-decoration", "none");
 		});
-	});
+	}); */
 	
-	$(function(){
+	function Over(id) {
+		$("#"+id).css("color","#FF4400").css("text-decoration", "underline");
+	}
+	
+	function Out(id) {
+		$("#"+id).css("color","#3C3C3C").css("text-decoration", "none");
+	}
+	
+	/* $(function(){
 		$(".cart_d4_d2_d7_a1_jquery2").hover(function(){
 			$(".cart_d4_d2_d7_a1_jquery2").css("color","#FF4400").css("text-decoration", "underline");
 		}, function(){
 			$(".cart_d4_d2_d7_a1_jquery2").css("color","#3C3C3C").css("text-decoration", "none");
 		});
-	});
+	}); */
 </script>
 
 </head>
 <body id="cart_body">
 	<div class="cart_d1">
 		<div class="cart_d1_d1">
-			尊敬的：用户昵称 您好!
+			尊敬的：${loginUser.username }您好!
 		</div>
 		<div class="cart_d1_d2">
 			<ul class="cart_d1_d2_ul1">
@@ -119,91 +137,53 @@
 				操作
 			</div>
 		</div>
-		<div class="cart_d4_d2">
-			<div class="cart_d4_d2_d1">
-				<img class="cart_d4_d2_d1_img1" alt="商品图片" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="70%">
-			</div>
-			
-			<div class="cart_d4_d2_d2">
-				<div class="cart_d4_d2_d2_d1">
-					男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套
+		<s:iterator value="listOrderitem" var="listOrderitems">
+			<div class="cart_d4_d2">
+				<div class="cart_d4_d2_checkbox">
+					<input type="checkbox" id="" name="check"/>
 				</div>
-			</div>
-			
-			<div class="cart_d4_d2_d3">
-				颜色：红
-			</div>
-			
-			<div class="cart_d4_d2_d4">
-				<font class="cart_d4_d2_d4_font1">¥100.00</font><br />
-				<font class="cart_d4_d2_d4_font2">¥100.00</font>
-			</div>
-			
-			<div class="cart_d4_d2_d5">
-				<div class="cart_d4_d2_d5_d1">
-					<div class="cart_d4_d2_d5_d1_d1">
-						<a class="cart_d4_d2_d5_d1_d1_a1" href="#">-</a>
-					</div>
-					<input class="cart_d4_d2_d5_d1_input" type="text" value="10"/>
-					<div class="cart_d4_d2_d5_d1_d2">
-						<a class="cart_d4_d2_d5_d1_d2_a1" href="#">+</a>
+				<div class="cart_d4_d2_d1">
+					<img class="cart_d4_d2_d1_img1" alt="商品图片" src="${fileImageAction.urlImage }${listOrderitems.product.p_image }" height="50px">
+				</div>
+				
+				<div class="cart_d4_d2_d2">
+					<div class="cart_d4_d2_d2_d1">
+						${listOrderitems.product.p_name }
 					</div>
 				</div>
-			</div>
-			
-			<div class="cart_d4_d2_d6">
-				¥1000000.00
-			</div>
-			
-			<div class="cart_d4_d2_d7">
-				<a class="cart_d4_d2_d7_a1 cart_d4_d2_d7_a1_jquery1" href="">移入收藏夹</a><br />
-				<a class="cart_d4_d2_d7_a1 cart_d4_d2_d7_a1_jquery2" href="">移除</a>
-			</div>
-			
-		</div>
-		
-		<div class="cart_d4_d2">
-			<div class="cart_d4_d2_d1">
-				<img class="cart_d4_d2_d1_img1" alt="商品图片" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="70%">
-			</div>
-			
-			<div class="cart_d4_d2_d2">
-				<div class="cart_d4_d2_d2_d1">
-					男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套
+				
+				<div class="cart_d4_d2_d3">
+					颜色：红
 				</div>
-			</div>
-			
-			<div class="cart_d4_d2_d3">
-				颜色：红
-			</div>
-			
-			<div class="cart_d4_d2_d4">
-				<font class="cart_d4_d2_d4_font1">¥100.00</font><br />
-				<font class="cart_d4_d2_d4_font2">¥100.00</font>
-			</div>
-			
-			<div class="cart_d4_d2_d5">
-				<div class="cart_d4_d2_d5_d1">
-					<div class="cart_d4_d2_d5_d1_d1">
-						<a class="cart_d4_d2_d5_d1_d1_a1" href="#">-</a>
-					</div>
-					<input class="cart_d4_d2_d5_d1_input" type="text" value="10"/>
-					<div class="cart_d4_d2_d5_d1_d2">
-						<a class="cart_d4_d2_d5_d1_d2_a1" href="#">+</a>
+				
+				<div class="cart_d4_d2_d4">
+					<font class="cart_d4_d2_d4_font1">¥${listOrderitems.product.market }</font><br />
+					<font class="cart_d4_d2_d4_font2">¥${listOrderitems.product.p_price }</font>
+				</div>
+				
+				<div class="cart_d4_d2_d5">
+					<div class="cart_d4_d2_d5_d1">
+						<div class="cart_d4_d2_d5_d1_d1">
+							<a class="cart_d4_d2_d5_d1_d1_a1" onclick="minus(${listOrderitems.product.p_id },${listOrderitems.subtotal })" href="javascript:;">-</a>
+						</div>
+						<input class="cart_d4_d2_d5_d1_input" id="cart_d4_d2_d5_d1_input_${listOrderitems.product.p_id }" type="text" value="${listOrderitems.count }"/>
+						<div class="cart_d4_d2_d5_d1_d2">
+							<a class="cart_d4_d2_d5_d1_d2_a2" onclick="add(${listOrderitems.product.p_id },${listOrderitems.subtotal })" href="javascript:;">+</a>
+						</div>
 					</div>
 				</div>
+				
+				<div class="cart_d4_d2_d6" id="cart_d4_d2_d6_${listOrderitems.product.p_id }">
+					¥${listOrderitems.product.p_price }
+				</div>
+				
+				<div class="cart_d4_d2_d7">
+					<a class="cart_d4_d2_d7_a1 cart_d4_d2_d7_a1_jquery1" onmouseover="Over(this.id)" onmouseout="Out(this.id)" id="cart_d4_d2_d7_a1_jquery1_${listOrderitems.product.p_id }" href="javascript:;">移入收藏夹</a><br />
+					<a class="cart_d4_d2_d7_a1 cart_d4_d2_d7_a1_jquery2" onmouseover="Over(this.id)" onmouseout="Out(this.id)" id="cart_d4_d2_d7_a1_jquery2_${listOrderitems.product.p_id }" href="orderitem_removeOrderitem?method=post&loginUser.username=${loginUser.username }&product.p_id=${listOrderitems.product.p_id }&paging.presentPage=0&orderitem.item_id=${listOrderitems.item_id }">移除</a>
+				</div>
+				
 			</div>
-			
-			<div class="cart_d4_d2_d6">
-				¥1000000.00
-			</div>
-			
-			<div class="cart_d4_d2_d7">
-				<a class="cart_d4_d2_d7_a1 cart_d4_d2_d7_a1_jquery1" href="">移入收藏夹</a><br />
-				<a class="cart_d4_d2_d7_a1 cart_d4_d2_d7_a1_jquery2" href="">移除</a>
-			</div>
-			
-		</div>
+		</s:iterator>
 		
 	</div>
 	<div class="cart_d5">

@@ -12,7 +12,6 @@
 						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 		
 	<!-- 设置dbcp连接数据库的方式 -->	
-	
 	<context:property-placeholder location="classpath:datasource.properties" />
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="user" value="${user}"></property><!-- 数据库连接的用户名 -->
@@ -33,7 +32,7 @@
 				hibernate.dialect=org.hibernate.dialect.MySQL5Dialect<!-- 设置数据库方言 -->
 				hibernate.show_sql=true<!-- 显示数据库语句 -->
 				hibernate.format_sql=true<!-- 使数据库语句自动换行 -->
-				<!-- hibernate.hbm2ddl.auto=create --><!-- 自动建表时变为修改表 -->
+				<!-- hibernate.hbm2ddl.auto=update --><!-- 自动建表时变为修改表 -->
 			</value>
 		</property>
 	</bean>
@@ -70,9 +69,12 @@
 	<bean name="productBiz" class="org.bigjava.product.biz.impl.ProductBizImpl" autowire="byName" />
 	<bean name="productAction" class="org.bigjava.product.action.ProductAction" autowire="byName" scope="prototype" />
 	<bean name="merchantProductAction" class="org.bigjava.product.action.MerchantProductAction" autowire="byName" scope="prototype" />
+	<bean name="adminProductAction" class="org.bigjava.product.action.AdminAction" autowire="byName" scope="prototype" />
 	
 	<!-- 订单项 -->
 	<bean name="orderItemDao" class="org.bigjava.orderitem.dao.impl.OrderItemDaoImpl" autowire="byName" />
+	<bean name="orderItemBiz" class="org.bigjava.orderitem.biz.impl.OrderItemBizImpl" autowire="byName" />
+	<bean name="orderItemAction" class="org.bigjava.orderitem.action.OrderItemAction" autowire="byName" />
 	
 	<!-- 订单 -->
 	<bean name="ordersDao" class="org.bigjava.orders.dao.impl.OrdersDaoImpl" autowire="byName" />

@@ -19,14 +19,11 @@ public class OrderItemDaoImpl extends HibernateDaoSupport implements OrderItemDa
 
 	// 添加订单项
 	@Override
-	public void addOrderItem(Orderitem orderItem, User user, Product product) {// orderItem为添加的订单项的内容、user为添加订单项的用户、product为订单项的商品
+	public void addOrderItem(Orderitem orderitem) {// orderItem为添加的订单项的内容、user为添加订单项的用户、product为订单项的商品
 		// TODO Auto-generated method stub
 		System.out.println("开始执行addOrderItem方法");
 		
-		orderItem.setUser(user);// 获取连接用户的外键
-		orderItem.setProduct(product);// 获取连接商品的外键
-		
-		this.getHibernateTemplate().save(orderItem);// 添加订单项
+		this.getHibernateTemplate().save(orderitem);// 添加订单项
 	}
 
 	// 删除订单项
