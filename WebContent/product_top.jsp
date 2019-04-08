@@ -25,14 +25,14 @@
 		
 		<div class=wenziz2>
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
-				<a href="User_gotoUserIndex.action?user.username=${loginUser.username }">我的主页</a>
+				<a href="User_gotoUserIndex.action?method=post&user.username=${loginUser.username }">我的主页</a>
 			</s:if>
 			
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<a href="Merchant_gotoMerchant.action">我的店铺</a>
 			</s:if>
-			<a>购物车</a> 
-			<a>收藏夹</a> 
+			<a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0">购物车</a> 
+			<a href="javascript:;">收藏夹</a> 
 			<a>商品分类</a>
 			<a>卖家中心</a> 
 			<s:if test="user != null">

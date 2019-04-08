@@ -156,6 +156,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		List<User> listUser = this.getHibernateTemplate().find("from User where username = ?", username);
 		if (listUser.size() == 0) {
 			System.out.println("没有此用户");
+			return null;
 		}
 		return listUser.get(0);
 	}

@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<!--板块3-->
 	<div class="contentthree ">
-	<%-- <%@ include file="xuanye.jsp"%> --%>
+	<%@ include file="xuanye.jsp"%>
 
 	</div>
 	<!--板块4-->

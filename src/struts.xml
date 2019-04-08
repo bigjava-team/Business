@@ -127,6 +127,7 @@
 		<action name="orderitem_*" class="orderItemAction" method="{1}">
 			<result name="loginError">/user/login.jsp</result>
 			<result name="addOrderItemAndQueryOrderItem">/cart.jsp</result>
+			<result name="queryUserOrderitem">/cart.jsp</result>
 		</action>
 		
 	</package>

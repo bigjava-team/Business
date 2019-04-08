@@ -35,9 +35,11 @@
 	function addOrderitem() {
 		var username = '${loginUser.username}';
 		var p_id = '${product.p_id }';
+		if (username == null || username == "") {
+			alert("请先登录账号");
+		}
 		var f = document.getElementById("product_div1_div2_form");
 		f.action =  f.action + "?loginUser.username="+username+"&product.p_id="+ p_id +"&orderitem.count=1"+"&paging.presentPage=0";
-		alert(f.action);
 	}
 </script>
 
