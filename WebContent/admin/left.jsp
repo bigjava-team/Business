@@ -16,7 +16,7 @@
 			d.add('01',-1,'光光商城管理系统');
 			
 			d.add('0101','01','用户管理');
-			d.add('010101','0101','用户详情','${pageContext.request.contextPath}/User_showAllUsers.action?user.root=0&paging.presentPage=0','','mainFrame');
+			d.add('010101','0101','用户详情','${pageContext.request.contextPath}/User_showAll.action?user.root=0&paging.presentPage=0','','mainFrame');
 			
 			d.add('0102','01','店铺管理');
 			d.add('010201','0102','店铺详情','${pageContext.request.contextPath}/admin/merchant/list.jsp','','mainFrame');
@@ -28,7 +28,7 @@
 			d.add('010401','0104','二级分类详情','${pageContext.request.contextPath}/CategorySecond_findAllBySearchName.action?paging.presentPage=0','','mainFrame');
 			
 			d.add('0105','01','商品管理');
-			d.add('010501','0105','商品详情','${pageContext.request.contextPath}/admin/product/list.jsp','','mainFrame');
+			d.add('010501','0105','商品详情','${pageContext.request.contextPath}/adminProduct_adminFindAll.action?paging.presentPage=0&user.root=0&merchant.m_id=0','','mainFrame');
 			d.add('010502','0105','商品过滤','${pageContext.request.contextPath}/admin/product/filterProduct.jsp','','mainFrame');
 			
 			d.add('0106','01','订单管理');

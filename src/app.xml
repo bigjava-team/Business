@@ -69,6 +69,7 @@
 	<bean name="productBiz" class="org.bigjava.product.biz.impl.ProductBizImpl" autowire="byName" />
 	<bean name="productAction" class="org.bigjava.product.action.ProductAction" autowire="byName" scope="prototype" />
 	<bean name="merchantProductAction" class="org.bigjava.product.action.MerchantProductAction" autowire="byName" scope="prototype" />
+	<bean name="adminProductAction" class="org.bigjava.product.action.AdminAction" autowire="byName" scope="prototype" />
 	
 	<!-- 订单项 -->
 	<bean name="orderItemDao" class="org.bigjava.orderitem.dao.impl.OrderItemDaoImpl" autowire="byName" />

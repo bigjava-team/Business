@@ -229,6 +229,8 @@ public class ProductAction extends ActionSupport {
 			}
 			listProduct.clear();
 		}
+		listCommentNumber = listCommentNumber.subList(0, 12);
+		listAllCommentProduct = listAllCommentProduct.subList(0, 12);
 		
 		return SUCCESS;
 	}
