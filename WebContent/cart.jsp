@@ -179,7 +179,7 @@
 				
 				<div class="cart_d4_d2_d7">
 					<a class="cart_d4_d2_d7_a1 cart_d4_d2_d7_a1_jquery1" onmouseover="Over(this.id)" onmouseout="Out(this.id)" id="cart_d4_d2_d7_a1_jquery1_${listOrderitems.product.p_id }" href="javascript:;">移入收藏夹</a><br />
-					<a class="cart_d4_d2_d7_a1 cart_d4_d2_d7_a1_jquery2" onmouseover="Over(this.id)" onmouseout="Out(this.id)" id="cart_d4_d2_d7_a1_jquery2_${listOrderitems.product.p_id }" href="javascript:;">移除</a>
+					<a class="cart_d4_d2_d7_a1 cart_d4_d2_d7_a1_jquery2" onmouseover="Over(this.id)" onmouseout="Out(this.id)" id="cart_d4_d2_d7_a1_jquery2_${listOrderitems.product.p_id }" href="orderitem_removeOrderitem?method=post&loginUser.username=${loginUser.username }&product.p_id=${listOrderitems.product.p_id }&paging.presentPage=0&orderitem.item_id=${listOrderitems.item_id }">移除</a>
 				</div>
 				
 			</div>

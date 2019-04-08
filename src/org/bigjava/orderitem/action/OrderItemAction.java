@@ -142,4 +142,17 @@ public class OrderItemAction {
 		listOrderitem = orderItemBiz.queryAllOrderItem(loginUser, paging);
 		return "queryUserOrderitem";
 	}
+	
+	// 删除订单项
+	public String removeOrderitem() {
+		System.out.println("开始移除订单项");
+		loginUser = userBiz.queryUsernameUser(loginUser.getUsername());
+		int item_id = orderitem.getItem_id();
+		orderitem = new Orderitem(loginUser, product, null);
+		orderitem.setItem_id(item_id);
+		orderItemBiz.deleteOrderItem(orderitem);
+		
+		queryUserOrderitem();
+		return "removeOrderitem";
+	}
 }
