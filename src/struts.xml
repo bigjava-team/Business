@@ -111,11 +111,19 @@
 			<result name="getProductByIdSuccess">/merchant/product/edit.jsp</result>
 			<result name="findAll">/merchant/product/list.jsp</result>
 		</action>
+		
+		<!-- 店铺的action -->
+		<action name="Merchant_*" class="merchantAction" method="{1}">
+			<!-- 跳转到店铺首页 -->
+			<result name="gotoMerchant">user/dianpuzhiye.jsp</result>
+		</action>
 
+		<!-- 商品的action -->
 		<action name="Product_*" class="productAction" method="{1}">
 			<result name="idQueryProduct">/product.jsp</result>
 		</action>
 		
+		<!-- 添加购物车，并且查询购物车的内容 -->
 		<action name="orderitem_*" class="orderItemAction" method="{1}">
 			<result name="loginError">/user/login.jsp</result>
 			<result name="addOrderItemAndQueryOrderItem">/cart.jsp</result>

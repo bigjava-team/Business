@@ -33,7 +33,7 @@
 				hibernate.dialect=org.hibernate.dialect.MySQL5Dialect<!-- 设置数据库方言 -->
 				hibernate.show_sql=true<!-- 显示数据库语句 -->
 				hibernate.format_sql=true<!-- 使数据库语句自动换行 -->
-				<!-- hibernate.hbm2ddl.auto=create --><!-- 自动建表时变为修改表 -->
+			 hibernate.hbm2ddl.auto=update <!-- 自动建表时变为修改表 -->
 			</value>
 		</property>
 	</bean>
