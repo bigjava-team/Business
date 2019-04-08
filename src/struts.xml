@@ -45,7 +45,7 @@
 			<result name="registerSuccess">/user/login.jsp </result>
 
 			<!-- 模糊搜索分页查询页面 -->
-			<result name="showAllSuccess">/admin/user/list.jsp</result>
+			<result name="showAllUserSuccess">/admin/user/list.jsp</result>
 
 			<!-- 冻结用户，解冻用户 -->
 			<result name="updateUserStatesSuccess" type="redirectAction">User_showAll?user.root=0&amp;paging.presentPage=0

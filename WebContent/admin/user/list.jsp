@@ -13,7 +13,7 @@
 		$("#search").click(function() {
 			var userRoot = $("#select option:selected").val();// 获取下拉列表的值
 			var searchText = $("#input").val();// 获取搜索文本框的值
-			window.location.href="User_showAll?user.root="+userRoot+"&searchText="+searchText+"&paging.presentPage=0";
+			window.location.href="User_showAll.action?user.root="+userRoot+"&searchText="+searchText+"&paging.presentPage=0";
 		});
 	});
 	
