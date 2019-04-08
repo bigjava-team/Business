@@ -4,11 +4,17 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!--搜素栏 -->
+<html>
+  <head>
+             <title>页面布局</title>      
+        <!--css文件的引用-->
+  </head>
+  <!--搜素栏 -->
 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/xuanxiangxiahua.css">
-<style type="text/css">
+<link rel="stylesheet" href="css/menu_bottom.css">
+  <style type="text/css">
 /*索搜*/
 * {box-sizing: border-box;}
 #container {width: 50%;height: 50%; margin: 0 auto;}
@@ -39,28 +45,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 /*第三版块*/
 .contentthree{ background:#ffffff; width:80%; height:35%; border:2px solid #F0F0F0; margin:0 auto}
 /*第四版块*/
-.contentfour{ background:#ffffff; width:260px; height:150%; border:2px solid #ffffff; margin:0 0 0 100  }
+.contentfour1{ background:#ffffff; width:17.5%; height:150%; float:left;border:2px solid #ffffff; margin:0 0 0 6.5%  }
 /*第五版块*/
-.content{ background:#ffffff; width:74%; height:150%; border:2px solid #ffffff; margin:-74.2% 0 0 360}
+.content{ background:#ffffff; width:74%; height:150%;  border:2px solid #ffffff; margin:0 0 0 24%}
 /*节目1*/
-.lanmusi{ background:#fff; width:16%; height:25%; float:left;border:2px solid #FF9900; margin:2 3 0 3}
+.lanmusi{ background:#fff; width:16%; height:25%;float:left; border:2px solid #FF9900; margin:2 3 0 3}
 /*节目2*/
-.lanmuwu{ background:#fff; width:100%; height:25%; float:left;border:2px solid #FF9900; margin:0 auto}
-
+.lanmuwu{ background:#fff; width:100%; height:25%;border:2px solid #FF9900; margin:0 auto}
 
 </style>
 
-<html>
-  <head>
-             <title>页面布局</title>      
-        <!--css文件的引用-->
-  </head>
 <body>
 	<!--板块1-->
 	<div class="contentone">
 		<div class=wenziz>中国大陆 亲，请登录免费注册我的光光</div>
-		<div class=wenziz2>
-			<ul class="nav">
+		<div id="d" class=wenziz2>
+			<ul  class="nav">
 				<li><a href="#">网站导航</a>
 					<ul class="drop-down-content">
 						<li><a href="#">下架商品</a></li>
@@ -103,11 +103,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<!--板块3-->
 	<div class="contentthree ">
-	<%-- <%@ include file="xuanye.jsp"%> --%>
+		<%@ include file="xuanye.jsp"%>
 
 	</div>
 	<!--板块4-->
-	<div class="contentfour">
+	<div class="contentfour1">
 		<!--2-->
 		<div class="lanmuwu">
 			<div class="空的div">
@@ -167,8 +167,78 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			￥ <b style="color:#F00" >25.5</b> 货源上海
 		</div>
 		<!-- 2结束 -->
+		<!--2-->
+		<div class="lanmusi">
+			<div class="空的div">
+				<img src="images/0.jpg" height="60%" width="100%" />
+			</div>
+			<!--栏目内容-->
+			<div class="wenziz3">非常好的鞋子</div><p>
+			￥ <b style="color:#F00" >25.5</b> 货源上海
+		</div>
+		<!-- 2结束 -->
+		<!--2-->
+		<div class="lanmusi">
+			<div class="空的div">
+				<img src="images/0.jpg" height="60%" width="100%" />
+			</div>
+			<!--栏目内容-->
+			<div class="wenziz3">非常好的鞋子</div><p>
+			￥ <b style="color:#F00" >25.5</b> 货源上海
+		</div>
+		<!-- 2结束 -->
+		<!--2-->
+		<div class="lanmusi">
+			<div class="空的div">
+				<img src="images/0.jpg" height="60%" width="100%" />
+			</div>
+			<!--栏目内容-->
+			<div class="wenziz3">非常好的鞋子</div><p>
+			￥ <b style="color:#F00" >25.5</b> 货源上海
+		</div>
+		<!-- 2结束 -->
+		<!--2-->
+		<div class="lanmusi">
+			<div class="空的div">
+				<img src="images/0.jpg" height="60%" width="100%" />
+			</div>
+			<!--栏目内容-->
+			<div class="wenziz3">非常好的鞋子</div><p>
+			￥ <b style="color:#F00" >25.5</b> 货源上海
+		</div>
+		<!-- 2结束 -->
+		<!--2-->
+		<div class="lanmusi">
+			<div class="空的div">
+				<img src="images/0.jpg" height="60%" width="100%" />
+			</div>
+			<!--栏目内容-->
+			<div class="wenziz3">非常好的鞋子</div><p>
+			￥ <b style="color:#F00" >25.5</b> 货源上海
+		</div>
+		<!-- 2结束 -->
+		<!--2-->
+		<div class="lanmusi">
+			<div class="空的div">
+				<img src="images/0.jpg" height="60%" width="100%" />
+			</div>
+			<!--栏目内容-->
+			<div class="wenziz3">非常好的鞋子</div><p>
+			￥ <b style="color:#F00" >25.5</b> 货源上海
+		</div>
+		<!-- 2结束 -->
+		<!--2-->
+		<div class="lanmusi">
+			<div class="空的div">
+				<img src="images/0.jpg" height="60%" width="100%" />
+			</div>
+			<!--栏目内容-->
+			<div class="wenziz3">非常好的鞋子</div><p>
+			￥ <b style="color:#F00" >25.5</b> 货源上海
+		</div>
+		<!-- 2结束 -->
 
 	</div>
-
+		<%@include file="menu_bottom.jsp"%>
 </body>
 </html>
