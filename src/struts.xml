@@ -142,7 +142,7 @@
 		</action>
 		
 		<action name="addr_*" class="addrAction" method="{1}" >
-			<result name="addAddressSuccess">/user/userxinxi.jsp</result>
+			<result name="addAddressSuccess" type="redirectAction">addr_findAllAddr?method=post&amp;loginUser.username=${user.username}&amp;paging.presentPage=0</result>
 			<result name="findAllAddrSuccess">/user/userxinxi.jsp</result>
 			<result name="delAddrSuccess">/user/userxinxi.jsp</result>
 		</action>

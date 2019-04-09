@@ -335,7 +335,7 @@ ol .current {
 			style="background-color: #D0D0D0; padding-bottom: 1%; padding-top: 1%;">
 			<div
 				style="float: left; border-right: 1px solid black; padding-left: 12%; padding-right: 2%;">
-				${user.username};
+			${loginUser.username}
 			</div>
 			<div style="float: left; padding-left: 2%; padding-right: 2%;">
 				<a href="???">退出</a>
