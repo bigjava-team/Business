@@ -31,7 +31,7 @@ CREATE TABLE `addr` (
   PRIMARY KEY (`a_id`),
   KEY `FK2D9BF1AC71ABAE` (`u_id`),
   CONSTRAINT `FK2D9BF1AC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,14 +179,17 @@ CREATE TABLE `orderitem` (
   `u_id` int(11) NOT NULL,
   `p_id` int(11) NOT NULL,
   `o_id` int(11) DEFAULT NULL,
+  `pAge_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`item_id`),
   KEY `FKE8B2AB61AC71ABAE` (`u_id`),
   KEY `FKE8B2AB6197342528` (`o_id`),
   KEY `FKE8B2AB61E7217C83` (`p_id`),
+  KEY `FKE8B2AB6187D3E09E` (`pAge_id`),
+  CONSTRAINT `FKE8B2AB6187D3E09E` FOREIGN KEY (`pAge_id`) REFERENCES `productage` (`pAge_id`),
   CONSTRAINT `FKE8B2AB6197342528` FOREIGN KEY (`o_id`) REFERENCES `orders` (`o_id`),
   CONSTRAINT `FKE8B2AB61AC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
   CONSTRAINT `FKE8B2AB61E7217C83` FOREIGN KEY (`p_id`) REFERENCES `product` (`p_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,7 +203,7 @@ CREATE TABLE `orders` (
   `o_id` int(11) NOT NULL AUTO_INCREMENT,
   `orderNumber` varchar(255) NOT NULL,
   `total` double NOT NULL,
-  `ordertim` datetime NOT NULL,
+  `ordertime` datetime DEFAULT NULL,
   `state` int(11) NOT NULL,
   `u_id` int(11) DEFAULT NULL,
   `a_id` int(11) DEFAULT NULL,
@@ -209,7 +212,7 @@ CREATE TABLE `orders` (
   KEY `FKC3DF62E5AC71ABAE` (`u_id`),
   CONSTRAINT `FKC3DF62E5AC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
   CONSTRAINT `FKC3DF62E5E740EB8E` FOREIGN KEY (`a_id`) REFERENCES `addr` (`a_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,7 +276,7 @@ CREATE TABLE `user` (
   `image` varchar(255) DEFAULT NULL,
   `u_is_freeze` int(11) DEFAULT NULL,
   PRIMARY KEY (`u_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -285,4 +288,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-08  8:45:49
+-- Dump completed on 2019-04-09  8:45:51

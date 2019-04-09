@@ -31,7 +31,7 @@ CREATE TABLE `addr` (
   PRIMARY KEY (`a_id`),
   KEY `FK2D9BF1AC71ABAE` (`u_id`),
   CONSTRAINT `FK2D9BF1AC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `addr` (
 
 LOCK TABLES `addr` WRITE;
 /*!40000 ALTER TABLE `addr` DISABLE KEYS */;
+INSERT INTO `addr` VALUES (1,'彭昕 ','123456789','北京市辖区东城区第三个',1),(2,'谢梦成','45678913','北京市辖区东城区发大水',1),(4,'谢梦成','45678913','云南昆明市西山区大法',1);
 /*!40000 ALTER TABLE `addr` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,14 +256,17 @@ CREATE TABLE `orderitem` (
   `u_id` int(11) NOT NULL,
   `p_id` int(11) NOT NULL,
   `o_id` int(11) DEFAULT NULL,
+  `pAge_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`item_id`),
   KEY `FKE8B2AB61AC71ABAE` (`u_id`),
   KEY `FKE8B2AB6197342528` (`o_id`),
   KEY `FKE8B2AB61E7217C83` (`p_id`),
+  KEY `FKE8B2AB6187D3E09E` (`pAge_id`),
+  CONSTRAINT `FKE8B2AB6187D3E09E` FOREIGN KEY (`pAge_id`) REFERENCES `productage` (`pAge_id`),
   CONSTRAINT `FKE8B2AB6197342528` FOREIGN KEY (`o_id`) REFERENCES `orders` (`o_id`),
   CONSTRAINT `FKE8B2AB61AC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
   CONSTRAINT `FKE8B2AB61E7217C83` FOREIGN KEY (`p_id`) REFERENCES `product` (`p_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -271,7 +275,7 @@ CREATE TABLE `orderitem` (
 
 LOCK TABLES `orderitem` WRITE;
 /*!40000 ALTER TABLE `orderitem` DISABLE KEYS */;
-INSERT INTO `orderitem` VALUES (1,1,2000,1,26,NULL),(2,1,2800,1,23,NULL);
+INSERT INTO `orderitem` VALUES (5,1,3000,1,24,NULL,NULL),(6,1,2000,1,26,NULL,NULL),(7,1,2666,1,25,NULL,NULL),(11,1,2000,1,26,NULL,NULL),(12,1,20000,1,20,NULL,NULL);
 /*!40000 ALTER TABLE `orderitem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,7 +290,7 @@ CREATE TABLE `orders` (
   `o_id` int(11) NOT NULL AUTO_INCREMENT,
   `orderNumber` varchar(255) NOT NULL,
   `total` double NOT NULL,
-  `ordertim` datetime NOT NULL,
+  `ordertime` datetime DEFAULT NULL,
   `state` int(11) NOT NULL,
   `u_id` int(11) DEFAULT NULL,
   `a_id` int(11) DEFAULT NULL,
@@ -295,7 +299,7 @@ CREATE TABLE `orders` (
   KEY `FKC3DF62E5AC71ABAE` (`u_id`),
   CONSTRAINT `FKC3DF62E5AC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
   CONSTRAINT `FKC3DF62E5E740EB8E` FOREIGN KEY (`a_id`) REFERENCES `addr` (`a_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -304,6 +308,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (1,'201904090144111554745451611',22000,'2019-04-09 01:44:12',1,1,NULL);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -387,7 +392,7 @@ CREATE TABLE `user` (
   `image` varchar(255) DEFAULT NULL,
   `u_is_freeze` int(11) DEFAULT NULL,
   PRIMARY KEY (`u_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -396,7 +401,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'sunrise','123','男','彭昕','23','123',1,NULL,1);
+INSERT INTO `user` VALUES (1,'sunrise','123','男','彭昕','23','123',1,NULL,1),(2,'sun','456','男','ss','34','534',3,NULL,1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -409,4 +414,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-08  8:50:09
+-- Dump completed on 2019-04-09  8:45:30
