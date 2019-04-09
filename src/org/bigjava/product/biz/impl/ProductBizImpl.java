@@ -78,4 +78,10 @@ public class ProductBizImpl implements ProductBiz {
 		return productDao.queryMerchantProduct_hot(m_id);
 	}
 
+	//œ¬º‹…Ã∆∑
+	@Override
+	public void deleteProduct(Product product) {
+		productDao.deleteProduct(product);
+	}
+
 }

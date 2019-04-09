@@ -146,7 +146,7 @@
 					<input type="checkbox" id="" name="check" value="${listOrderitems.item_id }" />
 				</div>
 				<div class="cart_d4_d2_d1">
-					<img class="cart_d4_d2_d1_img1" alt="商品图片" src="${fileImageAction.urlImage }${listOrderitems.product.p_image }" width="70%">
+					<img class="cart_d4_d2_d1_img1" alt="商品图片" src="${fileImageAction.urlImage }${listOrderitems.product.p_image }" height="50px">
 				</div>
 				
 				<div class="cart_d4_d2_d2">

@@ -20,6 +20,11 @@ public interface ProductBiz {
 	public Product queryProduct_id(int p_id);
 	
 	/**
+	 * 下架商品
+	 */
+	public void deleteProduct(Product product);
+	
+	/**
 	 * 修改商品内容
 	 */
 	public void updateProduct(Product product, Product updateProduct);

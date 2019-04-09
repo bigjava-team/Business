@@ -97,18 +97,28 @@
 	background: #FBFCFF;
 }
 
-.cart_d4 .cart_d4_d2 .cart_d4_d2_d1{
-	width: 10%;
+.cart_d4 .cart_d4_d2 .cart_d4_d2_checkbox{
+	width: 2%;
 	float: left;
+	margin-left: 1%;
+	padding-top: 0px;
+	margin-top: -0.4%;
+}
+
+.cart_d4 .cart_d4_d2 .cart_d4_d2_d1{
+	width: 15%;
+	float: left;
+	text-align: center;
+	overflow: hidden;
 }
 
 .cart_d4 .cart_d4_d2 .cart_d4_d2_d1 .cart_d4_d2_d1_img1{
-	margin-left: 15%;
+	/* margin-left: 15%; */
 }
 
 .cart_d4 .cart_d4_d2 .cart_d4_d2_d2{
 	float: left;
-	width: 31%;
+	width: 23%;
 	padding-left: 1%;
 	padding-right: 1%;
 }

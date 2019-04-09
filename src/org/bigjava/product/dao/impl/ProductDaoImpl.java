@@ -39,6 +39,14 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 		System.out.println(product);
 		return product;
 	}
+	
+	/**
+	 * 下架商品
+	 */
+	public void deleteProduct(Product product) {
+		System.out.println("开始执行下架商品deleteProduct方法");
+		this.getHibernateTemplate().delete(product);
+	}
 
 	// 修改商品内容
 	@Override
