@@ -9,6 +9,11 @@
 		window.location.href = "User_close.action";
 	}
 	</script>
+	<style type="text/css" >
+		a {
+			text-decoration: none;
+		}
+	</style>
 	<!--板块1-->
 	<div class="contentone">
 		<div class=wenziz>
@@ -25,7 +30,7 @@
 		
 		<div class=wenziz2>
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
-				<a href="User_gotoUserIndex.action?method=post&user.username=${loginUser.username }">我的主页</a>
+				<a href="User_gotoUserIndex.action?method=post&loginUser.username=${loginUser.username }">我的主页</a>
 			</s:if>
 			
 			<s:if test='loginUser.username != null && loginUser.username != ""'>

@@ -16,7 +16,7 @@ public interface OrdersDao {
 	public void addOrders(Orders orders, User user, Addr addr);
 	
 	/**
-	 * É¾³ý¶©µ¥±í(ÍË»õ)
+	 * É¾³ý¶©µ¥(ÍË»õ)
 	 */
 	public void deleteOrders(Orders orders);
 	
@@ -36,7 +36,7 @@ public interface OrdersDao {
 	public int queryAllOrdersNumber(User user);
 	
 	/**
-	 * Í¨¹ý¶©µ¥±àºÅ²åÐð¶©µ¥
+	 * Í¨¹ý¶©µ¥±àºÅ²éÑ¯¶©µ¥
 	 */
 	public Orders queryOrders_orderNumber(String orderNumber);
 

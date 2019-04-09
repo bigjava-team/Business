@@ -1,6 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -344,7 +344,8 @@ body {
 	color: orange;
 }
 </style>
-<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jsAddress.js"></script>
 <script type="text/javascript">
 	window.onload = function() {
 		setInterval(function() {
@@ -610,7 +611,7 @@ body {
 		  return true;
 		   }
 	}
-	var html=document.getElementById('uploadSpan').innerHTML;   
+	
 	  
 	function resetFile(){   
 		var file = document.getElementById('file');
@@ -736,6 +737,14 @@ function YZphone(){
 		   }
 }
 function dealsubmit3(){
+	
+	var cmbProvince = $("#cmbProvince").val();
+	var cmbCity = $("#cmbCity").val();
+	var cmbArea = $("#cmbArea").val();
+	var dizhi = $("#dizhi").val(); 
+	var address = cmbProvince + cmbCity + cmbArea + dizhi;
+	$("input[name='address']").val(address);
+	
 	if(pwdcat()==false  || nameid()==false|| YZphone()==false){
 		return false;
 	}else{
@@ -749,7 +758,7 @@ function dealsubmit3(){
 	<div class="head">
 		<!--板块1-->
 		<div class="contentone">
-			<div class=wenziz>中国大陆 欢迎您：${user.username};</div>
+			<div class=wenziz>中国大陆 欢迎您：${loginUser.username};</div>
 			<div class=wenziz2>
 				<a>我的店铺</a> <a>购物车</a> <a>收藏夹</a> <a>商品分类</a> <a>卖家中心</a> <a
 					href="#" onclick="remove()">退出</a>
@@ -928,22 +937,24 @@ function dealsubmit3(){
 				</div>
 				<!-- 第四个div -->
 				<div id="lb4" style="display: none">
-					<form action="userxinxi.jsp" method="post"
+					<form action="addr_addAddress" method="post"
 						onsubmit="return dealsubmit3()">
 						<div class="update_dizhi">
-							<div
-								style="width: 95.4%; color: #014d7f; background-color: LightCyan; padding-top: 1%; padding-bottom: 1%;">
+							<input type="hidden" name="address" />
+							<input type="hidden" name="loginUser.username" value="${loginUser.username }" />
+							<div style="width: 95.4%; color: #014d7f; background-color: LightCyan; padding-top: 1%; padding-bottom: 1%;">
 								<font size="5px">收货地址</font>
 							</div>
 							<div style="color: orange; padding-bottom: 2%; padding-top: 2%;">
 								新增收货地址</div>
 							<div>
-								省：<select id="cmbProvince"></select> 市：<select id="cmbCity"></select>
+								省：<select id="cmbProvince"></select> 
+								市：<select id="cmbCity"></select>
 								区：<select id="cmbArea"></select>
 								<script type="text/javascript">
-    addressInit('cmbProvince', 'cmbCity', 'cmbArea', '北京', '市辖区', '东城区');
-    addressInit('Select1', 'Select2', 'Select3');
-</script>
+								    addressInit('cmbProvince', 'cmbCity', 'cmbArea', '北京', '市辖区', '东城区');
+								    addressInit('Select1', 'Select2', 'Select3');
+								</script>
 							</div>
 							<div style="margin-top: 2%">
 								<div class="update_dizhidiv">
@@ -956,14 +967,14 @@ function dealsubmit3(){
 								<div class="clear"></div>
 								<div class="update_dizhidiv">
 									收货人姓名:<input type="text" id="update_dizhiname"
-										name="update_dizhiname" placeholder="2-8位字符" onblur="nameid()"
+										name="a_name" placeholder="2-8位字符" onblur="nameid()"
 										onfocus="users()"
 										style="width: 75.5%; height: 25px; margin-left: 0.5%">
 								</div>
 								<div id="tip4" class="updatedizhi_jsdiv"></div>
 								<div class="clear"></div>
 								<div class="update_dizhidiv">
-									手机号码:<input type="text" name="dizhiphone" id="dizhiphone"
+									手机号码:<input type="text" name="a_phone" id="dizhiphone"
 										placeholder="收件人的手机号码" onblur="YZphone()" onfocus="phone()"
 										style="width: 78%; height: 25px; margin-left: 2%">
 								</div>
@@ -973,30 +984,27 @@ function dealsubmit3(){
 							</div>
 							<div
 								style="width: 95.4%; color: #014d7f; background-color: LightCyan; padding-top: 1%; padding-bottom: 1%; margin-top: 3%;">
-								<font size="5px">已保存n条地址</font>
+								<font size="5px">已保存${number }条地址</font>
 							</div>
 
 							<table style="width: 95.4%; margin-top: 4%" cellspacing="0">
 								<tr style="background-color: #ebecf0;">
 									<td class="update_one">收货人</td>
-									<td class="update_one">详细地址</td>
-									<td class="update_one">电话/手机</td>
+									<td class="update_one">收货地址</td>
+									<td class="update_one">联系电话</td>
 									<td class="update_one">操作</td>
 								</tr>
-								<tr>
-									<td class="update_one">#收货人</td>
-									<td class="update_one">#详细地址</td>
-									<td class="update_one">#电话/手机</td>
-									<td class="update_one"><a href="****">修改</a> | <a
-										href="****">删除</a></td>
-								</tr>
-								<tr>
-									<td class="update_one">#收货人</td>
-									<td class="update_one">#详细地址</td>
-									<td class="update_one">#电话/手机</td>
-									<td class="update_one"><a href="****">修改</a> | <a
-										href="****">删除</a></td>
-								</tr>
+								<s:iterator value="listAddr" var="listAddrs">
+									<tr style="background-color: #ebecf0;">
+										<td class="update_one">${listAddrs.a_name }</td>
+										<td class="update_one">${listAddrs.address }</td>
+										<td class="update_one">${listAddrs.a_phone }</td>
+										<td class="update_one">
+											<a href="javascript:;" >修改</a>/
+											<a href="addr_delAddr?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0&a_id=${listAddrs.a_id }" >删除</a>
+										</td>
+									</tr>
+								</s:iterator>
 							</table>
 						</div>
 					</form>

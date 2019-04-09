@@ -33,7 +33,7 @@
 				hibernate.dialect=org.hibernate.dialect.MySQL5Dialect<!-- 设置数据库方言 -->
 				hibernate.show_sql=true<!-- 显示数据库语句 -->
 				hibernate.format_sql=true<!-- 使数据库语句自动换行 -->
-				<!-- hibernate.hbm2ddl.auto=update --><!-- 自动建表时变为修改表 -->
+				hibernate.hbm2ddl.auto=update<!-- 自动建表时变为修改表 -->
 			</value>
 		</property>
 	</bean>
@@ -64,6 +64,8 @@
 	
 	<!-- 收货地址 -->
 	<bean name="addrDao" class="org.bigjava.addr.dao.impl.AddrDaoImpl" autowire="byName" />
+	<bean name="addrBiz" class="org.bigjava.addr.biz.impl.AddrBizImpl" autowire="byName" />
+	<bean name="addrAction" class="org.bigjava.addr.action.AddrAction" autowire="byName" scope="prototype" />
 	
 	<!-- 商品 -->
 	<bean name="productDao" class="org.bigjava.product.dao.impl.ProductDaoImpl" autowire="byName" />
@@ -78,6 +80,8 @@
 	
 	<!-- 订单 -->
 	<bean name="ordersDao" class="org.bigjava.orders.dao.impl.OrdersDaoImpl" autowire="byName" />
+	<bean name="ordersBiz" class="org.bigjava.orders.biz.impl.OrdersBizImpl" autowire="byName" />
+	<bean name="ordersAction" class="org.bigjava.orders.action.OrdersAction" autowire="byName" />
 	
 	<!-- 评论 -->
 	<bean name="commentDao" class="org.bigjava.comment.dao.impl.CommentDaoImpl" autowire="byName" />

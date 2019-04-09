@@ -17,6 +17,7 @@ public class UserAction extends ActionSupport {
 
 	private IsEmpty isEmpty = new IsEmpty();
 	private User user;
+	private User loginUser;
 	private UserBiz userBiz;
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
@@ -30,6 +31,14 @@ public class UserAction extends ActionSupport {
 
 	// 接收验证码 struts2 中的属性驱动
 	private String checkcode;
+	
+	public User getLoginUser() {
+		return loginUser;
+	}
+
+	public void setLoginUser(User loginUser) {
+		this.loginUser = loginUser;
+	}
 
 	public void setCheckcode(String checkcode) {
 		this.checkcode = checkcode;

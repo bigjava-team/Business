@@ -1,7 +1,10 @@
 package org.bigjava.addr.action;
 
+import java.util.List;
+
 import org.bigjava.addr.biz.AddrBiz;
 import org.bigjava.addr.entity.Addr;
+import org.bigjava.function.Paging;
 import org.bigjava.user.biz.UserBiz;
 import org.bigjava.user.entity.User;
 
@@ -12,6 +15,51 @@ public class AddrAction extends ActionSupport implements ModelDriven<Addr> {
 
 	// 注入Addr实体
 	private Addr addr = new Addr();
+	private User loginUser;
+	// 注入用户User实体
+	private User user;
+	// 注入Paging实体
+	private Paging paging;
+	
+	// 注入UserBiz
+	private UserBiz userBiz;
+	// 注入addrBiz
+	private AddrBiz addrBiz;
+	
+	private List<Addr> listAddr;
+	private int number;
+	
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
+	public List<Addr> getListAddr() {
+		return listAddr;
+	}
+
+	public void setListAddr(List<Addr> listAddr) {
+		this.listAddr = listAddr;
+	}
+
+	public User getLoginUser() {
+		return loginUser;
+	}
+
+	public Paging getPaging() {
+		return paging;
+	}
+
+	public void setPaging(Paging paging) {
+		this.paging = paging;
+	}
+
+	public void setLoginUser(User loginUser) {
+		this.loginUser = loginUser;
+	}
 
 	@Override
 	public Addr getModel() {
@@ -19,22 +67,13 @@ public class AddrAction extends ActionSupport implements ModelDriven<Addr> {
 		return addr;
 	}
 
-	// 注入addrBiz
-	private AddrBiz addrBiz;
-
 	public void setAddrBiz(AddrBiz addrBiz) {
 		this.addrBiz = addrBiz;
 	}
 
-	// 注入用户User实体
-	private User user;
-
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	// 注入UserBiz
-	private UserBiz userBiz;
 
 	public void setUserBiz(UserBiz userBiz) {
 		this.userBiz = userBiz;
@@ -44,8 +83,11 @@ public class AddrAction extends ActionSupport implements ModelDriven<Addr> {
 	 * 添加收货地址
 	 */
 	public String addAddress() {
-		int id = user.getU_id();
-		user = userBiz.query(id);
+		System.out.println("开始添加收货地址");
+		System.out.println(loginUser);
+		System.out.println(addr);
+		
+		user = userBiz.queryUsernameUser(loginUser.getUsername());
 		
 		addrBiz.addAddr(addr, user);
 		return "addAddressSuccess";
@@ -77,6 +119,7 @@ public class AddrAction extends ActionSupport implements ModelDriven<Addr> {
 		System.out.println("addrAction...delAddr()..");
 		Addr address = addrBiz.queryAddr_id(addr.getA_id());
 		addrBiz.deleteAddr(address);
+		findAllAddr();
 		return "delAddrSuccess";
 	}
 
@@ -84,6 +127,11 @@ public class AddrAction extends ActionSupport implements ModelDriven<Addr> {
 	 * 分页查询收货地址
 	 */
 	public String findAllAddr() {
+		System.out.println("开始分页查询");
+		user = userBiz.queryUsernameUser(loginUser.getUsername());
+		number = addrBiz.queryAllAddrNumber(user);
+		paging = new Paging(paging.getPresentPage(), number, 5);
+		listAddr = addrBiz.queryAllAddr(paging, user);
 		return "findAllAddrSuccess";
 	}
 

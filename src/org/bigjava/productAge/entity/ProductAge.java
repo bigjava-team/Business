@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.bigjava.image.entity.Images;
+import org.bigjava.orderitem.entity.Orderitem;
 import org.bigjava.product.entity.Product;
 
 /**
@@ -18,6 +19,14 @@ public class ProductAge {
 	
 	private Set<Images> setImages = new HashSet<Images>();// 一对多指向商品图片表
 	
+	private Set<Orderitem> setOrderitem = new HashSet<Orderitem>();// 一对多指向订单项类
+	
+	public Set<Orderitem> getSetOrderitem() {
+		return setOrderitem;
+	}
+	public void setSetOrderitem(Set<Orderitem> setOrderitem) {
+		this.setOrderitem = setOrderitem;
+	}
 	public Set<Images> getSetImages() {
 		return setImages;
 	}

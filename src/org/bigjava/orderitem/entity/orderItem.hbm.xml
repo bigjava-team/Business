@@ -16,5 +16,7 @@
 		<many-to-one name="product" column="p_id" class="org.bigjava.product.entity.Product" not-null="true" /><!-- 多对一指向商品类 -->
 	
 		<many-to-one name="orders" column="o_id" class="org.bigjava.orders.entity.Orders" /><!-- 多对一指向Orders类，column为连接的外键 -->
+		
+		<many-to-one name="productAge" column="pAge_id" class="org.bigjava.productAge.entity.ProductAge" /><!-- 多对一指向ProductAge类，column为连接的外键 -->
 	</class>	
 </hibernate-mapping>   

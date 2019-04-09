@@ -108,7 +108,7 @@ public class TestStatement {
 		
 		Orders orders = new Orders();
 		double total = 0.0;
-		orders.setOrdertim(new Date());
+//		orders.setOrdertim(new Date());
 		
 		List<Orderitem> listOrderItem = new ArrayList<Orderitem>();// 查询到的订单项
 		

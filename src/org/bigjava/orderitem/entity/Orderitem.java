@@ -6,6 +6,7 @@ import java.util.Set;
 import org.bigjava.addr.entity.Addr;
 import org.bigjava.orders.entity.Orders;
 import org.bigjava.product.entity.Product;
+import org.bigjava.productAge.entity.ProductAge;
 import org.bigjava.user.entity.User;
 
 /**
@@ -25,6 +26,8 @@ public class Orderitem {
 	
 	private Orders orders;
 	
+	private ProductAge productAge;// 多对一指向商品颜色类
+	
 	public Orderitem() {
 		super();
 	}
@@ -34,6 +37,14 @@ public class Orderitem {
 		this.user = user;
 		this.product = product;
 		this.orders = orders;
+	}
+	
+	public ProductAge getProductAge() {
+		return productAge;
+	}
+
+	public void setProductAge(ProductAge productAge) {
+		this.productAge = productAge;
 	}
 
 	public Orders getOrders() {

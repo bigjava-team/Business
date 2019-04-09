@@ -7,6 +7,7 @@ import java.util.Set;
 import org.bigjava.addr.entity.Addr;
 import org.bigjava.orderitem.entity.Orderitem;
 import org.bigjava.product.entity.Product;
+import org.bigjava.productAge.entity.ProductAge;
 import org.bigjava.user.entity.User;
 
 /**
@@ -19,7 +20,7 @@ public class Orders {
 	private int o_id;// 订单的id
 	private String orderNumber;// 订单编号
 	private double total;// 订单的总金额
-	private Date ordertim;// 订单时间
+	private Date ordertime;// 订单时间
 	private int state;// 订单的状态(1为未支付，2为已支付、3是订单已发货、4为订单结束)
 	
 	private Addr addr;// 多对一指向收货地址类
@@ -64,12 +65,12 @@ public class Orders {
 		this.total = total;
 	}
 
-	public Date getOrdertim() {
-		return ordertim;
+	public Date getOrdertime() {
+		return ordertime;
 	}
 
-	public void setOrdertim(Date ordertim) {
-		this.ordertim = ordertim;
+	public void setOrdertime(Date ordertime) {
+		this.ordertime = ordertime;
 	}
 
 	public int getState() {
@@ -98,7 +99,7 @@ public class Orders {
 
 	@Override
 	public String toString() {
-		return "Orders [o_id=" + o_id + ", orderNumber=" + orderNumber + ", total=" + total + ", ordertim=" + ordertim
+		return "Orders [o_id=" + o_id + ", orderNumber=" + orderNumber + ", total=" + total + ", ordertime=" + ordertime
 				+ ", state=" + state + "]";
 	}
 
