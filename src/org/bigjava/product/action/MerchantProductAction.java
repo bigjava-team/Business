@@ -141,7 +141,7 @@ public class MerchantProductAction extends ActionSupport {
 			searchText = "";
 		}
 		// 根据搜索的内容与权限查询可搜索的总条数
-		int totalNumber = productBiz.queryProductNumber(searchText, merchant.getM_id());
+		int totalNumber = productBiz.queryProductNumber(searchText, merchant.getM_id(), 0);
 		// 当前页数
 		int presentPage = paging.getPresentPage();
 		System.out.println("当前页" + presentPage);
@@ -149,7 +149,7 @@ public class MerchantProductAction extends ActionSupport {
 		paging = new Paging(presentPage, totalNumber, 2);
 
 		// 接收搜索到的商品列表
-		productList = productBiz.queryAllProduct(searchText, paging, merchant.getM_id());
+		productList = productBiz.queryAllProduct(searchText, paging, merchant.getM_id(), 0);
 
 		// 将参数存入session中
 		System.out.println(productList);
