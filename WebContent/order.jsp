@@ -14,6 +14,16 @@
 		cursor: pointer;
 	}
 </style>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+<script type="text/javascript">
+	function payOrders() {
+		var productName = $(".cart_d4_d2_d2_d1").text();// 商品名称
+		var total = '${orders.total }';// 支付的金额
+		var orderNumber = '${orders.orderNumber }';// 订单的编号
+		var addrId = $("input[name='dizhi']:checked").val();
+		window.location.href = "paymentOrders_payOrders?method=post&out_trade_no="+orderNumber+"&total_amount="+total+"&subject="+productName+"&addr.a_id="+addrId;
+	}
+</script>
 </head>
 <body id="cart_body">
 	<div class="cart_d1">
@@ -157,7 +167,7 @@
 			</div>
 			<div style="color: #3C3C3C; margin-left: 8%; padding-bottom: 8px;">
 				<s:iterator value="listAddr" var="listAddrs">
-					<input type="radio" name="dizhi" value="dizhi1">${listAddrs.address } (${listAddrs.user.username } 收) ${listAddrs.user.phone }<br />
+					<input type="radio" name="dizhi" value="${listAddrs.a_id }">${listAddrs.address } (${listAddrs.a_name } 收) ${listAddrs.a_phone }<br />
 				</s:iterator>
 			</div>
 		</div>
@@ -232,7 +242,7 @@
 		<div style="float: left; font-size: 14px;">
 			<a href="" style="text-decoration: none;">☚ 返回购物车</a>
 		</div>
-		<div style="">
+		<div onclick="payOrders()">
 			<font style="background: #FF4400; padding: 8px 14%; color: #FCFCFC" class="buy">提交订单</font>
 		</div>
 	</div>

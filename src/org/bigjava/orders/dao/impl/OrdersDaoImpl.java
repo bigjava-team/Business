@@ -88,14 +88,22 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 		return totalNumber;
 	}
 
-	// 通过订单编号分页查询订单
+	// 通过订单编号查询订单
 	@Override
 	public Orders orderNumberQueryOrders(String orderNumber) {
 		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
 		String hql = "from Orders where orderNumber = ?";
 		List<Orders> list = session.createQuery(hql).setString(0, orderNumber).list();
 		System.out.println(list.get(0));
+		session.clear();
 		return list.size() > 0 ? list.get(0) : null;
+	}
+
+	// 修改订单的状态
+	@Override
+	public void updateOrdersState(Orders orders) {
+		System.out.println("开始执行updateOrdersState方法");
+		this.getHibernateTemplate().update(orders);
 	}
 
 }

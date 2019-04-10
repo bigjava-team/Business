@@ -2,6 +2,7 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>	
+
 	<!--板块1-->
 	<div class="contentone">
 		<div class="wenziz">
