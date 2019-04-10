@@ -1,17 +1,17 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>用户个人中心</title>
+<link href="${pageContext.request.contextPath }/css/product_top.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 body {
 	margin: 0px;
 	padding: 0px;
 	overflow-x: hidden;
-	font-family: "FangSong";
 }
 
 .head {
@@ -452,7 +452,8 @@ body {
 		var div1 = document.getElementById("update1");
 		var text = document.getElementsByName("jiups").item(0).value;
 		var user = document.getElementById("jiups");
-
+		
+		
 		if (text == "" || text == null) {
 			user.className = "red";
 			div1.innerHTML = "旧密码不能为空!";
@@ -756,14 +757,7 @@ function dealsubmit3(){
 </head>
 <body>
 	<div class="head">
-		<!--板块1-->
-		<div class="contentone">
-			<div class=wenziz>中国大陆 欢迎您：${loginUser.username};</div>
-			<div class=wenziz2>
-				<a>我的店铺</a> <a>购物车</a> <a>收藏夹</a> <a>商品分类</a> <a>卖家中心</a> <a
-					href="#" onclick="remove()">退出</a>
-			</div>
-		</div>
+		<%@include file="top.jsp" %>
 	</div>
 	<div class="body">
 		<div class="left">
@@ -855,7 +849,7 @@ function dealsubmit3(){
 				<div id="lb2" style="display: none">
 
 					<div
-						style="width: 95.4%; margin-top: 2%; color: #FDE938; background-color: #F30408; padding-top: 1%; padding-bottom: 1%; font-family: FangSong">
+						style="width: 95.4%; margin-top: 2%; color: #FDE938; background-color: #F30408; padding-top: 1%; padding-bottom: 1%; ">
 						<font size="5px">修改密码</font>
 					</div>
 					<form action="User_updatePassword.action" method="post"
@@ -892,7 +886,7 @@ function dealsubmit3(){
 							<div class="clear"></div>
 							<div class="update_anniu">
 
-								<input type="submit" class="update_button" id="zhuce" value="提交">
+								<input type="submit" class="update_button" id="zhuce" value="提交"/>
 							</div>
 						</div>
 					</form>

@@ -41,6 +41,16 @@
 		var f = document.getElementById("product_div1_div2_form");
 		f.action =  f.action + "?loginUser.username="+username+"&product.p_id="+ p_id +"&orderitem.count=1"+"&paging.presentPage=0";
 	}
+	
+	/* 立即购买 */
+	function lijigoumai(){
+		window.location.href = "order.jsp";
+	}
+	
+	/* 加入购物车 */
+	function jiarucar(){
+		window.location.href = "cart.jsp";
+	}
 </script>
 
 <body id="product_body">
@@ -52,11 +62,10 @@
 				<img alt="${product.p_image }" src="${fileImageAction.urlImage }${product.p_image }" width="100%;" height="100%;">
 			</div>
 			<div id="product_div1_div1_div2">
-				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60px;" height="60px;">
-				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60px;" height="60px;">
-				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60px;" height="60px;">
-				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60px;" height="60px;">
-				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60px;" height="60px;">
+				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="60px;">
+				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="60px;">
+				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="60px;">
+				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="60px;">
 			</div>
 		</div>
 		
@@ -84,31 +93,46 @@
 			<div id="product_div1_div2_div3">
 				<div class="product_div1_div2_div3_div1">颜色: </div>
 				<div class="product_div1_div2_div3_div2">
-					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px;" height="50px;">
-					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px;" height="50px;">
-					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px;" height="50px;">
-					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px;" height="50px;">
-					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px;" height="50px;">
-					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px;" height="50px;">
+					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="50px;">
+					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="50px;">
+					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="50px;">
+					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="50px;">
 				</div>
 			</div>
+			
+			<!-- form不要删  不然样式会乱  里面的属性不要给属性值就行 -->
 			<form id="product_div1_div2_form" action="orderitem_addOrderItemAndQueryOrderItem" onsubmit="addOrderitem()" method="post">
 				<div class="product_div1_div2_form_div1">
 					<div class="product_div1_div2_form_div1_div1">数量: </div>
-					<div class="product_div1_div2_form_div1_div2">
+					<%-- <div class="product_div1_div2_form_div1_div2">
 						<select onchange="document.getElementById('input').value=this.value">
 						 	<option value="1">1</option> 
 						 	<option value="2">2</option>
 						 	<option value="3">3</option> 
 						</select>
 						<input id="input" name="input" class="iInput" value="1"> / 件
+					</div> --%>
+					
+					<div class="product_div1_div2_form_div1_div2" style="margin-left: 14%;">
+						<div style="background: #E0E0E0; margin-left: 0%; float: left; padding: 0% 2.2%; line-height: 26px; text-align: center;">
+							-
+						</div>
+						<div style="float: left; margin-left: -6.9%;">
+							<input type="text" value="1" style="margin-left: 2%; margin-top: 0px; float: left; width: 4%; height: 26px; background: #FCFCFC; border: 1px solid #D0D0D0; text-align: center; padding-right: 0.2%;">
+						</div>
+						<div style="background: #E0E0E0; margin-left: 14.32%; float: left; padding: 0% 2%; line-height: 26px; text-align: center;">
+							+
+						</div>
 					</div>
 				</div>
 				<!-- <div class="product_div1_div2_form_div2">
 					<div class="product_div1_div2_form_div2_div1" style="position: absolute; z-index: 10; background-image: url(images/product_gwc.png); background-repeat: no-repeat; background-position: 10% 8%; width: 20%; height: 25%;"></div>
 					<input class="product_div1_div2_form_div2_input1" type="submit" value="加入购物车"/>
 				</div> -->
-				<input type="submit" value="加入购物车" />
+				<div style="margin-left: 5%; margin-bottom: 3%;">
+					<input type="button" value="立即购买" onclick="lijigoumai()" style="width: 30%; height: 40px; font-weight: bold; font-size: 16px; background: #FF9224; color: #F0F0F0; margin-right: 2%" />
+					<input type="button" value="加入购物车" onclick="jiarucar()" style="width: 30%; height: 40px; font-weight: bold; font-size: 16px; background: #FF9224; color: #F0F0F0;" />
+				</div>
 			</form>
 			
 			<div class="product_div1_div2_div4">
@@ -130,14 +154,21 @@
 				</div>
 				<div class="product_div1_div3_div1_div2">
 					<h3>店铺详情</h3>
-					<div>
+					<div style="background: red; width: 80%; height: 121px; margin-top: 10%; margin-left: 9.5%;">
 						<%-- <img alt="${merchant.m_image }" src="${fileImageAction.urlImage }${merchant.m_image }" width="100%" height="100%"> --%>
+						<img alt="${merchant.m_image }" src="images/products/bbb006.jpg" height="121px">
 					</div>
-					<div>
-						掌柜: ${user.u_name }
+					<div style="font-size: 14px; margin-left: 9.5%; color: #3C3C3C; margin-top: 3%;">
+						本店掌柜: 
 					</div>
-					<div style="padding-bottom: 8%;">
-						开店时间: ${merchant.m_time }
+					<div style="font-size: 14px; margin-left: 45%; color: #FD5809; font-weight: bold;">
+						${user.u_name }
+					</div>
+					<div style="font-size: 14px; margin-left: 9.5%; color: #3C3C3C; margin-top: 2%;">
+						开店时间:
+					</div>
+					<div style="font-size: 14px; margin-left: 45%; color: #FD5809; font-weight: bold; margin-bottom: 6%;">
+						${merchant.m_time }
 					</div>
 					
 				</div>
@@ -146,7 +177,7 @@
 				<div class="product_div1_div3_div2_div1">
 					本店公告
 				</div>
-				<div class="product_div1_div3_div2_div2">
+				<div class="product_div1_div3_div2_div2" style="padding-top: 2%;">
 					<!-- &emsp;&emsp;热情载客舟迎风扬帆，诚信便民店喜庆开业我们用热忱的心和负责的态度竭诚为您服务。<br />
 					&emsp;&emsp;您用满意的微笑让我们做得更好，我们一起让这个地方变成和谐而充满生机的家园。 -->
 					&emsp;&emsp;${merchant.notice }
@@ -178,17 +209,18 @@
 			<hr />
 			<div class="product_div2_leftDiv_d5">
 				<s:iterator value="listProductTime" var="listProductTimes">
-					<div class="product_div2_leftDiv_d5_d1">
-						<div class="product_div2_leftDiv_d5_d1_d1">
-							<img alt="${listProductTimes.p_image }"  src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="60%">
+					<div class="product_div2_leftDiv_d5_d1" style="padding-bottom: 12px;">
+						<div class="product_div2_leftDiv_d5_d1_d1" style="height: 70px;">
+							<img alt="${listProductTimes.p_image }"  src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="60%" style="position: relative; top: 50%; left: 30%; transform: translate(-50%,-50%);">
 						</div>
 						<div class="product_div2_leftDiv_d5_d1_d2">
-							<div>${listProductTimes.p_name }</div>
-							<div>${listProductTimes.p_price }</div>
+							<div style="height: 50px; overflow: hidden;">${listProductTimes.p_name }</div>
+							<div style="height: 15px;">¥${listProductTimes.p_price }</div>
 						</div>
 					</div>
-					
-					<hr />
+					<div style="background: #EEEEEE; width: 100%; height: 2px;">
+						
+					</div>
 				</s:iterator>
 			</div>
 			<hr />
@@ -201,12 +233,12 @@
 			
 			<div class="product_div2_leftDiv_d5">
 				<s:iterator value="listProductHot" var="listProductHots" >
-					<div class="product_div2_leftDiv_d5_d1">
-						<div class="product_div2_leftDiv_d5_d1_d1">
-							<img alt="${listProductHots.p_image }"  src="${fileImageAction.urlImage }${listProductHots.p_image }" width="60%">
+					<div class="product_div2_leftDiv_d5_d1" style="padding-bottom: 12px;">
+						<div class="product_div2_leftDiv_d5_d1_d1" style="background: red; height: 65px;">
+							<img alt="${listProductHots.p_image }"  src="${fileImageAction.urlImage }${listProductHots.p_image }" width="70%">
 						</div>
 						<div class="product_div2_leftDiv_d5_d1_d2">
-							<div>${listProductHots.p_name }</div>
+							<div style="height: 50px; overflow: hidden;">${listProductHots.p_name }</div>
 							<div>¥${listProductHots.p_price }</div>
 						</div>
 					</div>
@@ -236,7 +268,7 @@
 			
 			<div class="title">
 				<a class="a" href="#aa">宝贝详情</a>
-				<a class="a" href="javascript:;">用户评论${commentNumber }</a>
+				<a class="a" href="javascript:;">用户评论 ${commentNumber }</a>
 				<a class="a" href="#aa">专项服务</a>
 			</div>
 			

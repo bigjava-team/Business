@@ -451,7 +451,7 @@ td {
 }
 </style>
 
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 function showDiv() { 
 	document.getElementById("bg").style.display ="block";
