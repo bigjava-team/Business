@@ -370,14 +370,13 @@ admin_add/edit
 }
 
 .input-group3 {
-	width: 29%;
+	width: 25%;
 	height: 25px;
 	margin: 0 auto;
 	margin-top: 0px;
 	margin-bottom: 8px;
 	border: 2px solid #acd6ff;
 	padding: 0px;
-	background: red;
 	border-radius: 3px;
 	margin-left: 35%;
 }

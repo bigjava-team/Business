@@ -155,5 +155,14 @@ public class AdminAction extends ActionSupport {
 		productBiz.deleteProduct(product);
 		return "adminDeleteProduct";
 	}
+	
+	//查看商品信息
+	public String getProductById() {
+		System.out.println("进入adminAction....getProductById()");
+		product = productBiz.queryProduct_id(product.getP_id());
+		System.out.println("product" + product);
+		ActionContext.getContext().getSession().put("product", product);
+		return "getProductSuccess";
+	}
 
 }

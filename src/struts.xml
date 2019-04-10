@@ -104,6 +104,7 @@
 		<action name="adminProduct_*" class="adminProductAction" method="{1}">
 			<result name="adminFindAll">/admin/product/list.jsp</result>
 			<result name="adminDeleteProduct" type="redirectAction">adminProduct_adminFindAll?user.root=0&amp;paging.presentPage=0&amp;merchant.m_id=0 </result>
+			<result name="getProductSuccess">/admin/product/list_product.jsp </result>
 		</action>
 
 		<!-- 店铺对商品的Action -->

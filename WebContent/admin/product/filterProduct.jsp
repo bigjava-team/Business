@@ -5,6 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <link href="${pageContext.request.contextPath}/css/admin.css" rel="stylesheet" type="text/css"/>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#search").click(function() {
+			var searchText = $("#input").val();// 获取搜索文本框的值
+			window.location.href="adminProduct_";
+		});
+	});
+	
+</script>
+
+
 </head>
 <body id="admin_list_body">
 	<div id="admin_list_div_top">
@@ -13,12 +26,6 @@
 	
 	<!-- 根据姓名查询，若不输入，则查询全部 -->
 	<div class="input-group3">
-		<select class="input-group_select3">
-			<option class="option" value="0">全部</option>
-			<option class="option" value="3">管理员</option>
-			<option class="option" value="2">店长</option>
-			<option class="option" value="1">普通用户</option>
-		</select>
 		<!-- 搜索框 -->
 		<input type="text" name="queryText" id="input" class="input-group_input3" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
 		<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
@@ -34,9 +41,8 @@
 			<td width="10%" align="center">市场价格</td>
 			<td width="10%" align="center">光光价格</td>
 			<td width="11%" align="center">申请时间</td>
-			<td width="9%" align="center">商品信息</td>
-			<td width="5%" align="center">允许</td>
-			<td width="5%" align="center">阻止</td>
+			<td width="12%" align="center">商品信息</td>
+			<td width="7%" align="center">申请意见</td>
 		</tr>
 		<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
 			<td align="center">1</td>
@@ -49,9 +55,6 @@
 			<td align="center"><a href="${pageContext.request.contextPath }/admin/product/product.jsp">查看商品</a></td>
 			<td align="center">
 				同意
-			</td>
-			<td align="center">
-				拒绝
 			</td>
 		</tr>
 		

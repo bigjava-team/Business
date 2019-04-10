@@ -41,7 +41,7 @@
 			<a href="javascript:;">收藏夹</a> 
 			<a>商品分类</a>
 			<a>卖家中心</a> 
-			<s:if test="user != null">
+			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<a href="#" onclick="remove()">退出</a>
 			</s:if>
 		</div>
