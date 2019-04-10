@@ -51,12 +51,12 @@ public class OrderItemDaoImpl extends HibernateDaoSupport implements OrderItemDa
 			@Override
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {// 通过hibernateTemplate回调sessionFactory方法
 				// TODO Auto-generated method stub
-				String hql = "from Orderitem";
+				String hql = "from Orderitem where o_id = null";
 				Query query = null;
 				if (user.getRoot() == 3) {
 					query = session.createQuery(hql);// 管理员查询订单项表
 				} else {
-					hql += " where u_id = ?";
+					hql += " and u_id = ?";
 					query = session.createQuery(hql).setInteger(0, user.getU_id());// 普通用户和店长查询订单项表
 				}
 				query.setFirstResult(page.getStart());// 分页查询从哪一条开始查
@@ -121,7 +121,12 @@ public class OrderItemDaoImpl extends HibernateDaoSupport implements OrderItemDa
 		}
 		
 	}
-	
-	
+
+	// 通过订单id查询对应的订单项
+	@Override
+	public List<Orderitem> queryAllOrderitem_o_id(int o_id) {
+		// TODO Auto-generated method stub
+		return this.getHibernateTemplate().find("from Orderitem where o_id = ?", o_id);
+	}
 
 }

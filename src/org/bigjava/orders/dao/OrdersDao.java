@@ -36,8 +36,8 @@ public interface OrdersDao {
 	public int queryAllOrdersNumber(User user);
 	
 	/**
-	 * 通过订单编号查询订单
+	 * 通过订单编号进行分页查询
 	 */
-	public Orders queryOrders_orderNumber(String orderNumber);
+	public Orders orderNumberQueryOrders(String orderNumber);
 
 }

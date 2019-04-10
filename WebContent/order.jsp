@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +9,16 @@
 <link href="css/cart.css" rel="stylesheet" type="text/css">
 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="css/menu_bottom.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	.buy:hover {
+		cursor: pointer;
+	}
+</style>
 </head>
 <body id="cart_body">
 	<div class="cart_d1">
 		<div class="cart_d1_d1">
-			尊敬的：用户昵称 您好!
+			尊敬的：${loginUser.username }您好!
 		</div>
 		<div class="cart_d1_d2">
 			<ul class="cart_d1_d2_ul1">
@@ -55,7 +61,7 @@
 	<div class="cart_d4 myOrderList_d2">
 		<div class="myOrderList_d2_d1">
 			<div class="myOrderList_d2_d1_d1 order_myOrderList_d2_d1_d1">
-				<font class="myOrderList_d2_d1_d1_font1">2019-03-24 </font> &nbsp;订单编号：1234
+				<font class="myOrderList_d2_d1_d1_font1">${orders.ordertime }</font> &nbsp;订单编号：${orders.orderNumber }
 			</div>
 			
 		</div>
@@ -74,64 +80,36 @@
 				小计
 			</div>
 		</div>
-		<div class="cart_d4_d2 myOrderList_d2_d3">
-			<div class="cart_d4_d2_d1 myOrderList_d2_d3_d1">
-				<img class="cart_d4_d2_d1_img1" alt="商品图片" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50%">
-			</div>
-			
-			<div class="cart_d4_d2_d2 myOrderList_d2_d3_d2">
-				<div class="cart_d4_d2_d2_d1">
-					男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套
+		<s:iterator value="orders.setOrderItem" var="ordersitem">
+			<div class="cart_d4_d2 myOrderList_d2_d3">
+				<div class="cart_d4_d2_d1 myOrderList_d2_d3_d1">
+					<img class="cart_d4_d2_d1_img1" alt="商品图片" src="${fileImageAction.urlImage }${ordersitem.product.p_image }" width="50%">
 				</div>
-			</div>
-			
-			<div class="cart_d4_d2_d3 myOrderList_d2_d3_d3">
-				颜色：红
-			</div>
-			
-			<div class="cart_d4_d2_d4 myOrderList_d2_d3_d3">
-				<font class="cart_d4_d2_d4_font2">¥100.00</font>
-			</div>
-			
-			<div class="cart_d4_d2_d5 myOrderList_d2_d3_d3">
-				10
-			</div>
-			
-			<div class="cart_d4_d2_d6 myOrderList_d2_d3_d3">
-				¥100.00
-			</div>
-			
-		</div>
-		
-		<div class="cart_d4_d2 myOrderList_d2_d3">
-			<div class="cart_d4_d2_d1 myOrderList_d2_d3_d1">
-				<img class="cart_d4_d2_d1_img1" alt="商品图片" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50%">
-			</div>
-			
-			<div class="cart_d4_d2_d2 myOrderList_d2_d3_d2">
-				<div class="cart_d4_d2_d2_d1">
-					男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套
+				
+				<div class="cart_d4_d2_d2 myOrderList_d2_d3_d2">
+					<div class="cart_d4_d2_d2_d1">
+						${ordersitem.product.p_name }
+					</div>
 				</div>
+				
+				<div class="cart_d4_d2_d3 myOrderList_d2_d3_d3">
+					颜色：红
+				</div>
+				
+				<div class="cart_d4_d2_d4 myOrderList_d2_d3_d3">
+					<font class="cart_d4_d2_d4_font2">¥${ordersitem.product.p_price }</font>
+				</div>
+				
+				<div class="cart_d4_d2_d5 myOrderList_d2_d3_d3">
+					${ordersitem.count }
+				</div>
+				
+				<div class="cart_d4_d2_d6 myOrderList_d2_d3_d3">
+					¥${ordersitem.subtotal }
+				</div>
+				
 			</div>
-			
-			<div class="cart_d4_d2_d3 myOrderList_d2_d3_d3">
-				颜色：红
-			</div>
-			
-			<div class="cart_d4_d2_d4 myOrderList_d2_d3_d3">
-				<font class="cart_d4_d2_d4_font2">¥100.00</font>
-			</div>
-			
-			<div class="cart_d4_d2_d5 myOrderList_d2_d3_d3">
-				10
-			</div>
-			
-			<div class="cart_d4_d2_d6 myOrderList_d2_d3_d3">
-				¥100.00
-			</div>
-			
-		</div>
-		
+		</s:iterator>
 		<div style="border-top: 1px solid #8082FF; border-bottom: 1px solid #8082FF; margin: 0px; padding: 0px; border-top-style: dotted; border-bottom-style: dotted; color: #333333;">
 			<div style="background: #F2F7FF; border: 1px solid #FFF; font-size: 14px; padding-top: 7px; padding-bottom: 7px; padding-left: 4%;">
 				运送方式：&emsp; 普通配送 快递 免邮
@@ -142,7 +120,7 @@
 			</div>
 			
 			<div style="background: #F2F7FF; border: 1px solid #FFF; font-size: 14px; padding-top: 10px; padding-bottom: 10px; padding-left: 4%; text-align: right; padding-right: 1%;">
-				商品金额(免运费)：<font style="color: #FF4400; font-size: 18px; font-weight: bold;">¥1000.10</font>
+				商品金额(免运费)：<font style="color: #FF4400; font-size: 18px; font-weight: bold;">¥${orders.total }</font>
 			</div>
 		</div>
 		
@@ -178,10 +156,9 @@
 				寄送至：
 			</div>
 			<div style="color: #3C3C3C; margin-left: 8%; padding-bottom: 8px;">
-				<input type="radio" name="dizhi" value="dizhi1">江西省 南昌市 南昌县 昌东镇 紫阳大道318号江西制造职业技术学院 (张三 收) 15180161308<br />
-				<input type="radio" name="dizhi" value="dizhi2">江西省 南昌市 南昌县 昌东镇 紫阳大道318号江西制造职业技术学院 (张三 收) 15180161308<br />
-				<input type="radio" name="dizhi" value="dizhi3">江西省 南昌市 南昌县 昌东镇 紫阳大道318号江西制造职业技术学院 (张三 收) 15180161308<br />
-				<input type="radio" name="dizhi" value="dizhi4">江西省 南昌市 南昌县 昌东镇 紫阳大道318号江西制造职业技术学院 (张三 收) 15180161308<br />
+				<s:iterator value="listAddr" var="listAddrs">
+					<input type="radio" name="dizhi" value="dizhi1">${listAddrs.address } (${listAddrs.user.username } 收) ${listAddrs.user.phone }<br />
+				</s:iterator>
 			</div>
 		</div>
 	</div>
@@ -223,7 +200,7 @@
 		</div>
 		
 		<div style="margin-left: -1px; width: 50%; height: 245px; float: left; border: 1px solid #CCCCCC;">
-			
+			<font style="font-size: 14px;"><input type="radio" name="pd_FrpId" value="CMBCHINA-NET-B2C"/>支付宝</font>
 		</div>
 	</div>
 	
@@ -234,7 +211,7 @@
 			<div style="border: 1px solid #FF4400; overflow: hidden; display: inline; text-align: right; float: right; padding: 20px 2%;">
 				<div>
 					<font style="font-size: 14px; font-weight: bold;">实付款：</font>
-					<font style="font-size: 24px; font-weight: bold;">¥596.00</font>
+					<font style="font-size: 24px; font-weight: bold;">¥${orders.total }</font>
 				</div>
 				<div>
 					<font style="font-size: 14px; font-weight: bold;">寄送至：</font>
@@ -242,7 +219,7 @@
 				</div>
 				<div>
 					<font style="font-size: 14px; font-weight: bold;">收货人：</font>
-					<font style="font-size: 14px; font-weight: normal;">张三 15180161308</font>
+					<font style="font-size: 14px; font-weight: normal;">${orders.user.username } ${orders.user.phone } </font>
 				</div>
 			</div>
 		</div>
@@ -256,7 +233,7 @@
 			<a href="" style="text-decoration: none;">☚ 返回购物车</a>
 		</div>
 		<div style="">
-			<font style="background: #FF4400; padding: 8px 14%; color: #FCFCFC">提交订单</font>
+			<font style="background: #FF4400; padding: 8px 14%; color: #FCFCFC" class="buy">提交订单</font>
 		</div>
 	</div>
 	
