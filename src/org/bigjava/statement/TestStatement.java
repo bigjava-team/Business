@@ -201,8 +201,6 @@ public class TestStatement {
 		System.out.println("输入从哪页开始查");
 		int presentPage = input.nextInt();
 //		Paging page = new Paging(presentPage, totalNumber, 2);
-		
-//		productDao.queryAllProduct(searchProduct, page, m_id);
 	}
 	
 	// 修改商品内容

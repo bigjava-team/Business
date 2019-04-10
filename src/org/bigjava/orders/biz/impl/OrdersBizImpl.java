@@ -56,11 +56,18 @@ public class OrdersBizImpl implements OrdersBiz {
 		return ordersDao.queryAllOrdersNumber(user);
 	}
 
-	// 通过订单编号进行分页查询
+	// 通过订单编号进行查询
 	@Override
 	public Orders orderNumberQueryOrders(String orderNumber) {
 		// TODO Auto-generated method stub
 		return ordersDao.orderNumberQueryOrders(orderNumber);
+	}
+
+	// 修改订单的状态
+	@Override
+	public void updateOrdersState(Orders orders) {
+		// TODO Auto-generated method stub
+		ordersDao.updateOrdersState(orders);
 	}
 
 }
