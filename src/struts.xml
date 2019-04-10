@@ -4,7 +4,7 @@
 
 <struts>
 	<!-- 开启开发者模式，设置编码 -->
-	<constant name="struts.devMode" value="true" />
+	<!-- <constant name="struts.devMode" value="true" /> -->
 	<constant name="stuts.i18n.encoding" value="utf-8" />
 
 	<package name="shop" extends="struts-default" namespace="/">
@@ -142,6 +142,10 @@
 			<result name="addOrders">/order.jsp</result>
 			<result name="queryUserAllOrders">/myOrderList.jsp</result>
 			<result name="idQueryOrdersPayment">/order.jsp</result>
+		</action>
+		
+		<action name="paymentOrders_*" class="paymentOrders" method="{1}">
+			<result name="payOrders">/payOrders/payOrders.jsp</result>
 		</action>
 		
 		<action name="addr_*" class="addrAction" method="{1}" >

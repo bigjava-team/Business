@@ -36,8 +36,13 @@ public interface OrdersDao {
 	public int queryAllOrdersNumber(User user);
 	
 	/**
-	 * 通过订单编号进行分页查询
+	 * 通过订单编号进行查询
 	 */
 	public Orders orderNumberQueryOrders(String orderNumber);
+	
+	/**
+	 * 修改订单状态
+	 */
+	public void updateOrdersState(Orders orders);
 
 }
