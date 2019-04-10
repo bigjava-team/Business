@@ -13,9 +13,7 @@
 		$("#search").click(function() {
 			var userRoot = $("#select option:selected").val();// 获取下拉列表的值
 			var searchText = $("#input").val();// 获取搜索文本框的值
-			var searchText2 = $("#input2").val();// 获取搜索文本框的值
-			var searchText3 = $("#input3").val();// 获取搜索文本框的值
-			window.location.href="";
+			window.location.href="adminProduct_adminFindAll.action?user.root="+userRoot+"&searchText="+searchText+"&merchant.m_id=0"+"&paging.presentPage=0";
 		});
 	});
 	
@@ -37,12 +35,6 @@
 		<!-- 搜索框 -->
 		<input type="text" name="queryText" id="input" class="input-group_input4" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
 		
-		<input type="text" name="queryText" id="input2" class="input-group_input5" placeholder="最低价格"  value="">
-		<div class="input-group4_d4">
-			&nbsp; - &nbsp;
-		</div>
-		<input type="text" name="queryText" id="input3" class="input-group_input6" placeholder="最高价格"  value="">
-		<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
 		<button id="search" class="input-group_button4">搜索</button>
 	</div>
 	
@@ -74,7 +66,7 @@
 						否
 					</s:else>
 				</td>
-				<td align="center"><a href="${pageContext.request.contextPath }/admin/product/list_product.jsp">查看商品</a></td>
+				<td align="center"><a href="adminProduct_getProductById.action?product.p_id=${product.p_id }">查看商品</a></td>
 				<td align="center">
 					<a href="adminProduct_adminDeleteProduct.action?product.p_id=${product.p_id}">
 						<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" class="admin_merchant_pd_immg1">

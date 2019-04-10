@@ -6,7 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>用户个人中心</title>
-<link href="${pageContext.request.contextPath }/css/product_top.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 body {
 	margin: 0px;
@@ -1017,5 +1016,6 @@ function dealsubmit3(){
 			<div id="Date" class="Date"></div>
 		</div>
 	</div>
+	
 </body>
 </html>

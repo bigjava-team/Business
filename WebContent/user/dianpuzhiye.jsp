@@ -331,25 +331,8 @@ ol .current {
 </head>
 <body>
 	<div class="head">
-		<div
-			style="background-color: #D0D0D0; padding-bottom: 1%; padding-top: 1%;">
-			<div
-				style="float: left; border-right: 1px solid black; padding-left: 12%; padding-right: 2%;">
-			${loginUser.username}
-			</div>
-			<div style="float: left; padding-left: 2%; padding-right: 2%;">
-				<a href="???">退出</a>
-			</div>
-			<div style="float: left; border-right: 1px solid black; padding-left: 36%; padding-right: 2%;">
-			<a href="???">光光网首页</a>
-			</div>
-			<div style="float: left; border-right: 1px solid black; padding-left: 2%; padding-right: 2%;">
-			<a href="???">我买的宝贝</a>
-			</div>
-			<div style="float: left; border-right: 1px solid black; padding-left: 2%; padding-right: 2%;">
-			<a href="???">我卖的宝贝</a>
-			</div>
-			<div class="clear"></div>
+		<div>
+			<%@include file="top.jsp" %>
 		</div>
 		<div style="width: 100%; padding-top: 1%; padding-bottom: 1%;">
 			<div
