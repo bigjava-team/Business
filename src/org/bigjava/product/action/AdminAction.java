@@ -103,6 +103,15 @@ public class AdminAction extends ActionSupport {
 	}
 
 	private List<Product> productList;// 存放所有商品
+	private List<Product> productLists;// 存放所有申请中的商品
+
+	public List<Product> getProductLists() {
+		return productLists;
+	}
+
+	public void setProductLists(List<Product> productLists) {
+		this.productLists = productLists;
+	}
 
 	public List<Product> getProductList() {
 		return productList;
@@ -135,7 +144,7 @@ public class AdminAction extends ActionSupport {
 		int presentPage = paging.getPresentPage();
 		System.out.println("当前页" + presentPage);
 
-		paging = new Paging(presentPage, totalNumber, 2);
+		paging = new Paging(presentPage, totalNumber, 5);
 
 		productList = productBiz.queryAllProduct(searchText, paging, merchant.getM_id(), 0);
 
@@ -146,8 +155,44 @@ public class AdminAction extends ActionSupport {
 
 		return "adminFindAll";
 	}
-	
-	//下架商品
+
+	// 分页查询申请中的商品
+	public String showToProduct() {
+		System.out.println("AdminAction....adminFindAll().");
+		session = ActionContext.getContext().getSession();
+
+		int u_root = 0;
+		if (user.getRoot() != 0) {
+			u_root = user.getRoot();
+		}
+
+		System.out.println("用户权限为：" + u_root);
+		System.out.println("搜索的值" + searchText);
+
+		if (isEmpty.isEmpty(searchText)) {
+			searchText = "";
+		}
+		// 根据搜索的内容与商品的状态查询可搜索的总条数
+		int totalNumber = productBiz.queryProductNumber(searchText, 0, 3);
+
+		System.out.println("申请中的商品种数"+totalNumber);
+		// 当前页数
+		int presentPage = paging.getPresentPage();
+		System.out.println("当前页" + presentPage);
+
+		paging = new Paging(presentPage, totalNumber, 5);
+
+		productLists = productBiz.queryAllProduct(searchText, paging, 0,3);
+
+		// 将参数存入session中
+		System.out.println(productLists);
+		session.put("paging", paging);
+		session.put("searchText", searchText);
+
+		return "showToProduct";
+	}
+
+	// 下架商品
 	public String adminDeleteProduct() {
 		System.out.println("进入adminAction....adminDeleteProduct()");
 		product = productBiz.queryProduct_id(product.getP_id());
@@ -155,8 +200,8 @@ public class AdminAction extends ActionSupport {
 		productBiz.deleteProduct(product);
 		return "adminDeleteProduct";
 	}
-	
-	//查看商品信息
+
+	// 查看商品信息
 	public String getProductById() {
 		System.out.println("进入adminAction....getProductById()");
 		product = productBiz.queryProduct_id(product.getP_id());

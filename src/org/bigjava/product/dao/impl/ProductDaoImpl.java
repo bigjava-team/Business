@@ -135,6 +135,7 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 			list = this.getHibernateTemplate().find(hql,
 					new Object[]{searchProduct + '%', m_id});// 模糊查询一共有多少条数据
 		} else if (p_freeze != 0) {
+			System.out.println(searchProduct + "s"+p_freeze+m_id);
 			hql += " and p_freeze = ?";
 			this.getHibernateTemplate().find(hql, new Object[]{searchProduct + '%', p_freeze});
 		} else {
