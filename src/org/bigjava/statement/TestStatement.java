@@ -129,9 +129,9 @@ public class TestStatement {
 		
 		ordersDao.addOrders(orders, user, addr);
 		
-		Orders updateOrderItem = ordersDao.queryOrders_orderNumber(orderNumber);
+//		Orders updateOrderItem = ordersDao.queryOrders_orderNumber(orderNumber);
 		
-		orderItemDao.addOrders_id(listOrderItem, updateOrderItem);
+//		orderItemDao.addOrders_id(listOrderItem, updateOrderItem);
 		
 			
 	}

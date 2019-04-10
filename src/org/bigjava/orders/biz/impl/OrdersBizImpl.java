@@ -32,35 +32,35 @@ public class OrdersBizImpl implements OrdersBiz {
 	@Override
 	public void deleteOrders(Orders orders) {
 		// TODO Auto-generated method stub
-
+		ordersDao.deleteOrders(orders);
 	}
 
 	// 通过订单id或订单信息
 	@Override
 	public Orders queryOrders_id(int o_id) {
 		// TODO Auto-generated method stub
-		return null;
+		return ordersDao.queryOrders_id(o_id);
 	}
 
 	// 分页条件查询订单
 	@Override
 	public List<Orders> queryAllOrders(Paging page, User user) {
 		// TODO Auto-generated method stub
-		return null;
+		return ordersDao.queryAllOrders(page, user);
 	}
 
 	// 条件查询订单的数量
 	@Override
 	public int queryAllOrdersNumber(User user) {
 		// TODO Auto-generated method stub
-		return 0;
+		return ordersDao.queryAllOrdersNumber(user);
 	}
 
-	// 通过订单编号查询订单
+	// 通过订单编号进行分页查询
 	@Override
-	public Orders queryOrders_orderNumber(String orderNumber) {
+	public Orders orderNumberQueryOrders(String orderNumber) {
 		// TODO Auto-generated method stub
-		return null;
+		return ordersDao.orderNumberQueryOrders(orderNumber);
 	}
 
 }

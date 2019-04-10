@@ -94,7 +94,7 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 
 	// 模糊分页查询所有商品
 	@Override
-	public List<Product> queryAllProduct(final String searchProduct, final Paging page, final int m_id) {
+	public List<Product> queryAllProduct(final String searchProduct, final Paging page, final int m_id, final int p_freeze) {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行queryAllProduct方法");
 		List<Product> list = this.getHibernateTemplate().executeFind(new HibernateCallback() {
@@ -106,6 +106,9 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 				if (m_id!=0) {
 					hql += "and m_id = ?";
 					query = session.createQuery(hql).setString(0, searchProduct + "%").setInteger(1, m_id);// 模糊查询
+				} else if (p_freeze!=0) {
+					hql += "and p_freeze = ?";
+					session.createQuery(hql).setString(0, searchProduct + "%").setInteger(1, p_freeze);
 				} else {
 					query = session.createQuery(hql).setString(0, searchProduct + "%");// 模糊查询
 				}
@@ -121,7 +124,7 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 
 	// 模糊查询所有商品
 	@Override
-	public int queryProductNumber(String searchProduct, int m_id) {
+	public int queryProductNumber(String searchProduct, int m_id, int p_freeze) {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行queryProductNumber方法");
 		int totalNumber = 0;
@@ -131,6 +134,9 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 			hql += " and m_id = ?";
 			list = this.getHibernateTemplate().find(hql,
 					new Object[]{searchProduct + '%', m_id});// 模糊查询一共有多少条数据
+		} else if (p_freeze != 0) {
+			hql += " and p_freeze = ?";
+			this.getHibernateTemplate().find(hql, new Object[]{searchProduct + '%', p_freeze});
 		} else {
 			list = this.getHibernateTemplate().find(hql,
 					searchProduct + '%');// 模糊查询一共有多少条数据

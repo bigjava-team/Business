@@ -36,6 +36,7 @@
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<a href="Merchant_gotoMerchant.action">我的店铺</a>
 			</s:if>
+			<a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presenetPage=0">我的订单</a> 
 			<a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0">购物车</a> 
 			<a href="javascript:;">收藏夹</a> 
 			<a>商品分类</a>

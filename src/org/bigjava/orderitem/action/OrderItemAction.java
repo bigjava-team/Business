@@ -119,12 +119,7 @@ public class OrderItemAction {
 		// 将数据添加入数据库
 		orderItemBiz.addOrderItem(orderitem);
 		
-		int number = orderItemBiz.queryOrderItemNumber(loginUser);
-		paging = new Paging(paging.getPresentPage(), number, 10);
-		
-		// 查询的订单内容
-		listOrderitem = orderItemBiz.queryAllOrderItem(loginUser, paging);
-		
+		queryUserOrderitem();
 		return "addOrderItemAndQueryOrderItem";
 	}
 	
@@ -140,6 +135,7 @@ public class OrderItemAction {
 		
 		// 查询的订单内容
 		listOrderitem = orderItemBiz.queryAllOrderItem(loginUser, paging);
+		
 		return "queryUserOrderitem";
 	}
 	

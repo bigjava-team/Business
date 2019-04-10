@@ -140,6 +140,8 @@
 		
 		<action name="orders_*" class="ordersAction" method="{1}">
 			<result name="addOrders">/order.jsp</result>
+			<result name="queryUserAllOrders">/myOrderList.jsp</result>
+			<result name="idQueryOrdersPayment">/order.jsp</result>
 		</action>
 		
 		<action name="addr_*" class="addrAction" method="{1}" >

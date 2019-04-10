@@ -32,12 +32,12 @@ public interface ProductBiz {
 	/**
 	 * 模糊分页查询所有商品
 	 */
-	public List<Product> queryAllProduct(String searchProduct, Paging page, int m_id);
+	public List<Product> queryAllProduct(String searchProduct, Paging page, int m_id, int p_freeze);
 	
 	/**
 	 * 模糊查询商品的总条数
 	 */
-	public int queryProductNumber(String searchProduct, int m_id);
+	public int queryProductNumber(String searchProduct, int m_id, int p_freeze);
 	
 	/**
 	 * 查询最新的商品

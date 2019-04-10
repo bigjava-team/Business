@@ -24,7 +24,7 @@ public class Orderitem {
 	
 	private Product product;// 指向商品类
 	
-	private Orders orders;
+	private Orders orders;// 指向订单表
 	
 	private ProductAge productAge;// 多对一指向商品颜色类
 	

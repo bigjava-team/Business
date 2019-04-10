@@ -61,6 +61,7 @@
 		var checkbox = document.getElementsByName("check");
 		var listId = [];
 		var listNumber = [];
+		var subtotal = [];
 		var total = 0;
 		for (var i=0; i<checkbox.length; i++) {
 			if (checkbox[i].checked) {
@@ -68,11 +69,12 @@
 				listNumber.push($("#cart_d4_d2_d5_d1_input_"+checkbox[i].value).val());
 				var totalMoney = $("#cart_d4_d2_d6_"+checkbox[i].value).text();
 				var s = totalMoney.split("¥");
+				subtotal.push(s[1]);
 				total += parseFloat(s[1]);
 			}
 		}
 		var username = "${loginUser.username }";
-		window.location.href="orders_addOrders?method=post&listId="+listId+"&loginUser.username="+username+"&listNumber="+listNumber+"&orders.total="+total;
+		window.location.href="orders_addOrders?method=post&listId="+listId+"&loginUser.username="+username+"&listNumber="+listNumber+"&orders.total="+total+"&subtotals="+subtotal;
 	}
 </script>
 
