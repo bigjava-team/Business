@@ -52,6 +52,11 @@
 				<a href="Merchant_gotoMerchant.action">我的店铺</a>
 			</s:if>
 		</div>
+		<%-- <div class="wenzikuang2">
+			<s:if test='loginUser.username != null && loginUser.username != ""'>
+				<a href="Merchant_gotoMerchant.action">店铺后台管理</a>
+			</s:if>
+		</div> --%>
 		<div class="wenzikuang2">
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<a href="User_gotoUserIndex.action?method=post&loginUser.username=${loginUser.username }">我的主页</a>

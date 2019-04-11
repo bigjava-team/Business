@@ -82,6 +82,7 @@
 	<bean name="ordersDao" class="org.bigjava.orders.dao.impl.OrdersDaoImpl" autowire="byName" />
 	<bean name="ordersBiz" class="org.bigjava.orders.biz.impl.OrdersBizImpl" autowire="byName" />
 	<bean name="ordersAction" class="org.bigjava.orders.action.OrdersAction" autowire="byName" />
+	<bean name="adminOrdersAction" class="org.bigjava.orders.action.AdminOrdersAction" autowire="byName"/>
 	
 	<!-- 评论 -->
 	<bean name="commentDao" class="org.bigjava.comment.dao.impl.CommentDaoImpl" autowire="byName" />

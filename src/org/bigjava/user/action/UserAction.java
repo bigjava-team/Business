@@ -17,7 +17,6 @@ public class UserAction extends ActionSupport {
 
 	private IsEmpty isEmpty = new IsEmpty();
 	private User user;
-	private User loginUser;
 	private UserBiz userBiz;
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
@@ -32,14 +31,6 @@ public class UserAction extends ActionSupport {
 	// 接收验证码 struts2 中的属性驱动
 	private String checkcode;
 	
-	public User getLoginUser() {
-		return loginUser;
-	}
-
-	public void setLoginUser(User loginUser) {
-		this.loginUser = loginUser;
-	}
-
 	public void setCheckcode(String checkcode) {
 		this.checkcode = checkcode;
 	}
@@ -150,8 +141,6 @@ public class UserAction extends ActionSupport {
 				return "loginError";
 			} else {
 				user = userList.get(0);
-				/*ActionContext.getContext().getSession().put("loginUser", user);*/
-				// 将user存入session中
 				if (user.getRoot() == 1 && user.getU_is_freeze() == 1) {
 					System.out.println("普通用户登录");
 					System.out.println("解冻状态");
@@ -162,6 +151,9 @@ public class UserAction extends ActionSupport {
 					return "loginStore";
 				} else if (user.getRoot() == 3) {
 					System.out.println("管理员登录");
+					session = ActionContext.getContext().getSession();
+					session.put("loginUser", user);
+					System.out.println(user);
 					return "adminLogin";
 				} else if (user.getU_is_freeze() == 2) {
 					check_login = "用户已冻结";
