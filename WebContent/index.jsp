@@ -261,14 +261,14 @@
 						<fieldset style="border: 3px solid #E0E0E0;">
 							<legend style="margin-left: 5%; font-size: 12px; margin-bottom: 4%;">我的账号</legend>
 							<div style="width: 50%; float: left; text-align: center; margin-bottom: 8%;">
-								<a href="#">
+								<a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0">
 									<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: 8%; padding: 4% 23%; border-radius: 7%;">
 										购物车
 									</font>
 								</a>
 							</div>
 							<div style="width: 50%; float: left; text-align: center; margin-bottom: 8%;">
-								<a href="#">
+								<a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presenetPage=0">
 									<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: -10%; padding: 4% 18%; border-radius: 7%;">
 										我的订单
 									</font>
@@ -309,21 +309,21 @@
 					<fieldset style="border: 3px solid #E0E0E0;">
 						<legend style="margin-left: 5%; font-size: 12px; margin-bottom: 4%;">我的操作</legend>
 						<div style="width: 50%; float: left; text-align: center; margin-bottom: 6%;">
-							<a href="#">
+							<a href="user/login.jsp">
 								<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 100%; margin-left: 12%; padding: 4% 25%; border-radius: 7%;">
-									登 录
+									登 陆
 								</font>
 							</a>
 						</div>
 						<div style="width: 50%; float: left; text-align: center; margin-bottom: 3%;">
-							<a href="#">
+							<a href="user/Save.jsp">
 								<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: -14%; padding: 4% 25%; border-radius: 7%;">
 									注 册
 								</font>
 							</a>
 						</div>
 						<div style="width: 100%; float: left; text-align: center; margin-bottom: 7%; margin-top: 2%;">
-							<a href="#">
+							<a href="user/login.jsp">
 								<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 87%; padding: 3% 24.5%; border-radius: 4%;">
 									免&nbsp; 费&nbsp; 开&nbsp; 店
 								</font>
