@@ -29,6 +29,16 @@ public class AdminAction extends ActionSupport {
 	private String searchText; // 搜索的参数值
 	private Paging paging;// 声明Paging类
 	private Map<String, Object> session;// 声明Map数组
+	
+	private Product updateProduct;
+	
+	public Product getUpdateProduct() {
+		return updateProduct;
+	}
+
+	public void setUpdateProduct(Product updateProduct) {
+		this.updateProduct = updateProduct;
+	}
 
 	public User getUser() {
 		return user;
@@ -162,6 +172,8 @@ public class AdminAction extends ActionSupport {
 		session = ActionContext.getContext().getSession();
 
 		int u_root = 0;
+		System.out.println(user);
+		System.out.println(user.getRoot());
 		if (user.getRoot() != 0) {
 			u_root = user.getRoot();
 		}
@@ -192,12 +204,17 @@ public class AdminAction extends ActionSupport {
 		return "showToProduct";
 	}
 
-	// 下架商品
+	/**
+	 * 下架商品
+	 * 更改商品的状态将上架1改为下架2
+	 * */ 
 	public String adminDeleteProduct() {
 		System.out.println("进入adminAction....adminDeleteProduct()");
-		product = productBiz.queryProduct_id(product.getP_id());
+		product = productBiz.queryProduct_id(updateProduct.getP_id());
 		System.out.println("product" + product);
-		productBiz.deleteProduct(product);
+		System.out.println("agreeProduct>>>" + product);
+		updateProduct.setP_freeze(2);
+		productBiz.updateProduct(product, updateProduct);
 		return "adminDeleteProduct";
 	}
 
@@ -208,6 +225,19 @@ public class AdminAction extends ActionSupport {
 		System.out.println("product" + product);
 		ActionContext.getContext().getSession().put("product", product);
 		return "getProductSuccess";
+	}
+	
+	/**
+	 * 同意商品申请
+	 * 修改商品的申请状态将申请3改为上架1
+	 * */
+	public String agreeProduct() {
+		System.out.println("进入adminAction....agreeProduct()");
+		product = productBiz.queryProduct_id(updateProduct.getP_id());
+		System.out.println("agreeProduct>>>" + product);
+		updateProduct.setP_freeze(1);
+		productBiz.updateProduct(product, updateProduct);
+		return "agreeProduct";
 	}
 
 }

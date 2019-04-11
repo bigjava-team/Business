@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +35,7 @@
 			d.add('010502','0105','商品过滤','${pageContext.request.contextPath}/adminProduct_showToProduct.action?paging.presentPage=0&user.root=0','','mainFrame');
 			
 			d.add('0106','01','订单管理');
-			d.add('010601','0106','订单详情','${pageContext.request.contextPath}/admin/order/list.jsp','','mainFrame');
+			d.add('010601','0106','订单详情','${pageContext.request.contextPath}/adminOrders_showAllOrders.action?paging.presentPage=0&user.root=${sessionScope.loginUser.root }&user.username=${sessionScope.loginUser.username }','','mainFrame');
 			
 			d.add('0107','01','公告管理');
 			d.add('010701','0107','公告详情','${pageContext.request.contextPath}/admin/notice/list.jsp','','mainFrame');

@@ -93,6 +93,7 @@
 			<a href="${pageContext.request.contextPath }/User_showAll.action?paging.presentPage=<s:property value="#session.paging.presentPage+1"/>&user.root=${session.userRoot}&searchText=${session.searchText}">下一页</a>
 			<a href="${pageContext.request.contextPath }/User_showAll.action?paging.presentPage=<s:property value="#session.paging.page"/>&user.root=${session.userRoot}&searchText=${session.searchText}">尾页</a>
 		</s:if>
+		&nbsp;共<s:property value="#session.paging.totalNumber"/>条
 	</div>
 </body>
 </html>

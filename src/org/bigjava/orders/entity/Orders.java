@@ -21,7 +21,7 @@ public class Orders {
 	private String orderNumber;// 订单编号
 	private double total;// 订单的总金额
 	private Date ordertime;// 订单时间
-	private int state;// 订单的状态(1为未支付，2为已支付、3是订单已发货、4为订单结束)
+	private int state;// 订单的状态(1为未支付，2为已支付)
 	
 	private Addr addr;// 多对一指向收货地址类
 	

@@ -28,8 +28,10 @@
 	<div class="input-group4">
 		<select id="select" class="input-group_select4">
 			<option class="option" value="0">全部</option>
-			<option class="option" value="3">编号</option>
-			<option class="option" value="2">名称</option>
+			<option class="option" value="5">上架商品</option>
+			<option class="option" value="4">下架商品</option>
+			<option class="option" value="3">申请中商品</option>
+			<option class="option" value="2">商品名称</option>
 			<option class="option" value="1">是否热门</option>
 		</select>
 		<!-- 搜索框 -->
@@ -48,7 +50,7 @@
 			<td width="10%" align="center">月销售量</td>
 			<td width="10%" align="center">是否热门</td>
 			<td width="10%" align="center">进入商品</td>
-			<td width="10%" align="center">下架商品</td>
+			<td width="10%" align="center">商品状态</td>
 		</tr>
 		<s:iterator value="productList" var="product"  status="status" >
 			<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
@@ -68,9 +70,17 @@
 				</td>
 				<td align="center"><a href="adminProduct_getProductById.action?product.p_id=${product.p_id }">查看商品</a></td>
 				<td align="center">
-					<a href="adminProduct_adminDeleteProduct.action?product.p_id=${product.p_id}">
-						<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" class="admin_merchant_pd_immg1">
-					</a>
+					<s:if test="#product.p_freeze == 1">
+						<a href="adminProduct_adminDeleteProduct.action?updateProduct.p_id=${product.p_id}">
+							<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" class="admin_merchant_pd_immg1">
+						</a>
+					</s:if>
+					<s:if test="#product.p_freeze == 2">
+						商品已下架
+					</s:if>
+					<s:if test="#product.p_freeze == 3">
+						申请中
+					</s:if>
 				</td>
 			</tr>
 		</s:iterator>
@@ -87,6 +97,7 @@
 			<a href="${pageContext.request.contextPath }/adminProduct_adminFindAll.action?paging.presentPage=<s:property value="#session.paging.presentPage+1"/>&user.root=${session.userRoot}&searchText=${session.searchText}&merchant.m_id=0">下一页</a>
 			<a href="${pageContext.request.contextPath }/adminProduct_adminFindAll.action?paging.presentPage=<s:property value="#session.paging.page"/>&user.root=${session.userRoot}&searchText=${session.searchText}&merchant.m_id=0">尾页</a>
 		</s:if>
+		&nbsp;共<s:property value="#session.paging.totalNumber"/>条
 	</div>
 	
 </body>

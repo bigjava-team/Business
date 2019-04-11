@@ -12,19 +12,18 @@
 	$(document).ready(function() {
 		$("#search").click(function() {
 			var searchText = $("#input").val();// 获取搜索文本框的值
-			window.location.href="adminProduct_";
+			window.location.href="adminProduct_showToProduct.action?user.root=0"+"&searchText="+searchText+"&paging.presentPage=0";
 		});
 	});
 	
 </script>
-
 
 </head>
 <body id="admin_list_body">
 	<div id="admin_list_div_top">
 		商品列表
 	</div>
-	<!-- 根据姓名查询，若不输入，则查询全部 -->
+	<!-- 根据输入内容查询，若不输入，则查询全部 -->
 	<div class="input-group3">
 		<!-- 搜索框 -->
 		<input type="text" name="queryText" id="input" class="input-group_input3" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
@@ -55,22 +54,23 @@
 				<td align="center">${product.p_date}</td>
 				<td align="center"><a href="${pageContext.request.contextPath }/admin/product/product.jsp">查看商品</a></td>
 				<td align="center">
-					同意
+					<a href="adminProduct_agreeProduct.action?user.root=0&updateProduct.p_id=${product.p_id }">同意</a>
 				</td>
 			</tr>
 		</s:iterator>
 	</table>
 	
 	<div id="admin_list_div_page">
-		第<s:property value="pageBean.page"/>页/<s:property value="pageBean.totalPage"/>页&nbsp;&nbsp;&nbsp;&nbsp;
-		<s:if test="pageBean.page != 1">
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=1">首页</a>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page-1"/>">上一页</a>
+		第<s:property value="#session.paging.presentPage"/>页/<s:property value="#session.paging.page"/>页&nbsp;&nbsp;&nbsp;&nbsp;
+		<s:if test="#session.paging.presentPage != 1">
+			<a href="${pageContext.request.contextPath }/adminProduct_showToProduct.action?paging.presentPage=1&user.root=${session.userRoot}&searchText=${session.searchText}">首页</a>
+			<a href="${pageContext.request.contextPath }/adminProduct_showToProduct.action?paging.presentPage=<s:property value="#session.paging.presentPage-1"/>&user.root=${session.userRoot}&searchText=${session.searchText}">上一页</a>
 		</s:if>
-		<s:if test="pageBean.page != pageBean.totalPage">
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page+1"/>">下一页</a>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.totalPage"/>">尾页</a>
+		<s:if test="#session.paging.presentPage != #session.paging.page">
+			<a href="${pageContext.request.contextPath }/adminProduct_showToProduct.action?paging.presentPage=<s:property value="#session.paging.presentPage+1"/>&user.root=${session.userRoot}&searchText=${session.searchText}">下一页</a>
+			<a href="${pageContext.request.contextPath }/adminProduct_showToProduct.action?paging.presentPage=<s:property value="#session.paging.page"/>&user.root=${session.userRoot}&searchText=${session.searchText}">尾页</a>
 		</s:if>
+		&nbsp;共<s:property value="#session.paging.totalNumber"/>条
 	</div>
 	
 </body>

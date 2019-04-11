@@ -13,7 +13,7 @@
 	</div>
 	<center>
 		<div>登录成功！</div>
-		<div>欢迎您，管理员：${session.loginUser.username } </div>
+		<div>欢迎您，管理员：${sessionScope.loginUser.username } </div>
 	</center>	
 	
 </body>
