@@ -64,7 +64,7 @@
 			</div>
 		</div>
 		
-		<div class="admin_add_div_middle admin_merchant_pd_a_e_d2">
+		<div class="admin_add_div_middle admin_merchant_pd_a_e_d2" style="height: auto; padding-bottom: 0px;">
 			<div class="admin_merchant_d3">
 				商品描述：
 			</div>

@@ -70,8 +70,8 @@
 			<td width="7%" align="center">是否热门</td>
 			<td width="10%" align="center">上架时间</td>
 			<td width="7%" align="center">商品状态</td>
-			<td width="7%" align="center">编辑</td>
-			<td width="7%" align="center">下架</td>
+			<td width="6%" align="center">编辑</td>
+			<td width="6%" align="center">下架</td>
 		</tr>
 		<!-- 迭代器 -->
 		<s:iterator value="productList" status="status" var="product">

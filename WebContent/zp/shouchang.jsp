@@ -1,15 +1,17 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
 <!--搜素栏 -->
 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/xuanxiangxiahua.css">
 <link rel="stylesheet" href="css/menu_bottom.css">
-<style type="text/css">
+
+<head>
+             <title>页面布局</title>      
+        <!--css文件的引用-->
+        <style type="text/css">
 /*索搜*/
 * {box-sizing: border-box;}
 #container {width: 500px;height: 820px; margin: 0 auto;}
@@ -56,12 +58,6 @@ section button:hover {background-color: #ffffff;color: #009ac9;border-color: #00
 
 
 </style>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-             <title>页面布局</title>      
-        <!--css文件的引用-->
   </head>
   <body>
 	<!--板块1-->

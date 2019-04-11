@@ -229,7 +229,7 @@
 				</div>
 			</div>
 			
-			<div style="background: red; overflow: hidden; height: 7%; font-size: 18px; font-weight: bold; padding-top: 1%;">
+			<div style="overflow: hidden; height: 7%; font-size: 18px; font-weight: bold; padding-top: 1%; padding-left: 1%;">
 				欢迎开店
 			</div>
 			<!-- 284 520 -->
@@ -242,17 +242,20 @@
 				</div>
 			</div>
 		</div>
-		<div class="ccc" style="background: #79FF79; width: 24.2%; height: 270px; float: left; padding: 0px; margin: 0px;">
+		<div class="ccc" style="background: #79FF79; width: 24.2%; float: left; padding: 0px; margin: 0px;">
 			<div style="background: red; font-size: 16px; font-weight: bold; text-align: center; width: 100%; padding: 2% 0%;">
 				您好！某某用户
 			</div>
-			<div style="background:aqua; width: 100%; height: 49.7%;">
+			<div style="background:aqua; width: 100%; height: 49.7%; padding-top: 5%; text-align: center;">
 				<div>
 					<img alt="用户头像" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50%">
 				</div>
 			</div>
-			<div style="background:yellow; width: 100%; height: 7.1%;">
-				haha
+			<div style="background:yellow; width: 100%; height: 7.1%; font-size: 16px; font-weight: bold; text-align: center; padding-top: 2.5%;">
+				光光公告
+			</div>
+			<div style="background: aqua; width: 100%; height: 36.9%;">
+				gonggao
 			</div>
 		</div>
 		
