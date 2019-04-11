@@ -191,9 +191,23 @@
 		</s:iterator>
 		
 	</div>
-	<div class="cart_d5">
-		合计 (不含运费)：<font class="cart_d5_font1">¥ 0.00</font>
+	
+	<div id="admin_list_div_page" style="width: 100%; font-size: 15px; text-align: center; padding: 8px 0px 0px 0px;">
+		第<s:property value="pageBean.page"/>页/<s:property value="pageBean.totalPage"/>页&nbsp;&nbsp;&nbsp;&nbsp;
+		<%-- <s:if test="pageBean.page != 1"> --%>
+			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=1">首页</a>
+			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page-1"/>">上一页</a>
+		<%-- </s:if>
+		<s:if test="pageBean.page != pageBean.totalPage"> --%>
+			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page+1"/>">下一页</a>
+			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.totalPage"/>">尾页</a>
+		<%-- </s:if> --%>
 	</div>
+	
+	<div class="cart_d5" style="margin-top: 0px;">
+		合计 (不含运费)：<font class="cart_d5_font1">¥ 1001.00</font>
+	</div>
+	
 	<div class="cart_d6">
 		<div class="cart_d6_d1">
 			<a class="cart_d6_d1_a1" href="javascript:;" onclick="addOrders()">提交订单</a>

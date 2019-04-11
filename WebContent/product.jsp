@@ -324,34 +324,55 @@
 				
 				<!-- 用户评论 -->
 				<div class="aa">
-					<s:iterator value="listProductAllComment" var="listProductAllComments">
-						<div class="div4">
-							<div class="div4_d1">
-								<%-- <div>
-									<img alt="用户头像"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px" height="50px;">
-								</div> --%>
-								<div class="div4_d1_d1">
-									${listProductAllComments.user.username }
-								</div>
-							</div>
-							<div class="div4_d2">
-								<div class="div4_d2_d1">
-									${listProductAllComments.comment }
-								</div>
-								<div>
-									<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="40px" height="40px;">
-									<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="40px" height="40px;">
-								</div>
-								<div class="div4_d2_d2">
-									${listProductAllComments.commentDate }
-								</div>
-								
-							</div>
+					<s:if test='commentNumber == 0'>
+						<!-- 没有评论 -->
+						<div style="margin-top: 7%; text-align: center;">
+							抱歉！此商品还没有用户评论...
 						</div>
-					
-						<hr />
-					</s:iterator>
-					
+					</s:if>
+					<s:else>
+						<!-- 有评论 -->
+						<s:iterator value="listProductAllComment" var="listProductAllComments">
+							<div class="div4">
+								<div class="div4_d1">
+									<%-- <div>
+										<img alt="用户头像"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50px" height="50px;">
+									</div> --%>
+									<div class="div4_d1_d1">
+										${listProductAllComments.user.username }
+									</div>
+								</div>
+								<div class="div4_d2">
+									<div class="div4_d2_d1">
+										${listProductAllComments.comment }
+									</div>
+									<div>
+										<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="40px" height="40px;">
+										<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="40px" height="40px;">
+									</div>
+									<div class="div4_d2_d2">
+										${listProductAllComments.commentDate }
+									</div>
+									
+								</div>
+							</div>
+						
+							<hr style="border: 1px solid #BEBEBE; border-style: dashed;"/>
+						</s:iterator>
+						
+						<div id="admin_list_div_page" style="width: 100%; font-size: 15px; text-align: center; padding: 8px 0px 0px 0px;">
+							第<s:property value="pageBean.page"/>页/<s:property value="pageBean.totalPage"/>页&nbsp;&nbsp;&nbsp;&nbsp;
+							<%-- <s:if test="pageBean.page != 1"> --%>
+								<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=1">首页</a>
+								<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page-1"/>">上一页</a>
+							<%-- </s:if>
+							<s:if test="pageBean.page != pageBean.totalPage"> --%>
+								<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page+1"/>">下一页</a>
+								<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.totalPage"/>">尾页</a>
+							<%-- </s:if> --%>
+						</div>
+					</s:else>
+				
 					<div class="div3">
 						<font class="font1">价格说明</font>
 						

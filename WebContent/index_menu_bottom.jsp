@@ -2,43 +2,43 @@
     pageEncoding="UTF-8"%>
 
 <div class="container footer">
-	ghjdhtd
+	
 	<div class="span24">
 		<ul class="bottomNav">
 			<li>
-				<a >关于我们</a>
+				<a href="###" style="color: #000; text-decoration: none;">关于我们</a>
 				|
 			</li>
 			<li>
-				<a>联系我们</a>
+				<a href="###" style="color: #000; text-decoration: none;">联系我们</a>
 				|
 			</li>
 			<li>
-				<a>招贤纳士</a>
+				<a href="###" style="color: #000; text-decoration: none;">招贤纳士</a>
 				|
 			</li>
 			<li>
-				<a>法律声明</a>
+				<a href="###" style="color: #000; text-decoration: none;">法律声明</a>
 				|
 			</li>
 			<li>
-				<a>友情链接</a>
+				<a href="###" style="color: #000; text-decoration: none;">友情链接</a>
 				|
 			</li>
 			<li>
-				<a target="_blank">支付方式</a>
+				<a href="###" style="color: #000; text-decoration: none;">支付方式</a>
 				|
 			</li>
 			<li>
-				<a  target="_blank">配送方式</a>
+				<a href="###" style="color: #000; text-decoration: none;">配送方式</a>
 				|
 			</li>
 			<li>
-				<a>服务声明</a>
+				<a href="###" style="color: #000; text-decoration: none;">服务声明</a>
 				|
 			</li>
 			<li>
-				<a>广告声明</a>
+				<a href="###" style="color: #000; text-decoration: none;">广告声明</a>
 			</li>
 		</ul>
 	</div>
