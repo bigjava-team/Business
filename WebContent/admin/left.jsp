@@ -31,7 +31,7 @@
 			
 			d.add('0105','01','商品管理');
 			d.add('010501','0105','商品详情','${pageContext.request.contextPath}/adminProduct_adminFindAll.action?paging.presentPage=0&user.root=0&merchant.m_id=0','','mainFrame');
-			d.add('010502','0105','商品过滤','${pageContext.request.contextPath}/admin/product/filterProduct.jsp','','mainFrame');
+			d.add('010502','0105','商品过滤','${pageContext.request.contextPath}/adminProduct_showToProduct.action?paging.presentPage=0&user.root=0','','mainFrame');
 			
 			d.add('0106','01','订单管理');
 			d.add('010601','0106','订单详情','${pageContext.request.contextPath}/admin/order/list.jsp','','mainFrame');

@@ -1,16 +1,22 @@
 
 package org.bigjava.orders.action;
 
+import java.util.*;
+import java.util.Map;
+
 import org.bigjava.addr.biz.AddrBiz;
 import org.bigjava.addr.entity.Addr;
 import org.bigjava.function.Alipay;
 import org.bigjava.orders.biz.OrdersBiz;
 import org.bigjava.orders.entity.Orders;
+import org.bigjava.user.entity.User;
 
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayTradePagePayRequest;
+import com.opensymphony.xwork2.ActionContext;
 
 public class PaymentOrders {
 	
@@ -24,7 +30,14 @@ public class PaymentOrders {
 	private Orders orders;// 订单
 	
 	private Addr addr;// 收货地址
+	private User loginUser;
 	
+	public User getLoginUser() {
+		return loginUser;
+	}
+	public void setLoginUser(User loginUser) {
+		this.loginUser = loginUser;
+	}
 	public Addr getAddr() {
 		return addr;
 	}
@@ -70,7 +83,9 @@ public class PaymentOrders {
 
 	// 支付订单
 	public String payOrders() throws AlipayApiException {
-		System.out.println("开始付款");
+		System.out.println("开始付款"+loginUser);
+		ActionContext.getContext().getSession().put("loginUser", loginUser);	
+		Alipay.return_url = "http://localhost:8080/Business/orders_queryUserAllOrders?method=post&loginUser.username="+loginUser.getUsername()+"&paging.presenetPage=0";
 		//获得初始化的AlipayClient
 		AlipayClient alipayClient = new DefaultAlipayClient(Alipay.gatewayUrl, Alipay.app_id, Alipay.merchant_private_key, "json", Alipay.charset, Alipay.alipay_public_key, Alipay.sign_type);
 		
@@ -92,5 +107,4 @@ public class PaymentOrders {
 		ordersBiz.updateOrdersState(orders);
 		return "payOrders";
 	}
-
 }

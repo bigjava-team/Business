@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,6 @@
 	<div id="admin_list_div_top">
 		商品列表
 	</div>
-	
 	<!-- 根据姓名查询，若不输入，则查询全部 -->
 	<div class="input-group3">
 		<!-- 搜索框 -->
@@ -44,20 +44,21 @@
 			<td width="12%" align="center">商品信息</td>
 			<td width="7%" align="center">申请意见</td>
 		</tr>
-		<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-			<td align="center">1</td>
-			<td align="center">1</td>
-			<td align="center">1</td>
-			<td align="center">1</td>
-			<td align="center">1</td>
-			<td align="center">f</td>
-			<td align="center">2018-10-10 10:10:10</td>
-			<td align="center"><a href="${pageContext.request.contextPath }/admin/product/product.jsp">查看商品</a></td>
-			<td align="center">
-				同意
-			</td>
-		</tr>
-		
+		<s:iterator value="productLists" var="product"  status="status">
+			<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
+				<td align="center"><s:property value="#status.count"/></td>
+				<td align="center">${product.p_id} </td>
+				<td align="center">${product.p_image}</td>
+				<td align="center">${product.p_name}</td>
+				<td align="center">${product.market}</td>
+				<td align="center">${product.p_price}</td>
+				<td align="center">${product.p_date}</td>
+				<td align="center"><a href="${pageContext.request.contextPath }/admin/product/product.jsp">查看商品</a></td>
+				<td align="center">
+					同意
+				</td>
+			</tr>
+		</s:iterator>
 	</table>
 	
 	<div id="admin_list_div_page">

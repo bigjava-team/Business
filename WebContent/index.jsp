@@ -17,7 +17,6 @@
 <script type="text/javascript">
 	 $(function() {
 		var OneToThree = '${check }';
-		
 		if (OneToThree==null || OneToThree == "") {
 			window.location.href="index_showAll.action";
 		}
@@ -57,8 +56,9 @@
 	});
 	
 	function queryProduct(id) {
-		var username = '${loginUser.username}';
+		var username = '${sessionScope.loginUser.username }';
 		window.location.href="Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0";
+		/* window.location.href="Product_idQueryProduct?method=post&product.p_id="+id+"&paging.presentPage=0"; */
 	}
 	
 	

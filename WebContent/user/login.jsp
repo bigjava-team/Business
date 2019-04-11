@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -266,7 +267,6 @@ img {
 </head>
 
 <body style="margin:0px; padding:0px">
-
 	<div id="header" align="center">
 		<a href="Save.jsp"><img src="${pageContext.request.contextPath }/TuPian/logo.jpg"></a><img
 			src="${pageContext.request.contextPath }/TuPian/nuli.gif"><br /> <font size="33px"><b>用户登录</b></font>
