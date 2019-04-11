@@ -21,11 +21,13 @@
 		var total = '${orders.total }';// 支付的金额
 		var orderNumber = '${orders.orderNumber }';// 订单的编号
 		var addrId = $("input[name='dizhi']:checked").val();
-		window.location.href = "paymentOrders_payOrders?method=post&out_trade_no="+orderNumber+"&total_amount="+total+"&subject="+productName+"&addr.a_id="+addrId;
+		var username = "${loginUser.username }";
+		window.location.href = "paymentOrders_payOrders?method=post&out_trade_no="+orderNumber+"&total_amount="+total+"&subject="+productName+"&addr.a_id="+addrId+"&loginUser.username="+username;
 	}
 </script>
 </head>
 <body id="cart_body">
+	<s:debug />
 	<div class="cart_d1">
 		<div class="cart_d1_d1">
 			尊敬的：${loginUser.username }您好!

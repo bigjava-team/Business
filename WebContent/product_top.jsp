@@ -15,6 +15,7 @@
 		}
 	</style>
 	<!--板块1-->
+	<s:debug />
 	<div class="contentone">
 		<div class=wenziz>
 			中国大陆 

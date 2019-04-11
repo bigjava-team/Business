@@ -3,6 +3,10 @@
 	<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>	
 <style>
+.contentone{
+width: 100%;
+	padding: 7px 1% 7px 6%;
+}
 .wenzikuang{
 	float:left;
 	margin-left: 3%;
@@ -28,7 +32,7 @@
 			
 		</div>
 		
-		<div class="wenziz2" style="float:right;width:35%; text-align: right;">
+		<div class="wenziz2" style="float:right;width:35%; text-align: right;margin-right: 12%;">
 		
 		<div class="wenzikuang2">
 			<s:if test='loginUser.username != null && loginUser.username != ""'>

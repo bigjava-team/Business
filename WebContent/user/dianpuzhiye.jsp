@@ -491,7 +491,7 @@ ol .current {
 						<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
 						<script src="/follow.js" type="text/javascript"></script>
 					</div>
-					<iframe frameborder="0" scrolling="no" src="user/dianpuzhiye_lunbo.jsp" width="100%"
+					<iframe frameborder="0" scrolling="no" src="${pageContext.request.contextPath }/user/dianpuzhiye_lunbo.jsp" width="100%"
 						height="500px"></iframe>
 
 				</div>
