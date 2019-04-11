@@ -32,7 +32,14 @@
 		$(".rightDiv").height(ld);
 	});
 	
-	function addOrderitem() {
+	/* 立即购买 */
+	function lijigoumai(){
+		var f = document.getElementById("product_div1_div2_form");
+		f.action = "order.jsp";
+	}
+	
+	/* 加入购物车 */
+	function jiarucar(){
 		var username = '${loginUser.username}';
 		var p_id = '${product.p_id }';
 		if (username == null || username == "") {
@@ -40,16 +47,6 @@
 		}
 		var f = document.getElementById("product_div1_div2_form");
 		f.action =  f.action + "?loginUser.username="+username+"&product.p_id="+ p_id +"&orderitem.count=1"+"&paging.presentPage=0";
-	}
-	
-	/* 立即购买 */
-	function lijigoumai(){
-		window.location.href = "order.jsp";
-	}
-	
-	/* 加入购物车 */
-	function jiarucar(){
-		window.location.href = "cart.jsp";
 	}
 </script>
 
@@ -101,7 +98,7 @@
 			</div>
 			
 			<!-- form不要删  不然样式会乱  里面的属性不要给属性值就行 -->
-			<form id="product_div1_div2_form" action="orderitem_addOrderItemAndQueryOrderItem" onsubmit="addOrderitem()" method="post">
+			<form id="product_div1_div2_form" action="orderitem_addOrderItemAndQueryOrderItem" method="post">
 				<div class="product_div1_div2_form_div1">
 					<div class="product_div1_div2_form_div1_div1">数量: </div>
 					<%-- <div class="product_div1_div2_form_div1_div2">
@@ -125,13 +122,9 @@
 						</div>
 					</div>
 				</div>
-				<!-- <div class="product_div1_div2_form_div2">
-					<div class="product_div1_div2_form_div2_div1" style="position: absolute; z-index: 10; background-image: url(images/product_gwc.png); background-repeat: no-repeat; background-position: 10% 8%; width: 20%; height: 25%;"></div>
-					<input class="product_div1_div2_form_div2_input1" type="submit" value="加入购物车"/>
-				</div> -->
 				<div style="margin-left: 5%; margin-bottom: 3%;">
-					<input type="button" value="立即购买" onclick="lijigoumai()" style="width: 30%; height: 40px; font-weight: bold; font-size: 16px; background: #FF9224; color: #F0F0F0; margin-right: 2%" />
-					<input type="button" value="加入购物车" onclick="jiarucar()" style="width: 30%; height: 40px; font-weight: bold; font-size: 16px; background: #FF9224; color: #F0F0F0;" />
+					<input type="submit" value="立即购买" onclick="lijigoumai()" style="width: 30%; height: 40px; font-weight: bold; font-size: 16px; background: #FF9224; color: #F0F0F0; margin-right: 2%" />
+					<input type="submit" value="加入购物车" onclick="jiarucar()" style="width: 30%; height: 40px; font-weight: bold; font-size: 16px; background: #FF9224; color: #F0F0F0;" />
 				</div>
 			</form>
 			

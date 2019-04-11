@@ -27,7 +27,7 @@
 
 </head>
 <body id="cart_body">
-
+	<s:debug />
 	<div class="cart_d1">
 		<div class="cart_d1_d1">
 			尊敬的：${loginUser.username } 您好!

@@ -1,9 +1,12 @@
 package org.bigjava.user.action;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.SessionAware;
+import org.bigjava.category.biz.CategoryBiz;
 import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
 import org.bigjava.function.SendMail;
@@ -18,9 +21,11 @@ public class UserAction extends ActionSupport {
 	private IsEmpty isEmpty = new IsEmpty();
 	private User user;
 	private UserBiz userBiz;
+	private CategoryBiz categoryBiz;// 一级分类
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
 	private Paging paging;// 声明Paging类
+	private User loginUser;
 
 	private String emailAddress;// 邮箱号
 
@@ -30,7 +35,15 @@ public class UserAction extends ActionSupport {
 
 	// 接收验证码 struts2 中的属性驱动
 	private String checkcode;
-	
+
+	public CategoryBiz getCategoryBiz() {
+		return categoryBiz;
+	}
+
+	public void setCategoryBiz(CategoryBiz categoryBiz) {
+		this.categoryBiz = categoryBiz;
+	}
+
 	public void setCheckcode(String checkcode) {
 		this.checkcode = checkcode;
 	}
@@ -41,6 +54,14 @@ public class UserAction extends ActionSupport {
 
 	public void setCheck_login(String check_login) {
 		this.check_login = check_login;
+	}
+
+	public User getLoginUser() {
+		return loginUser;
+	}
+
+	public void setLoginUser(User loginUser) {
+		this.loginUser = loginUser;
 	}
 
 	public String getCheckEmail() {
@@ -141,6 +162,7 @@ public class UserAction extends ActionSupport {
 				return "loginError";
 			} else {
 				user = userList.get(0);
+				// 将user存入session中
 				if (user.getRoot() == 1 && user.getU_is_freeze() == 1) {
 					System.out.println("普通用户登录");
 					System.out.println("解冻状态");
@@ -236,7 +258,7 @@ public class UserAction extends ActionSupport {
 		System.out.println("进入UserAction....showAll方法");
 		session = ActionContext.getContext().getSession();
 		int u_root = 0;
-		if (user.getRoot() != 0) {
+		if (loginUser.getRoot() != 0) {
 			u_root = user.getRoot();
 		}
 

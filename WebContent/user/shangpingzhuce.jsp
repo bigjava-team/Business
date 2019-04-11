@@ -435,7 +435,7 @@ td {
 	top: 0%; 
 	left: 0%; 
 	width: 100%; 
-	height: 132%; 
+	height: 137%; 
 	background-color: black; 
 	z-index:1001; 
 	-moz-opacity: 0.3; 
