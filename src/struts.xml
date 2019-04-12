@@ -4,7 +4,7 @@
 
 <struts>
 	<!-- 开启开发者模式，设置编码 -->
-	<!-- <constant name="struts.devMode" value="true" /> -->
+	<constant name="struts.devMode" value="true" />
 	<constant name="stuts.i18n.encoding" value="utf-8" />
 
 	<package name="shop" extends="struts-default" namespace="/">
@@ -29,7 +29,7 @@
 			<result name="adminLogin"> /admin/home.jsp </result>
 
 			<!-- 返回值为loginSuccess为普通用户登录成功 -->
-			<result name="loginSuccess" type="redirectAction">index_showAll?method=post&amp;loginUser.username=${user.username}
+			<result name="loginSuccess" type="redirectAction">index_showAll?method=post&amp;loginUser.username=${user.username}&amp;category.c_id=1
 			</result>
 
 			<!-- 返回值为loginStore，为店长登录 -->
@@ -113,9 +113,14 @@
 			</result>
 		</action>
 
+		<!-- 用户开店后对店铺后台操作的action -->
 		<!-- 店铺对商品的Action -->
 		<action name="MerchantProduct_*" class="merchantProductAction"
 			method="{1}">
+			<!-- 跳转到店铺后台管理 -->
+			<result name="userGotoMerchant">merchant/home.jsp</result>
+			<!-- 用户还没有开店 -->
+			<result name="userGotoMerchantError">user/shangpingzhuce.jsp</result>
 			<result name="saveSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0&amp;merchant.m_id=${merchant.m_id}
 			</result>
 			<result name="updateProductSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0
@@ -143,20 +148,21 @@
 			<result name="queryUserOrderitem">/cart.jsp</result>
 			<result name="removeOrderitem">/cart.jsp</result>
 		</action>
-		
+
 		<!-- 订单的action -->
 		<action name="orders_*" class="ordersAction" method="{1}">
 			<result name="addOrders">/order.jsp</result>
 			<result name="queryUserAllOrders">/myOrderList.jsp</result>
 			<result name="idQueryOrdersPayment">/order.jsp</result>
 		</action>
-		
+
 		<!-- 管理员管理订单action -->
-		<action name="adminOrders_*" class="adminOrdersAction" method="{1}">
+		<action name="adminOrders_*" class="adminOrdersAction"
+			method="{1}">
 			<result name="showAllOrders">/admin/order/list.jsp</result>
 			<result name=""></result>
 			<result name=""></result>
-		</action>		
+		</action>
 
 		<action name="paymentOrders_*" class="paymentOrders"
 			method="{1}">

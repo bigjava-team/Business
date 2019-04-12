@@ -5,6 +5,7 @@ import java.util.List;
 import org.bigjava.category.entity.Category;
 import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.function.Paging;
+import org.bigjava.function.queryCategorySecond.QueryAllCategorySecond;
 
 public interface CategorySecondDao {
 	
@@ -46,6 +47,11 @@ public interface CategorySecondDao {
 	/**
 	 * 查询全部二级分类
 	 */
-	public List<CategorySecond> showCategorySecond();
+	public List<QueryAllCategorySecond> showCategorySecond();
+	
+	/**
+	 * 用CategorySecond接收全部的二级份类
+	 */
+	public List<CategorySecond> showAllCategorySecond();
 
 }

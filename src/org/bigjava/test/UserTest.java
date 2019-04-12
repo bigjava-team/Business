@@ -1,6 +1,5 @@
 package org.bigjava.test;
 
-import org.bigjava.statement.TestStatement;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -10,7 +9,7 @@ public class UserTest {
 		// TODO Auto-generated method stub
 		ApplicationContext app = new ClassPathXmlApplicationContext("app.xml");
 		
-		TestStatement.pagingQueryProduct();
+//		TestStatement.registerMerchant();
 	}
 
 }

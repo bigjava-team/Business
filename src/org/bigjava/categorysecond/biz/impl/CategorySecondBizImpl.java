@@ -7,6 +7,7 @@ import org.bigjava.categorysecond.biz.CategorySecondBiz;
 import org.bigjava.categorysecond.dao.CategorySecondDao;
 import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.function.Paging;
+import org.bigjava.function.queryCategorySecond.QueryAllCategorySecond;
 
 public class CategorySecondBizImpl implements CategorySecondBiz {
 
@@ -60,9 +61,16 @@ public class CategorySecondBizImpl implements CategorySecondBiz {
 	}
 
 	@Override
-	public List<CategorySecond> showCategorySecond() {
+	public List<QueryAllCategorySecond> showCategorySecond() {
 		// TODO Auto-generated method stub
 		return categorySecondDao.showCategorySecond();
+	}
+
+	// 用CategorySecond接收全部的二级份类
+	@Override
+	public List<CategorySecond> showAllCategorySecond() {
+		// TODO Auto-generated method stub
+		return categorySecondDao.showAllCategorySecond();
 	}
 
 }

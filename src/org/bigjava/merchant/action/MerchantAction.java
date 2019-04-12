@@ -18,6 +18,15 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	private MerchantBiz merchantBiz;
 	private UserBiz userBiz;
 	private User user;
+	private User loginUser;
+
+	public User getLoginUser() {
+		return loginUser;
+	}
+
+	public void setLoginUser(User loginUser) {
+		this.loginUser = loginUser;
+	}
 
 	public void setMerchantBiz(MerchantBiz merchantBiz) {
 		this.merchantBiz = merchantBiz;
@@ -80,12 +89,35 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 //		merchantBiz.updateMerchant(merchant, updateMerchant);
 		return "updateMerchantSuccess";
 	}
-	
+
 	/**
 	 * 跳转到我的店铺
 	 */
 	public String gotoMerchant() {
+		System.out.println("MerchantAction。。跳转到我的店铺>gotoMerchant()..");
 		return "gotoMerchant";
 	}
+	
+	/**
+	 * 添加店铺公告
+	 */
+	public String addNotice() {
+		System.out.println("MerchantAction.....addNotice().");
+//		merchantBiz.addNotice(notice);
+		return "addNotice";
+	}
+	
+	/**
+	 * 删除店铺公告
+	 */
 
+	
+	/**
+	 * 修改店铺公告
+	 */
+	
+	/**
+	 * 查询店铺公告
+	 */
 }
+

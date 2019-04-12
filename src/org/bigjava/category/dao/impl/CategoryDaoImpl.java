@@ -22,7 +22,6 @@ public class CategoryDaoImpl extends HibernateDaoSupport implements CategoryDao 
 		// TODO Auto-generated method stub
 		System.out.println("开始查询一级分类");
 		List<Category> listCategory = this.getHibernateTemplate().find("from Category");// 查询全部的一级分类
-		System.out.println(listCategory);
 		return listCategory;
 	}
 
