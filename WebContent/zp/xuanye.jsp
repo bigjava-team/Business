@@ -144,13 +144,13 @@ function fn22(){
 		
 		<table border="1" width="100%" height="100%"align="left">
 					<tr>
-					<td>品牌</td>
+					<td>衣服</td>
 					<td  width="90%" height="10%">
-											<input type="button" id="zi1" onClick="fn1()" value="PLAYBOY/花花公子">
-											<input type="button" id="zi2" onClick="fn2()" value="恒源祥">
-											<input type="button" id="zi3" onClick="fn3()" value="Meters Bonwe/美特斯邦威">
-											<input type="button" id="zi4" onClick="fn4()" value="Mark">
-											<input type="button" id="zi5" onClick="fn5()" value="Fairwhale/马克华菲">
+											<input type="button" id="zi1" onClick="fn1()" value="女装">
+											<input type="button" id="zi2" onClick="fn2()" value="鞋子">
+											<input type="button" id="zi3" onClick="fn3()" value="男装">
+											<input type="button" id="zi4" onClick="fn4()" value="裤子">
+											<input type="button" id="zi5" onClick="fn5()" value="外套">
 			                  </td>				
 					</tr>
 					<tr>
@@ -163,25 +163,19 @@ function fn22(){
 					<tr>
 					<td>尺码</td>
 					<td  width="90%" height="10%">
-															<input type="button" id="zi8" onClick="fn8()" value="L">
-															<input type="button" id="zi9" onClick="fn9()" value="XL">
-															<input type="button" id="zi10"onClick="fn10()" value="M">
-															
-															<input type="button" id="zi11" onClick="fn11()" value="2XL">
-															<input type="button" id="zi12" onClick="fn12()" value="S">
-															<input type="button" id="zi13" onClick="fn13()" value="均码">
-															<input type="button" id="zi14" onClick="fn14()" value="XXS">
-															<input type="button" id="zi15" onClick="fn15()" value="XS">
+															<input type="button" id="zi8" onClick="fn8()" value="潮流T恤">
+															<input type="button" id="zi9" onClick="fn9()" value="时尚女鞋">
+															<input type="button" id="zi10"onClick="fn10()" value="男士外套">										
 												</td>
 					</tr>
 					<tr>
-					<td>适用季节</td>
+					<td>电子产品</td>
 					<td  width="90%" height="10%">
-								<input type="button" id="zi16" onClick="fn16()" value="秋季">
-								<input type="button" id="zi17" onClick="fn17()" value="冬季">
-								<input type="button" id="zi18" onClick="fn18()" value="春季">
-								<input type="button" id="zi19" onClick="fn19()" value="四季">
-								<input type="button" id="zi20" onClick="fn20()" value="夏季">
+								<input type="button" id="zi16" onClick="fn16()" value="冰箱">
+								<input type="button" id="zi17" onClick="fn17()" value="手机">
+								<input type="button" id="zi18" onClick="fn18()" value="手表">
+								<input type="button" id="zi19" onClick="fn19()" value="洗护">
+								<input type="button" id="zi20" onClick="fn20()" value="数码 ">
 																</td>
 					</tr>
 					<tr>
