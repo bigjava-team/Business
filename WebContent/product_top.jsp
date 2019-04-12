@@ -15,7 +15,6 @@
 		}
 	</style>
 	<!--板块1-->
-	<s:debug />
 	<div class="contentone">
 		<div class=wenziz>
 			中国大陆 
@@ -35,7 +34,7 @@
 			</s:if>
 			
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
-				<a href="Merchant_gotoMerchant.action">我的店铺</a>
+				<a href="Merchant_gotoMerchant.action?method=post&loginUser.username=${loginUser.username }">我的店铺</a>
 			</s:if>
 			<a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presenetPage=0">我的订单</a> 
 			<a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0">购物车</a> 

@@ -30,5 +30,10 @@ public interface MerchantBiz {
 	 * 修改店铺
 	 */
 	public void updateMerchant(Merchant merchant, Merchant updateMerchant);
+	
+	/**
+	 * 添加店铺公告
+	 */
+	public void addNotice(String notice);
 
 }

@@ -56,7 +56,7 @@
 	});
 	
 	function queryProduct(id) {
-		var username = '${sessionScope.loginUser.username }';
+		var username = '${loginUser.username }';
 		window.location.href="Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0";
 		/* window.location.href="Product_idQueryProduct?method=post&product.p_id="+id+"&paging.presentPage=0"; */
 	}
@@ -323,22 +323,41 @@
 			<div style="background: #FFF; width: 100%; height: 36.9%; padding-top: 2.5%;">
 				<div style="margin-left: 2%; margin-right: 2%; height: 97%; font-size: 14px;">
 					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-bottom-style: dashed; margin-top: -1px;">
-						我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						
+						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
+							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						</marquee>
+						
 					</div>
 					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px;">
-						hahahahahahahahahahahahahahahahahahahahahahahaha
+						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
+							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						</marquee>
+						
 					</div>
 					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px;">
-						我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
+							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						</marquee>
+						
 					</div>
 					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px;">
-						我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
+							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						</marquee>
+						
 					</div>
 					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px;">
-						我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
+							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						</marquee>
+						
 					</div>
 					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; margin-top: -1px;">
-						我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
+							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						</marquee>
+						
 					</div>
 				</div>
 			</div>

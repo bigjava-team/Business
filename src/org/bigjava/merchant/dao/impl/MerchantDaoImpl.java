@@ -73,4 +73,12 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 		
 	}
 
+	/**
+	 * Ìí¼ÓµêÆÌ¹«¸æ
+	 */
+	@Override
+	public void addNotice(String notice) {
+		this.getHibernateTemplate().save(notice);
+	}
+
 }

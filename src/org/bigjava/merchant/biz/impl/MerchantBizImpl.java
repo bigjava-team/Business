@@ -38,4 +38,12 @@ public class MerchantBizImpl implements MerchantBiz {
 		merchantDao.updateMerchant(merchant, updateMerchant);
 	}
 
+	/**
+	 * Ìí¼ÓµêÆÌ¹«¸æ
+	 */
+	@Override
+	public void addNotice(String notice) {
+		merchantDao.addNotice(notice);
+	}
+
 }

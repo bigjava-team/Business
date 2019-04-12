@@ -48,7 +48,6 @@
 }
 .bar7 button:before {
 	content:"搜索";
-	font-family:FontAwesome;
 	color:#324b4e;
 	width:100%
 }
@@ -75,12 +74,6 @@ body {
 	margin: 0px;
 	padding: 0px;
 	overflow-x: hidden;
-	font-family: "Microsoft JhengHei";
-}
-
-.head {
-	width: 100%;
-	border: 1px solid gray;
 }
 
 .head a {
@@ -315,7 +308,6 @@ ol .current {
 	line-height: 40px;
 	text-align: center;
 	font-weight: bold;
-	font-family: '黑体';
 	font-size: 30px;
 	color: #000;
 	opacity: 0.5;
@@ -330,7 +322,7 @@ ol .current {
 
 </head>
 <body>
-	<div class="head">
+	<div >
 		<div>
 			<%@include file="top.jsp" %>
 		</div>
@@ -343,21 +335,7 @@ ol .current {
 			<div
 				style="float: left; border-right: 1px solid #d2c8c8; padding-top: 1%; padding-bottom: 0.5%; padding-right: 2%; padding-left: 2%;">
 				#店铺名</div>
-			<div
-				style="float: left; border-right: 1px solid #d2c8c8; text-align: center; padding-right: 2%; padding-left: 2%;">
-				<table>
-					<tr>
-						<td>描述</td>
-						<td>服务</td>
-						<td>物流</td>
-					</tr>
-					<tr>
-						<td><font color="red">#店铺评分</font></td>
-						<td><font color="red">#店铺评分</font></td>
-						<td><font color="red">#店铺评分</font></td>
-					</tr>
-				</table>
-			</div>
+		
 			<div style="float: right;margin-right: 10%;">
 			 <div class="search bar7">
         <form class="form1" method="post" action="sousuojieguo.jsp">

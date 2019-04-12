@@ -224,12 +224,13 @@ public class UserAction extends ActionSupport {
 	 */
 	public String updatePassword() {
 		System.out.println("进入UserAction....updatePassword方法");
-		System.out.println(user.getUsername());
-		User u = userBiz.queryUsernameUser(user.getUsername());
-		ActionContext.getContext().getSession().put("u", u);
+		user = userBiz.queryUsernameUser(loginUser.getUsername());
+		System.out.println("u"+user);
+		ActionContext.getContext().getSession().put("u", user);
+		
 		String password = user.getPassword();
 		user.setPassword(password);
-		userBiz.updateUserPassword(password, u);
+		userBiz.updateUserPassword(password, user);
 		return "updatePasswordSuccess";
 	}
 

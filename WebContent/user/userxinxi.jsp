@@ -448,28 +448,20 @@ body {
 		var text = document.getElementsByName("jiups").item(0).value;
 		var user = document.getElementById("jiups");
 		
+		var oldPass = '${session.u.password}';
 		
 		if (text == "" || text == null) {
 			user.className = "red";
 			div1.innerHTML = "旧密码不能为空!";
 			return false;
 		}
-		if (text.length > 20) {
+		
+		/* if (text != oldPass) {
 			user.className = "red";
-			div1.innerHTML = "旧密码最多不超过20位!";
+			div1.innerHTML = "旧密码错误！！";
 			return false;
-		}
-		if (text.length < 5) {
-			user.className = "red";
-			div1.innerHTML = "旧密码最少为5位!";
-			return false;
-		}
-
-		if (5 <= text.length <= 20) {
-			user.className = "black";
-			div1.innerHTML = "";
-			return true;
-		}
+		} */
+		
 	}
 
 	function update_xinps1() {
