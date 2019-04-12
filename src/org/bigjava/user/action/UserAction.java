@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.interceptor.SessionAware;
 import org.bigjava.category.biz.CategoryBiz;
 import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
