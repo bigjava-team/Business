@@ -311,7 +311,7 @@ img {
 
 					</div>
 					<div class="orange">
-						<a href="user/Save.jsp"><font class="ziti1">
+						<a href="${pageContext.request.contextPath}/user/Save.jsp"><font class="ziti1">
 								还没有账号？点我去注册!</font></a>
 					</div>
 				</form>

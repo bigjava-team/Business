@@ -29,7 +29,6 @@
 		
 		
 		<div class=wenziz2>
-				<a href="index.jsp">我的光光</a>
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<a href="User_gotoUserIndex.action?method=post&loginUser.username=${loginUser.username }">我的主页</a>
 			</s:if>
