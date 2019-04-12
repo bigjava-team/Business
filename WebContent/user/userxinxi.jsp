@@ -369,44 +369,29 @@ body {
 	    var traget2=document.getElementById("lb2");  
 	    var traget3=document.getElementById("lb3");  
 	    var traget4=document.getElementById("lb4");
-	    var traget5=document.getElementById("lb5");
-	    var traget6=document.getElementById("lb6");
-	    var traget7=document.getElementById("lb7");
 	    if(id==1){  
 	        traget1.style.display="block";
 	        traget2.style.display="none";
 	        traget3.style.display="none";
 	        traget4.style.display="none";
-	        traget5.style.display="none";
-	        traget6.style.display="none";
-	        traget7.style.display="none";
 	    }
 	    if(id==2){  
 	        traget1.style.display="none";
 	        traget2.style.display="block";
 	        traget3.style.display="none";
 	        traget4.style.display="none";
-	        traget5.style.display="none";
-	        traget6.style.display="none";
-	        traget7.style.display="none";
 	    }
 	    if(id==3){  
 	        traget1.style.display="none";
 	        traget2.style.display="none";
 	        traget3.style.display="block";
 	        traget4.style.display="none";
-	        traget5.style.display="none";
-	        traget6.style.display="none";
-	        traget7.style.display="none";
 	    }
 	    if(id==4){  
 	        traget1.style.display="none";
 	        traget2.style.display="none";
 	        traget3.style.display="none";
 	        traget4.style.display="block";
-	        traget5.style.display="none";
-	        traget6.style.display="none";
-	        traget7.style.display="none";
 	    }
 	}
 	      
@@ -716,23 +701,34 @@ function dealsubmit3(){
 function show1(id){
 	 var tr1 = document.getElementById("shouhu_"+id);
 	    var text1 = document.getElementById("update_dizhiname");
-	    var tr2 = document.getElementById("dizhi_"+id);
+	    var tr2 = document.getElementById("detailed_"+id);
 	    var text2 = document.getElementById("dizhi");
 	    var tr3 = document.getElementById("phone_"+id);
 	    var text3 = document.getElementById("dizhiphone");
-	   
-	   	
-	    var tr4 = document.getElementById("update_shen"+id);//拿到表格里的省
-	    var tr5 = document.getElementById("update_shi"+id);//拿到表格里的市
-	    var tr6 = document.getElementById("update_xian"+id);//拿到表格里的县
-	    
-	    alert("a"+tr4.innerHTML+tr5.innerHTML+tr6.innerHTML);
 	    text1.value  =tr1.innerHTML ;
 	    text2.value  =tr2.innerHTML ;
 	    text3.value  =tr3.innerHTML ;
-	    addressInit('cmbProvince', 'cmbCity', 'cmbArea', tr4.innerHTML, tr5.innerHTML, tr6.innerHTML);
-		addressInit('Select1', 'Select2', 'Select3');
-}
+	    
+	    var tr4=document.getElementById("p_m_d_"+id).innerHTML;
+	    tr4 = $.trim(tr4);
+	    tr4 = tr4.split("|");
+	    for (var i=0; i<tr4.length; i++) {
+	    	if(i==0){
+	    		var sheng=tr4[i];
+	    		sheng = $.trim(sheng);
+	    	}
+	    	if(i==1){
+	    		var shi=tr4[i];
+	    		shi = $.trim(shi);
+	    	}
+	    	if(i==2){
+	    		var qu=tr4[i];
+	    		qu = $.trim(qu);
+	    	}
+	    }
+	    addressInit('cmbProvince', 'cmbCity', 'cmbArea',sheng,shi,qu);
+	    addressInit('Select1', 'Select2', 'Select3');
+}		
 
 </script>
 
@@ -960,17 +956,18 @@ function show1(id){
 								<tr style="background-color: #ebecf0;">
 									<td class="update_one">收货人</td>
 									<td class="update_one">省 | 市 | 区</td>
-									<td class="update_one">收货地址</td>
+									<td class="update_one">详细地址</td>
 									<td class="update_one">联系电话</td>
 									<td class="update_one">操作</td>
 								</tr>
 								<s:iterator value="listAddr" var="listAddrs">
 									<tr style="background-color: #ebecf0;">
 										<td  class="update_one" id="shouhu_${listAddrs.a_id }">${listAddrs.a_name }</td>
-										<td class="update_one">
-											<font id="update_shen${listAddrs.a_id }">广东</font>  | <font id="update_shi${listAddrs.a_id }">广州市</font>  | <font id="update_xian${listAddrs.a_id }">海珠区</font>
+										<td class="update_one" id="p_m_d_${listAddrs.a_id }">
+											<%-- <font id="update_shen${listAddrs.a_id }">广东</font>  | <font id="update_shi${listAddrs.a_id }">广州市</font>  | <font id="update_xian${listAddrs.a_id }">海珠区</font> --%>
+											${listAddrs.addressP_M_D }
 										</td>
-										<td class="update_one" id="dizhi_${listAddrs.a_id }">${listAddrs.address }</td>
+										<td class="update_one" id="detailed_${listAddrs.a_id }">${listAddrs.detailedAddress }</td>
 										<td class="update_one" id="phone_${listAddrs.a_id }">${listAddrs.a_phone }</td>
 										<td class="update_one">
 											<a onclick="show1(${listAddrs.a_id })" style="cursor:pointer">修改</a>/

@@ -23,7 +23,7 @@
 			d.add('010202','0102','添加商品','${pageContext.request.contextPath}/MerchantProduct_addPage.action','','mainFrame');
 
 			d.add('0103','01','订单管理');
-			d.add('010301','0103','订单信息','${pageContext.request.contextPath}/merchant/order/list.jsp','','mainFrame');
+			d.add('010301','0103','订单信息','${pageContext.request.contextPath}/Merchant_queryMerchantOrders?method=post&merchant.m_id=${merchant.m_id}','','mainFrame');
 			
 			d.add('0104','01','公告管理');
 			d.add('010401','0104','公告信息','${pageContext.request.contextPath}/merchant/notice/list.jsp','','mainFrame');

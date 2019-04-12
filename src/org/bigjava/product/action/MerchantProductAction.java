@@ -12,6 +12,7 @@ import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
 import org.bigjava.image.biz.ImageBiz;
 import org.bigjava.image.entity.Images;
+import org.bigjava.merchant.biz.MerchantBiz;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.product.biz.ProductBiz;
 import org.bigjava.product.entity.Product;
@@ -47,7 +48,12 @@ public class MerchantProductAction extends ActionSupport {
 	private User user;
 	private User loginUser;
 	private UserBiz userBiz;
+	private MerchantBiz merchantBiz;// 店铺的biz
 	
+	
+	public void setMerchantBiz(MerchantBiz merchantBiz) {
+		this.merchantBiz = merchantBiz;
+	}
 
 	public void setUserBiz(UserBiz userBiz) {
 		this.userBiz = userBiz;
@@ -168,6 +174,7 @@ public class MerchantProductAction extends ActionSupport {
 			System.out.println("还没有开店！！");
 			return "userGotoMerchantError";
 		}
+		merchant = merchantBiz.queryUidMerchant(user.getU_id());
 		return "userGotoMerchant";
 	}
 
