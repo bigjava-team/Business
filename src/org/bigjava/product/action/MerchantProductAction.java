@@ -162,7 +162,7 @@ public class MerchantProductAction extends ActionSupport {
 	// 跳转到添加页面的方法:
 	public String addPage() {
 		// 查询所有的二级分类:
-		List<CategorySecond> csList = categorySecondBiz.showCategorySecond();
+		List<CategorySecond> csList = categorySecondBiz.showAllCategorySecond();
 		// 将二级分类的数据显示到页面上
 		ActionContext.getContext().getValueStack().set("csList", csList);
 		// 页面跳转

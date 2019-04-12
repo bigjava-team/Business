@@ -74,7 +74,7 @@
 			}
 		}
 		var username = "${loginUser.username }";
-		window.location.href="orders_addOrders?method=post&listId="+listId+"&loginUser.username="+username+"&listNumber="+listNumber+"&orders.total="+total+"&subtotals="+subtotal;
+		window.location.href="orders_addOrders?method=post&listId="+listId+"&loginUser.username="+username+"&listNumber="+listNumber+"&orders.total="+total+"&subtotals="+subtotal+"&paging.presentPage=0";
 	}
 </script>
 

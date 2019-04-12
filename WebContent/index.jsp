@@ -29,14 +29,6 @@
 		$(".xuanfu").height(a - 4);
 	});
 	
-	$(function(){
-		$(".aaa").hover(function(){
-			$(".xuanfu").css('display','block');
-		}, function(){
-			$(".xuanfu").css('display','none');
-		});
-	});
-	
 	$(function() {
 		$(".newestProduct").mouseover(function() {
 			$(this).css("cursor", "pointer");
@@ -56,21 +48,56 @@
 	});
 	
 	function queryProduct(id) {
-		var username = '${sessionScope.loginUser.username }';
+		var username = '${loginUser.username }';
 		window.location.href="Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0";
-		/* window.location.href="Product_idQueryProduct?method=post&product.p_id="+id+"&paging.presentPage=0"; */
 	}
 	
-	
-	$(function(){
-		$(".xuanfu").mouseover(function(){
-			$(".xuanfu").css('display','block');
+	function categoryOver(id,csId) {
+		$("#"+id).css({
+			"background-color": "rgba(250,82,82,0.4)",
+			"color": "#FA5252",
 		});
 		
-		$(".xuanfu").mouseout(function(){
-			$(".xuanfu").css('display','none');
+		$("#"+id+" a").css({
+			"color": "red",
 		});
-	});
+		$("#cs"+csId).css("display", "block");
+	}
+	
+	function categoryOut(id,csId) {
+		$("#"+id).css({
+			"background-color": "white",
+			"color": "black",
+		});
+		
+		$("#"+id+" a").css({
+			"color": "black",
+		});
+		
+		$("#cs"+csId).css("display", "none");
+	}
+	
+	function aOver(id,csId) {
+		$("#"+id).css({
+			"text-decoration": "underline",
+		});
+		$("#cs"+csId).css("display", "block");
+	}
+	
+	function aOut(id,csId) {
+		$("#"+id).css({
+			"text-decoration": "none",
+		});
+		$("#cs"+csId).css("display", "none");
+	}
+	
+	function csOver(id) {
+		$("#"+id).css("display", "block");
+	}
+	
+	function csOut(id) {
+		$("#"+id).css("display", "none");
+	}
 	
 </script>
 </head>
@@ -102,106 +129,19 @@
 			<a href="https://www.suning.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;苏宁易购&emsp;</a>|
 			<a href="http://bj.jumei.com" target="_blank" style="text-decoration: none; color: #FFF;">&emsp;聚美优品&emsp;</a>
 		</div>
-		<div class="aaa" style="background: #FFF; width: 16%; float: left; color: #666666">
+		<div class="aaa" style="background: #FFF; width: 16%; float: left; color: #666666;">
 			<!-- 此div 做边距处理，空出位置 遍历时请勿删除 -->
 			<div style="height: 5px;"></div>
-			
-			<div class="aaa_d1" style="font-size: 15px; padding: 6px 0px 6px 13%; background: red">
-				<a>女装 / </a>
-				<a>男装 /</a>
-				<a>内衣</a>
-			</div>
-			
-			<div class="aaa_d2" style="font-size: 15px; padding: 6px 0px 6px 13%;">
-				<a>鞋靴 / </a>
-				<a>箱包 /</a>
-				<a>配件</a>
-			</div>
-			
-			<div class="aaa_d3" style="font-size: 15px; padding: 6px 0px 6px 13%;">
-				<a>童装玩具 / </a>
-				<a>孕产 /</a>
-				<a>用品</a>
-			</div>
-			
-			<div style="font-size: 15px; padding: 6px 0px 6px 13%;">
-				<a>家电 / </a>
-				<a>数码 /</a>
-				<a>手机</a>
-			</div>
-			
-			<div style="font-size: 15px; padding: 6px 0px 6px 13%;">
-				<a>美妆 / </a>
-				<a>洗护 /</a>
-				<a>保健品</a>
-			</div>
-			
-			<div style="font-size: 15px; padding: 6px 0px 6px 13%;">
-				<a>珠宝 / </a>
-				<a>眼镜 /</a>
-				<a>手表</a>
-			</div>
-			
-			<div style="font-size: 15px; padding: 6px 0px 6px 13%;">
-				<a>运动 / </a>
-				<a>户外 /</a>
-				<a>乐器</a>
-			</div>
-			
-			<div style="font-size: 15px; padding: 6px 0px 6px 13%;">
-				<a>游戏 / </a>
-				<a>动漫 /</a>
-				<a>影视</a>
-			</div>
-			
-			<div style="font-size: 15px; padding: 6px 0px 6px 13%;">
-				<a>美食 / </a>
-				<a>生鲜 /</a>
-				<a>零食</a>
-			</div>
-			
-			<div style="font-size: 15px; padding: 6px 0px 6px 13%;">
-				<a>鲜花 / </a>
-				<a>宠物 /</a>
-				<a>农资</a>
-			</div>
-			
-			<div style="font-size: 15px; padding: 6px 0px 6px 13%;">
-				<a>工具 / </a>
-				<a>装修 /</a>
-				<a>建材</a>
-			</div>
-			
-			<div style="font-size: 15px; padding: 6px 0px 6px 13%;">
-				<a>家具 / </a>
-				<a>家饰 /</a>
-				<a>家纺</a>
-			</div>
-			
-			<div style="font-size: 15px; padding: 6px 0px 6px 13%;">
-				<a>汽车 / </a>
-				<a>二手车 /</a>
-				<a>用品</a>
-			</div>
-			
-			<div style="font-size: 15px; padding: 6px 0px 6px 13%;">
-				<a>办公 / </a>
-				<a>DIY /</a>
-				<a>五金电子</a>
-			</div>
-			
-			<div style="font-size: 15px; padding: 6px 0px 6px 13%;">
-				<a>百货 / </a>
-				<a>餐厨 /</a>
-				<a>家庭保健</a>
-			</div>
-			
-			<div style="font-size: 15px; padding: 6px 0px 6px 13%;">
-				<a>学习 / </a>
-				<a>卡券 /</a>
-				<a>本地服务</a>
-			</div>
-			
+			<s:iterator value="listIndexCategory" var="listIndexCategorys" status="status">
+				<div class="categoryCss" id="aaa_d<s:property value='#status.count' />" onmouseover="categoryOver(this.id,<s:property value='#status.count' />)" onmouseout="categoryOut(this.id,<s:property value='#status.count' />)" style="font-size: 15px; padding: 6px 0px 6px 13%; color: black;border: 1px solid red;">
+					<s:iterator value="#listIndexCategorys.listCategory" var="lists" status="aStatus">
+						<a href="javascript:;" onmouseover="aOver(this.id,<s:property value='#status.count' />)" onmouseout="aOut(this.id,<s:property value='#status.count' />)" id="a<s:property value='#status.count' /><s:property value='#aStatus.count' />"><s:property value="#lists.c_name" /></a>
+						<s:if test="#lists.c_id%3 != 0">
+						/
+						</s:if>
+					</s:iterator>
+				</div>
+			</s:iterator>
 			<!-- 此div 做边距处理，空出位置 遍历时请勿删除 -->
 			<div style="height: 5px;"></div>
 		</div>
@@ -260,105 +200,83 @@
 		</div>
 		
 		<!-- 隐藏的div -->
-		<div class="xuanfu" style="background: #FFF; display: none; position: absolute; width: 52.7%; float: left; margin-left: 14.1%; margin-top: 30px; border: 2px solid red; padding: 1% 1.5% 1% 1.8%;">
-			<div style="background: #FFF; width: 64.5%; height: 100%; float: left;">
-				<div style="background: #369; width: 100%; height: 33.33%;">
-					<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #545454">
-						女装
-					</div>
-					<div style="background: #FFF; width: 100%; height: 79%; color: #666666; font-size: 12px; padding-right: 2%; overflow: hidden;">
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">看上新</a> </div>
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">连衣裙</a> </div>
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">T恤</a> </div>
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">衬衫</a> </div>
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">裤子</a> </div>
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">牛仔裤</a> </div>
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">西装</a> </div>
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">短外套</a> </div>
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">台上盆</a> </div>
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">毛巾杆</a> </div>
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">普通马桶</a> </div>
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">龙头</a> </div>
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">浴缸</a> </div>
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">墙纸</a> </div>
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">壁纸</a> </div>
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">墙布</a> </div>
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">背景墙</a> </div>
-					</div>
+		<s:iterator value="listCS" var="listCS2" status="csStatus">
+			<div id="cs<s:property value='#csStatus.count' />" onmouseover="csOver(this.id)" onmouseout="csOut(this.id)" class="xuanfu" style="background: #FFF;display: none;position: absolute;width: 52.7%; float: left; margin-left: 14.1%; margin-top: 30px; border: 2px solid red; padding: 1% 1.5% 1% 1.8%;">
+				<div style="background: #FFF; width: 64.5%; height: 100%; float: left;">
+					<s:iterator value="#listCS2.listCategorySecond" var="listCategorySeconds">	
+						<div style="background: #369; width: 100%; height: 33.33%;border: 1px solid blue;">
+							<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #545454">
+								<s:iterator value="#listCategorySeconds.listCategorySecond" var="cs" status="status">
+									<s:if test="#status.count == 1">
+										<s:property value="#cs.category.c_name"/>
+									</s:if>
+								</s:iterator>
+							</div>
+							<div style="background: #FFF; width: 100%; height: 79%; color: #666666; font-size: 12px; padding-right: 2%; overflow: hidden;">
+								<s:iterator value="#listCategorySeconds.listCategorySecond" var="cs">
+									<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"><a href="javascript:;"><s:property value="#cs.cs_name"/></a> </div>
+								</s:iterator>
+							</div>
+						</div>
+					</s:iterator>
 				</div>
-				<div style="background: #369; width: 100%; height: 33.33%;">
-					<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #545454">
-						男装
-					</div>
-					<div style="background: #FFF; width: 100%; height: 79%; color: #666666; font-size: 12px; padding-right: 2%; overflow: hidden;">
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">看上新</a> </div>
-					</div>
-				</div>
-				<div style="background: #369; width: 100%; height: 33.33%;">
-					<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #545454">
-						内衣
-					</div>
-					<div style="background: #FFF; width: 100%; height: 79%; color: #666666; font-size: 12px; padding-right: 2%; overflow: hidden;">
-						<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"> <a href="#">看上新</a> </div>
-					</div>
-				</div>
-			</div>
-			<div style="background: #FFF; width: 35.5%; height: 100%; float: left;">
-				<div style="background: #FFF; width: 100%; height: 33.33%;">
-					<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #545454; text-align: center;">
-						猜你喜欢
-					</div>
-					<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
-						<div style="margin-left: 12%; margin-right: 6%;">
-							<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+				<div style="background: #FFF; width: 35.5%; height: 100%; float: left;">
+					<div style="background: #FFF; width: 100%; height: 33.33%;">
+						<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #545454; text-align: center;">
+							猜你喜欢
 						</div>
-						<div style="margin-left: 12%; margin-right: 6%;">
-							商品图片商品图片商品图片商品图片商品图片商品图片
+						<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
+							<div style="margin-left: 12%; margin-right: 6%;">
+								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+							</div>
+							<div style="margin-left: 12%; margin-right: 6%;">
+								商品图片商品图片商品图片商品图片商品图片商品图片
+							</div>
 						</div>
-					</div>
-					<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
-						<div style="margin-left: 6%; margin-right: 12%;">
-							<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+						<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
+							<div style="margin-left: 6%; margin-right: 12%;">
+								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+							</div>
+							<div style="margin-left: 6%; margin-right: 12%;">
+								商品图片商品图片商品图片商品图片商品图片商品图片
+							</div>
 						</div>
-						<div style="margin-left: 6%; margin-right: 12%;">
-							商品图片商品图片商品图片商品图片商品图片商品图片
+						<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
+							<div style="margin-left: 12%; margin-right: 6%;">
+								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+							</div>
+							<div style="margin-left: 12%; margin-right: 6%;">
+								商品图片商品图片商品图片商品图片商品图片商品图片
+							</div>
 						</div>
-					</div>
-					<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
-						<div style="margin-left: 12%; margin-right: 6%;">
-							<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+						<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
+							<div style="margin-left: 6%; margin-right: 12%;">
+								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+							</div>
+							<div style="margin-left: 6%; margin-right: 12%;">
+								商品图片商品图片商品图片商品图片商品图片商品图片
+							</div>
 						</div>
-						<div style="margin-left: 12%; margin-right: 6%;">
-							商品图片商品图片商品图片商品图片商品图片商品图片
+						<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
+							<div style="margin-left: 12%; margin-right: 6%;">
+								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+							</div>
+							<div style="margin-left: 12%; margin-right: 6%;">
+								商品图片商品图片商品图片商品图片商品图片商品图片
+							</div>
 						</div>
-					</div>
-					<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
-						<div style="margin-left: 6%; margin-right: 12%;">
-							<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
-						</div>
-						<div style="margin-left: 6%; margin-right: 12%;">
-							商品图片商品图片商品图片商品图片商品图片商品图片
-						</div>
-					</div>
-					<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
-						<div style="margin-left: 12%; margin-right: 6%;">
-							<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
-						</div>
-						<div style="margin-left: 12%; margin-right: 6%;">
-							商品图片商品图片商品图片商品图片商品图片商品图片
-						</div>
-					</div>
-					<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left;  margin-bottom: 11%;">
-						<div style="margin-left: 6%; margin-right: 12%;">
-							<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
-						</div>
-						<div style="margin-left: 6%; margin-right: 12%;">
-							商品图片商品图片商品图片商品图片商品图片商品图片
+						<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left;  margin-bottom: 11%;">
+							<div style="margin-left: 6%; margin-right: 12%;">
+								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+							</div>
+							<div style="margin-left: 6%; margin-right: 12%;">
+								商品图片商品图片商品图片商品图片商品图片商品图片
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</s:iterator>
 	</div>
 	
 	<div style="overflow: hidden; margin-bottom: 8px;">

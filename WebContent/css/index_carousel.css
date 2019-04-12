@@ -69,3 +69,11 @@
 #navDiv a:hover {
 	background-color: black;
 }
+
+.categoryCss a {
+	color: black;
+}
+
+.categoryCss a:hover {
+	color: red;
+}
