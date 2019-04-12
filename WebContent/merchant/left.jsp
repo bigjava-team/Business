@@ -22,9 +22,12 @@
 			d.add('010201','0102','商品信息','${pageContext.request.contextPath}/MerchantProduct_findAll.action?method=post&paging.presentPage=0&merchant.m_id=${user.merchant.m_id }','','mainFrame');
 			d.add('010202','0102','添加商品','${pageContext.request.contextPath}/MerchantProduct_addPage.action','','mainFrame');
 
-			d.add('0103','01','公告管理');
-			d.add('010301','0103','公告信息','${pageContext.request.contextPath}/merchant/notice/list.jsp','','mainFrame');
-			d.add('010302','0103','发布公告','${pageContext.request.contextPath}/merchant/notice/add.jsp','','mainFrame');
+			d.add('0103','01','订单管理');
+			d.add('010301','0103','订单信息','${pageContext.request.contextPath}/merchant/order/list.jsp','','mainFrame');
+			
+			d.add('0104','01','公告管理');
+			d.add('010401','0104','公告信息','${pageContext.request.contextPath}/merchant/notice/list.jsp','','mainFrame');
+			d.add('010402','0104','发布公告','${pageContext.request.contextPath}/merchant/notice/add.jsp','','mainFrame');
 			
 			document.write(d);
 		</script>

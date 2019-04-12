@@ -242,7 +242,57 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="ccc" style="width: 24.2%; float: left; padding: 0px; margin: 0px;">
+			<s:if test='loginUser.username != null && loginUser.username != ""'>
+				<div style="background-color: rgba(240,200,238,0.3); color: #FF8300; font-size: 16px; font-weight: bold; text-align: center; width: 100%; padding: 2% 0%;">
+					您好！某某用户
+				</div>
+				<div style="background: #FFF; width: 100%; height: 49.7%; padding-top: 5%;">
+					<div style="width: 100%; height: 38%; margin-left: 0%; margin-bottom: 2%; text-align: center;">
+						<img alt="用户头像" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="100%" style="border-radius: 50%;">
+					</div>
+					<div style="text-align: center; color: #FF8300; font-weight: bold;">
+						欢迎来到光光商场！
+					</div>
+					
+					<div style="width: 90%; margin-left: 5%; margin-top: 3%;">
+						<!-- 登录时状态 -->
+						<fieldset style="border: 3px solid #E0E0E0;">
+							<legend style="margin-left: 5%; font-size: 12px; margin-bottom: 4%;">我的账号</legend>
+							<div style="width: 50%; float: left; text-align: center; margin-bottom: 8%;">
+								<a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0">
+									<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: 8%; padding: 4% 23%; border-radius: 7%;">
+										购物车
+									</font>
+								</a>
+							</div>
+							<div style="width: 50%; float: left; text-align: center; margin-bottom: 8%;">
+								<a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presenetPage=0">
+									<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: -10%; padding: 4% 18%; border-radius: 7%;">
+										我的订单
+									</font>
+								</a>
+							</div>
+							<div style="width: 50%; float: left; text-align: center; margin-bottom: 6%;">
+								<a href="#">
+									<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: 8%; padding: 4% 18%; border-radius: 7%;">
+										店铺收藏
+									</font>
+								</a>
+							</div>
+							<div style="width: 50%; float: left; text-align: center; margin-bottom: 6%;">
+								<a href="#">
+									<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: -10%; padding: 4% 18%; border-radius: 7%;">
+										商品收藏
+									</font>
+								</a>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+		</s:if>
+		<s:else >
 			<div style="background-color: rgba(240,200,238,0.3); color: #FF8300; font-size: 16px; font-weight: bold; text-align: center; width: 100%; padding: 2% 0%;">
 				您好！某某用户
 			</div>
@@ -255,68 +305,34 @@
 				</div>
 				
 				<div style="width: 90%; margin-left: 5%; margin-top: 3%;">
-					
 					<!-- 未登陆状态 -->
-					<!-- <fieldset style="border: 3px solid #E0E0E0;">
+					<fieldset style="border: 3px solid #E0E0E0;">
 						<legend style="margin-left: 5%; font-size: 12px; margin-bottom: 4%;">我的操作</legend>
 						<div style="width: 50%; float: left; text-align: center; margin-bottom: 6%;">
-							<a href="#">
+							<a href="user/login.jsp">
 								<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 100%; margin-left: 12%; padding: 4% 25%; border-radius: 7%;">
-									登 录
+									登 陆
 								</font>
 							</a>
 						</div>
 						<div style="width: 50%; float: left; text-align: center; margin-bottom: 3%;">
-							<a href="#">
+							<a href="user/Save.jsp">
 								<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: -14%; padding: 4% 25%; border-radius: 7%;">
 									注 册
 								</font>
 							</a>
 						</div>
 						<div style="width: 100%; float: left; text-align: center; margin-bottom: 7%; margin-top: 2%;">
-							<a href="#">
+							<a href="user/login.jsp">
 								<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 87%; padding: 3% 24.5%; border-radius: 4%;">
 									免&nbsp; 费&nbsp; 开&nbsp; 店
 								</font>
 							</a>
 						</div>
-					</fieldset> -->
-					
-					<!-- 登录时状态 -->
-					<fieldset style="border: 3px solid #E0E0E0;">
-						<legend style="margin-left: 5%; font-size: 12px; margin-bottom: 4%;">我的账号</legend>
-						<div style="width: 50%; float: left; text-align: center; margin-bottom: 8%;">
-							<a href="#">
-								<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: 8%; padding: 4% 23%; border-radius: 7%;">
-									购物车
-								</font>
-							</a>
-						</div>
-						<div style="width: 50%; float: left; text-align: center; margin-bottom: 8%;">
-							<a href="#">
-								<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: -10%; padding: 4% 18%; border-radius: 7%;">
-									我的订单
-								</font>
-							</a>
-						</div>
-						<div style="width: 50%; float: left; text-align: center; margin-bottom: 6%;">
-							<a href="#">
-								<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: 8%; padding: 4% 18%; border-radius: 7%;">
-									店铺收藏
-								</font>
-							</a>
-						</div>
-						<div style="width: 50%; float: left; text-align: center; margin-bottom: 6%;">
-							<a href="#">
-								<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: -10%; padding: 4% 18%; border-radius: 7%;">
-									商品收藏
-								</font>
-							</a>
-						</div>
 					</fieldset>
 				</div>
-				
 			</div>
+		</s:else>
 			<div style="background: #F4F4F4; width: 100%; height: 7.1%; font-size: 16px; font-weight: bold; text-align: center; padding-top: 2.5%;">
 				光光公告
 			</div>
