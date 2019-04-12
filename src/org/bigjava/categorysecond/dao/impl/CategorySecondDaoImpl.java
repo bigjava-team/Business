@@ -1,12 +1,14 @@
 package org.bigjava.categorysecond.dao.impl;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bigjava.category.entity.Category;
 import org.bigjava.categorysecond.dao.CategorySecondDao;
 import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.function.Paging;
+import org.bigjava.function.queryCategorySecond.QueryAllCategorySecond;
 import org.bigjava.user.entity.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -102,11 +104,25 @@ public class CategorySecondDaoImpl extends HibernateDaoSupport implements Catego
 
 	// 查询全部二级分类
 	@Override
-	public List<CategorySecond> showCategorySecond() {
+	public List<QueryAllCategorySecond> showCategorySecond() {
 		// TODO Auto-generated method stub
-		System.out.println("开始执行showCategorySecond方法");
-		List<CategorySecond> listCategorySecond = this.getHibernateTemplate().find("from CategorySecond");
+		List<Category> listCategory = this.getHibernateTemplate().find("from Category");
+		List<QueryAllCategorySecond> listCategorySecond = new ArrayList<QueryAllCategorySecond>();
+		
+		for (int i=0; i<listCategory.size(); i++) {
+			List<CategorySecond> listCategorySecond2 = this.getHibernateTemplate().find("from CategorySecond where c_id = ?", listCategory.get(i).getC_id());
+			QueryAllCategorySecond queryCS = new QueryAllCategorySecond();
+			queryCS.setListCategorySecond(listCategorySecond2);
+			listCategorySecond.add(queryCS);
+		}
 		return listCategorySecond;
+	}
+
+	// 用CategorySecond接收全部的二级份类
+	@Override
+	public List<CategorySecond> showAllCategorySecond() {
+		// TODO Auto-generated method stub
+		return this.getHibernateTemplate().find("from CategorySecond");
 	}
 
 }

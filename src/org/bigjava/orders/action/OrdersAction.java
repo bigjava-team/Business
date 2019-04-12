@@ -152,7 +152,6 @@ public class OrdersAction {
 		ordersBiz.addOrders(orders, loginUser, null);
 		
 		orders = ordersBiz.orderNumberQueryOrders(orderNumber);
-		System.out.println(orders);
 		List<Orderitem> listOrderitem = new ArrayList<Orderitem>();
 		for (int i=0; i<sId.length; i++) {
 			int sIds = Integer.parseInt(sId[i]);
@@ -164,6 +163,10 @@ public class OrdersAction {
 			listOrderitem.add(orderitem);
 		}
 		orderItemBiz.addOrders_id(listOrderitem, orders);
+		
+		int number = addrBiz.queryAllAddrNumber(loginUser);
+		paging = new Paging(paging.getPresentPage(), number, 5);
+		listAddr = addrBiz.queryAllAddr(paging, loginUser);
 		return "addOrders";
 	}
 	

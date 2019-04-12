@@ -27,7 +27,6 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 		orders.setAddr(addr);// 添加与Addr类的外键
 		
 		this.getHibernateTemplate().save(orders);// 添加订单信息
-		
 	}
 
 	// 删除订单信息(退货)
@@ -95,7 +94,6 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 		String hql = "from Orders where orderNumber = ?";
 		List<Orders> list = session.createQuery(hql).setString(0, orderNumber).list();
 		System.out.println(list.get(0));
-		session.clear();
 		return list.size() > 0 ? list.get(0) : null;
 	}
 

@@ -1,11 +1,9 @@
 package org.bigjava.user.action;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
-import org.bigjava.category.biz.CategoryBiz;
 import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
 import org.bigjava.function.SendMail;
@@ -20,7 +18,6 @@ public class UserAction extends ActionSupport {
 	private IsEmpty isEmpty = new IsEmpty();
 	private User user;
 	private UserBiz userBiz;
-	private CategoryBiz categoryBiz;// 一级分类
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
 	private Paging paging;// 声明Paging类
@@ -34,13 +31,13 @@ public class UserAction extends ActionSupport {
 
 	// 接收验证码 struts2 中的属性驱动
 	private String checkcode;
-
-	public CategoryBiz getCategoryBiz() {
-		return categoryBiz;
+	
+	public User getLoginUser() {
+		return loginUser;
 	}
 
-	public void setCategoryBiz(CategoryBiz categoryBiz) {
-		this.categoryBiz = categoryBiz;
+	public void setLoginUser(User loginUser) {
+		this.loginUser = loginUser;
 	}
 
 	public void setCheckcode(String checkcode) {
@@ -53,14 +50,6 @@ public class UserAction extends ActionSupport {
 
 	public void setCheck_login(String check_login) {
 		this.check_login = check_login;
-	}
-
-	public User getLoginUser() {
-		return loginUser;
-	}
-
-	public void setLoginUser(User loginUser) {
-		this.loginUser = loginUser;
 	}
 
 	public String getCheckEmail() {
@@ -284,7 +273,6 @@ public class UserAction extends ActionSupport {
 		session.put("paging", paging);
 		session.put("userRoot", u_root);
 		session.put("searchText", searchText);
-
 		return "showAllUserSuccess";
 	}
 

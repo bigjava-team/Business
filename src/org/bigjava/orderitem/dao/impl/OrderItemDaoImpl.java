@@ -39,6 +39,8 @@ public class OrderItemDaoImpl extends HibernateDaoSupport implements OrderItemDa
 	public Orderitem queryOrderItem_id(int item_id) {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行queryOrderItem_id方法");
+//		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+//		Orderitem orderitem = (Orderitem) session.get(Orderitem.class, item_id);
 		return this.getHibernateTemplate().get(Orderitem.class, item_id);
 	}
 
@@ -119,7 +121,7 @@ public class OrderItemDaoImpl extends HibernateDaoSupport implements OrderItemDa
 			orderItem.setOrders(orders);
 			this.getHibernateTemplate().update(orderItem);
 		}
-		
+		System.out.println("修改结束");
 	}
 
 	// 通过订单id查询对应的订单项
