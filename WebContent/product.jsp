@@ -48,21 +48,57 @@
 		var f = document.getElementById("product_div1_div2_form");
 		f.action =  f.action + "?loginUser.username="+username+"&product.p_id="+ p_id +"&orderitem.count=1"+"&paging.presentPage=0";
 	}
+	
+	/* 点击小图片，小图片显示到商品大图片区域 */
+	$(function(){
+		$(".123").on('click', function(){
+			$('#product_div1_div1_div1').html($(this).html());
+		})
+	});
+	
+	/* 数量加减 */
+	/* function add(){
+		var txt=document.getElementById('addShuLiang');
+		var a=inputShuLiang.value;
+		if(a>=9) {
+	    	alert('对不起，库存件数不能大于等于9');
+	    } else {
+	    	a++;
+	    	txt.value=a;
+	    }
+	} */
+	
+	$(function(){
+		$("#addShuLiang").click(function(){
+			var shuliang = $("#inputShuLiang").val();
+			$("#inputShuLiang").attr("value", shuliang * 1 + 1 );
+		});
+	});
+	
+	$(function(){
+		$("#jianShuLiang").click(function(){
+			var shuliang = $("#inputShuLiang").val();
+			if (shuliang > 1) {
+				$("#inputShuLiang").attr("value", shuliang * 1 - 1 );
+			}
+		});
+	});
+	
 </script>
 
 <body id="product_body">
 	<%@ include file="product_top.jsp" %>
 	
 	<div id="product_div1">
-		<div id="product_div1_div1">
-			<div id="product_div1_div1_div1">
-				<img alt="${product.p_image }" src="${fileImageAction.urlImage }${product.p_image }" width="100%;" height="100%;">
+		<div id="product_div1_div1" >
+			<div id="product_div1_div1_div1" style="text-align: center; overflow: hidden;">
+				<img alt="${product.p_image }" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;">
 			</div>
 			<div id="product_div1_div1_div2">
-				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="60px;">
-				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="60px;">
-				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="60px;">
-				<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="60px;">
+				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img class="" alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;"></div>
+				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img alt="图片名称" src="images/products/aaa002.jpg" height="90%" style="padding-top: 6%;"></div>
+				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img alt="图片名称" src="images/products/bbb006.jpg" height="90%" style="padding-top: 6%;"></div>
+				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;"></div>
 			</div>
 		</div>
 		
@@ -111,13 +147,13 @@
 					</div> --%>
 					
 					<div class="product_div1_div2_form_div1_div2" style="margin-left: 14%;">
-						<div style="background: #E0E0E0; margin-left: 0%; float: left; padding: 0% 2.2%; line-height: 26px; text-align: center;">
+						<div id="jianShuLiang" style="background: #E0E0E0; margin-left: 0%; float: left; padding: 0% 2.2%; line-height: 26px; text-align: center;">
 							-
 						</div>
 						<div style="float: left; margin-left: -6.9%;">
-							<input type="text" value="1" style="margin-left: 2%; margin-top: 0px; float: left; width: 4%; height: 26px; background: #FCFCFC; border: 1px solid #D0D0D0; text-align: center; padding-right: 0.2%;">
+							<input id="inputShuLiang" type="text" value="1" style="margin-left: 2%; margin-top: 0px; float: left; width: 4%; height: 26px; background: #FCFCFC; border: 1px solid #D0D0D0; text-align: center; padding-right: 0.2%;">
 						</div>
-						<div style="background: #E0E0E0; margin-left: 14.32%; float: left; padding: 0% 2%; line-height: 26px; text-align: center;">
+						<div id="addShuLiang" style="background: #E0E0E0; margin-left: 14.32%; float: left; padding: 0% 2%; line-height: 26px; text-align: center;">
 							+
 						</div>
 					</div>
