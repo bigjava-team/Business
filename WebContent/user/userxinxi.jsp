@@ -408,33 +408,6 @@ body {
 	        traget6.style.display="none";
 	        traget7.style.display="none";
 	    }
-	    if(id==5){  
-	        traget1.style.display="none";
-	        traget2.style.display="none";
-	        traget3.style.display="none";
-	        traget4.style.display="none";
-	        traget5.style.display="block";
-	        traget6.style.display="none";
-	        traget7.style.display="none";
-	    }
-	    if(id==6){  
-	        traget1.style.display="none";
-	        traget2.style.display="none";
-	        traget3.style.display="none";
-	        traget4.style.display="none";
-	        traget5.style.display="none";
-	        traget6.style.display="block";
-	        traget7.style.display="none";
-	    }
-	    if(id==7){  
-	        traget1.style.display="none";
-	        traget2.style.display="none";
-	        traget3.style.display="none";
-	        traget4.style.display="none";
-	        traget5.style.display="none";
-	        traget6.style.display="none";
-	        traget7.style.display="block";
-	    }
 	}
 	      
 	//第二个div的js代码
@@ -448,28 +421,20 @@ body {
 		var text = document.getElementsByName("jiups").item(0).value;
 		var user = document.getElementById("jiups");
 		
+		var oldPass = '${session.u.password}';
 		
 		if (text == "" || text == null) {
 			user.className = "red";
 			div1.innerHTML = "旧密码不能为空!";
 			return false;
 		}
-		if (text.length > 20) {
+		
+		/* if (text != oldPass) {
 			user.className = "red";
-			div1.innerHTML = "旧密码最多不超过20位!";
+			div1.innerHTML = "旧密码错误！！";
 			return false;
-		}
-		if (text.length < 5) {
-			user.className = "red";
-			div1.innerHTML = "旧密码最少为5位!";
-			return false;
-		}
-
-		if (5 <= text.length <= 20) {
-			user.className = "black";
-			div1.innerHTML = "";
-			return true;
-		}
+		} */
+		
 	}
 
 	function update_xinps1() {
@@ -789,14 +754,7 @@ function show1(id){
 					type="submit" class="userxinxi_button userxinxi_inbutton"
 					value="修改信息" onclick="display(3)"><br /> <input
 					type="submit" class="userxinxi_button userxinxi_inbutton"
-					value="收货地址" onclick="display(4)"><br /> <input
-					type="submit" class="userxinxi_button userxinxi_inbutton"
-					value="我的购物车" onclick="display(5)"
-					style="padding-right: 9%; padding-left: 9%"><br /> <input
-					type="submit" class="userxinxi_button userxinxi_inbutton"
-					value="我的收藏" onclick="display(6)"><br /> <input
-					type="submit" class="userxinxi_button userxinxi_inbutton"
-					value="评价管理" onclick="display(7)"><br />
+					value="收货地址" onclick="display(4)"><br /> 
 
 			</div>
 		</div>
@@ -1024,12 +982,7 @@ function show1(id){
 						</div>
 					</form>
 				</div>
-				<!-- 第五个div -->
-				<div id="lb5" style="display: none">购物车页面</div>
-				<!-- 第六个div -->
-				<div id="lb6" style="display: none">我的收藏</div>
-				<!-- 第七个div -->
-				<div id="lb7" style="display: none">评价页面</div>
+				
 			</div>
 
 		</div>

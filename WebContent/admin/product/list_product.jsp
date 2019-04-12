@@ -9,11 +9,7 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/admin-jQuery-js.js"></script>
-<script type="text/javascript">
-	function addCategory(){
-		window.location.href = "${pageContext.request.contextPath}/merchant/merchants/edit.jsp";
-	}
-</script>
+
 </head>
 <body class="admin_body" style="margin: 1% 1%;">
 	

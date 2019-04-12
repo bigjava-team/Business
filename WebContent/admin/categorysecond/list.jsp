@@ -87,6 +87,7 @@
 			<a href="${pageContext.request.contextPath }/CategorySecond_findAllBySearchName.action?paging.presentPage=<s:property value="#session.paging.presentPage+1"/>&searchCategorySecond=${session.searchCategorySecond}">下一页</a>
 			<a href="${pageContext.request.contextPath }/CategorySecond_findAllBySearchName.action?paging.presentPage=<s:property value="#session.paging.page"/>&searchText=${session.searchText}">尾页</a>
 		</s:if>
+		&nbsp;共<s:property value="#session.paging.totalNumber"/>条
 	</div>
 	
 </body>

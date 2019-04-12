@@ -108,7 +108,7 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 					query = session.createQuery(hql).setString(0, searchProduct + "%").setInteger(1, m_id);// 模糊查询
 				} else if (p_freeze!=0) {
 					hql += "and p_freeze = ?";
-					session.createQuery(hql).setString(0, searchProduct + "%").setInteger(1, p_freeze);
+					query = session.createQuery(hql).setString(0, searchProduct + "%").setInteger(1, p_freeze);
 				} else {
 					query = session.createQuery(hql).setString(0, searchProduct + "%");// 模糊查询
 				}
@@ -135,9 +135,8 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 			list = this.getHibernateTemplate().find(hql,
 					new Object[]{searchProduct + '%', m_id});// 模糊查询一共有多少条数据
 		} else if (p_freeze != 0) {
-			System.out.println(searchProduct + "s"+p_freeze+m_id);
 			hql += " and p_freeze = ?";
-			this.getHibernateTemplate().find(hql, new Object[]{searchProduct + '%', p_freeze});
+			list = this.getHibernateTemplate().find(hql, new Object[]{searchProduct + '%', p_freeze});
 		} else {
 			list = this.getHibernateTemplate().find(hql,
 					searchProduct + '%');// 模糊查询一共有多少条数据

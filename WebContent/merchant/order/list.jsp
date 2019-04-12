@@ -27,45 +27,26 @@
 		
 		<table id="admin_list_table" cellspacing="0" cellpadding="0" rules="all" width="100%" border="1" bordercolor="gray">
 			<tr id="admin_list_tr1">
-				<td width="8%" align="center">序号</td>
-				<td width="8%" align="center">编号</td>
-				<td width="8%" align="center">总金额</td>
-				<td width="10%" align="center">时间</td>
-				<td width="10%" align="center">收货人姓名</td>
-				<td width="10%" align="center">收货人电话</td>
-				<td width="18%" align="center">收货人地址</td>
-				<td width="*%" align="center">订单详情</td>
-				<td width="8%" align="center">状态</td>
+				<td width="19%" align="center">编号</td>
+				<td width="12.5%" align="center">订单金额</td>
+				<td width="12.5%" align="center">订单时间</td>
+				<td width="12.5%" align="center">收货人姓名</td>
+				<td width="12.5%" align="center">收货人电话</td>
+				<td width="18.5%" align="center">收货人地址</td>
+				<td width="12.5%" align="center">状态</td>
 			</tr>
-			<s:iterator value="listOrders" var="listOrder" status="status">
 			<tr id="admin_list_tr2"  onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-				<td align="center"><s:property value="#status.count"/></td>
-				<td align="center">${ listOrder.o_id}</td>
-				<td align="center">${ listOrder.total}</td>
-				<td align="center">${ listOrder.ordertime}</td>
-				<td align="center">${ listOrder.user.username}</td>
-				<td align="center">${ listOrder.user.phone}</td>
+				<td align="center">123456789112345678911234567891</td>
+				<td align="center">¥123</td>
+				<td align="center">2019-24-24 24:24:24</td>
+				<td align="center">张三</td>
+				<td align="center">12345678910</td>
 				<td align="center">
-					<s:if test="#listOrder.state == 1">
-						订单未支付，暂无收货地址
-					</s:if>
-					<s:else>
-						${ listOrder.addr.address}
-					</s:else>
+					江西省南昌市南昌县紫阳大道
 				</td>
 				<td align="center">
-					<input id="but1" type="button" value="订单详情" onclick="showDetail(1)">
-					<div id="div1"></div>
-				</td>
-				<td align="center">
-					<s:if test="#listOrder.state == 1">
-						未支付
-					</s:if>
-					<s:else>
-						已支付
-					</s:else>
-			</tr>
-			</s:iterator>
+					<button>发货</button>
+				</tr>
 		</table>
 		
 		<div id="admin_list_div_page">

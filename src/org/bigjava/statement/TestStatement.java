@@ -196,11 +196,12 @@ public class TestStatement {
 		System.out.println("输入店铺的id");
 		int m_id = input.nextInt();
 		
-//		int totalNumber = productDao.queryProductNumber(searchProduct, m_id );
+		int totalNumber = productDao.queryProductNumber(searchProduct, 0, 3);
 		
 		System.out.println("输入从哪页开始查");
 		int presentPage = input.nextInt();
-//		Paging page = new Paging(presentPage, totalNumber, 2);
+		Paging page = new Paging(presentPage, totalNumber, 3);
+		productDao.queryAllProduct(searchProduct, page, 0, 3);
 	}
 	
 	// 修改商品内容

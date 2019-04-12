@@ -57,7 +57,8 @@
 			<result name="close">index.jsp </result>
 
 			<!-- 跳转我的首页 -->
-			<result name="gotoUserIndex" type="redirectAction">addr_findAllAddr?method=post&amp;loginUser.username=${loginUser.username }&amp;paging.presentPage=0</result>
+			<result name="gotoUserIndex" type="redirectAction">addr_findAllAddr?method=post&amp;loginUser.username=${loginUser.username
+				}&amp;paging.presentPage=0</result>
 
 			<!-- 修改密码界面 -->
 			<result name="updatePasswordSuccess">/user/login.jsp</result>
@@ -101,15 +102,25 @@
 		</action>
 
 		<!-- 管理员查询全部商品的action -->
-		<action name="adminProduct_*" class="adminProductAction" method="{1}">
+		<action name="adminProduct_*" class="adminProductAction"
+			method="{1}">
 			<result name="adminFindAll">/admin/product/list.jsp</result>
-			<result name="adminDeleteProduct" type="redirectAction">adminProduct_adminFindAll?user.root=0&amp;paging.presentPage=0&amp;merchant.m_id=0 </result>
+			<result name="adminDeleteProduct" type="redirectAction">adminProduct_adminFindAll?user.root=0&amp;paging.presentPage=0&amp;merchant.m_id=0
+			</result>
 			<result name="getProductSuccess">/admin/product/list_product.jsp </result>
+			<result name="showToProduct">/admin/product/filterProduct.jsp </result>
+			<result name="agreeProduct" type="redirectAction">adminProduct_showToProduct.action?user.root=0&amp;paging.presentPage=0
+			</result>
 		</action>
 
+		<!-- 用户开店后对店铺后台操作的action -->
 		<!-- 店铺对商品的Action -->
 		<action name="MerchantProduct_*" class="merchantProductAction"
 			method="{1}">
+			<!-- 跳转到店铺后台管理 -->
+			<result name="userGotoMerchant">merchant/home.jsp</result>
+			<!-- 用户还没有开店 -->
+			<result name="userGotoMerchantError">user/shangpingzhuce.jsp</result>
 			<result name="saveSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0&amp;merchant.m_id=${merchant.m_id}
 			</result>
 			<result name="updateProductSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0
@@ -137,23 +148,34 @@
 			<result name="queryUserOrderitem">/cart.jsp</result>
 			<result name="removeOrderitem">/cart.jsp</result>
 		</action>
-		
+
+		<!-- 订单的action -->
 		<action name="orders_*" class="ordersAction" method="{1}">
 			<result name="addOrders">/order.jsp</result>
 			<result name="queryUserAllOrders">/myOrderList.jsp</result>
 			<result name="idQueryOrdersPayment">/order.jsp</result>
 		</action>
-		
-		<action name="paymentOrders_*" class="paymentOrders" method="{1}">
+
+		<!-- 管理员管理订单action -->
+		<action name="adminOrders_*" class="adminOrdersAction"
+			method="{1}">
+			<result name="showAllOrders">/admin/order/list.jsp</result>
+			<result name=""></result>
+			<result name=""></result>
+		</action>
+
+		<action name="paymentOrders_*" class="paymentOrders"
+			method="{1}">
 			<result name="payOrders">/payOrders/payOrders.jsp</result>
 		</action>
-		
-		<action name="addr_*" class="addrAction" method="{1}" >
-			<result name="addAddressSuccess" type="redirectAction">addr_findAllAddr?method=post&amp;loginUser.username=${user.username}&amp;paging.presentPage=0</result>
+
+		<action name="addr_*" class="addrAction" method="{1}">
+			<result name="addAddressSuccess" type="redirectAction">addr_findAllAddr?method=post&amp;loginUser.username=${user.username}&amp;paging.presentPage=0
+			</result>
 			<result name="findAllAddrSuccess">/user/userxinxi.jsp</result>
 			<result name="delAddrSuccess">/user/userxinxi.jsp</result>
 		</action>
-		
+
 	</package>
 
 

@@ -35,4 +35,9 @@ public interface MerchantDao {
 	 */
 	public void updateMerchant(Merchant merchant, Merchant updateMerchant);
 	
+	/**
+	 * Ìí¼ÓµêÆÌ¹«¸æ
+	 */
+	public void addNotice(String notice);
+	
 }

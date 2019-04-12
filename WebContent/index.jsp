@@ -182,20 +182,140 @@
 				</div>
 			</div>
 		</div>
-		<div class="ccc" style="background: #79FF79; width: 24.2%; float: left; padding: 0px; margin: 0px;">
-			<div style="background: red; font-size: 16px; font-weight: bold; text-align: center; width: 100%; padding: 2% 0%;">
+		
+		<div class="ccc" style="width: 24.2%; float: left; padding: 0px; margin: 0px;">
+			<s:if test='loginUser.username != null && loginUser.username != ""'>
+				<div style="background-color: rgba(240,200,238,0.3); color: #FF8300; font-size: 16px; font-weight: bold; text-align: center; width: 100%; padding: 2% 0%;">
+					您好！某某用户
+				</div>
+				<div style="background: #FFF; width: 100%; height: 49.7%; padding-top: 5%;">
+					<div style="width: 100%; height: 38%; margin-left: 0%; margin-bottom: 2%; text-align: center;">
+						<img alt="用户头像" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="100%" style="border-radius: 50%;">
+					</div>
+					<div style="text-align: center; color: #FF8300; font-weight: bold;">
+						欢迎来到光光商场！
+					</div>
+					
+					<div style="width: 90%; margin-left: 5%; margin-top: 3%;">
+						<!-- 登录时状态 -->
+						<fieldset style="border: 3px solid #E0E0E0;">
+							<legend style="margin-left: 5%; font-size: 12px; margin-bottom: 4%;">我的账号</legend>
+							<div style="width: 50%; float: left; text-align: center; margin-bottom: 8%;">
+								<a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0">
+									<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: 8%; padding: 4% 23%; border-radius: 7%;">
+										购物车
+									</font>
+								</a>
+							</div>
+							<div style="width: 50%; float: left; text-align: center; margin-bottom: 8%;">
+								<a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presenetPage=0">
+									<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: -10%; padding: 4% 18%; border-radius: 7%;">
+										我的订单
+									</font>
+								</a>
+							</div>
+							<div style="width: 50%; float: left; text-align: center; margin-bottom: 6%;">
+								<a href="#">
+									<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: 8%; padding: 4% 18%; border-radius: 7%;">
+										店铺收藏
+									</font>
+								</a>
+							</div>
+							<div style="width: 50%; float: left; text-align: center; margin-bottom: 6%;">
+								<a href="#">
+									<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: -10%; padding: 4% 18%; border-radius: 7%;">
+										商品收藏
+									</font>
+								</a>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+		</s:if>
+		<s:else >
+			<div style="background-color: rgba(240,200,238,0.3); color: #FF8300; font-size: 16px; font-weight: bold; text-align: center; width: 100%; padding: 2% 0%;">
 				您好！某某用户
 			</div>
-			<div style="background:aqua; width: 100%; height: 49.7%; padding-top: 5%; text-align: center;">
-				<div>
-					<img alt="用户头像" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50%">
+			<div style="background: #FFF; width: 100%; height: 49.7%; padding-top: 5%;">
+				<div style="width: 100%; height: 38%; margin-left: 0%; margin-bottom: 2%; text-align: center;">
+					<img alt="用户头像" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="100%" style="border-radius: 50%;">
+				</div>
+				<div style="text-align: center; color: #FF8300; font-weight: bold;">
+					欢迎来到光光商场！
+				</div>
+				
+				<div style="width: 90%; margin-left: 5%; margin-top: 3%;">
+					<!-- 未登陆状态 -->
+					<fieldset style="border: 3px solid #E0E0E0;">
+						<legend style="margin-left: 5%; font-size: 12px; margin-bottom: 4%;">我的操作</legend>
+						<div style="width: 50%; float: left; text-align: center; margin-bottom: 6%;">
+							<a href="user/login.jsp">
+								<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 100%; margin-left: 12%; padding: 4% 25%; border-radius: 7%;">
+									登 陆
+								</font>
+							</a>
+						</div>
+						<div style="width: 50%; float: left; text-align: center; margin-bottom: 3%;">
+							<a href="user/Save.jsp">
+								<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 80%; margin-left: -14%; padding: 4% 25%; border-radius: 7%;">
+									注 册
+								</font>
+							</a>
+						</div>
+						<div style="width: 100%; float: left; text-align: center; margin-bottom: 7%; margin-top: 2%;">
+							<a href="user/login.jsp">
+								<font style="background: #FF5000; font-size: 14px; color: #FFF; width: 87%; padding: 3% 24.5%; border-radius: 4%;">
+									免&nbsp; 费&nbsp; 开&nbsp; 店
+								</font>
+							</a>
+						</div>
+					</fieldset>
 				</div>
 			</div>
-			<div style="background:yellow; width: 100%; height: 7.1%; font-size: 16px; font-weight: bold; text-align: center; padding-top: 2.5%;">
+		</s:else>
+			<div style="background: #F4F4F4; width: 100%; height: 7.1%; font-size: 16px; font-weight: bold; text-align: center; padding-top: 2.5%;">
 				光光公告
 			</div>
-			<div style="background: aqua; width: 100%; height: 36.9%;">
-				gonggao
+			<div style="background: #FFF; width: 100%; height: 36.9%; padding-top: 2.5%;">
+				<div style="margin-left: 2%; margin-right: 2%; height: 97%; font-size: 14px;">
+					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-bottom-style: dashed; margin-top: -1px;">
+						
+						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
+							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						</marquee>
+						
+					</div>
+					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px;">
+						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
+							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						</marquee>
+						
+					</div>
+					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px;">
+						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
+							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						</marquee>
+						
+					</div>
+					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px;">
+						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
+							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						</marquee>
+						
+					</div>
+					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px;">
+						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
+							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						</marquee>
+						
+					</div>
+					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; margin-top: -1px;">
+						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
+							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
+						</marquee>
+						
+					</div>
+				</div>
 			</div>
 		</div>
 		
@@ -290,7 +410,7 @@
 						<div style="text-align: center; height: 196px; overflow: hidden;">
 							<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="90%" height="100%">
 						</div>
-						<div class="product_name" style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden; color: black;" value="${listProductTimes.p_id }"> 
+						<div class="product_name" style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden; color: black;" value="${listProductTimes.p_id }"> 
 							<a href="javascript:;" >${listProductTimes.p_name }</a>
 						</div>
 						<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
@@ -354,7 +474,9 @@
 			</s:iterator>
 		</div>
 	</div>
-	
-	<%@ include file="menu_bottom.jsp" %>
+	<div style="width: 100%; height: 15px;">
+		
+	</div>
+	<%@ include file="index_menu_bottom.jsp" %>
 </body>
 </html>

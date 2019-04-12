@@ -17,11 +17,11 @@ public class UserAction extends ActionSupport {
 
 	private IsEmpty isEmpty = new IsEmpty();
 	private User user;
-	private User loginUser;
 	private UserBiz userBiz;
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
 	private Paging paging;// 声明Paging类
+	private User loginUser;
 
 	private String emailAddress;// 邮箱号
 
@@ -161,6 +161,9 @@ public class UserAction extends ActionSupport {
 					return "loginStore";
 				} else if (user.getRoot() == 3) {
 					System.out.println("管理员登录");
+					session = ActionContext.getContext().getSession();
+					session.put("loginUser", user);
+					System.out.println(user);
 					return "adminLogin";
 				} else if (user.getU_is_freeze() == 2) {
 					check_login = "用户已冻结";
@@ -209,12 +212,13 @@ public class UserAction extends ActionSupport {
 	 */
 	public String updatePassword() {
 		System.out.println("进入UserAction....updatePassword方法");
-		System.out.println(user.getUsername());
-		User u = userBiz.queryUsernameUser(user.getUsername());
-		ActionContext.getContext().getSession().put("u", u);
+		user = userBiz.queryUsernameUser(loginUser.getUsername());
+		System.out.println("u"+user);
+		ActionContext.getContext().getSession().put("u", user);
+		
 		String password = user.getPassword();
 		user.setPassword(password);
-		userBiz.updateUserPassword(password, u);
+		userBiz.updateUserPassword(password, user);
 		return "updatePasswordSuccess";
 	}
 
@@ -253,7 +257,7 @@ public class UserAction extends ActionSupport {
 		if (isEmpty.isEmpty(searchText)) {
 			searchText = "";
 		}
-		
+
 		// 根据搜索的内容与权限查询可搜索的总条数
 		int totalNumber = userBiz.queryPages(searchText, u_root);
 

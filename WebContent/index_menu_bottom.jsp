@@ -3,11 +3,6 @@
 
 <div class="container footer">
 	<div class="span24">
-		<div class="footerAd">
-			<img src="${pageContext.request.contextPath }/images/footer.jpg" width="950" height="52" alt="我们的优势" title="我们的优势">
-		</div>
-	</div>
-	<div class="span24">
 		<ul class="bottomNav">
 			<li>
 				<a href="###" style="color: #000; text-decoration: none;">关于我们</a>
