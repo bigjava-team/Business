@@ -14,10 +14,12 @@
 	}
 
 	$(document).ready(function() {
-		$("#button").click(function() {
+		$("#search").click(function() {
 			var searchText = $("#input").val();// 获取搜索文本框的值
+			var selected = $("#select option:selected").val();// 获取下拉列表的值
 			alert(searchText);
-			window.location.href="MerchantProduct_findAll?method=post&searchText="+searchText+"&paging.presentPage=0";
+			var merchantId = '${merchant.m_id}';
+			window.location.href="MerchantProduct_findAll?method=post&searchText="+searchText+"&merchant.m_id="+merchantId+"&paging.presentPage=0";
 		});
 	});
 </script>
@@ -35,19 +37,15 @@
 		<div class="input-group5">
 			<select class="input-group_select5">
 				<option class="option" value="0">全部</option>
-				<option class="option" value="3">编号</option>
-				<option class="option" value="2">名称</option>
-				<option class="option" value="1">月销售量</option>
-				<option class="option" value="1">是否热门</option>
+				<option class="option" value="5">名称</option>
+				<option class="option" value="4">上架商品</option>
+				<option class="option" value="3">申请中商品</option>
+				<option class="option" value="2">下架商品</option>
+				<option class="option" value="1">热门商品</option>
 			</select>
 			<!-- 搜索框 -->
 			<input type="text" name="queryText" id="input" class="input-group_input7" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
 			
-			<input type="text" name="queryText" id="input" class="input-group_input8" placeholder="最低价格"  value="">
-			<div class="input-group5_d1">
-				&nbsp; - &nbsp;
-			</div>
-			<input type="text" name="queryText" id="input" class="input-group_input9" placeholder="最高价格"  value="">
 			<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
 			<button id="search" class="input-group_button5">搜索</button>
 		</div>
@@ -70,8 +68,8 @@
 			<td width="7%" align="center">是否热门</td>
 			<td width="10%" align="center">上架时间</td>
 			<td width="7%" align="center">商品状态</td>
-			<td width="7%" align="center">编辑</td>
-			<td width="7%" align="center">下架</td>
+			<td width="6%" align="center">编辑</td>
+			<td width="6%" align="center">下架</td>
 		</tr>
 		<!-- 迭代器 -->
 		<s:iterator value="productList" status="status" var="product">
@@ -84,7 +82,7 @@
 			<td align="center">${product.sale_volume }</td>
 			<td align="center">${product.p_desc }</td>
 			<td align="center">
-				<s:if test="product.sale_volume > 500">
+				<s:if test="product.sale_volume > 2">
 					是
 				</s:if>
 				<s:else>
@@ -129,6 +127,7 @@
 			<a href="${pageContext.request.contextPath }/MerchantProduct_findAll.action?paging.presentPage=<s:property value="#session.paging.presentPage+1"/>&searchText=${session.searchText}&merchant.m_id=${merchant.m_id}">下一页</a>
 			<a href="${pageContext.request.contextPath }/MerchantProduct_findAll.action?paging.presentPage=<s:property value="#session.paging.page"/>&searchText=${session.searchText}&merchant.m_id=${merchant.m_id}">尾页</a>
 		</s:if>
+		&emsp;共<s:property value="#session.paging.totalNumber"/>条
 	</div>
 	
 </body>

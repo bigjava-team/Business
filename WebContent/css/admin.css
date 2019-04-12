@@ -95,11 +95,11 @@ admin_add/edit
 }
 
 .admin_add_div_middle{
+	padding-top: 5px;
 	width: 49.8%;
 	height: 30px;
 	background: #f5fafe;
 	text-align: center;
-	line-height:30px;
 	font-size: 14px;
 	float: left;
 	border: 1px solid #EEEEEE;
@@ -159,7 +159,6 @@ admin_add/edit
 .admin_merchant_pd_a_e_d2{
 	width: 100%;
 	height: 82px;
-	line-height: 90px;
 }
 
 .admin_merchant_pd_l_d1{
@@ -370,14 +369,13 @@ admin_add/edit
 }
 
 .input-group3 {
-	width: 29%;
+	width: 25%;
 	height: 25px;
 	margin: 0 auto;
 	margin-top: 0px;
 	margin-bottom: 8px;
 	border: 2px solid #acd6ff;
 	padding: 0px;
-	background: red;
 	border-radius: 3px;
 	margin-left: 35%;
 }

@@ -4,68 +4,67 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!--搜素栏 -->
-<link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="css/xuanxiangxiahua.css">
-<link rel="stylesheet" href="css/menu_bottom.css">
-<style type="text/css">
-/*索搜*/
-* {box-sizing: border-box;}
-#container {width: 500px;height: 820px; margin: 0 auto;}
-div.search {padding: 15px 0;}
-form {position: relative;width: 300px;margin: 0 auto;}
-input, button {border: none;outline: none;}
-input {width: 100%;height: 42px; padding-left: 13px;}
-button {height: 42px;width: 42px; cursor: pointer;position: absolute;}
-/*搜索框7*/
-.bar7 form {height:53px;}
-.bar7 input {width:400px;border-radius: 42px;border: -2px solid #324B4E;background: #F9F0DA;transition: .3s linear;float: right;}
-.bar7 input:focus {width: 550px;}
-.bar7 button {background: none;top: 1px;right: 0;}
-.bar7 button:before{content: "\f002";font-family: FontAwesome;color: #324b4e;}
-
-/*收藏特效*/
-section button {font-size: 0.5rem;
-padding: 0.5rem 0.5rem;background-color: #009ac9;border: 1px solid transparent;color: #ffffff;
-font-weight:300;-webkit-border-radius: 3px;
-border-radius: 3px;-webkit-transition: all 0.3s ease-in-out;-moz-transition: all 0.3s ease-in-out;transition: all 0.3s ease-in-out;}
-section button:hover {background-color: #ffffff;color: #009ac9;border-color: #009ac9;}
-
-/*导航栏目z的文字*/
-.wenziz{float:left; text-align:left; color:#666; font-size:15px; margin:0 10 0 30 ;word-spacing:33px;}
-.wenziz2{ text-align:right; color:#666; font-size:15px; margin:0 50 0 10 ;word-spacing:33px;}
-.wenziz3{ text-align:right; color:#666; font-size:15px; margin:-60 220 0 0 ;word-spacing:45px;}
-.wenziz4{ text-align:left; color:#666; font-size:15px; margin:80 10 0 30  ;word-spacing:45px;}
-/*表格*/
-#table{border: 2px solid black;width:100%;  height:100%;  }
-
-/*第一版块*/
-.contentone{background-color: rgba(0,0,0,0.1); width:100%; height:29px ;border:2px solid #F0F0F0; margin:0 auto}
-/*第二版块*/
-.contenttwo{ background:#ffffff; width:90%; height:81px; border:0px solid  #ffffff; margin:0 auto}
-/*第三版块*/
-.contentthree{ background:#ffffff; width:80%; height:35px; border:1px solid #ffffff; margin:0 auto}
-/*第四版块*/
-.contentfour{ background:#ffffff; width:80%; height:1000px; border:1px solid #ffffff; margin:0 auto}
-/*节目1*/
-.lanmusi{ background:#fff; width:16%; height:230px; float:left;border:1px solid red; margin:2 3 0 3}
-/*节目2*/
-.lanmuwu{ background:#fff; width:100%; height:25%; float:left;border:1px solid red; margin:0.2% auto}
-/*节目3*/
-.lanmusix{  background:#fff; width:22%; height:100%; float:left;border:2px solid red; margin:0 3% 0 3}
-/*节目4*/
-.lanmusevre{border:1px solid red; margin:2% 3% 0 3}
-
-
-</style>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
              <title>页面布局</title>      
         <!--css文件的引用-->
+        <!--搜素栏 -->
+	<link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/zp/css/xuanxiangxiahua.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/zp/css/menu_bottom.css" />
+	<style type="text/css">
+	/*索搜*/
+	* {box-sizing: border-box;}
+	#container {width: 500px;height: 820px; margin: 0 auto;}
+	div.search {padding: 15px 0;}
+	form {position: relative;width: 300px;margin: 0 auto;}
+	input, button {border: none;outline: none;}
+	input {width: 100%;height: 42px; padding-left: 13px;}
+	button {height: 42px;width: 42px; cursor: pointer;position: absolute;}
+	/*搜索框7*/
+	.bar7 form {height:53px;}
+	.bar7 input {width:400px;border-radius: 42px;border: -2px solid #324B4E;background: #F9F0DA;transition: .3s linear;float: right;}
+	.bar7 input:focus {width: 550px;}
+	.bar7 button {background: none;top: 1px;right: 0;}
+	.bar7 button:before{content: "\f002";font-family: FontAwesome;color: #324b4e;}
+	
+	/*收藏特效*/
+	section button {font-size: 0.5rem;
+	padding: 0.5rem 0.5rem;background-color: #009ac9;border: 1px solid transparent;color: #ffffff;
+	font-weight:300;-webkit-border-radius: 3px;
+	border-radius: 3px;-webkit-transition: all 0.3s ease-in-out;-moz-transition: all 0.3s ease-in-out;transition: all 0.3s ease-in-out;}
+	section button:hover {background-color: #ffffff;color: #009ac9;border-color: #009ac9;}
+	
+	/*导航栏目z的文字*/
+	.wenziz{float:left; text-align:left; color:#666; font-size:15px; margin:0 10 0 30 ;word-spacing:33px;}
+	.wenziz2{ text-align:right; color:#666; font-size:15px; margin:0 50 0 10 ;word-spacing:33px;}
+	.wenziz3{ text-align:right; color:#666; font-size:15px; margin:-60 220 0 0 ;word-spacing:45px;}
+	.wenziz4{ text-align:left; color:#666; font-size:15px; margin:80 10 0 30  ;word-spacing:45px;}
+	/*表格*/
+	#table{border: 2px solid black;width:100%;  height:100%;  }
+	
+	/*第一版块*/
+	.contentone{background-color: rgba(0,0,0,0.1); width:100%; height:29px ;border:2px solid #F0F0F0; margin:0 auto}
+	/*第二版块*/
+	.contenttwo{ background:#ffffff; width:90%; height:81px; border:0px solid  #ffffff; margin:0 auto}
+	/*第三版块*/
+	.contentthree{ background:#ffffff; width:80%; height:35px; border:1px solid #ffffff; margin:0 auto}
+	/*第四版块*/
+	.contentfour{ background:#ffffff; width:80%; height:1000px; border:1px solid #ffffff; margin:0 auto}
+	/*节目1*/
+	.lanmusi{ background:#fff; width:16%; height:230px; float:left;border:1px solid red; margin:2 3 0 3}
+	/*节目2*/
+	.lanmuwu{ background:#fff; width:100%; height:25%; float:left;border:1px solid red; margin:0.2% auto}
+	/*节目3*/
+	.lanmusix{  background:#fff; width:22%; height:100%; float:left;border:2px solid red; margin:0 3% 0 3}
+	/*节目4*/
+	.lanmusevre{border:1px solid red; margin:2% 3% 0 3}
+	
+	
+	</style>
   </head>
+  
 <body>
 
 	<!--板块1-->

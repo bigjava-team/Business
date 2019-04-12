@@ -27,7 +27,6 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 		orders.setAddr(addr);// 添加与Addr类的外键
 		
 		this.getHibernateTemplate().save(orders);// 添加订单信息
-		
 	}
 
 	// 删除订单信息(退货)
@@ -43,34 +42,29 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 	public Orders queryOrders_id(int o_id) {
 		// TODO Auto-generated method stub
 		System.out.println("执行queryOrders_id方法");
-		return this.getHibernateTemplate().get(Orders.class, o_id);// 通过订单id获取订单信息
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		List<Orders> listOrders = session.createQuery("from Orders where o_id=?").setInteger(0, o_id).list();
+		return listOrders.size() > 0 ? listOrders.get(0) : null;// 通过订单id获取订单信息
 	}
 
 	// 分页条件查询订单信息
 	@Override
-	public List<Orders> queryAllOrders(final Paging page, final User user) {
+	public List<Orders> queryAllOrders(Paging page, User user) {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行queryAllOrders方法");
-		List<Orders> list = this.getHibernateTemplate().executeFind(new HibernateCallback() {
-			@Override
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {// 通过hibernateTemplate回调sessionFactory方法
-				// TODO Auto-generated method stub
-				String hql = "from Orders";
-				Query query = null;
-				if (user.getRoot() == 3) {
-					query = session.createQuery(hql);
-				} else {
-					hql += " where u_id = ?";
-					query = session.createQuery(hql).setInteger(0, user.getU_id());// 通过用户id查询订单内容
-				}
-				query.setFirstResult(page.getStart());// 分页查询从哪一条开始查
-				query.setMaxResults(page.getPagesize());// 分页查询查多少条
-
-				return query.list();// 将查询到的值转换为数组类型
-			}
-		});
-		System.out.println("查询到的数据" + list);
-		return list;
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		String hql = "from Orders";
+		Query query = null;
+		if (user.getRoot() == 3) {
+			hql+=" order by ordertime desc";
+			query = session.createQuery(hql);
+		} else {
+			hql += " where u_id = ? order by ordertime desc";
+			query = session.createQuery(hql).setInteger(0, user.getU_id());// 通过用户id查询订单内容
+		}
+		List<Orders> listOrders = query.setFirstResult(page.getStart()).setMaxResults(page.getPagesize()).list();
+		System.out.println("查询到的数据" + listOrders);
+		return listOrders.size() > 0 ? listOrders : null;
 	}
 
 	// 条件查询订单的数量
@@ -84,7 +78,7 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 		if (user.getRoot() == 3) {// 管理员权限查询全部订单信息
 			list = this.getHibernateTemplate().find(hql);
 		} else {
-			hql += "where u_id = ?";
+			hql += " where u_id = ?";
 			list = this.getHibernateTemplate().find(hql, user.getU_id());// 普通用户和店长的权限通过u_id外键查询对应的Orders订单信息
 		}
 		if (list.size() != 0) {
@@ -95,15 +89,19 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 
 	// 通过订单编号查询订单
 	@Override
-	public Orders queryOrders_orderNumber(String orderNumber) {
-		// TODO Auto-generated method stub
-		System.out.println("开始执行queryOrders_orderNumber方法");
-		List<Orders> listOrders = this.getHibernateTemplate().find("from Orders where orderNumber = ?", orderNumber);
-		if (listOrders.size() == 0) {
-			System.out.println("没有此订单");
-			return null;
-		}
-		return listOrders.get(0);
+	public Orders orderNumberQueryOrders(String orderNumber) {
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		String hql = "from Orders where orderNumber = ?";
+		List<Orders> list = session.createQuery(hql).setString(0, orderNumber).list();
+		System.out.println(list.get(0));
+		return list.size() > 0 ? list.get(0) : null;
+	}
+
+	// 修改订单的状态
+	@Override
+	public void updateOrdersState(Orders orders) {
+		System.out.println("开始执行updateOrdersState方法");
+		this.getHibernateTemplate().update(orders);
 	}
 
 }

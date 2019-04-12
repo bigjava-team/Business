@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,16 +24,23 @@
 			
 			d.add('0103','01','一级分类管理');
 			d.add('010301','0103','一级分类详情','${pageContext.request.contextPath}/Category_showCategory.action','','mainFrame');
+			d.add('010302','0103','添加一级分类','${pageContext.request.contextPath}/admin/category/add.jsp','','mainFrame');
 			
 			d.add('0104','01','二级分类管理');
 			d.add('010401','0104','二级分类详情','${pageContext.request.contextPath}/CategorySecond_findAllBySearchName.action?paging.presentPage=0','','mainFrame');
+			d.add('010402','0104','添加二级分类','${pageContext.request.contextPath}/CategorySecond_addPage.action','','mainFrame');
 			
 			d.add('0105','01','商品管理');
 			d.add('010501','0105','商品详情','${pageContext.request.contextPath}/adminProduct_adminFindAll.action?paging.presentPage=0&user.root=0&merchant.m_id=0','','mainFrame');
-			d.add('010502','0105','商品过滤','${pageContext.request.contextPath}/admin/product/filterProduct.jsp','','mainFrame');
+			d.add('010502','0105','商品过滤','${pageContext.request.contextPath}/adminProduct_showToProduct.action?paging.presentPage=0&user.root=0','','mainFrame');
 			
 			d.add('0106','01','订单管理');
-			d.add('010601','0106','订单详情','${pageContext.request.contextPath}/admin/order/list.jsp','','mainFrame');
+			d.add('010601','0106','订单详情','${pageContext.request.contextPath}/adminOrders_showAllOrders.action?paging.presentPage=0&user.root=${sessionScope.loginUser.root }&user.username=${sessionScope.loginUser.username }','','mainFrame');
+			
+			d.add('0107','01','公告管理');
+			d.add('010701','0107','公告详情','${pageContext.request.contextPath}/admin/notice/list.jsp','','mainFrame');
+			d.add('010702','0107','公告发布','${pageContext.request.contextPath}/admin/notice/add.jsp','','mainFrame');
+			
 			document.write(d);
 		</script>
 	</div>

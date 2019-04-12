@@ -1,10 +1,16 @@
 package org.bigjava.merchant.dao.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.merchant.dao.MerchantDao;
 import org.bigjava.merchant.entity.Merchant;
+import org.bigjava.orderitem.entity.Orderitem;
+import org.bigjava.orders.entity.Orders;
 import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
+import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao {
@@ -73,4 +79,59 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 		
 	}
 
+	/**
+	 * 添加店铺公告
+	 */
+	@Override
+	public void addNotice(Merchant merchant) {
+		this.getHibernateTemplate().save(merchant);
+	}
+
+	// 删除店铺公告
+	@Override
+	public void updateNotice(Merchant merchant) {
+		this.getHibernateTemplate().update(merchant);
+	}
+
+	// 查询买家的订单详情
+	@Override
+	public List<Orders> queryListOrders(int m_id) {
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		List<Orders> listOrders = new ArrayList<Orders>();
+		List<Product> listProduct = session.createQuery("from Product where m_id=?").setInteger(0, m_id).list();
+		if (listProduct.size()!=0) {
+			for (int i=0; i<listProduct.size(); i++) {
+				int numberP_id = listProduct.get(i).getP_id();
+				List<Orderitem> listOrderitem = session.createQuery("from Orderitem where p_id=?").setInteger(0, numberP_id).list();
+				if (listOrderitem.size()!=0) {
+					for (int j=0; j<listProduct.size(); j++) {
+						int numberItem_id = listOrderitem.get(j).getOrders().getO_id();
+						listOrders = session.createQuery("from Orders where o_id=?").setInteger(0, numberItem_id).list();
+					}
+				}
+			}
+		}
+		session.close();
+		System.out.println("店铺的订单"+listOrders);
+		return listOrders;
+	}
+
+	// 修改买家的订单的状态
+	@Override
+	public void updateOrdersState(Orders orders) {
+		System.out.println("修改买家的订单的状态");
+		this.getHibernateTemplate().update(orders);
+	}
+
+	// 通过用户id查询店铺
+	@Override
+	public Merchant queryUidMerchant(int u_id) {
+		System.out.println("通过用户id查询店铺");
+		List<Merchant> listMerchant = this.getHibernateTemplate().find("from Merchant where u_id=?", u_id);
+		if (listMerchant.size() == 0) {
+			System.out.println("没有店铺");
+			return null;
+		}
+		return listMerchant.get(0);
+	}
 }

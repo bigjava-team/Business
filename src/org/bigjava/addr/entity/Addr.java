@@ -17,11 +17,29 @@ public class Addr {
 	private String a_name;// 收件人
 	private String a_phone;// 手机号码
 	private String address;// 收货地址
+	private String addressP_M_D;// 收货的省、市、区
+	private String detailedAddress;// 详细地址
 	
 	private User user;// 指向用户类
 	
 	private Set<Orders> setOrders = new HashSet<Orders>();// 一对多指向订单类
 	
+	public String getAddressP_M_D() {
+		return addressP_M_D;
+	}
+
+	public void setAddressP_M_D(String addressP_M_D) {
+		this.addressP_M_D = addressP_M_D;
+	}
+
+	public String getDetailedAddress() {
+		return detailedAddress;
+	}
+
+	public void setDetailedAddress(String detailedAddress) {
+		this.detailedAddress = detailedAddress;
+	}
+
 	public Set<Orders> getSetOrders() {
 		return setOrders;
 	}
@@ -69,10 +87,11 @@ public class Addr {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Addr [a_id=" + a_id + ", a_name=" + a_name + ", a_phone=" + a_phone + ", address=" + address + "]";
+		return "Addr [a_id=" + a_id + ", a_name=" + a_name + ", a_phone=" + a_phone + ", address=" + address
+				+ ", addressP_M_D=" + addressP_M_D + ", detailedAddress=" + detailedAddress + "]";
 	}
 
 }

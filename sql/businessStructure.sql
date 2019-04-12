@@ -31,7 +31,7 @@ CREATE TABLE `addr` (
   PRIMARY KEY (`a_id`),
   KEY `FK2D9BF1AC71ABAE` (`u_id`),
   CONSTRAINT `FK2D9BF1AC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `category` (
   `c_id` int(11) NOT NULL AUTO_INCREMENT,
   `c_name` varchar(255) NOT NULL,
   PRIMARY KEY (`c_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +62,7 @@ CREATE TABLE `categorysecond` (
   PRIMARY KEY (`cs_id`),
   KEY `FK936FCAF2225CF66` (`c_id`),
   CONSTRAINT `FK936FCAF2225CF66` FOREIGN KEY (`c_id`) REFERENCES `category` (`c_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,6 +145,22 @@ CREATE TABLE `images` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `indexnotice`
+--
+
+DROP TABLE IF EXISTS `indexnotice`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `indexnotice` (
+  `indexId` int(11) NOT NULL AUTO_INCREMENT,
+  `indexNaticeTitle` varchar(255) DEFAULT NULL,
+  `indexNatice` varchar(255) DEFAULT NULL,
+  `indexNaticeTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`indexId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `merchant`
 --
 
@@ -179,14 +195,17 @@ CREATE TABLE `orderitem` (
   `u_id` int(11) NOT NULL,
   `p_id` int(11) NOT NULL,
   `o_id` int(11) DEFAULT NULL,
+  `pAge_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`item_id`),
   KEY `FKE8B2AB61AC71ABAE` (`u_id`),
   KEY `FKE8B2AB6197342528` (`o_id`),
   KEY `FKE8B2AB61E7217C83` (`p_id`),
+  KEY `FKE8B2AB6187D3E09E` (`pAge_id`),
+  CONSTRAINT `FKE8B2AB6187D3E09E` FOREIGN KEY (`pAge_id`) REFERENCES `productage` (`pAge_id`),
   CONSTRAINT `FKE8B2AB6197342528` FOREIGN KEY (`o_id`) REFERENCES `orders` (`o_id`),
   CONSTRAINT `FKE8B2AB61AC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
   CONSTRAINT `FKE8B2AB61E7217C83` FOREIGN KEY (`p_id`) REFERENCES `product` (`p_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,7 +219,7 @@ CREATE TABLE `orders` (
   `o_id` int(11) NOT NULL AUTO_INCREMENT,
   `orderNumber` varchar(255) NOT NULL,
   `total` double NOT NULL,
-  `ordertim` datetime NOT NULL,
+  `ordertime` datetime DEFAULT NULL,
   `state` int(11) NOT NULL,
   `u_id` int(11) DEFAULT NULL,
   `a_id` int(11) DEFAULT NULL,
@@ -209,7 +228,7 @@ CREATE TABLE `orders` (
   KEY `FKC3DF62E5AC71ABAE` (`u_id`),
   CONSTRAINT `FKC3DF62E5AC71ABAE` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
   CONSTRAINT `FKC3DF62E5E740EB8E` FOREIGN KEY (`a_id`) REFERENCES `addr` (`a_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,7 +292,7 @@ CREATE TABLE `user` (
   `image` varchar(255) DEFAULT NULL,
   `u_is_freeze` int(11) DEFAULT NULL,
   PRIMARY KEY (`u_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -285,4 +304,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-08  8:45:49
+-- Dump completed on 2019-04-12 12:02:09

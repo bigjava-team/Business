@@ -63,6 +63,8 @@
 	
 	<!-- 收货地址 -->
 	<bean name="addrDao" class="org.bigjava.addr.dao.impl.AddrDaoImpl" autowire="byName" />
+	<bean name="addrBiz" class="org.bigjava.addr.biz.impl.AddrBizImpl" autowire="byName" />
+	<bean name="addrAction" class="org.bigjava.addr.action.AddrAction" autowire="byName" scope="prototype" />
 	
 	<!-- 商品 -->
 	<bean name="productDao" class="org.bigjava.product.dao.impl.ProductDaoImpl" autowire="byName" />
@@ -78,6 +80,9 @@
 	
 	<!-- 订单 -->
 	<bean name="ordersDao" class="org.bigjava.orders.dao.impl.OrdersDaoImpl" autowire="byName" />
+	<bean name="ordersBiz" class="org.bigjava.orders.biz.impl.OrdersBizImpl" autowire="byName" />
+	<bean name="ordersAction" class="org.bigjava.orders.action.OrdersAction" autowire="byName" />
+	<bean name="adminOrdersAction" class="org.bigjava.orders.action.AdminOrdersAction" autowire="byName"/>
 	
 	<!-- 评论 -->
 	<bean name="commentDao" class="org.bigjava.comment.dao.impl.CommentDaoImpl" autowire="byName" />
@@ -92,6 +97,8 @@
 	
 	<!-- 收藏商品 -->
 	<bean name="collectProductDao" class="org.bigjava.collectProduct.dao.impl.CollectProductDaoImpl" autowire="byName" />
+	
+	<bean name="paymentOrders" class="org.bigjava.orders.action.PaymentOrders" autowire="byName" />
 	
 	<bean name="fileImageAction" class="org.bigjava.function.FileImageAction" autowire="byName" />
 	

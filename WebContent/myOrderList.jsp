@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,10 +27,10 @@
 
 </head>
 <body id="cart_body">
-
+	<s:debug />
 	<div class="cart_d1">
 		<div class="cart_d1_d1">
-			尊敬的：用户昵称 您好!
+			尊敬的：${loginUser.username } 您好!
 		</div>
 		<div class="cart_d1_d2">
 			<ul class="cart_d1_d2_ul1">
@@ -69,87 +70,93 @@
 		我的订单
 	</div>
 	
-	<div class="cart_d4 myOrderList_d2">
-		<div class="myOrderList_d2_d1">
-			<div class="myOrderList_d2_d1_d1">
-				<font class="myOrderList_d2_d1_d1_font1">2019-03-24 </font> &nbsp;订单编号：1234
-			</div>
-			<div class="myOrderList_d2_d1_d2">
-				订单状态：<font class="myOrderList_d2_d1_d2_font1">确认收货</font>
-			</div>
+	<s:if test='listOrders == null'>
+		<!-- 没有评论 -->
+		<div style="text-align: center; margin-top: 1%;">
+			亲！您还没有订单哦...
 		</div>
-	
-		<div class="cart_d4_d1 myOrderList_d2_d2">
-			<div class="cart_d4_d1_d1 myOrderList_d2_d2_d1">
-				商品信息
-			</div>
-			<div class="cart_d4_d1_d2 myOrderList_d2_d2_d2">
-				价格
-			</div>
-			<div class="cart_d4_d1_d2 myOrderList_d2_d2_d2">
-				数量
-			</div>
-			<div class="cart_d4_d1_d2 myOrderList_d2_d2_d2">
-				小计
-			</div>
-		</div>
-		<div class="cart_d4_d2 myOrderList_d2_d3">
-			<div class="cart_d4_d2_d1 myOrderList_d2_d3_d1">
-				<img class="cart_d4_d2_d1_img1" alt="商品图片" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50%">
-			</div>
-			
-			<div class="cart_d4_d2_d2 myOrderList_d2_d3_d2">
-				<div class="cart_d4_d2_d2_d1">
-					男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套
+	</s:if>
+	<s:else>
+		<s:iterator value="listOrders" var="listOrders1">
+			<div class="cart_d4 myOrderList_d2">
+				<div class="myOrderList_d2_d1">
+					<div class="myOrderList_d2_d1_d1">
+						<font class="myOrderList_d2_d1_d1_font1">${listOrders1.ordertime }</font> &nbsp;订单编号：${listOrders1.orderNumber }
+					</div>
+					<div class="myOrderList_d2_d1_d2">
+						订单状态：<font class="myOrderList_d2_d1_d2_font1">
+								<s:if test="#listOrders1.state == 1">
+									<a href="orders_idQueryOrdersPayment?method=post&loginUser.username=${loginUser.username }&orders.o_id=${listOrders1.o_id }&paging.presentPage=0" style="text-decoration: none; color: red;">付款</a>
+								</s:if>
+								<s:elseif test="#listOrders1.state == 2">
+									已支付
+								</s:elseif>
+							</font>
+					</div>
 				</div>
-			</div>
 			
-			<div class="cart_d4_d2_d3 myOrderList_d2_d3_d3">
-				颜色：红
+				<div class="cart_d4_d1 myOrderList_d2_d2">
+					<div class="cart_d4_d1_d1 myOrderList_d2_d2_d1">
+						商品信息
+					</div>
+					<div class="cart_d4_d1_d2 myOrderList_d2_d2_d2">
+						价格
+					</div>
+					<div class="cart_d4_d1_d2 myOrderList_d2_d2_d2">
+						数量
+					</div>
+					<div class="cart_d4_d1_d2 myOrderList_d2_d2_d2">
+						小计
+					</div>
+				</div>
+				<s:iterator value="#listOrders1.setOrderItem" var="listOrders2">
+					<div class="cart_d4_d2 myOrderList_d2_d3">
+						<div class="cart_d4_d2_d1 myOrderList_d2_d3_d1">
+							<img class="cart_d4_d2_d1_img1" alt="商品图片" src="${fileImageAction.urlImage }${listOrders2.product.p_image}" width="50%">
+						</div>
+						
+						<div class="cart_d4_d2_d2 myOrderList_d2_d3_d2">
+							<div class="cart_d4_d2_d2_d1">
+								${listOrders2.product.p_name }
+							</div>
+						</div>
+						
+						<div class="cart_d4_d2_d3 myOrderList_d2_d3_d3">
+							颜色：红
+						</div>
+						
+						<div class="cart_d4_d2_d4 myOrderList_d2_d3_d3">
+							<font class="cart_d4_d2_d4_font2">¥${listOrders2.product.p_price }</font>
+						</div>
+						
+						<div class="cart_d4_d2_d5 myOrderList_d2_d3_d3">
+							${listOrders2.count }
+						</div>
+						
+						<div class="cart_d4_d2_d6 myOrderList_d2_d3_d3">
+							¥${listOrders2.subtotal }
+						</div>
+						
+					</div>
+				</s:iterator>
 			</div>
-			
-			<div class="cart_d4_d2_d4 myOrderList_d2_d3_d3">
-				<font class="cart_d4_d2_d4_font2">¥100.00</font>
-			</div>
-			
-			<div class="cart_d4_d2_d5 myOrderList_d2_d3_d3">
-				10
-			</div>
-			
-			<div class="cart_d4_d2_d6 myOrderList_d2_d3_d3">
-				¥100.00
-			</div>
-			
+		</s:iterator>
+		
+		<div id="admin_list_div_page" style="width: 100%; font-size: 15px; text-align: center; padding: 8px 0px 0px 0px;">
+			第<s:property value="pageBean.page"/>页/<s:property value="pageBean.totalPage"/>页&nbsp;&nbsp;&nbsp;&nbsp;
+			<%-- <s:if test="pageBean.page != 1"> --%>
+				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=1">首页</a>
+				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page-1"/>">上一页</a>
+			<%-- </s:if>
+			<s:if test="pageBean.page != pageBean.totalPage"> --%>
+				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page+1"/>">下一页</a>
+				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.totalPage"/>">尾页</a>
+			<%-- </s:if> --%>
 		</div>
 		
-		<div class="cart_d4_d2 myOrderList_d2_d3">
-			<div class="cart_d4_d2_d1 myOrderList_d2_d3_d1">
-				<img class="cart_d4_d2_d1_img1" alt="商品图片" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="50%">
-			</div>
-			
-			<div class="cart_d4_d2_d2 myOrderList_d2_d3_d2">
-				<div class="cart_d4_d2_d2_d1">
-					男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套男装外套
-				</div>
-			</div>
-			
-			<div class="cart_d4_d2_d3 myOrderList_d2_d3_d3">
-				颜色：红
-			</div>
-			
-			<div class="cart_d4_d2_d4 myOrderList_d2_d3_d3">
-				<font class="cart_d4_d2_d4_font2">¥100.00</font>
-			</div>
-			
-			<div class="cart_d4_d2_d5 myOrderList_d2_d3_d3">
-				10
-			</div>
-			
-			<div class="cart_d4_d2_d6 myOrderList_d2_d3_d3">
-				¥100.00
-			</div>
-			
-		</div>
+	</s:else>
+	
+	<div style="width: 100%; height: 20px;">
 		
 	</div>
 	

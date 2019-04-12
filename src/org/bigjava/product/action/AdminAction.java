@@ -29,6 +29,16 @@ public class AdminAction extends ActionSupport {
 	private String searchText; // 搜索的参数值
 	private Paging paging;// 声明Paging类
 	private Map<String, Object> session;// 声明Map数组
+	
+	private Product updateProduct;
+	
+	public Product getUpdateProduct() {
+		return updateProduct;
+	}
+
+	public void setUpdateProduct(Product updateProduct) {
+		this.updateProduct = updateProduct;
+	}
 
 	public User getUser() {
 		return user;
@@ -103,6 +113,15 @@ public class AdminAction extends ActionSupport {
 	}
 
 	private List<Product> productList;// 存放所有商品
+	private List<Product> productLists;// 存放所有申请中的商品
+
+	public List<Product> getProductLists() {
+		return productLists;
+	}
+
+	public void setProductLists(List<Product> productLists) {
+		this.productLists = productLists;
+	}
 
 	public List<Product> getProductList() {
 		return productList;
@@ -129,15 +148,15 @@ public class AdminAction extends ActionSupport {
 			searchText = "";
 		}
 		// 根据搜索的内容与权限查询可搜索的总条数
-		int totalNumber = productBiz.queryProductNumber(searchText, merchant.getM_id());
+		int totalNumber = productBiz.queryProductNumber(searchText, merchant.getM_id(), 0);
 
 		// 当前页数
 		int presentPage = paging.getPresentPage();
 		System.out.println("当前页" + presentPage);
 
-		paging = new Paging(presentPage, totalNumber, 2);
+		paging = new Paging(presentPage, totalNumber, 5);
 
-		productList = productBiz.queryAllProduct(searchText, paging, merchant.getM_id());
+		productList = productBiz.queryAllProduct(searchText, paging, merchant.getM_id(), 0);
 
 		// 将参数存入session中
 		System.out.println(productList);
@@ -146,14 +165,79 @@ public class AdminAction extends ActionSupport {
 
 		return "adminFindAll";
 	}
-	
-	//下架商品
+
+	// 分页查询申请中的商品
+	public String showToProduct() {
+		System.out.println("AdminAction....adminFindAll().");
+		session = ActionContext.getContext().getSession();
+
+		int u_root = 0;
+		System.out.println(user);
+		System.out.println(user.getRoot());
+		if (user.getRoot() != 0) {
+			u_root = user.getRoot();
+		}
+
+		System.out.println("用户权限为：" + u_root);
+		System.out.println("搜索的值" + searchText);
+
+		if (isEmpty.isEmpty(searchText)) {
+			searchText = "";
+		}
+		// 根据搜索的内容与商品的状态查询可搜索的总条数
+		int totalNumber = productBiz.queryProductNumber(searchText, 0, 3);
+
+		System.out.println("申请中的商品种数"+totalNumber);
+		// 当前页数
+		int presentPage = paging.getPresentPage();
+		System.out.println("当前页" + presentPage);
+
+		paging = new Paging(presentPage, totalNumber, 5);
+
+		productLists = productBiz.queryAllProduct(searchText, paging, 0,3);
+
+		// 将参数存入session中
+		System.out.println(productLists);
+		session.put("paging", paging);
+		session.put("searchText", searchText);
+
+		return "showToProduct";
+	}
+
+	/**
+	 * 下架商品
+	 * 更改商品的状态将上架1改为下架2
+	 * */ 
 	public String adminDeleteProduct() {
 		System.out.println("进入adminAction....adminDeleteProduct()");
+		product = productBiz.queryProduct_id(updateProduct.getP_id());
+		System.out.println("product" + product);
+		System.out.println("agreeProduct>>>" + product);
+		updateProduct.setP_freeze(2);
+		productBiz.updateProduct(product, updateProduct);
+		return "adminDeleteProduct";
+	}
+
+	// 查看商品信息
+	public String getProductById() {
+		System.out.println("进入adminAction....getProductById()");
 		product = productBiz.queryProduct_id(product.getP_id());
 		System.out.println("product" + product);
-		productBiz.deleteProduct(product);
-		return "adminDeleteProduct";
+		ActionContext.getContext().getSession().put("product", product);
+		return "getProductSuccess";
+	}
+	
+	/**
+	 * 同意商品申请
+	 * 修改商品的申请状态将申请3改为上架1
+	 * */
+	public String agreeProduct() {
+		System.out.println("进入adminAction....agreeProduct()");
+		product = productBiz.queryProduct_id(updateProduct.getP_id());
+		System.out.println("agreeProduct>>>" + product);
+		updateProduct.setP_freeze(1);
+		productBiz.updateProduct(product, updateProduct);
+		return "agreeProduct";
 	}
 
 }

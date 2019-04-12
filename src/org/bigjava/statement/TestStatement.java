@@ -108,7 +108,7 @@ public class TestStatement {
 		
 		Orders orders = new Orders();
 		double total = 0.0;
-		orders.setOrdertim(new Date());
+//		orders.setOrdertim(new Date());
 		
 		List<Orderitem> listOrderItem = new ArrayList<Orderitem>();// 查询到的订单项
 		
@@ -129,9 +129,9 @@ public class TestStatement {
 		
 		ordersDao.addOrders(orders, user, addr);
 		
-		Orders updateOrderItem = ordersDao.queryOrders_orderNumber(orderNumber);
+//		Orders updateOrderItem = ordersDao.queryOrders_orderNumber(orderNumber);
 		
-		orderItemDao.addOrders_id(listOrderItem, updateOrderItem);
+//		orderItemDao.addOrders_id(listOrderItem, updateOrderItem);
 		
 			
 	}
@@ -196,13 +196,12 @@ public class TestStatement {
 		System.out.println("输入店铺的id");
 		int m_id = input.nextInt();
 		
-		int totalNumber = productDao.queryProductNumber(searchProduct, m_id);
+		int totalNumber = productDao.queryProductNumber(searchProduct, 0, 3);
 		
 		System.out.println("输入从哪页开始查");
 		int presentPage = input.nextInt();
-		Paging page = new Paging(presentPage, totalNumber, 2);
-		
-		productDao.queryAllProduct(searchProduct, page, m_id);
+		Paging page = new Paging(presentPage, totalNumber, 3);
+		productDao.queryAllProduct(searchProduct, page, 0, 3);
 	}
 	
 	// 修改商品内容

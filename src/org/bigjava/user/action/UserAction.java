@@ -21,6 +21,7 @@ public class UserAction extends ActionSupport {
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
 	private Paging paging;// 声明Paging类
+	private User loginUser;
 
 	private String emailAddress;// 邮箱号
 
@@ -30,6 +31,14 @@ public class UserAction extends ActionSupport {
 
 	// 接收验证码 struts2 中的属性驱动
 	private String checkcode;
+	
+	public User getLoginUser() {
+		return loginUser;
+	}
+
+	public void setLoginUser(User loginUser) {
+		this.loginUser = loginUser;
+	}
 
 	public void setCheckcode(String checkcode) {
 		this.checkcode = checkcode;
@@ -140,21 +149,23 @@ public class UserAction extends ActionSupport {
 				check_login = "用户名或密码错误";
 				return "loginError";
 			} else {
-				user = userList.get(0);
-				/*ActionContext.getContext().getSession().put("loginUser", user);*/
+				loginUser = userList.get(0);
 				// 将user存入session中
-				if (user.getRoot() == 1 && user.getU_is_freeze() == 1) {
+				if (loginUser.getRoot() == 1 && loginUser.getU_is_freeze() == 1) {
 					System.out.println("普通用户登录");
 					System.out.println("解冻状态");
 					return "loginSuccess";
-				} else if (user.getRoot() == 2 && user.getU_is_freeze() == 1) {
+				} else if (loginUser.getRoot() == 2 && loginUser.getU_is_freeze() == 1) {
 					System.out.println("店长登录");
 					System.out.println("解冻状态");
 					return "loginStore";
-				} else if (user.getRoot() == 3) {
+				} else if (loginUser.getRoot() == 3) {
 					System.out.println("管理员登录");
+					session = ActionContext.getContext().getSession();
+					session.put("loginUser", loginUser);
+					System.out.println(loginUser);
 					return "adminLogin";
-				} else if (user.getU_is_freeze() == 2) {
+				} else if (loginUser.getU_is_freeze() == 2) {
 					check_login = "用户已冻结";
 					System.out.println("冻结状态，用户不能登录");
 					return "loginError";
@@ -201,11 +212,13 @@ public class UserAction extends ActionSupport {
 	 */
 	public String updatePassword() {
 		System.out.println("进入UserAction....updatePassword方法");
-		System.out.println(user.getUsername());
-		User u = userBiz.queryUsernameUser(user.getUsername());
+		user = userBiz.queryUsernameUser(loginUser.getUsername());
+		System.out.println("u"+user);
+		ActionContext.getContext().getSession().put("u", user);
+		
 		String password = user.getPassword();
 		user.setPassword(password);
-		userBiz.updateUserPassword(password, u);
+		userBiz.updateUserPassword(password, user);
 		return "updatePasswordSuccess";
 	}
 
@@ -234,7 +247,7 @@ public class UserAction extends ActionSupport {
 		System.out.println("进入UserAction....showAll方法");
 		session = ActionContext.getContext().getSession();
 		int u_root = 0;
-		if (user.getRoot() != 0) {
+		if (loginUser.getRoot() != 0) {
 			u_root = user.getRoot();
 		}
 
@@ -260,7 +273,6 @@ public class UserAction extends ActionSupport {
 		session.put("paging", paging);
 		session.put("userRoot", u_root);
 		session.put("searchText", searchText);
-
 		return "showAllUserSuccess";
 	}
 

@@ -1,16 +1,24 @@
 package org.bigjava.product.action;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.struts2.interceptor.SessionAware;
+import org.bigjava.category.biz.CategoryBiz;
+import org.bigjava.category.entity.Category;
+import org.bigjava.categorysecond.biz.CategorySecondBiz;
+import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.comment.biz.CommentBiz;
 import org.bigjava.comment.entity.Comment;
 import org.bigjava.function.FileImageAction;
 import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
+import org.bigjava.function.QueryAllCategory;
+import org.bigjava.function.queryCategorySecond.QueryAllCategorySecond;
+import org.bigjava.function.queryCategorySecond.QueryCategorySecond;
 import org.bigjava.merchant.entity.Merchant;
+import org.bigjava.orders.entity.Orders;
 import org.bigjava.product.biz.ProductBiz;
 import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
@@ -36,6 +44,8 @@ public class ProductAction extends ActionSupport {
 	
 	private ProductBiz productBiz;
 	private CommentBiz commentBiz;
+	private CategoryBiz categoryBiz;// 一级分类
+	private CategorySecondBiz categorySecondBiz;// 二级分类
 	
 	/* 查询最新的商品 */
 	private List<Product> listProductTime;
@@ -43,13 +53,50 @@ public class ProductAction extends ActionSupport {
 	private List<Product> listProductHot;
 	/* 查询推荐的商品  */
 	private List<Product> listAllCommentProduct = new ArrayList<Product>();
+	/* 查询首页的推荐商品 */
 	private List<Integer> listCommentNumber = new ArrayList<Integer>();
+	/* 查询首页的一级分类 */
+	private List<QueryAllCategory> listIndexCategory = new ArrayList<QueryAllCategory>();
+	/* 查询首页的二级分类 */
+	private List<QueryCategorySecond> listCS = new ArrayList<QueryCategorySecond>();
 	
 	private FileImageAction fileImageAction;
 	
 	// 查询商品对应的评论
 	private List<Comment> listProductAllComment = new ArrayList<Comment>();
-	
+
+	public List<QueryCategorySecond> getListCS() {
+		return listCS;
+	}
+
+	public void setListCS(List<QueryCategorySecond> listCS) {
+		this.listCS = listCS;
+	}
+
+	public CategorySecondBiz getCategorySecondBiz() {
+		return categorySecondBiz;
+	}
+
+	public void setCategorySecondBiz(CategorySecondBiz categorySecondBiz) {
+		this.categorySecondBiz = categorySecondBiz;
+	}
+
+	public List<QueryAllCategory> getListIndexCategory() {
+		return listIndexCategory;
+	}
+
+	public void setListIndexCategory(List<QueryAllCategory> listIndexCategory) {
+		this.listIndexCategory = listIndexCategory;
+	}
+
+	public CategoryBiz getCategoryBiz() {
+		return categoryBiz;
+	}
+
+	public void setCategoryBiz(CategoryBiz categoryBiz) {
+		this.categoryBiz = categoryBiz;
+	}
+
 	public int getCommentNumber() {
 		return commentNumber;
 	}
@@ -232,6 +279,49 @@ public class ProductAction extends ActionSupport {
 		listCommentNumber = listCommentNumber.subList(0, 12);
 		listAllCommentProduct = listAllCommentProduct.subList(0, 12);
 		
+		System.out.println("----------------------------------------------------");
+		
+		// 查询全部的一级分类
+		List<Category> listCategory = categoryBiz.showAllCategory();
+		List<Category> listCategorys = null;
+		int numbers = listCategory.size()/3;
+		int remaining = listCategory.size()%3;
+		for (int i=1; i<numbers+1 ; i++) {
+			QueryAllCategory queryCategory = new QueryAllCategory();
+			listCategorys = listCategory.subList((i-1)*3, i*3);
+			queryCategory.setListCategory(listCategorys);
+			listIndexCategory.add(queryCategory);
+			if (remaining != 0) {
+				if (i==numbers) {
+					QueryAllCategory queryCategorys = new QueryAllCategory();
+					listCategorys = listCategory.subList(i*3, i*3+remaining);
+					queryCategorys.setListCategory(listCategorys);
+					listIndexCategory.add(queryCategorys);
+				}
+			}
+		}	
+		System.out.println(listCategorys.size());
+		
+		// 查询二级分类
+		List<QueryAllCategorySecond> listCategorySecond = categorySecondBiz.showCategorySecond();
+		List<QueryAllCategorySecond> listCategorySeconds = null;
+		int categorySecondNumber = listCategorySecond.size()/3;
+		int categorySecondRemaining = listCategorySecond.size()%3;
+		for (int i=1; i<categorySecondNumber+1; i++) {
+			listCategorySeconds = listCategorySecond.subList((i-1)*3, i*3);
+			QueryCategorySecond queryCS = new QueryCategorySecond();
+			queryCS.setListCategorySecond(listCategorySeconds);
+			listCS.add(queryCS);
+			if (categorySecondRemaining != 0) {
+				if (i==categorySecondNumber) {
+					QueryCategorySecond queryCS2 = new QueryCategorySecond();
+					listCategorySeconds = listCategorySecond.subList(i*3, i*3+categorySecondRemaining);
+					queryCS2.setListCategorySecond(listCategorySeconds);
+					listCS.add(queryCS2);
+				}
+			}
+		}
+		System.out.println(listCS.size());
 		return SUCCESS;
 	}
 	

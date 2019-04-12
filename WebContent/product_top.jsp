@@ -9,6 +9,11 @@
 		window.location.href = "User_close.action";
 	}
 	</script>
+	<style type="text/css" >
+		a {
+			text-decoration: none;
+		}
+	</style>
 	<!--板块1-->
 	<div class="contentone">
 		<div class=wenziz>
@@ -24,18 +29,19 @@
 		
 		
 		<div class=wenziz2>
+				<a href="index.jsp">我的光光</a>
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
-				<a href="User_gotoUserIndex.action?method=post&user.username=${loginUser.username }">我的主页</a>
+				<a href="User_gotoUserIndex.action?method=post&loginUser.username=${loginUser.username }">我的主页</a>
 			</s:if>
 			
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
-				<a href="Merchant_gotoMerchant.action">我的店铺</a>
+				<a href="Merchant_gotoMerchant.action?method=post&loginUser.username=${loginUser.username }">我的店铺</a>
 			</s:if>
+			<a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presenetPage=0">我的订单</a> 
 			<a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0">购物车</a> 
 			<a href="javascript:;">收藏夹</a> 
-			<a>商品分类</a>
-			<a>卖家中心</a> 
-			<s:if test="user != null">
+			<a href="${pageContext.request.contextPath}/user/shangpingzhuce.jsp">我要开店</a> 
+			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<a href="#" onclick="remove()">退出</a>
 			</s:if>
 		</div>

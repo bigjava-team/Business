@@ -48,7 +48,6 @@
 }
 .bar7 button:before {
 	content:"搜索";
-	font-family:FontAwesome;
 	color:#324b4e;
 	width:100%
 }
@@ -75,12 +74,6 @@ body {
 	margin: 0px;
 	padding: 0px;
 	overflow-x: hidden;
-	font-family: "Microsoft JhengHei";
-}
-
-.head {
-	width: 100%;
-	border: 1px solid gray;
 }
 
 .head a {
@@ -315,7 +308,6 @@ ol .current {
 	line-height: 40px;
 	text-align: center;
 	font-weight: bold;
-	font-family: '黑体';
 	font-size: 30px;
 	color: #000;
 	opacity: 0.5;
@@ -330,26 +322,9 @@ ol .current {
 
 </head>
 <body>
-	<div class="head">
-		<div
-			style="background-color: #D0D0D0; padding-bottom: 1%; padding-top: 1%;">
-			<div
-				style="float: left; border-right: 1px solid black; padding-left: 12%; padding-right: 2%;">
-				${user.username};
-			</div>
-			<div style="float: left; padding-left: 2%; padding-right: 2%;">
-				<a href="???">退出</a>
-			</div>
-			<div style="float: left; border-right: 1px solid black; padding-left: 36%; padding-right: 2%;">
-			<a href="???">光光网首页</a>
-			</div>
-			<div style="float: left; border-right: 1px solid black; padding-left: 2%; padding-right: 2%;">
-			<a href="???">我买的宝贝</a>
-			</div>
-			<div style="float: left; border-right: 1px solid black; padding-left: 2%; padding-right: 2%;">
-			<a href="???">我卖的宝贝</a>
-			</div>
-			<div class="clear"></div>
+	<div >
+		<div>
+			<%@include file="top.jsp" %>
 		</div>
 		<div style="width: 100%; padding-top: 1%; padding-bottom: 1%;">
 			<div
@@ -360,21 +335,7 @@ ol .current {
 			<div
 				style="float: left; border-right: 1px solid #d2c8c8; padding-top: 1%; padding-bottom: 0.5%; padding-right: 2%; padding-left: 2%;">
 				#店铺名</div>
-			<div
-				style="float: left; border-right: 1px solid #d2c8c8; text-align: center; padding-right: 2%; padding-left: 2%;">
-				<table>
-					<tr>
-						<td>描述</td>
-						<td>服务</td>
-						<td>物流</td>
-					</tr>
-					<tr>
-						<td><font color="red">#店铺评分</font></td>
-						<td><font color="red">#店铺评分</font></td>
-						<td><font color="red">#店铺评分</font></td>
-					</tr>
-				</table>
-			</div>
+		
 			<div style="float: right;margin-right: 10%;">
 			 <div class="search bar7">
         <form class="form1" method="post" action="sousuojieguo.jsp">
@@ -508,7 +469,7 @@ ol .current {
 						<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
 						<script src="/follow.js" type="text/javascript"></script>
 					</div>
-					<iframe frameborder="0" scrolling="no" src="user/dianpuzhiye_lunbo.jsp" width="100%"
+					<iframe frameborder="0" scrolling="no" src="${pageContext.request.contextPath }/user/dianpuzhiye_lunbo.jsp" width="100%"
 						height="500px"></iframe>
 
 				</div>

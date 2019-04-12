@@ -1,5 +1,6 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,6 @@ body {
 	margin: 0px;
 	padding: 0px;
 	overflow-x: hidden;
-	font-family: "FangSong";
 }
 
 .head {
@@ -171,11 +171,7 @@ body {
 	line-height: 150%;
 }
 /*第一版块*/
-.contentone {
-	background: #F0F0F0;
-	width: 100%;
-	padding: 7px 6% 7px 6%;
-}
+
 /*导航栏目z的文字*/
 .wenziz {
 	float: left;
@@ -343,9 +339,8 @@ body {
 	color: orange;
 }
 </style>
-<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="../js/jsAddress.js"></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jsAddress.js"></script>
 <script type="text/javascript">
 	window.onload = function() {
 		setInterval(function() {
@@ -374,71 +369,29 @@ body {
 	    var traget2=document.getElementById("lb2");  
 	    var traget3=document.getElementById("lb3");  
 	    var traget4=document.getElementById("lb4");
-	    var traget5=document.getElementById("lb5");
-	    var traget6=document.getElementById("lb6");
-	    var traget7=document.getElementById("lb7");
 	    if(id==1){  
 	        traget1.style.display="block";
 	        traget2.style.display="none";
 	        traget3.style.display="none";
 	        traget4.style.display="none";
-	        traget5.style.display="none";
-	        traget6.style.display="none";
-	        traget7.style.display="none";
 	    }
 	    if(id==2){  
 	        traget1.style.display="none";
 	        traget2.style.display="block";
 	        traget3.style.display="none";
 	        traget4.style.display="none";
-	        traget5.style.display="none";
-	        traget6.style.display="none";
-	        traget7.style.display="none";
 	    }
 	    if(id==3){  
 	        traget1.style.display="none";
 	        traget2.style.display="none";
 	        traget3.style.display="block";
 	        traget4.style.display="none";
-	        traget5.style.display="none";
-	        traget6.style.display="none";
-	        traget7.style.display="none";
 	    }
 	    if(id==4){  
 	        traget1.style.display="none";
 	        traget2.style.display="none";
 	        traget3.style.display="none";
 	        traget4.style.display="block";
-	        traget5.style.display="none";
-	        traget6.style.display="none";
-	        traget7.style.display="none";
-	    }
-	    if(id==5){  
-	        traget1.style.display="none";
-	        traget2.style.display="none";
-	        traget3.style.display="none";
-	        traget4.style.display="none";
-	        traget5.style.display="block";
-	        traget6.style.display="none";
-	        traget7.style.display="none";
-	    }
-	    if(id==6){  
-	        traget1.style.display="none";
-	        traget2.style.display="none";
-	        traget3.style.display="none";
-	        traget4.style.display="none";
-	        traget5.style.display="none";
-	        traget6.style.display="block";
-	        traget7.style.display="none";
-	    }
-	    if(id==7){  
-	        traget1.style.display="none";
-	        traget2.style.display="none";
-	        traget3.style.display="none";
-	        traget4.style.display="none";
-	        traget5.style.display="none";
-	        traget6.style.display="none";
-	        traget7.style.display="block";
 	    }
 	}
 	      
@@ -452,28 +405,21 @@ body {
 		var div1 = document.getElementById("update1");
 		var text = document.getElementsByName("jiups").item(0).value;
 		var user = document.getElementById("jiups");
-
+		
+		var oldPass = '${session.u.password}';
+		
 		if (text == "" || text == null) {
 			user.className = "red";
 			div1.innerHTML = "旧密码不能为空!";
 			return false;
 		}
-		if (text.length > 20) {
+		
+		/* if (text != oldPass) {
 			user.className = "red";
-			div1.innerHTML = "旧密码最多不超过20位!";
+			div1.innerHTML = "旧密码错误！！";
 			return false;
-		}
-		if (text.length < 5) {
-			user.className = "red";
-			div1.innerHTML = "旧密码最少为5位!";
-			return false;
-		}
-
-		if (5 <= text.length <= 20) {
-			user.className = "black";
-			div1.innerHTML = "";
-			return true;
-		}
+		} */
+		
 	}
 
 	function update_xinps1() {
@@ -611,7 +557,7 @@ body {
 		  return true;
 		   }
 	}
-	var html=document.getElementById('uploadSpan').innerHTML;   
+	
 	  
 	function resetFile(){   
 		var file = document.getElementById('file');
@@ -737,25 +683,59 @@ function YZphone(){
 		   }
 }
 function dealsubmit3(){
+	
+	var cmbProvince = $("#cmbProvince").val();
+	var cmbCity = $("#cmbCity").val();
+	var cmbArea = $("#cmbArea").val();
+	var dizhi = $("#dizhi").val(); 
+	var address = cmbProvince + cmbCity + cmbArea + dizhi;
+	$("input[name='address']").val(address);
+	
 	if(pwdcat()==false  || nameid()==false|| YZphone()==false){
 		return false;
 	}else{
 		return true;
 	}
 }
+
+function show1(id){
+	 var tr1 = document.getElementById("shouhu_"+id);
+	    var text1 = document.getElementById("update_dizhiname");
+	    var tr2 = document.getElementById("detailed_"+id);
+	    var text2 = document.getElementById("dizhi");
+	    var tr3 = document.getElementById("phone_"+id);
+	    var text3 = document.getElementById("dizhiphone");
+	    text1.value  =tr1.innerHTML ;
+	    text2.value  =tr2.innerHTML ;
+	    text3.value  =tr3.innerHTML ;
+	    
+	    var tr4=document.getElementById("p_m_d_"+id).innerHTML;
+	    tr4 = $.trim(tr4);
+	    tr4 = tr4.split("|");
+	    for (var i=0; i<tr4.length; i++) {
+	    	if(i==0){
+	    		var sheng=tr4[i];
+	    		sheng = $.trim(sheng);
+	    	}
+	    	if(i==1){
+	    		var shi=tr4[i];
+	    		shi = $.trim(shi);
+	    	}
+	    	if(i==2){
+	    		var qu=tr4[i];
+	    		qu = $.trim(qu);
+	    	}
+	    }
+	    addressInit('cmbProvince', 'cmbCity', 'cmbArea',sheng,shi,qu);
+	    addressInit('Select1', 'Select2', 'Select3');
+}		
+
 </script>
 
 </head>
 <body>
-	<div class="head">
-		<!--板块1-->
-		<div class="contentone">
-			<div class=wenziz>中国大陆 欢迎您：${user.username};</div>
-			<div class=wenziz2>
-				<a>我的店铺</a> <a>购物车</a> <a>收藏夹</a> <a>商品分类</a> <a>卖家中心</a> <a
-					href="#" onclick="remove()">退出</a>
-			</div>
-		</div>
+	<div >
+		<%@include file="top.jsp" %>
 	</div>
 	<div class="body">
 		<div class="left">
@@ -770,14 +750,7 @@ function dealsubmit3(){
 					type="submit" class="userxinxi_button userxinxi_inbutton"
 					value="修改信息" onclick="display(3)"><br /> <input
 					type="submit" class="userxinxi_button userxinxi_inbutton"
-					value="收货地址" onclick="display(4)"><br /> <input
-					type="submit" class="userxinxi_button userxinxi_inbutton"
-					value="我的购物车" onclick="display(5)"
-					style="padding-right: 9%; padding-left: 9%"><br /> <input
-					type="submit" class="userxinxi_button userxinxi_inbutton"
-					value="我的收藏" onclick="display(6)"><br /> <input
-					type="submit" class="userxinxi_button userxinxi_inbutton"
-					value="评价管理" onclick="display(7)"><br />
+					value="收货地址" onclick="display(4)"><br /> 
 
 			</div>
 		</div>
@@ -847,7 +820,7 @@ function dealsubmit3(){
 				<div id="lb2" style="display: none">
 
 					<div
-						style="width: 95.4%; margin-top: 2%; color: #FDE938; background-color: #F30408; padding-top: 1%; padding-bottom: 1%; font-family: FangSong">
+						style="width: 95.4%; margin-top: 2%; color: #FDE938; background-color: #F30408; padding-top: 1%; padding-bottom: 1%; ">
 						<font size="5px">修改密码</font>
 					</div>
 					<form action="User_updatePassword.action" method="post"
@@ -884,7 +857,7 @@ function dealsubmit3(){
 							<div class="clear"></div>
 							<div class="update_anniu">
 
-								<input type="submit" class="update_button" id="zhuce" value="提交">
+								<input type="submit" class="update_button" id="zhuce" value="提交"/>
 							</div>
 						</div>
 					</form>
@@ -929,22 +902,24 @@ function dealsubmit3(){
 				</div>
 				<!-- 第四个div -->
 				<div id="lb4" style="display: none">
-					<form action="userxinxi.jsp" method="post"
+					<form action="addr_addAddress" method="post"
 						onsubmit="return dealsubmit3()">
 						<div class="update_dizhi">
-							<div
-								style="width: 95.4%; color: #014d7f; background-color: LightCyan; padding-top: 1%; padding-bottom: 1%;">
+							<input type="hidden" name="address" />
+							<input type="hidden" name="loginUser.username" value="${loginUser.username }" />
+							<div style="width: 95.4%; color: #014d7f; background-color: LightCyan; padding-top: 1%; padding-bottom: 1%;">
 								<font size="5px">收货地址</font>
 							</div>
 							<div style="color: orange; padding-bottom: 2%; padding-top: 2%;">
 								新增收货地址</div>
 							<div>
-								省：<select id="cmbProvince"></select> 市：<select id="cmbCity"></select>
+								省：<select id="cmbProvince"></select> 
+								市：<select id="cmbCity"></select>
 								区：<select id="cmbArea"></select>
 								<script type="text/javascript">
-    addressInit('cmbProvince', 'cmbCity', 'cmbArea', '北京', '市辖区', '东城区');
-    addressInit('Select1', 'Select2', 'Select3');
-</script>
+								    addressInit('cmbProvince', 'cmbCity', 'cmbArea', '北京', '市辖区', '东城区');
+								    addressInit('Select1', 'Select2', 'Select3');
+								</script>
 							</div>
 							<div style="margin-top: 2%">
 								<div class="update_dizhidiv">
@@ -957,14 +932,14 @@ function dealsubmit3(){
 								<div class="clear"></div>
 								<div class="update_dizhidiv">
 									收货人姓名:<input type="text" id="update_dizhiname"
-										name="update_dizhiname" placeholder="2-8位字符" onblur="nameid()"
+										name="a_name" placeholder="2-8位字符" onblur="nameid()"
 										onfocus="users()"
 										style="width: 75.5%; height: 25px; margin-left: 0.5%">
 								</div>
 								<div id="tip4" class="updatedizhi_jsdiv"></div>
 								<div class="clear"></div>
 								<div class="update_dizhidiv">
-									手机号码:<input type="text" name="dizhiphone" id="dizhiphone"
+									手机号码:<input type="text" name="a_phone" id="dizhiphone"
 										placeholder="收件人的手机号码" onblur="YZphone()" onfocus="phone()"
 										style="width: 78%; height: 25px; margin-left: 2%">
 								</div>
@@ -974,40 +949,37 @@ function dealsubmit3(){
 							</div>
 							<div
 								style="width: 95.4%; color: #014d7f; background-color: LightCyan; padding-top: 1%; padding-bottom: 1%; margin-top: 3%;">
-								<font size="5px">已保存n条地址</font>
+								<font size="5px">已保存${number }条地址</font>
 							</div>
 
 							<table style="width: 95.4%; margin-top: 4%" cellspacing="0">
 								<tr style="background-color: #ebecf0;">
 									<td class="update_one">收货人</td>
+									<td class="update_one">省 | 市 | 区</td>
 									<td class="update_one">详细地址</td>
-									<td class="update_one">电话/手机</td>
+									<td class="update_one">联系电话</td>
 									<td class="update_one">操作</td>
 								</tr>
-								<tr>
-									<td class="update_one">#收货人</td>
-									<td class="update_one">#详细地址</td>
-									<td class="update_one">#电话/手机</td>
-									<td class="update_one"><a href="****">修改</a> | <a
-										href="****">删除</a></td>
-								</tr>
-								<tr>
-									<td class="update_one">#收货人</td>
-									<td class="update_one">#详细地址</td>
-									<td class="update_one">#电话/手机</td>
-									<td class="update_one"><a href="****">修改</a> | <a
-										href="****">删除</a></td>
-								</tr>
+								<s:iterator value="listAddr" var="listAddrs">
+									<tr style="background-color: #ebecf0;">
+										<td  class="update_one" id="shouhu_${listAddrs.a_id }">${listAddrs.a_name }</td>
+										<td class="update_one" id="p_m_d_${listAddrs.a_id }">
+											<%-- <font id="update_shen${listAddrs.a_id }">广东</font>  | <font id="update_shi${listAddrs.a_id }">广州市</font>  | <font id="update_xian${listAddrs.a_id }">海珠区</font> --%>
+											${listAddrs.addressP_M_D }
+										</td>
+										<td class="update_one" id="detailed_${listAddrs.a_id }">${listAddrs.detailedAddress }</td>
+										<td class="update_one" id="phone_${listAddrs.a_id }">${listAddrs.a_phone }</td>
+										<td class="update_one">
+											<a onclick="show1(${listAddrs.a_id })" style="cursor:pointer">修改</a>/
+											<a href="addr_delAddr?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0&a_id=${listAddrs.a_id }" >删除</a>
+										</td>
+									</tr>
+								</s:iterator>
 							</table>
 						</div>
 					</form>
 				</div>
-				<!-- 第五个div -->
-				<div id="lb5" style="display: none">购物车页面</div>
-				<!-- 第六个div -->
-				<div id="lb6" style="display: none">我的收藏</div>
-				<!-- 第七个div -->
-				<div id="lb7" style="display: none">评价页面</div>
+				
 			</div>
 
 		</div>
@@ -1016,5 +988,6 @@ function dealsubmit3(){
 			<div id="Date" class="Date"></div>
 		</div>
 	</div>
+	
 </body>
 </html>

@@ -49,4 +49,9 @@ public interface OrderItemDao {
 	 */
 	public void addOrders_id(List<Orderitem> listOrderItem, Orders orders);
 	
+	/**
+	 * 通过订单的主键id查询对应的订单项
+	 */
+	public List<Orderitem> queryAllOrderitem_o_id(int o_id);
+	
 }

@@ -34,7 +34,7 @@
 			<font color="#000000" id="Date"></font>
 		</div>
 		<div style="margin-left:806px; margin-top:6px; width: 19%; line-height:18px; height:18px; background: #F0F0F0; float: left; border-radius: 7px;">
-			&emsp;&emsp;欢迎您管理员 &nbsp;:&nbsp;${session.loginUser.username}
+			&emsp;&emsp;欢迎您管理员 &nbsp;:&nbsp;${sessionScope.loginUser.username }
 		</div>
 	</div>
 	

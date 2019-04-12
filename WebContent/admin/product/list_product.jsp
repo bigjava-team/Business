@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +9,7 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/admin-jQuery-js.js"></script>
-<script type="text/javascript">
-	function addCategory(){
-		window.location.href = "${pageContext.request.contextPath}/merchant/merchants/edit.jsp";
-	}
-</script>
+
 </head>
 <body class="admin_body" style="margin: 1% 1%;">
 	
@@ -41,40 +38,40 @@
 			
 			<tr id="admin_list_tr2">
 				<td class="admin_form1_table_tr_td1" align="center">商品名称</td>
-				<td colspan="3" class="admin_form1_table_tr_td5" align="center">新时代潮流时尚男鞋新时代潮流时尚男鞋新时代潮流时尚男鞋</td>
+				<td colspan="3" class="admin_form1_table_tr_td5" align="center"><s:property value="product.p_name"/></td>
 			</tr>
 			
 			<tr id="admin_list_tr2">
 				<td class="admin_form1_table_tr_td1" align="center">编号</td>
-				<td class="admin_form1_table_tr_td3" align="center">110</td>
+				<td class="admin_form1_table_tr_td3" align="center"><s:property value="product.p_id"/></td>
 				<td class="admin_form1_table_tr_td7" align="center">店铺名称</td>
-				<td class="admin_form1_table_tr_td3" align="center">光光店铺</td>
+				<td class="admin_form1_table_tr_td3" align="center"><s:property value="product.merchant.m_name"/></td>
 			</tr>
 			
 			<tr id="admin_list_tr2">
 				<td class="admin_form1_table_tr_td7" align="center">所属二级分类</td>
-				<td class="admin_form1_table_tr_td3" align="center">男鞋</td>
+				<td class="admin_form1_table_tr_td3" align="center"><s:property value="product.categorySecond.cs_name"/></td>
 				<td class="admin_form1_table_tr_td1" align="center">上架时间</td>
-				<td class="admin_form1_table_tr_td3" align="center">2019-10-10 10:10:10</td>
+				<td class="admin_form1_table_tr_td3" align="center"><s:property value="product.p_date"/></td>
 			</tr>
 			
 			<tr id="admin_list_tr2">
 				<td class="admin_form1_table_tr_td1" align="center">市场价格</td>
-				<td class="admin_form1_table_tr_td3" align="center">¥ 299.99</td>
+				<td class="admin_form1_table_tr_td3" align="center"><s:property value="product.market"/></td>
 				<td class="admin_form1_table_tr_td7" align="center">光光价格</td>
-				<td class="admin_form1_table_tr_td3" align="center">¥ 199.99</td>
+				<td class="admin_form1_table_tr_td3" align="center"><s:property value="product.p_price"/> </td>
 			</tr>
 			
 			<tr id="admin_list_tr2">
 				<td class="admin_form1_table_tr_td1" align="center">月销售量</td>
-				<td class="admin_form1_table_tr_td3" align="center">199 / 件</td>
+				<td class="admin_form1_table_tr_td3" align="center"><s:property value="product.sale_volume"/> </td>
 				<td class="admin_form1_table_tr_td7" align="center">是否热门</td>
 				<td class="admin_form1_table_tr_td3" align="center">是</td>
 			</tr>
 			
 			<tr id="admin_list_tr3">
 				<td class="admin_form1_table_tr_td4" align="center">商品描述</td>
-				<td class="admin_form1_table_tr_td5" colspan="3" align="center">本店所有商品打折扣</td>
+				<td class="admin_form1_table_tr_td5" colspan="3" align="center"><s:property value="product.p_desc"/> </td>
 			</tr>
 			
 			<tr id="admin_list_tr2">

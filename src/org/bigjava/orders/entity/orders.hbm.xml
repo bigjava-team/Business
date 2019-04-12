@@ -10,14 +10,14 @@
 		</id>
 		<property name="orderNumber" not-null="true" /><!-- 订单编号 -->
 		<property name="total" not-null="true" /><!-- 订单总金额 -->
-		<property name="ordertim" not-null="true" /><!-- 订单时间 -->
+		<property name="ordertime" not-null="true" /><!-- 订单时间 -->
 		<property name="state" not-null="true" /><!-- 订单状态 -->
 		
 		<many-to-one name="user" column="u_id" class="org.bigjava.user.entity.User" /><!-- 多对一订单表指向用户表 -->
 	
 		<many-to-one name="addr" column="a_id" class="org.bigjava.addr.entity.Addr" /><!-- 多对一订单表指向收货地址表 -->
 		
-		<set name="setOrderItem"><!-- 连接Orderitem类 -->
+		<set name="setOrderItem" order-by="item_id"><!-- 连接Orderitem类 -->
 			<key column="o_id" /><!-- 连接Orderitem类的外键名 -->
 			<one-to-many class="org.bigjava.orderitem.entity.Orderitem" /><!-- 指向Orderitem类的路径 -->
 		</set>

@@ -12,9 +12,12 @@ import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
 import org.bigjava.image.biz.ImageBiz;
 import org.bigjava.image.entity.Images;
+import org.bigjava.merchant.biz.MerchantBiz;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.product.biz.ProductBiz;
 import org.bigjava.product.entity.Product;
+import org.bigjava.user.biz.UserBiz;
+import org.bigjava.user.entity.User;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -35,14 +38,43 @@ public class MerchantProductAction extends ActionSupport {
 	private CategorySecondBiz categorySecondBiz;
 	private Merchant merchant;
 	private String searchText; // 搜索的参数值
-	
+
 	private FileImageAction fileImageAction;// 上传图片的功能类
-	
+
 	private ImageBiz imagesBiz;// 调用对商品图片操作的业务逻辑层
 	private Images images;// 存放商品图片的类
-	
+
 	private List<Product> productList;// 存放对应店铺内的所有商品
+	private User user;
+	private User loginUser;
+	private UserBiz userBiz;
+	private MerchantBiz merchantBiz;// 店铺的biz
 	
+	
+	public void setMerchantBiz(MerchantBiz merchantBiz) {
+		this.merchantBiz = merchantBiz;
+	}
+
+	public void setUserBiz(UserBiz userBiz) {
+		this.userBiz = userBiz;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public User getLoginUser() {
+		return loginUser;
+	}
+
+	public void setLoginUser(User loginUser) {
+		this.loginUser = loginUser;
+	}
+
 	public List<Product> getProductList() {
 		return productList;
 	}
@@ -76,7 +108,7 @@ public class MerchantProductAction extends ActionSupport {
 	}
 
 	private Paging paging;// 声明Paging类
-	
+
 	public Merchant getMerchant() {
 		return merchant;
 	}
@@ -131,17 +163,33 @@ public class MerchantProductAction extends ActionSupport {
 		this.categorySecondBiz = categorySecondBiz;
 	}
 
+	/**
+	 * 跳转到店铺后台管理页面
+	 */
+	public String userGotoMerchant() {
+		System.out.println("UserManagerMerchantAction>>>>>>>>>>userGotoMerchant()..");
+		user = userBiz.queryUsernameUser(loginUser.getUsername());
+		
+		if (user.getMerchant() == null) {
+			System.out.println("还没有开店！！");
+			return "userGotoMerchantError";
+		}
+		merchant = merchantBiz.queryUidMerchant(user.getU_id());
+		return "userGotoMerchant";
+	}
+
 	// 查询所有的商品
 	public String findAll() {
 
 		System.out.println("进入MerchantProductAction....showAll方法");
+		System.out.println("店铺id为"+merchant.getM_id());
 		session = ActionContext.getContext().getSession();
 
 		if (isEmpty.isEmpty(searchText)) {
 			searchText = "";
 		}
 		// 根据搜索的内容与权限查询可搜索的总条数
-		int totalNumber = productBiz.queryProductNumber(searchText, merchant.getM_id());
+		int totalNumber = productBiz.queryProductNumber(searchText, merchant.getM_id(), 0);
 		// 当前页数
 		int presentPage = paging.getPresentPage();
 		System.out.println("当前页" + presentPage);
@@ -149,7 +197,7 @@ public class MerchantProductAction extends ActionSupport {
 		paging = new Paging(presentPage, totalNumber, 2);
 
 		// 接收搜索到的商品列表
-		productList = productBiz.queryAllProduct(searchText, paging, merchant.getM_id());
+		productList = productBiz.queryAllProduct(searchText, paging, merchant.getM_id(), 0);
 
 		// 将参数存入session中
 		System.out.println(productList);
@@ -162,7 +210,7 @@ public class MerchantProductAction extends ActionSupport {
 	// 跳转到添加页面的方法:
 	public String addPage() {
 		// 查询所有的二级分类:
-		List<CategorySecond> csList = categorySecondBiz.showCategorySecond();
+		List<CategorySecond> csList = categorySecondBiz.showAllCategorySecond();
 		// 将二级分类的数据显示到页面上
 		ActionContext.getContext().getValueStack().set("csList", csList);
 		// 页面跳转
@@ -176,9 +224,9 @@ public class MerchantProductAction extends ActionSupport {
 		product.setP_date(new Date());
 		product.setP_freeze(3);
 		product.setP_image(fileImageAction.getFileImageFileName());// 图片名
-		
+
 		productBiz.addProduct(product, merchant, categorySecond);// 添加商品信息
-		
+
 		return "saveSuccess";
 	}
 
@@ -193,7 +241,7 @@ public class MerchantProductAction extends ActionSupport {
 	// 根据ID获取商品信息
 	public String getProductById() {
 		System.out.println("进入MerchantProductAction...getProductById");
-		System.out.println("p_id"+ product.getP_id());
+		System.out.println("p_id" + product.getP_id());
 		productBiz.queryProduct_id(product.getP_id());
 		return "getProductByIdSuccess";
 	}
@@ -201,11 +249,11 @@ public class MerchantProductAction extends ActionSupport {
 	// 修改商品的方法
 	public String updateProduct() {
 		System.out.println("进入MerchantProductAction....updateProduct()");
-		//查询数据库中商品的信息
+		// 查询数据库中商品的信息
 		product = productBiz.queryProduct_id(product.getP_id());
-		
+
 		Product updateProduct = null; // 修改的二级分类
-		
+
 		productBiz.updateProduct(product, updateProduct);
 		return "updateProductSuccess";
 	}

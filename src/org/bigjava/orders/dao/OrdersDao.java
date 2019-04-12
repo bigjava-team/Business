@@ -16,7 +16,7 @@ public interface OrdersDao {
 	public void addOrders(Orders orders, User user, Addr addr);
 	
 	/**
-	 * 删除订单表(退货)
+	 * 删除订单(退货)
 	 */
 	public void deleteOrders(Orders orders);
 	
@@ -36,8 +36,13 @@ public interface OrdersDao {
 	public int queryAllOrdersNumber(User user);
 	
 	/**
-	 * 通过订单编号插叙订单
+	 * 通过订单编号进行查询
 	 */
-	public Orders queryOrders_orderNumber(String orderNumber);
+	public Orders orderNumberQueryOrders(String orderNumber);
+	
+	/**
+	 * 修改订单状态
+	 */
+	public void updateOrdersState(Orders orders);
 
 }

@@ -13,5 +13,10 @@
 			<key column="pAge_id" />
 			<one-to-many class="org.bigjava.image.entity.Images" />
 		</set>
+		
+		<set name="setOrderitem">
+			<key column="pAge_id" />
+			<one-to-many class="org.bigjava.orderitem.entity.Orderitem" />
+		</set>
 	</class>
 </hibernate-mapping>
