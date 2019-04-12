@@ -11,10 +11,6 @@ body, select, textarea {
 	font-size: 1.1em
 }
 
-body, html, input {
-	font-family: "微软雅黑";
-}
-
 body {
 	overflow-x: hidden;
 }
@@ -27,7 +23,6 @@ body {
 .head {
 	width: 100%;
 	height: 20%;
-	color: white;
 }
 
 .headone {
@@ -520,18 +515,9 @@ function hideDiv(){
 
 <body style="margin: 0px; padding: 0px">
 	<div class="head">
-		<div class="headone">
-			<a href="????"> <font size="3px" style="padding-left: 10%">用户名</font></a>
-			| <a href="????"> <font size="3px">退出</font>
-			</a> <font style="float: right; padding-right: 10%"> <a
-				href="????"><font size="2px">光光网首页</font></a> | <a href="????"><font
-					size="2px">我买的宝贝</font></a> | <a href="????"><font size="2px">我卖的宝贝
-				</font></a>
-			</font>
-		</div>
-
+		<%@include file="top.jsp" %>
 		<div class="headtwo">
-			<a href="Maijia.jsp"><font size="5px" style="padding-left: 10%">店铺注册页面</font></a>
+			<a href="#"><font size="5px" style="padding-left: 10%">店铺注册页面</font></a>
 		</div>
 	</div>
 
@@ -662,7 +648,7 @@ function hideDiv(){
 						</form>
 						</div>
 						<div class="cc">
-							<br /> 您已绑定邮箱:<font color="red">#后台邮箱号</font><br /> <br />
+							<br /> 您已绑定邮箱:<font color="red">${sessionScope.loginUser.email}</font><br /> <br />
 							开店类型必须与邮箱认证类型一致，否则可能无法创建店铺。<br /> <br />
 						</div>
 
@@ -678,9 +664,17 @@ function hideDiv(){
 
 								<tr>
 									<td>用户状态</td>
-									<td><font color="green">已登录</font></td>
+									<td><font color="green">
+										<s:if test='loginUser.username != null'>
+											用户已登录
+										</s:if>
+										<s:else>
+											未登录
+										</s:else>
+									
+									</font></td>
 									<td>登录成功</td>
-									<td>#账户邮箱</td>
+									<td>${sessionScope.loginUser.email}</td>
 								</tr>
 
 								<tr>

@@ -39,8 +39,7 @@
 			<a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presenetPage=0">我的订单</a> 
 			<a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0">购物车</a> 
 			<a href="javascript:;">收藏夹</a> 
-			<a>商品分类</a>
-			<a>卖家中心</a> 
+			<a href="${pageContext.request.contextPath}/user/shangpingzhuce.jsp">我要开店</a> 
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<a href="#" onclick="remove()">退出</a>
 			</s:if>
