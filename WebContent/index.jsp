@@ -102,10 +102,6 @@
 		$("#"+id).css("border","1px solid #F0F0F0");
 	}
 	
-		
-		/* $("#cs"+csId).css("display", "none");
-	} */
-	
 	function aOver(id,csId) {
 		$("#"+id).css({
 			"text-decoration": "underline",
@@ -127,6 +123,7 @@
 	function csOut(id) {
 		$("#"+id).css("display", "none");
 	}
+	
 </script>
 </head>
 <body style="background: #F4F4F4; margin: 0px; padding: 0px;">
@@ -434,7 +431,7 @@
 			</div>	
 			<div style="background: red; overflow: hidden; margin: 0px 0%;">
 				<s:iterator value="listProductTime"  var="listProductTimes">
-					<div class="newestProduct" onclick="queryProduct(this.id)" id="${listProductTimes.p_id}" onmouseover="newestProductOver(this.id)" onmouseout="newestProductOut(this.id)" style="background: #FFF; border: 1px solid #F0F0F0; width: 33.33%; float: left; height: 31%; padding-top: 15px;" >
+					<div class="newestProduct" onclick="queryProduct(this.id)" id="${listProductTimes.p_id}" style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd" >
 						<div style="text-align: center; height: 196px; overflow: hidden;">
 							<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="90%" height="100%">
 						</div>
@@ -459,7 +456,7 @@
 				</div>
 				<div style="background: red; overflow: hidden; margin: 0px 0%;">
 					<s:iterator value="listProductHot"  var="listProductHots">
-						<div id="${listProductHots.p_id}" onmouseover="ishotProductOver(this.id)" onmouseout="ishotProductOut(this.id)" style="background: #FFF; border: 1px solid #F0F0F0; width: 33.33%; float: left; height: 31%; padding-top: 15px;">
+						<div style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
 							<div style="text-align: center; height: 196px; overflow: hidden;">
 								<img alt="商品图片" src="${fileImageAction.urlImage }${listProductHots.p_image }" width="90%" height="100%">
 							</div>
@@ -483,9 +480,9 @@
 		<div style="background: #FFF; height: 10%; font-weight: bold; font-size: 18px; color: #FF9F00; padding: 12px 0px 12px 1%; border-bottom: 1px solid #F4F4F4">
 			| 猜你喜欢
 		</div>
-		<div class="111" style="background: red; overflow: hidden; margin: 0px 0%;">
+		<div style="background: red; overflow: hidden; margin: 0px 0%;">
 			<s:iterator value="listAllCommentProduct" var="listAllCommentProducts" >
-				<div id="${listAllCommentProducts.p_id}" onmouseover="likeOver(this.id)" onmouseout="likeOut(this.id)" style="background: #FFF; border: 1px solid #F0F0F0; width: 16.66%; float: left; height: 31%; padding-top: 15px;">
+				<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
 					<div style="text-align: center; height: 196px; overflow: hidden;">
 						<img alt="商品图片" src="${fileImageAction.urlImage }${listAllCommentProducts.p_image}" width="90%" height="100%">
 					</div>
