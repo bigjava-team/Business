@@ -213,8 +213,8 @@ body {
 	position: fixed;
 	top: 25%;
 	left: 36%;
-	width: 28%;
-	height: 25%;
+	width: 31%;
+	height: 35%;
 	padding:1% 1% 0.5% 1%;
 	border: 10px solid #ddd;
 	background-color: lightblue;
@@ -431,7 +431,7 @@ td {
 	top: 0%; 
 	left: 0%; 
 	width: 100%; 
-	height: 137%; 
+	height: 174%; 
 	background-color: black; 
 	z-index:1001; 
 	-moz-opacity: 0.3; 
