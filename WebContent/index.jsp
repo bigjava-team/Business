@@ -57,7 +57,8 @@
 	
 	function queryProduct(id) {
 		var username = '${loginUser.username }';
-		window.location.href="Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0";
+		/* window.location.href="Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0"; */
+		window.open("Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0");
 		/* window.location.href="Product_idQueryProduct?method=post&product.p_id="+id+"&paging.presentPage=0"; */
 	}
 	
@@ -71,6 +72,40 @@
 			$(".xuanfu").css('display','none');
 		});
 	});
+	 
+	function newestProductOver(id) {
+		$("#"+id).css("border","1px solid #FF7575");
+	}
+	
+	function newestProductOut(id) {
+		$("#"+id).css("border","1px solid #F0F0F0");
+	}
+	
+	function ishotProductOver(id) {
+		$("#"+id).css("border","1px solid #FF7575");
+	}
+	
+	function ishotProductOut(id) {
+		$("#"+id).css("border","1px solid #F0F0F0");
+	}
+	
+	function likeOver(id) {
+		$("#"+id).css("border","1px solid #FF7575");
+	}
+	
+	function likeOut(id) {
+		$("#"+id).css("border","1px solid #F0F0F0");
+	}
+	
+	/* $(function(){
+		$(".111").mouseover(function(){
+			$("#"+id).css("border","1px solid #FF7575");
+		});
+		
+		$(".111").mouseout(function(){
+			$("#"+id).css("border","1px solid #F0F0F0");
+		});
+	}) */
 	
 </script>
 </head>
@@ -469,7 +504,7 @@
 			</div>	
 			<div style="background: red; overflow: hidden; margin: 0px 0%;">
 				<s:iterator value="listProductTime"  var="listProductTimes">
-					<div class="newestProduct" onclick="queryProduct(this.id)" id="${listProductTimes.p_id}" style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd" >
+					<div class="newestProduct" onclick="queryProduct(this.id)" id="${listProductTimes.p_id}" onmouseover="newestProductOver(this.id)" onmouseout="newestProductOut(this.id)" style="background: #FFF; border: 1px solid #F0F0F0; width: 33.33%; float: left; height: 31%; padding-top: 15px;" >
 						<div style="text-align: center; height: 196px; overflow: hidden;">
 							<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="90%" height="100%">
 						</div>
@@ -494,7 +529,7 @@
 				</div>
 				<div style="background: red; overflow: hidden; margin: 0px 0%;">
 					<s:iterator value="listProductHot"  var="listProductHots">
-						<div style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
+						<div id="${listProductHots.p_id}" onmouseover="ishotProductOver(this.id)" onmouseout="ishotProductOut(this.id)" style="background: #FFF; border: 1px solid #F0F0F0; width: 33.33%; float: left; height: 31%; padding-top: 15px;">
 							<div style="text-align: center; height: 196px; overflow: hidden;">
 								<img alt="商品图片" src="${fileImageAction.urlImage }${listProductHots.p_image }" width="90%" height="100%">
 							</div>
@@ -518,9 +553,9 @@
 		<div style="background: #FFF; height: 10%; font-weight: bold; font-size: 18px; color: #FF9F00; padding: 12px 0px 12px 1%; border-bottom: 1px solid #F4F4F4">
 			| 猜你喜欢
 		</div>
-		<div style="background: red; overflow: hidden; margin: 0px 0%;">
+		<div class="111" style="background: red; overflow: hidden; margin: 0px 0%;">
 			<s:iterator value="listAllCommentProduct" var="listAllCommentProducts" >
-				<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
+				<div id="${listAllCommentProducts.p_id}" onmouseover="likeOver(this.id)" onmouseout="likeOut(this.id)" style="background: #FFF; border: 1px solid #F0F0F0; width: 16.66%; float: left; height: 31%; padding-top: 15px;">
 					<div style="text-align: center; height: 196px; overflow: hidden;">
 						<img alt="商品图片" src="${fileImageAction.urlImage }${listAllCommentProducts.p_image}" width="90%" height="100%">
 					</div>
