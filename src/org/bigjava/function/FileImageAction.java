@@ -45,7 +45,7 @@ public class FileImageAction {
 	public void setFileImageContentType(String fileImageContentType) {
 		this.fileImageContentType = fileImageContentType;
 	}
-	public String fileImage() throws IOException {
+	public void fileImage() throws IOException {
 		String uuid = UUID.randomUUID().toString();// 随机生成一个36字节的16进制的字符串,强转成String类型
 		System.out.println(fileImageFileName);
 		String imageSuffix = fileImageFileName.substring(fileImageFileName.lastIndexOf("."));// 获取上传文件的后缀
@@ -72,8 +72,6 @@ public class FileImageAction {
 		
 		fos.close();
 		fis.close();
-		
-		return "file_success";
 	}
 	@Override
 	public String toString() {

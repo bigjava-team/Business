@@ -15,13 +15,6 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
-	 $(function() {
-		var OneToThree = '${check }';
-		if (OneToThree==null || OneToThree == "") {
-			window.location.href="index_showAll.action";
-		}
-	}); 
-
 	$(function(){
 		var a = $(".aaa").height();
 		$(".bbb").height(a);
@@ -158,7 +151,7 @@
 			<!-- 此div 做边距处理，空出位置 遍历时请勿删除 -->
 			<div style="height: 5px;"></div>
 			<s:iterator value="listIndexCategory" var="listIndexCategorys" status="status">
-				<div class="categoryCss" id="aaa_d<s:property value='#status.count' />" onmouseover="categoryOver(this.id,<s:property value='#status.count' />)" onmouseout="categoryOut(this.id,<s:property value='#status.count' />)" style="font-size: 15px; padding: 6px 0px 6px 13%; color: black;border: 1px solid red;">
+				<div class="categoryCss" id="aaa_d<s:property value='#status.count' />" onmouseover="categoryOver(this.id,<s:property value='#status.count' />)" onmouseout="categoryOut(this.id,<s:property value='#status.count' />)" style="font-size: 15px; padding: 6px 0px 6px 13%; color: black;">
 					<s:iterator value="#listIndexCategorys.listCategory" var="lists" status="aStatus">
 						<a href="javascript:;" onmouseover="aOver(this.id,<s:property value='#status.count' />)" onmouseout="aOut(this.id,<s:property value='#status.count' />)" id="a<s:property value='#status.count' /><s:property value='#aStatus.count' />"><s:property value="#lists.c_name" /></a>
 						<s:if test="#lists.c_id%3 != 0">
@@ -349,7 +342,7 @@
 			<div id="cs<s:property value='#csStatus.count' />" onmouseover="csOver(this.id)" onmouseout="csOut(this.id)" class="xuanfu" style="background: #FFF;display: none;position: absolute;width: 52.7%; float: left; margin-left: 14.1%; margin-top: 30px; border: 2px solid red; padding: 1% 1.5% 1% 1.8%;">
 				<div style="background: #FFF; width: 64.5%; height: 100%; float: left;">
 					<s:iterator value="#listCS2.listCategorySecond" var="listCategorySeconds">	
-						<div style="background: #369; width: 100%; height: 33.33%;border: 1px solid blue;">
+						<div style="background: #369; width: 100%; height: 33.33%;;">
 							<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #545454">
 								<s:iterator value="#listCategorySeconds.listCategorySecond" var="cs" status="status">
 									<s:if test="#status.count == 1">

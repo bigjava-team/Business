@@ -4,7 +4,7 @@
 
 <struts>
 	<!-- 开启开发者模式，设置编码 -->
-	<constant name="struts.devMode" value="true" />
+	<!-- <constant name="struts.devMode" value="true" /> -->
 	<constant name="stuts.i18n.encoding" value="utf-8" />
 
 	<package name="shop" extends="struts-default" namespace="/">
@@ -54,7 +54,10 @@
 			<result name="checkcodeFail">/user/login.jsp</result>
 
 			<!-- 注销用户 -->
-			<result name="close">index.jsp </result>
+			<result name="close">/skipIndex.jsp</result>
+			
+			<!-- 返回商城首页 -->
+			<result name="skipIndex">/skipIndex.jsp</result>
 
 			<!-- 跳转我的首页 -->
 			<result name="gotoUserIndex" type="redirectAction">addr_findAllAddr?method=post&amp;loginUser.username=${loginUser.username
@@ -62,6 +65,8 @@
 
 			<!-- 修改密码界面 -->
 			<result name="updatePasswordSuccess">/user/login.jsp</result>
+			
+			<result name="SetUpShop">/user/shangpingzhuce.jsp</result>
 
 		</action>
 
@@ -134,6 +139,7 @@
 		<action name="Merchant_*" class="merchantAction" method="{1}">
 			<!-- 跳转到店铺首页 -->
 			<result name="gotoMerchant">user/dianpuzhiye.jsp</result>
+			<result name="registerMerchantSuccess">user/dianpuzhiye.jsp</result>
 		</action>
 
 		<!-- 商品的action -->

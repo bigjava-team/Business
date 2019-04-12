@@ -19,7 +19,7 @@ public class Merchant {
 	private String m_name;// 店铺名
 	private String m_image;// 店铺图片路径
 	private Date m_time;// 店铺创建的时间
-	private int m_is_freeze;// 店铺的状态
+	private int m_is_freeze;// 店铺的状态(1、为申请状态2、解冻状态3、为冻结状态)
 	private String notice;// 店铺公告
 	
 	private User user;// 指向用户表中的店家

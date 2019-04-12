@@ -29,7 +29,7 @@
 		
 		
 		<div class=wenziz2>
-				<a href="index.jsp">我的光光</a>
+				<a href="User_skipIndex.action?method=post&loginUser.username=${loginUser.username }">我的光光</a>
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<a href="User_gotoUserIndex.action?method=post&loginUser.username=${loginUser.username }">我的主页</a>
 			</s:if>
@@ -40,7 +40,7 @@
 			<a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presenetPage=0">我的订单</a> 
 			<a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0">购物车</a> 
 			<a href="javascript:;">收藏夹</a> 
-			<a href="${pageContext.request.contextPath}/user/shangpingzhuce.jsp">我要开店</a> 
+			<a href="User_SetUpShop.action?method=post&loginUser.username=${loginUser.username }">我要开店</a> 
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<a href="#" onclick="remove()">退出</a>
 			</s:if>
