@@ -50,7 +50,7 @@
 	function queryProduct(id) {
 		var username = '${loginUser.username }';
 		window.open("Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0");
-		/*window.location.href="Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0"; */
+		/* window.location.href="Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0"; */
 	}
 	
 	function categoryOver(id,csId) {
@@ -76,7 +76,7 @@
 		});
 		
 		$("#cs"+csId).css("display", "none");
-	});
+	}
 	 
 	function newestProductOver(id) {
 		$("#"+id).css("border","1px solid #FF7575");
@@ -101,6 +101,10 @@
 	function likeOut(id) {
 		$("#"+id).css("border","1px solid #F0F0F0");
 	}
+	
+		
+		/* $("#cs"+csId).css("display", "none");
+	} */
 	
 	function aOver(id,csId) {
 		$("#"+id).css({
