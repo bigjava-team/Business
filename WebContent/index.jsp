@@ -158,9 +158,9 @@
 			<!-- 此div 做边距处理，空出位置 遍历时请勿删除 -->
 			<div style="height: 5px;"></div>
 			<s:iterator value="listIndexCategory" var="listIndexCategorys" status="status">
-				<div class="categoryCss" id="aaa_d<s:property value='#status.count' />" onmouseover="categoryOver(this.id,<s:property value='#status.count' />)" onmouseout="categoryOut(this.id,<s:property value='#status.count' />)" style="font-size: 15px; padding: 6px 0px 6px 13%; color: black;border: 1px solid red;">
+				<div class="categoryCss" id="aaa_d<s:property value='#status.count' />" onmouseover="categoryOver(this.id,<s:property value='#status.count' />)" onmouseout="categoryOut(this.id,<s:property value='#status.count' />)" style="font-size: 15px; padding: 6px 0px 6px 13%; color: black;">
 					<s:iterator value="#listIndexCategorys.listCategory" var="lists" status="aStatus">
-						<a href="javascript:;" onmouseover="aOver(this.id,<s:property value='#status.count' />)" onmouseout="aOut(this.id,<s:property value='#status.count' />)" id="a<s:property value='#status.count' /><s:property value='#aStatus.count' />"><s:property value="#lists.c_name" /></a>
+						<a style="color: #666666;" href="javascript:;" onmouseover="aOver(this.id,<s:property value='#status.count' />)" onmouseout="aOut(this.id,<s:property value='#status.count' />)" id="a<s:property value='#status.count' /><s:property value='#aStatus.count' />"><s:property value="#lists.c_name" /></a>
 						<s:if test="#lists.c_id%3 != 0">
 						/
 						</s:if>
@@ -346,20 +346,20 @@
 		
 		<!-- 隐藏的div -->
 		<s:iterator value="listCS" var="listCS2" status="csStatus">
-			<div id="cs<s:property value='#csStatus.count' />" onmouseover="csOver(this.id)" onmouseout="csOut(this.id)" class="xuanfu" style="background: #FFF;display: none;position: absolute;width: 52.7%; float: left; margin-left: 14.1%; margin-top: 30px; border: 2px solid red; padding: 1% 1.5% 1% 1.8%;">
+			<div id="cs<s:property value='#csStatus.count' />" onmouseover="csOver(this.id)" onmouseout="csOut(this.id)" class="xuanfu" style="background: #FFF;display: none;position: absolute;width: 52.7%; float: left; margin-left: 14.1%; margin-top: 30px; border: 2px solid #FF6800; padding: 1% 1.5% 1% 1.8%;">
 				<div style="background: #FFF; width: 64.5%; height: 100%; float: left;">
 					<s:iterator value="#listCS2.listCategorySecond" var="listCategorySeconds">	
-						<div style="background: #369; width: 100%; height: 33.33%;border: 1px solid blue;">
-							<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #545454">
+						<div style="background: #369; width: 100%; height: 33.33%; margin-top: -1px;">
+							<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #FF8300;">
 								<s:iterator value="#listCategorySeconds.listCategorySecond" var="cs" status="status">
 									<s:if test="#status.count == 1">
 										<s:property value="#cs.category.c_name"/>
 									</s:if>
 								</s:iterator>
 							</div>
-							<div style="background: #FFF; width: 100%; height: 79%; color: #666666; font-size: 12px; padding-right: 2%; overflow: hidden;">
+							<div style="background: #FFF; width: 100%; height: 79%; color: red; font-size: 12px; padding-right: 2%; overflow: hidden;">
 								<s:iterator value="#listCategorySeconds.listCategorySecond" var="cs">
-									<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"><a href="javascript:;"><s:property value="#cs.cs_name"/></a> </div>
+									<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"><a href="javascript:;" style="color: #666666;"><s:property value="#cs.cs_name"/></a> </div>
 								</s:iterator>
 							</div>
 						</div>
@@ -431,7 +431,7 @@
 			</div>	
 			<div style="background: red; overflow: hidden; margin: 0px 0%;">
 				<s:iterator value="listProductTime"  var="listProductTimes">
-					<div class="newestProduct" onclick="queryProduct(this.id)" id="${listProductTimes.p_id}" style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd" >
+					<div class="newestProduct" onclick="queryProduct(this.id)" id="${listProductTimes.p_id}" style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px;" >
 						<div style="text-align: center; height: 196px; overflow: hidden;">
 							<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="90%" height="100%">
 						</div>
@@ -456,7 +456,7 @@
 				</div>
 				<div style="background: red; overflow: hidden; margin: 0px 0%;">
 					<s:iterator value="listProductHot"  var="listProductHots">
-						<div style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
+						<div style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px;">
 							<div style="text-align: center; height: 196px; overflow: hidden;">
 								<img alt="商品图片" src="${fileImageAction.urlImage }${listProductHots.p_image }" width="90%" height="100%">
 							</div>
@@ -482,7 +482,7 @@
 		</div>
 		<div style="background: red; overflow: hidden; margin: 0px 0%;">
 			<s:iterator value="listAllCommentProduct" var="listAllCommentProducts" >
-				<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
+				<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px;">
 					<div style="text-align: center; height: 196px; overflow: hidden;">
 						<img alt="商品图片" src="${fileImageAction.urlImage }${listAllCommentProducts.p_image}" width="90%" height="100%">
 					</div>
