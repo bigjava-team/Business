@@ -10,12 +10,7 @@
 		window.location.href = "User_close.action";
 	}
 	
-	/*  $("#menu a").hover(function() {
-		             $(this).addClass("blue");
-		         }, function() {
-		             $(this).removeClass("blue");
-		         }); */
-	
+	/* 移入移出变色特效 */
 	 $(function(){
 		$(".wenziz a").hover(function(){
 			$(this).addClass("addjQuery");
