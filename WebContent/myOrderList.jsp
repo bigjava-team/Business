@@ -23,11 +23,26 @@
 			}
 		})
 	})
+	
+	
+	$(function(){
+		$(".cart_d1_d2_ul1 li").hover(function(){
+			$(this).addClass("addjQuery");
+		}, function(){
+			 $(this).removeClass("addjQuery");
+		})
+	})
 </script>
+
+<style type="text/css">
+	.addjQuery{
+		color: #FF8300;
+	}
+</style>
 
 </head>
 <body id="cart_body">
-	<s:debug />
+	
 	<div class="cart_d1">
 		<div class="cart_d1_d1">
 			尊敬的：${loginUser.username } 您好!

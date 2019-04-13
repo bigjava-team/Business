@@ -16,6 +16,14 @@
 		             $(this).removeClass("blue");
 		         }); */
 	
+	 $(function(){
+		$(".wenziz a").hover(function(){
+			$(this).addClass("addjQuery");
+		}, function(){
+			 $(this).removeClass("addjQuery");
+		})
+	})
+		 
 	$(function(){
 		$(".wenziz2 a").hover(function(){
 			$(this).addClass("addjQuery");
@@ -71,7 +79,7 @@
 	<!--板块2-->
     <div class="contenttwo">
 		<a href="index_showAll.action"><img src="${pageContext.request.contextPath }/images/logo.jpg" height="60px" width="240px" align="left"></a>
-		<img alt="" src="${pageContext.request.contextPath }/images/1 (11).png" height="50px" width="520px" align="left">
+		<img alt="" src="${pageContext.request.contextPath }/images/1 (11).png" height="50px" width="520px" align="left" style="border-radius: 6px;">
 		<div class="search bar7">
 			<form id="contenttwo_form">
 				<input class="contenttwo_input" type="text" placeholder="欢迎来到光光网...">
