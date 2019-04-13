@@ -188,6 +188,6 @@ border-radius: 3px;-webkit-transition: all 0.3s ease-in-out;-moz-transition: all
 
 
 	<!-- 尾部 -->
-<%@include file="menu_bottom.jsp"%>
+<%-- <%@include file="menu_bottom.jsp"%> --%>
 </body>
 </html>

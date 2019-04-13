@@ -223,6 +223,6 @@
 
 	</div>
 </div>
-		<%@include file="menu_bottom.jsp"%>
+		<%-- <%@include file="menu_bottom.jsp"%> --%>
 </body>
 </html>
