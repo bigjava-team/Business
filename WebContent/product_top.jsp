@@ -4,14 +4,35 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript">
 	function remove() {
 		window.location.href = "User_close.action";
 	}
+	
+	/*  $("#menu a").hover(function() {
+		             $(this).addClass("blue");
+		         }, function() {
+		             $(this).removeClass("blue");
+		         }); */
+	
+	$(function(){
+		$(".wenziz2 a").hover(function(){
+			$(this).addClass("addjQuery");
+		}, function(){
+			 $(this).removeClass("addjQuery");
+		})
+	})
+	
 	</script>
 	<style type="text/css" >
 		a {
 			text-decoration: none;
+			color: #666666;
+		}
+		
+		.addjQuery{
+			color: #FF8300;
 		}
 	</style>
 	<!--板块1-->
@@ -28,7 +49,7 @@
 		</div>
 		
 		
-		<div class=wenziz2>
+		<div class="wenziz2">
 				<a href="User_skipIndex.action?method=post&loginUser.username=${loginUser.username }">我的光光</a>
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<a href="User_gotoUserIndex.action?method=post&loginUser.username=${loginUser.username }">我的主页</a>
