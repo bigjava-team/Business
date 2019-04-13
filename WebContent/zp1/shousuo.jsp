@@ -6,7 +6,7 @@
   </head>
   <!--搜素栏 -->
 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css"> --%>
 <link rel="stylesheet" href="css/xuanxiangxiahua.css">
 <link rel="stylesheet" href="css/menu_bottom.css">
   <style type="text/css">
@@ -51,7 +51,7 @@
 .lanmuwu{ background:#fff; width:100%; height:25%;border:2px solid #FF9900; margin:0 auto}
 </style>
 
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var titles = $("div.title >a");

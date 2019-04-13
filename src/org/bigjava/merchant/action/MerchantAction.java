@@ -177,22 +177,29 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	 * 查询买家的订单详情
 	 */
 	public String queryMerchantOrders() {
-		System.out.println("开始查询买家的订单详情"+paging.getPresentPage());
+		System.out.println("开始查询买家的订单详情");
 		listOrders = merchantBiz.queryListOrders(merchant.getM_id());
-		if (paging.getPresentPage() == 0) {
-			paging.setPresentPage(1);
-		}
 		int divisor = listOrders.size()/2;
 		int remainder = listOrders.size()%2;
 		if (remainder == 0) {
-			paging.setTotalNumber(divisor);
+			paging.setPage(divisor);// 最大页数
 		} else if (remainder !=0) {
-			paging.setPage(divisor+1);
+			paging.setPage(divisor+1);// 最大页数
 		}
-		if (divisor < paging.getPresentPage() && remainder!=0) {
-			listOrders = listOrders.subList((paging.getPresentPage()-1)*2, remainder+(divisor*2));
+		if (paging.getPresentPage() <= 0) {
+			paging.setPresentPage(1);
+		} else if (paging.getPresentPage() > paging.getPage() && paging.getPage() > 0) {
+			paging.setPresentPage(paging.getPage());
 		} else {
-			listOrders = listOrders.subList((paging.getPresentPage()-1)*2, paging.getPresentPage()*2);
+			paging.setPresentPage(1);
+		}
+		
+		if (listOrders.size()!=0) {
+			if (divisor < paging.getPresentPage() && remainder!=0) {
+				listOrders = listOrders.subList((paging.getPresentPage()-1)*2, remainder+(divisor*2));
+			} else {
+				listOrders = listOrders.subList((paging.getPresentPage()-1)*2, paging.getPresentPage()*2);
+			}
 		}
 		System.out.println("订单详情"+listOrders);
 		return "queryMerchantOrders";

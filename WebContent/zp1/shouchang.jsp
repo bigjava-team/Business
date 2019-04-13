@@ -7,7 +7,7 @@
   </head>
   <!--搜素栏 -->
 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css"> --%>
 <link rel="stylesheet" href="css/xuanxiangxiahua.css">
 <link rel="stylesheet" href="css/menu_bottom.css">
 <style type="text/css">
