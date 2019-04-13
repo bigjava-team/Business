@@ -85,6 +85,27 @@
 		})
 	})
 	
+	/* $(document).ready(function () {
+		$("#selectall").click(function () {//全选
+			$(":checkbox[name='luocheckbox']").prop("checked", true);
+		});
+		$("#selectnone").click(function () {//全不选
+			$(":checkbox[name='luocheckbox']").removeAttr("checked");
+		});
+	}); */
+	
+	$(function(){
+		$(".quanxuan").click(function(){
+			if (this.checked) {
+				$(".inputProduct").prop("checked", "true");
+			} else {
+				$(".inputProduct").each(function(){
+					this.checked = false;
+				})
+			}
+		})
+	})
+	
 </script>
 
 <style type="text/css">
@@ -142,7 +163,15 @@
 	<div class="cart_d4">
 		<div class="cart_d4_d1">
 			<div class="cart_d4_d1_d1">
-				商品信息
+				<div style="width: 14.8%; float: left;">
+					<div style="float: left; width: 54%; margin-top: 2%;">
+						<input class="quanxuan" type="checkbox">
+					</div>
+					<div style="float: left; width: 46%; text-align: left;">
+						全选
+					</div>
+				</div>
+				<div style="width: 85.2%; float: left;">商品信息</div>
 			</div>
 			<div class="cart_d4_d1_d2">
 				单价
@@ -160,7 +189,7 @@
 		<s:iterator value="listOrderitem" var="listOrderitems">
 			<div class="cart_d4_d2">
 				<div class="cart_d4_d2_checkbox">
-					<input type="checkbox" id="" name="check" value="${listOrderitems.item_id }" />
+					<input class="inputProduct" type="checkbox" id="" name="check" value="${listOrderitems.item_id }" />
 				</div>
 				<div class="cart_d4_d2_d1">
 					<img class="cart_d4_d2_d1_img1" alt="商品图片" src="${fileImageAction.urlImage }${listOrderitems.product.p_image }" height="50px">
