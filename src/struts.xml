@@ -123,7 +123,7 @@
 		<action name="MerchantProduct_*" class="merchantProductAction"
 			method="{1}">
 			<!-- 跳转到店铺后台管理 -->
-			<result name="userGotoMerchant">merchant/home.jsp</result>
+			<result name="userGotoMerchant">/merchant/home.jsp</result>
 			<!-- 用户还没有开店 -->
 			<result name="userGotoMerchantError">user/shangpingzhuce.jsp</result>
 			<result name="saveSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0&amp;merchant.m_id=${merchant.m_id}
@@ -140,6 +140,7 @@
 			<!-- 跳转到店铺首页 -->
 			<result name="gotoMerchant">user/dianpuzhiye.jsp</result>
 			<result name="registerMerchantSuccess">user/dianpuzhiye.jsp</result>
+			<result name="queryMerchantOrders"></result>
 		</action>
 
 		<!-- 商品的action -->

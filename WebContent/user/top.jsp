@@ -66,7 +66,7 @@
 		</div> 
 		<div class="wenzikuang2">
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
-				<a href="#" onclick="remove()">退出</a>
+				<a href="javascript:;" onclick="remove()">退出</a>
 			</s:if>
 		</div>
 	</div>
