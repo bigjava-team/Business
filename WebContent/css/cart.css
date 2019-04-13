@@ -14,6 +14,7 @@
 	line-height: 33px;
 	padding-left: 13%;
 	display:table;
+	color: #666666;
 }
 
 .cart_d1 .cart_d1_d1{
@@ -24,18 +25,20 @@
 .cart_d1 .cart_d1_d2{
 	float: left;
 	width: 50%;
+	margin-left: 6.5%;
 }
 
 .cart_d1 .cart_d1_d2 .cart_d1_d2_ul1{
 	list-style:none;
 	list-style-type:none;
-	margin: 0px; width: 100%;
+	margin: 0px;
+	width: 100%;
 	float: left;
 }
 
 .cart_d1 .cart_d1_d2 .cart_d1_d2_ul1 li{
 	float: left;
-	margin-left: 1%
+	margin-left: 1.5%
 }
 
 .cart_hr1{

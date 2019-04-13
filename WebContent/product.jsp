@@ -10,7 +10,6 @@
 <link href="css/menu_bottom.css" rel="stylesheet" type="text/css">
 <link href="css/product.css" rel="stylesheet" type="text/css">
 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-</head>
 
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
@@ -84,8 +83,27 @@
 		});
 	});
 	
+	$(function(){
+		$(".shoucangProduct").hover(function(){
+			$(this).addClass("shoucangProductJQuery");
+		}, function(){
+			 $(this).removeClass("shoucangProductJQuery");
+		})
+	})
+	
 </script>
 
+<style type="text/css">
+	.shoucangProduct{
+		color: #666666;
+	}
+	
+	.shoucangProductJQuery{
+		color: #FF8300;
+	}
+</style>
+
+</head>
 <body id="product_body">
 	<%@ include file="product_top.jsp" %>
 	
@@ -103,6 +121,9 @@
 		</div>
 		
 		<div id="product_div1_div2">
+			<div class="shoucangProduct" style="font-size: 14px; margin-right: 2%; margin-left: 89%; margin-top: 1%; text-align: center; background: #FFD9EC; border-radius: 8px; cursor: pointer;">
+				收藏
+			</div>
 			<div id="product_div1_div2_div1">
 				<font id="product_div1_div2_div1_font">${product.p_name }</font>
 			</div>

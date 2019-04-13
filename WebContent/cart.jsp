@@ -78,21 +78,12 @@
 	}
 	
 	$(function(){
-		$(".cart_d1_d2_ul1 li").hover(function(){
+		$(".cart_d1_d2_ul1 li a").hover(function(){
 			$(this).addClass("addjQuery");
 		}, function(){
 			 $(this).removeClass("addjQuery");
 		})
 	})
-	
-	/* $(document).ready(function () {
-		$("#selectall").click(function () {//全选
-			$(":checkbox[name='luocheckbox']").prop("checked", true);
-		});
-		$("#selectnone").click(function () {//全不选
-			$(":checkbox[name='luocheckbox']").removeAttr("checked");
-		});
-	}); */
 	
 	$(function(){
 		$(".quanxuan").click(function(){
@@ -109,6 +100,11 @@
 </script>
 
 <style type="text/css">
+	
+	.cart_d1_d2_ul_a{
+		color: #666666;
+	}
+
 	.addjQuery{
 		color: #FF8300;
 	}
@@ -120,6 +116,8 @@
 		<div class="cart_d1_d1">
 			尊敬的：${loginUser.username }您好!
 		</div>
+		
+		<!-- 
 		<div class="cart_d1_d2">
 			<ul class="cart_d1_d2_ul1">
 				<li>光光网首页</li>
@@ -137,6 +135,23 @@
 				<li>联系客服</li>
 				<li>|</li>
 				<li>网站导航</li>
+			</ul>
+		</div>
+		 -->
+		 
+		<div class="cart_d1_d2">
+			<ul class="cart_d1_d2_ul1">
+				<li><a href="User_gotoUserIndex.action?method=post&loginUser.username=${loginUser.username }" class="cart_d1_d2_ul_a" style="text-decoration: none;">我的主页</a></li>
+				<li style="color: #D0D0D0;">&nbsp;|&nbsp;</li>
+				<li><a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presenetPage=0" class="cart_d1_d2_ul_a" style="text-decoration: none;">我的订单</a></li>
+				<li style="color: #D0D0D0;">&nbsp;|&nbsp;</li>
+				<li><a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0" class="cart_d1_d2_ul_a" style="text-decoration: none;">购物车</a></li>
+				<li style="color: #D0D0D0;">&nbsp;|&nbsp;</li>
+				<li><a href="javascript:;" class="cart_d1_d2_ul_a" style="text-decoration: none;">收藏夹</a></li>
+				<li style="color: #D0D0D0;">&nbsp;|&nbsp;</li>
+				<li><a href="#" class="cart_d1_d2_ul_a" style="text-decoration: none;">商品分类</a></li>
+				<li style="color: #D0D0D0;">&nbsp;|&nbsp;</li>
+				<li><a href="User_SetUpShop.action?method=post&loginUser.username=${loginUser.username }" class="cart_d1_d2_ul_a" style="text-decoration: none;">我要开店</a></li>
 			</ul>
 		</div>
 	</div>
