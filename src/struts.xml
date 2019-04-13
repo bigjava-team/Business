@@ -4,7 +4,7 @@
 
 <struts>
 	<!-- 开启开发者模式，设置编码 -->
-	<constant name="struts.devMode" value="true" />
+	<constant name="struts.devMode" value="true" /> 
 	<constant name="stuts.i18n.encoding" value="utf-8" />
 
 	<package name="shop" extends="struts-default" namespace="/">
@@ -35,9 +35,6 @@
 			<!-- 返回值为loginStore，为店长登录 -->
 			<result name="loginStore" >/user/dianpuzhiye.jsp
 			</result>
-
-			<!-- 返回值为注册，返回值为 registerSuccess -->
-			<result name="registerSuccess"> /user/login.jsp </result>
 
 			<!-- 返回值为 -->
 
@@ -125,7 +122,7 @@
 			<!-- 跳转到店铺后台管理 -->
 			<result name="userGotoMerchant">/merchant/home.jsp</result>
 			<!-- 用户还没有开店 -->
-			<result name="userGotoMerchantError">user/shangpingzhuce.jsp</result>
+			<result name="userGotoMerchantError">/user/shangpingzhuce.jsp</result>
 			<result name="saveSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0&amp;merchant.m_id=${merchant.m_id}
 			</result>
 			<result name="updateProductSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0

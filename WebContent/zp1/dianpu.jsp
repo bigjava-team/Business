@@ -154,7 +154,7 @@ border-radius: 3px;-webkit-transition: all 0.3s ease-in-out;-moz-transition: all
 
 	</div>
 
-	<%@include file="menu_bottom.jsp"%>
+	<%-- <%@include file="menu_bottom.jsp"%> --%>
 
 </body>
 </html>

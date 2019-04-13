@@ -59,9 +59,6 @@
 			<a href="javascript:;">收藏夹</a>
 		</div>
 		<div class="wenzikuang2">
-			<a>商品分类</a>
-		</div>
-		<div class="wenzikuang2">
 				<a href="MerchantProduct_userGotoMerchant.action?method=post&loginUser.username=${loginUser.username }">店铺后台管理</a>
 		</div> 
 		<div class="wenzikuang2">

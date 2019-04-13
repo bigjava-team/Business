@@ -76,7 +76,22 @@
 		var username = "${loginUser.username }";
 		window.location.href="orders_addOrders?method=post&listId="+listId+"&loginUser.username="+username+"&listNumber="+listNumber+"&orders.total="+total+"&subtotals="+subtotal+"&paging.presentPage=0";
 	}
+	
+	$(function(){
+		$(".cart_d1_d2_ul1 li").hover(function(){
+			$(this).addClass("addjQuery");
+		}, function(){
+			 $(this).removeClass("addjQuery");
+		})
+	})
+	
 </script>
+
+<style type="text/css">
+	.addjQuery{
+		color: #FF8300;
+	}
+</style>
 
 </head>
 <body id="cart_body">
