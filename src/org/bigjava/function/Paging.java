@@ -54,4 +54,9 @@ public class Paging {
 		this.totalNumber = totalNumber;
 	}
 
+	@Override
+	public String toString() {
+		return "Paging [page=" + page + ", pagesize=" + pagesize + ", start=" + start + ", presentPage=" + presentPage
+				+ ", totalNumber=" + totalNumber + "]";
+	}
 }

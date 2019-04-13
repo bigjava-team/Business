@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.bigjava.addr.entity.Addr;
+import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.orderitem.entity.Orderitem;
 import org.bigjava.product.entity.Product;
 import org.bigjava.productAge.entity.ProductAge;
@@ -28,7 +29,7 @@ public class Orders {
 	private User user;// 多对一指向用户类
 	
 	private Set<Orderitem> setOrderItem = new HashSet<Orderitem>();
-	
+
 	public String getOrderNumber() {
 		return orderNumber;
 	}

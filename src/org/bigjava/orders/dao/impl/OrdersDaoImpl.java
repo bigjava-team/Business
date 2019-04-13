@@ -44,6 +44,7 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 		System.out.println("执行queryOrders_id方法");
 		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
 		List<Orders> listOrders = session.createQuery("from Orders where o_id=?").setInteger(0, o_id).list();
+		session.close();
 		return listOrders.size() > 0 ? listOrders.get(0) : null;// 通过订单id获取订单信息
 	}
 

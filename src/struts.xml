@@ -4,7 +4,7 @@
 
 <struts>
 	<!-- 开启开发者模式，设置编码 -->
-	<!-- <constant name="struts.devMode" value="true" /> -->
+	<constant name="struts.devMode" value="true" />
 	<constant name="stuts.i18n.encoding" value="utf-8" />
 
 	<package name="shop" extends="struts-default" namespace="/">
@@ -140,7 +140,8 @@
 			<!-- 跳转到店铺首页 -->
 			<result name="gotoMerchant">user/dianpuzhiye.jsp</result>
 			<result name="registerMerchantSuccess">user/dianpuzhiye.jsp</result>
-			<result name="queryMerchantOrders"></result>
+			<result name="queryMerchantOrders">/merchant/order/list.jsp</result>
+			<result name="updateMerchantOrdersState" type="redirectAction">Merchant_queryMerchantOrders?method=post&amp;m_id=${merchant_id }&amp;paging.presentPage=2</result>
 		</action>
 
 		<!-- 商品的action -->

@@ -99,27 +99,26 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
 		List<Orders> listOrders = new ArrayList<Orders>();
 		List<Product> listProduct = session.createQuery("from Product where m_id=?").setInteger(0, m_id).list();
-		System.out.println(listProduct);
 		if (listProduct.size()!=0) {
 			for (int i=0; i<listProduct.size(); i++) {
 				int numberP_id = listProduct.get(i).getP_id();
 				List<Orderitem> listOrderitem = session.createQuery("from Orderitem where p_id=?").setInteger(0, numberP_id).list();
-				System.out.println(listOrderitem);
-				if (listOrderitem.size()!=0) {
-					for (int j=0; j<listProduct.size(); j++) {
-						int numberItem_id = listOrderitem.get(j).getOrders().getO_id();
-						List<Orders> LOS = session.createQuery("from Orders where o_id=?").setInteger(0, numberItem_id).list();
-						System.out.println(LOS);
-						for (int z=0; z<LOS.size(); z++) {
-							listOrders.add(LOS.get(z));
+				List<Orders> LOS = session.createQuery("from Orders where a_id!=null").list();
+				System.out.println(LOS);
+				for (int j=0; j<LOS.size(); j++) {
+					int o_id = LOS.get(j).getO_id();
+					for (int z=0; z<listOrderitem.size(); z++) {
+						Orders orders = listOrderitem.get(z).getOrders();
+						if (orders == null) {
+							System.out.println("该商品没有订单");
+						} else if (o_id == orders.getO_id()) {
+							listOrders.add(orders);
+							break;
 						}
-						System.out.println(listOrders);
 					}
 				}
 			}
 		}
-		session.close();
-		System.out.println("店铺的订单"+listOrders);
 		return listOrders;
 	}
 

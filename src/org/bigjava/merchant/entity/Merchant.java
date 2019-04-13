@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.bigjava.collectMerchant.entity.CollectMerchant;
+import org.bigjava.orders.entity.Orders;
 import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
 

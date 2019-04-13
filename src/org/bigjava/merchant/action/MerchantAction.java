@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.bigjava.function.FileImageAction;
+import org.bigjava.function.Paging;
 import org.bigjava.merchant.biz.MerchantBiz;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.orders.biz.OrdersBiz;
@@ -14,6 +15,7 @@ import org.bigjava.product.entity.Product;
 import org.bigjava.user.biz.UserBiz;
 import org.bigjava.user.entity.User;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -28,8 +30,32 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	private Orders orders;// 订单信息
 	private FileImageAction fileImageAction;// 上传一张图片的方法
 	
+	private Paging paging;// 分页的方法
+	
 	private List<Orders> listOrders;// 查询到的订单
 	
+	private int merchant_id;// 店铺id
+	
+	public Paging getPaging() {
+		return paging;
+	}
+
+	public void setPaging(Paging paging) {
+		this.paging = paging;
+	}
+
+	public int getMerchant_id() {
+		return merchant_id;
+	}
+
+	public void setMerchant_id(int merchant_id) {
+		this.merchant_id = merchant_id;
+	}
+
+	public void setOrdersBiz(OrdersBiz ordersBiz) {
+		this.ordersBiz = ordersBiz;
+	}
+
 	public FileImageAction getFileImageAction() {
 		return fileImageAction;
 	}
@@ -151,8 +177,23 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	 * 查询买家的订单详情
 	 */
 	public String queryMerchantOrders() {
-		System.out.println("开始查询买家的订单详情");
+		System.out.println("开始查询买家的订单详情"+paging.getPresentPage());
 		listOrders = merchantBiz.queryListOrders(merchant.getM_id());
+		if (paging.getPresentPage() == 0) {
+			paging.setPresentPage(1);
+		}
+		int divisor = listOrders.size()/2;
+		int remainder = listOrders.size()%2;
+		if (remainder == 0) {
+			paging.setTotalNumber(divisor);
+		} else if (remainder !=0) {
+			paging.setPage(divisor+1);
+		}
+		if (divisor < paging.getPresentPage() && remainder!=0) {
+			listOrders = listOrders.subList((paging.getPresentPage()-1)*2, remainder+(divisor*2));
+		} else {
+			listOrders = listOrders.subList((paging.getPresentPage()-1)*2, paging.getPresentPage()*2);
+		}
 		System.out.println("订单详情"+listOrders);
 		return "queryMerchantOrders";
 	}
@@ -161,11 +202,12 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	 * 修改买家的订单的状态
 	 */
 	public String updateMerchantOrdersState() {
-		System.out.println("修改买家的订单的状态");
-		Orders merchatnOrders = ordersBiz.queryOrders_id(orders.getO_id());
-		if (merchatnOrders.getState() == 2) {// 支付状态
-			merchatnOrders.setState(3);// 待发货状态
-			merchantBiz.updateOrdersState(merchatnOrders);
+		System.out.println("修改买家的订单的状态" + merchant.getM_id());
+		merchant_id = merchant.getM_id();
+		Orders merchantOrders = ordersBiz.queryOrders_id(orders.getO_id());
+		if (merchantOrders.getState() == 2) {// 支付状态
+			merchantOrders.setState(3);// 待发货状态
+			merchantBiz.updateOrdersState(merchantOrders);
 		}
 		return "updateMerchantOrdersState";
 	}
