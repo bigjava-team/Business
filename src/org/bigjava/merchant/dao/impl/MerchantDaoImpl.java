@@ -99,14 +99,21 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
 		List<Orders> listOrders = new ArrayList<Orders>();
 		List<Product> listProduct = session.createQuery("from Product where m_id=?").setInteger(0, m_id).list();
+		System.out.println(listProduct);
 		if (listProduct.size()!=0) {
 			for (int i=0; i<listProduct.size(); i++) {
 				int numberP_id = listProduct.get(i).getP_id();
 				List<Orderitem> listOrderitem = session.createQuery("from Orderitem where p_id=?").setInteger(0, numberP_id).list();
+				System.out.println(listOrderitem);
 				if (listOrderitem.size()!=0) {
 					for (int j=0; j<listProduct.size(); j++) {
 						int numberItem_id = listOrderitem.get(j).getOrders().getO_id();
-						listOrders = session.createQuery("from Orders where o_id=?").setInteger(0, numberItem_id).list();
+						List<Orders> LOS = session.createQuery("from Orders where o_id=?").setInteger(0, numberItem_id).list();
+						System.out.println(LOS);
+						for (int z=0; z<LOS.size(); z++) {
+							listOrders.add(LOS.get(z));
+						}
+						System.out.println(listOrders);
 					}
 				}
 			}
