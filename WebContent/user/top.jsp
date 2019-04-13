@@ -59,14 +59,11 @@
 			<a href="javascript:;">收藏夹</a>
 		</div>
 		<div class="wenzikuang2">
-			<a>商品分类</a>
-		</div>
-		<div class="wenzikuang2">
 				<a href="MerchantProduct_userGotoMerchant.action?method=post&loginUser.username=${loginUser.username }">店铺后台管理</a>
 		</div> 
 		<div class="wenzikuang2">
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
-				<a href="#" onclick="remove()">退出</a>
+				<a href="javascript:;" onclick="remove()">退出</a>
 			</s:if>
 		</div>
 	</div>

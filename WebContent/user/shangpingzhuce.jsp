@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>开店页面</title>
-<link href="../css/product_top.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/css/product_top.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 body, select, textarea {
 	font-size: 1.1em
@@ -452,11 +452,13 @@ td {
 function showDiv() { 
 	document.getElementById("bg").style.display ="block";
 	document.getElementById("show").style.display ="block";
+	$("body").css("overflow", "hidden");
 }
  
 function hideDiv(){
 	document.getElementById("bg").style.display ="none";
 	document.getElementById("show").style.display ="none";	
+	$("body").css("overflow", "auto");
 }
 	$(document).ready(function() {
 		var titles = $("div.title >a");
@@ -516,7 +518,7 @@ function hideDiv(){
 
 <body style="margin: 0px; padding: 0px">
 	<div class="head">
-		<%@ include file="product_top.jsp" %>
+		<s:include value="top.jsp"></s:include>
 		<div class="headtwo">
 			<a href="#"><font size="5px" style="padding-left: 10%">店铺注册页面</font></a>
 		</div>
@@ -580,7 +582,7 @@ function hideDiv(){
 
 					<div class="aa">
 						<div class="bb">
-							<img src="../TuPian/TouXiang.png"
+							<img src="${pageContext.request.contextPath }/TuPian/TouXiang.png"
 								style="height: 200px; width: 200px"><br />
 							<h2>个人店铺</h2>
 							自己通过个人账号创建的店铺为个人店铺。<br /> <br />
@@ -634,17 +636,14 @@ function hideDiv(){
 					<div class="container_div"><!-- 遮罩 -->
    						 <div id="bg"></div>
    						 <div id="show">
-						<form action="userxinxi.jsp" method="post"
-							onsubmit="return yanzhen()">
+						<form action="Merchant_registerMerchant.action" method="post" onsubmit="return yanzhen()" enctype="multipart/form-data">
 							<div id="cont_b" class="cont">
-								<b><font color="red">店铺信息填写</font></b><br /> 店铺名:<input
-									type="text" id="name" name="name" placeholder="长度为5-10位 "><br />
-								店铺头像:<input type="file" id="reportXML" name="reportXML"
-									title="输入内容" multiple="multiple"><br /> 
-									 <input type="button" class="contsubmit" value="返回" onclick="hideDiv()" style="margin-left: 10%;"/>
-									<input
-									type="submit" class="contsubmit" style="margin-left: 25%"
-									value="提交申请">
+								<b><font color="red">店铺信息填写</font></b><br /> 
+								<input type="hidden" name="loginUser.username" value="${loginUser.username }" />
+								店铺名:<input type="text" id="name" name="m_name" placeholder="长度为5-10位 " /><br />
+								店铺头像:<input type="file" id="reportXML" name="fileImageAction.fileImage" title="输入内容" /><br /> 
+							 	<input type="button" class="contsubmit" value="返回" onclick="hideDiv()" style="margin-left: 10%;"/>
+								<input type="submit" class="contsubmit" style="margin-left: 25%" value="提交申请" />
 							</div>
 						</form>
 						</div>
@@ -693,22 +692,18 @@ function hideDiv(){
 									onclick="two();">
 									<span>上一步</span>
 								</button>
-								<button class="button2" id="button"
-									
-									style="vertical-align: middle; width: 40%;" onclick="showDiv();">
+								<button class="button2" id="button" style="vertical-align: middle; width: 40%;" onclick="showDiv();">
 									<span>已了解，马上开店</span>
 								</button>
 								
 							</div>
 						</div>
-</div>
+					</div>
 					</div>
 				</div>
 
 			</div>
 		</div>
 	</div>
-
-
 </body>
 </html>

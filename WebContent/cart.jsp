@@ -205,7 +205,7 @@
 	</div>
 	
 	<div class="cart_d5" style="margin-top: 0px;">
-		合计 (不含运费)：<font class="cart_d5_font1">¥ 1001.00</font>
+		合计 (不含运费)：<font class="cart_d5_font1">¥0</font>
 	</div>
 	
 	<div class="cart_d6">

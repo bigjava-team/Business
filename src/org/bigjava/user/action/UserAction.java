@@ -323,5 +323,24 @@ public class UserAction extends ActionSupport {
 
 		return "gotoUserIndex";
 	}
-
+	
+	/**
+	 * 跳转到商城网的中转页面
+	 */
+	public String skipIndex() {
+		System.out.println("跳转到商城的中转页面");
+		return "skipIndex";
+	}
+	
+	/**
+	 * 跳转到开店的页面
+	 */
+	public String SetUpShop() {
+		if (isEmpty.isEmpty(loginUser.getUsername())) {
+			System.out.println("清先登录用户");
+			return "loginError";
+		}
+		System.out.println("跳转到开店的页面");
+		return "SetUpShop";
+	}
 }

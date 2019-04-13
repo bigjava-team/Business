@@ -35,18 +35,27 @@
 				<td width="18.5%" align="center">收货人地址</td>
 				<td width="12.5%" align="center">状态</td>
 			</tr>
-			<tr id="admin_list_tr2"  onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-				<td align="center">123456789112345678911234567891</td>
-				<td align="center">¥123</td>
-				<td align="center">2019-24-24 24:24:24</td>
-				<td align="center">张三</td>
-				<td align="center">12345678910</td>
-				<td align="center">
-					江西省南昌市南昌县紫阳大道
-				</td>
-				<td align="center">
-					<button>发货</button>
+			<s:iterator value="listOrders" var="Los">
+				<tr id="admin_list_tr2"  onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
+					<td align="center">${Los.orderNumber }</td>
+					<td align="center">¥${Los.total }</td>
+					<td align="center">${Los.ordertime }</td>
+					<td align="center">${Los.user.username }</td>
+					<td align="center">${Los.addr.a_phone }</td>
+					<td align="center">${Los.addr.address }</td>
+					<td align="center">
+						<s:if test="Los.state == 2">
+							<a href="javascript:;" >发货</a>
+						</s:if>
+						<s:elseif test="Los.state == 3">
+							待收货
+						</s:elseif>
+						<s:elseif test="Los.state == 4">
+							交易完成
+						</s:elseif>
+					</td>
 				</tr>
+			</s:iterator>
 		</table>
 		
 		<div id="admin_list_div_page">

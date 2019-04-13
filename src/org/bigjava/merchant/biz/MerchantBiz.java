@@ -1,6 +1,9 @@
 package org.bigjava.merchant.biz;
 
+import java.util.List;
+
 import org.bigjava.merchant.entity.Merchant;
+import org.bigjava.orders.entity.Orders;
 import org.bigjava.user.entity.User;
 
 /**
@@ -34,6 +37,25 @@ public interface MerchantBiz {
 	/**
 	 * 添加店铺公告
 	 */
-	public void addNotice(String notice);
-
+	public void addNotice(Merchant merchant);
+	
+	/**
+	 * 删除公告
+	 */
+	public void updateNotice(Merchant merchant);
+	
+	/**
+	 * 查询买家的订单详情
+	 */
+	public List<Orders> queryListOrders(int m_id);
+	
+	/**
+	 * 修改买家的订单的状态
+	 */
+	public void updateOrdersState(Orders orders);
+	
+	/**
+	 *  通过用户id查询店铺
+	 */
+	public Merchant queryUidMerchant(int u_id);
 }
