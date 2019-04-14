@@ -102,7 +102,7 @@
 			"product.p_id": p_id
 		}
 		$.ajax({
-			url: "ajax_collectProduct",
+			url: "ajaxCP_collectProduct",
 			type: "post",
 			data: params,
 			dataType: "json",

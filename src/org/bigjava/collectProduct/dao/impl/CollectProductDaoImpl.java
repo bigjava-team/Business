@@ -48,18 +48,13 @@ public class CollectProductDaoImpl extends HibernateDaoSupport implements Collec
 	public List<CollectProduct> queryCollectProdct_Uid(final int u_id, final Paging paging) {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行queryCollectProduct_Uid方法");
-		List<CollectProduct> listCollectProduct = this.getHibernateTemplate().executeFind(new  HibernateCallback() {
-
-			@Override
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				// TODO Auto-generated method stub
-				String hql = "from CollectProduct where u_id=?";// 通过用户id查询收藏的商品
-				Query query = session.createQuery(hql).setInteger(0, u_id);
-				query.setFirstResult(paging.getStart());// 从哪一条开始查
-				query.setMaxResults(paging.getPage());// 每页查询多少条
-				return query.list();
-			}
-		});
+		List<CollectProduct> listCollectProduct = null;
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		String hql = "from CollectProduct where u_id=?";// 通过用户id查询收藏的商品
+		Query query = session.createQuery(hql).setInteger(0, u_id);
+		query.setFirstResult(paging.getStart());// 从哪一条开始查
+		query.setMaxResults(paging.getPage());// 每页查询多少条
+		listCollectProduct = query.list();
 		return listCollectProduct;
 	}
 
