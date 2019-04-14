@@ -1,10 +1,6 @@
 
 package org.bigjava.orders.action;
 
-import java.util.*;
-import java.util.Map;
-
-import org.bigjava.addr.biz.AddrBiz;
 import org.bigjava.addr.entity.Addr;
 import org.bigjava.function.Alipay;
 import org.bigjava.orders.biz.OrdersBiz;
@@ -14,11 +10,11 @@ import org.bigjava.user.entity.User;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
-import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class PaymentOrders {
+public class PaymentOrders extends ActionSupport {
 	
 	private String out_trade_no;// ¶©µ¥ºÅ
 	private String total_amount;// ¸¶¿î½ð¶î

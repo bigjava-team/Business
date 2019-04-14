@@ -18,13 +18,9 @@ public class CollectMerchantDaoImpl extends HibernateDaoSupport implements Colle
 
 	// 收藏店铺
 	@Override
-	public void addCollectMerchant(CollectMerchant collectMerchant, User user, Merchant merchant) {
+	public void addCollectMerchant(CollectMerchant collectMerchant) {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行collectMerchant方法");
-		
-		collectMerchant.setUser(user);
-		collectMerchant.setMerchant(merchant);
-		
 		this.getHibernateTemplate().save(collectMerchant);
 		
 	}
@@ -78,6 +74,14 @@ public class CollectMerchantDaoImpl extends HibernateDaoSupport implements Colle
 			number = listNumber.get(0).intValue();
 		}
 		return number;
+	}
+
+	// 通过收藏店铺用户的id和收藏店铺的id获取收藏的信息,用于判断有无收藏此店铺
+	@Override
+	public boolean queryUserMerchantCollectMerchant(int u_id, int m_id) {
+		// TODO Auto-generated method stub
+		List<CollectMerchant> listCollectMerchant = this.getHibernateTemplate().find("from CollectMerchant where u_id=? and m_id=?", new Object[]{u_id, m_id});
+		return listCollectMerchant.size() > 0 ? true : false;
 	}
 
 }
