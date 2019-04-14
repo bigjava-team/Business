@@ -43,7 +43,6 @@
 	function queryProduct(id) {
 		var username = '${loginUser.username }';
 		window.open("Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0");
-		/* window.location.href="Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0"; */
 	}
 	
 	function categoryOver(id,csId) {
@@ -155,7 +154,7 @@
 		}, function(){
 			 $(this).removeClass("cainilikeJQuery01");
 		})
-	})
+	});
 	
 </script>
 
@@ -494,7 +493,7 @@
 			</div>	
 			<div style="background: red; overflow: hidden; margin: 0px 0%;">
 				<s:iterator value="listProductTime"  var="listProductTimes">
-					<div class="newestProduct" onclick="queryProduct(this.id)" id="${listProductTimes.p_id}" style="background: #FFF; width: 33.33%; float: left; height: 31%; padding-top: 15px;" >
+					<div class="newestProduct" onclick="queryProduct(${listProductTimes.p_id})" id="times_${listProductTimes.p_id}" style="background: #FFF; width: 33.33%; float: left; height: 31%; padding-top: 15px;" >
 						<div style="text-align: center; height: 196px; overflow: hidden;">
 							<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="90%" height="100%">
 						</div>
@@ -519,12 +518,12 @@
 				</div>
 				<div style="background: red; overflow: hidden; margin: 0px 0%;">
 					<s:iterator value="listProductHot"  var="listProductHots">
-						<div class="ishotProduct" style="background: #FFF; width: 33.33%; float: left; height: 31%; padding-top: 15px;">
+						<div class="ishotProduct" onclick="queryProduct(${listProductHots.p_id })" id="hot_${listProductHots.p_id }" style="background: #FFF; width: 33.33%; float: left; height: 31%; padding-top: 15px;">
 							<div style="text-align: center; height: 196px; overflow: hidden;">
 								<img alt="商品图片" src="${fileImageAction.urlImage }${listProductHots.p_image }" width="90%" height="100%">
 							</div>
 							<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-								${listProductHots.p_name }
+								<a href="javascript:;" >${listProductHots.p_name }</a>
 							</div>
 							<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
 								¥<font style="font-size: 22px; font-weight: bold;">${listProductHots.p_price }</font>
@@ -545,7 +544,7 @@
 		</div>
 		<div style="background: red; overflow: hidden; margin: 0px 0%;">
 			<s:iterator value="listAllCommentProduct" var="listAllCommentProducts" >
-				<div class="likeProduct" style="background: #FFF; width: 16.66%; float: left; height: 31%; padding-top: 15px;">
+				<div class="likeProduct" onclick="queryProduct(${listAllCommentProducts.p_id })" style="background: #FFF; width: 16.66%; float: left; height: 31%; padding-top: 15px;">
 					<div style="text-align: center; height: 196px; overflow: hidden;">
 						<img alt="商品图片" src="${fileImageAction.urlImage }${listAllCommentProducts.p_image}" width="90%" height="100%">
 					</div>
