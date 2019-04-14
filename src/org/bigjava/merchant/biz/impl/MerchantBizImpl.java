@@ -6,36 +6,37 @@ import org.bigjava.merchant.biz.MerchantBiz;
 import org.bigjava.merchant.dao.MerchantDao;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.orders.entity.Orders;
+import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
 
 public class MerchantBizImpl implements MerchantBiz {
-	
-	//注入MerchantDao
+
+	// 注入MerchantDao
 	private MerchantDao merchantDao;
-	
+
 	public void setMerchantDao(MerchantDao merchantDao) {
 		this.merchantDao = merchantDao;
 	}
 
-	//注册店铺
+	// 注册店铺
 	@Override
-	public void registerMerchant(Merchant merchant ,  User user) {
+	public void registerMerchant(Merchant merchant, User user) {
 		merchantDao.registerMerchant(merchant, user);
 	}
 
-	//通过店铺ID查询店铺
+	// 通过店铺ID查询店铺
 	@Override
 	public Merchant queryMerchant(int m_id) {
 		return merchantDao.queryMerchant(m_id);
 	}
 
-	//删除店铺
+	// 删除店铺
 	@Override
 	public void deleteMerchant(Merchant merchant) {
 		merchantDao.deleteMerchant(merchant);
 	}
 
-	//修改店铺
+	// 修改店铺
 	@Override
 	public void updateMerchant(Merchant merchant, Merchant updateMerchant) {
 		merchantDao.updateMerchant(merchant, updateMerchant);
@@ -71,6 +72,18 @@ public class MerchantBizImpl implements MerchantBiz {
 	// 通过用户id查询店铺
 	public Merchant queryUidMerchant(int u_id) {
 		return merchantDao.queryUidMerchant(u_id);
+	}
+
+	// 查询最新的商品
+	@Override
+	public List<Product> queryProductMerchantTime() {
+		return merchantDao.queryProductMerchantTime();
+	}
+
+	// 查询最热的商品
+	@Override
+	public List<Product> queryProductMerchantTop() {
+		return merchantDao.queryProductMerchantTop();
 	}
 
 }

@@ -509,7 +509,7 @@ ol .current {
 			</div>
 			<div
 				style="float: left; border-right: 1px solid #d2c8c8; padding-top: 1%; padding-bottom: 0.5%; padding-right: 2%; padding-left: 2%;">
-				#店铺名</div>
+				${merchant.m_name} </div>
 				<div
 				style="float: left; border-right: 1px solid #d2c8c8; padding-right: 1%; padding-left: 1%;width: 8%">
 				<input type="button" class="dianpuzhuye_button" onclick="CollectMerchant()" value="收藏店铺"></div>
@@ -543,19 +543,12 @@ ol .current {
 	<div class="kongge">
 		<div class="one" style="width: 66.8%; margin: 0 auto">商品轮播</div>
 		<div class="carousel content-main">
-
 			<ul class="list">
-				<li><img src="${pageContext.request.contextPath }/TuPian/1.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="${pageContext.request.contextPath }/TuPian/2.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="${pageContext.request.contextPath }/TuPian/3.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="${pageContext.request.contextPath }/TuPian/4.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="${pageContext.request.contextPath }/TuPian/1.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="${pageContext.request.contextPath }/TuPian/2.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="${pageContext.request.contextPath }/TuPian/3.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="${pageContext.request.contextPath }/TuPian/4.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="${pageContext.request.contextPath }/TuPian/1.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="${pageContext.request.contextPath }/TuPian/2.jpg" style="width: 100%; height: 100%;"></li>
-				<li><img src="${pageContext.request.contextPath }/TuPian/3.jpg" style="width: 100%; height: 100%;"></li>
+				<s:iterator value="merchantProductTime" var="merchantProductTimes">
+					<li>
+						<img src='${fileImageAction.urlImage }${merchantProductTimes.p_image }'  style="width: 100%; height: 100%;"/> 
+					</li>
+				</s:iterator>
 			</ul>
 		</div>
 		<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
@@ -598,7 +591,6 @@ ol .current {
 			}
 
 			function animationOut(i) {
-				/* console.log(i, 'i\'m out'); */
 				switch (i) {
 				case 1:
 					$('.page2 h2').fadeOut();
