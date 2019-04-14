@@ -136,9 +136,7 @@
 	    })
 	})
 	
-	$(function(){
-		var 
-	})
+	
 	
 </script>
 
@@ -303,9 +301,9 @@
 				</div>
 				<div class="product_div1_div3_div1_div2">
 					<h3>店铺详情</h3>
-					<div style="background: red; width: 80%; height: 121px; margin-top: 10%; margin-left: 9.5%;">
-						<img alt="${merchant.m_image }" src="${fileImageAction.urlImage }${merchant.m_image }" width="100%" height="100%">
-						<%-- <img alt="${merchant.m_image }" src="images/products/bbb006.jpg" height="121px"> --%>
+					<div style="width: 80%; height: 121px; margin-top: 10%; margin-left: 9.5%; overflow: hidden; text-align: center;">
+						<img alt="${merchant.m_image }" src="${fileImageAction.urlImage }${merchant.m_image }" height="80%" style="border-radius: 10px; margin-top: 8%; border: 1px solid #E0E0E0;">
+						<%-- <img alt="${merchant.m_image }" src="images/products/bbb006.jpg" height="80%" style="border-radius: 10px; margin-top: 8%; border: 1px solid #E0E0E0;"> --%>
 					</div>
 					<div style="font-size: 14px; margin-left: 9.5%; color: #3C3C3C; margin-top: 3%;">
 						本店掌柜: 
