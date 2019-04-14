@@ -104,6 +104,7 @@ public class CollectProductAction extends ActionSupport {
 		int number = collectProductBiz.queryCollectProduct_number(loginUser.getU_id());
 		paging = new Paging(paging.getPresentPage(), number, 15);
 		listCollectProducts = collectProductBiz.queryCollectProdct_Uid(loginUser.getU_id(), paging);
+		System.out.println(listCollectProducts);
 		return "queryUserCollectProduct";
 	}
 }

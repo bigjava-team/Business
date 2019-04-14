@@ -1,6 +1,7 @@
 package org.bigjava.product.biz;
 
 import java.util.List;
+import java.util.Set;
 
 import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.function.Paging;
@@ -65,5 +66,10 @@ public interface ProductBiz {
 	 * 查询店铺内最热的商品
 	 */
 	public List<Product> queryMerchantProduct_hot(int m_id);
+	
+	/**
+	 * 查询店铺内最新的商品
+	 */
+	public List<Product> setQueryMerchantProduct_time(int m_id);
 
 }
