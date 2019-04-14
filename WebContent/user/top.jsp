@@ -21,7 +21,7 @@
 </script>
 
 <style>
-.contentone {
+.content {
 	width: 100%;
 	height: 33px;
 	line-height: 33px;
@@ -33,23 +33,27 @@
 	margin-right: 3%;
 }
 
-.contentone a {
+.content a {
 	text-decoration: none;
 	color: #2F4F4F;
 }
 
-.contentone a:hover {
+.content a:hover {
 	color: #F08080;
 }
 </style>
 <!--板块1-->
-<div class="contentone" style="background: #F0F0F0;">
+<div class="content" style="background: #F0F0F0;">
 	<div style="float: left; width: 20%; margin-left: 8%">
 		<div class="wenzikuang">中国大陆&emsp; 欢迎您：${loginUser.username }</div>
 
 	</div>
 
 	<div style="float: left; margin-left:31%; width: 40%;">
+		
+		<div class="wenzikuang2">
+			<a href="User_skipIndex.action?method=post&loginUser.username=${loginUser.username }">我的光光 </a>
+		</div>
 		<div class="wenzikuang2">
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<a
