@@ -32,7 +32,7 @@
 				<td width="12.5%" align="center">收货人姓名</td>
 				<td width="12.5%" align="center">收货人电话</td>
 				<td width="18.5%" align="center">收货人地址</td>
-				<td width="18.5%" align="center">订单内容</td>
+				<!-- <td width="18.5%" align="center">订单内容</td> -->
 				<td width="12.5%" align="center">状态</td>
 			</tr>
 			<s:iterator value="listOrders" var="Los">
@@ -43,7 +43,7 @@
 					<td align="center">${Los.user.username }</td>
 					<td align="center">${Los.addr.a_phone }</td>
 					<td align="center">${Los.addr.address }</td>
-					<td align="center">${Los.o_id }</td>
+					<%-- <td align="center">${Los.o_id }</td> --%>
 					<td align="center">
 						<s:if test="#Los.state == 2">
 							<a href="Merchant_updateMerchantOrdersState?method=post&orders.o_id=${Los.o_id }&m_id=${merchant.m_id }" >发货</a>
