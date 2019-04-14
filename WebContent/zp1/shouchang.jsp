@@ -121,7 +121,7 @@ border-radius: 3px;-webkit-transition: all 0.3s ease-in-out;-moz-transition: all
 		<div id="a" class="wenziz3">
 			<section>
 			<button type="button">
-				<a href="dianpu.jsp">店铺收藏</a>
+				<a href="zp1/dianpu.jsp">店铺收藏</a>
 			</button>
 			</section>
 		</div>

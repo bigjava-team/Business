@@ -195,7 +195,10 @@
 		<action name="ajax_*" class="userAction" method="{1}">
 			<result type="json"></result>
 		</action>
-		<action name="ajax_*" class="collectProductAction" method="{1}">
+		<action name="ajaxCP_*" class="collectProductAction" method="{1}">
+			<result type="json"></result>
+		</action>
+		<action name="ajaxCM_*" class="collectMerchantAction" method="{1}">
 			<result type="json"></result>
 		</action>
 	</package>

@@ -3,9 +3,20 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js">
+</script>
 <script type="text/javascript">
 	function remove() {
 		window.location.href = "User_close.action";
+	}
+	
+	function collect() {
+		var username = '${loginUser.username }';
+		if (username == null || username == "") {
+			window.location.href="collectProduct_queryUserCollectProduct?method=post";
+		} else {
+			window.location.href="collectProduct_queryUserCollectProduct?method=post&loginUser.username="+username+"&paging.presentPage=0";
+		}
 	}
 </script>
 
@@ -56,7 +67,7 @@
 				href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0">购物车</a>
 		</div>
 		<div class="wenzikuang2">
-			<a href="javascript:;">收藏夹</a>
+			<a href="javascript:;" onclick="collect()">收藏夹</a>
 		</div>
 		<div class="wenzikuang2">
 				<a href="MerchantProduct_userGotoMerchant.action?method=post&loginUser.username=${loginUser.username }">店铺后台管理</a>

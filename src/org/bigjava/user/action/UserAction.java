@@ -9,6 +9,7 @@ import org.bigjava.collectProduct.entity.CollectProduct;
 import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
 import org.bigjava.function.SendMail;
+import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.product.biz.ProductBiz;
 import org.bigjava.product.entity.Product;
 import org.bigjava.user.biz.UserBiz;
@@ -23,6 +24,7 @@ public class UserAction extends ActionSupport {
 	private User user;
 	private Paging paging;// 声明Paging类
 	private User loginUser;
+	private Merchant merchant;
 	
 	private UserBiz userBiz;
 	private String searchText; // 搜索的参数值
@@ -37,6 +39,14 @@ public class UserAction extends ActionSupport {
 	// 接收验证码 struts2 中的属性驱动
 	private String checkcode;
 	
+	public Merchant getMerchant() {
+		return merchant;
+	}
+
+	public void setMerchant(Merchant merchant) {
+		this.merchant = merchant;
+	}
+
 	public User getLoginUser() {
 		return loginUser;
 	}
@@ -163,6 +173,7 @@ public class UserAction extends ActionSupport {
 				} else if (loginUser.getRoot() == 2 && loginUser.getU_is_freeze() == 1) {
 					System.out.println("店长登录");
 					System.out.println("解冻状态");
+					merchant = loginUser.getMerchant();
 					return "loginStore";
 				} else if (loginUser.getRoot() == 3) {
 					System.out.println("管理员登录");
