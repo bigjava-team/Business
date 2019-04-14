@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>光光网&nbsp;-&nbsp;抢光光</title>
 <link href="${pageContext.request.contextPath }/css/product_top.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/css/menu_bottom.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/css/index_carousel.css" rel="stylesheet" type="text/css">
@@ -156,6 +156,14 @@
 		})
 	});
 	
+	$(function(){
+		$(".gonggaoNeiRong").hover(function(){
+			$(this).addClass("gonggaoNeiRongJQuery01");
+		}, function(){
+			 $(this).removeClass("gonggaoNeiRongJQuery01");
+		})
+	})
+	
 </script>
 
 <style type="text/css">
@@ -185,6 +193,12 @@
 	
 	.cainilikeJQuery01{
 		color: #FF8300;
+		text-decoration: underline;
+	}
+	
+	.gonggaoNeiRongJQuery01{
+		background: #FFECF5;
+		color: #3C3C3C;
 	}
 </style>
 </head>
@@ -365,42 +379,35 @@
 			</div>
 			<div style="background: #FFF; width: 100%; height: 36.9%; padding-top: 2.5%;">
 				<div style="margin-left: 2%; margin-right: 2%; height: 97%; font-size: 14px;">
-					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-bottom-style: dashed; margin-top: -1px;">
-						
+					<div class="gonggaoNeiRong" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-bottom-style: dashed; margin-top: -1px; cursor: pointer;">
 						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
 							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
 						</marquee>
-						
 					</div>
-					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px;">
+					<div class="gonggaoNeiRong" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px; cursor: pointer;">
 						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
 							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
 						</marquee>
-						
 					</div>
-					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px;">
+					<div class="gonggaoNeiRong" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px; cursor: pointer;">
 						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
 							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
 						</marquee>
-						
 					</div>
-					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px;">
+					<div class="gonggaoNeiRong" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px; cursor: pointer;">
 						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
 							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
 						</marquee>
-						
 					</div>
-					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px;">
+					<div class="gonggaoNeiRong" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px; cursor: pointer;">
 						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
 							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
 						</marquee>
-						
 					</div>
-					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; margin-top: -1px;">
+					<div class="gonggaoNeiRong" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; margin-top: -1px; cursor: pointer;">
 						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
 							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
 						</marquee>
-						
 					</div>
 				</div>
 			</div>
@@ -432,7 +439,7 @@
 						<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #545454; text-align: center;">
 							猜你喜欢
 						</div>
-						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%; cursor: pointer;">
+						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
 							<div style="margin-left: 12%; margin-right: 6%;">
 								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
 							</div>
@@ -440,15 +447,7 @@
 								商品图片商品图片商品图片商品图片商品图片商品图片
 							</div>
 						</div>
-						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%; cursor: pointer;">
-							<div style="margin-left: 6%; margin-right: 12%;">
-								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
-							</div>
-							<div style="margin-left: 6%; margin-right: 12%;">
-								商品图片商品图片商品图片商品图片商品图片商品图片
-							</div>
-						</div>
-						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%; cursor: pointer;">
+						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
 							<div style="margin-left: 12%; margin-right: 6%;">
 								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
 							</div>
@@ -456,15 +455,7 @@
 								商品图片商品图片商品图片商品图片商品图片商品图片
 							</div>
 						</div>
-						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%; cursor: pointer;">
-							<div style="margin-left: 6%; margin-right: 12%;">
-								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
-							</div>
-							<div style="margin-left: 6%; margin-right: 12%;">
-								商品图片商品图片商品图片商品图片商品图片商品图片
-							</div>
-						</div>
-						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%; cursor: pointer;">
+						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
 							<div style="margin-left: 12%; margin-right: 6%;">
 								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
 							</div>
@@ -472,11 +463,27 @@
 								商品图片商品图片商品图片商品图片商品图片商品图片
 							</div>
 						</div>
-						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left;  margin-bottom: 11%; cursor: pointer;">
-							<div style="margin-left: 6%; margin-right: 12%;">
+						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
+							<div style="margin-left: 12%; margin-right: 6%;">
 								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
 							</div>
-							<div style="margin-left: 6%; margin-right: 12%;">
+							<div style="margin-left: 12%; margin-right: 6%;">
+								商品图片商品图片商品图片商品图片商品图片商品图片
+							</div>
+						</div>
+						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
+							<div style="margin-left: 12%; margin-right: 6%;">
+								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+							</div>
+							<div style="margin-left: 12%; margin-right: 6%;">
+								商品图片商品图片商品图片商品图片商品图片商品图片
+							</div>
+						</div>
+						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
+							<div style="margin-left: 12%; margin-right: 6%;">
+								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+							</div>
+							<div style="margin-left: 12%; margin-right: 6%;">
 								商品图片商品图片商品图片商品图片商品图片商品图片
 							</div>
 						</div>
