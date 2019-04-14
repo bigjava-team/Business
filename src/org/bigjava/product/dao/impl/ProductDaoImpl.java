@@ -3,6 +3,7 @@ package org.bigjava.product.dao.impl;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.function.Paging;
@@ -191,5 +192,13 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 	public List<Product> queryMerchantProduct_hot(int m_id) {
 		String hql = "from Product where m_id=? order by sale_volume desc";
 		return (List<Product>) this.getHibernateTemplate().find(hql, m_id);
+	}
+
+	// 查询店铺内最新的商品
+	@Override
+	public List<Product> setQueryMerchantProduct_time(int m_id) {
+		// TODO Auto-generated method stub
+		List<Product> setProduct = this.getHibernateTemplate().find("from Product where m_id=?", m_id);
+		return setProduct;
 	}
 }

@@ -47,18 +47,12 @@ public class CollectMerchantDaoImpl extends HibernateDaoSupport implements Colle
 	public List<CollectMerchant> queryCollectMerchant_Uid(final int u_id,final Paging paging) {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行queryCollectMerchant_Uid方法");
-		List<CollectMerchant> listCollectMerchant = this.getHibernateTemplate().executeFind(new HibernateCallback() {
-
-			@Override
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
-				// TODO Auto-generated method stub
-				String hql = "from CollectMerchant where u_id = ?";
-				Query query = session.createQuery(hql).setInteger(0, u_id);
-				query.setFirstResult(paging.getStart());
-				query.setMaxResults(paging.getPagesize());
-				return query.list();
-			}
-		});
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		String hql = "from CollectMerchant where u_id = ?";
+		Query query = session.createQuery(hql).setInteger(0, u_id);
+		query.setFirstResult(paging.getStart());
+		query.setMaxResults(paging.getPagesize());
+		List<CollectMerchant> listCollectMerchant = query.list();
 		return listCollectMerchant;
 	}
 

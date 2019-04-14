@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -52,6 +53,15 @@
 		div1.style.background = " #F40";
 	}
 
+	function queryCollectProduct() {
+		var username = '${loginUser.username }';
+		window.location.href="collectProduct_queryUserCollectProduct?method=post&loginUser.username="+username+"&paging.presentPage=0";
+	}
+	
+	function queryCollectMerchant() {
+		var username = '${loginUser.username }';
+		window.location.href="collectMerchant_queryUserCollectMerchant?method=post&loginUser.username="+username+"&paging.presentPage=0";
+	}
 </script>
 </head>
 <body style="padding: 0; margin: 0;">
@@ -65,11 +75,11 @@
 		</div>
 			
 		<div class="dianpushouchang_div" id="div1" style="margin-left: 46%"onmouseover="show()" onmouseout="back()">
-			<a href="Baobeishouchang.jsp"><font class="wenzi2">宝贝收藏</font></a>
+			<a href="javascript:;" onclick="queryCollectProduct()"><font class="wenzi2">宝贝收藏</font></a>
 		</div>
 	
 		<div class="dianpushouchang_div" id="div2" style="background:rgba(0, 0, 255,0.1)">
-			<a href="DianpuShouChang.jsp"><font class="wenzi2">店铺收藏</font></a>
+			<a href="javascript:;" onclick="queryCollectMerchant()"><font class="wenzi2">店铺收藏</font></a>
 		</div>
 		
 		<div style="clear: both;"></div>
@@ -81,72 +91,55 @@
 			</div>
 		</div>
 		
-		<div style="width: 100%; height: 100%; padding-top: 1.5%;padding-bottom: 0.4%;">
-			<div class="dianpushouchang_a" style="float:left;width: 22%;font-family: Microsoft JhengHei;">
-				#店铺头像<br/>
-				#店铺名
-				<table style="text-align: center;width: 100%">
-					<tr>
-						<td></td>
-						<td><font color="orange">店铺评价</font></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>描述</td>
-						<td>服务</td>
-						<td>物流</td>
-					</tr>
-					<tr>
-						<td><font color="red">#店铺评分</font></td>
-						<td><font color="red">#店铺评分</font></td>
-						<td><font color="red">#店铺评分</font></td>
-					</tr>
-				</table>
-				<div style="width: 100%;margin-top: 3%">
-					<div style="float: left">
-						<a href="#">进店逛逛</a>
+		<s:iterator value="listCollectMerchant" var="listCollectMerchants">
+			<div style="width: 100%; height: 100%; padding-top: 1.5%;padding-bottom: 0.4%;">
+				<div class="dianpushouchang_a" style="float:left;width: 22%;font-family: Microsoft JhengHei;">
+					<%-- <img src="${fileImageAction.urlImage }${listCollectMerchants.merchant.m_image}" /> --%><br/>${listCollectMerchants.merchant.m_name }
+					<table style="text-align: center;width: 100%">
+						<tr>
+							<td></td>
+							<td><font color="orange">店铺评价</font></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>描述</td>
+							<td>服务</td>
+							<td>物流</td>
+						</tr>
+						<tr>
+							<td><font color="red">#店铺评分</font></td>
+							<td><font color="red">#店铺评分</font></td>
+							<td><font color="red">#店铺评分</font></td>
+						</tr>
+					</table>
+					<div style="width: 100%;margin-top: 3%">
+						<div style="float: left">
+							<a href="#">进店逛逛</a>
+						</div>
+						<div style="float: right">
+							<a href="#">取消收藏</a>
+						</div>
+						<div style="clear: both;"></div>
 					</div>
-					<div style="float: right">
-						<a href="#">取消收藏</a>
-					</div>
+				</div>
+					
+				<div style="float:left;width:74%; height: 200px; margin-left: 4%;">
+					<s:iterator value="listQueryListProduct" var="ls">
+						<s:iterator value="#ls.listProduct" var="listProducts">
+						<div class="dianpushouchang_div2" style="width: 23%; height: 100%;">
+							<div style="border: #eee 1px solid; height: 200px; width: 99%; height: 75%;" >
+								<img alt="" src="${fileImageAction.urlImage }${listProducts.p_image}" height="70%">
+							</div>
+							${listProducts.p_name }<br/>
+							<font color="red">${listProducts.p_price }</font><br/>
+						</div>
+						</s:iterator>
+					</s:iterator>
 					<div style="clear: both;"></div>
-				</div>
-			</div>
-				
-			<div style="float:left;width:74%; height: 200px; margin-left: 4%;">
-				<div class="dianpushouchang_div2" style="width: 23%; height: 100%;">
-					<div style="border: #eee 1px solid; height: 200px; width: 99%; height: 75%;" >
-						<img alt="" src="../images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
-					</div>
-					#商品名字<br/>
-					<font color="red">#商品价格</font><br/>
-				</div>
-				<div class="dianpushouchang_div2" style="margin-left: 2.65%; width: 23%; height: 100%;">
-					<div style="border: #eee 1px solid;height: 200px;width: 99%; height: 75%;" >
-						<img alt="" src="../images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
-					</div>
-				#商品名字<br/>
-				<font color="red">#商品价格</font><br/>
-				</div>
-				<div class="dianpushouchang_div2" style="margin-left: 2.65%; width: 23%; height: 100%;">
-					<div style="border: #eee 1px solid;height: 200px;width: 99%; height: 75%;" >
-						<img alt="" src="../images/products/ccc001.jpg" height="70%">
-					</div>
-				#商品名字<br/>
-				<font color="red">#商品价格</font><br/>
-				</div>
-				
-				<div class="dianpushouchang_div2" style="margin-left: 2.65%; width: 23%; height: 100%;">
-					<div style="border: #eee 1px solid;height: 200px;width: 99%; height: 75%;" >
-						<img alt="" src="../images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
-					</div>
-				#商品名字<br/>
-				<font color="red">#商品价格</font><br/>
 				</div>
 				<div style="clear: both;"></div>
 			</div>
-			<div style="clear: both;"></div>
-		</div>
+		</s:iterator>
 	</div>
 	<div>
 	<%@include file="Foot.jsp"%>
