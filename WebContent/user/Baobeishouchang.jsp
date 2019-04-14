@@ -74,42 +74,42 @@
 		</div>
 		<div style="width: 100%;padding-top: 2%;padding-bottom: 2%">
 				<div class="dianpushouchang_div2">
-					<div style="border: #eee 1px solid;height: 200px;width: 80%" >
+					<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
 						<img alt="" src="../images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="80%">
 					</div><br/><br/>
 				#商品名字<br/>
 				<font color="red">#商品价格</font><br/>
 				</div>
 				<div class="dianpushouchang_div2" style="margin-left: 5%">
-					<div style="border: #eee 1px solid;height: 200px;width: 80%" >
+					<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
 						<img alt="" src="../images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="80%">
 					</div><br/><br/>
 				#商品名字<br/>
 				<font color="red">#商品价格</font><br/>
 				</div>
 				<div class="dianpushouchang_div2" style="margin-left: 5%">
-					<div style="border: #eee 1px solid;height: 200px;width: 80%" >
+					<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
 						<img alt="" src="../images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="80%">
 					</div><br/><br/>
 				#商品名字<br/>
 				<font color="red">#商品价格</font><br/>
 				</div>
 				<div class="dianpushouchang_div2" style="margin-top: 5%">
-					<div style="border: #eee 1px solid;height: 200px;width: 80%" >
+					<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
 						<img alt="" src="../images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="80%">
 					</div><br/><br/>
 				#商品名字<br/>
 				<font color="red">#商品价格</font><br/>
 				</div>
 				<div class="dianpushouchang_div2" style="margin-left: 5%;margin-top: 5%">
-					<div style="border: #eee 1px solid;height: 200px;width: 80%" >
+					<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
 						<img alt="" src="../images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="80%">
 					</div><br/><br/>
 				#商品名字<br/>
 				<font color="red">#商品价格</font><br/>
 				</div>
 				<div class="dianpushouchang_div2" style="margin-left: 5%;margin-top: 5%">
-					<div style="border: #eee 1px solid;height: 200px;width: 80%" >
+					<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
 						<img alt="" src="../images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="80%">
 					</div><br/><br/>
 				#商品名字<br/>

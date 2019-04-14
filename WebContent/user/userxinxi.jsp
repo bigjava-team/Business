@@ -767,8 +767,8 @@ function show1(id){
 					<div class="dibu2">
 						<div class="shangping" onmouseover=Over(this);
 							onmouseout=Out(this);>
-							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;padding-top: 27px;text-align: center;" >
-								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="80%">
+							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
 							</div>
 							<font color="red">#商品价格</font>
 								<br /> <font color="red">#商品价格</font><br /> 
@@ -778,40 +778,55 @@ function show1(id){
 						</div>
 						<div class="shangping" onmouseover=Over(this);
 							onmouseout=Out(this);>
-							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-								color="black">#商品名称</font><br />
+							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
+							</div>
+							<font color="red">#商品价格</font>
+								<br /> <font color="red">#商品价格</font><br /> 
 							<div style="float: right">
 								<font color="#595959">月销:#商品销量</font>
 							</div>
 						</div>
 						<div class="shangping" onmouseover=Over(this);
 							onmouseout=Out(this);>
-							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-								color="black">#商品名称</font><br />
+							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
+							</div>
+							<font color="red">#商品价格</font>
+								<br /> <font color="red">#商品价格</font><br /> 
 							<div style="float: right">
 								<font color="#595959">月销:#商品销量</font>
 							</div>
 						</div>
 						<div class="shangping" onmouseover=Over(this);
 							onmouseout=Out(this);>
-							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-								color="black">#商品名称</font><br />
+							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
+							</div>
+							<font color="red">#商品价格</font>
+								<br /> <font color="red">#商品价格</font><br /> 
 							<div style="float: right">
 								<font color="#595959">月销:#商品销量</font>
 							</div>
 						</div>
 						<div class="shangping" onmouseover=Over(this);
 							onmouseout=Out(this);>
-							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-								color="black">#商品名称</font><br />
+							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
+							</div>
+							<font color="red">#商品价格</font>
+								<br /> <font color="red">#商品价格</font><br /> 
 							<div style="float: right">
 								<font color="#595959">月销:#商品销量</font>
 							</div>
 						</div>
 						<div class="shangping" onmouseover=Over(this);
 							onmouseout=Out(this);>
-							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-								color="black">#商品名称</font><br />
+							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
+							</div>
+							<font color="red">#商品价格</font>
+								<br /> <font color="red">#商品价格</font><br /> 
 							<div style="float: right">
 								<font color="#595959">月销:#商品销量</font>
 							</div>
