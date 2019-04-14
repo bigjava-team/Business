@@ -158,7 +158,7 @@ body {
 
 .shangping {
 	margin-top: 3%;
-	padding-top: 10%;
+	padding-top: 3%;
 	padding-bottom: 2%;
 	width: 28%;
 	float: left;
@@ -767,8 +767,11 @@ function show1(id){
 					<div class="dibu2">
 						<div class="shangping" onmouseover=Over(this);
 							onmouseout=Out(this);>
-							#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-								color="black">#商品名称</font><br />
+							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;padding-top: 27px;text-align: center;" >
+								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="80%">
+							</div>
+							<font color="red">#商品价格</font>
+								<br /> <font color="red">#商品价格</font><br /> 
 							<div style="float: right">
 								<font color="#595959">月销:#商品销量</font>
 							</div>

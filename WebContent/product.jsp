@@ -136,6 +136,10 @@
 	    })
 	})
 	
+	$(function(){
+		var 
+	})
+	
 </script>
 
 <style type="text/css">
@@ -233,10 +237,10 @@
 			
 			<div id="product_div1_div2_div2">
 				<div>
-					市场价: &emsp;<font id="font1" style="color: #666666;">¥ ${product.market }</font>
+					市场价: &emsp;<font id="font1" class="shichangjia" style="color: #666666;">¥ ${product.market }</font>
 				</div>
 				<div>
-					光光价: &emsp;<font id="font2" style="color: #FF8000;">¥ ${product.p_price }</font>
+					光光价: &emsp;<font id="font2" class="guangguangjia" style="color: #FF8000;">¥ ${product.p_price }</font>
 				</div>
 			</div>
 			
