@@ -16,7 +16,7 @@
 		
 		<many-to-one name="user" column="u_id" class="org.bigjava.user.entity.User" lazy="false" /><!-- 一对一指向用户类 -->
 		
-		<set name="setProduct" inverse="false"><!-- Merchant类关联User类的属性名 -->
+		<set name="setProduct" order-by="p_id" inverse="false"><!-- Merchant类关联User类的属性名 -->
 			<key column="m_id" /><!-- 连接的外键名 -->
 			<one-to-many class="org.bigjava.product.entity.Product" /><!-- 指向商品类 -->
 		</set>
