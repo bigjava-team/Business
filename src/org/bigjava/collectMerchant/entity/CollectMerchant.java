@@ -15,6 +15,18 @@ public class CollectMerchant {
 	private User user;// 多对一 指向用户类
 	
 	private Merchant merchant;// 多对一指向店铺类
+	
+	
+
+	public CollectMerchant(User user, Merchant merchant) {
+		super();
+		this.user = user;
+		this.merchant = merchant;
+	}
+
+	public CollectMerchant() {
+		super();
+	}
 
 	public int getCM_id() {
 		return CM_id;

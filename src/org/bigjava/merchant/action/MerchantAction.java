@@ -121,14 +121,17 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 		merchantBiz.registerMerchant(merchant, user);
 		return "registerMerchantSuccess";
 	}
-
+	
 	/**
 	 * 通过店铺ID查询店铺
+	 * 查询店铺的公告
 	 */
 	public String getMerchantById() {
-		merchantBiz.queryMerchant(merchant.getM_id());
-		return "getMerchantByIdSuccess";
+		merchant = merchantBiz.queryMerchant(merchant.getM_id());
+		ActionContext.getContext().getSession().put("merchant", merchant);
+		return "getMerchantById";
 	}
+
 
 	/**
 	 * 删除店铺
@@ -156,6 +159,16 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	}
 	
 	/**
+	 * 通过店铺ID查询店铺
+	 * 查询店铺的公告
+	 */
+	public String getMerchantNotice() {
+		merchant = merchantBiz.queryMerchant(merchant.getM_id());
+		ActionContext.getContext().getSession().put("merchantNotice", merchant);
+		return "getMerchantNotice";
+	}
+	
+	/**
 	 * 添加店铺公告
 	 */
 	public String addNotice() {
@@ -169,7 +182,9 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	 */
 	public String updateNotice() {
 		System.out.println("修改店铺公告");
-		merchantBiz.updateNotice(merchant);
+		Merchant updateMerchantNotice = merchantBiz.queryMerchant(merchant.getM_id());
+//		updateMerchantNotice.setNotice(notice);
+		merchantBiz.updateNotice(updateMerchantNotice);
 		return "updateNotice";
 	}
 	

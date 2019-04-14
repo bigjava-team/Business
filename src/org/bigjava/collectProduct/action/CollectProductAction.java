@@ -6,6 +6,7 @@ import org.bigjava.collectProduct.biz.CollectProductBiz;
 import org.bigjava.collectProduct.entity.CollectProduct;
 import org.bigjava.function.FileImageAction;
 import org.bigjava.function.IsEmpty;
+import org.bigjava.function.Paging;
 import org.bigjava.product.entity.Product;
 import org.bigjava.user.biz.UserBiz;
 import org.bigjava.user.entity.User;
@@ -16,6 +17,7 @@ public class CollectProductAction extends ActionSupport {
 
 	private Product product;
 	private User loginUser;
+	private Paging paging;
 	private List<CollectProduct> listCollectProducts;
 	private FileImageAction fileImageAction;
 	
@@ -23,6 +25,14 @@ public class CollectProductAction extends ActionSupport {
 	private CollectProductBiz collectProductBiz;
 	private IsEmpty isEmpty;
 	
+	public Paging getPaging() {
+		return paging;
+	}
+
+	public void setPaging(Paging paging) {
+		this.paging = paging;
+	}
+
 	public void setIsEmpty(IsEmpty isEmpty) {
 		this.isEmpty = isEmpty;
 	}
@@ -91,7 +101,9 @@ public class CollectProductAction extends ActionSupport {
 			return "login";
 		}
 		loginUser = userBiz.queryUsernameUser(loginUser.getUsername());
-		listCollectProducts = collectProductBiz.queryUserCollectProduct(loginUser.getU_id());
+		int number = collectProductBiz.queryCollectProduct_number(loginUser.getU_id());
+		paging = new Paging(paging.getPresentPage(), number, 15);
+		listCollectProducts = collectProductBiz.queryCollectProdct_Uid(loginUser.getU_id(), paging);
 		return "queryUserCollectProduct";
 	}
 }

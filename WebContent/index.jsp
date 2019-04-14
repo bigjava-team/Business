@@ -23,16 +23,16 @@
 	});
 	
 	$(function() {
-		$(".newestProduct").mouseover(function() {
+		$(".newestProduct,.ishotProduct").mouseover(function() {
 			$(this).css("cursor", "pointer");
 		});
 		
-		$(".newestProduct a").css({
+		$(".newestProduct,.ishotProduct a").css({
 			"text-decoration": "none",
 			"color": "black"
 		});
 		
-		$(".newestProduct a").hover(function() {
+		$(".newestProduct,.ishotProduct a").hover(function() {
 			$(this).css("color", "red");
 		},function() {
 			$(this).css("color", "black");
@@ -162,7 +162,7 @@
 		}, function(){
 			 $(this).removeClass("gonggaoNeiRongJQuery01");
 		})
-	})
+	});
 	
 </script>
 

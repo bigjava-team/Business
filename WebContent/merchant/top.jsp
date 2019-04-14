@@ -27,7 +27,11 @@
 		}, function(){
 			 $(this).removeClass("addjQuery");
 		})
-	})
+	});
+	
+	function remove() {
+		window.location.href = "User_close.action";
+	}
 	
 </script>
 
@@ -53,12 +57,12 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<font color="#000000" id="Date"></font>
 		</div>
-		<!-- <div style="margin-left:806px; margin-top:6px; width: 19%; line-height:18px; height:18px; background: #F0F0F0; float: left; border-radius: 7px;">
-			&emsp;&emsp;店铺名:
-		</div> -->
 		
 		<div style="margin-left:59%; margin-top:6px; width: 19%; line-height:18px; height:18px; background: #F0F0F0; float: left; border-radius: 7px;">
-			<div style="float: left; width: 85%;">&emsp;&emsp;店铺名:${sessionScope.merchant.m_name }</div> <div style="float: right; margin-right: 3%;"><a class="tuichu" href="#">退出</a></div>
+			<div style="float: left; width: 85%;">&emsp;&emsp;店铺名:${sessionScope.merchant.m_name }</div> 
+				<div style="float: right; margin-right: 3%;">
+					<a class="tuichu" href="#"onclick="remove()">退出</a>
+				</div>
 		</div>
 	</div>
 	

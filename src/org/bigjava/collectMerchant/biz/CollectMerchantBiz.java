@@ -1,4 +1,4 @@
-package org.bigjava.collectMerchant.dao;
+package org.bigjava.collectMerchant.biz;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.bigjava.function.Paging;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.user.entity.User;
 
-public interface CollectMerchantDao {
-	
+public interface CollectMerchantBiz {
+
 	/**
 	 * 收藏店铺
 	 * collectMerchant为收藏店铺表的内容
@@ -27,7 +27,6 @@ public interface CollectMerchantDao {
 	
 	/**
 	 * 通过收藏店铺的id查询收藏店铺的内容
-	 * CM_id为收藏店铺表的id主键
 	 * 
 	 */
 	public CollectMerchant queryCollectMerchant_id(int CM_id);
@@ -49,5 +48,4 @@ public interface CollectMerchantDao {
 	 * 通过收藏店铺用户的id和收藏店铺的id获取收藏的信息,用于判断有无收藏此店铺
 	 */
 	public boolean queryUserMerchantCollectMerchant(int u_id, int m_id);
-	
 }

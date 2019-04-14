@@ -68,6 +68,11 @@
 	} */
 	
 	$(function(){
+		$("#addShuLiang").hover(function() {
+			$(this).css("cursor", "pointer");
+		}, function() {
+			$(this).css("cursor", "default");
+		});
 		$("#addShuLiang").click(function(){
 			var shuliang = $("#inputShuLiang").val();
 			$("#inputShuLiang").attr("value", shuliang * 1 + 1 );
@@ -75,6 +80,11 @@
 	});
 	
 	$(function(){
+		$("#jianShuLiang").hover(function() {
+			$("#jianShuLiang").css("cursor", "pointer");
+		}, function() {
+			$("#jianShuLiang").css("cursor", "default");
+		});
 		$("#jianShuLiang").click(function(){
 			var shuliang = $("#inputShuLiang").val();
 			if (shuliang > 1) {
@@ -92,7 +102,7 @@
 			"product.p_id": p_id
 		}
 		$.ajax({
-			url: "ajax_collectProduct",
+			url: "ajaxCP_collectProduct",
 			type: "post",
 			data: params,
 			dataType: "json",
@@ -107,7 +117,7 @@
 		});
 	}
 	$(function(){
-		$(".shoucangProduct").hover(function(){
+		$(".shoucangProduct a").hover(function(){
 			$(this).addClass("shoucangProductJQuery");
 		}, function(){
 			 $(this).removeClass("shoucangProductJQuery");
@@ -251,14 +261,6 @@
 			<form id="product_div1_div2_form" action="orderitem_addOrderItemAndQueryOrderItem" method="post">
 				<div class="product_div1_div2_form_div1">
 					<div class="product_div1_div2_form_div1_div1">数量: </div>
-					<%-- <div class="product_div1_div2_form_div1_div2">
-						<select onchange="document.getElementById('input').value=this.value">
-						 	<option value="1">1</option> 
-						 	<option value="2">2</option>
-						 	<option value="3">3</option> 
-						</select>
-						<input id="input" name="input" class="iInput" value="1"> / 件
-					</div> --%>
 					
 					<div class="product_div1_div2_form_div1_div2" style="margin-left: 14%;">
 						<div id="jianShuLiang" style="background: #E0E0E0; margin-left: 0%; float: left; padding: 0% 2.2%; line-height: 26px; text-align: center;">

@@ -7,9 +7,9 @@
 <meta charset="UTF-8">
 <title>我的购物车</title>
 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="css/menu_bottom.css" rel="stylesheet" type="text/css">
-<link href="css/cart.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<link href="${pageContext.request.contextPath }/css/menu_bottom.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/css/cart.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	function minus(id, productMoney) {
 		var jian = $(".cart_d4_d2_d5_d1_d1_a1").text();
@@ -141,7 +141,7 @@
 	
 	<!--板块2-->
     <div class="contenttwo" style="margin-left: 13%; margin-right: 13%;">
-		<img src="images/logo.jpg" height="60px" width="240px" align="left">
+		<img src="${pageContext.request.contextPath }/images/logo.jpg" height="60px" width="240px" align="left">
 		<div class="search bar7">
 			<form id="contenttwo_form">
 				<input class="contenttwo_input" type="text" placeholder="欢迎来到光光网...">
@@ -157,7 +157,13 @@
 	</div>
 	
 	<hr class="cart_hr1" />
-	
+	<s:if test='#listOrderitem == null'>
+		<!-- 没有评论 -->
+		<div style="text-align: center; margin-top: 1%;">
+			亲！您还没有加购商品哦...
+		</div>
+	</s:if>
+	<s:else>
 	<div class="cart_d4">
 		<div class="cart_d4_d1">
 			<div class="cart_d4_d1_d1">
@@ -235,15 +241,11 @@
 	</div>
 	
 	<div id="admin_list_div_page" style="width: 100%; font-size: 15px; text-align: center; padding: 8px 0px 0px 0px;">
-		第<s:property value="pageBean.page"/>页/<s:property value="pageBean.totalPage"/>页&nbsp;&nbsp;&nbsp;&nbsp;
-		<%-- <s:if test="pageBean.page != 1"> --%>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=1">首页</a>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page-1"/>">上一页</a>
-		<%-- </s:if>
-		<s:if test="pageBean.page != pageBean.totalPage"> --%>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page+1"/>">下一页</a>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.totalPage"/>">尾页</a>
-		<%-- </s:if> --%>
+		第${paging.presentPage }页/${paging.page }页&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath }/orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=1">首页</a>
+		<a href="${pageContext.request.contextPath }/orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage-1}">上一页</a>
+		<a href="${pageContext.request.contextPath }/orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage+1}">下一页</a>
+		<a href="${pageContext.request.contextPath }/orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.page}">尾页</a>
 	</div>
 	
 	<div class="cart_d5" style="margin-top: 0px;">
@@ -258,6 +260,7 @@
 			<a class="cart_d6_d2_a1" href="">清空购物车</a>
 		</div>
 	</div>
+	</s:else>
 	
 	<%@ include file="menu_bottom.jsp" %>
 

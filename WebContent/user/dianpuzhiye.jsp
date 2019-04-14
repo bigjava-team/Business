@@ -318,7 +318,182 @@ ol .current {
 	right: 5px;
 	left: auto;
 }
+
+
+.dianpuzhuye_button{
+	width:100%;
+	background-color: #4CAF50; 
+    border: none;
+    color: white;
+   padding-bottom:13.5%;
+   padding-left:3%;
+   padding-right:3%;
+   padding-top:13.5%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    }
 </style>
+
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
+<script>
+		/**
+		 *
+		 * @param id  传入元素的id
+		 * @returns {HTMLElement | null}  返回标签对象，方便获取元素
+		 */
+		function my$(id) {
+			return document.getElementById(id);
+		}
+	
+		//获取各元素，方便操作
+		var box = my$("box");
+		var inner = box.children[0];
+		var ulObj = inner.children[0];
+		var list = ulObj.children;
+		var olObj = inner.children[1];
+		var arr = my$("arr");
+		var imgWidth = inner.offsetWidth;
+		var right = my$("right");
+		var pic = 0;
+		//根据li个数，创建小按钮
+		for (var i = 0; i < list.length; i++) {
+			var liObj = document.createElement("li");
+
+			olObj.appendChild(liObj);
+			liObj.innerText = (i + 1);
+			liObj.setAttribute("index", i);
+
+			//为按钮注册mouseover事件
+			liObj.onmouseover = function() {
+				//先清除所有按钮的样式
+
+				for (var j = 0; j < olObj.children.length; j++) {
+					olObj.children[j].removeAttribute("class");
+				}
+				this.className = "current";
+				pic = this.getAttribute("index");
+				animate(ulObj, -pic * imgWidth);
+			}
+
+		}
+
+		//设置ol中第一个li有背景颜色
+		olObj.children[0].className = "current";
+		//克隆一个ul中第一个li,加入到ul中的最后=====克隆
+		ulObj.appendChild(ulObj.children[0].cloneNode(true));
+
+		var timeId = setInterval(onmouseclickHandle, 1000);
+		//左右焦点实现点击切换图片功能
+		box.onmouseover = function() {
+			arr.style.display = "block";
+			clearInterval(timeId);
+		};
+		box.onmouseout = function() {
+			arr.style.display = "none";
+			timeId = setInterval(onmouseclickHandle, 1000);
+		};
+
+		right.onclick = onmouseclickHandle;
+		function onmouseclickHandle() {
+			//如果pic的值是5,恰巧是ul中li的个数-1的值,此时页面显示第六个图片,而用户会认为这是第一个图,
+			//所以,如果用户再次点击按钮,用户应该看到第二个图片
+			if (pic == list.length - 1) {
+				//如何从第6个图,跳转到第一个图
+				pic = 0;//先设置pic=0
+				ulObj.style.left = 0 + "px";//把ul的位置还原成开始的默认位置
+			}
+			pic++;//立刻设置pic加1,那么此时用户就会看到第二个图片了
+			animate(ulObj, -pic * imgWidth);//pic从0的值加1之后,pic的值是1,然后ul移动出去一个图片
+			//如果pic==5说明,此时显示第6个图(内容是第一张图片),第一个小按钮有颜色,
+			if (pic == list.length - 1) {
+				//第五个按钮颜色干掉
+				olObj.children[olObj.children.length - 1].className = "";
+				//第一个按钮颜色设置上
+				olObj.children[0].className = "current";
+			} else {
+				//干掉所有的小按钮的背景颜色
+				for (var i = 0; i < olObj.children.length; i++) {
+					olObj.children[i].removeAttribute("class");
+				}
+				olObj.children[pic].className = "current";
+			}
+		}
+		left.onclick = function() {
+			if (pic == 0) {
+				pic = list.length - 1;
+				ulObj.style.left = -pic * imgWidth + "px";
+			}
+			pic--;
+			animate(ulObj, -pic * imgWidth);
+			for (var i = 0; i < olObj.children.length; i++) {
+				olObj.children[i].removeAttribute("class");
+			}
+			//当前的pic索引对应的按钮设置颜色
+			olObj.children[pic].className = "current";
+		};
+
+		//设置任意的一个元素,移动到指定的目标位置
+		function animate(element, target) {
+			clearInterval(element.timeId);
+			//定时器的id值存储到对象的一个属性中
+			element.timeId = setInterval(function() {
+				//获取元素的当前的位置,数字类型
+				var current = element.offsetLeft;
+				//每次移动的距离
+				var step = 10;
+				step = current < target ? step : -step;
+				//当前移动到位置
+				current += step;
+				if (Math.abs(current - target) > Math.abs(step)) {
+					element.style.left = current + "px";
+				} else {
+					//清理定时器
+					clearInterval(element.timeId);
+					//直接到达目标
+					element.style.left = target + "px";
+				}
+			}, 10);
+		}
+
+		//div切换
+		window.onload = function() {
+			var x1 = document.getElementById("as");
+			x1.onmouseover = function() {
+				var xd1 = document.getElementById("dg1");
+				xd1.style.display = 'block'
+				var xx1 = document.getElementById("dg2");
+				xx1.style.display = 'none'
+			}
+			var x2 = document.getElementById("bs");
+			x2.onmouseover = function() {
+				var xd1 = document.getElementById("dg2");
+				xd1.style.display = 'block'
+				var xx1 = document.getElementById("dg1");
+				xx1.style.display = 'none'
+			}
+		}
+	function CollectMerchant() {
+		var merchant_id = '${merchant.m_id}';
+		var loginUser_id = '${loginUser.u_id}';
+		var params = {
+			"merchant.m_id": merchant_id,
+			"loginUser.u_id": loginUser_id,
+		}
+		$.ajax({
+			url: "ajaxCM_collectMerchant",
+			type: "post",
+			data: params,
+			dataType: "json",
+			success:function(data, textStatus) {
+				alert("收藏成功");
+			},error:function(data, textStatus) {
+				return;
+			}
+		});
+	}
+</script>
 
 </head>
 <body>
@@ -335,6 +510,9 @@ ol .current {
 			<div
 				style="float: left; border-right: 1px solid #d2c8c8; padding-top: 1%; padding-bottom: 0.5%; padding-right: 2%; padding-left: 2%;">
 				#店铺名</div>
+				<div
+				style="float: left; border-right: 1px solid #d2c8c8; padding-right: 1%; padding-left: 1%;width: 8%">
+				<input type="button" class="dianpuzhuye_button" onclick="CollectMerchant()" value="收藏店铺"></div>
 		
 			<div style="float: right;margin-right: 10%;">
 			 <div class="search bar7">
@@ -420,7 +598,7 @@ ol .current {
 			}
 
 			function animationOut(i) {
-				console.log(i, 'i\'m out')
+				/* console.log(i, 'i\'m out'); */
 				switch (i) {
 				case 1:
 					$('.page2 h2').fadeOut();
@@ -441,8 +619,6 @@ ol .current {
 		</script>
 
 		<div style="text-align: center; clear: both">
-			<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
-			<script src="/follow.js" type="text/javascript"></script>
 			<script src='${pageContext.request.contextPath }/js/mousewheel.js'></script>
 			<script src="${pageContext.request.contextPath }/js/jquery.touchSwipe.js"></script>
 			<script src="${pageContext.request.contextPath }/js/cubeTransition.js"></script>
@@ -466,8 +642,6 @@ ol .current {
 				</div>
 				<div class="four">
 					<div style="text-align: center; clear: both; margin-top: 1%">
-						<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
-						<script src="/follow.js" type="text/javascript"></script>
 					</div>
 					<iframe frameborder="0" scrolling="no" src="${pageContext.request.contextPath }/user/dianpuzhiye_lunbo.jsp" width="100%"
 						height="500px"></iframe>
@@ -613,143 +787,6 @@ ol .current {
 
 	</div>
 			
-	<script>
-		/**
-		 *
-		 * @param id  传入元素的id
-		 * @returns {HTMLElement | null}  返回标签对象，方便获取元素
-		 */
-		function my$(id) {
-			return document.getElementById(id);
-		}
-
-		//获取各元素，方便操作
-		var box = my$("box");
-		var inner = box.children[0];
-		var ulObj = inner.children[0];
-		var list = ulObj.children;
-		var olObj = inner.children[1];
-		var arr = my$("arr");
-		var imgWidth = inner.offsetWidth;
-		var right = my$("right");
-		var pic = 0;
-		//根据li个数，创建小按钮
-		for (var i = 0; i < list.length; i++) {
-			var liObj = document.createElement("li");
-
-			olObj.appendChild(liObj);
-			liObj.innerText = (i + 1);
-			liObj.setAttribute("index", i);
-
-			//为按钮注册mouseover事件
-			liObj.onmouseover = function() {
-				//先清除所有按钮的样式
-
-				for (var j = 0; j < olObj.children.length; j++) {
-					olObj.children[j].removeAttribute("class");
-				}
-				this.className = "current";
-				pic = this.getAttribute("index");
-				animate(ulObj, -pic * imgWidth);
-			}
-
-		}
-
-		//设置ol中第一个li有背景颜色
-		olObj.children[0].className = "current";
-		//克隆一个ul中第一个li,加入到ul中的最后=====克隆
-		ulObj.appendChild(ulObj.children[0].cloneNode(true));
-
-		var timeId = setInterval(onmouseclickHandle, 1000);
-		//左右焦点实现点击切换图片功能
-		box.onmouseover = function() {
-			arr.style.display = "block";
-			clearInterval(timeId);
-		};
-		box.onmouseout = function() {
-			arr.style.display = "none";
-			timeId = setInterval(onmouseclickHandle, 1000);
-		};
-
-		right.onclick = onmouseclickHandle;
-		function onmouseclickHandle() {
-			//如果pic的值是5,恰巧是ul中li的个数-1的值,此时页面显示第六个图片,而用户会认为这是第一个图,
-			//所以,如果用户再次点击按钮,用户应该看到第二个图片
-			if (pic == list.length - 1) {
-				//如何从第6个图,跳转到第一个图
-				pic = 0;//先设置pic=0
-				ulObj.style.left = 0 + "px";//把ul的位置还原成开始的默认位置
-			}
-			pic++;//立刻设置pic加1,那么此时用户就会看到第二个图片了
-			animate(ulObj, -pic * imgWidth);//pic从0的值加1之后,pic的值是1,然后ul移动出去一个图片
-			//如果pic==5说明,此时显示第6个图(内容是第一张图片),第一个小按钮有颜色,
-			if (pic == list.length - 1) {
-				//第五个按钮颜色干掉
-				olObj.children[olObj.children.length - 1].className = "";
-				//第一个按钮颜色设置上
-				olObj.children[0].className = "current";
-			} else {
-				//干掉所有的小按钮的背景颜色
-				for (var i = 0; i < olObj.children.length; i++) {
-					olObj.children[i].removeAttribute("class");
-				}
-				olObj.children[pic].className = "current";
-			}
-		}
-		left.onclick = function() {
-			if (pic == 0) {
-				pic = list.length - 1;
-				ulObj.style.left = -pic * imgWidth + "px";
-			}
-			pic--;
-			animate(ulObj, -pic * imgWidth);
-			for (var i = 0; i < olObj.children.length; i++) {
-				olObj.children[i].removeAttribute("class");
-			}
-			//当前的pic索引对应的按钮设置颜色
-			olObj.children[pic].className = "current";
-		};
-
-		//设置任意的一个元素,移动到指定的目标位置
-		function animate(element, target) {
-			clearInterval(element.timeId);
-			//定时器的id值存储到对象的一个属性中
-			element.timeId = setInterval(function() {
-				//获取元素的当前的位置,数字类型
-				var current = element.offsetLeft;
-				//每次移动的距离
-				var step = 10;
-				step = current < target ? step : -step;
-				//当前移动到位置
-				current += step;
-				if (Math.abs(current - target) > Math.abs(step)) {
-					element.style.left = current + "px";
-				} else {
-					//清理定时器
-					clearInterval(element.timeId);
-					//直接到达目标
-					element.style.left = target + "px";
-				}
-			}, 10);
-		}
-
-		//div切换
-		window.onload = function() {
-			var x1 = document.getElementById("as");
-			x1.onmouseover = function() {
-				var xd1 = document.getElementById("dg1");
-				xd1.style.display = 'block'
-				var xx1 = document.getElementById("dg2");
-				xx1.style.display = 'none'
-			}
-			var x2 = document.getElementById("bs");
-			x2.onmouseover = function() {
-				var xd1 = document.getElementById("dg2");
-				xd1.style.display = 'block'
-				var xx1 = document.getElementById("dg1");
-				xx1.style.display = 'none'
-			}
-		}
-	</script>
+	
 </body>
 </html>

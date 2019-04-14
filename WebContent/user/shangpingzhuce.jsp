@@ -9,21 +9,14 @@
 <link href="${pageContext.request.contextPath }/css/product_top.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 body, select, textarea {
-	font-size: 1.1em
-}
-
-body {
+	font-size: 1.1em;
 	overflow-x: hidden;
 }
+
 
 .all {
 	width: 100%;
 	height: 100%;
-}
-
-.head {
-	width: 100%;
-	height: 20%;
 }
 
 .headone {
@@ -67,7 +60,7 @@ body {
 .body {
 	margin: 20px auto;
 	width: 90%;
-	height: auto;
+	height: 900px;
 	border: 1px solid #BEBEBE;
 }
 
@@ -83,6 +76,7 @@ body {
 
 .neirong {
 	margin-left: 1%;
+	height: 100%;
 }
 
 .ziti {
@@ -118,7 +112,7 @@ body {
 	right: -9.8%;
 	top: -1px;
 	border-top: 75px solid transparent;
-	border-left: 30px solid #FF9900;
+	border-left: 27px solid #FF9900;
 	border-bottom: 75px solid transparent;
 }
 
@@ -141,7 +135,6 @@ body {
 	background: #FF9900;
 	position: relative;
 	margin-left: 5%;
-	float: left;
 }
 
 #box2:after {
@@ -157,9 +150,9 @@ body {
 	border-bottom: 75px solid transparent;
 	border-left: 30px solid #FF9900;
 	border-bottom: 75px solid transparent;
-	border-top: 75px solid transparent;
-	border-left: 30px solid #FF9900;
-	border-bottom: 75px solid transparent;
+	border-top: 79px solid transparent;
+	border-left: 27px solid #FF9900;
+	border-bottom: 77px solid transparent;
 }
 
 #box2:before {
@@ -182,7 +175,6 @@ body {
 	background: #FF9900;
 	position: relative;
 	margin-left: 5%;
-	float: left;
 }
 
 #box3:after {
@@ -518,14 +510,11 @@ function hideDiv(){
 
 <body style="margin: 0px; padding: 0px">
 	<div class="head">
-		<s:include value="top.jsp"></s:include>
+		<s:include value="top.jsp" />
 		<div class="headtwo">
 			<a href="#"><font size="5px" style="padding-left: 10%">店铺注册页面</font></a>
 		</div>
 	</div>
-
-
-
 	<div class="body">
 		<div class="neirong">
 			<div class="kaitou">
@@ -577,9 +566,7 @@ function hideDiv(){
 						href="javascript:void(0)">div二号</a> <a id="three"
 						href="javascript:void(0)">div三号</a>
 				</div>
-
 				<div class="content">
-
 					<div class="aa">
 						<div class="bb">
 							<img src="${pageContext.request.contextPath }/TuPian/TouXiang.png"
@@ -591,7 +578,6 @@ function hideDiv(){
 						</div>
 					</div>
 					<div class="aa">
-
 						<div class="ee">
 							<div class="gg">
 								<div class="ziti">
@@ -618,7 +604,7 @@ function hideDiv(){
 						<div class="ff">
 							1、淘宝网在任何情况下都不会用QQ与您取得联系, 任何使用QQ联系您的"工作人员"都是骗子。 <br />
 							2、消费者保障协议变更内容将于2017年12月01日零点生效， 主要变更点可见协议公示通知（<a class="lianjie"
-								href="????">光光网通知</a>）。 相关重要条款我们已以粗体下划线的方式特别标注，请重点阅读。<br />
+								href="#">光光网通知</a>）。 相关重要条款我们已以粗体下划线的方式特别标注，请重点阅读。<br />
 
 						</div>
 						<div class="anniudiv">
@@ -654,7 +640,6 @@ function hideDiv(){
 
 						<div class="dd">
 							<table class="biaoge">
-
 								<tr>
 									<td class="tr1">认证名称</td>
 									<td class="tr1">状态</td>
@@ -674,7 +659,7 @@ function hideDiv(){
 									
 									</font></td>
 									<td>登录成功</td>
-									<td>${sessionScope.loginUser.email}</td>
+									<td>${loginUser.email}</td>
 								</tr>
 
 								<tr>
@@ -686,7 +671,7 @@ function hideDiv(){
 
 							</table>
 
-							<br /> <br /> <br />
+							<br />
 							<div class="anniudiv2">
 								<button class="button2" style="vertical-align: middle"
 									onclick="two();">
