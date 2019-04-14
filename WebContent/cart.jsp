@@ -174,7 +174,13 @@
 	</div>
 	
 	<hr class="cart_hr1" />
-	
+	<s:if test='#listOrderitem == null'>
+		<!-- 没有评论 -->
+		<div style="text-align: center; margin-top: 1%;">
+			亲！您还没有加购商品哦...
+		</div>
+	</s:if>
+	<s:else>
 	<div class="cart_d4">
 		<div class="cart_d4_d1">
 			<div class="cart_d4_d1_d1">
@@ -271,6 +277,7 @@
 			<a class="cart_d6_d2_a1" href="">清空购物车</a>
 		</div>
 	</div>
+	</s:else>
 	
 	<%@ include file="menu_bottom.jsp" %>
 
