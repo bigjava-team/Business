@@ -16,7 +16,7 @@
 			d.add('01',-1,'光光商城店铺管理');
 			
 			d.add('0101','01','店铺管理');
-			d.add('010101','0101','店铺信息','${pageContext.request.contextPath}/merchant/merchants/list.jsp','','mainFrame');
+			d.add('010101','0101','店铺信息','${pageContext.request.contextPath}/Merchant_getMerchantById?method=post&m_id=${sessionScope.merchant.m_id}','','mainFrame');
 			
 			d.add('0102','01','商品管理');
 			d.add('010201','0102','商品信息','${pageContext.request.contextPath}/MerchantProduct_findAll.action?method=post&paging.presentPage=0&merchant.m_id=${sessionScope.merchant.m_id }','','mainFrame');
@@ -26,7 +26,7 @@
 			d.add('010301','0103','订单信息','${pageContext.request.contextPath}/Merchant_queryMerchantOrders?method=post&m_id=${sessionScope.merchant.m_id}&paging.presentPage=1','','mainFrame');
 			
 			d.add('0104','01','公告管理');
-			d.add('010401','0104','公告信息','${pageContext.request.contextPath}/merchant/notice/list.jsp','','mainFrame');
+			d.add('010401','0104','公告信息','${pageContext.request.contextPath}/Merchant_getMerchantNotice?method=post&m_id=${sessionScope.merchant.m_id}','','mainFrame');
 			d.add('010402','0104','发布公告','${pageContext.request.contextPath}/merchant/notice/add.jsp','','mainFrame');
 			
 			document.write(d);

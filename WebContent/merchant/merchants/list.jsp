@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +27,7 @@
 	<div id="admin_add_div_top">
 		店铺信息
 	</div>
-	
+	<s:debug/>
 	<form class="admin_form1" action="" method="post">
 		
 		<table class="admin_form1_table" id="admin_list_table" cellspacing="0" cellpadding="0" rules="all" width="100%" border="1" bordercolor="#EEEEEE">
@@ -39,20 +40,29 @@
 			</tr>
 			<tr id="admin_list_tr2">
 				<td class="admin_form1_table_tr_td1" align="center">编号</td>
-				<td class="admin_form1_table_tr_td3" align="center">110</td>
+				<td class="admin_form1_table_tr_td3" align="center">${merchant.m_id }</td>
 				<td class="admin_form1_table_tr_td7" align="center">名称</td>
-				<td class="admin_form1_table_tr_td3" align="center">光光商城</td>
+				<td class="admin_form1_table_tr_td3" align="center">${merchant.m_name }</td>
 			</tr>
 			<tr id="admin_list_tr2">
 				<td class="admin_form1_table_tr_td1" align="center">创建时间</td>
-				<td class="admin_form1_table_tr_td3" align="center">2018:10:10 10:10:10</td>
+				<td class="admin_form1_table_tr_td3" align="center">${merchant.m_time }</td>
 				<td class="admin_form1_table_tr_td7" align="center">店铺状态</td>
-				<td class="admin_form1_table_tr_td3" align="center">冻结</td>
+				<td class="admin_form1_table_tr_td3" align="center">
+				
+					<s:if test="merchant._is_freeze == 1">
+						店铺已冻结
+					</s:if>
+					<s:else>
+						正常运营中
+					</s:else>
+			
+				</td>
 			</tr>
 			
 			<tr id="admin_list_tr3">
-				<td class="admin_form1_table_tr_td4" align="center">描述</td>
-				<td class="admin_form1_table_tr_td5" colspan="3" align="center">本店所有商品打折扣本店所有商品打折扣本店所有商品打折扣本店所有商品打折扣本店所有商品打折扣本店所有商品打折扣本店所有商品打折扣本店所有商品打折扣本店所有商品打折扣</td>
+				<td class="admin_form1_table_tr_td4" align="center">店铺公告</td>
+				<td class="admin_form1_table_tr_td5" colspan="3" align="center">${merchant.notice }</td>
 			</tr>
 		</table>
 		

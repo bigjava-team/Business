@@ -174,7 +174,13 @@
 	</div>
 	
 	<hr class="cart_hr1" />
-	
+	<s:if test='#listOrderitem == null'>
+		<!-- 没有评论 -->
+		<div style="text-align: center; margin-top: 1%;">
+			亲！您还没有加购商品哦...
+		</div>
+	</s:if>
+	<s:else>
 	<div class="cart_d4">
 		<div class="cart_d4_d1">
 			<div class="cart_d4_d1_d1">
@@ -252,15 +258,11 @@
 	</div>
 	
 	<div id="admin_list_div_page" style="width: 100%; font-size: 15px; text-align: center; padding: 8px 0px 0px 0px;">
-		第<s:property value="pageBean.page"/>页/<s:property value="pageBean.totalPage"/>页&nbsp;&nbsp;&nbsp;&nbsp;
-		<%-- <s:if test="pageBean.page != 1"> --%>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=1">首页</a>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page-1"/>">上一页</a>
-		<%-- </s:if>
-		<s:if test="pageBean.page != pageBean.totalPage"> --%>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page+1"/>">下一页</a>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.totalPage"/>">尾页</a>
-		<%-- </s:if> --%>
+		第<s:property value="#session.paging.presentPage"/>页/<s:property value="#session.paging.page"/>页&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="${pageContext.request.contextPath }/orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=1">首页</a>
+				<a href="${pageContext.request.contextPath }/orderitem_queryUserOrderitem?paging.presentPage=<s:property value="#session.paging.presentPage-1"/>&loginUser.username=${loginUser.username }">上一页</a>
+				<a href="${pageContext.request.contextPath }/orderitem_queryUserOrderitem?paging.presentPage=<s:property value="#session.paging.presentPage+1"/>&loginUser.username=${loginUser.username }">下一页</a>
+				<a href="${pageContext.request.contextPath }/orderitem_queryUserOrderitem?paging.presentPage=<s:property value="#session.paging.page"/>&loginUser.username=${loginUser.username }">尾页</a>
 	</div>
 	
 	<div class="cart_d5" style="margin-top: 0px;">
@@ -275,6 +277,7 @@
 			<a class="cart_d6_d2_a1" href="">清空购物车</a>
 		</div>
 	</div>
+	</s:else>
 	
 	<%@ include file="menu_bottom.jsp" %>
 
