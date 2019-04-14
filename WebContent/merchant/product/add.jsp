@@ -14,7 +14,7 @@
 		上架商品 
 	</div>
 	
-	<form class="admin_form1" action="MerchantProduct_save.action?merchant.m_id=1" method="post" enctype="multipart/form-data">
+	<form class="admin_form1" action="MerchantProduct_save.action?merchant.m_id=${merchant.m_id }" method="post" enctype="multipart/form-data">
 		<div class="admin_add_div_middle">
 			<div class="admin_merchant_d1">
 				商品名称：

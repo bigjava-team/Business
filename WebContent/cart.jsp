@@ -157,7 +157,7 @@
 	</div>
 	
 	<hr class="cart_hr1" />
-	<s:if test='#listOrderitem == null'>
+	<s:if test='#listOrderitem.product.p_id == null'>
 		<!-- 没有评论 -->
 		<div style="text-align: center; margin-top: 1%;">
 			亲！您还没有加购商品哦...
