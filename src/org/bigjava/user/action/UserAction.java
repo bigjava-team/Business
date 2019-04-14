@@ -4,9 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
+import org.bigjava.collectProduct.biz.CollectProductBiz;
+import org.bigjava.collectProduct.entity.CollectProduct;
 import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
 import org.bigjava.function.SendMail;
+import org.bigjava.product.biz.ProductBiz;
+import org.bigjava.product.entity.Product;
 import org.bigjava.user.biz.UserBiz;
 import org.bigjava.user.entity.User;
 
@@ -17,11 +21,12 @@ public class UserAction extends ActionSupport {
 
 	private IsEmpty isEmpty = new IsEmpty();
 	private User user;
+	private Paging paging;// 声明Paging类
+	private User loginUser;
+	
 	private UserBiz userBiz;
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
-	private Paging paging;// 声明Paging类
-	private User loginUser;
 
 	private String emailAddress;// 邮箱号
 
@@ -343,4 +348,5 @@ public class UserAction extends ActionSupport {
 		System.out.println("跳转到开店的页面");
 		return "SetUpShop";
 	}
+	
 }

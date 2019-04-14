@@ -18,13 +18,9 @@ public class CollectProductDaoImpl extends HibernateDaoSupport implements Collec
 
 	// 收藏商品
 	@Override
-	public void addCollectProduct(CollectProduct collectProduct, User user, Product product) {
+	public void addCollectProduct(CollectProduct collectProduct) {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行addCollectProduct方法");
-		
-		collectProduct.setUser(user);// 添加连接User的外键
-		collectProduct.setProduct(product);// 添加连接Product的外键
-		
 		this.getHibernateTemplate().save(collectProduct);// 将collectProduct添加进数据库
 	}
 
@@ -39,11 +35,12 @@ public class CollectProductDaoImpl extends HibernateDaoSupport implements Collec
 
 	// 通过收藏商品的 主键id查询
 	@Override
-	public CollectProduct queryCollectProduct_id(int CP_id) {
+	public boolean queryCollectUser_id(int u_id,int p_id) {
 		// TODO Auto-generated method stub
-		System.out.println("开始执行queryCollectProduct_id方法");
-		
-		return this.getHibernateTemplate().get(CollectProduct.class, CP_id);
+		System.out.println("开始执行queryCollectUser_id方法");
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		List<CollectProduct> list = session.createQuery("from CollectProduct where u_id=? and p_id=?").setInteger(0, u_id).setInteger(1, p_id).list();
+		return list.size()>0 ? true : false;
 	}
 
 	// 分页查询收藏商品的内容
@@ -78,6 +75,14 @@ public class CollectProductDaoImpl extends HibernateDaoSupport implements Collec
 			number = list.get(0).intValue();
 		}
 		return number;
+	}
+
+	// 查询用户收藏的商品
+	@Override
+	public List<CollectProduct> queryUserCollectProduct(int u_id) {
+		System.out.println("查询用户收藏的商品");
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		return session.createQuery("from CollectProduct where u_id=?").setInteger(0, u_id).list();
 	}
 
 }

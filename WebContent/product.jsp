@@ -11,7 +11,7 @@
 <link href="css/product.css" rel="stylesheet" type="text/css">
 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var titles = $("div.title >a");
@@ -83,6 +83,29 @@
 		});
 	});
 	
+	function collectProduct() {
+		var username = '${loginUser.username}';
+		var p_id = '${product.p_id}';
+		
+		var params = {
+			"loginUser.username": username,
+			"product.p_id": p_id
+		}
+		$.ajax({
+			url: "ajax_collectProduct",
+			type: "post",
+			data: params,
+			dataType: "json",
+			success:function(data, textStatus) {
+				alert("收藏成功");
+				
+			},error:function(data, textStatus) {
+				console.log(data);
+				alert("错误");
+				return;
+			}
+		});
+	}
 	$(function(){
 		$(".shoucangProduct").hover(function(){
 			$(this).addClass("shoucangProductJQuery");
@@ -106,11 +129,11 @@
 </head>
 <body id="product_body">
 	<%@ include file="product_top.jsp" %>
-	
 	<div id="product_div1">
 		<div id="product_div1_div1" >
 			<div id="product_div1_div1_div1" style="text-align: center; overflow: hidden;">
-				<img alt="${product.p_image }" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;">
+				<img alt="${product.p_image }" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;"><br/>
+				<a href="javascript:;" onclick="collectProduct()" >收藏商品</a>
 			</div>
 			<div id="product_div1_div1_div2">
 				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img class="" alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;"></div>

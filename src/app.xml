@@ -97,6 +97,8 @@
 	
 	<!-- 收藏商品 -->
 	<bean name="collectProductDao" class="org.bigjava.collectProduct.dao.impl.CollectProductDaoImpl" autowire="byName" />
+	<bean name="collectProductBiz" class="org.bigjava.collectProduct.biz.impl.CollectProductBizImpl" autowire="byName" />
+	<bean name="collectProductAction" class="org.bigjava.collectProduct.action.CollectProductAction" autowire="byName" />
 	
 	<bean name="paymentOrders" class="org.bigjava.orders.action.PaymentOrders" autowire="byName" />
 	

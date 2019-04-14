@@ -1,4 +1,4 @@
-package org.bigjava.collectProduct.dao;
+package org.bigjava.collectProduct.biz;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.bigjava.function.Paging;
 import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
 
-public interface CollectProductDao {
-	
+public interface CollectProductBiz {
+
 	/**
 	 * 收藏商品
 	 * collectProduct为收藏商品的内容
@@ -25,7 +25,7 @@ public interface CollectProductDao {
 	public void deleteCollectProduct(CollectProduct collectProduct);
 	
 	/**
-	 * 通过收藏商品的id查询收藏商品的内容
+	 * 通过收藏用户的id查询收藏商品的内容
 	 * 
 	 */
 	public boolean queryCollectUser_id(int u_id,int p_id);
@@ -44,5 +44,4 @@ public interface CollectProductDao {
 	 * 查询用户收藏的商品
 	 */
 	public List<CollectProduct> queryUserCollectProduct(int u_id);
-
 }

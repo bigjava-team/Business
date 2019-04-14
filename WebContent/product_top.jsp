@@ -27,6 +27,15 @@
 		})
 	})
 	
+	function collect() {
+		var username = '${loginUser.username }';
+		if (username == null || username == "") {
+			window.location.href="collectProduct_queryUserCollectProduct?method=post";
+		} else {
+			window.location.href="collectProduct_queryUserCollectProduct?method=post&loginUser.username="+username;
+		}
+	}
+	
 	</script>
 	<style type="text/css" >
 		a {
@@ -46,7 +55,7 @@
 					欢迎您：${loginUser.username };
 			</s:if>
 			<s:else >
-				<a href="user/login.jsp">亲，请登录</a> 
+				<a href="${pageContext.request.contextPath }/user/login.jsp">亲，请登录</a> 
 				<a href="user/Save.jsp">免费注册</a>
 			</s:else>
 		</div>
@@ -63,7 +72,7 @@
 			</s:if>
 			<a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presenetPage=0">我的订单</a> 
 			<a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0">购物车</a> 
-			<a href="javascript:;">收藏夹</a> 
+			<a href="javascript:;" onclick="collect()">收藏夹</a> 
 			<a href="User_SetUpShop.action?method=post&loginUser.username=${loginUser.username }">我要开店</a> 
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<a href="#" onclick="remove()">退出</a>
@@ -73,7 +82,7 @@
 	
 	<!--板块2-->
     <div class="contenttwo">
-		<a href="index_showAll.action"><img src="${pageContext.request.contextPath }/images/logo.jpg" height="60px" width="240px" align="left"></a>
+		<a href="index_showAll.action?method=post&loginUser.username=${loginUser.username }"><img src="${pageContext.request.contextPath }/images/logo.jpg" height="60px" width="240px" align="left"></a>
 		<img alt="" src="${pageContext.request.contextPath }/images/1 (11).png" height="50px" width="520px" align="left" style="border-radius: 6px;">
 		<div class="search bar7">
 			<form id="contenttwo_form">

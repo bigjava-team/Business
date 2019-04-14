@@ -36,8 +36,6 @@
 			<result name="loginStore" >/user/dianpuzhiye.jsp
 			</result>
 
-			<!-- 返回值为 -->
-
 			<!-- 注册，返回值为 registerSuccess -->
 			<result name="registerSuccess">/user/login.jsp </result>
 
@@ -180,14 +178,20 @@
 			<result name="findAllAddrSuccess">/user/userxinxi.jsp</result>
 			<result name="delAddrSuccess">/user/userxinxi.jsp</result>
 		</action>
+		
+		<action name="collectProduct_*" class="collectProductAction" method="{1}" >
+			<result name="queryUserCollectProduct">/zp1/shouchang.jsp</result>
+		</action>
 
 	</package>
 
 
 	<!-- ajax 异步校验 -->
 	<package name="json" extends="json-default" namespace="/">
-		<action name="ajax_*"
-			class="org.bigjava.user.action.UserAction" method="{1}">
+		<action name="ajax_*" class="userAction" method="{1}">
+			<result type="json"></result>
+		</action>
+		<action name="ajax_*" class="collectProductAction" method="{1}">
 			<result type="json"></result>
 		</action>
 	</package>
