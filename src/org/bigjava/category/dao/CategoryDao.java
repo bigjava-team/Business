@@ -3,6 +3,7 @@ package org.bigjava.category.dao;
 import java.util.List;
 
 import org.bigjava.category.entity.Category;
+import org.bigjava.product.entity.Product;
 
 public interface CategoryDao {
 	
@@ -33,5 +34,10 @@ public interface CategoryDao {
 	 * 
 	 */
 	public void updateCategory(Category category, Category updateCategory);
+	
+	/**
+	 * 通过一级分类id分页查询一级分类商品
+	 */
+	public List<Product> queryC_idCategoryProduct(int c_id,int presentPage);
 	
 }
