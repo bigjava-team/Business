@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>光光网&nbsp;-&nbsp;抢光光</title>
 <link href="${pageContext.request.contextPath }/css/product_top.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/css/menu_bottom.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/css/index_carousel.css" rel="stylesheet" type="text/css">
@@ -15,13 +15,6 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
-	 $(function() {
-		var OneToThree = '${check }';
-		if (OneToThree==null || OneToThree == "") {
-			window.location.href="index_showAll.action";
-		}
-	}); 
-
 	$(function(){
 		var a = $(".aaa").height();
 		$(".bbb").height(a);
@@ -30,16 +23,16 @@
 	});
 	
 	$(function() {
-		$(".newestProduct").mouseover(function() {
+		$(".newestProduct,.ishotProduct").mouseover(function() {
 			$(this).css("cursor", "pointer");
 		});
 		
-		$(".newestProduct a").css({
+		$(".newestProduct,.ishotProduct a").css({
 			"text-decoration": "none",
 			"color": "black"
 		});
 		
-		$(".newestProduct a").hover(function() {
+		$(".newestProduct,.ishotProduct a").hover(function() {
 			$(this).css("color", "red");
 		},function() {
 			$(this).css("color", "black");
@@ -50,7 +43,6 @@
 	function queryProduct(id) {
 		var username = '${loginUser.username }';
 		window.open("Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0");
-		/* window.location.href="Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0"; */
 	}
 	
 	function categoryOver(id,csId) {
@@ -78,7 +70,7 @@
 		$("#cs"+csId).css("display", "none");
 	}
 	 
-	function newestProductOver(id) {
+	/* function newestProductOver(id) {
 		$("#"+id).css("border","1px solid #FF7575");
 	}
 	
@@ -100,7 +92,7 @@
 	
 	function likeOut(id) {
 		$("#"+id).css("border","1px solid #F0F0F0");
-	}
+	} */
 	
 	function aOver(id,csId) {
 		$("#"+id).css({
@@ -124,7 +116,91 @@
 		$("#"+id).css("display", "none");
 	}
 	
+	$(function(){
+		$(".newestProduct").hover(function(){
+			$(this).addClass("addjQuery11");
+		}, function(){
+			 $(this).removeClass("addjQuery11");
+		})
+	})
+	
+	$(function(){
+		$(".ishotProduct").hover(function(){
+			$(this).addClass("addjQuery11");
+		}, function(){
+			 $(this).removeClass("addjQuery11");
+		})
+	})
+	
+	$(function(){
+		$(".likeProduct").hover(function(){
+			$(this).addClass("addjQuery11");
+		}, function(){
+			 $(this).removeClass("addjQuery11");
+		})
+	})
+	
+	$(function(){
+		$(".cainilike").hover(function(){
+			$(this).addClass("cainilikeJQuery01");
+		}, function(){
+			 $(this).removeClass("cainilikeJQuery01");
+		})
+	})
+	
+	$(function(){
+		$(".hideCategorysecond").hover(function(){
+			$(this).addClass("cainilikeJQuery01");
+		}, function(){
+			 $(this).removeClass("cainilikeJQuery01");
+		})
+	});
+	
+	$(function(){
+		$(".gonggaoNeiRong").hover(function(){
+			$(this).addClass("gonggaoNeiRongJQuery01");
+		}, function(){
+			 $(this).removeClass("gonggaoNeiRongJQuery01");
+		})
+	});
+	
 </script>
+
+<style type="text/css">
+	.newestProduct{
+		border: 1px solid #E0E0E0;
+	}
+	
+	.ishotProduct{
+		border: 1px solid #E0E0E0;
+	}
+	
+	.likeProduct{
+		border: 1px solid #E0E0E0;
+	}
+
+	.addjQuery11{
+		border: 1px solid #FF2D2D;
+	}
+	
+	.cainilike{
+		color: #ABABAB;
+	}
+	
+	.hideCategorysecond{
+		color: #666666;
+	}
+	
+	.cainilikeJQuery01{
+		color: #FF8300;
+		text-decoration: underline;
+	}
+	
+	.gonggaoNeiRongJQuery01{
+		background: #FFECF5;
+		color: #3C3C3C;
+	}
+</style>
 </head>
 <body style="background: #F4F4F4; margin: 0px; padding: 0px;">
 	<div class="d0101" style="background: red;"></div>
@@ -158,7 +234,7 @@
 			<!-- 此div 做边距处理，空出位置 遍历时请勿删除 -->
 			<div style="height: 5px;"></div>
 			<s:iterator value="listIndexCategory" var="listIndexCategorys" status="status">
-				<div class="categoryCss" id="aaa_d<s:property value='#status.count' />" onmouseover="categoryOver(this.id,<s:property value='#status.count' />)" onmouseout="categoryOut(this.id,<s:property value='#status.count' />)" style="font-size: 15px; padding: 6px 0px 6px 13%; color: black;border: 1px solid red;">
+				<div class="categoryCss" id="aaa_d<s:property value='#status.count' />" onmouseover="categoryOver(this.id,<s:property value='#status.count' />)" onmouseout="categoryOut(this.id,<s:property value='#status.count' />)" style="font-size: 15px; padding: 6px 0px 6px 13%; color: black;">
 					<s:iterator value="#listIndexCategorys.listCategory" var="lists" status="aStatus">
 						<a href="javascript:;" onmouseover="aOver(this.id,<s:property value='#status.count' />)" onmouseout="aOut(this.id,<s:property value='#status.count' />)" id="a<s:property value='#status.count' /><s:property value='#aStatus.count' />"><s:property value="#lists.c_name" /></a>
 						<s:if test="#lists.c_id%3 != 0">
@@ -194,7 +270,7 @@
 				</div>
 			</div>
 			
-			<div style="overflow: hidden; height: 7%; font-size: 18px; font-weight: bold; padding-top: 1%; padding-left: 1%;">
+			<div style="overflow: hidden; color: #8E8E8E; height: 7%; font-size: 18px; font-weight: bold; padding-top: 1%; padding-left: 1%;">
 				欢迎开店
 			</div>
 			<!-- 284 520 -->
@@ -298,47 +374,40 @@
 				</div>
 			</div>
 		</s:else>
-			<div style="background: #F4F4F4; width: 100%; height: 7.1%; font-size: 16px; font-weight: bold; text-align: center; padding-top: 2.5%;">
+			<div style="background: #F4F4F4; color: #8E8E8E; width: 100%; height: 7.1%; font-size: 16px; font-weight: bold; text-align: center; padding-top: 2.5%;">
 				光光公告
 			</div>
 			<div style="background: #FFF; width: 100%; height: 36.9%; padding-top: 2.5%;">
 				<div style="margin-left: 2%; margin-right: 2%; height: 97%; font-size: 14px;">
-					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-bottom-style: dashed; margin-top: -1px;">
-						
+					<div class="gonggaoNeiRong" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-bottom-style: dashed; margin-top: -1px; cursor: pointer;">
 						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
 							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
 						</marquee>
-						
 					</div>
-					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px;">
+					<div class="gonggaoNeiRong" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px; cursor: pointer;">
 						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
 							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
 						</marquee>
-						
 					</div>
-					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px;">
+					<div class="gonggaoNeiRong" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px; cursor: pointer;">
 						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
 							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
 						</marquee>
-						
 					</div>
-					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px;">
+					<div class="gonggaoNeiRong" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px; cursor: pointer;">
 						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
 							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
 						</marquee>
-						
 					</div>
-					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px;">
+					<div class="gonggaoNeiRong" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; border-bottom-style: dashed; margin-top: -1px; cursor: pointer;">
 						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
 							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
 						</marquee>
-						
 					</div>
-					<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; margin-top: -1px;">
+					<div class="gonggaoNeiRong" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 17.152%; padding: 1.8% 0% 1.8% 1%; border: 1px solid #D0D0D0; border-top-style: dashed; margin-top: -1px; cursor: pointer;">
 						<marquee  direction="up"  behavior="scroll"  scrollamount="1"  scrolldelay="1">
 							我爱你我爱你我爱你我爱你我爱你我爱你我爱你
 						</marquee>
-						
 					</div>
 				</div>
 			</div>
@@ -346,10 +415,10 @@
 		
 		<!-- 隐藏的div -->
 		<s:iterator value="listCS" var="listCS2" status="csStatus">
-			<div id="cs<s:property value='#csStatus.count' />" onmouseover="csOver(this.id)" onmouseout="csOut(this.id)" class="xuanfu" style="background: #FFF;display: none;position: absolute;width: 52.7%; float: left; margin-left: 14.1%; margin-top: 30px; border: 2px solid red; padding: 1% 1.5% 1% 1.8%;">
+			<div id="cs<s:property value='#csStatus.count' />" onmouseover="csOver(this.id)" onmouseout="csOut(this.id)" class="xuanfu" style="background: #FFF;display: none;position: absolute;width: 52.7%; float: left; margin-left: 14.1%; margin-top: 30px; border: 2px solid #FF6800; padding: 1% 1.5% 1% 1.8%;">
 				<div style="background: #FFF; width: 64.5%; height: 100%; float: left;">
 					<s:iterator value="#listCS2.listCategorySecond" var="listCategorySeconds">	
-						<div style="background: #369; width: 100%; height: 33.33%;border: 1px solid blue;">
+						<div style="background: #369; width: 100%; height: 33.33%; margin-top: -1px;">
 							<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #545454">
 								<s:iterator value="#listCategorySeconds.listCategorySecond" var="cs" status="status">
 									<s:if test="#status.count == 1">
@@ -357,9 +426,9 @@
 									</s:if>
 								</s:iterator>
 							</div>
-							<div style="background: #FFF; width: 100%; height: 79%; color: #666666; font-size: 12px; padding-right: 2%; overflow: hidden;">
+							<div style="background: #FFF; width: 100%; height: 79%; color: red; font-size: 12px; padding-right: 2%; overflow: hidden;">
 								<s:iterator value="#listCategorySeconds.listCategorySecond" var="cs">
-									<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"><a href="javascript:;"><s:property value="#cs.cs_name"/></a> </div>
+									<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"><a href="javascript:;" class="hideCategorysecond"><s:property value="#cs.cs_name"/></a> </div>
 								</s:iterator>
 							</div>
 						</div>
@@ -370,7 +439,7 @@
 						<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #545454; text-align: center;">
 							猜你喜欢
 						</div>
-						<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
+						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
 							<div style="margin-left: 12%; margin-right: 6%;">
 								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
 							</div>
@@ -378,15 +447,7 @@
 								商品图片商品图片商品图片商品图片商品图片商品图片
 							</div>
 						</div>
-						<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
-							<div style="margin-left: 6%; margin-right: 12%;">
-								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
-							</div>
-							<div style="margin-left: 6%; margin-right: 12%;">
-								商品图片商品图片商品图片商品图片商品图片商品图片
-							</div>
-						</div>
-						<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
+						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
 							<div style="margin-left: 12%; margin-right: 6%;">
 								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
 							</div>
@@ -394,15 +455,7 @@
 								商品图片商品图片商品图片商品图片商品图片商品图片
 							</div>
 						</div>
-						<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
-							<div style="margin-left: 6%; margin-right: 12%;">
-								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
-							</div>
-							<div style="margin-left: 6%; margin-right: 12%;">
-								商品图片商品图片商品图片商品图片商品图片商品图片
-							</div>
-						</div>
-						<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left; margin-bottom: 11%;">
+						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
 							<div style="margin-left: 12%; margin-right: 6%;">
 								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
 							</div>
@@ -410,11 +463,27 @@
 								商品图片商品图片商品图片商品图片商品图片商品图片
 							</div>
 						</div>
-						<div style="background: #FFF; width: 50%; height: 79%; color: #ABABAB; font-size: 12px; overflow: hidden; float: left;  margin-bottom: 11%;">
-							<div style="margin-left: 6%; margin-right: 12%;">
+						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
+							<div style="margin-left: 12%; margin-right: 6%;">
 								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
 							</div>
-							<div style="margin-left: 6%; margin-right: 12%;">
+							<div style="margin-left: 12%; margin-right: 6%;">
+								商品图片商品图片商品图片商品图片商品图片商品图片
+							</div>
+						</div>
+						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
+							<div style="margin-left: 12%; margin-right: 6%;">
+								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+							</div>
+							<div style="margin-left: 12%; margin-right: 6%;">
+								商品图片商品图片商品图片商品图片商品图片商品图片
+							</div>
+						</div>
+						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
+							<div style="margin-left: 12%; margin-right: 6%;">
+								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+							</div>
+							<div style="margin-left: 12%; margin-right: 6%;">
 								商品图片商品图片商品图片商品图片商品图片商品图片
 							</div>
 						</div>
@@ -431,7 +500,7 @@
 			</div>	
 			<div style="background: red; overflow: hidden; margin: 0px 0%;">
 				<s:iterator value="listProductTime"  var="listProductTimes">
-					<div class="newestProduct" onclick="queryProduct(this.id)" id="${listProductTimes.p_id}" style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd" >
+					<div class="newestProduct" onclick="queryProduct(${listProductTimes.p_id})" id="times_${listProductTimes.p_id}" style="background: #FFF; width: 33.33%; float: left; height: 31%; padding-top: 15px;" >
 						<div style="text-align: center; height: 196px; overflow: hidden;">
 							<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="90%" height="100%">
 						</div>
@@ -456,12 +525,12 @@
 				</div>
 				<div style="background: red; overflow: hidden; margin: 0px 0%;">
 					<s:iterator value="listProductHot"  var="listProductHots">
-						<div style="background: #FFF; border: 1px solid yellow; width: 33.33%; float: left; height: 31%; padding-top: 15px; padd">
+						<div class="ishotProduct" onclick="queryProduct(${listProductHots.p_id })" id="hot_${listProductHots.p_id }" style="background: #FFF; width: 33.33%; float: left; height: 31%; padding-top: 15px;">
 							<div style="text-align: center; height: 196px; overflow: hidden;">
 								<img alt="商品图片" src="${fileImageAction.urlImage }${listProductHots.p_image }" width="90%" height="100%">
 							</div>
 							<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-								${listProductHots.p_name }
+								<a href="javascript:;" >${listProductHots.p_name }</a>
 							</div>
 							<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
 								¥<font style="font-size: 22px; font-weight: bold;">${listProductHots.p_price }</font>
@@ -482,7 +551,7 @@
 		</div>
 		<div style="background: red; overflow: hidden; margin: 0px 0%;">
 			<s:iterator value="listAllCommentProduct" var="listAllCommentProducts" >
-				<div style="background: #FFF; border: 1px solid red; width: 16.66%; float: left; height: 31%; padding-top: 15px; padd">
+				<div class="likeProduct" onclick="queryProduct(${listAllCommentProducts.p_id })" style="background: #FFF; width: 16.66%; float: left; height: 31%; padding-top: 15px;">
 					<div style="text-align: center; height: 196px; overflow: hidden;">
 						<img alt="商品图片" src="${fileImageAction.urlImage }${listAllCommentProducts.p_image}" width="90%" height="100%">
 					</div>

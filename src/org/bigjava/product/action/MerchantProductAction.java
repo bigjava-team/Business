@@ -175,6 +175,7 @@ public class MerchantProductAction extends ActionSupport {
 			return "userGotoMerchantError";
 		}
 		merchant = merchantBiz.queryUidMerchant(user.getU_id());
+		ActionContext.getContext().getSession().put("merchant", merchant);
 		return "userGotoMerchant";
 	}
 

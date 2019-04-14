@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="${pageContext.request.contextPath}/css/admin.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript"> 
 	window.onload=function(){ 
 	setInterval(function(){ 
@@ -20,7 +21,32 @@
 	var s=date.getSeconds(); //获取秒
 	var d=document.getElementById('Date'); 
 	d.innerHTML=year+' 年 '+mon+' 月 '+da+' 日&emsp;'+'星期 '+day+'&emsp;'+h+':'+m+':'+s; },1000) }
+
+	$(function(){
+		$(".tuichu").hover(function(){
+			$(this).addClass("addjQuery");
+		}, function(){
+			 $(this).removeClass("addjQuery");
+		})
+	});
+	
+	function remove() {
+		window.location.href = "User_close.action";
+	}
 </script>
+
+<style type="text/css">
+
+	.tuichu{
+		color: #4F4F4F;
+		text-decoration: none;
+	}
+	
+	.addjQuery{
+		color: #FF8300;
+	}
+</style>
+
 </head>
 <body id="home_top_body">
 	<div style="height: 78px;">
@@ -33,9 +59,13 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<font color="#000000" id="Date"></font>
 		</div>
-		<div style="margin-left:806px; margin-top:6px; width: 19%; line-height:18px; height:18px; background: #F0F0F0; float: left; border-radius: 7px;">
-			&emsp;&emsp;欢迎您管理员 &nbsp;:&nbsp;${sessionScope.loginUser.username }
+		<div style="margin-left:59%; margin-top:6px; width: 19%; line-height:18px; height:18px; background: #F0F0F0; float: left; border-radius: 7px;">
+			<div style="float: left; width: 85%;">&emsp;&emsp;欢迎您管理员&nbsp;:&nbsp;${sessionScope.loginUser.username }</div> 
+			<div style="float: right; margin-right: 3%;">
+				<a class="tuichu" href="${pageContext.request.contextPath }/user/login.jsp" onclick="remove()" >退出</a>
+			</div>
 		</div>
+		
 	</div>
 	
 </body>

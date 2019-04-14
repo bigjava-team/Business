@@ -4,7 +4,7 @@
 
 <struts>
 	<!-- 开启开发者模式，设置编码 -->
-	<constant name="struts.devMode" value="true" />
+	<constant name="struts.devMode" value="false" /> 
 	<constant name="stuts.i18n.encoding" value="utf-8" />
 
 	<package name="shop" extends="struts-default" namespace="/">
@@ -33,13 +33,8 @@
 			</result>
 
 			<!-- 返回值为loginStore，为店长登录 -->
-			<result name="loginStore" >/user/dianpuzhiye.jsp
+			<result name="loginStore" type="redirectAction">index_showAll?method=post&amp;loginUser.username=${loginUser.username}&amp;category.c_id=1
 			</result>
-
-			<!-- 返回值为注册，返回值为 registerSuccess -->
-			<result name="registerSuccess"> /user/login.jsp </result>
-
-			<!-- 返回值为 -->
 
 			<!-- 注册，返回值为 registerSuccess -->
 			<result name="registerSuccess">/user/login.jsp </result>
@@ -54,7 +49,10 @@
 			<result name="checkcodeFail">/user/login.jsp</result>
 
 			<!-- 注销用户 -->
-			<result name="close">index.jsp </result>
+			<result name="close">/skipIndex.jsp</result>
+			
+			<!-- 返回商城首页 -->
+			<result name="skipIndex" type="redirectAction">index_showAll?method=post&amp;loginUser.username=${loginUser.username }&amp;category.c_id=1</result>
 
 			<!-- 跳转我的首页 -->
 			<result name="gotoUserIndex" type="redirectAction">addr_findAllAddr?method=post&amp;loginUser.username=${loginUser.username
@@ -62,6 +60,8 @@
 
 			<!-- 修改密码界面 -->
 			<result name="updatePasswordSuccess">/user/login.jsp</result>
+			
+			<result name="SetUpShop">/user/shangpingzhuce.jsp</result>
 
 		</action>
 
@@ -118,9 +118,9 @@
 		<action name="MerchantProduct_*" class="merchantProductAction"
 			method="{1}">
 			<!-- 跳转到店铺后台管理 -->
-			<result name="userGotoMerchant">merchant/home.jsp</result>
+			<result name="userGotoMerchant">/merchant/home.jsp</result>
 			<!-- 用户还没有开店 -->
-			<result name="userGotoMerchantError">user/shangpingzhuce.jsp</result>
+			<result name="userGotoMerchantError">/user/shangpingzhuce.jsp</result>
 			<result name="saveSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0&amp;merchant.m_id=${merchant.m_id}
 			</result>
 			<result name="updateProductSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0
@@ -133,7 +133,16 @@
 		<!-- 店铺的action -->
 		<action name="Merchant_*" class="merchantAction" method="{1}">
 			<!-- 跳转到店铺首页 -->
-			<result name="gotoMerchant">user/dianpuzhiye.jsp</result>
+			<result name="gotoMerchant">/user/dianpuzhiye.jsp</result>
+			<result name="registerMerchantSuccess">/user/dianpuzhiye.jsp</result>
+			<!-- 根据店铺ID查询店铺信息，拿出店铺公告 -->
+			<result name="getMerchantNotice">/merchant/notice/list.jsp</result>
+			<!-- 添加公告 ，将原有的空的，修改成有值的-->
+			<result name="updateNotice" type="redirectAction">Merchant_getMerchantNotice.action?m_id=${merchant.m_id}</result>
+			
+			<result name="getMerchantById">/merchant/merchants/list.jsp</result>
+			<result name="queryMerchantOrders">/merchant/order/list.jsp</result>
+			<result name="updateMerchantOrdersState" type="redirectAction">Merchant_queryMerchantOrders?method=post&amp;m_id=${merchant_id }&amp;paging.presentPage=2</result>
 		</action>
 
 		<!-- 商品的action -->
@@ -175,14 +184,27 @@
 			<result name="findAllAddrSuccess">/user/userxinxi.jsp</result>
 			<result name="delAddrSuccess">/user/userxinxi.jsp</result>
 		</action>
+		
+		<action name="collectProduct_*" class="collectProductAction" method="{1}" >
+			<result name="queryUserCollectProduct">/zp1/shouchang.jsp</result>
+		</action>
+		
+		<action name="collectMerchant_*" class="collectMerchantAction" method="{1}" >
+			<result name="collectMerchant">/zp1/dianpu.jsp</result>
+		</action>
 
 	</package>
 
 
 	<!-- ajax 异步校验 -->
 	<package name="json" extends="json-default" namespace="/">
-		<action name="ajax_*"
-			class="org.bigjava.user.action.UserAction" method="{1}">
+		<action name="ajax_*" class="userAction" method="{1}">
+			<result type="json"></result>
+		</action>
+		<action name="ajaxCP_*" class="collectProductAction" method="{1}">
+			<result type="json"></result>
+		</action>
+		<action name="ajaxCM_*" class="collectMerchantAction" method="{1}">
 			<result type="json"></result>
 		</action>
 	</package>

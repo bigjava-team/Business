@@ -10,9 +10,8 @@
 <link href="css/menu_bottom.css" rel="stylesheet" type="text/css">
 <link href="css/product.css" rel="stylesheet" type="text/css">
 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-</head>
 
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var titles = $("div.title >a");
@@ -69,6 +68,11 @@
 	} */
 	
 	$(function(){
+		$("#addShuLiang").hover(function() {
+			$(this).css("cursor", "pointer");
+		}, function() {
+			$(this).css("cursor", "default");
+		});
 		$("#addShuLiang").click(function(){
 			var shuliang = $("#inputShuLiang").val();
 			$("#inputShuLiang").attr("value", shuliang * 1 + 1 );
@@ -76,6 +80,11 @@
 	});
 	
 	$(function(){
+		$("#jianShuLiang").hover(function() {
+			$("#jianShuLiang").css("cursor", "pointer");
+		}, function() {
+			$("#jianShuLiang").css("cursor", "default");
+		});
 		$("#jianShuLiang").click(function(){
 			var shuliang = $("#inputShuLiang").val();
 			if (shuliang > 1) {
@@ -84,18 +93,130 @@
 		});
 	});
 	
+	function collectProduct() {
+		var username = '${loginUser.username}';
+		var p_id = '${product.p_id}';
+		
+		var params = {
+			"loginUser.username": username,
+			"product.p_id": p_id
+		}
+		$.ajax({
+			url: "ajaxCP_collectProduct",
+			type: "post",
+			data: params,
+			dataType: "json",
+			success:function(data, textStatus) {
+				alert("收藏成功");
+				
+			},error:function(data, textStatus) {
+				console.log(data);
+				alert("错误");
+				return;
+			}
+		});
+	}
+	$(function(){
+		$(".shoucangProduct a").hover(function(){
+			$(this).addClass("shoucangProductJQuery");
+		}, function(){
+			 $(this).removeClass("shoucangProductJQuery");
+		})
+	})
+	
+	$(function () {
+	    $('.colorProduct').mouseover(function () {
+	        var $colorProduct = $('<div id="colorProduct"><div class="t_box"><div><s><i></i></s><img src="' + this.src + '" width="100%" /></div></div></div>');
+	        $('.product_div1_div2_div3_div2').append($colorProduct);
+	        $('#colorProduct').show('fast');
+	    }).mouseout(function () {
+	        $('#colorProduct').remove();
+	    }).mousemove(function (e) {
+	        $('#colorProduct').css({ "top": (e.pageY - 30) + "px", "left": (e.pageX + 30) + "px"})
+	    })
+	})
+	
 </script>
 
+<style type="text/css">
+	.shoucangProduct{
+		color: #666666;
+	}
+	
+	.shoucangProductJQuery{
+		color: #FF8300;
+	}
+	
+	/* 颜色图片样式 */
+	#colorProduct {
+	    position: absolute;
+	    color: #333;
+	    display: none;
+	    z-index: 9999;
+	}
+	
+	#colorProduct s {
+	    position: absolute;
+	    top: 10px;
+	    left: -20px;
+	    display: block;
+	    width: 0px;
+	    height: 0px;
+	    font-size: 0px;
+	    line-height: 0px;
+	    border-color: transparent #BBA transparent transparent;
+	    border-style: dashed solid dashed dashed;
+	    border-width: 10px;
+	}
+	
+	#colorProduct s i {
+	    position: absolute;
+	    top: -10px;
+	    left: -8px;
+	    display: block;
+	    width: 0px;
+	    height: 0px;
+	    font-size: 0px;
+	    line-height: 0px;
+	    border-color: transparent #fff transparent transparent;
+	    border-style: dashed solid dashed dashed;
+	    border-width: 10px;
+	}
+	
+	#colorProduct .t_box {
+		width: 40%;
+	    position: relative;
+	    background-color: #CCC;
+	    filter: alpha(opacity=50);
+	    z-index: 9999;
+	}
+	
+	#colorProduct .t_box div {
+	    position: relative;
+	    background-color: #FFF;
+	    border: 1px solid #ACA899;
+	    padding: 0px;
+	    top: -2px;
+	    left: -2px;
+	}
+	
+	.colorProduct {
+	    border: 1px solid #DDD;
+	}
+	
+</style>
+
+</head>
 <body id="product_body">
 	<%@ include file="product_top.jsp" %>
-	
 	<div id="product_div1">
+		
 		<div id="product_div1_div1" >
 			<div id="product_div1_div1_div1" style="text-align: center; overflow: hidden;">
-				<img alt="${product.p_image }" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;">
+				<img alt="${product.p_image }" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;"><br/>
 			</div>
 			<div id="product_div1_div1_div2">
-				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img class="" alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;"></div>
+				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;"></div>
 				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img alt="图片名称" src="images/products/aaa002.jpg" height="90%" style="padding-top: 6%;"></div>
 				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img alt="图片名称" src="images/products/bbb006.jpg" height="90%" style="padding-top: 6%;"></div>
 				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;"></div>
@@ -103,21 +224,24 @@
 		</div>
 		
 		<div id="product_div1_div2">
+			<div class="shoucangProduct" style="font-size: 14px; margin-right: 2%; margin-left: 89%; margin-top: 1%; text-align: center; background: #FFD9EC; border-radius: 8px; cursor: pointer;">
+				<a href="javascript:;" onclick="collectProduct()" >收藏</a>
+			</div>
 			<div id="product_div1_div2_div1">
 				<font id="product_div1_div2_div1_font">${product.p_name }</font>
 			</div>
 			
 			<div id="product_div1_div2_div2">
 				<div>
-					市场价: &emsp;<font id="font1">${product.market }</font>
+					市场价: &emsp;<font id="font1" style="color: #666666;">¥ ${product.market }</font>
 				</div>
 				<div>
-					光光价: &emsp;<font id="font2">${product.p_price }</font>
+					光光价: &emsp;<font id="font2" style="color: #FF8000;">¥ ${product.p_price }</font>
 				</div>
 			</div>
 			
 			<div id="product_div1_div2_div3">
-				优惠: &emsp;&emsp;已优惠&emsp;<font class="product_div1_div2_div3_font">¥1.00</font>
+				优惠: &emsp;&emsp;已优惠&emsp;<font class="product_div1_div2_div3_font" style="color: #FF8000;">¥&nbsp;1.00</font>
 			</div>
 			<div id="product_div1_div2_div3">
 				配送: &emsp;&emsp;快递 : &nbsp; 免运费
@@ -126,10 +250,10 @@
 			<div id="product_div1_div2_div3">
 				<div class="product_div1_div2_div3_div1">颜色: </div>
 				<div class="product_div1_div2_div3_div2">
-					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="50px;">
-					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="50px;">
-					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="50px;">
-					<img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="50px;">
+					<img alt="图片名称" class="colorProduct" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="50px;">
+					<img alt="图片名称" class="colorProduct" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="50px;">
+					<img alt="图片名称" class="colorProduct" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="50px;">
+					<img alt="图片名称" class="colorProduct" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="50px;">
 				</div>
 			</div>
 			
@@ -137,14 +261,6 @@
 			<form id="product_div1_div2_form" action="orderitem_addOrderItemAndQueryOrderItem" method="post">
 				<div class="product_div1_div2_form_div1">
 					<div class="product_div1_div2_form_div1_div1">数量: </div>
-					<%-- <div class="product_div1_div2_form_div1_div2">
-						<select onchange="document.getElementById('input').value=this.value">
-						 	<option value="1">1</option> 
-						 	<option value="2">2</option>
-						 	<option value="3">3</option> 
-						</select>
-						<input id="input" name="input" class="iInput" value="1"> / 件
-					</div> --%>
 					
 					<div class="product_div1_div2_form_div1_div2" style="margin-left: 14%;">
 						<div id="jianShuLiang" style="background: #E0E0E0; margin-left: 0%; float: left; padding: 0% 2.2%; line-height: 26px; text-align: center;">
@@ -184,8 +300,8 @@
 				<div class="product_div1_div3_div1_div2">
 					<h3>店铺详情</h3>
 					<div style="background: red; width: 80%; height: 121px; margin-top: 10%; margin-left: 9.5%;">
-						<%-- <img alt="${merchant.m_image }" src="${fileImageAction.urlImage }${merchant.m_image }" width="100%" height="100%"> --%>
-						<img alt="${merchant.m_image }" src="images/products/bbb006.jpg" height="121px">
+						<img alt="${merchant.m_image }" src="${fileImageAction.urlImage }${merchant.m_image }" width="100%" height="100%">
+						<%-- <img alt="${merchant.m_image }" src="images/products/bbb006.jpg" height="121px"> --%>
 					</div>
 					<div style="font-size: 14px; margin-left: 9.5%; color: #3C3C3C; margin-top: 3%;">
 						本店掌柜: 

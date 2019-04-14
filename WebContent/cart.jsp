@@ -7,9 +7,9 @@
 <meta charset="UTF-8">
 <title>我的购物车</title>
 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="css/menu_bottom.css" rel="stylesheet" type="text/css">
-<link href="css/cart.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<link href="${pageContext.request.contextPath }/css/menu_bottom.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/css/cart.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	function minus(id, productMoney) {
 		var jian = $(".cart_d4_d2_d5_d1_d1_a1").text();
@@ -76,7 +76,42 @@
 		var username = "${loginUser.username }";
 		window.location.href="orders_addOrders?method=post&listId="+listId+"&loginUser.username="+username+"&listNumber="+listNumber+"&orders.total="+total+"&subtotals="+subtotal+"&paging.presentPage=0";
 	}
+	
+	$(function(){
+		$(".cart_d1_d2_ul1 li a").hover(function(){
+			$(this).addClass("addjQuery");
+		}, function(){
+			 $(this).removeClass("addjQuery");
+		})
+	})
+	
+	$(function(){
+		$(".quanxuan").click(function(){
+			if (this.checked) {
+				$(".inputProduct").prop("checked", "true");
+			} else {
+				$(".inputProduct").each(function(){
+					this.checked = false;
+				})
+			}
+		})
+	})
+	
+	function remove() {
+		window.location.href = "User_close.action";
+	}
 </script>
+
+<style type="text/css">
+	
+	.cart_d1_d2_ul_a{
+		color: #666666;
+	}
+
+	.addjQuery{
+		color: #FF8300;
+	}
+</style>
 
 </head>
 <body id="cart_body">
@@ -84,30 +119,29 @@
 		<div class="cart_d1_d1">
 			尊敬的：${loginUser.username }您好!
 		</div>
+		
 		<div class="cart_d1_d2">
 			<ul class="cart_d1_d2_ul1">
-				<li>光光网首页</li>
-				<li>|</li>
-				<li>我的订单</li>
-				<li>|</li>
-				<li>购物车</li>
-				<li>|</li>
-				<li>收藏夹</li>
-				<li>|</li>
-				<li>商品分类</li>
-				<li>|</li>
-				<li>免费开店</li>
-				<li>|</li>
-				<li>联系客服</li>
-				<li>|</li>
-				<li>网站导航</li>
+				<li>&nbsp;&nbsp;<a href="User_gotoUserIndex.action?method=post&loginUser.username=${loginUser.username }" class="cart_d1_d2_ul_a" style="text-decoration: none;">我的主页</a></li>
+				<li style="color: #D0D0D0;">&nbsp;</li>
+				<li><a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presenetPage=0" class="cart_d1_d2_ul_a" style="text-decoration: none;">我的订单</a></li>
+				<li style="color: #D0D0D0;">&nbsp;</li>
+				<li><a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0" class="cart_d1_d2_ul_a" style="text-decoration: none;">购物车</a></li>
+				<li style="color: #D0D0D0;">&nbsp;</li>
+				<li><a href="javascript:;" class="cart_d1_d2_ul_a" style="text-decoration: none;">收藏夹</a></li>
+				<li style="color: #D0D0D0;">&nbsp;</li>
+				<li><a href="#" class="cart_d1_d2_ul_a" style="text-decoration: none;">商品分类</a></li>
+				<li style="color: #D0D0D0;">&nbsp;</li>
+				<li><a href="User_SetUpShop.action?method=post&loginUser.username=${loginUser.username }" class="cart_d1_d2_ul_a" style="text-decoration: none;">我要开店</a></li>
+				<li style="color: #D0D0D0;">&nbsp;</li>
+				<li><a href="#" class="cart_d1_d2_ul_a" style="text-decoration: none;" onclick="remove()">退出</a></li>
 			</ul>
 		</div>
 	</div>
 	
 	<!--板块2-->
     <div class="contenttwo" style="margin-left: 13%; margin-right: 13%;">
-		<img src="images/logo.jpg" height="60px" width="240px" align="left">
+		<img src="${pageContext.request.contextPath }/images/logo.jpg" height="60px" width="240px" align="left">
 		<div class="search bar7">
 			<form id="contenttwo_form">
 				<input class="contenttwo_input" type="text" placeholder="欢迎来到光光网...">
@@ -123,11 +157,25 @@
 	</div>
 	
 	<hr class="cart_hr1" />
-	
+	<s:if test='#listOrderitem == null'>
+		<!-- 没有评论 -->
+		<div style="text-align: center; margin-top: 1%;">
+			亲！您还没有加购商品哦...
+		</div>
+	</s:if>
+	<s:else>
 	<div class="cart_d4">
 		<div class="cart_d4_d1">
 			<div class="cart_d4_d1_d1">
-				商品信息
+				<div style="width: 14.8%; float: left;">
+					<div style="float: left; width: 54%; margin-top: 2%;">
+						<input class="quanxuan" type="checkbox">
+					</div>
+					<div style="float: left; width: 46%; text-align: left;">
+						全选
+					</div>
+				</div>
+				<div style="width: 85.2%; float: left;">商品信息</div>
 			</div>
 			<div class="cart_d4_d1_d2">
 				单价
@@ -145,7 +193,7 @@
 		<s:iterator value="listOrderitem" var="listOrderitems">
 			<div class="cart_d4_d2">
 				<div class="cart_d4_d2_checkbox">
-					<input type="checkbox" id="" name="check" value="${listOrderitems.item_id }" />
+					<input class="inputProduct" type="checkbox" id="" name="check" value="${listOrderitems.item_id }" />
 				</div>
 				<div class="cart_d4_d2_d1">
 					<img class="cart_d4_d2_d1_img1" alt="商品图片" src="${fileImageAction.urlImage }${listOrderitems.product.p_image }" height="50px">
@@ -193,19 +241,15 @@
 	</div>
 	
 	<div id="admin_list_div_page" style="width: 100%; font-size: 15px; text-align: center; padding: 8px 0px 0px 0px;">
-		第<s:property value="pageBean.page"/>页/<s:property value="pageBean.totalPage"/>页&nbsp;&nbsp;&nbsp;&nbsp;
-		<%-- <s:if test="pageBean.page != 1"> --%>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=1">首页</a>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page-1"/>">上一页</a>
-		<%-- </s:if>
-		<s:if test="pageBean.page != pageBean.totalPage"> --%>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page+1"/>">下一页</a>
-			<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.totalPage"/>">尾页</a>
-		<%-- </s:if> --%>
+		第${paging.presentPage }页/${paging.page }页&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath }/orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=1">首页</a>
+		<a href="${pageContext.request.contextPath }/orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage-1}">上一页</a>
+		<a href="${pageContext.request.contextPath }/orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage+1}">下一页</a>
+		<a href="${pageContext.request.contextPath }/orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.page}">尾页</a>
 	</div>
 	
 	<div class="cart_d5" style="margin-top: 0px;">
-		合计 (不含运费)：<font class="cart_d5_font1">¥ 1001.00</font>
+		合计 (不含运费)：<font class="cart_d5_font1">¥0</font>
 	</div>
 	
 	<div class="cart_d6">
@@ -216,6 +260,7 @@
 			<a class="cart_d6_d2_a1" href="">清空购物车</a>
 		</div>
 	</div>
+	</s:else>
 	
 	<%@ include file="menu_bottom.jsp" %>
 

@@ -9,7 +9,6 @@
 
 </head>
 <body id="admin_list_body">
-	
 	<form action="" method="post">
 		<div id="admin_list_div_top">
 			订单列表
@@ -33,6 +32,7 @@
 				<td width="12.5%" align="center">收货人姓名</td>
 				<td width="12.5%" align="center">收货人电话</td>
 				<td width="18.5%" align="center">收货人地址</td>
+				<td width="18.5%" align="center">订单内容</td>
 				<td width="12.5%" align="center">状态</td>
 			</tr>
 			<s:iterator value="listOrders" var="Los">
@@ -43,14 +43,15 @@
 					<td align="center">${Los.user.username }</td>
 					<td align="center">${Los.addr.a_phone }</td>
 					<td align="center">${Los.addr.address }</td>
+					<td align="center">${Los.o_id }</td>
 					<td align="center">
-						<s:if test="Los.state == 2">
-							<a href="javascript:;" >发货</a>
+						<s:if test="#Los.state == 2">
+							<a href="Merchant_updateMerchantOrdersState?method=post&orders.o_id=${Los.o_id }&m_id=${merchant.m_id }" >发货</a>
 						</s:if>
-						<s:elseif test="Los.state == 3">
+						<s:elseif test="#Los.state == 3">
 							待收货
 						</s:elseif>
-						<s:elseif test="Los.state == 4">
+						<s:elseif test="#Los.state == 4">
 							交易完成
 						</s:elseif>
 					</td>
@@ -59,16 +60,12 @@
 		</table>
 		
 		<div id="admin_list_div_page">
-				第<s:property value="#session.paging.presentPage"/>页/<s:property value="#session.paging.page"/>页&nbsp;&nbsp;&nbsp;&nbsp;
-					<s:if test="#session.paging.presentPage != 1">
-						<a href="${pageContext.request.contextPath }/adminOrders_showAllOrders.action?paging.presentPage=1&searchText=${session.searchText}">首页</a>
-						<a href="${pageContext.request.contextPath }/adminOrders_showAllOrders.action?paging.presentPage=<s:property value="#session.paging.presentPage-1"/>&searchText=${session.searchText}">上一页</a>
-					</s:if>
-					<s:if test="#session.paging.presentPage != #session.paging.page">
-						<a href="${pageContext.request.contextPath }/adminOrders_showAllOrders.action?paging.presentPage=<s:property value="#session.paging.presentPage+1"/>&searchText=${session.searchText}">下一页</a>
-						<a href="${pageContext.request.contextPath }/adminOrders_showAllOrders.action?paging.presentPage=<s:property value="#session.paging.page"/>&searchText=${session.searchText}">尾页</a>
-					</s:if>
-			&nbsp;共<s:property value="#session.paging.totalNumber"/>条
+				第${paging.presentPage }页/<s:property value="#session.paging.page"/>页&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="Merchant_queryMerchantOrders?method=post&m_id=${merchant.m_id}&paging.presentPage=1">首页</a>
+					<a href="Merchant_queryMerchantOrders?method=post&m_id=${merchant.m_id}&paging.presentPage=${paging.presentPage-1 }">上一页</a>
+					<a href="Merchant_queryMerchantOrders?method=post&m_id=${merchant.m_id}&paging.presentPage=${paging.presentPage+1 }">下一页</a>
+					<a href="Merchant_queryMerchantOrders?method=post&m_id=${merchant.m_id}&paging.presentPage=${paging.page }">尾页</a>
+			&nbsp;共${paging.page }条
 		</div>
 	</form>
 </body>

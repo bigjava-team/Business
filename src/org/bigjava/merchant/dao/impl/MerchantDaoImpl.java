@@ -103,16 +103,22 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 			for (int i=0; i<listProduct.size(); i++) {
 				int numberP_id = listProduct.get(i).getP_id();
 				List<Orderitem> listOrderitem = session.createQuery("from Orderitem where p_id=?").setInteger(0, numberP_id).list();
-				if (listOrderitem.size()!=0) {
-					for (int j=0; j<listProduct.size(); j++) {
-						int numberItem_id = listOrderitem.get(j).getOrders().getO_id();
-						listOrders = session.createQuery("from Orders where o_id=?").setInteger(0, numberItem_id).list();
+				List<Orders> LOS = session.createQuery("from Orders where a_id!=null").list();
+				System.out.println(LOS);
+				for (int j=0; j<LOS.size(); j++) {
+					int o_id = LOS.get(j).getO_id();
+					for (int z=0; z<listOrderitem.size(); z++) {
+						Orders orders = listOrderitem.get(z).getOrders();
+						if (orders == null) {
+							System.out.println("该商品没有订单");
+						} else if (o_id == orders.getO_id()) {
+							listOrders.add(orders);
+							break;
+						}
 					}
 				}
 			}
 		}
-		session.close();
-		System.out.println("店铺的订单"+listOrders);
 		return listOrders;
 	}
 

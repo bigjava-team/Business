@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="s"  uri="/struts-tags" %>
 <html>
   <head>
              <title>页面布局</title>      
@@ -7,9 +7,17 @@
   </head>
   <!--搜素栏 -->
 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="css/xuanxiangxiahua.css">
-<link rel="stylesheet" href="css/menu_bottom.css">
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css"> --%>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/zp1/css/xuanxiangxiahua.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/zp1/css/menu_bottom.css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.3.1.1-min.js"></script>
+<script type="text/javascript">
+	function queryProduct(id) {
+		var username = '${loginUser.username }';
+		window.open("Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0");
+	}
+</script>
+
 <style type="text/css">
  a {text-decoration: none}
 /*索搜*/
@@ -59,7 +67,15 @@ border-radius: 3px;-webkit-transition: all 0.3s ease-in-out;-moz-transition: all
   <body>
 	<!--板块1-->
 	<div class="contentone">
-		<div class=wenziz>中国大陆 亲，请登录免费注册我的光光</div>
+		<div class=wenziz>
+			中国大陆 
+			<s:if test='loginUser.username == null || loginUser.username.equals("")'>
+				亲，请登录免费注册我的光光
+			</s:if>
+			<s:else>
+				欢迎您：${loginUser.username };
+			</s:else>
+		</div>
 		<div id="d" class=wenziz2>
 			<ul class="nav">
 				<li><a href="#">网站导航</a>
@@ -95,7 +111,7 @@ border-radius: 3px;-webkit-transition: all 0.3s ease-in-out;-moz-transition: all
 
 	<!--板块2-->
 	<div id="d" class="contenttwo">
-		<img src="images/logo.png" height="100%" width="13%" align="left">
+		<img src="${pageContext.request.contextPath }/zp1/images/logo.png" height="100%" width="13%" align="left">
 		<div class="search bar7 ">
 			<form>
 				<input type="text" placeholder="欢迎来到光光网...">
@@ -105,7 +121,7 @@ border-radius: 3px;-webkit-transition: all 0.3s ease-in-out;-moz-transition: all
 		<div id="a" class="wenziz3">
 			<section>
 			<button type="button">
-				<a href="dianpu.jsp">店铺收藏</a>
+				<a href="zp1/dianpu.jsp">店铺收藏</a>
 			</button>
 			</section>
 		</div>
@@ -120,74 +136,17 @@ border-radius: 3px;-webkit-transition: all 0.3s ease-in-out;-moz-transition: all
 	<div style="height:5%;border-top:1px solid #d0d0d0;"></div>
 	<!--板块4-->
 	<div class="contentfour" >
-		<!--1-->
-		<div class="lanmusi">
-			<div class="空的div">
-				<img src="images/9.jpg" height="60%" width="100%" />口红
+		<s:iterator value="listCollectProducts" var="LCPs">
+			<div class="lanmusi" onclick="queryProduct(${LCPs.product.p_id})">
+				<div class="空的div">
+					<img src="${fileImageAction.urlImage }${LCPs.product.p_image }" height="60%" width="100%" />${LCPs.product.p_name }
+				</div>
 			</div>
-			<!--栏目内容-->
-			这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
-		</div>
-		<!--1结束-->
-		<!--2-->
-		<div class="lanmusi">
-			<div class="空的div">
-				<img src="images/9.jpg" height="60%" width="100%" />口红
-			</div>
-			<!--栏目内容-->
-			这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
-		</div>
-		<!--2结束-->
-		<!--3-->
-		<div class="lanmusi">
-			<div class="空的div">
-				<img src="images/9.jpg" height="60%" width="100%" />口红
-			</div>
-			<!--栏目内容-->
-			这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
-		</div>
-		<!--3结束-->
-		<!--4-->
-		<div class="lanmusi">
-			<div class="空的div">
-				<img src="images/9.jpg" height="60%" width="100%" />口红
-			</div>
-			<!--栏目内容-->
-			这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
-		</div>
-		<!--4结束-->
-		<!--5-->
-		<div class="lanmusi">
-			<div class="空的div">
-				<img src="images/9.jpg" height="60%" width="100%" />口红
-			</div>
-			<!--栏目内容-->
-			这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
-		</div>
-		<!--5结束-->
-		<!--6-->
-		<div class="lanmusi">
-			<div class="空的div">
-				<img src="images/9.jpg" height="60%" width="100%" />口红
-			</div>
-			<!--栏目内容-->
-			这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
-		</div>
-		<!--6结束-->
-		<!--7-->
-		<div class="lanmusi">
-			<div class="空的div">
-				<img src="images/9.jpg" height="60%" width="100%" />口红
-			</div>
-			<!--栏目内容-->
-			这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
-		</div>
-		<!--7结束-->
-
+		</s:iterator>
 	</div>
 
 
 	<!-- 尾部 -->
-<%@include file="menu_bottom.jsp"%>
+<%-- <%@include file="menu_bottom.jsp"%> --%>
 </body>
 </html>

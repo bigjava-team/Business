@@ -1,29 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>开店页面</title>
-<link href="../css/product_top.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/css/product_top.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 body, select, textarea {
-	font-size: 1.1em
-}
-
-body {
+	font-size: 1.1em;
 	overflow-x: hidden;
 }
+
 
 .all {
 	width: 100%;
 	height: 100%;
-}
-
-.head {
-	width: 100%;
-	height: 20%;
 }
 
 .headone {
@@ -67,7 +60,7 @@ body {
 .body {
 	margin: 20px auto;
 	width: 90%;
-	height: auto;
+	height: 900px;
 	border: 1px solid #BEBEBE;
 }
 
@@ -83,6 +76,7 @@ body {
 
 .neirong {
 	margin-left: 1%;
+	height: 100%;
 }
 
 .ziti {
@@ -118,7 +112,7 @@ body {
 	right: -9.8%;
 	top: -1px;
 	border-top: 75px solid transparent;
-	border-left: 30px solid #FF9900;
+	border-left: 27px solid #FF9900;
 	border-bottom: 75px solid transparent;
 }
 
@@ -141,7 +135,6 @@ body {
 	background: #FF9900;
 	position: relative;
 	margin-left: 5%;
-	float: left;
 }
 
 #box2:after {
@@ -157,9 +150,9 @@ body {
 	border-bottom: 75px solid transparent;
 	border-left: 30px solid #FF9900;
 	border-bottom: 75px solid transparent;
-	border-top: 75px solid transparent;
-	border-left: 30px solid #FF9900;
-	border-bottom: 75px solid transparent;
+	border-top: 79px solid transparent;
+	border-left: 27px solid #FF9900;
+	border-bottom: 77px solid transparent;
 }
 
 #box2:before {
@@ -182,7 +175,6 @@ body {
 	background: #FF9900;
 	position: relative;
 	margin-left: 5%;
-	float: left;
 }
 
 #box3:after {
@@ -452,11 +444,13 @@ td {
 function showDiv() { 
 	document.getElementById("bg").style.display ="block";
 	document.getElementById("show").style.display ="block";
+	$("body").css("overflow", "hidden");
 }
  
 function hideDiv(){
 	document.getElementById("bg").style.display ="none";
 	document.getElementById("show").style.display ="none";	
+	$("body").css("overflow", "auto");
 }
 	$(document).ready(function() {
 		var titles = $("div.title >a");
@@ -516,14 +510,11 @@ function hideDiv(){
 
 <body style="margin: 0px; padding: 0px">
 	<div class="head">
-		<%@ include file="product_top.jsp" %>
+		<s:include value="top.jsp" />
 		<div class="headtwo">
 			<a href="#"><font size="5px" style="padding-left: 10%">店铺注册页面</font></a>
 		</div>
 	</div>
-
-
-
 	<div class="body">
 		<div class="neirong">
 			<div class="kaitou">
@@ -575,12 +566,10 @@ function hideDiv(){
 						href="javascript:void(0)">div二号</a> <a id="three"
 						href="javascript:void(0)">div三号</a>
 				</div>
-
 				<div class="content">
-
 					<div class="aa">
 						<div class="bb">
-							<img src="../TuPian/TouXiang.png"
+							<img src="${pageContext.request.contextPath }/TuPian/TouXiang.png"
 								style="height: 200px; width: 200px"><br />
 							<h2>个人店铺</h2>
 							自己通过个人账号创建的店铺为个人店铺。<br /> <br />
@@ -589,7 +578,6 @@ function hideDiv(){
 						</div>
 					</div>
 					<div class="aa">
-
 						<div class="ee">
 							<div class="gg">
 								<div class="ziti">
@@ -616,7 +604,7 @@ function hideDiv(){
 						<div class="ff">
 							1、淘宝网在任何情况下都不会用QQ与您取得联系, 任何使用QQ联系您的"工作人员"都是骗子。 <br />
 							2、消费者保障协议变更内容将于2017年12月01日零点生效， 主要变更点可见协议公示通知（<a class="lianjie"
-								href="????">光光网通知</a>）。 相关重要条款我们已以粗体下划线的方式特别标注，请重点阅读。<br />
+								href="#">光光网通知</a>）。 相关重要条款我们已以粗体下划线的方式特别标注，请重点阅读。<br />
 
 						</div>
 						<div class="anniudiv">
@@ -634,17 +622,14 @@ function hideDiv(){
 					<div class="container_div"><!-- 遮罩 -->
    						 <div id="bg"></div>
    						 <div id="show">
-						<form action="userxinxi.jsp" method="post"
-							onsubmit="return yanzhen()">
+						<form action="Merchant_registerMerchant.action" method="post" onsubmit="return yanzhen()" enctype="multipart/form-data">
 							<div id="cont_b" class="cont">
-								<b><font color="red">店铺信息填写</font></b><br /> 店铺名:<input
-									type="text" id="name" name="name" placeholder="长度为5-10位 "><br />
-								店铺头像:<input type="file" id="reportXML" name="reportXML"
-									title="输入内容" multiple="multiple"><br /> 
-									 <input type="button" class="contsubmit" value="返回" onclick="hideDiv()" style="margin-left: 10%;"/>
-									<input
-									type="submit" class="contsubmit" style="margin-left: 25%"
-									value="提交申请">
+								<b><font color="red">店铺信息填写</font></b><br /> 
+								<input type="hidden" name="loginUser.username" value="${loginUser.username }" />
+								店铺名:<input type="text" id="name" name="m_name" placeholder="长度为5-10位 " /><br />
+								店铺头像:<input type="file" id="reportXML" name="fileImageAction.fileImage" title="输入内容" /><br /> 
+							 	<input type="button" class="contsubmit" value="返回" onclick="hideDiv()" style="margin-left: 10%;"/>
+								<input type="submit" class="contsubmit" style="margin-left: 25%" value="提交申请" />
 							</div>
 						</form>
 						</div>
@@ -655,7 +640,6 @@ function hideDiv(){
 
 						<div class="dd">
 							<table class="biaoge">
-
 								<tr>
 									<td class="tr1">认证名称</td>
 									<td class="tr1">状态</td>
@@ -675,7 +659,7 @@ function hideDiv(){
 									
 									</font></td>
 									<td>登录成功</td>
-									<td>${sessionScope.loginUser.email}</td>
+									<td>${loginUser.email}</td>
 								</tr>
 
 								<tr>
@@ -687,28 +671,24 @@ function hideDiv(){
 
 							</table>
 
-							<br /> <br /> <br />
+							<br />
 							<div class="anniudiv2">
 								<button class="button2" style="vertical-align: middle"
 									onclick="two();">
 									<span>上一步</span>
 								</button>
-								<button class="button2" id="button"
-									
-									style="vertical-align: middle; width: 40%;" onclick="showDiv();">
+								<button class="button2" id="button" style="vertical-align: middle; width: 40%;" onclick="showDiv();">
 									<span>已了解，马上开店</span>
 								</button>
 								
 							</div>
 						</div>
-</div>
+					</div>
 					</div>
 				</div>
 
 			</div>
 		</div>
 	</div>
-
-
 </body>
 </html>

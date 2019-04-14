@@ -24,7 +24,7 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 		System.out.println("开始执行addOrders方法");
 		
 		orders.setUser(user);// 添加与User类的外键
-		orders.setAddr(addr);// 添加与Addr类的外键
+//		orders.setAddr(addr);// 添加与Addr类的外键
 		
 		this.getHibernateTemplate().save(orders);// 添加订单信息
 	}
@@ -101,7 +101,7 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 	@Override
 	public void updateOrdersState(Orders orders) {
 		System.out.println("开始执行updateOrdersState方法");
-		this.getHibernateTemplate().update(orders);
+		this.getHibernateTemplate().merge(orders);
 	}
 
 }

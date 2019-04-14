@@ -94,9 +94,13 @@
 	
 	<!-- 收藏店铺 -->
 	<bean name="collectMerchantDao" class="org.bigjava.collectMerchant.dao.impl.CollectMerchantDaoImpl" autowire="byName" />
+	<bean name="collectMerchantBiz" class="org.bigjava.collectMerchant.biz.impl.CollectMerchantBizImpl" autowire="byName" />
+	<bean name="collectMerchantAction" class="org.bigjava.collectMerchant.action.CollectMerchantAction" autowire="byName" />
 	
 	<!-- 收藏商品 -->
 	<bean name="collectProductDao" class="org.bigjava.collectProduct.dao.impl.CollectProductDaoImpl" autowire="byName" />
+	<bean name="collectProductBiz" class="org.bigjava.collectProduct.biz.impl.CollectProductBizImpl" autowire="byName" />
+	<bean name="collectProductAction" class="org.bigjava.collectProduct.action.CollectProductAction" autowire="byName" />
 	
 	<bean name="paymentOrders" class="org.bigjava.orders.action.PaymentOrders" autowire="byName" />
 	

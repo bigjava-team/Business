@@ -1,0 +1,53 @@
+@charset "UTF-8";
+div.container {
+	width: 63%;
+	margin: 0px auto;
+	*zoom: 1;
+}
+
+div.container:after {
+	height: 0px;
+	display: block;
+	clear: both;
+	visibility: hidden;
+	overflow: hidden;
+	content: "\0020";
+}
+
+div.container .span24{
+	_display: inline;
+	float: left;
+	margin-right: 10px;
+	overflow: hidden;
+}
+
+div.container .span24 {
+	width: 100%;
+	margin-right: 0px;
+}
+
+@-moz-document url-prefix() {
+	input.button {
+		padding: 0px 10px;
+	}
+}
+
+div.footer .bottomNav li {
+	line-height: 26px;
+	display: inline;
+}
+
+div.footer .bottomNav a {
+	margin: 0px 10px;
+}
+
+div.footer .copyright {
+	line-height: 30px;
+	margin-bottom: 10px;
+	color: #555555;
+	text-align: center;
+}
+
+.footer{
+	font-size: 14px;
+}

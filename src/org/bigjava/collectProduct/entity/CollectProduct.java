@@ -16,6 +16,16 @@ public class CollectProduct {
 	
 	private Product product;// 收藏商品指向的Product
 
+	public CollectProduct() {
+		super();
+	}
+
+	public CollectProduct(User user, Product product) {
+		super();
+		this.user = user;
+		this.product = product;
+	}
+
 	public int getCP_id() {
 		return CP_id;
 	}
@@ -42,7 +52,6 @@ public class CollectProduct {
 
 	@Override
 	public String toString() {
-		return "CollectProduct [CP_id=" + CP_id + ", product=" + product + "]";
+		return "CollectProduct [CP_id=" + CP_id + ", user=" + user + ", product=" + product + "]";
 	}
-
 }

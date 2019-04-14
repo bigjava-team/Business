@@ -1,8 +1,11 @@
 package org.bigjava.merchant.action;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import org.bigjava.function.FileImageAction;
+import org.bigjava.function.Paging;
 import org.bigjava.merchant.biz.MerchantBiz;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.orders.biz.OrdersBiz;
@@ -12,6 +15,7 @@ import org.bigjava.product.entity.Product;
 import org.bigjava.user.biz.UserBiz;
 import org.bigjava.user.entity.User;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -24,8 +28,41 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	private User user;// 用户的信息
 	private User loginUser;// 登录的用户信息
 	private Orders orders;// 订单信息
+	private FileImageAction fileImageAction;// 上传一张图片的方法
+	
+	private Paging paging;// 分页的方法
 	
 	private List<Orders> listOrders;// 查询到的订单
+	
+	private int merchant_id;// 店铺id
+	
+	public Paging getPaging() {
+		return paging;
+	}
+
+	public void setPaging(Paging paging) {
+		this.paging = paging;
+	}
+
+	public int getMerchant_id() {
+		return merchant_id;
+	}
+
+	public void setMerchant_id(int merchant_id) {
+		this.merchant_id = merchant_id;
+	}
+
+	public void setOrdersBiz(OrdersBiz ordersBiz) {
+		this.ordersBiz = ordersBiz;
+	}
+
+	public FileImageAction getFileImageAction() {
+		return fileImageAction;
+	}
+
+	public void setFileImageAction(FileImageAction fileImageAction) {
+		this.fileImageAction = fileImageAction;
+	}
 	
 	public Orders getOrders() {
 		return orders;
@@ -70,31 +107,31 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 
 	/**
 	 * 注册店铺
+	 * @throws IOException 
 	 */
-	public String registerMerchant() {
-		// 获取用户的ID
-		int u_id = user.getU_id();
-		// 店铺注册的时间
-		Date m_time = new Date();
-		// 店铺的状态
-		int m_is_freeze = 1;
-
-		merchant.setM_time(m_time);
-		merchant.setM_is_freeze(m_is_freeze);
-
-		user = userBiz.query(u_id);
-
+	public String registerMerchant() throws IOException {
+		System.out.println("开始注册店铺" + loginUser.getUsername());
+		System.out.println("ss"+fileImageAction.getFileImage());
+		// 上传图片
+		fileImageAction.fileImage();
+		user = userBiz.queryUsernameUser(loginUser.getUsername());
+		merchant.setM_time(new Date());// 店铺注册时间
+		merchant.setM_is_freeze(1);// 店铺状态
+		merchant.setM_image(fileImageAction.getFileImageFileName());
 		merchantBiz.registerMerchant(merchant, user);
 		return "registerMerchantSuccess";
 	}
-
+	
 	/**
 	 * 通过店铺ID查询店铺
+	 * 查询店铺的公告
 	 */
 	public String getMerchantById() {
-		merchantBiz.queryMerchant(merchant.getM_id());
-		return "getMerchantByIdSuccess";
+		merchant = merchantBiz.queryMerchant(merchant.getM_id());
+		ActionContext.getContext().getSession().put("merchant", merchant);
+		return "getMerchantById";
 	}
+
 
 	/**
 	 * 删除店铺
@@ -122,6 +159,16 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	}
 	
 	/**
+	 * 通过店铺ID查询店铺
+	 * 查询店铺的公告
+	 */
+	public String getMerchantNotice() {
+		merchant = merchantBiz.queryMerchant(merchant.getM_id());
+		ActionContext.getContext().getSession().put("merchantNotice", merchant);
+		return "getMerchantNotice";
+	}
+	
+	/**
 	 * 添加店铺公告
 	 */
 	public String addNotice() {
@@ -135,7 +182,9 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	 */
 	public String updateNotice() {
 		System.out.println("修改店铺公告");
-		merchantBiz.updateNotice(merchant);
+		Merchant updateMerchantNotice = merchantBiz.queryMerchant(merchant.getM_id());
+//		updateMerchantNotice.setNotice(notice);
+		merchantBiz.updateNotice(updateMerchantNotice);
 		return "updateNotice";
 	}
 	
@@ -145,6 +194,28 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	public String queryMerchantOrders() {
 		System.out.println("开始查询买家的订单详情");
 		listOrders = merchantBiz.queryListOrders(merchant.getM_id());
+		int divisor = listOrders.size()/2;
+		int remainder = listOrders.size()%2;
+		if (remainder == 0) {
+			paging.setPage(divisor);// 最大页数
+		} else if (remainder !=0) {
+			paging.setPage(divisor+1);// 最大页数
+		}
+		if (paging.getPresentPage() <= 0) {
+			paging.setPresentPage(1);
+		} else if (paging.getPresentPage() > paging.getPage() && paging.getPage() > 0) {
+			paging.setPresentPage(paging.getPage());
+		} else {
+			paging.setPresentPage(1);
+		}
+		
+		if (listOrders.size()!=0) {
+			if (divisor < paging.getPresentPage() && remainder!=0) {
+				listOrders = listOrders.subList((paging.getPresentPage()-1)*2, remainder+(divisor*2));
+			} else {
+				listOrders = listOrders.subList((paging.getPresentPage()-1)*2, paging.getPresentPage()*2);
+			}
+		}
 		System.out.println("订单详情"+listOrders);
 		return "queryMerchantOrders";
 	}
@@ -153,11 +224,12 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	 * 修改买家的订单的状态
 	 */
 	public String updateMerchantOrdersState() {
-		System.out.println("修改买家的订单的状态");
-		Orders merchatnOrders = ordersBiz.queryOrders_id(orders.getO_id());
-		if (merchatnOrders.getState() == 2) {// 支付状态
-			merchatnOrders.setState(3);// 待发货状态
-			merchantBiz.updateOrdersState(merchatnOrders);
+		System.out.println("修改买家的订单的状态" + merchant.getM_id());
+		merchant_id = merchant.getM_id();
+		Orders merchantOrders = ordersBiz.queryOrders_id(orders.getO_id());
+		if (merchantOrders.getState() == 2) {// 支付状态
+			merchantOrders.setState(3);// 待发货状态
+			merchantBiz.updateOrdersState(merchantOrders);
 		}
 		return "updateMerchantOrdersState";
 	}

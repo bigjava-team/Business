@@ -84,18 +84,6 @@ public class CategorySecondDaoImpl extends HibernateDaoSupport implements Catego
 
 	// 修改二级分类
 	@Override
-//	public void updateCategorySecond(CategorySecond categorySecond, CategorySecond updatecategorySecond) {// categorySecond为数据库中的二级分类数据、updatecategorySecond为修改的二级分类数据
-//		// TODO Auto-generated method stub
-//		System.out.println("开始执行updateCategorySecond方法");
-//		if (updatecategorySecond.getCs_name() == null || updatecategorySecond.getCs_name().equals("")) {// 判断修改的店铺用户名不能为空
-//			System.out.println("二级分类名为空");
-//		} else {
-//			if (!updatecategorySecond.getCs_name().equals(categorySecond.getCs_name())) {// 如果修改的店铺用户名与数据库中的店铺用户名不一样将其保存至merchant中
-//				categorySecond.setCs_name(updatecategorySecond.getCs_name());
-//			}
-//		}
-//		this.getHibernateTemplate().update(categorySecond);
-//	}
 	public void updateCategorySecond(CategorySecond categorySecond) {// categorySecond为修改的二级分类数据
 		// TODO Auto-generated method stub
 		System.out.println("开始执行updateCategorySecond方法");

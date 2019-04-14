@@ -7,7 +7,7 @@
   </head>
   <!--搜素栏 -->
 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css"> --%>
 <link rel="stylesheet" href="css/xuanxiangxiahua.css">
 <link rel="stylesheet" href="css/menu_bottom.css">
 <style type="text/css">
@@ -109,7 +109,7 @@ border-radius: 3px;-webkit-transition: all 0.3s ease-in-out;-moz-transition: all
 		<div id="a" class="wenziz3">
 			<section>
 			<button type="button">
-				<a href="shouchang.jsp">宝贝收藏</a>
+				<a href="javascript:;">宝贝收藏</a>
 			</button>
 			</section>
 		</div>
@@ -143,18 +143,15 @@ border-radius: 3px;-webkit-transition: all 0.3s ease-in-out;-moz-transition: all
 		<div class="lanmuwu">
 			<div class="lanmusix"></div>
 				<div class="lanmusevre">
-										<img src="images/0.jpg" height="80%" width="18%"  />
-										<img src="images/0.jpg" height="80%" width="18%"  />
-										<img src="images/0.jpg" height="80%" width="18%"  />
-										<img src="images/0.jpg" height="80%" width="18%"  />							
-
+					<img src="images/0.jpg" height="80%" width="18%"  />
+					<img src="images/0.jpg" height="80%" width="18%"  />
+					<img src="images/0.jpg" height="80%" width="18%"  />
+					<img src="images/0.jpg" height="80%" width="18%"  />							
 				</div>
-		</div>
+			</div>
 		<!--4结束-->
-
-	</div>
+		</div>
 
 	<%@include file="menu_bottom.jsp"%>
-
 </body>
 </html>
