@@ -39,9 +39,4 @@ public interface CollectProductBiz {
 	 * 查询用户收藏的商品数
 	 */
 	public int queryCollectProduct_number(int u_id);
-	
-	/**
-	 * 查询用户收藏的商品
-	 */
-	public List<CollectProduct> queryUserCollectProduct(int u_id);
 }

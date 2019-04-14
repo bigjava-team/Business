@@ -55,11 +55,4 @@ public class CollectProductBizImpl implements CollectProductBiz {
 		// TODO Auto-generated method stub
 		return collectProductDao.queryCollectProduct_number(u_id);
 	}
-
-	@Override
-	public List<CollectProduct> queryUserCollectProduct(int u_id) {
-		// TODO Auto-generated method stub
-		return collectProductDao.queryUserCollectProduct(u_id);
-	}
-
 }

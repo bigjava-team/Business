@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+    pageEncoding="UTF-8"%>   
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 
@@ -32,7 +31,7 @@
 		if (username == null || username == "") {
 			window.location.href="collectProduct_queryUserCollectProduct?method=post";
 		} else {
-			window.location.href="collectProduct_queryUserCollectProduct?method=post&loginUser.username="+username;
+			window.location.href="collectProduct_queryUserCollectProduct?method=post&loginUser.username="+username+"&paging.presentPage=0";
 		}
 	}
 	

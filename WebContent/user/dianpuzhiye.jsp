@@ -318,7 +318,30 @@ ol .current {
 	right: 5px;
 	left: auto;
 }
+
+
+.dianpuzhuye_button{
+	width:100%;
+	background-color: #4CAF50; 
+    border: none;
+    color: white;
+   padding-bottom:13.5%;
+   padding-left:3%;
+   padding-right:3%;
+   padding-top:13.5%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    }
 </style>
+
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	function CollectMerchant() {
+		
+	}
+</script>
 
 </head>
 <body>
@@ -335,6 +358,9 @@ ol .current {
 			<div
 				style="float: left; border-right: 1px solid #d2c8c8; padding-top: 1%; padding-bottom: 0.5%; padding-right: 2%; padding-left: 2%;">
 				#店铺名</div>
+				<div
+				style="float: left; border-right: 1px solid #d2c8c8; padding-right: 1%; padding-left: 1%;width: 8%">
+				<input type="button" class="dianpuzhuye_button" onclick="CollectMerchant()" value="收藏店铺"></div>
 		
 			<div style="float: right;margin-right: 10%;">
 			 <div class="search bar7">
@@ -420,7 +446,7 @@ ol .current {
 			}
 
 			function animationOut(i) {
-				console.log(i, 'i\'m out')
+				/* console.log(i, 'i\'m out'); */
 				switch (i) {
 				case 1:
 					$('.page2 h2').fadeOut();
@@ -441,8 +467,6 @@ ol .current {
 		</script>
 
 		<div style="text-align: center; clear: both">
-			<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
-			<script src="/follow.js" type="text/javascript"></script>
 			<script src='${pageContext.request.contextPath }/js/mousewheel.js'></script>
 			<script src="${pageContext.request.contextPath }/js/jquery.touchSwipe.js"></script>
 			<script src="${pageContext.request.contextPath }/js/cubeTransition.js"></script>
@@ -466,8 +490,6 @@ ol .current {
 				</div>
 				<div class="four">
 					<div style="text-align: center; clear: both; margin-top: 1%">
-						<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
-						<script src="/follow.js" type="text/javascript"></script>
 					</div>
 					<iframe frameborder="0" scrolling="no" src="${pageContext.request.contextPath }/user/dianpuzhiye_lunbo.jsp" width="100%"
 						height="500px"></iframe>

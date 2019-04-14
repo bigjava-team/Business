@@ -77,12 +77,4 @@ public class CollectProductDaoImpl extends HibernateDaoSupport implements Collec
 		return number;
 	}
 
-	// 查询用户收藏的商品
-	@Override
-	public List<CollectProduct> queryUserCollectProduct(int u_id) {
-		System.out.println("查询用户收藏的商品");
-		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
-		return session.createQuery("from CollectProduct where u_id=?").setInteger(0, u_id).list();
-	}
-
 }

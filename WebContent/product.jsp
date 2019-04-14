@@ -68,6 +68,11 @@
 	} */
 	
 	$(function(){
+		$("#addShuLiang").hover(function() {
+			$(this).css("cursor", "pointer");
+		}, function() {
+			$(this).css("cursor", "default");
+		});
 		$("#addShuLiang").click(function(){
 			var shuliang = $("#inputShuLiang").val();
 			$("#inputShuLiang").attr("value", shuliang * 1 + 1 );
@@ -75,6 +80,11 @@
 	});
 	
 	$(function(){
+		$("#jianShuLiang").hover(function() {
+			$("#jianShuLiang").css("cursor", "pointer");
+		}, function() {
+			$("#jianShuLiang").css("cursor", "default");
+		});
 		$("#jianShuLiang").click(function(){
 			var shuliang = $("#inputShuLiang").val();
 			if (shuliang > 1) {
@@ -107,7 +117,7 @@
 		});
 	}
 	$(function(){
-		$(".shoucangProduct").hover(function(){
+		$(".shoucangProduct a").hover(function(){
 			$(this).addClass("shoucangProductJQuery");
 		}, function(){
 			 $(this).removeClass("shoucangProductJQuery");
@@ -133,7 +143,6 @@
 		<div id="product_div1_div1" >
 			<div id="product_div1_div1_div1" style="text-align: center; overflow: hidden;">
 				<img alt="${product.p_image }" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;"><br/>
-				<a href="javascript:;" onclick="collectProduct()" >收藏商品</a>
 			</div>
 			<div id="product_div1_div1_div2">
 				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img class="" alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;"></div>
@@ -145,7 +154,7 @@
 		
 		<div id="product_div1_div2">
 			<div class="shoucangProduct" style="font-size: 14px; margin-right: 2%; margin-left: 89%; margin-top: 1%; text-align: center; background: #FFD9EC; border-radius: 8px; cursor: pointer;">
-				收藏
+				<a href="javascript:;" onclick="collectProduct()" >收藏</a>
 			</div>
 			<div id="product_div1_div2_div1">
 				<font id="product_div1_div2_div1_font">${product.p_name }</font>
@@ -181,14 +190,6 @@
 			<form id="product_div1_div2_form" action="orderitem_addOrderItemAndQueryOrderItem" method="post">
 				<div class="product_div1_div2_form_div1">
 					<div class="product_div1_div2_form_div1_div1">数量: </div>
-					<%-- <div class="product_div1_div2_form_div1_div2">
-						<select onchange="document.getElementById('input').value=this.value">
-						 	<option value="1">1</option> 
-						 	<option value="2">2</option>
-						 	<option value="3">3</option> 
-						</select>
-						<input id="input" name="input" class="iInput" value="1"> / 件
-					</div> --%>
 					
 					<div class="product_div1_div2_form_div1_div2" style="margin-left: 14%;">
 						<div id="jianShuLiang" style="background: #E0E0E0; margin-left: 0%; float: left; padding: 0% 2.2%; line-height: 26px; text-align: center;">

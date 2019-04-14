@@ -90,7 +90,7 @@ public class TestStatement {
 		
 		CollectMerchant collectMerchant = new CollectMerchant();
 		
-		collectMerchantDao.addCollectMerchant(collectMerchant, user, merchant);
+//		collectMerchantDao.addCollectMerchant(collectMerchant, user, merchant);
 	}
 	
 	// Ìí¼Ó¶©µ¥
