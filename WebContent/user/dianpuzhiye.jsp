@@ -216,7 +216,7 @@ body {
 
 .shangping2 {
 	margin-top: 3%;
-	padding-top: 10%;
+	padding-top: 3%;
 	padding-bottom: 2%;
 	width: 28%;
 	float: left;
@@ -652,33 +652,49 @@ ol .current {
 						</div>
 						<div class="dj1" id="dg1">
 							<div class="shangping">
-								<div style="float: left">#背景图片</div>
-								<div style="float: right">
-									<a href="***">#商品名称</a><br /> <font color="red">¥#商品价格</font><br />
+								<div >
+									<div style="border: #eee 1px solid;height: 76px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+										<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+									</div>
+								</div>
+								<div style="text-align: center;">
+									<a href="***">#商品名称</a> <font color="red">¥#商品价格</font><br />
 									已售出<font color="red">#商品出售量</font>件
 								</div>
 								<div class="clear"></div>
 							</div>
 							<div class="shangping">
-								<div style="float: left">#背景图片</div>
-								<div style="float: right">
-									<a href="***">#商品名称</a><br /> <font color="red">¥#商品价格</font><br />
+								<div >
+									<div style="border: #eee 1px solid;height: 76px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+										<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+									</div>
+								</div>
+								<div style="text-align: center;">
+									<a href="***">#商品名称</a> <font color="red">¥#商品价格</font><br />
 									已售出<font color="red">#商品出售量</font>件
 								</div>
 								<div class="clear"></div>
 							</div>
 							<div class="shangping">
-								<div style="float: left">#背景图片</div>
-								<div style="float: right">
-									<a href="***">#商品名称</a><br /> <font color="red">¥#商品价格</font><br />
+								<div >
+									<div style="border: #eee 1px solid;height: 76px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+										<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+									</div>
+								</div>
+								<div style="text-align: center;">
+									<a href="***">#商品名称</a> <font color="red">¥#商品价格</font><br />
 									已售出<font color="red">#商品出售量</font>件
 								</div>
 								<div class="clear"></div>
 							</div>
 							<div class="shangping">
-								<div style="float: left">#背景图片</div>
-								<div style="float: right">
-									<a href="***">#商品名称</a><br /> <font color="red">¥#商品价格</font><br />
+								<div >
+									<div style="border: #eee 1px solid;height: 76px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+										<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+									</div>
+								</div>
+								<div style="text-align: center;">
+									<a href="***">#商品名称</a> <font color="red">¥#商品价格</font><br />
 									已售出<font color="red">#商品出售量</font>件
 								</div>
 								<div class="clear"></div>
@@ -727,7 +743,10 @@ ol .current {
 					<div class="one">宝贝推荐</div>
 
 					<div class="shangping2">
-						#商品图片<br /> <a href="***">#商品名称</a> <font color="red">#商品价格</font><br />
+						<div style="border: #eee 1px solid;height: 136px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+							<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+						</div>
+						<br /> <a href="***">#商品名称</a> <font color="red">#商品价格</font><br />
 						<div style="float: right">
 							<font color="#595959">月销:#商品销量</font>
 						</div>
@@ -735,35 +754,46 @@ ol .current {
 
 
 					<div class="shangping2">
-						#商品图片<br /> <font color="red">#商品价格</font><br /> #商品名称<br />
+						<div style="border: #eee 1px solid;height: 136px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+							<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+						</div>
+						<br /> <a href="***">#商品名称</a> <font color="red">#商品价格</font><br />
 						<div style="float: right">
 							<font color="#595959">月销:#商品销量</font>
 						</div>
 					</div>
 					<div class="shangping2">
-						#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-							color="black">#商品名称</font><br />
+						<div style="border: #eee 1px solid;height: 136px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+							<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+						</div>
+						<br /> <a href="***">#商品名称</a> <font color="red">#商品价格</font><br />
 						<div style="float: right">
 							<font color="#595959">月销:#商品销量</font>
 						</div>
 					</div>
 					<div class="shangping2">
-						#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-							color="black">#商品名称</font><br />
+						<div style="border: #eee 1px solid;height: 136px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+							<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+						</div>
+						<br /> <a href="***">#商品名称</a> <font color="red">#商品价格</font><br />
 						<div style="float: right">
 							<font color="#595959">月销:#商品销量</font>
 						</div>
 					</div>
 					<div class="shangping2">
-						#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-							color="black">#商品名称</font><br />
+						<div style="border: #eee 1px solid;height: 136px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+							<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+						</div>
+						<br /> <a href="***">#商品名称</a> <font color="red">#商品价格</font><br />
 						<div style="float: right">
 							<font color="#595959">月销:#商品销量</font>
 						</div>
 					</div>
 					<div class="shangping2">
-						#商品图片<br /> <font color="red">#商品价格</font><br /> <font
-							color="black">#商品名称</font><br />
+						<div style="border: #eee 1px solid;height: 136px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+							<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+						</div>
+						<br /> <a href="***">#商品名称</a> <font color="red">#商品价格</font><br />
 						<div style="float: right">
 							<font color="#595959">月销:#商品销量</font>
 						</div>

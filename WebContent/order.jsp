@@ -13,6 +13,15 @@
 	.buy:hover {
 		cursor: pointer;
 	}
+	
+	.cart_d1_d2_ul1_a{
+		text-decoration: none;
+		color: #666666;
+	}
+
+	.addjQuery{
+		color: #FF8300;
+	}
 </style>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
 <script type="text/javascript">
@@ -27,6 +36,18 @@
 		}
 		var username = "${loginUser.username }";
 		window.location.href = "paymentOrders_payOrders?method=post&out_trade_no="+orderNumber+"&total_amount="+total+"&subject="+productName+"&addr.a_id="+addrId+"&loginUser.username="+username;
+	}
+	
+	$(function(){
+		$(".cart_d1_d2_ul1 li a").hover(function(){
+			$(this).addClass("addjQuery");
+		}, function(){
+			 $(this).removeClass("addjQuery");
+		})
+	})
+	
+	function remove() {
+		window.location.href = "User_close.action";
 	}
 </script>
 </head>
