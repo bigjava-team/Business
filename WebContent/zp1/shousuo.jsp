@@ -45,7 +45,7 @@
 /*第四版块*/
 .contentfour1{ background:#ffffff; width:17.5%; height:150%; float:left;border:2px solid #ffffff; margin:0 0 0 6.5%  }
 /*第五版块*/
-.content5{ background:#ffffff; width:74%; height:150%;  border:2px solid #ffffff; margin:0 0 0 24%}
+.content5{ background:#ffffff; width:85%; height:150%; float:center; border:2px solid #ffffff; margin:0 auto}
 /*节目1*/
 .lanmusi{ background:#fff; width:16%; height:25%;float:left; border:2px solid #FF9900; margin:2 3 0 3}
 /*节目2*/
@@ -144,45 +144,7 @@
 
 	<div style="height:3%; border-top: 1px solid #d0d0d0;"></div>
 	<!--板块4-->
-	<div class="contentfour1">
-		<!--2-->
-		<div class="lanmuwu">
-			<div class="juzhong">
-				<img src="${pageContext.request.contextPath }/zp1/images/9.jpg" height="60%" />口红
-			</div>
-			<!--栏目内容-->
-			这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
-		</div>
-		<!--2结束-->
-		<!--2-->
-		<div class="lanmuwu">
-			<div class="juzhong">
-				<img src="${pageContext.request.contextPath }/zp1/images/9.jpg" height="60%" />口红
-			</div>
-			<!--栏目内容-->
-			这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
-		</div>
-		<!--2结束-->
-		<!--2-->
-		<div class="lanmuwu">
-			<div class="juzhong">
-				<img src="${pageContext.request.contextPath }/zp1/images/9.jpg" height="60%"  />口红
-			</div>
-			<!--栏目内容-->
-			这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
-		</div>
-		<!--2结束-->
-		<!--2-->
-		<div class="lanmuwu">
-			<div class="juzhong">
-				<img src="${pageContext.request.contextPath }/zp1/images/9.jpg" height="60%"/>口红
-			</div>
-			<!--栏目内容-->
-			这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
-		</div>
-		<!--2结束-->
-
-	</div>
+	
 	<!--板块5-->
 	
 	<div class="content5">
