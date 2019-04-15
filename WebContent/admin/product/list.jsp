@@ -42,10 +42,9 @@
 	
 	<table id="admin_list_table" cellspacing="0" cellpadding="0" rules="all" width="100%" border="1" bordercolor="gray">
 		<tr id="admin_list_tr1">
-			<td width="10%" align="center">序号</td>
 			<td width="10%" align="center">编号</td>
-			<td width="10%" align="center">图片</td>
-			<td width="20%" align="center">名称</td>
+			<td width="15%" align="center">图片</td>
+			<td width="25%" align="center">名称</td>
 			<td width="10%" align="center">价格</td>
 			<td width="10%" align="center">月销售量</td>
 			<td width="10%" align="center">是否热门</td>
@@ -54,9 +53,8 @@
 		</tr>
 		<s:iterator value="productList" var="product"  status="status" >
 			<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-				<td align="center"><s:property value="#status.count"/></td>
 				<td align="center">${product.p_id}</td>
-				<td align="center"><img src='<s:property value='fileImageAction.urlImage'/>${product.p_image }' /></td>
+				<td align="center"><img src='${fileImageAction.urlImage }${product.p_image }' /></td>
 				<td align="center">${product.p_name }</td>
 				<td align="center">${product.p_price }</td>
 				<td align="center">${product.sale_volume }</td>

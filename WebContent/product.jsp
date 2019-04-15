@@ -233,17 +233,17 @@
 				<font id="product_div1_div2_div1_font">${product.p_name }</font>
 			</div>
 			
-			<div id="product_div1_div2_div2">
+			<div id="product_div1_div2_div2" style="padding-top: 2%; padding-bottom: 2%;">
 				<div>
 					市场价: &emsp;<font id="font1" class="shichangjia" style="color: #666666;">¥ ${product.market }</font>
 				</div>
-				<div>
+				<div style="margin-top: 2%">
 					光光价: &emsp;<font id="font2" class="guangguangjia" style="color: #FF8000;">¥ ${product.p_price }</font>
 				</div>
 			</div>
 			
 			<div id="product_div1_div2_div3">
-				优惠: &emsp;&emsp;已优惠&emsp;<font class="product_div1_div2_div3_font" style="color: #FF8000;">¥&nbsp;1.00</font>
+				优惠: &emsp;&emsp;已优惠&emsp;<font class="product_div1_div2_div3_font" style="color: #FF8000;">¥&nbsp;${product.market-product.p_price }</font>
 			</div>
 			<div id="product_div1_div2_div3">
 				配送: &emsp;&emsp;快递 : &nbsp; 免运费
@@ -261,28 +261,14 @@
 			
 			<!-- form不要删  不然样式会乱  里面的属性不要给属性值就行 -->
 			<form id="product_div1_div2_form" action="orderitem_addOrderItemAndQueryOrderItem" method="post">
-				<div class="product_div1_div2_form_div1">
-					<div class="product_div1_div2_form_div1_div1">数量: </div>
-					
-					<div class="product_div1_div2_form_div1_div2" style="margin-left: 14%;">
-						<div id="jianShuLiang" style="background: #E0E0E0; margin-left: 0%; float: left; padding: 0% 2.2%; line-height: 26px; text-align: center;">
-							-
-						</div>
-						<div style="float: left; margin-left: -6.9%;">
-							<input id="inputShuLiang" type="text" value="1" style="margin-left: 2%; margin-top: 0px; float: left; width: 4%; height: 26px; background: #FCFCFC; border: 1px solid #D0D0D0; text-align: center; padding-right: 0.2%;">
-						</div>
-						<div id="addShuLiang" style="background: #E0E0E0; margin-left: 14.32%; float: left; padding: 0% 2%; line-height: 26px; text-align: center;">
-							+
-						</div>
-					</div>
-				</div>
-				<div style="margin-left: 5%; margin-bottom: 3%;">
+				<div class="product_div1_div2_form_div1"></div>
+				<div style="margin-left: 5%; margin-bottom: 4%; margin-top: 4%;">
 					<input type="submit" value="立即购买" onclick="lijigoumai()" style="width: 30%; height: 40px; font-weight: bold; font-size: 16px; background: #FF9224; color: #F0F0F0; margin-right: 2%" />
 					<input type="submit" value="加入购物车" onclick="jiarucar()" style="width: 30%; height: 40px; font-weight: bold; font-size: 16px; background: #FF9224; color: #F0F0F0;" />
 				</div>
 			</form>
 			
-			<div class="product_div1_div2_div4">
+			<div class="product_div1_div2_div4" style="margin-top: 5%;">
 				<div class="product_div1_div2_div4_div1">承诺: </div>
 				<div class="product_div1_div2_div4_div2">
 					7天退货&emsp;运费险&emsp;公益宝贝
@@ -381,7 +367,7 @@
 			<div class="product_div2_leftDiv_d5">
 				<s:iterator value="listProductHot" var="listProductHots" >
 					<div class="product_div2_leftDiv_d5_d1" style="padding-bottom: 12px;">
-						<div class="product_div2_leftDiv_d5_d1_d1" style="background: red; height: 65px;">
+						<div class="product_div2_leftDiv_d5_d1_d1" style="height: 65px;">
 							<img alt="${listProductHots.p_image }"  src="${fileImageAction.urlImage }${listProductHots.p_image }" width="70%">
 						</div>
 						<div class="product_div2_leftDiv_d5_d1_d2">
@@ -393,15 +379,6 @@
 					<hr />
 				</s:iterator>
 				
-				<div class="product_div2_leftDiv_d5_d1">
-					<div class="product_div2_leftDiv_d5_d1_d1">
-						<img alt="商品图片"  src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="60%">
-					</div>
-					<div class="product_div2_leftDiv_d5_d1_d2">
-						<div>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</div>
-						<div>¥100.00</div>
-					</div>
-				</div>
 				
 				<hr />
 				
@@ -421,7 +398,7 @@
 			
 			<div class="content">
 				<div class="aa">
-					<div class="div1">
+					<div class="div1" style="padding-top: 1%; padding-left: 1.5%;">
 						<div class="div1_d1">
 							<div class="div1_d1_d1">名称：</div>
 							<div>${product.p_name }</div>
@@ -430,7 +407,7 @@
 							<div class="div1_d1_d1">月销量：</div>
 							<div>${product.sale_volume }件</div>
 						</div>
-						<div class="div1_d1">
+						<div class="div1_d1" style="padding-bottom: 1%;">
 							<div class="div1_d1_d1">描述：</div>
 							<div>${product.p_desc }</div>
 						</div>

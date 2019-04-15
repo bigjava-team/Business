@@ -8,7 +8,8 @@
   <!--搜素栏 -->
 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css"> --%>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/zp1/css/xuanxiangxiahua.css">
+<link rel="stylesheet" href="${pageContext
+.request.contextPath }/zp1/css/xuanxiangxiahua.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/zp1/css/menu_bottom.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.3.1.1-min.js"></script>
 <script type="text/javascript">

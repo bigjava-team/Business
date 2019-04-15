@@ -33,10 +33,9 @@
 	
 	<table id="admin_list_table" cellspacing="0" cellpadding="0" rules="all" width="100%" border="1" bordercolor="gray">
 		<tr id="admin_list_tr1">
-			<td width="10%" align="center">序号</td>
 			<td width="10%" align="center">编号</td>
-			<td width="10%" align="center">图片</td>
-			<td width="20%" align="center">名称</td>
+			<td width="15%" align="center">图片</td>
+			<td width="25%" align="center">名称</td>
 			<td width="10%" align="center">市场价格</td>
 			<td width="10%" align="center">光光价格</td>
 			<td width="11%" align="center">申请时间</td>
@@ -45,14 +44,13 @@
 		</tr>
 		<s:iterator value="productLists" var="product"  status="status">
 			<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-				<td align="center"><s:property value="#status.count"/></td>
 				<td align="center">${product.p_id} </td>
-				<td align="center">${product.p_image}</td>
+				<td align="center"><img src="${fileImageAction.urlImage }${product.p_image }"/></td>
 				<td align="center">${product.p_name}</td>
 				<td align="center">${product.market}</td>
 				<td align="center">${product.p_price}</td>
 				<td align="center">${product.p_date}</td>
-				<td align="center"><a href="${pageContext.request.contextPath }/admin/product/product.jsp">查看商品</a></td>
+				<td align="center"><a href="adminProduct_getProductById.action?product.p_id=${product.p_id }">查看商品</a></td>
 				<td align="center">
 					<a href="adminProduct_agreeProduct.action?user.root=0&updateProduct.p_id=${product.p_id }">同意</a>
 				</td>

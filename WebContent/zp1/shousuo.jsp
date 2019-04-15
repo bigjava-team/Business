@@ -94,31 +94,30 @@
 			</s:else>
 		</div>
 		<div id="d" class=wenziz2>
-			<ul  class="nav">
-				<li><a href="#">网站导航</a>
-					<ul class="drop-down-content">
-						<li><a href="#">下架商品</a></li>
-					</ul></li>
+			<ul class="nav">
+			<li class="#"><a href="#">退出</a>
+						<ul class="drop-down-content">
+							<li><a href="#">已品</a></li>						
+						</ul></li>				
 				<li class="drop-down"><a href="#">收藏夹</a>
 					<ul class="drop-down-content">
 						<li><a href="shouchang.jsp">宝贝收藏</a></li>
 						<li><a href="dianpu.jsp">店铺收藏</a></li>
 					</ul></li>
-				<li><a href="#">商品分类</a>
+				<li class="#"><a href="#">购物车</a>
 					<ul class="drop-down-content">
-						<li><a href="#">下架商品</a></li>
+						<li><a href="#">已卖商</a></li>						
+					</ul></li>
+				<li><a href="#">我的订单</a>
+					<ul class="drop-down-content">
+						<li><a href="#">已卖商品</a></li>
 					</ul></li>
 
-				<li class="drop-down"><a href="#">卖家中心</a>
-					<ul class="drop-down-content">
-						<li><a href="#">已卖商品</a></li>
-						<li><a href="#">下架商品</a></li>
-					</ul></li>
-				<li><a href="#">联系客服</a>
+				<li class="#"><a href="#">我的店铺</a>
 					<ul class="drop-down-content">
 						<li><a href="#">已卖商品</a></li>
 					</ul></li>
-				<li><a href="#">购物车</a>
+				<li><a href="#">我的主页</a>
 					<ul class="drop-down-content">
 						<li><a href="#">已卖商品</a></li>
 					</ul></li>
@@ -128,10 +127,12 @@
 	<!--板块2-->
 	<div id="d" class="contenttwo">
 		<img src="${pageContext.request.contextPath }/zp1/images/logo.png" height="100%" width="13%" align="left">
+		<img src="${pageContext.request.contextPath }/zp/images/5.png" height="100%" width="13%" align="right">
+		<img src="${pageContext.request.contextPath }/zp/images/6.png" height="100%" width="13%" align="right">
 		<div class="search bar7">
 			<form action="index_searchTextQueryProduct?paging.presentPage=1" method="post">
 				<input type="hidden" name="loginUser.username" value="${loginUser.username }" />
-				<input name="searchText" type="text" placeholder="欢迎来到光光网...">
+				<input name="searchText" type="text" placeh5older="欢迎来到光光网...">
 				<button type="submit"></button>
 			</form>
 		</div>
@@ -144,9 +145,9 @@
 				<br class="clear"/>						
 	</div>
 	
-	<div class="contentthree2">
-		<img src="${pageContext.request.contextPath }/zp1/images/55.jpg" height="60%" width="100%" />
-	</div>
+	<%-- <div class="contentthree2">
+		<img src="${pageContext.request.contextPath }/zp1/images/55.png" height="10%" width="100%" />
+	</div> --%>
 
 	<div style="height:3%; border-top: 1px solid #d0d0d0;"></div>
 	
@@ -202,9 +203,9 @@
 		<div class="aa">男士西装 </div>
 		<div class="aa">男士内裤 </div>
 		<div class="aa">男士袜子 </div>
-		<div class="aa">  </a>   </div>
-		<div class="aa">  </a>   </div>
-		<div class="aa">  </a>   </div>
+		<div class="aa"></div>
+		<div class="aa"></div>
+		<div class="aa"></div>
 		<div class="aa">女衣     </div>
 		<div class="aa">女鞋     </div>
 		<div class="aa">女裤     </div>
@@ -218,6 +219,6 @@
 
 	</div>
 </div>
-		<%-- <%@include file="menu_bottom.jsp"%> --%>
+		<%@include file="menu_bottom.jsp"%>
 </body>
 </html>

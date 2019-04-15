@@ -45,7 +45,20 @@
 		var div1 =document.getElementById("div2");
 		div1.style.background = " #F40";
 	}
-
+	function queryProduct(id) {
+		var username = '${loginUser.username }';
+		window.open("Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0");
+	}
+	
+	function queryCollectProduct() {
+		var username = '${loginUser.username }';
+		window.location.href="collectProduct_queryUserCollectProduct?method=post&loginUser.username="+username+"&paging.presentPage=0";
+	}
+	
+	function queryCollectMerchant() {
+		var username = '${loginUser.username }';
+		window.location.href="collectMerchant_queryUserCollectMerchant?method=post&loginUser.username="+username+"&paging.presentPage=0";
+	}
 </script>
 </head>
 <body style="margin: 0;padding: 0;overflow-x: hidden;">
@@ -58,11 +71,11 @@
 		</div>
 			
 		<div class="dianpushouchang_div" id="div1" style="margin-left: 46%;background:rgba(0, 0, 255,0.1);">
-			<a href="Baobeishouchang.jsp"><font class="wenzi2">宝贝收藏</font></a>
+			<a href="javascript" onclick="queryCollectProduct()"><font class="wenzi2">宝贝收藏</font></a>
 		</div>
 	
 		<div class="dianpushouchang_div" id="div2" onmouseover="show()" onmouseout="back()">
-			<a href="DianpuShouChang.jsp"><font class="wenzi2">店铺收藏</font></a>
+			<a href="javascript" onclick="queryCollectMerchant()"><font class="wenzi2">店铺收藏</font></a>
 		</div>
 		<div style="clear: both;"></div>
 	</div>
@@ -73,49 +86,17 @@
 			</div>
 		</div>
 		<div style="width: 100%;padding-top: 2%;padding-bottom: 2%">
-				<div class="dianpushouchang_div2">
-					<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-						<img alt="" src="../images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="80%">
+			<s:iterator value="listCollectProducts" var="LCPs">
+				<div class="dianpushouchang_div2" onclick="queryProduct(${LCPs.product.p_id})">
+					<div style="border: #eee 1px solid;height: 200px;width: 80%" >
+						<img alt="" src="${fileImageAction.urlImage }${LCPs.product.p_image }" height="80%">
 					</div><br/><br/>
-				#商品名字<br/>
-				<font color="red">#商品价格</font><br/>
+				${LCPs.product.p_name }<br/>
+				<font color="red">${LCPs.product.p_price }</font><br/>
+				${LCPs.product.sale_volume }
 				</div>
-				<div class="dianpushouchang_div2" style="margin-left: 5%">
-					<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-						<img alt="" src="../images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="80%">
-					</div><br/><br/>
-				#商品名字<br/>
-				<font color="red">#商品价格</font><br/>
-				</div>
-				<div class="dianpushouchang_div2" style="margin-left: 5%">
-					<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-						<img alt="" src="../images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="80%">
-					</div><br/><br/>
-				#商品名字<br/>
-				<font color="red">#商品价格</font><br/>
-				</div>
-				<div class="dianpushouchang_div2" style="margin-top: 5%">
-					<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-						<img alt="" src="../images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="80%">
-					</div><br/><br/>
-				#商品名字<br/>
-				<font color="red">#商品价格</font><br/>
-				</div>
-				<div class="dianpushouchang_div2" style="margin-left: 5%;margin-top: 5%">
-					<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-						<img alt="" src="../images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="80%">
-					</div><br/><br/>
-				#商品名字<br/>
-				<font color="red">#商品价格</font><br/>
-				</div>
-				<div class="dianpushouchang_div2" style="margin-left: 5%;margin-top: 5%">
-					<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-						<img alt="" src="../images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="80%">
-					</div><br/><br/>
-				#商品名字<br/>
-				<font color="red">#商品价格</font><br/>
-				</div>
-				<div style="clear: both;"></div>
+			</s:iterator>
+			<!-- <div style="clear: both;"></div> -->
 		</div>
 	</div>
 	

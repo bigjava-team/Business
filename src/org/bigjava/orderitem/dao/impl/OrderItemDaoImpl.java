@@ -78,11 +78,11 @@ public class OrderItemDaoImpl extends HibernateDaoSupport implements OrderItemDa
 		System.out.println("开始执行queryOrderItemNumber方法");
 		List<Long> listNumber = null;
 		int totalNumber = 0;// 查询到的数据条数
-		String hql = "select count(*) from Orderitem";// 查询全部的订单项
+		String hql = "select count(*) from Orderitem where o_id = null";// 查询全部的订单项
 		if (user.getRoot() == 3) {// 管理员查询订单项表时
 			listNumber = this.getHibernateTemplate().find(hql);
 		} else {
-			hql += " where u_id = ?";
+			hql += " and u_id = ?";
 			listNumber = this.getHibernateTemplate().find(hql, user.getU_id());// 通过连接用户类的外键u_id查询订单项的条数 
 		}
 		if (listNumber.size() !=0 ) {

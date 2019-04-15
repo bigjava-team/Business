@@ -3,6 +3,7 @@ package org.bigjava.merchant.dao;
 import java.util.List;
 
 import org.bigjava.categorysecond.entity.CategorySecond;
+import org.bigjava.function.Paging;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.orders.entity.Orders;
 import org.bigjava.product.entity.Product;
@@ -72,4 +73,14 @@ public interface MerchantDao {
 	 * 查询最新商品
 	 */
 	public List<Product> queryProductMerchantTime();
+	
+	/**
+	 * 管理员查询所有店铺
+	 */
+	public List<Merchant> queryAllMerchant(Paging paging);
+	
+	/**
+	 * 管理员查询所有店铺的数量
+	 */
+	public int queryAllMerchantNumber();
 }

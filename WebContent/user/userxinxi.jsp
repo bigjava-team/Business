@@ -49,14 +49,15 @@ body {
 .center {
 	float: left;
 	width: 62%;
+	margin-top:1.4%; 
 }
 
 .centertop {
 	background-color: #f5f8fa;
 	border: 1px solid #e4eaee;
 	width: 95%;
-	padding-top: 2%;
-	padding-bottom: 5%;
+	padding-top: 1%;
+	padding-bottom: 1%;
 }
 
 .centertop a {
@@ -103,6 +104,7 @@ body {
 	float: right;
 	width: 28%;
 	height: 100%;
+	margin-top:3.3%;
 }
 
 .two font {
@@ -158,7 +160,7 @@ body {
 
 .shangping {
 	margin-top: 3%;
-	padding-top: 3%;
+	padding-top: 1%;
 	padding-bottom: 2%;
 	width: 28%;
 	float: left;
@@ -690,7 +692,7 @@ function dealsubmit3(){
 	var dizhi = $("#dizhi").val(); 
 	var address = cmbProvince + cmbCity + cmbArea + dizhi;
 	$("input[name='address']").val(address);
-	
+	$("input[name='addressP_M_D']").val(cmbProvince+"|"+cmbCity+"|"+cmbArea);
 	if(pwdcat()==false  || nameid()==false|| YZphone()==false){
 		return false;
 	}else{
@@ -705,11 +707,11 @@ function show1(id){
 	    var text2 = document.getElementById("dizhi");
 	    var tr3 = document.getElementById("phone_"+id);
 	    var text3 = document.getElementById("dizhiphone");
-	    text1.value  =tr1.innerHTML ;
-	    text2.value  =tr2.innerHTML ;
-	    text3.value  =tr3.innerHTML ;
+	    text1.value  =tr1.innerHTML;
+	    text2.value  =tr2.innerHTML;
+	    text3.value  =tr3.innerHTML;
 	    
-	    var tr4=document.getElementById("p_m_d_"+id).innerHTML;
+	    var tr4= document.getElementById("p_m_d_"+id).text;
 	    tr4 = $.trim(tr4);
 	    tr4 = tr4.split("|");
 	    for (var i=0; i<tr4.length; i++) {
@@ -744,7 +746,7 @@ function show1(id){
 					<font style="color: red">全部功能</font>
 				</div>
 				<input type="submit" class="userxinxi_button userxinxi_inbutton"
-					value="猜我喜欢" onclick="display(1)"><br /> <input
+					value="我的信息" onclick="display(1)"><br /> <input
 					type="submit" class="userxinxi_button userxinxi_inbutton"
 					value="修改密码" onclick="display(2)"><br /> <input
 					type="submit" class="userxinxi_button userxinxi_inbutton"
@@ -755,14 +757,32 @@ function show1(id){
 			</div>
 		</div>
 		<div class="center">
-			<div class="centertop">
-				<a href=""> #显示头像 #用户名 </a>
-				<div style="float: right; padding-top: 2%">联系方式</div>
-			</div>
-			<div class="content">
+		<div class="content">
 				<div id="lb1" style="display: block;">
+				
+				<div class="dibu1">
+						<font size="5px" style="font-weight: bold; padding-left: 1%;">我的信息</font>
+					</div>
+		<div class="centertop">
+				<div style="float:left; width: 20%;text-align: center;">
+				我的头像:
+					<div style="border: #eee 1px solid;height: 100px;width: 72%;margin: 0 auto;display: flex;justify-	: center;align-items: center;" >
+						<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+					</div>
+				</div>
+				<div style="float: left;width: 55%;line-height: 180%;padding-left: 10%;">
+					<font color="#EAC100">个人信息一览</font>
+					<div style="">用户名:#用户名</div>
+					<div style="">真实姓名:#真实姓名</div>
+					<div style="">联系方式:#后台手机号</div>
+					<div style="">已绑定的邮箱:#后台邮箱</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		
+			
 					<div class="dibu1">
-						<b> 根据浏览，猜我喜欢</b>
+						<font size="5px" style="font-weight: bold; padding-left: 1%;">猜你喜欢</font>
 					</div>
 					<div class="dibu2">
 						<div class="shangping" onmouseover=Over(this);
@@ -776,70 +796,31 @@ function show1(id){
 								<font color="#595959">月销:#商品销量</font>
 							</div>
 						</div>
-						<div class="shangping" onmouseover=Over(this);
-							onmouseout=Out(this);>
-							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
+						<%-- <s:iterator value="UserIndexSixProduct"  var="UserIndexSixProduct">
+							<div class="shangping" onmouseover=Over(this);
+								onmouseout=Out(this);>
+								<div style="border: #eee 1px solid;height: 170px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+									<img alt="商品图片" src="${UserIndexSixProduct.p_image }" width="90%" height="100%">
+								</div>
+								<font color="red">
+									¥<font style="font-size: 22px; font-weight: bold;">${UserIndexSixProduct.p_price }
+								</font>
+								</font> <br /> 
+									<a href="javascript:;" >${UserIndexSixProduct.p_name }</a><br /> 
+								<div style="float: right">
+									<font color="#595959">销量:${UserIndexSixProduct.sale_volume }</font>
+								</div>
 							</div>
-							<font color="red">#商品价格</font>
-								<br /> <font color="red">#商品价格</font><br /> 
-							<div style="float: right">
-								<font color="#595959">月销:#商品销量</font>
-							</div>
-						</div>
-						<div class="shangping" onmouseover=Over(this);
-							onmouseout=Out(this);>
-							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
-							</div>
-							<font color="red">#商品价格</font>
-								<br /> <font color="red">#商品价格</font><br /> 
-							<div style="float: right">
-								<font color="#595959">月销:#商品销量</font>
-							</div>
-						</div>
-						<div class="shangping" onmouseover=Over(this);
-							onmouseout=Out(this);>
-							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
-							</div>
-							<font color="red">#商品价格</font>
-								<br /> <font color="red">#商品价格</font><br /> 
-							<div style="float: right">
-								<font color="#595959">月销:#商品销量</font>
-							</div>
-						</div>
-						<div class="shangping" onmouseover=Over(this);
-							onmouseout=Out(this);>
-							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
-							</div>
-							<font color="red">#商品价格</font>
-								<br /> <font color="red">#商品价格</font><br /> 
-							<div style="float: right">
-								<font color="#595959">月销:#商品销量</font>
-							</div>
-						</div>
-						<div class="shangping" onmouseover=Over(this);
-							onmouseout=Out(this);>
-							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
-							</div>
-							<font color="red">#商品价格</font>
-								<br /> <font color="red">#商品价格</font><br /> 
-							<div style="float: right">
-								<font color="#595959">月销:#商品销量</font>
-							</div>
-						</div>
+						</s:iterator> --%>
 						<div class="clearfloat"></div>
 					</div>
 				</div>
 				<!-- 第二个div -->
-				<div id="lb2" style="display: none">
+				<div id="lb2" style="display: none;margin-top: 3%">
 
 					<div
 						style="width: 95.4%; margin-top: 2%; color: #FDE938; background-color: #F30408; padding-top: 1%; padding-bottom: 1%; ">
-						<font size="5px">修改密码</font>
+						<font size="5px" style="font-weight: bold; padding-left: 1%;">修改密码</font>
 					</div>
 					<form action="User_updatePassword.action" method="post"
 						onsubmit="return dealsubmit1()">
@@ -881,13 +862,13 @@ function show1(id){
 					</form>
 				</div>
 				<!-- 第三个div -->
-				<div id="lb3" style="display: none">
+				<div id="lb3" style="display: none;margin-top: 3%;">
 					<form action="userxinxi.jsp" method="post"
 						enctype="multipart/form-data" name="HtmlFileForm"
 						onsubmit="return dealsubmit2()">
 						<div
 							style="width: 95.4%; margin-top: 2%; color: white; background-color: black; padding-top: 1%; padding-bottom: 1%;">
-							<font size="5px">修改用户信息</font>
+							<font size="5px" style="font-weight: bold; padding-left: 1%;">修改信息</font>
 						</div>
 						<div
 							style="text-align: center; padding-top: 2%; padding-bottom: 2%; line-height: 200%; border: 1px solid #e3e197; background: #ffffdd; width: 95.4%;">
@@ -919,14 +900,15 @@ function show1(id){
 					</form>
 				</div>
 				<!-- 第四个div -->
-				<div id="lb4" style="display: none">
+				<div id="lb4" style="display: none;margin-top:1%;">
 					<form action="addr_addAddress" method="post"
 						onsubmit="return dealsubmit3()">
 						<div class="update_dizhi">
+							<input type="hidden" name="addressP_M_D" />
 							<input type="hidden" name="address" />
 							<input type="hidden" name="loginUser.username" value="${loginUser.username }" />
 							<div style="width: 95.4%; color: #014d7f; background-color: LightCyan; padding-top: 1%; padding-bottom: 1%;">
-								<font size="5px">收货地址</font>
+								<font size="5px" style="font-weight: bold; padding-left: 1%;">收货地址</font>
 							</div>
 							<div style="color: orange; padding-bottom: 2%; padding-top: 2%;">
 								新增收货地址</div>
@@ -941,7 +923,7 @@ function show1(id){
 							</div>
 							<div style="margin-top: 2%">
 								<div class="update_dizhidiv">
-									详细地址:<input type="text" id="dizhi" name="dizhi"
+									详细地址:<input type="text" id="dizhi" name="detailedAddress"
 										placeholder="请输入详细地址,例如小区,楼栋号等信息 " onblur="pwdcat()"
 										onfocus="dizhi()"
 										style="width: 78%; height: 25px; margin-left: 2%">
@@ -973,19 +955,18 @@ function show1(id){
 							<table style="width: 95.4%; margin-top: 4%" cellspacing="0">
 								<tr style="background-color: #ebecf0;">
 									<td class="update_one">收货人</td>
-									<td class="update_one">省 | 市 | 区</td>
-									<td class="update_one">详细地址</td>
+									<td class="update_one">地址</td>
 									<td class="update_one">联系电话</td>
 									<td class="update_one">操作</td>
 								</tr>
 								<s:iterator value="listAddr" var="listAddrs">
 									<tr style="background-color: #ebecf0;">
 										<td  class="update_one" id="shouhu_${listAddrs.a_id }">${listAddrs.a_name }</td>
-										<td class="update_one" id="p_m_d_${listAddrs.a_id }">
-											<%-- <font id="update_shen${listAddrs.a_id }">广东</font>  | <font id="update_shi${listAddrs.a_id }">广州市</font>  | <font id="update_xian${listAddrs.a_id }">海珠区</font> --%>
+										<td hidden="hidden" class="update_one" id="p_m_d_${listAddrs.a_id }">
 											${listAddrs.addressP_M_D }
 										</td>
-										<td class="update_one" id="detailed_${listAddrs.a_id }">${listAddrs.detailedAddress }</td>
+										<td hidden="hidden" class="update_one" id="detailed_${listAddrs.a_id }">${listAddrs.detailedAddress }</td>
+										<td class="update_one" id="address_${listAddrs.a_id }">${listAddrs.address }</td>
 										<td class="update_one" id="phone_${listAddrs.a_id }">${listAddrs.a_phone }</td>
 										<td class="update_one">
 											<a onclick="show1(${listAddrs.a_id })" style="cursor:pointer">修改</a>/

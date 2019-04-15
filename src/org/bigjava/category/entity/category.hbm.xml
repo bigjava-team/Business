@@ -9,7 +9,7 @@
 			<generator class="native" />
 			
 		</id>
-		<property name="c_name" /><!-- 一级分类表、类的属性名 -->
+		<property name="c_name" type="string" /><!-- 一级分类表、类的属性名 -->
 		
 		<set name="setCS" cascade="delete" inverse="true" lazy="false" ><!-- 指向二级分类 -->
 			<key column="c_id"></key><!-- 与二级分类连接的id名 -->

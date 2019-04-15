@@ -4,7 +4,10 @@ import java.util.List;
 
 import org.bigjava.addr.biz.AddrBiz;
 import org.bigjava.addr.entity.Addr;
+import org.bigjava.function.FileImageAction;
 import org.bigjava.function.Paging;
+import org.bigjava.product.biz.ProductBiz;
+import org.bigjava.product.entity.Product;
 import org.bigjava.user.biz.UserBiz;
 import org.bigjava.user.entity.User;
 
@@ -20,15 +23,15 @@ public class AddrAction extends ActionSupport implements ModelDriven<Addr> {
 	private User user;
 	// 注入Paging实体
 	private Paging paging;
-	
+
 	// 注入UserBiz
 	private UserBiz userBiz;
 	// 注入addrBiz
 	private AddrBiz addrBiz;
-	
+
 	private List<Addr> listAddr;
 	private int number;
-	
+
 	public int getNumber() {
 		return number;
 	}
@@ -86,9 +89,9 @@ public class AddrAction extends ActionSupport implements ModelDriven<Addr> {
 		System.out.println("开始添加收货地址");
 		System.out.println(loginUser);
 		System.out.println(addr);
-		
+
 		user = userBiz.queryUsernameUser(loginUser.getUsername());
-		
+
 		addrBiz.addAddr(addr, user);
 		return "addAddressSuccess";
 	}
@@ -107,7 +110,7 @@ public class AddrAction extends ActionSupport implements ModelDriven<Addr> {
 	 */
 	public String updateAddr() {
 		Addr updateAddr = new Addr();
-		
+
 		addrBiz.updateAddr(addr, updateAddr);
 		return "updateAddrsuccess";
 	}
@@ -132,6 +135,7 @@ public class AddrAction extends ActionSupport implements ModelDriven<Addr> {
 		number = addrBiz.queryAllAddrNumber(user);
 		paging = new Paging(paging.getPresentPage(), number, 5);
 		listAddr = addrBiz.queryAllAddr(paging, user);
+
 		return "findAllAddrSuccess";
 	}
 
