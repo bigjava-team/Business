@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
   <head>
              <title>页面布局</title>      
@@ -7,9 +6,8 @@
   </head>
   <!--搜素栏 -->
 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css"> --%>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/zp1/css/xuanxiangxiahua.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/zp1/css/menu_bottom.css">
+<link rel="stylesheet" href="css/xuanxiangxiahua.css">
+<link rel="stylesheet" href="css/menu_bottom.css">
   <style type="text/css">
 /*索搜*/
 * {box-sizing: border-box;}
@@ -28,8 +26,7 @@
 
 /*导航栏目z的文字*/
 .wenziz{ text-align:left; float:left; color:#666; font-size:15px; margin:3 0 0 6% ;word-spacing:33px;}
-.wenziz2{ text-align:right; color:#666; font-size:15px; margin:0 7% 0 0 ;word-spacing:33px;}
-.wenziz3{ text-align:left; color:#000000; font-size:12px; margin:3 3 0 3 ;word-spacing:33px;}
+.wenziz2{ text-align:right; color:#666; font-size:15px; margin:0 7% 0 0 ;word-spacing:30px;}
 .juzhong {  text-align:center;}
 /*表格*/
 #table{border: 2px solid black;width:100%;  height:100%;  }
@@ -41,15 +38,16 @@
 /*第三版块*/
 .clear{ clear:both}
 .contentthree{ background:#ffffff; width:85%;  border:2px solid #ffffff; margin:0 auto}
-.contentthree2{ background:#ffffff; width:85%; height:10%;border:2px solid #ffffff; margin:0 auto}
-/*第四版块*/
-.contentfour1{ background:#ffffff; width:17.5%; height:150%; float:left;border:2px solid #ffffff; margin:0 0 0 6.5%  }
+.contentthree2{ background:#ffffff; width:85%; border:2px solid #ffffff; margin:0 auto}
 /*第五版块*/
 .content5{ background:#ffffff; width:85%; height:150%; float:center; border:2px solid #ffffff; margin:0 auto}
 /*节目1*/
 .lanmusi{ background:#fff; width:16%; height:25%;float:left; border:2px solid #FF9900; margin:2 3 0 3}
 /*节目2*/
 .lanmuwu{ background:#fff; width:100%; height:25%;border:2px solid #FF9900; margin:0 auto}
+.cainilikeJQuery01{
+		border: 1px solid red;
+	}
 </style>
 
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
@@ -143,7 +141,6 @@
 	</div>
 
 	<div style="height:3%; border-top: 1px solid #d0d0d0;"></div>
-	<!--板块4-->
 	
 	<!--板块5-->
 	
@@ -155,9 +152,18 @@
 			<s:iterator value="listCategoryProduct" var="listCategoryProducts">
 				<div class="lanmusi" onclick="queryProduct(${listCategoryProducts.p_id })">
 					<div class="juzhong">
-						<img src="${fileImageAction.urlImage }${listCategoryProducts.p_image }" height="35%" />
+						<img src="${fileImageAction.urlImage }${listCategoryProducts.p_image }" height="68%" width="100%" />
 					</div>
 					<!--栏目内容-->
+							<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
+								名字
+							</div>
+							<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
+								¥<font style="font-size: 22px; font-weight: bold;">？</font>
+							</div>
+							<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
+								销量:？
+							</div>
 					${listCategoryProducts.p_name }<br />
 					${listCategoryProducts.p_price }<br/>
 					${listCategoryProducts.sale_volume }
@@ -167,12 +173,19 @@
 		<div class="aa">
 		<!--2-->
 		<div class="lanmusi">
-			<div class="空的div">
-				<img src="${pageContext.request.contextPath }/zp1/images/0.jpg" height="60%" width="100%" />
+			<div class="juzhong">
+				<img src="${pageContext.request.contextPath }/zp1/images/0.jpg" height="68%" width="100%" />
 			</div>
 			<!--栏目内容-->
-			<div class="wenziz3">非常好的鞋子</div><p>
-			￥ <b style="color:#F00" >25.5</b> 货源上海
+							<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
+								名字
+							</div>
+							<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
+								¥<font style="font-size: 22px; font-weight: bold;">？</font>
+							</div>
+							<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
+								销量:？
+							</div>
 		</div>
 		<!-- 2结束 -->
 		</div>
