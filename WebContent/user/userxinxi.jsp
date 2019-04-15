@@ -158,7 +158,7 @@ body {
 
 .shangping {
 	margin-top: 3%;
-	padding-top: 3%;
+	padding-top: 1%;
 	padding-bottom: 2%;
 	width: 28%;
 	float: left;
@@ -755,14 +755,10 @@ function show1(id){
 			</div>
 		</div>
 		<div class="center">
-			<div class="centertop">
-				<a href=""> #显示头像 #用户名 </a>
-				<div style="float: right; padding-top: 2%">联系方式</div>
-			</div>
 			<div class="content">
 				<div id="lb1" style="display: block;">
 					<div class="dibu1">
-						<b> 根据浏览，猜我喜欢</b>
+						<b>猜你喜欢</b>
 					</div>
 					<div class="dibu2">
 						<div class="shangping" onmouseover=Over(this);
@@ -776,6 +772,22 @@ function show1(id){
 								<font color="#595959">月销:#商品销量</font>
 							</div>
 						</div>
+						<%-- <s:iterator value="UserIndexSixProduct"  var="UserIndexSixProduct">
+							<div class="shangping" onmouseover=Over(this);
+								onmouseout=Out(this);>
+								<div style="border: #eee 1px solid;height: 170px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+									<img alt="商品图片" src="${UserIndexSixProduct.p_image }" width="90%" height="100%">
+								</div>
+								<font color="red">
+									¥<font style="font-size: 22px; font-weight: bold;">${UserIndexSixProduct.p_price }
+								</font>
+								</font> <br /> 
+									<a href="javascript:;" >${UserIndexSixProduct.p_name }</a><br /> 
+								<div style="float: right">
+									<font color="#595959">销量:${UserIndexSixProduct.sale_volume }</font>
+								</div>
+							</div>
+						</s:iterator> --%>
 						<div class="clearfloat"></div>
 					</div>
 				</div>

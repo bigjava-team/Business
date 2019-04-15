@@ -4,8 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
-import org.bigjava.collectProduct.biz.CollectProductBiz;
-import org.bigjava.collectProduct.entity.CollectProduct;
+import org.bigjava.function.FileImageAction;
 import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
 import org.bigjava.function.SendMail;
@@ -25,7 +24,7 @@ public class UserAction extends ActionSupport {
 	private Paging paging;// 声明Paging类
 	private User loginUser;
 	private Merchant merchant;
-	
+
 	private UserBiz userBiz;
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
@@ -38,7 +37,7 @@ public class UserAction extends ActionSupport {
 
 	// 接收验证码 struts2 中的属性驱动
 	private String checkcode;
-	
+
 	public Merchant getMerchant() {
 		return merchant;
 	}
@@ -229,9 +228,9 @@ public class UserAction extends ActionSupport {
 	public String updatePassword() {
 		System.out.println("进入UserAction....updatePassword方法");
 		user = userBiz.queryUsernameUser(loginUser.getUsername());
-		System.out.println("u"+user);
+		System.out.println("u" + user);
 		ActionContext.getContext().getSession().put("u", user);
-		
+
 		String password = user.getPassword();
 		user.setPassword(password);
 		userBiz.updateUserPassword(password, user);
@@ -336,10 +335,9 @@ public class UserAction extends ActionSupport {
 	 * 跳转到我的首页
 	 */
 	public String gotoUserIndex() {
-
 		return "gotoUserIndex";
 	}
-	
+
 	/**
 	 * 跳转到商城网的中转页面
 	 */
@@ -347,7 +345,7 @@ public class UserAction extends ActionSupport {
 		System.out.println("跳转到商城的中转页面");
 		return "skipIndex";
 	}
-	
+
 	/**
 	 * 跳转到开店的页面
 	 */
@@ -359,5 +357,5 @@ public class UserAction extends ActionSupport {
 		System.out.println("跳转到开店的页面");
 		return "SetUpShop";
 	}
-	
+
 }
