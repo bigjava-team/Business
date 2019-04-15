@@ -271,7 +271,7 @@ img {
 		<a href="Save.jsp"><img src="${pageContext.request.contextPath }/TuPian/logo.jpg"></a><img
 			src="${pageContext.request.contextPath }/TuPian/nuli.gif"><br /> <font size="33px"><b>用户登录</b></font>
 		<div class="tou">
-				<a href=""><font class="toubuwenzi">返回首页&nbsp;&nbsp;&nbsp;</font></a>
+				<a href="${pageContext.request.contextPath }/index_showAll.action"><font class="toubuwenzi">返回首页&nbsp;&nbsp;&nbsp;</font></a>
 		</div>
 	</div>
 
