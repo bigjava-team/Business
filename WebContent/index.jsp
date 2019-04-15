@@ -250,12 +250,11 @@
 			<div id="middle_carousel" style="overflow: hidden; height: 56%;">
 				<div id="carousel">
 					<ul id="carousel_ul">
-						<li><img src="${pageContext.request.contextPath }/images/index/1.jpg" name="carousel_ul_img"  /></li>
-						<li><img src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" name="carousel_ul_img" /></li>
-						<li><img src="${pageContext.request.contextPath }/images/index/3.jpg" name="carousel_ul_img" /></li>
-						<li><img src="${pageContext.request.contextPath }/images/index/4.jpg" name="carousel_ul_img" /></li>
-						<li><img src="${pageContext.request.contextPath }/images/index/5.jpg" name="carousel_ul_img" /></li>
-						<li><img src="${pageContext.request.contextPath }/images/index/1.jpg" name="carousel_ul_img" /></li> 
+						<li><img src="${pageContext.request.contextPath }/images/index_lunbo01.jpg" name="carousel_ul_img"  /></li>
+						<li><img src="${pageContext.request.contextPath }/images/index_lunbo02.jpg" name="carousel_ul_img" /></li>
+						<li><img src="${pageContext.request.contextPath }/images/index_lunbo03.jpg" name="carousel_ul_img" /></li>
+						<li><img src="${pageContext.request.contextPath }/images/index_lunbo04.jpg" name="carousel_ul_img" /></li>
+						<li><img src="${pageContext.request.contextPath }/images/index_lunbo05.jpg" name="carousel_ul_img" /></li>
 					</ul>
 					<div id="navDiv">
 						<a href="javascript:;" name="navDiv_a" ></a>
@@ -266,7 +265,7 @@
 					</div>
 				</div>
 				<div style="background: #FF8000; float: left; width: 23.5%; height: 10%; height: 100%; margin-top: 8px;">
-					<img alt="" src="${pageContext.request.contextPath }/images/products/bbb006.jpg" width="100%" height="100%">
+					<img alt="" src="${pageContext.request.contextPath }/images/index_shangpin01.jpg" width="100%" height="100%">
 				</div>
 			</div>
 			
@@ -276,10 +275,10 @@
 			<!-- 284 520 -->
 			<div style="overflow: hidden; height: 39%;">
 				<div style="background: #FF8000; float: left; width: 74%; height: 100%; margin-right: 1%;">
-					<img alt="" src="${pageContext.request.contextPath }/images/products/ddd004.jpg" width="100%" height="100%">
+					<img alt="" src="${pageContext.request.contextPath }/images/index_dianpu01.jpg" width="100%" height="100%">
 				</div>
 				<div style="background: #D26900; float: left; width: 23.92%; height: 100%;">
-					<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" width="100%" height="100%">
+					<img alt="" src="${pageContext.request.contextPath }/images/index_dianpu02.jpg" width="100%" height="100%">
 				</div>
 			</div>
 		</div>
