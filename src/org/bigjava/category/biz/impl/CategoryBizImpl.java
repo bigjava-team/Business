@@ -5,6 +5,7 @@ import java.util.List;
 import org.bigjava.category.biz.CategoryBiz;
 import org.bigjava.category.dao.CategoryDao;
 import org.bigjava.category.entity.Category;
+import org.bigjava.product.entity.Product;
 
 public class CategoryBizImpl implements CategoryBiz {
 
@@ -41,6 +42,13 @@ public class CategoryBizImpl implements CategoryBiz {
 	@Override
 	public void updateCategory(Category category, Category updateCategory) {
 		categoryDao.updateCategory(category, updateCategory);
+	}
+
+	// 查询一级分类对应的商品
+	@Override
+	public List<Product> queryC_idCategoryProduct(int c_id, int presentPage) {
+		// TODO Auto-generated method stub
+		return categoryDao.queryC_idCategoryProduct(c_id, presentPage);
 	}
 
 }

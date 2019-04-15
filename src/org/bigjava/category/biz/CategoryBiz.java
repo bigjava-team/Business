@@ -3,6 +3,7 @@ package org.bigjava.category.biz;
 import java.util.List;
 
 import org.bigjava.category.entity.Category;
+import org.bigjava.product.entity.Product;
 
 /**
  * 管理员操作一级分类
@@ -35,5 +36,10 @@ public interface CategoryBiz {
 	 * 修改一级分类
 	 */
 	public void updateCategory(Category category, Category updateCategory);
+	
+	/**
+	 * 通过一级分类id分页查询一级分类商品
+	 */
+	public List<Product> queryC_idCategoryProduct(int c_id,int presentPage);
 
 }

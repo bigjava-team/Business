@@ -18,7 +18,6 @@ import org.bigjava.function.QueryAllCategory;
 import org.bigjava.function.queryCategorySecond.QueryAllCategorySecond;
 import org.bigjava.function.queryCategorySecond.QueryCategorySecond;
 import org.bigjava.merchant.entity.Merchant;
-import org.bigjava.orders.entity.Orders;
 import org.bigjava.product.biz.ProductBiz;
 import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
@@ -41,6 +40,12 @@ public class ProductAction extends ActionSupport {
 	private int commentNumber;
 	// 分页类
 	private Paging paging;
+	// 一级分类
+	private Category category;
+	// 二级分类
+	private CategorySecond categorySecond;
+
+	private String searchText;// 搜索的值
 
 	private ProductBiz productBiz;
 	private CommentBiz commentBiz;
@@ -59,8 +64,62 @@ public class ProductAction extends ActionSupport {
 	private List<QueryAllCategory> listIndexCategory = new ArrayList<QueryAllCategory>();
 	/* 查询首页的二级分类 */
 	private List<QueryCategorySecond> listCS = new ArrayList<QueryCategorySecond>();
+	/* 查询二级分类中推荐的商品 */
+	private List<Product> listAllLikeProduct = new ArrayList<Product>();
+	// 查询出一级分类的商品
+	private List<Product> listCategoryProduct;
+	// 查询出二级分类的商品
+	private List<Product> listCategorySecondProduct;
 
 	private FileImageAction fileImageAction;
+
+	public String getSearchText() {
+		return searchText;
+	}
+
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
+	}
+
+	public List<Product> getListCategoryProduct() {
+		return listCategoryProduct;
+	}
+
+	public void setListCategoryProduct(List<Product> listCategoryProduct) {
+		this.listCategoryProduct = listCategoryProduct;
+	}
+
+	public List<Product> getListCategorySecondProduct() {
+		return listCategorySecondProduct;
+	}
+
+	public void setListCategorySecondProduct(List<Product> listCategorySecondProduct) {
+		this.listCategorySecondProduct = listCategorySecondProduct;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public CategorySecond getCategorySecond() {
+		return categorySecond;
+	}
+
+	public void setCategorySecond(CategorySecond categorySecond) {
+		this.categorySecond = categorySecond;
+	}
+
+	public List<Product> getListAllLikeProduct() {
+		return listAllLikeProduct;
+	}
+
+	public void setListAllLikeProduct(List<Product> listAllLikeProduct) {
+		this.listAllLikeProduct = listAllLikeProduct;
+	}
 
 	// 查询商品对应的评论
 	private List<Comment> listProductAllComment = new ArrayList<Comment>();
@@ -321,6 +380,9 @@ public class ProductAction extends ActionSupport {
 				}
 			}
 		}
+
+		// 查询二级分类中的猜你喜欢
+		listAllLikeProduct = listAllCommentProduct.subList(0, 6);
 		System.out.println(listCS.size());
 		return SUCCESS;
 	}
@@ -346,5 +408,29 @@ public class ProductAction extends ActionSupport {
 		return "idQueryProduct";
 	}
 
+	// 通过一级分类查询商品
+	public String queryAllCategory() {
+		System.out.println("通过一级分类查询商品");
+		listCategoryProduct = categoryBiz.queryC_idCategoryProduct(category.getC_id(), paging.getPresentPage());
+		if (listCategoryProduct == null) {
+			System.out.println("没有此类审商品");
+		}
+		return "queryAllCategory";
+	}
+
+	// 通过二级分类查询商品
+	public String cs_idQueryAllCategorySecond() {
+		System.out.println("通过二级分类查询商品");
+		listCategoryProduct = categorySecondBiz.cs_idQueryAllCategorySecondProduct(categorySecond.getCs_id(),
+				paging.getPresentPage());
+		return "cs_idQueryAllCategorySecond";
+	}
+
+	// 通过搜索的值查询商品
+	public String searchTextQueryProduct() {
+		System.out.println("模糊搜索商品");
+		listCategoryProduct = categorySecondBiz.searchTextQueryProduct(searchText, paging.getPresentPage());
+		return "searchTextQueryProduct";
+	}
 
 }

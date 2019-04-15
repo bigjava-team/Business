@@ -1,9 +1,15 @@
 package org.bigjava.category.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bigjava.category.dao.CategoryDao;
 import org.bigjava.category.entity.Category;
+import org.bigjava.categorysecond.entity.CategorySecond;
+import org.bigjava.function.Paging;
+import org.bigjava.product.entity.Product;
+import org.hibernate.Query;
+import org.hibernate.classic.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 public class CategoryDaoImpl extends HibernateDaoSupport implements CategoryDao {
@@ -21,8 +27,8 @@ public class CategoryDaoImpl extends HibernateDaoSupport implements CategoryDao 
 	public List<Category> queryAllCategory() {
 		// TODO Auto-generated method stub
 		System.out.println("开始查询一级分类");
-		List<Category> listCategory = this.getHibernateTemplate().find("from Category");// 查询全部的一级分类
-		return listCategory;
+		List<Category> listProduct = this.getHibernateTemplate().find("from Category");// 查询全部的一级分类
+		return listProduct;
 	}
 
 	// 通过id查询对应的一级分类
@@ -54,6 +60,41 @@ public class CategoryDaoImpl extends HibernateDaoSupport implements CategoryDao 
 			category.setC_name(updateCategory.getC_name());// 将修改的updateCategory的一级分类set进从数据库中获得的category中
 		}
 		this.getHibernateTemplate().update(category);// 将Category表的内容修改为category
+	}
+
+	// 查询一级分类对应的商品
+	@Override
+	public List<Product> queryC_idCategoryProduct(int c_id, int presentPage) {
+		// TODO Auto-generated method stub
+		System.out.println("开始执行queryC_idCategoryProduct方法");
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		List<Product> listProduct = new ArrayList<Product>();
+		List<CategorySecond> listProductSecond = session.createQuery("from CategorySecond where c_id=?").setInteger(0, c_id).list();
+		for (int i=0; i<listProductSecond.size(); i++) {
+			int number = listProductSecond.get(i).getCs_id();
+			List<Product> listProducts = session.createQuery("from Product where cs_id=?").setInteger(0, number).list();
+			if (listProducts.size()!=0) {
+				for (int j=0; j<listProducts.size(); j++) {
+					listProduct.add(listProducts.get(j));
+				}
+			}
+		}
+		if (listProduct.size() == 0) {
+			return null;
+		}
+		System.out.println("查询到的商品" + listProduct);
+		Paging paging = new Paging(presentPage, listProduct.size(), 10);
+		int chu = listProduct.size()/paging.getPagesize();
+		int yu = listProduct.size()%paging.getPagesize();
+		if (yu==0) {
+			listProduct = listProduct.subList((paging.getPresentPage()-1)*paging.getPagesize(), paging.getPresentPage()*paging.getPagesize());
+		} else if(presentPage == paging.getPage() && yu>0) {
+			listProduct = listProduct.subList((paging.getPresentPage()-1)*paging.getPagesize(), yu);
+		} else {
+			listProduct = listProduct.subList((paging.getPresentPage()-1)*paging.getPagesize(), paging.getPresentPage()*paging.getPagesize());
+		}
+		System.out.println("商品"+listProduct);
+		return listProduct;
 	}
 
 }

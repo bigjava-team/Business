@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
   <head>
              <title>页面布局</title>      
@@ -7,8 +8,8 @@
   <!--搜素栏 -->
 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css"> --%>
-<link rel="stylesheet" href="css/xuanxiangxiahua.css">
-<link rel="stylesheet" href="css/menu_bottom.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/zp1/css/xuanxiangxiahua.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/zp1/css/menu_bottom.css">
   <style type="text/css">
 /*索搜*/
 * {box-sizing: border-box;}
@@ -44,7 +45,7 @@
 /*第四版块*/
 .contentfour1{ background:#ffffff; width:17.5%; height:150%; float:left;border:2px solid #ffffff; margin:0 0 0 6.5%  }
 /*第五版块*/
-.content5{ background:#ffffff; width:74%; height:150%;  border:2px solid #ffffff; margin:0 0 0 24%}
+.content5{ background:#ffffff; width:85%; height:150%; float:center; border:2px solid #ffffff; margin:0 auto}
 /*节目1*/
 .lanmusi{ background:#fff; width:16%; height:25%;float:left; border:2px solid #FF9900; margin:2 3 0 3}
 /*节目2*/
@@ -65,13 +66,27 @@
 				});
 			});
 	});
+	
+	function queryProduct(id) {
+		var username = '${loginUser.username }';
+		window.open("Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0");
+	}
 </script>
-<body>
+<body style="margin: 0px; padding: 0px;">
 
 
 	<!--板块1-->
 	<div class="contentone">
-		<div class=wenziz>中国大陆 亲，请登录免费注册我的光光</div>
+		<div class=wenziz>
+			中国大陆
+			<s:if test='loginUser.username != null && loginUser.username != ""'>
+					欢迎您：${loginUser.username };
+			</s:if>
+			<s:else >
+				<a href="${pageContext.request.contextPath }/user/login.jsp">亲，请登录</a> 
+				<a href="user/Save.jsp">免费注册</a>
+			</s:else>
+		</div>
 		<div id="d" class=wenziz2>
 			<ul  class="nav">
 				<li><a href="#">网站导航</a>
@@ -106,10 +121,11 @@
 	</div>
 	<!--板块2-->
 	<div id="d" class="contenttwo">
-		<img src="images/logo.png" height="100%" width="13%" align="left">
+		<img src="${pageContext.request.contextPath }/zp1/images/logo.png" height="100%" width="13%" align="left">
 		<div class="search bar7">
-			<form>
-				<input type="text" placeholder="欢迎来到光光网...">
+			<form action="index_searchTextQueryProduct?paging.presentPage=1" method="post">
+				<input type="hidden" name="loginUser.username" value="${loginUser.username }" />
+				<input name="searchText" type="text" placeholder="欢迎来到光光网...">
 				<button type="submit"></button>
 			</form>
 		</div>
@@ -123,50 +139,12 @@
 	</div>
 	
 	<div class="contentthree2">
-		<img src="images/55.jpg" height="60%" width="100%" />
+		<img src="${pageContext.request.contextPath }/zp1/images/55.jpg" height="60%" width="100%" />
 	</div>
 
 	<div style="height:3%; border-top: 1px solid #d0d0d0;"></div>
 	<!--板块4-->
-	<div class="contentfour1">
-		<!--2-->
-		<div class="lanmuwu">
-			<div class="juzhong">
-				<img src="images/9.jpg" height="60%" />口红
-			</div>
-			<!--栏目内容-->
-			这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
-		</div>
-		<!--2结束-->
-		<!--2-->
-		<div class="lanmuwu">
-			<div class="juzhong">
-				<img src="images/9.jpg" height="60%" />口红
-			</div>
-			<!--栏目内容-->
-			这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
-		</div>
-		<!--2结束-->
-		<!--2-->
-		<div class="lanmuwu">
-			<div class="juzhong">
-				<img src="images/9.jpg" height="60%"  />口红
-			</div>
-			<!--栏目内容-->
-			这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
-		</div>
-		<!--2结束-->
-		<!--2-->
-		<div class="lanmuwu">
-			<div class="juzhong">
-				<img src="images/9.jpg" height="60%"/>口红
-			</div>
-			<!--栏目内容-->
-			这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
-		</div>
-		<!--2结束-->
-
-	</div>
+	
 	<!--板块5-->
 	
 	<div class="content5">
@@ -174,27 +152,23 @@
 		<div class="content">
 			<div class="aa">
 			<!--1-->
-				<div class="lanmusi">
+			<s:iterator value="listCategoryProduct" var="listCategoryProducts">
+				<div class="lanmusi" onclick="queryProduct(${listCategoryProducts.p_id })">
 					<div class="juzhong">
-						<img src="images/3.png" height="35%" />口红
+						<img src="${fileImageAction.urlImage }${listCategoryProducts.p_image }" height="35%" />
 					</div>
 					<!--栏目内容-->
-					这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
+					${listCategoryProducts.p_name }<br />
+					${listCategoryProducts.p_price }<br/>
+					${listCategoryProducts.sale_volume }
 				</div>
-				<div class="lanmusi">
-					<div class="juzhong">
-						<img src="images/9.jpg" height="38%"/> 口红
-					</div>
-					<!--栏目内容-->
-					这款口红是3D效果的，宛如光下的贝壳<br />73294 人说好
-				</div>
-			<!-- 1结束 -->
+			</s:iterator>
 		</div>
 		<div class="aa">
 		<!--2-->
 		<div class="lanmusi">
 			<div class="空的div">
-				<img src="images/0.jpg" height="60%" width="100%" />
+				<img src="${pageContext.request.contextPath }/zp1/images/0.jpg" height="60%" width="100%" />
 			</div>
 			<!--栏目内容-->
 			<div class="wenziz3">非常好的鞋子</div><p>

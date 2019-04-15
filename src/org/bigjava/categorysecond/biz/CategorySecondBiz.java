@@ -6,6 +6,7 @@ import org.bigjava.category.entity.Category;
 import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.function.Paging;
 import org.bigjava.function.queryCategorySecond.QueryAllCategorySecond;
+import org.bigjava.product.entity.Product;
 
 public interface CategorySecondBiz {
 
@@ -50,4 +51,14 @@ public interface CategorySecondBiz {
 	 * 用CategorySecond接收全部的二级份类
 	 */
 	public List<CategorySecond> showAllCategorySecond();
+	
+	/**
+	 * 分页查询二级分类对应的商品
+	 */
+	public List<Product> cs_idQueryAllCategorySecondProduct(int cs_id,int presentPage);
+	
+	/**
+	 * 模糊分页查询商品内容
+	 */
+	public List<Product> searchTextQueryProduct(String searchText,int presentPage);
 }
