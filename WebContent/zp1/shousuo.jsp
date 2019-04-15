@@ -69,6 +69,14 @@
 		var username = '${loginUser.username }';
 		window.open("Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0");
 	}
+	
+	$(function(){
+		$(".lanmusi").hover(function(){
+			$(this).addClass("cainilikeJQuery01");
+		}, function(){
+			 $(this).removeClass("cainilikeJQuery01");
+		})
+	})
 </script>
 <body style="margin: 0px; padding: 0px;">
 

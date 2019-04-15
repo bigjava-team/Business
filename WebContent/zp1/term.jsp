@@ -9,6 +9,7 @@
  .wenziz11{ text-align:center;   font-size:12px; word-spacing:33px; }
  a {text-decoration: none; text-decoration: none; color: inherit;}
   #c div{float:left;} 
+ 
  </style>
  
 <div id="c" class="wenziz11">
