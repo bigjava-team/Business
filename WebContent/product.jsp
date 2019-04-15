@@ -233,11 +233,11 @@
 				<font id="product_div1_div2_div1_font">${product.p_name }</font>
 			</div>
 			
-			<div id="product_div1_div2_div2">
+			<div id="product_div1_div2_div2" style="padding-top: 2%; padding-bottom: 2%;">
 				<div>
 					市场价: &emsp;<font id="font1" class="shichangjia" style="color: #666666;">¥ ${product.market }</font>
 				</div>
-				<div>
+				<div style="margin-top: 2%">
 					光光价: &emsp;<font id="font2" class="guangguangjia" style="color: #FF8000;">¥ ${product.p_price }</font>
 				</div>
 			</div>
@@ -261,7 +261,7 @@
 			
 			<!-- form不要删  不然样式会乱  里面的属性不要给属性值就行 -->
 			<form id="product_div1_div2_form" action="orderitem_addOrderItemAndQueryOrderItem" method="post">
-				<div class="product_div1_div2_form_div1">
+				<!-- <div class="product_div1_div2_form_div1">
 					<div class="product_div1_div2_form_div1_div1">数量: </div>
 					
 					<div class="product_div1_div2_form_div1_div2" style="margin-left: 14%;">
@@ -275,14 +275,14 @@
 							+
 						</div>
 					</div>
-				</div>
-				<div style="margin-left: 5%; margin-bottom: 3%;">
+				</div> -->
+				<div style="margin-left: 5%; margin-bottom: 4%; margin-top: 4%;">
 					<input type="submit" value="立即购买" onclick="lijigoumai()" style="width: 30%; height: 40px; font-weight: bold; font-size: 16px; background: #FF9224; color: #F0F0F0; margin-right: 2%" />
 					<input type="submit" value="加入购物车" onclick="jiarucar()" style="width: 30%; height: 40px; font-weight: bold; font-size: 16px; background: #FF9224; color: #F0F0F0;" />
 				</div>
 			</form>
 			
-			<div class="product_div1_div2_div4">
+			<div class="product_div1_div2_div4" style="margin-top: 5%;">
 				<div class="product_div1_div2_div4_div1">承诺: </div>
 				<div class="product_div1_div2_div4_div2">
 					7天退货&emsp;运费险&emsp;公益宝贝
