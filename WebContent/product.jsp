@@ -421,7 +421,7 @@
 			
 			<div class="content">
 				<div class="aa">
-					<div class="div1">
+					<div class="div1" style="padding-top: 1%; padding-left: 1.5%;">
 						<div class="div1_d1">
 							<div class="div1_d1_d1">名称：</div>
 							<div>${product.p_name }</div>
@@ -430,7 +430,7 @@
 							<div class="div1_d1_d1">月销量：</div>
 							<div>${product.sale_volume }件</div>
 						</div>
-						<div class="div1_d1">
+						<div class="div1_d1" style="padding-bottom: 1%;">
 							<div class="div1_d1_d1">描述：</div>
 							<div>${product.p_desc }</div>
 						</div>

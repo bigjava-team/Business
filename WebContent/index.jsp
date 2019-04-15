@@ -349,7 +349,7 @@
 			</div>
 			<div style="background: #FFF; width: 100%; height: 49.7%; padding-top: 5%;">
 				<div style="width: 100%; height: 38%; margin-left: 0%; margin-bottom: 2%; text-align: center;">
-					<img alt="用户头像" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="100%" style="border-radius: 50%;">
+					<img alt="用户头像" src="${pageContext.request.contextPath }/images/user_morentouxiang.jpg" height="100%" style="border-radius: 50%;">
 				</div>
 				<div style="text-align: center; color: #FF8300; font-weight: bold;">
 					欢迎来到光光商场！
