@@ -27,7 +27,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ProductAction extends ActionSupport {
-	
+
 	/* 商品 */
 	private Product product;
 	// 用户信息
@@ -41,17 +41,17 @@ public class ProductAction extends ActionSupport {
 	private int commentNumber;
 	// 分页类
 	private Paging paging;
-	
+
 	private ProductBiz productBiz;
 	private CommentBiz commentBiz;
 	private CategoryBiz categoryBiz;// 一级分类
 	private CategorySecondBiz categorySecondBiz;// 二级分类
-	
+
 	/* 查询最新的商品 */
 	private List<Product> listProductTime;
 	/* 查询最热的商品 */
 	private List<Product> listProductHot;
-	/* 查询推荐的商品  */
+	/* 查询推荐的商品 */
 	private List<Product> listAllCommentProduct = new ArrayList<Product>();
 	/* 查询首页的推荐商品 */
 	private List<Integer> listCommentNumber = new ArrayList<Integer>();
@@ -59,9 +59,9 @@ public class ProductAction extends ActionSupport {
 	private List<QueryAllCategory> listIndexCategory = new ArrayList<QueryAllCategory>();
 	/* 查询首页的二级分类 */
 	private List<QueryCategorySecond> listCS = new ArrayList<QueryCategorySecond>();
-	
+
 	private FileImageAction fileImageAction;
-	
+
 	// 查询商品对应的评论
 	private List<Comment> listProductAllComment = new ArrayList<Comment>();
 
@@ -187,9 +187,9 @@ public class ProductAction extends ActionSupport {
 
 	/* 异步校验 */
 	private IsEmpty isEmpty = new IsEmpty();
-	
-	private String  check;
-	
+
+	private String check;
+
 	public String getCheck() {
 		return check;
 	}
@@ -229,93 +229,93 @@ public class ProductAction extends ActionSupport {
 	public void setProductBiz(ProductBiz productBiz) {
 		this.productBiz = productBiz;
 	}
-	
+
 	public String showAll() {
 		System.out.println("进入首页index" + loginUser);
 		/* 查询最新的商品 */
 		listProductTime = productBiz.queryProduct_time();
 		listProductTime = listProductTime.subList(0, 6);
-		
-		if (listProductTime != null && listProductTime.size()!=0) {
+
+		if (listProductTime != null && listProductTime.size() != 0) {
 			check = "获取页面值成功";
 		}
-		
+
 		/* 查询最热的商品 */
 		listProductHot = productBiz.queryProduct_hot();
 		listProductHot = listProductHot.subList(0, 6);
 		/* 查询推荐的商品 */
 		List<Comment> listComment = commentBiz.queryCommentByNumberOneToTwelve();
 		System.out.println("推荐的商品" + listComment);
-		
+
 		listAllCommentProduct = productBiz.queryAllCommentProduct();
 		System.out.println("所有的商品" + listAllCommentProduct);
-		for (int i=0; i<listAllCommentProduct.size(); i++) {
+		for (int i = 0; i < listAllCommentProduct.size(); i++) {
 			int commentNumber = 0;
-			for (int j=0; j<listComment.size(); j++) {
+			for (int j = 0; j < listComment.size(); j++) {
 				if (listAllCommentProduct.get(i).getP_id() == listComment.get(j).getProduct().getP_id()) {
 					commentNumber++;
 				}
 			}
 			listCommentNumber.add(commentNumber);
 		}
-		
+
 		int number = 0;
 		List<Product> listProduct = new ArrayList<Product>();
-		for (int i=0; i<listCommentNumber.size()-1; i++) {
-			for (int j=0; j<listCommentNumber.size()-1-i; j++) {
-				if (listCommentNumber.get(j)<listCommentNumber.get(j+1)) {
+		for (int i = 0; i < listCommentNumber.size() - 1; i++) {
+			for (int j = 0; j < listCommentNumber.size() - 1 - i; j++) {
+				if (listCommentNumber.get(j) < listCommentNumber.get(j + 1)) {
 					listProduct.add(listAllCommentProduct.get(j));
 					number = listCommentNumber.get(j);
-					
-					listAllCommentProduct.set(j, listAllCommentProduct.get(j+1));
-					listCommentNumber.set(j, listCommentNumber.get(j+1));
-					
-					listAllCommentProduct.set(j+1, listProduct.get(0));
-					listCommentNumber.set(j+1, number);
+
+					listAllCommentProduct.set(j, listAllCommentProduct.get(j + 1));
+					listCommentNumber.set(j, listCommentNumber.get(j + 1));
+
+					listAllCommentProduct.set(j + 1, listProduct.get(0));
+					listCommentNumber.set(j + 1, number);
 				}
 			}
 			listProduct.clear();
 		}
 		listCommentNumber = listCommentNumber.subList(0, 12);
 		listAllCommentProduct = listAllCommentProduct.subList(0, 12);
-		
+
 		System.out.println("----------------------------------------------------");
-		
+
 		// 查询全部的一级分类
 		List<Category> listCategory = categoryBiz.showAllCategory();
 		List<Category> listCategorys = null;
-		int numbers = listCategory.size()/3;
-		int remaining = listCategory.size()%3;
-		for (int i=1; i<numbers+1 ; i++) {
+		int numbers = listCategory.size() / 3;
+		int remaining = listCategory.size() % 3;
+		for (int i = 1; i < numbers + 1; i++) {
 			QueryAllCategory queryCategory = new QueryAllCategory();
-			listCategorys = listCategory.subList((i-1)*3, i*3);
+			listCategorys = listCategory.subList((i - 1) * 3, i * 3);
 			queryCategory.setListCategory(listCategorys);
 			listIndexCategory.add(queryCategory);
 			if (remaining != 0) {
-				if (i==numbers) {
+				if (i == numbers) {
 					QueryAllCategory queryCategorys = new QueryAllCategory();
-					listCategorys = listCategory.subList(i*3, i*3+remaining);
+					listCategorys = listCategory.subList(i * 3, i * 3 + remaining);
 					queryCategorys.setListCategory(listCategorys);
 					listIndexCategory.add(queryCategorys);
 				}
 			}
-		}	
+		}
 		System.out.println(listCategorys.size());
-		
+
 		// 查询二级分类
 		List<QueryAllCategorySecond> listCategorySecond = categorySecondBiz.showCategorySecond();
 		List<QueryAllCategorySecond> listCategorySeconds = null;
-		int categorySecondNumber = listCategorySecond.size()/3;
-		int categorySecondRemaining = listCategorySecond.size()%3;
-		for (int i=1; i<categorySecondNumber+1; i++) {
-			listCategorySeconds = listCategorySecond.subList((i-1)*3, i*3);
+		int categorySecondNumber = listCategorySecond.size() / 3;
+		int categorySecondRemaining = listCategorySecond.size() % 3;
+		for (int i = 1; i < categorySecondNumber + 1; i++) {
+			listCategorySeconds = listCategorySecond.subList((i - 1) * 3, i * 3);
 			QueryCategorySecond queryCS = new QueryCategorySecond();
 			queryCS.setListCategorySecond(listCategorySeconds);
 			listCS.add(queryCS);
 			if (categorySecondRemaining != 0) {
-				if (i==categorySecondNumber) {
+				if (i == categorySecondNumber) {
 					QueryCategorySecond queryCS2 = new QueryCategorySecond();
-					listCategorySeconds = listCategorySecond.subList(i*3, i*3+categorySecondRemaining);
+					listCategorySeconds = listCategorySecond.subList(i * 3, i * 3 + categorySecondRemaining);
 					queryCS2.setListCategorySecond(listCategorySeconds);
 					listCS.add(queryCS2);
 				}
@@ -324,26 +324,27 @@ public class ProductAction extends ActionSupport {
 		System.out.println(listCS.size());
 		return SUCCESS;
 	}
-	
+
 	// 通过商品id查询商品详情
 	public String idQueryProduct() {
 		System.out.println("进入商品详情");
 		product = productBiz.queryProduct_id(product.getP_id());
 		merchant = product.getMerchant();
 		user = merchant.getUser();
-		
+
 		// 查询店铺中最新的商品
 		listProductTime = productBiz.queryMerchantProduct_time(merchant.getM_id());
 		listProductTime = listProductTime.subList(0, 2);
-		
+
 		// 查询店铺中最热的商品
 		listProductHot = productBiz.queryMerchantProduct_hot(merchant.getM_id());
 		listProductHot = listProductHot.subList(0, 2);
-		
+
 		// 查询商品对应的评论
 		listProductAllComment = commentBiz.queryProductCommentNumber(product.getP_id(), paging.getPresentPage());
 		commentNumber = listProductAllComment.size();
 		return "idQueryProduct";
 	}
+
 
 }

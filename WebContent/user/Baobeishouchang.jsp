@@ -58,11 +58,11 @@
 		</div>
 			
 		<div class="dianpushouchang_div" id="div1" style="margin-left: 46%;background:rgba(0, 0, 255,0.1);">
-			<a href="Baobeishouchang.jsp"><font class="wenzi2">宝贝收藏</font></a>
+			<a href="user/Baobeishouchang.jsp"><font class="wenzi2">宝贝收藏</font></a>
 		</div>
 	
 		<div class="dianpushouchang_div" id="div2" onmouseover="show()" onmouseout="back()">
-			<a href="DianpuShouChang.jsp"><font class="wenzi2">店铺收藏</font></a>
+			<a href="user/DianpuShouChang.jsp"><font class="wenzi2">店铺收藏</font></a>
 		</div>
 		<div style="clear: both;"></div>
 	</div>
