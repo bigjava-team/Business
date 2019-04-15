@@ -104,6 +104,7 @@ body {
 	float: right;
 	width: 28%;
 	height: 100%;
+	margin-top:3.3%;
 }
 
 .two font {
@@ -815,7 +816,7 @@ function show1(id){
 					</div>
 				</div>
 				<!-- 第二个div -->
-				<div id="lb2" style="display: none">
+				<div id="lb2" style="display: none;margin-top: 3%">
 
 					<div
 						style="width: 95.4%; margin-top: 2%; color: #FDE938; background-color: #F30408; padding-top: 1%; padding-bottom: 1%; ">
@@ -861,7 +862,7 @@ function show1(id){
 					</form>
 				</div>
 				<!-- 第三个div -->
-				<div id="lb3" style="display: none">
+				<div id="lb3" style="display: none;margin-top: 3%;">
 					<form action="userxinxi.jsp" method="post"
 						enctype="multipart/form-data" name="HtmlFileForm"
 						onsubmit="return dealsubmit2()">
@@ -899,7 +900,7 @@ function show1(id){
 					</form>
 				</div>
 				<!-- 第四个div -->
-				<div id="lb4" style="display: none">
+				<div id="lb4" style="display: none;margin-top:1%;">
 					<form action="addr_addAddress" method="post"
 						onsubmit="return dealsubmit3()">
 						<div class="update_dizhi">
