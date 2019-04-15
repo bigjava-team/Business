@@ -68,6 +68,9 @@
 		<!-- 访问首页的action -->
 		<action name="index_*" class="productAction" method="{1}">
 			<result name="success">/index.jsp</result>
+			<result name="queryAllCategory">/zp1/shousuo.jsp</result>
+			<result name="cs_idQueryAllCategorySecond">/zp1/shousuo.jsp</result>
+			<result name="searchTextQueryProduct">/zp1/shousuo.jsp</result>
 		</action>
 
 		<!-- 验证码的 Action -->

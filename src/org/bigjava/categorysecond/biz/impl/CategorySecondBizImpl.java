@@ -8,6 +8,7 @@ import org.bigjava.categorysecond.dao.CategorySecondDao;
 import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.function.Paging;
 import org.bigjava.function.queryCategorySecond.QueryAllCategorySecond;
+import org.bigjava.product.entity.Product;
 
 public class CategorySecondBizImpl implements CategorySecondBiz {
 
@@ -71,6 +72,20 @@ public class CategorySecondBizImpl implements CategorySecondBiz {
 	public List<CategorySecond> showAllCategorySecond() {
 		// TODO Auto-generated method stub
 		return categorySecondDao.showAllCategorySecond();
+	}
+
+	// 分页查询二级分类对应的商品
+	@Override
+	public List<Product> cs_idQueryAllCategorySecondProduct(int cs_id, int presentPage) {
+		// TODO Auto-generated method stub
+		return categorySecondDao.cs_idQueryAllCategorySecondProduct(cs_id, presentPage);
+	}
+
+	// 模糊分页查询商品内容
+	@Override
+	public List<Product> searchTextQueryProduct(String searchText, int presentPage) {
+		// TODO Auto-generated method stub
+		return categorySecondDao.searchTextQueryProduct(searchText, presentPage);
 	}
 
 }

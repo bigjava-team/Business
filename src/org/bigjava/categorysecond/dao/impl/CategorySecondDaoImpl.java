@@ -9,6 +9,7 @@ import org.bigjava.categorysecond.dao.CategorySecondDao;
 import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.function.Paging;
 import org.bigjava.function.queryCategorySecond.QueryAllCategorySecond;
+import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -111,6 +112,33 @@ public class CategorySecondDaoImpl extends HibernateDaoSupport implements Catego
 	public List<CategorySecond> showAllCategorySecond() {
 		// TODO Auto-generated method stub
 		return this.getHibernateTemplate().find("from CategorySecond");
+	}
+
+	
+	// 分页查询二级分类对应的商品
+	@Override
+	public List<Product> cs_idQueryAllCategorySecondProduct(int cs_id,int presentPage) {
+		// TODO Auto-generated method stub
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		Query query = session.createQuery("from Product where cs_id=?").setInteger(0, cs_id);
+		System.out.println("数量"+query.list().size());
+		Paging paging = new Paging(presentPage, query.list().size(), 10);
+		query.setFirstResult(paging.getStart());
+		query.setMaxResults(paging.getPagesize());
+		return query.list();
+	}
+
+	// 模糊分页查询商品信息
+	@Override
+	public List<Product> searchTextQueryProduct(String searchText, int presentPage) {
+		// TODO Auto-generated method stub
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		Query query = session.createQuery("from Product where p_name like ?").setString(0, "%"+searchText+"%");
+		System.out.println("数量"+query.list().size());
+		Paging paging = new Paging(presentPage, query.list().size(), 10);
+		query.setFirstResult(paging.getStart());
+		query.setMaxResults(paging.getPagesize());
+		return query.list();
 	}
 
 }

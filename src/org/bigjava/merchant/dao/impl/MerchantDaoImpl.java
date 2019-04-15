@@ -20,19 +20,19 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 	public void registerMerchant(Merchant merchant, User user) {// merchant为添加的店铺信息、user为添加店铺的用户信息
 		// TODO Auto-generated method stub
 		System.out.println("开始注册店铺");
-		
+
 		merchant.setUser(user);// 获取对应user的主键id
-		
+
 		this.getHibernateTemplate().save(merchant);// 注册店铺信息
-		
+
 	}
-	
+
 	// 删除店铺
 	@Override
 	public void deleteMerchant(Merchant merchant) {
 		// TODO Auto-generated method stub
 		System.out.println("开始删除");
-		
+
 		this.getHibernateTemplate().delete(merchant);// 删除merchant内的店铺信息
 	}
 
@@ -50,33 +50,33 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 	public void updateMerchant(Merchant merchant, Merchant updateMerchant) {// merchant数据库中的店铺信息、修改的店铺信息
 		// TODO Auto-generated method stub
 		System.out.println("开始修改店铺名");
-		
+
 		if (updateMerchant.getM_name() == null || updateMerchant.getM_name().equals("")) {// 判断修改的店铺名不能为空
-			
+
 		} else {
 			if (!updateMerchant.getM_name().equals(merchant.getM_name())) {// 如果修改的店铺名与数据库中的店铺名不一样将其保存至merchant中
 				merchant.setM_name(updateMerchant.getM_name());
 			}
 		}
-		
+
 		if (updateMerchant.getM_image() == null || updateMerchant.getM_image().equals("")) {// 判断修改的店铺图片路径不能为空
-			
+
 		} else {
 			if (!updateMerchant.getM_image().equals(merchant.getM_image())) {// 如果修改的店铺图片路径与数据库中的店铺图片路径不一样将其保存至merchant中
 				merchant.setM_image(updateMerchant.getM_image());
 			}
 		}
-		
+
 		if (updateMerchant.getM_is_freeze() == 0) {// 判断修改的店铺状态不能为0
-			
+
 		} else {
 			if (updateMerchant.getM_is_freeze() != merchant.getM_is_freeze()) {// 如果修改的店铺状态与数据库中的店铺状态不一样将其保存至merchant中
-				merchant.setM_is_freeze(updateMerchant.getM_is_freeze());	
+				merchant.setM_is_freeze(updateMerchant.getM_is_freeze());
 			}
 		}
-		
+
 		this.getHibernateTemplate().update(merchant);// 修改数据库中店铺的内容
-		
+
 	}
 
 	/**
@@ -99,15 +99,16 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
 		List<Orders> listOrders = new ArrayList<Orders>();
 		List<Product> listProduct = session.createQuery("from Product where m_id=?").setInteger(0, m_id).list();
-		if (listProduct.size()!=0) {
-			for (int i=0; i<listProduct.size(); i++) {
+		if (listProduct.size() != 0) {
+			for (int i = 0; i < listProduct.size(); i++) {
 				int numberP_id = listProduct.get(i).getP_id();
-				List<Orderitem> listOrderitem = session.createQuery("from Orderitem where p_id=?").setInteger(0, numberP_id).list();
+				List<Orderitem> listOrderitem = session.createQuery("from Orderitem where p_id=?")
+						.setInteger(0, numberP_id).list();
 				List<Orders> LOS = session.createQuery("from Orders where a_id!=null").list();
 				System.out.println(LOS);
-				for (int j=0; j<LOS.size(); j++) {
+				for (int j = 0; j < LOS.size(); j++) {
 					int o_id = LOS.get(j).getO_id();
-					for (int z=0; z<listOrderitem.size(); z++) {
+					for (int z = 0; z < listOrderitem.size(); z++) {
 						Orders orders = listOrderitem.get(z).getOrders();
 						if (orders == null) {
 							System.out.println("该商品没有订单");
@@ -139,5 +140,25 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 			return null;
 		}
 		return listMerchant.get(0);
+	}
+
+	// 查询店铺最热的商品
+	@Override
+	public List<Product> queryProductMerchantTop() {
+		System.out.println("查询店铺最热的商品");
+		String hql = "from Product order by sale_volume desc";
+		List<Product> list = new ArrayList<Product>();
+		list = this.getHibernateTemplate().find(hql);
+		return list;
+	}
+	
+	//查询最新的商品
+	@Override
+	public List<Product> queryProductMerchantTime() {
+		System.out.println("查询最新的商品");
+		String hql = "from Product order by p_date desc";
+		List<Product> list = new ArrayList<Product>();
+		list = this.getHibernateTemplate().find(hql);
+		return list;
 	}
 }

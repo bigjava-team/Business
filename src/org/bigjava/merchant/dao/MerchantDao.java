@@ -62,4 +62,14 @@ public interface MerchantDao {
 	 *  通过用户id查询店铺
 	 */
 	public Merchant queryUidMerchant(int u_id);
+	
+	/**
+	 * 查询店铺最热前5商品
+	 */
+	public List<Product> queryProductMerchantTop();
+	
+	/**
+	 * 查询最新商品
+	 */
+	public List<Product> queryProductMerchantTime();
 }
