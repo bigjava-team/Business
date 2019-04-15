@@ -72,7 +72,7 @@
 		window.open("Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0");
 	}
 </script>
-<body>
+<body style="margin: 0px; padding: 0px;">
 
 
 	<!--板块1-->

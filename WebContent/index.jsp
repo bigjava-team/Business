@@ -297,7 +297,7 @@
 		<div class="ccc" style="width: 24.2%; float: left; padding: 0px; margin: 0px;">
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<div style="background-color: rgba(240,200,238,0.3); color: #FF8300; font-size: 16px; font-weight: bold; text-align: center; width: 100%; padding: 2% 0%;">
-					您好！某某用户
+					您好！${loginUser.username }
 				</div>
 				<div style="background: #FFF; width: 100%; height: 49.7%; padding-top: 5%;">
 					<div style="width: 100%; height: 38%; margin-left: 0%; margin-bottom: 2%; text-align: center;">
@@ -345,7 +345,7 @@
 		</s:if>
 		<s:else >
 			<div style="background-color: rgba(240,200,238,0.3); color: #FF8300; font-size: 16px; font-weight: bold; text-align: center; width: 100%; padding: 2% 0%;">
-				您好！某某用户
+				欢迎你的到来！
 			</div>
 			<div style="background: #FFF; width: 100%; height: 49.7%; padding-top: 5%;">
 				<div style="width: 100%; height: 38%; margin-left: 0%; margin-bottom: 2%; text-align: center;">
