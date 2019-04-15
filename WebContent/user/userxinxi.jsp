@@ -690,7 +690,7 @@ function dealsubmit3(){
 	var dizhi = $("#dizhi").val(); 
 	var address = cmbProvince + cmbCity + cmbArea + dizhi;
 	$("input[name='address']").val(address);
-	
+	$("input[name='addressP_M_D']").val(cmbProvince+"|"+cmbCity+"|"+cmbArea);
 	if(pwdcat()==false  || nameid()==false|| YZphone()==false){
 		return false;
 	}else{
@@ -705,11 +705,11 @@ function show1(id){
 	    var text2 = document.getElementById("dizhi");
 	    var tr3 = document.getElementById("phone_"+id);
 	    var text3 = document.getElementById("dizhiphone");
-	    text1.value  =tr1.innerHTML ;
-	    text2.value  =tr2.innerHTML ;
-	    text3.value  =tr3.innerHTML ;
+	    text1.value  =tr1.innerHTML;
+	    text2.value  =tr2.innerHTML;
+	    text3.value  =tr3.innerHTML;
 	    
-	    var tr4=document.getElementById("p_m_d_"+id).innerHTML;
+	    var tr4= document.getElementById("p_m_d_"+id).text;
 	    tr4 = $.trim(tr4);
 	    tr4 = tr4.split("|");
 	    for (var i=0; i<tr4.length; i++) {
@@ -765,61 +765,6 @@ function show1(id){
 						<b> 根据浏览，猜我喜欢</b>
 					</div>
 					<div class="dibu2">
-						<div class="shangping" onmouseover=Over(this);
-							onmouseout=Out(this);>
-							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
-							</div>
-							<font color="red">#商品价格</font>
-								<br /> <font color="red">#商品价格</font><br /> 
-							<div style="float: right">
-								<font color="#595959">月销:#商品销量</font>
-							</div>
-						</div>
-						<div class="shangping" onmouseover=Over(this);
-							onmouseout=Out(this);>
-							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
-							</div>
-							<font color="red">#商品价格</font>
-								<br /> <font color="red">#商品价格</font><br /> 
-							<div style="float: right">
-								<font color="#595959">月销:#商品销量</font>
-							</div>
-						</div>
-						<div class="shangping" onmouseover=Over(this);
-							onmouseout=Out(this);>
-							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
-							</div>
-							<font color="red">#商品价格</font>
-								<br /> <font color="red">#商品价格</font><br /> 
-							<div style="float: right">
-								<font color="#595959">月销:#商品销量</font>
-							</div>
-						</div>
-						<div class="shangping" onmouseover=Over(this);
-							onmouseout=Out(this);>
-							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
-							</div>
-							<font color="red">#商品价格</font>
-								<br /> <font color="red">#商品价格</font><br /> 
-							<div style="float: right">
-								<font color="#595959">月销:#商品销量</font>
-							</div>
-						</div>
-						<div class="shangping" onmouseover=Over(this);
-							onmouseout=Out(this);>
-							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
-							</div>
-							<font color="red">#商品价格</font>
-								<br /> <font color="red">#商品价格</font><br /> 
-							<div style="float: right">
-								<font color="#595959">月销:#商品销量</font>
-							</div>
-						</div>
 						<div class="shangping" onmouseover=Over(this);
 							onmouseout=Out(this);>
 							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
@@ -923,6 +868,7 @@ function show1(id){
 					<form action="addr_addAddress" method="post"
 						onsubmit="return dealsubmit3()">
 						<div class="update_dizhi">
+							<input type="hidden" name="addressP_M_D" />
 							<input type="hidden" name="address" />
 							<input type="hidden" name="loginUser.username" value="${loginUser.username }" />
 							<div style="width: 95.4%; color: #014d7f; background-color: LightCyan; padding-top: 1%; padding-bottom: 1%;">
@@ -941,7 +887,7 @@ function show1(id){
 							</div>
 							<div style="margin-top: 2%">
 								<div class="update_dizhidiv">
-									详细地址:<input type="text" id="dizhi" name="dizhi"
+									详细地址:<input type="text" id="dizhi" name="detailedAddress"
 										placeholder="请输入详细地址,例如小区,楼栋号等信息 " onblur="pwdcat()"
 										onfocus="dizhi()"
 										style="width: 78%; height: 25px; margin-left: 2%">
@@ -973,19 +919,18 @@ function show1(id){
 							<table style="width: 95.4%; margin-top: 4%" cellspacing="0">
 								<tr style="background-color: #ebecf0;">
 									<td class="update_one">收货人</td>
-									<td class="update_one">省 | 市 | 区</td>
-									<td class="update_one">详细地址</td>
+									<td class="update_one">地址</td>
 									<td class="update_one">联系电话</td>
 									<td class="update_one">操作</td>
 								</tr>
 								<s:iterator value="listAddr" var="listAddrs">
 									<tr style="background-color: #ebecf0;">
 										<td  class="update_one" id="shouhu_${listAddrs.a_id }">${listAddrs.a_name }</td>
-										<td class="update_one" id="p_m_d_${listAddrs.a_id }">
-											<%-- <font id="update_shen${listAddrs.a_id }">广东</font>  | <font id="update_shi${listAddrs.a_id }">广州市</font>  | <font id="update_xian${listAddrs.a_id }">海珠区</font> --%>
+										<td hidden="hidden" class="update_one" id="p_m_d_${listAddrs.a_id }">
 											${listAddrs.addressP_M_D }
 										</td>
-										<td class="update_one" id="detailed_${listAddrs.a_id }">${listAddrs.detailedAddress }</td>
+										<td hidden="hidden" class="update_one" id="detailed_${listAddrs.a_id }">${listAddrs.detailedAddress }</td>
+										<td class="update_one" id="address_${listAddrs.a_id }">${listAddrs.address }</td>
 										<td class="update_one" id="phone_${listAddrs.a_id }">${listAddrs.a_phone }</td>
 										<td class="update_one">
 											<a onclick="show1(${listAddrs.a_id })" style="cursor:pointer">修改</a>/

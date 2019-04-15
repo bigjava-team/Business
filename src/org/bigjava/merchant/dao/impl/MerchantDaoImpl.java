@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bigjava.categorysecond.entity.CategorySecond;
+import org.bigjava.function.Paging;
 import org.bigjava.merchant.dao.MerchantDao;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.orderitem.entity.Orderitem;
 import org.bigjava.orders.entity.Orders;
 import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -160,5 +162,23 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 		List<Product> list = new ArrayList<Product>();
 		list = this.getHibernateTemplate().find(hql);
 		return list;
+	}
+
+	// 管理员查询店铺
+	@Override
+	public List<Merchant> queryAllMerchant(Paging paging) {
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		Query query = session.createQuery("from Merchant");
+		query.setFirstResult(paging.getStart());
+		query.setMaxResults(paging.getPagesize());
+		return query.list();
+	}
+
+	// 管理员分页查询店铺
+	@Override
+	public int queryAllMerchantNumber() {
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		Query query = session.createQuery("from Merchant");
+		return query.list().size();
 	}
 }

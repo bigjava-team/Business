@@ -1,16 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-	<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
 <title>收藏店铺页面</title>
 <style type="text/css">
-body{
-	overflow-x: hidden;
-}
 .wenzi1 {
 	font-size: 35px;
 	color: white;
@@ -71,7 +67,7 @@ body{
 <body style="padding: 0; margin: 0;">
 
 	
-		<%@include file="top.jsp"%>
+		<%-- <%@include file="top.jsp"%> --%>
 	
 	<div style="background-color: #F40; width: 100%; height: 60px; line-height: 60px;">
 		<div style="margin-left: 14%; float: left;">
@@ -98,10 +94,24 @@ body{
 		<s:iterator value="listCollectMerchant" var="listCollectMerchants">
 			<div style="width: 100%; height: 100%; padding-top: 1.5%;padding-bottom: 0.4%;">
 				<div class="dianpushouchang_a" style="float:left;width: 22%;font-family: Microsoft JhengHei;">
-					<div style="border: #eee 1px solid;height: 100px;width: 50%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-							<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
-						</div>
 					<%-- <img src="${fileImageAction.urlImage }${listCollectMerchants.merchant.m_image}" /> --%><br/>${listCollectMerchants.merchant.m_name }
+					<table style="text-align: center;width: 100%">
+						<tr>
+							<td></td>
+							<td><font color="orange">店铺评价</font></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>描述</td>
+							<td>服务</td>
+							<td>物流</td>
+						</tr>
+						<tr>
+							<td><font color="red">#店铺评分</font></td>
+							<td><font color="red">#店铺评分</font></td>
+							<td><font color="red">#店铺评分</font></td>
+						</tr>
+					</table>
 					<div style="width: 100%;margin-top: 3%">
 						<div style="float: left">
 							<a href="#">进店逛逛</a>
@@ -132,7 +142,7 @@ body{
 		</s:iterator>
 	</div>
 	<div>
-	<%@include file="Foot.jsp"%>
+	<%-- <%@include file="Foot.jsp"%> --%>
 	</div>
 </body>
 </html>

@@ -2,6 +2,7 @@ package org.bigjava.merchant.biz;
 
 import java.util.List;
 
+import org.bigjava.function.Paging;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.orders.entity.Orders;
 import org.bigjava.product.entity.Product;
@@ -70,4 +71,13 @@ public interface MerchantBiz {
 	 */
 	public List<Product> queryProductMerchantTop();
 	
+	/**
+	 * 管理员查询所有店铺
+	 */
+	public List<Merchant> queryAllMerchant(Paging paging);
+	
+	/**
+	 * 管理员查询所有店铺的数量
+	 */
+	public int queryAllMerchantNumber();
 }

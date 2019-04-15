@@ -7,7 +7,7 @@
  .contentone69{ background-color: rgba(0,0,0,0.05); width:10%;height:25px; border:0.1px solid #ffffff;
  				 float:left;align-items:center; display: -webkit-flex; justify-content:center; display: -webkit-flex; }
  .wenziz11{ text-align:center;   font-size:12px; word-spacing:33px; }
- a {text-decoration: none}
+ a {text-decoration: none; text-decoration: none; color: inherit;}
   #c div{float:left;} 
  </style>
  

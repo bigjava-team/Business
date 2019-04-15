@@ -38,6 +38,15 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 
 	private List<Product> merchantProductTime;
 	private List<Product> merchantProductTop;
+	private List<Merchant> listAllMerchant;// 管理员查询的全部店铺
+	
+	public List<Merchant> getListAllMerchant() {
+		return listAllMerchant;
+	}
+
+	public void setListAllMerchant(List<Merchant> listAllMerchant) {
+		this.listAllMerchant = listAllMerchant;
+	}
 
 	public List<Product> getMerchantProductTop() {
 		return merchantProductTop;
@@ -273,5 +282,15 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 		merchantProductTop = merchantProductTime.subList(0, 5);
 
 		return "success";
+	}
+	
+	/**
+	 * 管理员查询所有店铺
+	 */
+	public String queryAllMerchant() {
+		int number = merchantBiz.queryAllMerchantNumber();
+		paging = new Paging(paging.getPresentPage(), number, 10);
+		listAllMerchant = merchantBiz.queryAllMerchant(paging);
+		return "queryAllMerchant";
 	}
 }

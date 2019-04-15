@@ -132,7 +132,7 @@ public class OrderItemAction {
 		loginUser = userBiz.queryUsernameUser(loginUser.getUsername());
 		int number = orderItemBiz.queryOrderItemNumber(loginUser);
 		paging = new Paging(paging.getPresentPage(), number, 10);
-		
+		System.out.println("总页数"+paging.getPage());
 		// 查询的订单内容
 		listOrderitem = orderItemBiz.queryAllOrderItem(loginUser, paging);
 		
