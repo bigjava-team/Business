@@ -49,14 +49,15 @@ body {
 .center {
 	float: left;
 	width: 62%;
+	margin-top:1.4%; 
 }
 
 .centertop {
 	background-color: #f5f8fa;
 	border: 1px solid #e4eaee;
 	width: 95%;
-	padding-top: 2%;
-	padding-bottom: 5%;
+	padding-top: 1%;
+	padding-bottom: 1%;
 }
 
 .centertop a {
@@ -744,7 +745,7 @@ function show1(id){
 					<font style="color: red">全部功能</font>
 				</div>
 				<input type="submit" class="userxinxi_button userxinxi_inbutton"
-					value="猜我喜欢" onclick="display(1)"><br /> <input
+					value="我的信息" onclick="display(1)"><br /> <input
 					type="submit" class="userxinxi_button userxinxi_inbutton"
 					value="修改密码" onclick="display(2)"><br /> <input
 					type="submit" class="userxinxi_button userxinxi_inbutton"
@@ -755,8 +756,30 @@ function show1(id){
 			</div>
 		</div>
 		<div class="center">
-			<div class="content">
+		<div class="content">
 				<div id="lb1" style="display: block;">
+				
+				<div class="dibu1">
+						<b>我的信息</b>
+					</div>
+		<div class="centertop">
+				<div style="float:left; width: 20%;text-align: center;">
+				我的头像:
+					<div style="border: #eee 1px solid;height: 100px;width: 72%;margin: 0 auto;display: flex;justify-	: center;align-items: center;" >
+						<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+					</div>
+				</div>
+				<div style="float: left;width: 55%;line-height: 180%;padding-left: 10%;">
+					<font color="#EAC100">个人信息一览</font>
+					<div style="">用户名:#用户名</div>
+					<div style="">真实姓名:#真实姓名</div>
+					<div style="">联系方式:#后台手机号</div>
+					<div style="">已绑定的邮箱:#后台邮箱</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		
+			
 					<div class="dibu1">
 						<b>猜你喜欢</b>
 					</div>
