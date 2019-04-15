@@ -18,7 +18,7 @@
 		店铺列表
 	</div>
 	
-	<div class="admin_list_div_moddle2">
+	<%-- <div class="admin_list_div_moddle2">
 		<!-- 根据查询值，若不输入，则查询全部 -->
 		<div class="input-group2">
 			<!-- 搜索框 -->
@@ -26,6 +26,21 @@
 			<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
 			<button id="button" class="input-group_button2" onclick="searchText()">搜索</button>
 		</div>
+	</div>
+	 --%>
+	 
+	<div class="input-group4">
+		<select id="select" class="input-group_select4" style="width: 90px;">
+			<option class="option" value="0">全部</option>
+			<option class="option" value="4">名称</option>
+			<option class="option" value="3">冻结状态</option>
+			<option class="option" value="2">未冻结状态</option>
+			<option class="option" value="1">申请状态</option>
+		</select>
+		<!-- 搜索框 -->
+		<input type="text" name="queryText" id="input" class="input-group_input4" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
+		
+		<button id="search" class="input-group_button4">搜索</button>
 	</div>
 		
 	<form action="" method="post">
