@@ -164,6 +164,16 @@
 		})
 	});
 	
+	function queryCategoryProduct(c_id) {
+		var username = '${loginUser.username}';
+		window.location.href="index_queryAllCategory?method=post&loginUser.username="+username+"&paging.presentPage=1&category.c_id="+c_id;
+	}
+	
+	function queryCategorySecond(cs_id) {
+		var username = '${loginUser.username}';
+		window.location.href="index_cs_idQueryAllCategorySecond?method=post&loginUser.username="+username+"&paging.presentPage=1&categorySecond.cs_id="+cs_id;
+	}
+	
 </script>
 
 <style type="text/css">
@@ -236,7 +246,7 @@
 			<s:iterator value="listIndexCategory" var="listIndexCategorys" status="status">
 				<div class="categoryCss" id="aaa_d<s:property value='#status.count' />" onmouseover="categoryOver(this.id,<s:property value='#status.count' />)" onmouseout="categoryOut(this.id,<s:property value='#status.count' />)" style="font-size: 15px; padding: 6px 0px 6px 13%; color: black;">
 					<s:iterator value="#listIndexCategorys.listCategory" var="lists" status="aStatus">
-						<a href="javascript:;" onmouseover="aOver(this.id,<s:property value='#status.count' />)" onmouseout="aOut(this.id,<s:property value='#status.count' />)" id="a<s:property value='#status.count' /><s:property value='#aStatus.count' />"><s:property value="#lists.c_name" /></a>
+						<a href=javascript:;" onclick="queryCategoryProduct(${lists.c_id })" onmouseover="aOver(this.id,<s:property value='#status.count' />)" onmouseout="aOut(this.id,<s:property value='#status.count' />)" id="a<s:property value='#status.count' /><s:property value='#aStatus.count' />"><s:property value="#lists.c_name" /></a>
 						<s:if test="#lists.c_id%3 != 0">
 						/
 						</s:if>
@@ -250,12 +260,12 @@
 			<div id="middle_carousel" style="overflow: hidden; height: 56%;">
 				<div id="carousel">
 					<ul id="carousel_ul">
-						<li><img src="${pageContext.request.contextPath }/images/index/1.jpg" name="carousel_ul_img"  /></li>
-						<li><img src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" name="carousel_ul_img" /></li>
-						<li><img src="${pageContext.request.contextPath }/images/index/3.jpg" name="carousel_ul_img" /></li>
-						<li><img src="${pageContext.request.contextPath }/images/index/4.jpg" name="carousel_ul_img" /></li>
-						<li><img src="${pageContext.request.contextPath }/images/index/5.jpg" name="carousel_ul_img" /></li>
-						<li><img src="${pageContext.request.contextPath }/images/index/1.jpg" name="carousel_ul_img" /></li> 
+						<li><img src="${pageContext.request.contextPath }/images/index_lunbo01.jpg" name="carousel_ul_img"  /></li>
+						<li><img src="${pageContext.request.contextPath }/images/index_lunbo02.jpg" name="carousel_ul_img" /></li>
+						<li><img src="${pageContext.request.contextPath }/images/index_lunbo03.jpg" name="carousel_ul_img" /></li>
+						<li><img src="${pageContext.request.contextPath }/images/index_lunbo04.jpg" name="carousel_ul_img" /></li>
+						<li><img src="${pageContext.request.contextPath }/images/index_lunbo05.jpg" name="carousel_ul_img" /></li>
+						<li><img src="${pageContext.request.contextPath }/images/index_lunbo01.jpg" name="carousel_ul_img"  /></li>
 					</ul>
 					<div id="navDiv">
 						<a href="javascript:;" name="navDiv_a" ></a>
@@ -266,7 +276,7 @@
 					</div>
 				</div>
 				<div style="background: #FF8000; float: left; width: 23.5%; height: 10%; height: 100%; margin-top: 8px;">
-					<img alt="" src="${pageContext.request.contextPath }/images/products/bbb006.jpg" width="100%" height="100%">
+					<img alt="" src="${pageContext.request.contextPath }/images/index_shangpin01.jpg" width="100%" height="100%">
 				</div>
 			</div>
 			
@@ -276,10 +286,10 @@
 			<!-- 284 520 -->
 			<div style="overflow: hidden; height: 39%;">
 				<div style="background: #FF8000; float: left; width: 74%; height: 100%; margin-right: 1%;">
-					<img alt="" src="${pageContext.request.contextPath }/images/products/ddd004.jpg" width="100%" height="100%">
+					<img alt="" src="${pageContext.request.contextPath }/images/index_dianpu01.jpg" width="100%" height="100%">
 				</div>
 				<div style="background: #D26900; float: left; width: 23.92%; height: 100%;">
-					<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" width="100%" height="100%">
+					<img alt="" src="${pageContext.request.contextPath }/images/index_dianpu02.jpg" width="100%" height="100%">
 				</div>
 			</div>
 		</div>
@@ -287,7 +297,7 @@
 		<div class="ccc" style="width: 24.2%; float: left; padding: 0px; margin: 0px;">
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<div style="background-color: rgba(240,200,238,0.3); color: #FF8300; font-size: 16px; font-weight: bold; text-align: center; width: 100%; padding: 2% 0%;">
-					您好！某某用户
+					您好！${loginUser.username }
 				</div>
 				<div style="background: #FFF; width: 100%; height: 49.7%; padding-top: 5%;">
 					<div style="width: 100%; height: 38%; margin-left: 0%; margin-bottom: 2%; text-align: center;">
@@ -335,7 +345,7 @@
 		</s:if>
 		<s:else >
 			<div style="background-color: rgba(240,200,238,0.3); color: #FF8300; font-size: 16px; font-weight: bold; text-align: center; width: 100%; padding: 2% 0%;">
-				您好！某某用户
+				欢迎你的到来！
 			</div>
 			<div style="background: #FFF; width: 100%; height: 49.7%; padding-top: 5%;">
 				<div style="width: 100%; height: 38%; margin-left: 0%; margin-bottom: 2%; text-align: center;">
@@ -428,7 +438,7 @@
 							</div>
 							<div style="background: #FFF; width: 100%; height: 79%; color: red; font-size: 12px; padding-right: 2%; overflow: hidden;">
 								<s:iterator value="#listCategorySeconds.listCategorySecond" var="cs">
-									<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"><a href="javascript:;" class="hideCategorysecond"><s:property value="#cs.cs_name"/></a> </div>
+									<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"><a href="javascript:;" onclick="queryCategorySecond(${cs.cs_id})" class="hideCategorysecond"><s:property value="#cs.cs_name"/></a> </div>
 								</s:iterator>
 							</div>
 						</div>
@@ -439,54 +449,16 @@
 						<div style="background: #FFF; width: 100%; height: 21%; font-weight: bold; color: #545454; text-align: center;">
 							猜你喜欢
 						</div>
-						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
-							<div style="margin-left: 12%; margin-right: 6%;">
-								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
+						<s:iterator value="listAllLikeProduct" var="listAllLikeProducts">
+							<div class="cainilike" style="background: #FFF; width: 50%;border: 1px solid blue; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
+								<div style="margin-left: 12%; margin-right: 6%;">
+									<img alt="商品图片"  src="${fileImageAction.urlImage }${listAllLikeProducts.p_image }" width="100%">
+								</div>
+								<div style="margin-left: 12%; margin-right: 6%;">
+									${listAllLikeProducts.p_name }
+								</div>
 							</div>
-							<div style="margin-left: 12%; margin-right: 6%;">
-								商品图片商品图片商品图片商品图片商品图片商品图片
-							</div>
-						</div>
-						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
-							<div style="margin-left: 12%; margin-right: 6%;">
-								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
-							</div>
-							<div style="margin-left: 12%; margin-right: 6%;">
-								商品图片商品图片商品图片商品图片商品图片商品图片
-							</div>
-						</div>
-						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
-							<div style="margin-left: 12%; margin-right: 6%;">
-								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
-							</div>
-							<div style="margin-left: 12%; margin-right: 6%;">
-								商品图片商品图片商品图片商品图片商品图片商品图片
-							</div>
-						</div>
-						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
-							<div style="margin-left: 12%; margin-right: 6%;">
-								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
-							</div>
-							<div style="margin-left: 12%; margin-right: 6%;">
-								商品图片商品图片商品图片商品图片商品图片商品图片
-							</div>
-						</div>
-						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
-							<div style="margin-left: 12%; margin-right: 6%;">
-								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
-							</div>
-							<div style="margin-left: 12%; margin-right: 6%;">
-								商品图片商品图片商品图片商品图片商品图片商品图片
-							</div>
-						</div>
-						<div class="cainilike" style="background: #FFF; width: 50%; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
-							<div style="margin-left: 12%; margin-right: 6%;">
-								<img alt="商品图片"  src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100%">
-							</div>
-							<div style="margin-left: 12%; margin-right: 6%;">
-								商品图片商品图片商品图片商品图片商品图片商品图片
-							</div>
-						</div>
+						</s:iterator>
 					</div>
 				</div>
 			</div>

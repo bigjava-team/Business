@@ -62,7 +62,7 @@
 		<div style="margin-left:59%; margin-top:6px; width: 19%; line-height:18px; height:18px; background: #F0F0F0; float: left; border-radius: 7px;">
 			<div style="float: left; width: 85%;">&emsp;&emsp;欢迎您管理员&nbsp;:&nbsp;${sessionScope.loginUser.username }</div> 
 			<div style="float: right; margin-right: 3%;">
-				<a class="tuichu" href="${pageContext.request.contextPath }/user/login.jsp" onclick="remove()" >退出</a>
+				<a class="tuichu" href="${pageContext.request.contextPath }/user/login.jsp" onclick="remove()" target="_top">退出</a>
 			</div>
 		</div>
 		

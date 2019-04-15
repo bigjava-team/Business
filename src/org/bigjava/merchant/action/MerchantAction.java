@@ -29,13 +29,32 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	private User loginUser;// 登录的用户信息
 	private Orders orders;// 订单信息
 	private FileImageAction fileImageAction;// 上传一张图片的方法
-	
+
 	private Paging paging;// 分页的方法
-	
+
 	private List<Orders> listOrders;// 查询到的订单
-	
+
 	private int merchant_id;// 店铺id
-	
+
+	private List<Product> merchantProductTime;
+	private List<Product> merchantProductTop;
+
+	public List<Product> getMerchantProductTop() {
+		return merchantProductTop;
+	}
+
+	public void setMerchantProductTop(List<Product> merchantProductTop) {
+		this.merchantProductTop = merchantProductTop;
+	}
+
+	public List<Product> getMerchantProductTime() {
+		return merchantProductTime;
+	}
+
+	public void setMerchantProductTime(List<Product> merchantProductTime) {
+		this.merchantProductTime = merchantProductTime;
+	}
+
 	public Paging getPaging() {
 		return paging;
 	}
@@ -63,7 +82,7 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	public void setFileImageAction(FileImageAction fileImageAction) {
 		this.fileImageAction = fileImageAction;
 	}
-	
+
 	public Orders getOrders() {
 		return orders;
 	}
@@ -107,11 +126,12 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 
 	/**
 	 * 注册店铺
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
 	public String registerMerchant() throws IOException {
 		System.out.println("开始注册店铺" + loginUser.getUsername());
-		System.out.println("ss"+fileImageAction.getFileImage());
+		System.out.println("ss" + fileImageAction.getFileImage());
 		// 上传图片
 		fileImageAction.fileImage();
 		user = userBiz.queryUsernameUser(loginUser.getUsername());
@@ -121,17 +141,15 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 		merchantBiz.registerMerchant(merchant, user);
 		return "registerMerchantSuccess";
 	}
-	
+
 	/**
 	 * 通过店铺ID查询店铺
-	 * 查询店铺的公告
 	 */
 	public String getMerchantById() {
 		merchant = merchantBiz.queryMerchant(merchant.getM_id());
 		ActionContext.getContext().getSession().put("merchant", merchant);
 		return "getMerchantById";
 	}
-
 
 	/**
 	 * 删除店铺
@@ -154,20 +172,27 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	 * 跳转到我的店铺
 	 */
 	public String gotoMerchant() {
+
 		System.out.println("MerchantAction。。跳转到我的店铺>gotoMerchant()..");
+
+		User u = userBiz.queryUsernameUser(loginUser.getUsername());
+		Merchant m  = u.getMerchant();
+		System.out.println("m"+m);
+		if (m == null) {
+			return "loginError";
+		}
 		return "gotoMerchant";
 	}
-	
+
 	/**
-	 * 通过店铺ID查询店铺
-	 * 查询店铺的公告
+	 * 通过店铺ID查询店铺 查询店铺的公告
 	 */
 	public String getMerchantNotice() {
 		merchant = merchantBiz.queryMerchant(merchant.getM_id());
 		ActionContext.getContext().getSession().put("merchantNotice", merchant);
 		return "getMerchantNotice";
 	}
-	
+
 	/**
 	 * 添加店铺公告
 	 */
@@ -176,7 +201,7 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 		merchantBiz.addNotice(merchant);
 		return "addNotice";
 	}
-	
+
 	/**
 	 * 修改店铺公告
 	 */
@@ -187,19 +212,19 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 		merchantBiz.updateNotice(updateMerchantNotice);
 		return "updateNotice";
 	}
-	
+
 	/**
 	 * 查询买家的订单详情
 	 */
 	public String queryMerchantOrders() {
 		System.out.println("开始查询买家的订单详情");
 		listOrders = merchantBiz.queryListOrders(merchant.getM_id());
-		int divisor = listOrders.size()/2;
-		int remainder = listOrders.size()%2;
+		int divisor = listOrders.size() / 2;
+		int remainder = listOrders.size() % 2;
 		if (remainder == 0) {
 			paging.setPage(divisor);// 最大页数
-		} else if (remainder !=0) {
-			paging.setPage(divisor+1);// 最大页数
+		} else if (remainder != 0) {
+			paging.setPage(divisor + 1);// 最大页数
 		}
 		if (paging.getPresentPage() <= 0) {
 			paging.setPresentPage(1);
@@ -208,18 +233,18 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 		} else {
 			paging.setPresentPage(1);
 		}
-		
-		if (listOrders.size()!=0) {
-			if (divisor < paging.getPresentPage() && remainder!=0) {
-				listOrders = listOrders.subList((paging.getPresentPage()-1)*2, remainder+(divisor*2));
+
+		if (listOrders.size() != 0) {
+			if (divisor < paging.getPresentPage() && remainder != 0) {
+				listOrders = listOrders.subList((paging.getPresentPage() - 1) * 2, remainder + (divisor * 2));
 			} else {
-				listOrders = listOrders.subList((paging.getPresentPage()-1)*2, paging.getPresentPage()*2);
+				listOrders = listOrders.subList((paging.getPresentPage() - 1) * 2, paging.getPresentPage() * 2);
 			}
 		}
-		System.out.println("订单详情"+listOrders);
+		System.out.println("订单详情" + listOrders);
 		return "queryMerchantOrders";
 	}
-	
+
 	/**
 	 * 修改买家的订单的状态
 	 */
@@ -233,5 +258,20 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 		}
 		return "updateMerchantOrdersState";
 	}
-}
 
+	/**
+	 * 查询店铺商品
+	 */
+	public String showMerchantProduct() {
+		System.out.println("进入首页MerchantAction.....showMerchantProduct");
+		/* 查询最新的商品 */
+		merchantProductTime = merchantBiz.queryProductMerchantTime();
+		merchantProductTime = merchantProductTime.subList(0, 5);
+
+		/* 查询最热的商品 */
+		merchantProductTop = merchantBiz.queryProductMerchantTop();
+		merchantProductTop = merchantProductTime.subList(0, 5);
+
+		return "success";
+	}
+}

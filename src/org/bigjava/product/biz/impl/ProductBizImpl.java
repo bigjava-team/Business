@@ -1,6 +1,7 @@
 package org.bigjava.product.biz.impl;
 
 import java.util.List;
+import java.util.Set;
 
 import org.bigjava.categorysecond.entity.CategorySecond;
 import org.bigjava.function.Paging;
@@ -82,6 +83,13 @@ public class ProductBizImpl implements ProductBiz {
 	@Override
 	public void deleteProduct(Product product) {
 		productDao.deleteProduct(product);
+	}
+
+	// 查询店铺内最新的商品
+	@Override
+	public List<Product> setQueryMerchantProduct_time(int m_id) {
+		// TODO Auto-generated method stub
+		return productDao.setQueryMerchantProduct_time(m_id);
 	}
 
 }

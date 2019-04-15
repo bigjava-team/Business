@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.orders.entity.Orders;
+import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
 
 /**
@@ -58,4 +59,15 @@ public interface MerchantBiz {
 	 *  通过用户id查询店铺
 	 */
 	public Merchant queryUidMerchant(int u_id);
+	
+	/**
+	 * 查询最新的商品
+	 */
+	public List<Product> queryProductMerchantTime();
+	
+	/**
+	 * 查询最热的商品
+	 */
+	public List<Product> queryProductMerchantTop();
+	
 }

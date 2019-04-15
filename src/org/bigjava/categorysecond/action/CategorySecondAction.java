@@ -146,7 +146,7 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 		int presentPage = paging.getPresentPage();
 		System.out.println("当前页" + presentPage);
 
-		Paging paging = new Paging(presentPage, totalNumber, 2);
+		Paging paging = new Paging(presentPage, totalNumber, 10);
 
 		List<CategorySecond> categorySecond = categorySecondBiz.queryAllCategorySecond(searchCategorySecond, paging);
 		// 将值存入session中
