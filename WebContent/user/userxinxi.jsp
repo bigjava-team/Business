@@ -761,7 +761,7 @@ function show1(id){
 				<div id="lb1" style="display: block;">
 				
 				<div class="dibu1">
-						<b>我的信息</b>
+						<font size="5px" style="font-weight: bold; padding-left: 1%;">我的信息</font>
 					</div>
 		<div class="centertop">
 				<div style="float:left; width: 20%;text-align: center;">
@@ -782,7 +782,7 @@ function show1(id){
 		
 			
 					<div class="dibu1">
-						<b>猜你喜欢</b>
+						<font size="5px" style="font-weight: bold; padding-left: 1%;">猜你喜欢</font>
 					</div>
 					<div class="dibu2">
 						<div class="shangping" onmouseover=Over(this);
@@ -820,7 +820,7 @@ function show1(id){
 
 					<div
 						style="width: 95.4%; margin-top: 2%; color: #FDE938; background-color: #F30408; padding-top: 1%; padding-bottom: 1%; ">
-						<font size="5px">修改密码</font>
+						<font size="5px" style="font-weight: bold; padding-left: 1%;">修改密码</font>
 					</div>
 					<form action="User_updatePassword.action" method="post"
 						onsubmit="return dealsubmit1()">
@@ -868,7 +868,7 @@ function show1(id){
 						onsubmit="return dealsubmit2()">
 						<div
 							style="width: 95.4%; margin-top: 2%; color: white; background-color: black; padding-top: 1%; padding-bottom: 1%;">
-							<font size="5px">修改用户信息</font>
+							<font size="5px" style="font-weight: bold; padding-left: 1%;">修改信息</font>
 						</div>
 						<div
 							style="text-align: center; padding-top: 2%; padding-bottom: 2%; line-height: 200%; border: 1px solid #e3e197; background: #ffffdd; width: 95.4%;">
@@ -908,7 +908,7 @@ function show1(id){
 							<input type="hidden" name="address" />
 							<input type="hidden" name="loginUser.username" value="${loginUser.username }" />
 							<div style="width: 95.4%; color: #014d7f; background-color: LightCyan; padding-top: 1%; padding-bottom: 1%;">
-								<font size="5px">收货地址</font>
+								<font size="5px" style="font-weight: bold; padding-left: 1%;">收货地址</font>
 							</div>
 							<div style="color: orange; padding-bottom: 2%; padding-top: 2%;">
 								新增收货地址</div>
