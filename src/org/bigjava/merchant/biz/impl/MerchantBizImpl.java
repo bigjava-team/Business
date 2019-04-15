@@ -2,6 +2,7 @@ package org.bigjava.merchant.biz.impl;
 
 import java.util.List;
 
+import org.bigjava.function.Paging;
 import org.bigjava.merchant.biz.MerchantBiz;
 import org.bigjava.merchant.dao.MerchantDao;
 import org.bigjava.merchant.entity.Merchant;
@@ -84,6 +85,18 @@ public class MerchantBizImpl implements MerchantBiz {
 	@Override
 	public List<Product> queryProductMerchantTop() {
 		return merchantDao.queryProductMerchantTop();
+	}
+
+	// 管理员查询全部店铺
+	@Override
+	public List<Merchant> queryAllMerchant(Paging paging) {
+		return merchantDao.queryAllMerchant(paging);
+	}
+
+	// 管理员查询所有店铺的数量
+	@Override
+	public int queryAllMerchantNumber() {
+		return merchantDao.queryAllMerchantNumber();
 	}
 
 }

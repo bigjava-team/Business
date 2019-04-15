@@ -146,6 +146,7 @@
 			<result name="getMerchantById">/merchant/merchants/list.jsp</result>
 			<result name="queryMerchantOrders">/merchant/order/list.jsp</result>
 			<result name="updateMerchantOrdersState" type="redirectAction">Merchant_queryMerchantOrders?method=post&amp;m_id=${merchant_id }&amp;paging.presentPage=2</result>
+			<result name="queryAllMerchant">/admin/merchant/list.jsp</result>
 		</action>
 
 		<!-- 商品的action -->

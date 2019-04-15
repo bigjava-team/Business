@@ -248,9 +248,9 @@
 		<a href="${pageContext.request.contextPath }/orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.page}">尾页</a>
 	</div>
 	
-	<div class="cart_d5" style="margin-top: 0px;">
+	<!-- <div class="cart_d5" style="margin-top: 0px;">
 		合计 (不含运费)：<font class="cart_d5_font1">¥0</font>
-	</div>
+	</div> -->
 	
 	<div class="cart_d6">
 		<div class="cart_d6_d1">

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.bigjava.categorysecond.biz.CategorySecondBiz;
 import org.bigjava.categorysecond.entity.CategorySecond;
+import org.bigjava.function.FileImageAction;
 import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
 import org.bigjava.merchant.entity.Merchant;
@@ -24,6 +25,8 @@ public class AdminAction extends ActionSupport {
 	private CategorySecond categorySecond;
 	private Merchant merchant;
 	private User user;
+	
+	private FileImageAction fileImageAction;// 图片地址
 
 	private CategorySecondBiz categorySecondBiz;
 	private String searchText; // 搜索的参数值
@@ -32,6 +35,14 @@ public class AdminAction extends ActionSupport {
 	
 	private Product updateProduct;
 	
+	public FileImageAction getFileImageAction() {
+		return fileImageAction;
+	}
+
+	public void setFileImageAction(FileImageAction fileImageAction) {
+		this.fileImageAction = fileImageAction;
+	}
+
 	public Product getUpdateProduct() {
 		return updateProduct;
 	}

@@ -23,16 +23,7 @@
 			<tr id="admin_list_tr2">
 				<td class="admin_form1_table_tr_td1" align="center">商品图片</td>
 				<td class="admin_form1_table_tr_td8" colspan="3" align="center">
-					<img alt="商品图片"  src="${pageContext.request.contextPath }/images/merchant/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100px;" height="100px;">
-					<img alt="商品图片"  src="${pageContext.request.contextPath }/images/merchant/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100px;" height="100px;">
-					<img alt="商品图片"  src="${pageContext.request.contextPath }/images/merchant/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100px;" height="100px;">
-					<img alt="商品图片"  src="${pageContext.request.contextPath }/images/merchant/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100px;" height="100px;">
-					<img alt="商品图片"  src="${pageContext.request.contextPath }/images/merchant/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100px;" height="100px;">
-					<img alt="商品图片"  src="${pageContext.request.contextPath }/images/merchant/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100px;" height="100px;">
-					<img alt="商品图片"  src="${pageContext.request.contextPath }/images/merchant/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100px;" height="100px;">
-					<img alt="商品图片"  src="${pageContext.request.contextPath }/images/merchant/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100px;" height="100px;">
-					<img alt="商品图片"  src="${pageContext.request.contextPath }/images/merchant/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100px;" height="100px;">
-					<img alt="商品图片"  src="${pageContext.request.contextPath }/images/merchant/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100px;" height="100px;">
+					<img alt="商品图片"  src="${fileImageAction.urlImage }${product.p_image }" width="100px;" height="100px;">
 				</td>
 			</tr>
 			
