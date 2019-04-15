@@ -265,6 +265,7 @@
 						<li><img src="${pageContext.request.contextPath }/images/index_lunbo03.jpg" name="carousel_ul_img" /></li>
 						<li><img src="${pageContext.request.contextPath }/images/index_lunbo04.jpg" name="carousel_ul_img" /></li>
 						<li><img src="${pageContext.request.contextPath }/images/index_lunbo05.jpg" name="carousel_ul_img" /></li>
+						<li><img src="${pageContext.request.contextPath }/images/index_lunbo01.jpg" name="carousel_ul_img"  /></li>
 					</ul>
 					<div id="navDiv">
 						<a href="javascript:;" name="navDiv_a" ></a>
