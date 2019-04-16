@@ -34,7 +34,7 @@
 				<td width="10%" align="center">收货人姓名</td>
 				<td width="10%" align="center">收货人电话</td>
 				<td width="18%" align="center">收货人地址</td>
-				<td width="*%" align="center">订单详情</td>
+				<td width="*%" align="center">查看订单</td>
 				<td width="8%" align="center">状态</td>
 			</tr>
 			<s:iterator value="listOrders" var="listOrder" status="status">
@@ -54,8 +54,7 @@
 					</s:else>
 				</td>
 				<td align="center">
-					<input id="but1" type="button" value="订单详情" onclick="showDetail(1)">
-					<div id="div1"></div>
+					<a href="${pageContext.request.contextPath }/admin/order/ordersList.jsp">订单详情</a>
 				</td>
 				<td align="center">
 					<s:if test="#listOrder.state == 1">
@@ -64,6 +63,7 @@
 					<s:else>
 						已支付
 					</s:else>
+				</td>
 			</tr>
 			</s:iterator>
 		</table>
