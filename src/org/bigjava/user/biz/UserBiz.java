@@ -67,4 +67,9 @@ public interface UserBiz {
 	 * 通过用户名获取用户信息
 	 */
 	public User queryUsernameUser(String username);
+	
+	/**
+	 * 通过用户名模糊查询用户信息
+	 */
+	public List<User> likeQueryListUser(String searchText);
 }

@@ -32,7 +32,7 @@
 				hibernate.dialect=org.hibernate.dialect.MySQL5Dialect<!-- 设置数据库方言 -->
 				hibernate.show_sql=true<!-- 显示数据库语句 -->
 				hibernate.format_sql=true<!-- 使数据库语句自动换行 -->
-				<!-- hibernate.hbm2ddl.auto=update --><!-- 自动建表时变为修改表 -->
+				hibernate.hbm2ddl.auto=update<!-- 自动建表时变为修改表 -->
 			</value>
 		</property>
 	</bean>
@@ -101,6 +101,10 @@
 	<bean name="collectProductDao" class="org.bigjava.collectProduct.dao.impl.CollectProductDaoImpl" autowire="byName" />
 	<bean name="collectProductBiz" class="org.bigjava.collectProduct.biz.impl.CollectProductBizImpl" autowire="byName" />
 	<bean name="collectProductAction" class="org.bigjava.collectProduct.action.CollectProductAction" autowire="byName" />
+	
+	<bean name="indexNoticeDao" class="org.bigjava.notice.dao.impl.IndexNoticeDaoImpl" autowire="byName" />
+	<bean name="indexNoticeBiz" class="org.bigjava.notice.biz.impl.IndexNoticeBizImpl" autowire="byName" />
+	<bean name="indexNoticeAction" class="org.bigjava.notice.action.IndexNoticeAction" autowire="byName" />
 	
 	<bean name="paymentOrders" class="org.bigjava.orders.action.PaymentOrders" autowire="byName" />
 	

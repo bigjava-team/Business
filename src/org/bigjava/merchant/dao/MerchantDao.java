@@ -75,12 +75,22 @@ public interface MerchantDao {
 	public List<Product> queryProductMerchantTime();
 	
 	/**
-	 * 管理员查询所有店铺
+	 * 店长名模糊搜索店铺
 	 */
-	public List<Merchant> queryAllMerchant(Paging paging);
+	public List<Merchant> likeQueryM_name(Paging paging, String searchText);
 	
 	/**
-	 * 管理员查询所有店铺的数量
+	 * 店长名模糊搜索店铺数
 	 */
-	public int queryAllMerchantNumber();
+	public int likeQueryM_nameNumber(String searchText);
+	
+	/**
+	 * 通过店铺id获取对应商品
+	 */
+	public List<Product> mIdQueryAllProduct(Paging paging, String searchText, int m_id);
+	
+	/**
+	 * 通过店铺id获取对应商品的条数
+	 */
+	public int mIdQueryAllProductNumber(String searchText, int m_id);
 }

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.bigjava.function.FileImageAction;
+import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
 import org.bigjava.merchant.biz.MerchantBiz;
 import org.bigjava.merchant.entity.Merchant;
@@ -21,6 +22,7 @@ import com.opensymphony.xwork2.ModelDriven;
 
 public class MerchantAction extends ActionSupport implements ModelDriven<Merchant> {
 
+	private IsEmpty isEmpty = new IsEmpty();
 	private Merchant merchant = new Merchant();
 	private MerchantBiz merchantBiz;
 	private UserBiz userBiz;// 用户的 biz
@@ -29,6 +31,8 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	private User loginUser;// 登录的用户信息
 	private Orders orders;// 订单信息
 	private FileImageAction fileImageAction;// 上传一张图片的方法
+	
+	private String searchText;// 模糊搜索的值
 
 	private Paging paging;// 分页的方法
 
@@ -39,7 +43,24 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	private List<Product> merchantProductTime;
 	private List<Product> merchantProductTop;
 	private List<Merchant> listAllMerchant;// 管理员查询的全部店铺
+	private List<Product> listMerchantProduct;// 店铺内的商品
 	
+	public List<Product> getListMerchantProduct() {
+		return listMerchantProduct;
+	}
+
+	public void setListMerchantProduct(List<Product> listMerchantProduct) {
+		this.listMerchantProduct = listMerchantProduct;
+	}
+
+	public String getSearchText() {
+		return searchText;
+	}
+
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
+	}
+
 	public List<Merchant> getListAllMerchant() {
 		return listAllMerchant;
 	}
@@ -285,12 +306,34 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	}
 	
 	/**
-	 * 管理员查询所有店铺
+	 * 店长名模糊搜索店铺
 	 */
-	public String queryAllMerchant() {
-		int number = merchantBiz.queryAllMerchantNumber();
+	public String likeQueryMname() {
+		if (isEmpty.isEmpty(searchText)) {
+			searchText = "";
+		}
+		System.out.println(searchText);
+		int number = merchantBiz.likeQueryM_nameNumber(searchText);
+		System.out.println(number);
 		paging = new Paging(paging.getPresentPage(), number, 10);
-		listAllMerchant = merchantBiz.queryAllMerchant(paging);
-		return "queryAllMerchant";
+		listAllMerchant = merchantBiz.likeQueryM_name(paging, searchText.trim());
+		System.out.println(listAllMerchant);
+		return "likeQueryMname";
+	}
+	
+	/**
+	 * 模糊查询店铺内的商品
+	 */
+	public String mIdQueryAllProduct() {
+		if (isEmpty.isEmpty(searchText)) {
+			searchText = "";
+		}
+		int number = merchantBiz.mIdQueryAllProductNumber(searchText, merchant.getM_id());
+		System.out.println("商品 数"+number);
+		System.out.println("店铺id"+merchant.getM_id());
+		paging = new Paging(paging.getPresentPage(), number, 5);
+		listMerchantProduct = merchantBiz.mIdQueryAllProduct(paging, searchText, merchant.getM_id());
+		System.out.println(listMerchantProduct);
+		return "mIdQueryAllProduct";
 	}
 }

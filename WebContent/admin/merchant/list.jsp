@@ -9,7 +9,9 @@
 
 <script type="text/javascript">
 	function searchText() {
-		
+		var searchText = document.getElementById("input").value;
+		var username = '${loginUser.username }';
+		window.location.href="Merchant_likeQueryMname?method=post&loginUser.username="+username+"&paging.presentPage=1&searchText="+searchText;
 	}
 </script>
 </head>
@@ -22,7 +24,7 @@
 		<!-- 根据查询值，若不输入，则查询全部 -->
 		<div class="input-group2">
 			<!-- 搜索框 -->
-			<input type="text" id="input" class="input-group_input2" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchCategorySecond}">
+			<input type="text" id="input" class="input-group_input2" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入店铺名进行查询' " value="${searchCategorySecond}">
 			<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
 			<button id="button" class="input-group_button2" onclick="searchText()">搜索</button>
 		</div>
@@ -44,14 +46,12 @@
 				<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
 					<td align="center">${listAllMerchants.m_id }</td>
 					<td align="center">
-						<a>
-							<img width="40" height="45" src="${fileImageAction.urlImage }${listAllMerchants.m_image }"/>
-						</a>
+						<%-- <img width="40" height="45" src="${fileImageAction.urlImage }${listAllMerchants.m_image }"/> --%>
 					</td>
 					<td align="center">${listAllMerchants.m_name }</td>
 					<td align="center">${listAllMerchants.m_time }</td>
 					<td align="center">
-						<a href="${pageContext.request.contextPath }/admin/merchant/m_product.jsp">
+						<a href="Merchant_mIdQueryAllProduct?method=post&m_id=${listAllMerchants.m_id }&paging.presentPage=1">
 							进入此店铺
 						</a>
 					</td>
@@ -72,10 +72,10 @@
 		
 		<div id="admin_list_div_page">
 			第${paging.presentPage }页/${paging.page }页&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="Merchant_queryAllMerchant?method=post&loginUser.username=${loginUser.username }&paging.presentPage=1">首页</a>
-			<a href="Merchant_queryAllMerchant?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage-1 }">上一页</a>
-			<a href="Merchant_queryAllMerchant?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage+1 }">下一页</a>
-			<a href="Merchant_queryAllMerchant?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.page }">尾页</a>
+			<a href="Merchant_likeQueryMname?method=post&loginUser.username=${loginUser.username }&paging.presentPage=1&searchText=${searchText }">首页</a>
+			<a href="Merchant_likeQueryMname?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage-1 }&searchText=${searchText }">上一页</a>
+			<a href="Merchant_likeQueryMname?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage+1 }&searchText=${searchText }">下一页</a>
+			<a href="Merchant_likeQueryMname?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.page }&searchText=${searchText }">尾页</a>
 		</div>
 	</form>
 </body>
