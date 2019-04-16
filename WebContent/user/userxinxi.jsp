@@ -599,7 +599,7 @@ function users(){
 }
 function shouhu_yanzheng(){
 	 var div1 =document.getElementById("tip4");
-	  var text=document.getElementsByName("update_dizhiname").item(0).value;
+	  var text=document.getElementsByName("a_name").item(0).value;
 	  var user=document.getElementById("update_dizhiname");
 	  var reg = /[\u4E00-\u9FA5\uF900-\uFA2D]/;
 	  if(text=="" || text==null){
@@ -637,7 +637,7 @@ function dizhi(){
  
 function dizhi_yanzhen(){
 	 var div1 =document.getElementById("tip5");
-	  var text=document.getElementsByName("dizhi").item(0).value;
+	  var text=document.getElementsByName("detailedAddress").item(0).value;
 	  var user=document.getElementById("dizhi");
 	  var reg = /[\u4E00-\u9FA5\uF900-\uFA2D]/;
 	  
@@ -646,11 +646,6 @@ function dizhi_yanzhen(){
 			 div1.innerHTML="详细地址不能为空!";
 			 return false;
 		  }
-	  if (!(reg.test(text))) {
-		  user.className="red";
-		 div1.innerHTML="请输入汉字!";
-		return false;
-  }
 	  if(1<=text.length){
 		  user.className="black";
 		   div1.innerHTML="";
@@ -665,7 +660,7 @@ function phone(){
  
 function YZ_phone(){
 	 var div1 =document.getElementById("tip6");
-	  var text=document.getElementsByName("dizhiphone").item(0).value;
+	  var text=document.getElementsByName("a_phone").item(0).value;
 	  var user=document.getElementById("dizhiphone");
 	  
 	  if(text.length==0 || text==""){
@@ -693,7 +688,7 @@ function dealsubmit3(){
 	var address = cmbProvince + cmbCity + cmbArea + dizhi;
 	$("input[name='address']").val(address);
 	$("input[name='addressP_M_D']").val(cmbProvince+"|"+cmbCity+"|"+cmbArea);
-	if(shouhu_yanzheng()==false  || dizhi_yanzhen()==false|| YZ_phone()==false){
+	if(dizhi_yanzhen()==false  || shouhu_yanzheng()==false|| YZ_phone()==false){
 		return false;
 	}else{
 		alert(sb) ;
@@ -857,7 +852,7 @@ function show1(id){
 							<div class="clear"></div>
 							<div class="update_anniu">
 
-								<input type="submit" class="update_button" id="zhuce" value="提交"/>
+								<input type="submit" class="update_button" id="zhuce1" value="提交"/>
 							</div>
 						</div>
 					</form>
@@ -894,7 +889,7 @@ function show1(id){
 								</span>
 							</div>
 							<div class="clear"></div>
-							<input type="submit" class="updateuser_button" id="zhuce"
+							<input type="submit" class="updateuser_button" id="zhuce2"
 								value="提交">
 
 						</div>
