@@ -80,7 +80,7 @@
 			</td>
 			<td align="center">${listOrder.user.username}</td>
 			<td align="center">
-				<input id="but1" type="button" value="订单详情" onclick="showDetail(${listOrder.o_id})">
+				<a href="${pageContext.request.contextPath }/admin/order/ordersList.jsp" onclick="showDetail(${listOrder.o_id})">订单详情</a>
 			</td>
 			<td align="center">
 				<s:if test="#listOrder.state == 1">
@@ -89,6 +89,7 @@
 				<s:else>
 					已支付
 				</s:else>
+			</td>
 		</tr>
 		</s:iterator>
 	</table>
