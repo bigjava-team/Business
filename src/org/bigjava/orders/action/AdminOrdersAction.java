@@ -4,18 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.bigjava.addr.biz.AddrBiz;
-import org.bigjava.addr.entity.Addr;
-import org.bigjava.function.FileImageAction;
 import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
 import org.bigjava.orderitem.biz.OrderItemBiz;
+import org.bigjava.orderitem.entity.Orderitem;
 import org.bigjava.orders.biz.OrdersBiz;
 import org.bigjava.orders.entity.Orders;
+import org.bigjava.product.biz.ProductBiz;
+import org.bigjava.product.entity.Product;
 import org.bigjava.user.biz.UserBiz;
 import org.bigjava.user.entity.User;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminOrdersAction extends ActionSupport {
@@ -33,7 +32,27 @@ public class AdminOrdersAction extends ActionSupport {
 	private Paging paging;
 	private String searchText; // 搜索的参数值
 	private OrdersBiz ordersBiz;
+	private OrderItemBiz orderItemBiz;
+	private ProductBiz productBiz;
 	private UserBiz userBiz;
+	
+	private List<Product> listProduct;// 订单对应的商品
+
+	public List<Product> getListProduct() {
+		return listProduct;
+	}
+
+	public void setListProduct(List<Product> listProduct) {
+		this.listProduct = listProduct;
+	}
+
+	public void setOrderItemBiz(OrderItemBiz orderItemBiz) {
+		this.orderItemBiz = orderItemBiz;
+	}
+
+	public void setProductBiz(ProductBiz productBiz) {
+		this.productBiz = productBiz;
+	}
 
 	public User getLoginUser() {
 		return loginUser;
@@ -147,4 +166,16 @@ public class AdminOrdersAction extends ActionSupport {
 		return "showAllOrders";
 	}
 
+	// 查询一级分类对应的审商品
+	public String oIdQueryOrdersProduct() {
+		listProduct = new ArrayList<Product>();
+		orders = ordersBiz.queryOrders_id(orders.getO_id());
+		List<Orderitem> listOrderItem = orderItemBiz.queryAllOrderitem_o_id(orders.getO_id());
+		for (int i=0; i<listOrderItem.size(); i++) {
+			Product product = productBiz.queryProduct_id(listOrderItem.get(i).getProduct().getP_id());
+			listProduct.add(product);
+		}
+		System.out.println("订单商品"+listProduct);
+		return "oIdQueryOrdersProduct";
+	}
 }
