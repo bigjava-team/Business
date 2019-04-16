@@ -49,14 +49,15 @@ body {
 .center {
 	float: left;
 	width: 62%;
+	margin-top:1.4%; 
 }
 
 .centertop {
 	background-color: #f5f8fa;
 	border: 1px solid #e4eaee;
 	width: 95%;
-	padding-top: 2%;
-	padding-bottom: 5%;
+	padding-top: 1%;
+	padding-bottom: 1%;
 }
 
 .centertop a {
@@ -103,6 +104,7 @@ body {
 	float: right;
 	width: 28%;
 	height: 100%;
+	margin-top:3.3%;
 }
 
 .two font {
@@ -744,7 +746,7 @@ function show1(id){
 					<font style="color: red">全部功能</font>
 				</div>
 				<input type="submit" class="userxinxi_button userxinxi_inbutton"
-					value="猜我喜欢" onclick="display(1)"><br /> <input
+					value="我的信息" onclick="display(1)"><br /> <input
 					type="submit" class="userxinxi_button userxinxi_inbutton"
 					value="修改密码" onclick="display(2)"><br /> <input
 					type="submit" class="userxinxi_button userxinxi_inbutton"
@@ -755,10 +757,32 @@ function show1(id){
 			</div>
 		</div>
 		<div class="center">
-			<div class="content">
+		<div class="content">
 				<div id="lb1" style="display: block;">
+				
+				<div class="dibu1">
+						<font size="5px" style="font-weight: bold; padding-left: 1%;">我的信息</font>
+					</div>
+		<div class="centertop">
+				<div style="float:left; width: 20%;text-align: center;">
+				我的头像:
+					<div style="border: #eee 1px solid;height: 100px;width: 72%;margin: 0 auto;display: flex;justify-	: center;align-items: center;" >
+						<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+					</div>
+				</div>
+				<div style="float: left;width: 55%;line-height: 180%;padding-left: 10%;">
+					<font color="#EAC100">个人信息一览</font>
+					<div style="">用户名:#用户名</div>
+					<div style="">真实姓名:#真实姓名</div>
+					<div style="">联系方式:#后台手机号</div>
+					<div style="">已绑定的邮箱:#后台邮箱</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		
+			
 					<div class="dibu1">
-						<b>猜你喜欢</b>
+						<font size="5px" style="font-weight: bold; padding-left: 1%;">猜你喜欢</font>
 					</div>
 					<div class="dibu2">
 						<div class="shangping" onmouseover=Over(this);
@@ -792,11 +816,11 @@ function show1(id){
 					</div>
 				</div>
 				<!-- 第二个div -->
-				<div id="lb2" style="display: none">
+				<div id="lb2" style="display: none;margin-top: 3%">
 
 					<div
 						style="width: 95.4%; margin-top: 2%; color: #FDE938; background-color: #F30408; padding-top: 1%; padding-bottom: 1%; ">
-						<font size="5px">修改密码</font>
+						<font size="5px" style="font-weight: bold; padding-left: 1%;">修改密码</font>
 					</div>
 					<form action="User_updatePassword.action" method="post"
 						onsubmit="return dealsubmit1()">
@@ -838,13 +862,13 @@ function show1(id){
 					</form>
 				</div>
 				<!-- 第三个div -->
-				<div id="lb3" style="display: none">
+				<div id="lb3" style="display: none;margin-top: 3%;">
 					<form action="userxinxi.jsp" method="post"
 						enctype="multipart/form-data" name="HtmlFileForm"
 						onsubmit="return dealsubmit2()">
 						<div
 							style="width: 95.4%; margin-top: 2%; color: white; background-color: black; padding-top: 1%; padding-bottom: 1%;">
-							<font size="5px">修改用户信息</font>
+							<font size="5px" style="font-weight: bold; padding-left: 1%;">修改信息</font>
 						</div>
 						<div
 							style="text-align: center; padding-top: 2%; padding-bottom: 2%; line-height: 200%; border: 1px solid #e3e197; background: #ffffdd; width: 95.4%;">
@@ -876,7 +900,7 @@ function show1(id){
 					</form>
 				</div>
 				<!-- 第四个div -->
-				<div id="lb4" style="display: none">
+				<div id="lb4" style="display: none;margin-top:1%;">
 					<form action="addr_addAddress" method="post"
 						onsubmit="return dealsubmit3()">
 						<div class="update_dizhi">
@@ -884,7 +908,7 @@ function show1(id){
 							<input type="hidden" name="address" />
 							<input type="hidden" name="loginUser.username" value="${loginUser.username }" />
 							<div style="width: 95.4%; color: #014d7f; background-color: LightCyan; padding-top: 1%; padding-bottom: 1%;">
-								<font size="5px">收货地址</font>
+								<font size="5px" style="font-weight: bold; padding-left: 1%;">收货地址</font>
 							</div>
 							<div style="color: orange; padding-bottom: 2%; padding-top: 2%;">
 								新增收货地址</div>

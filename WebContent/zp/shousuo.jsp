@@ -121,7 +121,7 @@
 	</div>
 	
 	<div class="contentthree2">
-		<img src="images/55.png" height="20%" width="100%" />
+		<img src="images/55.png"  width="100%" />
 		
 	</div>
 

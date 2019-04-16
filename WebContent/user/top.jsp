@@ -39,7 +39,7 @@
 }
 
 .content a:hover {
-	color: #F08080;
+	color: #FF8300;
 }
 </style>
 <!--板块1-->
