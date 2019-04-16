@@ -82,4 +82,10 @@ public class UserBizImpl implements UserBiz {
 		return userDao.queryUsernameUser(username);
 	}
 
+	// 模糊查询用户信息
+	@Override
+	public List<User> likeQueryListUser(String searchText) {
+		return userDao.likeQueryListUser(searchText);
+	}
+
 }

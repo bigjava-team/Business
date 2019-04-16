@@ -45,25 +45,27 @@
 			<td width="45%" align="center">详情</td>
 			<td width="13%" align="center">发布时间</td>
 			<td width="8%" align="center">编辑</td>
-			<td width="8%" align="center">删除</td>
+			<!-- <td width="8%" align="center">删除</td> -->
 		</tr>
-		<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-			<td align="center">1</td>
-			<td align="center">新闻联播</td>
-			<td align="center" style="text-align: left; padding-left: 1%; padding-right: 1%;">公告详情公告详情公告详情公告详情公告详情公告详情公告详情公告详情</td>
-			<td align="center">2019-24-24 24:24:24</td>
-			
-			<td align="center">
-				<a href="${pageContext.request.contextPath}/admin/notice/edit.jsp">
-					<img class="admin_merchant_pd_immg1" src="${pageContext.request.contextPath}/images/i_edit.gif" border="0">
-				</a>
-			</td>
-			<td align="center">
-				<a>
-					<img class="admin_merchant_pd_immg1" src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0">
-				</a>
-			</td>
-		</tr>
+		<s:iterator value="listIndexNotice" var="listIndexNotices">
+			<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
+				<td align="center">${listIndexNotices.indexNoticeId }</td>
+				<td align="center">${listIndexNotices.indexNoticeTitle }</td>
+				<td align="center" style="text-align: left; padding-left: 1%; padding-right: 1%;">${listIndexNotices.indexNotice }</td>
+				<td align="center">${listIndexNotices.indexNoticeTime }</td>
+				
+				<td align="center">
+					<a href="indexNotice_indexNoticIdQueryIndexNotic?method=post&indexNotice.indexNoticeId=${listIndexNotices.indexNoticeId }">
+						<img class="admin_merchant_pd_immg1" src="${pageContext.request.contextPath}/images/i_edit.gif" border="0">
+					</a>
+				</td>
+				<%-- <td align="center">
+					<a>
+						<img class="admin_merchant_pd_immg1" src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0">
+					</a>
+				</td> --%>
+			</tr>
+		</s:iterator>
 	</table>
 	
 	<div id="admin_list_div_page">

@@ -17,10 +17,10 @@
 			d.add('01',-1,'光光商城管理系统');
 			
 			d.add('0101','01','用户管理');
-			d.add('010101','0101','用户详情','${pageContext.request.contextPath}/User_showAll.action?user.root=0&paging.presentPage=1','','mainFrame');
+			d.add('010101','0101','用户详情','${pageContext.request.contextPath}/User_showAll.action?loginUser.root=${loginUser.root }&loginUser.username=${loginUser.username }&paging.presentPage=1','','mainFrame');
 			
 			d.add('0102','01','店铺管理');
-			d.add('010201','0102','店铺详情','Merchant_queryAllMerchant?method=post&loginUser.username=${loginUser.username }&paging.presentPage=1','','mainFrame');
+			d.add('010201','0102','店铺详情','Merchant_likeQueryMname?method=post&loginUser.username=${loginUser.username }&paging.presentPage=1&searchText=""','','mainFrame');
 			
 			d.add('0103','01','一级分类管理');
 			d.add('010301','0103','一级分类详情','${pageContext.request.contextPath}/Category_showCategory.action','','mainFrame');
@@ -35,10 +35,10 @@
 			d.add('010502','0105','商品过滤','${pageContext.request.contextPath}/adminProduct_showToProduct.action?paging.presentPage=1&user.root=0','','mainFrame');
 			
 			d.add('0106','01','订单管理');
-			d.add('010601','0106','订单详情','${pageContext.request.contextPath}/adminOrders_showAllOrders.action?paging.presentPage=1&user.root=${sessionScope.loginUser.root }&user.username=${sessionScope.loginUser.username }','','mainFrame');
+			d.add('010601','0106','订单详情','${pageContext.request.contextPath}/adminOrders_showAllOrders.action?paging.presentPage=1&loginUser.username=${loginUser.username }','','mainFrame');
 			
 			d.add('0107','01','公告管理');
-			d.add('010701','0107','公告详情','${pageContext.request.contextPath}/admin/notice/list.jsp','','mainFrame');
+			d.add('010701','0107','公告详情','${pageContext.request.contextPath}/indexNotice_queryIndexNotice?method=post&loginUser.username=${loginUser.username}','','mainFrame');
 			d.add('010702','0107','公告发布','${pageContext.request.contextPath}/admin/notice/add.jsp','','mainFrame');
 			
 			document.write(d);

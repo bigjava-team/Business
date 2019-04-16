@@ -43,7 +43,7 @@
 			<result name="showAllUserSuccess">/admin/user/list.jsp</result>
 
 			<!-- 冻结用户，解冻用户 -->
-			<result name="updateUserStatesSuccess" type="redirectAction">User_showAll?user.root=0&amp;paging.presentPage=0
+			<result name="updateUserStatesSuccess" type="redirectAction">User_showAll?method=post&amp;loginUser.root=${loginUser.root }&amp;loginUser.username=${loginUser.username }&amp;paging.presentPage=0
 			</result>
 			<!-- 注册验证码错误跳转注册页面 -->
 			<result name="checkcodeFail">/user/login.jsp</result>
@@ -146,7 +146,8 @@
 			<result name="getMerchantById">/merchant/merchants/list.jsp</result>
 			<result name="queryMerchantOrders">/merchant/order/list.jsp</result>
 			<result name="updateMerchantOrdersState" type="redirectAction">Merchant_queryMerchantOrders?method=post&amp;m_id=${merchant_id }&amp;paging.presentPage=2</result>
-			<result name="queryAllMerchant">/admin/merchant/list.jsp</result>
+			<result name="likeQueryMname">/admin/merchant/list.jsp</result>
+			<result name="mIdQueryAllProduct">/admin/merchant/m_product.jsp</result>
 		</action>
 
 		<!-- 商品的action -->
@@ -167,6 +168,7 @@
 			<result name="addOrders">/order.jsp</result>
 			<result name="queryUserAllOrders">/myOrderList.jsp</result>
 			<result name="idQueryOrdersPayment">/order.jsp</result>
+			<result name="usernameQueryOrders">/admin/order/list.jsp</result>
 		</action>
 
 		<!-- 管理员管理订单action -->
@@ -196,7 +198,13 @@
 		<action name="collectMerchant_*" class="collectMerchantAction" method="{1}" >
 			<result name="queryUserCollectMerchant">/user/DianpuShouChang.jsp</result>
 		</action>
-
+		
+		<action name="indexNotice_*" class="indexNoticeAction" method="{1}">
+			<result name="queryIndexNotice" >/admin/notice/list.jsp</result>
+			<result name="addIndexNotice" type="redirectAction">indexNotice_queryIndexNotice</result>
+			<result name="updateIndexNotice" type="redirectAction">indexNotice_queryIndexNotice</result>
+			<result name="indexNoticIdQueryIndexNotic">/admin/notice/edit.jsp</result>
+		</action>
 	</package>
 
 

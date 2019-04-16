@@ -24,7 +24,8 @@ public class UserAction extends ActionSupport {
 	private Paging paging;// 声明Paging类
 	private User loginUser;
 	private Merchant merchant;
-
+	private FileImageAction fileImageAction;// 图片地址
+	
 	private UserBiz userBiz;
 	private String searchText; // 搜索的参数值
 	private List<User> users; // 接收搜索的用户列表
@@ -37,6 +38,14 @@ public class UserAction extends ActionSupport {
 
 	// 接收验证码 struts2 中的属性驱动
 	private String checkcode;
+	
+	public FileImageAction getFileImageAction() {
+		return fileImageAction;
+	}
+
+	public void setFileImageAction(FileImageAction fileImageAction) {
+		this.fileImageAction = fileImageAction;
+	}
 
 	public Merchant getMerchant() {
 		return merchant;
@@ -178,7 +187,6 @@ public class UserAction extends ActionSupport {
 					System.out.println("管理员登录");
 					session = ActionContext.getContext().getSession();
 					session.put("loginUser", loginUser);
-					System.out.println(loginUser);
 					return "adminLogin";
 				} else if (loginUser.getU_is_freeze() == 2) {
 					check_login = "用户已冻结";
@@ -250,20 +258,21 @@ public class UserAction extends ActionSupport {
 			freeze = 1;
 		}
 		user.setU_is_freeze(freeze);
-		System.out.println(user);
 		userBiz.updateUserFreeze(freeze, user);
 		return "updateUserStatesSuccess";
 	}
 
 	/**
-	 * 展示全部
+	 * 展示全部用户
 	 */
 	public String showAll() {
 		System.out.println("进入UserAction....showAll方法");
-		session = ActionContext.getContext().getSession();
+		/*session = ActionContext.getContext().getSession();*/
 		int u_root = 0;
 		if (loginUser.getRoot() != 0) {
-			u_root = user.getRoot();
+			if (loginUser.getRoot() != 3) {
+				u_root = loginUser.getRoot();
+			}
 		}
 
 		System.out.println("用户权限为：" + u_root);
@@ -276,18 +285,14 @@ public class UserAction extends ActionSupport {
 		// 根据搜索的内容与权限查询可搜索的总条数
 		int totalNumber = userBiz.queryPages(searchText, u_root);
 
-		// 当前页数
-		int presentPage = paging.getPresentPage();
-
-		Paging paging = new Paging(presentPage, totalNumber, 3);
+		paging = new Paging(paging.getPresentPage(), totalNumber, 3);
 		// 接收搜索到的用户列表
 		users = userBiz.limitDemend(searchText, paging, u_root);
 		// 将users存入session中
-		System.out.println(users);
-		session.put("showUser", users);
+		/*session.put("showUser", users);
 		session.put("paging", paging);
 		session.put("userRoot", u_root);
-		session.put("searchText", searchText);
+		session.put("searchText", searchText);*/
 		return "showAllUserSuccess";
 	}
 
