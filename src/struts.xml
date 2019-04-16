@@ -175,7 +175,7 @@
 		<action name="adminOrders_*" class="adminOrdersAction"
 			method="{1}">
 			<result name="showAllOrders">/admin/order/list.jsp</result>
-			<result name=""></result>
+			<result name="oIdQueryOrdersProduct">/admin/order/list.jsp</result>
 			<result name=""></result>
 		</action>
 

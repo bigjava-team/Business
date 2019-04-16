@@ -13,6 +13,8 @@ import org.bigjava.orderitem.biz.OrderItemBiz;
 import org.bigjava.orderitem.entity.Orderitem;
 import org.bigjava.orders.biz.OrdersBiz;
 import org.bigjava.orders.entity.Orders;
+import org.bigjava.product.biz.ProductBiz;
+import org.bigjava.product.entity.Product;
 import org.bigjava.user.biz.UserBiz;
 import org.bigjava.user.entity.User;
 
@@ -200,4 +202,5 @@ public class OrdersAction {
 		listAddr = addrBiz.queryAllAddr(paging, loginUser);
 		return "idQueryOrdersPayment";
 	}
+	
 }

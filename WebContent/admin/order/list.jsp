@@ -13,6 +13,10 @@
 		alert(searchText);
 		window.location.href="adminOrders_showAllOrders.action?paging.presentPage=1&loginUser.username="+username+"&searchText="+searchText;
 	}
+	
+	function showDetail(o_id) {
+		window.location.href="adminOrders_oIdQueryOrdersProduct?method=post&orders.o_id="+o_id;
+	}
 </script>
 </head>
 <body id="admin_list_body">
@@ -34,18 +38,20 @@
 	<table id="admin_list_table" cellspacing="0" cellpadding="0" rules="all" width="100%" border="1" bordercolor="gray">
 		<tr id="admin_list_tr1">
 			<td width="8%" align="center">编号</td>
+			<td width="10%" align="center">订单编号</td>
 			<td width="12%" align="center">总金额</td>
 			<td width="10%" align="center">时间</td>
 			<td width="10%" align="center">收货人姓名</td>
 			<td width="10%" align="center">收货人电话</td>
-			<td width="18%" align="center">收货人地址</td>
-			<td width="18%" align="center">用户名</td>
+			<td width="14%" align="center">收货人地址</td>
+			<td width="10%" align="center">用户名</td>
 			<td width="8%" align="center">订单详情</td>
 			<td width="8%" align="center">状态</td>
 		</tr>
 		<s:iterator value="listOrders" var="listOrder" status="status">
 		<tr id="admin_list_tr2"  onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
 			<td align="center">${listOrder.o_id}</td>
+			<td align="center">${listOrder.orderNumber}</td>
 			<td align="center">${listOrder.total}</td>
 			<td align="center">${listOrder.ordertime}</td>
 			<td align="center">
@@ -74,8 +80,7 @@
 			</td>
 			<td align="center">${listOrder.user.username}</td>
 			<td align="center">
-				<input id="but1" type="button" value="订单详情" onclick="showDetail(1)">
-				<div id="div1"></div>
+				<input id="but1" type="button" value="订单详情" onclick="showDetail(${listOrder.o_id})">
 			</td>
 			<td align="center">
 				<s:if test="#listOrder.state == 1">
