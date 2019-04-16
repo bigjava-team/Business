@@ -18,7 +18,7 @@ import org.bigjava.user.entity.User;
 
 public class OrdersAction {
 	
-	// 指向用户类
+	// 指向登录用户类
 	private User loginUser;
 	// 指向订单类
 	private Orders orders;
@@ -32,6 +32,8 @@ public class OrdersAction {
 	private Paging paging;
 	// 上传图片的功能类
 	private FileImageAction fileImageAction;
+	// 模糊搜索的值
+	private String searchText;
 	
 	private OrdersBiz ordersBiz;
 	private OrderItemBiz orderItemBiz;
@@ -41,6 +43,14 @@ public class OrdersAction {
 	private List<Orders> listOrders;// 订单表内容
 	private List<Addr> listAddr;// 用户的收货地址
 	
+	public String getSearchText() {
+		return searchText;
+	}
+
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
+	}
+
 	public List<Addr> getListAddr() {
 		return listAddr;
 	}
@@ -190,5 +200,4 @@ public class OrdersAction {
 		listAddr = addrBiz.queryAllAddr(paging, loginUser);
 		return "idQueryOrdersPayment";
 	}
-
 }

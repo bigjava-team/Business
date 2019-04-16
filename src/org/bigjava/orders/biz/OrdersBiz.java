@@ -44,4 +44,5 @@ public interface OrdersBiz {
 	 * ÐÞ¸Ä¶©µ¥×´Ì¬
 	 */
 	public void updateOrdersState(Orders orders);
+	
 }

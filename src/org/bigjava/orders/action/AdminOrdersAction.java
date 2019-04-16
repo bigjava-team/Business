@@ -1,5 +1,6 @@
 package org.bigjava.orders.action;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +23,8 @@ public class AdminOrdersAction extends ActionSupport {
 	private IsEmpty isEmpty = new IsEmpty();
 	// 指向用户类
 	private User user;
+	// 指向登录的用户
+	private User loginUser;
 	// 指向订单类
 	private Orders orders;
 	// 订单审商品的数量
@@ -31,6 +34,14 @@ public class AdminOrdersAction extends ActionSupport {
 	private String searchText; // 搜索的参数值
 	private OrdersBiz ordersBiz;
 	private UserBiz userBiz;
+
+	public User getLoginUser() {
+		return loginUser;
+	}
+
+	public void setLoginUser(User loginUser) {
+		this.loginUser = loginUser;
+	}
 
 	public UserBiz getUserBiz() {
 		return userBiz;
@@ -105,35 +116,34 @@ public class AdminOrdersAction extends ActionSupport {
 
 	public String showAllOrders() {
 		System.out.println("AdminAction....adminFindAll().");
-		session = ActionContext.getContext().getSession();
-
-		int u_root = 0;
-		if (user.getRoot() != 0) {
-			u_root = user.getRoot();
-		}
-
-		System.out.println("用户权限为：" + u_root);
-		System.out.println("搜索的值" + searchText);
-
+		listOrders = new ArrayList();
 		if (isEmpty.isEmpty(searchText)) {
 			searchText = "";
+			loginUser = userBiz.queryUsernameUser(loginUser.getUsername());
+			int totalNumber = ordersBiz.queryAllOrdersNumber(loginUser);
+			
+			paging = new Paging(paging.getPresentPage(), totalNumber, 5);
+	
+			listOrders = ordersBiz.queryAllOrders(paging, loginUser);
+			return "showAllOrders";
 		}
-		user = userBiz.queryUsernameUser(user.getUsername());
-		// 根据搜索的内容与权限查询可搜索的总条数
-		int totalNumber = ordersBiz.queryAllOrdersNumber(user);
-
-		// 当前页数
-		int presentPage = paging.getPresentPage();
-		System.out.println("当前页" + presentPage);
-
-		paging = new Paging(presentPage, totalNumber, 1);
-
-		listOrders = ordersBiz.queryAllOrders(paging, user);
-
-		// 将参数存入session中
+		List<User> listUser = userBiz.likeQueryListUser(searchText);
+		for (int i=0; i<listUser.size(); i++) {
+			// 根据搜索的内容与权限查询可搜索的总条数
+			int totalNumber = ordersBiz.queryAllOrdersNumber(listUser.get(i));
+			if (totalNumber==0) {
+				continue;
+			}
+	
+			paging = new Paging(paging.getPresentPage(), totalNumber, 5);
+	
+			List<Orders> listOrders2 = ordersBiz.queryAllOrders(paging, listUser.get(i));
+			System.out.println(listOrders2);
+			for (int j=0; j<listOrders2.size(); j++) {
+				listOrders.add(listOrders2.get(j));
+			}
+		}
 		System.out.println(listOrders);
-		session.put("paging", paging);
-		session.put("searchText", searchText);
 		return "showAllOrders";
 	}
 

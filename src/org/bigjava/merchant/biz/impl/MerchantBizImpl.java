@@ -87,16 +87,30 @@ public class MerchantBizImpl implements MerchantBiz {
 		return merchantDao.queryProductMerchantTop();
 	}
 
-	// 管理员查询全部店铺
+	// 店长名模糊搜索店铺
 	@Override
-	public List<Merchant> queryAllMerchant(Paging paging) {
-		return merchantDao.queryAllMerchant(paging);
+	public List<Merchant> likeQueryM_name(Paging paging, String searchText) {
+		// TODO Auto-generated method stub
+		return merchantDao.likeQueryM_name(paging, searchText);
 	}
 
-	// 管理员查询所有店铺的数量
+	// 店长名模糊搜索店铺数
 	@Override
-	public int queryAllMerchantNumber() {
-		return merchantDao.queryAllMerchantNumber();
+	public int likeQueryM_nameNumber(String searchText) {
+		// TODO Auto-generated method stub
+		return merchantDao.likeQueryM_nameNumber(searchText);
+	}
+
+	// 通过店铺id获取对应商品
+	@Override
+	public List<Product> mIdQueryAllProduct(Paging paging, String searchText, int m_id) {
+		return merchantDao.mIdQueryAllProduct(paging, searchText, m_id);
+	}
+
+	// 通过店铺id获取对应商品的条数
+	@Override
+	public int mIdQueryAllProductNumber(String searchText, int m_id) {
+		return merchantDao.mIdQueryAllProductNumber(searchText, m_id);
 	}
 
 }

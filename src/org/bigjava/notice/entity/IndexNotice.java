@@ -4,33 +4,38 @@ import java.util.Date;
 
 public class IndexNotice {
 	
-	private int indexId;
-	private String indexNaticeTitle;
-	private String indexNatice;
-	private Date indexNaticeTime;
+	private int indexNoticeId;
+	private String indexNoticeTitle;
+	private String indexNotice;
+	private Date indexNoticeTime;
 	
-	public String getIndexNaticeTitle() {
-		return indexNaticeTitle;
+	public int getIndexNoticeId() {
+		return indexNoticeId;
 	}
-	public void setIndexNaticeTitle(String indexNaticeTitle) {
-		this.indexNaticeTitle = indexNaticeTitle;
+	public void setIndexNoticeId(int indexNoticeId) {
+		this.indexNoticeId = indexNoticeId;
 	}
-	public int getIndexId() {
-		return indexId;
+	public String getIndexNoticeTitle() {
+		return indexNoticeTitle;
 	}
-	public void setIndexId(int indexId) {
-		this.indexId = indexId;
+	public void setIndexNoticeTitle(String indexNoticeTitle) {
+		this.indexNoticeTitle = indexNoticeTitle;
 	}
-	public String getIndexNatice() {
-		return indexNatice;
+	public String getIndexNotice() {
+		return indexNotice;
 	}
-	public void setIndexNatice(String indexNatice) {
-		this.indexNatice = indexNatice;
+	public void setIndexNotice(String indexNotice) {
+		this.indexNotice = indexNotice;
 	}
-	public Date getIndexNaticeTime() {
-		return indexNaticeTime;
+	public Date getIndexNoticeTime() {
+		return indexNoticeTime;
 	}
-	public void setIndexNaticeTime(Date indexNaticeTime) {
-		this.indexNaticeTime = indexNaticeTime;
+	public void setIndexNoticeTime(Date indexNoticeTime) {
+		this.indexNoticeTime = indexNoticeTime;
+	}
+	@Override
+	public String toString() {
+		return "IndexNotice [indexNoticeId=" + indexNoticeId + ", indexNoticeTitle=" + indexNoticeTitle
+				+ ", indexNotice=" + indexNotice + ", indexNoticeTime=" + indexNoticeTime + "]";
 	}
 }

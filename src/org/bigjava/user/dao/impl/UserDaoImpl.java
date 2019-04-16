@@ -160,5 +160,11 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		}
 		return listUser.get(0);
 	}
-	
+
+	// 模糊查询用户信息
+	@Override
+	public List<User> likeQueryListUser(String searchText) {
+		List<User> list = this.getHibernateTemplate().find("from User where username like ? and root!=3", "%"+searchText+"%");
+		return list;
+	}
 }

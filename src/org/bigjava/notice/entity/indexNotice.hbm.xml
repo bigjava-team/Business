@@ -4,11 +4,11 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="org.bigjava.notice.entity.IndexNotice" table="indexnotice">
-		<id name="indexId">
+		<id name="indexNoticeId">
 			<generator class="native" />
 		</id>
-		<property name="indexNaticeTitle" />
-		<property name="indexNatice" />
-		<property name="indexNaticeTime" />
+		<property name="indexNoticeTitle" type="string" />
+		<property name="indexNotice" type="string" />
+		<property name="indexNoticeTime" />
 	</class>
 </hibernate-mapping>

@@ -164,21 +164,44 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 		return list;
 	}
 
-	// 管理员查询店铺
+	/**
+	 * 店长名模糊搜索店铺
+	 */
 	@Override
-	public List<Merchant> queryAllMerchant(Paging paging) {
+	public List<Merchant> likeQueryM_name(Paging paging, String searchText) {
+		// TODO Auto-generated method stub
 		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
-		Query query = session.createQuery("from Merchant");
+		Query query = session.createQuery("from Merchant where m_name like ?").setString(0, "%"+searchText+"%");
 		query.setFirstResult(paging.getStart());
 		query.setMaxResults(paging.getPagesize());
 		return query.list();
 	}
 
-	// 管理员分页查询店铺
+	/**
+	 * 店长名模糊搜索店铺数
+	 */
 	@Override
-	public int queryAllMerchantNumber() {
+	public int likeQueryM_nameNumber(String searchText) {
+		// TODO Auto-generated method stub
 		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
-		Query query = session.createQuery("from Merchant");
+		Query query = session.createQuery("from Merchant where m_name like ?").setString(0, "%"+searchText+"%");
 		return query.list().size();
+	}
+
+	// 通过店铺id获取对应商品
+	@Override
+	public List<Product> mIdQueryAllProduct(Paging paging, String searchText, int m_id) {
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		Query query = session.createQuery("from Product where p_name like ? and m_id=?").setString(0, "%"+searchText+"%").setInteger(1, m_id);
+		query.setFirstResult(paging.getStart());
+		query.setMaxResults(paging.getPagesize());
+		return query.list();
+	}
+
+	// 通过店铺id获取对应商品的条数
+	@Override
+	public int mIdQueryAllProductNumber(String searchText, int m_id) {
+		List<Long> listNumber = this.getHibernateTemplate().find("select count(*) from Product where p_name like ? and m_id=?", new Object[]{"%"+searchText+"%", m_id});
+		return listNumber.size()>0 ? listNumber.get(0).intValue() : null;
 	}
 }
