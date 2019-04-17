@@ -168,9 +168,9 @@
 .lanmusi {
 	background: #fff;
 	width: 16%;
-	height: 25%;
+	height: 40%;
 	float: left;
-	border: 2px solid #FF9900;
+	border: 1px solid #E0E0E0;
 	margin: 2 3 0 3
 }
 /*节目2*/

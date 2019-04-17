@@ -231,6 +231,10 @@
 			 $(this).removeClass("youxiamaodian");
 		})
 	});
+	
+	function yonghuzhinan(){
+		window.location.href = "${pageContext.request.contextPath}/userzhinan.jsp";
+	}
 	/* 右下角锚点链接(结束) */
 	
 </script>
@@ -520,10 +524,10 @@
 						</div>
 						<s:iterator value="listAllLikeProduct" var="listAllLikeProducts">
 							<div class="cainilike" style="background: #FFF; width: 50%;border: 1px solid blue; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
-								<div style="margin-left: 12%; margin-right: 6%;">
+								<div style="margin-left: 12%; margin-top: 6%; margin-right: 6%; height: 103px;">
 									<img alt="商品图片"  src="${fileImageAction.urlImage }${listAllLikeProducts.p_image }" width="100%">
 								</div>
-								<div style="margin-left: 12%; margin-right: 6%;">
+								<div style="margin-left: 12%; margin-right: 6%; overflow: hidden;">
 									${listAllLikeProducts.p_name }
 								</div>
 							</div>
@@ -628,7 +632,7 @@
 		<div class="cainimaodian" onclick="cainimaodian()" style="cursor: pointer; padding: 6% 0px; border-style:solid; border-width: 1px; border-bottom-color: #F4F4F4; border-top-color: #F4F4F4; border-left: none; border-right: none; margin-top: -2px;">
 			猜你<br />喜欢
 		</div>
-		<div class="yonghuzhinan" style="cursor: pointer; padding: 6% 0px; border-style:solid; border-width: 1px; border-bottom-color: #F4F4F4; border-top-color: #F4F4F4; border-left: none; border-right: none; margin-top: -2px;">
+		<div class="yonghuzhinan" onclick="yonghuzhinan()" style="cursor: pointer; padding: 6% 0px; border-style:solid; border-width: 1px; border-bottom-color: #F4F4F4; border-top-color: #F4F4F4; border-left: none; border-right: none; margin-top: -2px;">
 			用户<br />指南<!-- solr -->
 		</div>
 	</div>

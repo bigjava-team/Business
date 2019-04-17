@@ -2,7 +2,7 @@
  <html>
  
   <style type="text/css">
- .contentone68{ background-color: rgba(0,0,0,0.1); width:10%;border:0px solid ;float:left;
+ .contentone68{ background-color: rgba(0,0,0,0.1); width:10%;height:24px;border:0px solid ;float:left;
  				float:left;align-items:center; display: -webkit-flex; justify-content:center; display: -webkit-flex;}
  .contentone69{ background-color: rgba(0,0,0,0.05); width:10%;height:25px; border:0.1px solid #ffffff;
  				 float:left;align-items:center; display: -webkit-flex; justify-content:center; display: -webkit-flex; }
