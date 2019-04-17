@@ -29,18 +29,7 @@
 		background: url(../TuPian/5.jpg);
 	}
 	
-	.button {
-		width: 20%;
-	}
 	
-	.button:hover span {
-		padding-right: 20%;
-	}
-	
-	.button:hover span:after {
-		opacity: 1;
-		right: 0;
-	}
 	
 	.foot {
 		margin-top: 2%;
@@ -110,14 +99,12 @@
 		box-shadow: 0px 0px 5px #007eff;
 	}
 	
-	.kuang {
-		margin-top: 10px;
-		width: 100%;
-	}
 	
 	.right {
 		margin-right: 8%;
 		margin-top: 2%;
+		padding-left:2%;
+		padding-right:2%;
 		float: right;
 		width: 20%;
 		border: #909090 1px solid;
@@ -146,16 +133,29 @@
 	
 	.wenzi {
 		margin-left: 3%;
-		margin-top: 3%;
+		margin-top: 2%;
 		font-family: "宋体";
 	}
 	
 	.kuang {
-		margin-top: 5%;
+		margin-top: 2%;
 		float: left;
 		width: 50%;
 	}
 	
+	.button{
+		background-color:pink;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		cursor: pointer;
+		border-radius: 12px;
+	
+	}
 	.hebing {
 		width: 90%;
 		height: 40%;
@@ -302,11 +302,17 @@
 <body>
 	<form action="User_register" method="post"
 		onsubmit="return checkFrom();">
-		<input type="hidden" id="checkEmail">
-		<div id="header" align="center" class="tou">
+		<input type="hidden" id="checkEmail" >
+		<div id="header"  class="tou"align="center">
 			<a href="loginn.jsp"><img src="../TuPian/logo.jpg"></a><img
-				src="../TuPian/nuli.gif">
-			<h2>用户注册</h2>
+				src="../TuPian/nuli.gif"><br/>	
+			<div style="float: left;margin-left: 41%;">
+				<font size="5px" color="black">用户注册</font>
+			</div>
+			<div style="float: left;margin-left: 25%;color:red">
+				<h2><a href="/Business/index_showAll.action">返回首页</a></h2>
+			</div>
+			<div style="clear: both;"></div>
 		</div>
 		<div class="center"
 			style="background: url(../TuPian/5.jpg); overflow: hidden;">

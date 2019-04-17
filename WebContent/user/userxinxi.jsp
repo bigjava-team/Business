@@ -597,9 +597,9 @@ function users(){
 	var userlabel=document.getElementById("update_dizhiname");
 	   userlabel.className="green";
 }
-function nameid(){
+function shouhu_yanzheng(){
 	 var div1 =document.getElementById("tip4");
-	  var text=document.getElementsByName("update_dizhiname").item(0).value;
+	  var text=document.getElementsByName("a_name").item(0).value;
 	  var user=document.getElementById("update_dizhiname");
 	  var reg = /[\u4E00-\u9FA5\uF900-\uFA2D]/;
 	  if(text=="" || text==null){
@@ -635,9 +635,9 @@ function dizhi(){
 	   userlabel.className="green";
 }
  
-function pwdcat(){
+function dizhi_yanzhen(){
 	 var div1 =document.getElementById("tip5");
-	  var text=document.getElementsByName("dizhi").item(0).value;
+	  var text=document.getElementsByName("detailedAddress").item(0).value;
 	  var user=document.getElementById("dizhi");
 	  var reg = /[\u4E00-\u9FA5\uF900-\uFA2D]/;
 	  
@@ -646,11 +646,6 @@ function pwdcat(){
 			 div1.innerHTML="详细地址不能为空!";
 			 return false;
 		  }
-	  if (!(reg.test(text))) {
-		  user.className="red";
-		 div1.innerHTML="请输入汉字!";
-		return false;
-  }
 	  if(1<=text.length){
 		  user.className="black";
 		   div1.innerHTML="";
@@ -663,9 +658,9 @@ function phone(){
 	   userlabel.className="green";
 }
  
-function YZphone(){
+function YZ_phone(){
 	 var div1 =document.getElementById("tip6");
-	  var text=document.getElementsByName("dizhiphone").item(0).value;
+	  var text=document.getElementsByName("a_phone").item(0).value;
 	  var user=document.getElementById("dizhiphone");
 	  
 	  if(text.length==0 || text==""){
@@ -693,9 +688,10 @@ function dealsubmit3(){
 	var address = cmbProvince + cmbCity + cmbArea + dizhi;
 	$("input[name='address']").val(address);
 	$("input[name='addressP_M_D']").val(cmbProvince+"|"+cmbCity+"|"+cmbArea);
-	if(pwdcat()==false  || nameid()==false|| YZphone()==false){
+	if(dizhi_yanzhen()==false  || shouhu_yanzheng()==false|| YZ_phone()==false){
 		return false;
 	}else{
+		alert(sb) ;
 		return true;
 	}
 }
@@ -856,7 +852,7 @@ function show1(id){
 							<div class="clear"></div>
 							<div class="update_anniu">
 
-								<input type="submit" class="update_button" id="zhuce" value="提交"/>
+								<input type="submit" class="update_button" id="zhuce1" value="提交"/>
 							</div>
 						</div>
 					</form>
@@ -893,7 +889,7 @@ function show1(id){
 								</span>
 							</div>
 							<div class="clear"></div>
-							<input type="submit" class="updateuser_button" id="zhuce"
+							<input type="submit" class="updateuser_button" id="zhuce2"
 								value="提交">
 
 						</div>
@@ -924,7 +920,7 @@ function show1(id){
 							<div style="margin-top: 2%">
 								<div class="update_dizhidiv">
 									详细地址:<input type="text" id="dizhi" name="detailedAddress"
-										placeholder="请输入详细地址,例如小区,楼栋号等信息 " onblur="pwdcat()"
+										placeholder="请输入详细地址,例如小区,楼栋号等信息 " onblur="dizhi_yanzhen()"
 										onfocus="dizhi()"
 										style="width: 78%; height: 25px; margin-left: 2%">
 								</div>
@@ -932,7 +928,7 @@ function show1(id){
 								<div class="clear"></div>
 								<div class="update_dizhidiv">
 									收货人姓名:<input type="text" id="update_dizhiname"
-										name="a_name" placeholder="2-8位字符" onblur="nameid()"
+										name="a_name" placeholder="2-8位字符" onblur="shouhu_yanzheng()"
 										onfocus="users()"
 										style="width: 75.5%; height: 25px; margin-left: 0.5%">
 								</div>
@@ -940,7 +936,7 @@ function show1(id){
 								<div class="clear"></div>
 								<div class="update_dizhidiv">
 									手机号码:<input type="text" name="a_phone" id="dizhiphone"
-										placeholder="收件人的手机号码" onblur="YZphone()" onfocus="phone()"
+										placeholder="收件人的手机号码" onblur="YZ_phone()" onfocus="phone()"
 										style="width: 78%; height: 25px; margin-left: 2%">
 								</div>
 								<div id="tip6" class="updatedizhi_jsdiv"></div>

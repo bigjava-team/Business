@@ -160,7 +160,6 @@
 .content5 {
 	background: #ffffff;
 	width: 85%;
-	height: 150%;
 	float: center;
 	border: 2px solid #ffffff;
 	margin: 0 auto
@@ -323,14 +322,15 @@
 		<div class="aa"></div>
 	</div>
 </div>
+<br class="clear">
 </div>
 	<div id="admin_list_div_page" style="width: 100%; font-size: 15px; text-align: center; padding: 8px 0px 0px 0px;">
-			第<s:property value="pageBean.page"/>页/<s:property value="pageBean.totalPage"/>页&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="${pageContext.request.contextPath }/">首页</a>
-				<a href="${pageContext.request.contextPath }/">上一页</a>
-				<a href="${pageContext.request.contextPath }/">下一页</a>
-				<a href="${pageContext.request.contextPath }/">尾页</a>
-		</div>
+		第<s:property value="pageBean.page"/>页/<s:property value="pageBean.totalPage"/>页&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath }/">首页</a>
+		<a href="${pageContext.request.contextPath }/">上一页</a>
+		<a href="${pageContext.request.contextPath }/">下一页</a>
+		<a href="${pageContext.request.contextPath }/">尾页</a>
+	</div>
 		<%@include file="menu_bottom.jsp"%>
 </body>
 </html>

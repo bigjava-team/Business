@@ -174,6 +174,65 @@
 		window.location.href="index_cs_idQueryAllCategorySecond?method=post&loginUser.username="+username+"&paging.presentPage=1&categorySecond.cs_id="+cs_id;
 	}
 	
+	/* 右下角锚点链接(开始) */
+	function dingbumaodian(){
+		window.location.href = "#dingbumaodian";
+	}
+	
+	function zuixinmaodian(){
+		window.location.href = "#zuixinmaodian";
+	}
+	
+	function zuiremaodian(){
+		window.location.href = "#zuiremaodian";
+	}
+	
+	function cainimaodian(){
+		window.location.href = "#cainimaodian";
+	}
+	
+	$(function(){
+		$(".dingbumaodian").hover(function(){
+			$(this).html("回到<br />顶部").addClass("youxiamaodian");
+		}, function(){
+			/* <img alt="顶部" src="${pageContext.request.contextPath }/images/fanhuitop.png" width="100%" style="display: block;"> */
+			 $(this).html('<img alt="顶部" src="${pageContext.request.contextPath }/images/fanhuitop.png" width="100%" style="display: block;">');
+		})
+	})
+	
+	$(function(){
+		$(".zuixinmaodian").hover(function(){
+			$(this).addClass("youxiamaodian");
+		}, function(){
+			 $(this).removeClass("youxiamaodian");
+		})
+	})
+	
+	$(function(){
+		$(".zuiremaodian").hover(function(){
+			$(this).addClass("youxiamaodian");
+		}, function(){
+			 $(this).removeClass("youxiamaodian");
+		})
+	})
+	
+	$(function(){
+		$(".cainimaodian").hover(function(){
+			$(this).addClass("youxiamaodian");
+		}, function(){
+			 $(this).removeClass("youxiamaodian");
+		})
+	})
+	
+	$(function(){
+		$(".yonghuzhinan").hover(function(){
+			$(this).addClass("youxiamaodian");
+		}, function(){
+			 $(this).removeClass("youxiamaodian");
+		})
+	})
+	/* 右下角锚点链接(结束) */
+	
 </script>
 
 <style type="text/css">
@@ -210,10 +269,20 @@
 		background: #FFECF5;
 		color: #3C3C3C;
 	}
+	
+	.zuixinmaodian, .zuiremaodian, .cainimaodian, .yonghuzhinan{
+		background: #D0D0D0;
+		color: #6C6C6C;
+	}
+	
+	.youxiamaodian{
+		background: #FF8F59;
+		color: #000;
+	}
 </style>
 </head>
 <body style="background: #F4F4F4; margin: 0px; padding: 0px;">
-	<div class="d0101" style="background: red;"></div>
+	<div id="dingbumaodian" class="d0101" style="background: red;"></div>
 	<%@ include file="product_top.jsp" %>
 
 	<!-- 
@@ -467,10 +536,10 @@
 	
 	<div style="overflow: hidden; margin-bottom: 8px;">
 		<div style="background: #79FF79; width: 43.6%; margin-left: 6%; margin-right: 0.8%; float: left;">
-			<div style="background: #FFF; height: 10%; font-weight: bold; font-size: 18px; color: #FF9F00; padding: 12px 0px 12px 2%; border-bottom: 1px solid #F4F4F4">
+			<div id="zuixinmaodian" style="background: #FFF; height: 10%; font-weight: bold; font-size: 18px; color: #FF9F00; padding: 12px 0px 12px 2%; border-bottom: 1px solid #F4F4F4">
 				| 最新商品
 			</div>	
-			<div style="background: red; overflow: hidden; margin: 0px 0%;">
+			<div style="overflow: hidden; margin: 0px 0%;">
 				<s:iterator value="listProductTime"  var="listProductTimes">
 					<div class="newestProduct" onclick="queryProduct(${listProductTimes.p_id})" id="times_${listProductTimes.p_id}" style="background: #FFF; width: 33.33%; float: left; height: 31%; padding-top: 5px;" >
 						<div style="text-align: center; height: 183px; overflow: hidden;">
@@ -493,10 +562,10 @@
 		
 		<div style="background: #79FF79; width: 43.6%; margin-right: 6%; margin-right: 0.4%; float: left;">
 			<div style="background: #79FF79; width: 100%; margin-right: 0.8%; float: left;">
-				<div style="background: #FFF; height: 10%; font-weight: bold; font-size: 18px; color: #FF9F00; padding: 12px 0px 12px 2%; border-bottom: 1px solid #F4F4F4">
+				<div id="zuiremaodian" style="background: #FFF; height: 10%; font-weight: bold; font-size: 18px; color: #FF9F00; padding: 12px 0px 12px 2%; border-bottom: 1px solid #F4F4F4">
 					| 最热商品
 				</div>
-				<div style="background: red; overflow: hidden; margin: 0px 0%;">
+				<div style="overflow: hidden; margin: 0px 0%;">
 					<s:iterator value="listProductHot"  var="listProductHots">
 						<div class="ishotProduct" onclick="queryProduct(${listProductHots.p_id })" id="hot_${listProductHots.p_id }" style="background: #FFF; width: 33.33%; float: left; height: 31%; padding-top: 5px;">
 							<div style="text-align: center; height: 183px; overflow: hidden;">
@@ -519,10 +588,10 @@
 	</div>
 	
 	<div style="background: #28FF28; overflow: hidden; width: 88%; margin-left: 6%; margin-right: 6%;">
-		<div style="background: #FFF; height: 10%; font-weight: bold; font-size: 18px; color: #FF9F00; padding: 12px 0px 12px 1%; border-bottom: 1px solid #F4F4F4">
+		<div id="cainimaodian" style="background: #FFF; height: 10%; font-weight: bold; font-size: 18px; color: #FF9F00; padding: 12px 0px 12px 1%; border-bottom: 1px solid #F4F4F4">
 			| 猜你喜欢
 		</div>
-		<div style="background: red; overflow: hidden; margin: 0px 0%;">
+		<div style="overflow: hidden; margin: 0px 0%;">
 			<s:iterator value="listAllCommentProduct" var="listAllCommentProducts" >
 				<div class="likeProduct" onclick="queryProduct(${listAllCommentProducts.p_id })" style="background: #FFF; width: 16.66%; float: left; height: 31%; padding-top: 5px;">
 					<div style="text-align: center; height: 183px; overflow: hidden;">
@@ -545,5 +614,23 @@
 		
 	</div>
 	<%@ include file="index_menu_bottom.jsp" %>
+	<!-- dingbumaodian -->
+	<div style="position: fixed; right: 2%; bottom: 1%; width: 3%; text-align: center; font-size: 10px;">
+		<div class="dingbumaodian" onclick="dingbumaodian()" style="padding-bottom: 6%; cursor: pointer;">
+			<img alt="顶部" src="${pageContext.request.contextPath }/images/fanhuitop.png" width="100%" style="display: block;">
+		</div>
+		<div class="zuixinmaodian" onclick="zuixinmaodian()" style="cursor: pointer; padding: 6% 0px; border-style:solid; border-width: 1px; border-bottom-color: #F4F4F4; border-top-color: #F4F4F4; border-left: none; border-right: none; margin-top: -2px;">
+			最新<br />商品
+		</div>
+		<div class="zuiremaodian" onclick="zuiremaodian()" style="cursor: pointer; padding: 6% 0px; border-style:solid; border-width: 1px; border-bottom-color: #F4F4F4; border-top-color: #F4F4F4; border-left: none; border-right: none; margin-top: -2px;">
+			最热<br />商品
+		</div>
+		<div class="cainimaodian" onclick="cainimaodian()" style="cursor: pointer; padding: 6% 0px; border-style:solid; border-width: 1px; border-bottom-color: #F4F4F4; border-top-color: #F4F4F4; border-left: none; border-right: none; margin-top: -2px;">
+			猜你<br />喜欢
+		</div>
+		<div class="yonghuzhinan" style="cursor: pointer; padding: 6% 0px; border-style:solid; border-width: 1px; border-bottom-color: #F4F4F4; border-top-color: #F4F4F4; border-left: none; border-right: none; margin-top: -2px;">
+			用户<br />指南<!-- solr -->
+		</div>
+	</div>
 </body>
 </html>
