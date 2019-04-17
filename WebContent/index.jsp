@@ -539,7 +539,7 @@
 			<div id="zuixinmaodian" style="background: #FFF; height: 10%; font-weight: bold; font-size: 18px; color: #FF9F00; padding: 12px 0px 12px 2%; border-bottom: 1px solid #F4F4F4">
 				| 最新商品
 			</div>	
-			<div style="background: red; overflow: hidden; margin: 0px 0%;">
+			<div style="overflow: hidden; margin: 0px 0%;">
 				<s:iterator value="listProductTime"  var="listProductTimes">
 					<div class="newestProduct" onclick="queryProduct(${listProductTimes.p_id})" id="times_${listProductTimes.p_id}" style="background: #FFF; width: 33.33%; float: left; height: 31%; padding-top: 5px;" >
 						<div style="text-align: center; height: 183px; overflow: hidden;">
@@ -565,7 +565,7 @@
 				<div id="zuiremaodian" style="background: #FFF; height: 10%; font-weight: bold; font-size: 18px; color: #FF9F00; padding: 12px 0px 12px 2%; border-bottom: 1px solid #F4F4F4">
 					| 最热商品
 				</div>
-				<div style="background: red; overflow: hidden; margin: 0px 0%;">
+				<div style="overflow: hidden; margin: 0px 0%;">
 					<s:iterator value="listProductHot"  var="listProductHots">
 						<div class="ishotProduct" onclick="queryProduct(${listProductHots.p_id })" id="hot_${listProductHots.p_id }" style="background: #FFF; width: 33.33%; float: left; height: 31%; padding-top: 5px;">
 							<div style="text-align: center; height: 183px; overflow: hidden;">
@@ -591,7 +591,7 @@
 		<div id="cainimaodian" style="background: #FFF; height: 10%; font-weight: bold; font-size: 18px; color: #FF9F00; padding: 12px 0px 12px 1%; border-bottom: 1px solid #F4F4F4">
 			| 猜你喜欢
 		</div>
-		<div style="background: red; overflow: hidden; margin: 0px 0%;">
+		<div style="overflow: hidden; margin: 0px 0%;">
 			<s:iterator value="listAllCommentProduct" var="listAllCommentProducts" >
 				<div class="likeProduct" onclick="queryProduct(${listAllCommentProducts.p_id })" style="background: #FFF; width: 16.66%; float: left; height: 31%; padding-top: 5px;">
 					<div style="text-align: center; height: 183px; overflow: hidden;">
