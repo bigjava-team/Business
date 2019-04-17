@@ -192,6 +192,15 @@
 	}
 	
 	$(function(){
+		$(".dingbumaodian").hover(function(){
+			$(this).html("回到<br />顶部").addClass("youxiamaodian");
+		}, function(){
+			/* <img alt="顶部" src="${pageContext.request.contextPath }/images/fanhuitop.png" width="100%" style="display: block;"> */
+			 $(this).html('<img alt="顶部" src="${pageContext.request.contextPath }/images/fanhuitop.png" width="100%" style="display: block;">');
+		})
+	})
+	
+	$(function(){
 		$(".zuixinmaodian").hover(function(){
 			$(this).addClass("youxiamaodian");
 		}, function(){
@@ -263,10 +272,12 @@
 	
 	.zuixinmaodian, .zuiremaodian, .cainimaodian, .yonghuzhinan{
 		background: #D0D0D0;
+		color: #6C6C6C;
 	}
 	
 	.youxiamaodian{
 		background: #FF8F59;
+		color: #000;
 	}
 </style>
 </head>
@@ -605,10 +616,10 @@
 	<%@ include file="index_menu_bottom.jsp" %>
 	<!-- dingbumaodian -->
 	<div style="position: fixed; right: 2%; bottom: 1%; width: 3%; text-align: center; font-size: 10px;">
-		<div onclick="dingbumaodian()" style="padding-bottom: 6%; cursor: pointer;">
+		<div class="dingbumaodian" onclick="dingbumaodian()" style="padding-bottom: 6%; cursor: pointer;">
 			<img alt="顶部" src="${pageContext.request.contextPath }/images/fanhuitop.png" width="100%" style="display: block;">
 		</div>
-		<div class="zuixinmaodian" onclick="zuixinmaodian()" style="cursor: pointer; padding: 6% 0px; border-style:solid; border-width: 1px; border-bottom-color: #F4F4F4; border-top-color: #F4F4F4; border-left: none; border-right: none;">
+		<div class="zuixinmaodian" onclick="zuixinmaodian()" style="cursor: pointer; padding: 6% 0px; border-style:solid; border-width: 1px; border-bottom-color: #F4F4F4; border-top-color: #F4F4F4; border-left: none; border-right: none; margin-top: -2px;">
 			最新<br />商品
 		</div>
 		<div class="zuiremaodian" onclick="zuiremaodian()" style="cursor: pointer; padding: 6% 0px; border-style:solid; border-width: 1px; border-bottom-color: #F4F4F4; border-top-color: #F4F4F4; border-left: none; border-right: none; margin-top: -2px;">
@@ -618,7 +629,7 @@
 			猜你<br />喜欢
 		</div>
 		<div class="yonghuzhinan" style="cursor: pointer; padding: 6% 0px; border-style:solid; border-width: 1px; border-bottom-color: #F4F4F4; border-top-color: #F4F4F4; border-left: none; border-right: none; margin-top: -2px;">
-			用户<br />指南
+			用户<br />指南<!-- solr -->
 		</div>
 	</div>
 </body>
