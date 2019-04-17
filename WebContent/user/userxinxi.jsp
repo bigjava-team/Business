@@ -401,6 +401,7 @@ body {
 	function update_jiups1() {
 		var userlabel = document.getElementById("jiups");
 		userlabel.className = "green";
+		$("#checkPassword").text("");
 	}
 
 	function update_jiups2() {
@@ -416,24 +417,47 @@ body {
 			return false;
 		}
 		
-		/* if (text != oldPass) {
-			user.className = "red";
-			div1.innerHTML = "旧密码错误！！";
-			return false;
-		} */
+		var u_id = '${loginUser.u_id}';
+		var wornPassword = $("input[name='jiups']").val();
 		
+		var params = {
+			"loginUser.u_id": u_id,
+			"loginUser.password": wornPassword,
+		}
+		
+		$.ajax({
+			url: "ajax_checkPassword",
+			type: "post",
+			data: params,
+			dataType: "json",
+			success:function(data, textStatus) {
+				div1.innerHTML = data.result;
+			},error:function(data, textStatus) {
+				alert("错误");
+				return false;
+			}
+		});
 	}
 
 	function update_xinps1() {
 		var userlabel = document.getElementById("newps1");
 		userlabel.className = "green";
+		
+		$("#update2").text("");
 	}
 
 	function update_xinps2() {
 		var div1 = document.getElementById("update2");
-		var text = document.getElementsByName("newps1").item(0).value;
+		var text = document.getElementsByName("loginUser.password").item(0).value;
 		var user = document.getElementById("newps1");
-
+		
+		var newps1 = $("#newps1").val();
+		var wornPassword = $("input[name='jiups']").val();
+		if (newps1 == wornPassword) {
+			div1.innerHTML = "新密码和旧密码不能相同";
+			return false;
+		}
+		
 		if (text == "" || text == null) {
 			user.className = "red";
 			div1.innerHTML = "新密码不能为空!";
@@ -460,14 +484,15 @@ body {
 	function update_queps1() {
 		var userlabel = document.getElementById("queps");
 		userlabel.className = "green";
+		document.getElementById("tip3").innerHTML = "";
 	}
 
 	function update_queps2() {
 		var div1 = document.getElementById("tip3");
 		var text = document.getElementsByName("queps").item(0).value;
 		var user = document.getElementById("queps");
-		var text2 = document.getElementsByName("newps1").item(0).value;
-
+		var text2 = document.getElementsByName("loginUser.password").item(0).value;
+		
 		if (text == "" || text == null) {
 			user.className = "red";
 			div1.innerHTML = "确认密码不能为空!";
@@ -486,8 +511,11 @@ body {
 	}
 
 	function dealsubmit1() {
-		if (update_jiups2() == false || update_xinps2() == false
-				|| update_queps2() == false) {
+		var check = $("#update1").html();
+		if (check != "") {
+			return false;
+		 }
+		if (update_xinps2() == false || update_queps2() == false) {
 			return false;
 		} else {
 			return true;
@@ -497,11 +525,12 @@ body {
 	function name1() {
 		var userlabel = document.getElementById("name");
 		userlabel.className = "green";
+		document.getElementById("tip1").innerHTML = "";
 	}
 
 	function name2() {
 		var div1 = document.getElementById("tip1");
-		var text = document.getElementsByName("name").item(0).value;
+		var text = document.getElementsByName("loginUser.u_name").item(0).value;
 		var user = document.getElementById("name");
 		var reg = /[\u4E00-\u9FA5\uF900-\uFA2D]/;
 
@@ -526,6 +555,26 @@ body {
 			return false;
 		}
 
+		var u_id = '${loginUser.u_id}';
+		
+		var params = {
+			"loginUser.u_name": text,
+			"loginUser.u_id": u_id,
+		}
+		
+		$.ajax({
+			url: "ajax_checkUName",
+			type: "post",
+			data: params,
+			dataType: "json",
+			success: function(data, textStatus) {
+				div1.innerHTML = data.result;
+			},error:function(data, textStatus) {
+				alert("错误");
+				return;
+			}
+		});
+		
 		if (1 <= text.length <= 10) {
 			user.className = "black";
 			div1.innerHTML = "";
@@ -536,11 +585,12 @@ body {
 	function phone1() {
 		var userlabel = document.getElementById("phone");
 		userlabel.className = "green";
+		document.getElementById("tip2").innerHTML = "";
 	}
 
 	function phone2() {
 		var div1 = document.getElementById("tip2");
-		var text = document.getElementsByName("phone").item(0).value;
+		var text = document.getElementsByName("loginUser.phone").item(0).value;
 		var user = document.getElementById("phone");
 
 		if(text.length==0 || text==""){
@@ -553,6 +603,27 @@ body {
 			 div1.innerHTML="电话号码格式错误!";
 			return false;
 	  }
+	  
+	  	var u_id = '${loginUser.u_id}';
+		
+		var params = {
+			"loginUser.phone": text,
+			"loginUser.u_id": u_id,
+		}
+		
+		$.ajax({
+			url: "ajax_checkUName",
+			type: "post",
+			data: params,
+			dataType: "json",
+			success: function(data, textStatus) {
+				div1.innerHTML = data.result;
+			},error:function(data, textStatus) {
+				alert("错误");
+				return;
+			}
+		});
+	  
 	  if(1<=text.length){
 		  user.className="black";
 		   div1.innerHTML="";
@@ -581,12 +652,14 @@ body {
 	
 
 	function dealsubmit2() {
+		var checkName = $("#tip1").html();
+		var checkPhone = $("#tip2").html();
+		if (checkName != "" || checkPhone!="") {
+			return false;
+		 }
 		if (name2() == false || phone2() == false) {
 			return false;
-		} else if(HtmlFileForm.file.value == "") {  
-	           alert("请选择文件路径");  
-	           return false;  
-	   }else{
+		}else{
 			return true;
 		}
 	}
@@ -728,6 +801,11 @@ function show1(id){
 	    addressInit('Select1', 'Select2', 'Select3');
 }		
 
+	function queryProduct(id) {
+		var username = '${loginUser.username }';
+		window.open("Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0");
+	}
+	
 </script>
 
 </head>
@@ -763,15 +841,15 @@ function show1(id){
 				<div style="float:left; width: 20%;text-align: center;">
 				我的头像:
 					<div style="border: #eee 1px solid;height: 100px;width: 72%;margin: 0 auto;display: flex;justify-	: center;align-items: center;" >
-						<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+						<img alt="" src="${fileImageAction.urlImage }${loginUser.image}" height="100%"width="100%">
 					</div>
 				</div>
 				<div style="float: left;width: 55%;line-height: 180%;padding-left: 10%;">
 					<font color="#EAC100">个人信息一览</font>
-					<div style="">用户名:#用户名</div>
-					<div style="">真实姓名:#真实姓名</div>
-					<div style="">联系方式:#后台手机号</div>
-					<div style="">已绑定的邮箱:#后台邮箱</div>
+					<div style="">用户名:${loginUser.username }</div>
+					<div style="">真实姓名:${loginUser.u_name }</div>
+					<div style="">联系方式:${loginUser.phone }</div>
+					<div style="">已绑定的邮箱:${loginUser.email }</div>
 				</div>
 				<div style="clear: both;"></div>
 			</div>
@@ -781,33 +859,19 @@ function show1(id){
 						<font size="5px" style="font-weight: bold; padding-left: 1%;">猜你喜欢</font>
 					</div>
 					<div class="dibu2">
-						<div class="shangping" onmouseover=Over(this);
-							onmouseout=Out(this);>
-							<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-								<img alt="" src="${pageContext.request.contextPath }/images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="70%">
-							</div>
-							<font color="red">#商品价格</font>
-								<br /> <font color="red">#商品价格</font><br /> 
-							<div style="float: right">
-								<font color="#595959">月销:#商品销量</font>
-							</div>
-						</div>
-						<%-- <s:iterator value="UserIndexSixProduct"  var="UserIndexSixProduct">
+						<s:iterator value="listProduct" var="listProducts">
 							<div class="shangping" onmouseover=Over(this);
-								onmouseout=Out(this);>
-								<div style="border: #eee 1px solid;height: 170px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-									<img alt="商品图片" src="${UserIndexSixProduct.p_image }" width="90%" height="100%">
+								onmouseout=Out(this); onclick='queryProduct(${listProducts.p_id})'>
+								<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+									<img alt="" src="${fileImageAction.urlImage }<s:property value='#listProducts.p_image'/>" height="100%" width="100%">
 								</div>
-								<font color="red">
-									¥<font style="font-size: 22px; font-weight: bold;">${UserIndexSixProduct.p_price }
-								</font>
-								</font> <br /> 
-									<a href="javascript:;" >${UserIndexSixProduct.p_name }</a><br /> 
+								<font><s:property value='#listProducts.p_name'/></font><br /> 
+								<font color="red"><s:property value='#listProducts.p_price'/></font><br /> 
 								<div style="float: right">
-									<font color="#595959">销量:${UserIndexSixProduct.sale_volume }</font>
+									<font color="#595959">月销:<s:property value='#listProducts.sale_volume'/></font>
 								</div>
 							</div>
-						</s:iterator> --%>
+						</s:iterator>
 						<div class="clearfloat"></div>
 					</div>
 				</div>
@@ -826,13 +890,13 @@ function show1(id){
 									onblur="update_jiups2()" onfocus="update_jiups1()"
 									placeholder="输入旧密码校验身份">
 							</div>
-
+							<input type="hidden" name="loginUser.username" value="${loginUser.username }">
 							<div id="update1"
 								style="margin-top: 1%; float: left; color: red; width: 29%; text-align: center;"></div>
 							<div class="clear"></div>
 
 							<div style="margin-left: 15.6%; margin-top: 1%; float: left;">
-								<b>新密码: </b><input type="password" id="newps1" name="newps1"
+								<b>新密码: </b><input type="password" id="newps1" name="loginUser.password"
 									onblur="update_xinps2()" onfocus="update_xinps1()"
 									placeholder="5-20位数字,字母">
 							</div>
@@ -859,7 +923,7 @@ function show1(id){
 				</div>
 				<!-- 第三个div -->
 				<div id="lb3" style="display: none;margin-top: 3%;">
-					<form action="userxinxi.jsp" method="post"
+					<form action="User_updateUserNamePhoneImage.action" method="post"
 						enctype="multipart/form-data" name="HtmlFileForm"
 						onsubmit="return dealsubmit2()">
 						<div
@@ -869,14 +933,15 @@ function show1(id){
 						<div
 							style="text-align: center; padding-top: 2%; padding-bottom: 2%; line-height: 200%; border: 1px solid #e3e197; background: #ffffdd; width: 95.4%;">
 							<div style="float: left; margin-left: 32%">
-								<b>真实姓名:</b><input type="text" id="name" name="name"
+								<b>真实姓名:</b><input type="text" id="name" name="loginUser.u_name"
 									onblur="name2()" onfocus="name1()" placeholder="姓名1-10位">
+								<input type="hidden" name="loginUser.u_id" value="${loginUser.u_id }" />
 							</div>
 							<div id="tip1" class="updateuser_jsdiv"></div>
 							<div class="clear"></div>
 
 							<div style="float: left; margin-left: 32%">
-								<b>电话号码:</b><input type="text" id="phone" name="phone"
+								<b>电话号码:</b><input type="text" id="phone" name="loginUser.phone"
 									onblur="phone2()" onfocus="phone1()" placeholder="手机号码">
 							</div>
 							<div id="tip2" class="updateuser_jsdiv"></div>
@@ -884,8 +949,8 @@ function show1(id){
 
 							<div style="float: left; margin-left: 32%">
 								<b>上传头像:</b> <span id='uploadSpan'> <input type="file"
-									name="file" id="file" unselectable="on"
-									onchange='checkFileType(this.value);' />
+									name="fileImageAction.fileImage" id="file" unselectable="on"
+									onchange='checkFileType(this.value);' value="null"/>
 								</span>
 							</div>
 							<div class="clear"></div>

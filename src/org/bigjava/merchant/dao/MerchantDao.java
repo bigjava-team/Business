@@ -98,4 +98,14 @@ public interface MerchantDao {
 	 * 店铺用户名模糊分页查询订单
 	 */
 	public List<Orders> merchantLikeUsernameLimitQueryOrders(int m_id, String searchUsername);
+	
+	/**
+	 * 查询店铺内最热的5个商品
+	 */
+	public List<Product> queryHotFiveProduct(int m_id);
+	
+	/**
+	 * 查询最新的6个商品
+	 */
+	public List<Product> queryTimeSixProduct(int m_id);
 }

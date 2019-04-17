@@ -31,7 +31,6 @@
 .dianpushouchang_div2{
 	float:left;
 	width: 30%;
-	text-align: center;
 }
 
 </style>
@@ -47,17 +46,17 @@
 	}
 	function queryProduct(id) {
 		var username = '${loginUser.username }';
-		window.open("Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0");
+		window.open("Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=1");
 	}
 	
 	function queryCollectProduct() {
 		var username = '${loginUser.username }';
-		window.location.href="collectProduct_queryUserCollectProduct?method=post&loginUser.username="+username+"&paging.presentPage=0";
+		window.location.href="collectProduct_queryUserCollectProduct?method=post&loginUser.username="+username+"&paging.presentPage=1";
 	}
 	
 	function queryCollectMerchant() {
 		var username = '${loginUser.username }';
-		window.location.href="collectMerchant_queryUserCollectMerchant?method=post&loginUser.username="+username+"&paging.presentPage=0";
+		window.location.href="collectMerchant_queryUserCollectMerchant?method=post&loginUser.username="+username+"&paging.presentPage=1";
 	}
 </script>
 </head>
@@ -71,11 +70,11 @@
 		</div>
 			
 		<div class="dianpushouchang_div" id="div1" style="margin-left: 46%;background:rgba(0, 0, 255,0.1);">
-			<a href="javascript" onclick="queryCollectProduct()"><font class="wenzi2">宝贝收藏</font></a>
+			<a href="javascript:;" onclick="queryCollectProduct()"><font class="wenzi2">宝贝收藏</font></a>
 		</div>
 	
 		<div class="dianpushouchang_div" id="div2" onmouseover="show()" onmouseout="back()">
-			<a href="javascript" onclick="queryCollectMerchant()"><font class="wenzi2">店铺收藏</font></a>
+			<a href="javascript:;" onclick="queryCollectMerchant()"><font class="wenzi2">店铺收藏</font></a>
 		</div>
 		<div style="clear: both;"></div>
 	</div>
@@ -88,15 +87,20 @@
 		<div style="width: 100%;padding-top: 2%;padding-bottom: 2%">
 			<s:iterator value="listCollectProducts" var="LCPs">
 				<div class="dianpushouchang_div2" onclick="queryProduct(${LCPs.product.p_id})">
-					<div style="border: #eee 1px solid;height: 200px;width: 80%" >
+					<div style="height: 200px;width: 80%;margin: 0 auto;text-align: center;" >
 						<img alt="" src="${fileImageAction.urlImage }${LCPs.product.p_image }" height="80%">
-					</div><br/><br/>
-				${LCPs.product.p_name }<br/>
-				<font color="red">${LCPs.product.p_price }</font><br/>
-				${LCPs.product.sale_volume }
+					</div>
+					<div style="float: left;margin-left: 13%;">
+				商品名字:${LCPs.product.p_name }<br/>
+				<font color="red">商品价格:${LCPs.product.p_price }</font>
+					</div>
+					<div style="float: right;margin-right: 9%;">
+				商品销量:${LCPs.product.sale_volume }
+				</div>
+				<div style="clear: both;"></div> 
 				</div>
 			</s:iterator>
-			<!-- <div style="clear: both;"></div> -->
+			 <div style="clear: both;"></div> 
 		</div>
 	</div>
 	

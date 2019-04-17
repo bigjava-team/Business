@@ -99,7 +99,7 @@ body{
 			<div style="width: 100%; height: 100%; padding-top: 1.5%;padding-bottom: 0.4%;">
 				<div class="dianpushouchang_a" style="float:left;width: 22%;font-family: Microsoft JhengHei;">
 					<div style="border: #eee 1px solid;height: 100px;width: 50%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-							<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+							<img alt="" src="${fileImageAction.urlImage }${listCollectMerchants.merchant.m_image}" height="70%">
 						</div>
 					<%-- <img src="${fileImageAction.urlImage }${listCollectMerchants.merchant.m_image}" /> --%><br/>${listCollectMerchants.merchant.m_name }
 					<div style="width: 100%;margin-top: 3%">

@@ -230,7 +230,7 @@
 		}, function(){
 			 $(this).removeClass("youxiamaodian");
 		})
-	})
+	});
 	/* 右下角锚点链接(结束) */
 	
 </script>

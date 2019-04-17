@@ -44,36 +44,11 @@ height:100%;
 
 
 .page1{
-background:url("../TuPian/1.jpg");
 background-repeat: no-repeat;
 background-size: 100% 100%;
 -moz-background-size: 100% 100%;
 }
 
-.page2{
-background:url("../TuPian/2.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    -moz-background-size: 100% 100%;
-}
-.page3{
-background:url("../TuPian/3.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    -moz-background-size: 100% 100%;
-}
-.page4{
-background:url("../TuPian/4.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    -moz-background-size: 100% 100%;
-}
-.page5{
-background:url("../TuPian/5.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    -moz-background-size: 100% 100%;
-}
 
 .top{z-index:9999}
 

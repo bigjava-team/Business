@@ -396,7 +396,7 @@ public class ProductAction extends ActionSupport {
 		return SUCCESS;
 	}
 
-	// 通过商品id查询商品详情
+	// 商品详情页面
 	public String idQueryProduct() {
 		System.out.println("进入商品详情");
 		product = productBiz.queryProduct_id(product.getP_id());

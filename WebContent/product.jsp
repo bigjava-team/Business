@@ -55,18 +55,6 @@
 		})
 	});
 	
-	/* 数量加减 */
-	/* function add(){
-		var txt=document.getElementById('addShuLiang');
-		var a=inputShuLiang.value;
-		if(a>=9) {
-	    	alert('对不起，库存件数不能大于等于9');
-	    } else {
-	    	a++;
-	    	txt.value=a;
-	    }
-	} */
-	
 	$(function(){
 		$("#addShuLiang").hover(function() {
 			$(this).css("cursor", "pointer");
@@ -101,16 +89,15 @@
 			"loginUser.username": username,
 			"product.p_id": p_id
 		}
+		
 		$.ajax({
 			url: "ajaxCP_collectProduct",
 			type: "post",
 			data: params,
 			dataType: "json",
 			success:function(data, textStatus) {
-				alert("收藏成功");
-				
+				alert(data.check);
 			},error:function(data, textStatus) {
-				console.log(data);
 				alert("错误");
 				return;
 			}
@@ -215,7 +202,7 @@
 		
 		<div id="product_div1_div1" >
 			<div id="product_div1_div1_div1" style="text-align: center; overflow: hidden;">
-				<img alt="${product.p_image }" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;"><br/>
+				<img alt="${product.p_image }" src="${fileImageAction.urlImage }${product.p_image }" height="90%" style="padding-top: 6%;"><br/>
 			</div>
 			<div id="product_div1_div1_div2">
 				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;"></div>
@@ -288,8 +275,8 @@
 				<div class="product_div1_div3_div1_div2">
 					<h3>店铺详情</h3>
 					<div style="width: 80%; height: 121px; margin-top: 10%; margin-left: 9.5%; overflow: hidden; text-align: center;">
-						<img alt="${merchant.m_image }" src="${fileImageAction.urlImage }${merchant.m_image }" height="80%" style="border-radius: 10px; margin-top: 8%; border: 1px solid #E0E0E0;">
-						<%-- <img alt="${merchant.m_image }" src="images/products/bbb006.jpg" height="80%" style="border-radius: 10px; margin-top: 8%; border: 1px solid #E0E0E0;"> --%>
+						<img alt="${merchant.m_image }" src="" height="80%" style="border-radius: 10px; margin-top: 8%; border: 1px solid #E0E0E0;">
+						<img alt="${merchant.m_image }" src="images/products/bbb006.jpg" height="80%" style="border-radius: 10px; margin-top: 8%; border: 1px solid #E0E0E0;">
 					</div>
 					<div style="font-size: 14px; margin-left: 9.5%; color: #3C3C3C; margin-top: 3%;">
 						本店掌柜: 

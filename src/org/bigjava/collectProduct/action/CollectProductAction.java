@@ -25,6 +25,16 @@ public class CollectProductAction extends ActionSupport {
 	private CollectProductBiz collectProductBiz;
 	private IsEmpty isEmpty;
 	
+	private String check;
+	
+	public String getCheck() {
+		return check;
+	}
+
+	public void setCheck(String check) {
+		this.check = check;
+	}
+
 	public Paging getPaging() {
 		return paging;
 	}
@@ -86,9 +96,11 @@ public class CollectProductAction extends ActionSupport {
 		boolean flag = collectProductBiz.queryCollectUser_id(loginUser.getU_id(), product.getP_id());
 		if (flag) {
 			System.out.println("已收藏此用户");
+			check = "已收藏此用户";
 		} else {
 			CollectProduct collectProduct = new CollectProduct(loginUser, product);
 			collectProductBiz.addCollectProduct(collectProduct);// 收藏商品
+			check = "收藏成功";
 		}
 		return SUCCESS;
 	}

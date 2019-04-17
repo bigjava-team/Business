@@ -1,5 +1,7 @@
 package org.bigjava.user.action;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -39,6 +41,16 @@ public class UserAction extends ActionSupport {
 	// 接收验证码 struts2 中的属性驱动
 	private String checkcode;
 	
+	private String result;
+	
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
 	public FileImageAction getFileImageAction() {
 		return fileImageAction;
 	}
@@ -236,12 +248,7 @@ public class UserAction extends ActionSupport {
 	public String updatePassword() {
 		System.out.println("进入UserAction....updatePassword方法");
 		user = userBiz.queryUsernameUser(loginUser.getUsername());
-		System.out.println("u" + user);
-		ActionContext.getContext().getSession().put("u", user);
-
-		String password = user.getPassword();
-		user.setPassword(password);
-		userBiz.updateUserPassword(password, user);
+		userBiz.updateUserPassword(loginUser.getPassword(), user);
 		return "updatePasswordSuccess";
 	}
 
@@ -363,4 +370,45 @@ public class UserAction extends ActionSupport {
 		return "SetUpShop";
 	}
 
+	// 校验密码是否正确
+	public String checkPassword() {
+		User users = userBiz.query(loginUser.getU_id());
+		if (!users.getPassword().equals(loginUser.getPassword())) {
+			result = "旧密码输入错误";
+		}
+		return SUCCESS;
+	}
+	
+	// 校验真实姓名
+	public String checkUName() {
+		User users = userBiz.query(loginUser.getU_id());
+		if (users.getU_name().equals(loginUser.getU_name())) {
+			result = "修改后的真实姓名不能一样";
+		}
+		return SUCCESS;
+	}
+	
+	// 校验真实姓名
+	public String checkPhone() {
+		User users = userBiz.query(loginUser.getU_id());
+		if (users.getPhone().equals(loginUser.getPhone())) {
+			result = "修改后的电话号码不能一样";
+		}
+		return SUCCESS;
+	}
+	
+	// 修该用户信息
+	public String updateUserNamePhoneImage() throws IOException {
+		user = userBiz.query(loginUser.getU_id());
+		if (fileImageAction.getFileImage() != null) {
+			fileImageAction.fileImage();
+			if (!user.getImage().equals("user_morentouxiang.jpg")) {
+				File files = new File("E:\\Img\\"+user.getImage());
+				files.delete();
+			}
+			loginUser.setImage(fileImageAction.getFileImageFileName());
+		}
+		userBiz.updateUser(user, loginUser);
+		return "updateUserNamePhoneImage";
+	}
 }

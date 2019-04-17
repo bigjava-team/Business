@@ -45,7 +45,25 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	private List<Product> merchantProductTop;
 	private List<Merchant> listAllMerchant;// 管理员查询的全部店铺
 	private List<Product> listMerchantProduct;// 店铺内的商品
+	private List<Product> listTiemProduct;
+	private List<Product> listHotProduct;
 	
+	public List<Product> getListTiemProduct() {
+		return listTiemProduct;
+	}
+
+	public void setListTiemProduct(List<Product> listTiemProduct) {
+		this.listTiemProduct = listTiemProduct;
+	}
+
+	public List<Product> getListHotProduct() {
+		return listHotProduct;
+	}
+
+	public void setListHotProduct(List<Product> listHotProduct) {
+		this.listHotProduct = listHotProduct;
+	}
+
 	public List<Product> getListMerchantProduct() {
 		return listMerchantProduct;
 	}
@@ -218,17 +236,22 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 
 		System.out.println("MerchantAction。。跳转到我的店铺>gotoMerchant()..");
 
-		User u = userBiz.queryUsernameUser(loginUser.getUsername());
-		Merchant m  = u.getMerchant();
-		System.out.println("m"+m);
-		if (m == null) {
+		loginUser = userBiz.queryUsernameUser(loginUser.getUsername());
+		merchant = loginUser.getMerchant();
+		if (merchant == null) {
 			return "addMerchant";
-		} else if(m.getM_is_freeze() == 1) {
+		} else if(merchant.getM_is_freeze() == 1) {
 			System.out.println("店铺申请中");
 			return "merchantLoginError";
-		} else if(m.getM_is_freeze() == 3) {
+		} else if(merchant.getM_is_freeze() == 3) {
 			System.out.println("店铺已冻结");
 			return "merchantLoginError";
+		} else {
+			// 查询最新的6个商品
+			listTiemProduct = merchantBiz.queryTimeSixProduct(merchant.getM_id());
+			
+			// 查询最热的5个商品
+			listHotProduct = merchantBiz.queryHotFiveProduct(merchant.getM_id());
 		}
 		return "gotoMerchant";
 	}

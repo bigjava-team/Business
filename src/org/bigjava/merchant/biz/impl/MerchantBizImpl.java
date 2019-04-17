@@ -120,4 +120,16 @@ public class MerchantBizImpl implements MerchantBiz {
 		return merchantDao.merchantLikeUsernameLimitQueryOrders(m_id, searchUsername);
 	}
 
+	// 查询店铺内最热的5个商品
+	@Override
+	public List<Product> queryHotFiveProduct(int m_id) {
+		return merchantDao.queryHotFiveProduct(m_id);
+	}
+
+	// 查询最新的6个商品
+	@Override
+	public List<Product> queryTimeSixProduct(int m_id) {
+		return merchantDao.queryTimeSixProduct(m_id);
+	}
+
 }
