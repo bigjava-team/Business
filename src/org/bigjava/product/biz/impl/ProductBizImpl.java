@@ -92,4 +92,16 @@ public class ProductBizImpl implements ProductBiz {
 		return productDao.setQueryMerchantProduct_time(m_id);
 	}
 
+	// 通过二级分类查询商品
+	@Override
+	public Product csIdQueryProduct(int cs_id) {
+		return productDao.csIdQueryProduct(cs_id);
+	}
+
+	// 购买商品减少库存、增加月销量
+	@Override
+	public void payProductUpdateVolumeRepertory(Product product) {
+		productDao.payProductUpdateVolumeRepertory(product);
+	}
+
 }

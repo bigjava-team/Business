@@ -71,5 +71,15 @@ public interface ProductBiz {
 	 * 查询店铺内最新的商品
 	 */
 	public List<Product> setQueryMerchantProduct_time(int m_id);
+	
+	/**
+	 * 通过二级分类获取商品
+	 */
+	public Product csIdQueryProduct(int cs_id);
+	
+	/**
+	 * 购买商品减少库存、增加月销量
+	 */
+	public void payProductUpdateVolumeRepertory(Product product);
 
 }

@@ -74,12 +74,12 @@ public interface MerchantBiz {
 	/**
 	 * 店长名模糊搜索店铺
 	 */
-	public List<Merchant> likeQueryM_name(Paging paging, String searchText);
+	public List<Merchant> likeQueryM_name(Paging paging, String searchText, int m_is_freeze);
 	
 	/**
 	 * 店长名模糊搜索店铺数
 	 */
-	public int likeQueryM_nameNumber(String searchText);
+	public int likeQueryM_nameNumber(String searchText,int m_is_freeze);
 	
 	/**
 	 * 通过店铺id获取对应商品
@@ -90,4 +90,9 @@ public interface MerchantBiz {
 	 * 通过店铺id获取对应商品的条数
 	 */
 	public int mIdQueryAllProductNumber(String searchText, int m_id);
+	
+	/**
+	 * 店铺用户名模糊分页查询订单
+	 */
+	public List<Orders> merchantLikeUsernameLimitQueryOrders(int m_id, String searchUsername);
 }

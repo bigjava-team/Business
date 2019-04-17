@@ -13,7 +13,7 @@
 		$("#search").click(function() {
 			var userRoot = $("#select option:selected").val();// 获取下拉列表的值
 			var searchText = $("#input").val();// 获取搜索文本框的值
-			window.location.href="adminProduct_adminFindAll.action?user.root="+userRoot+"&searchText="+searchText+"&merchant.m_id=0"+"&paging.presentPage=0";
+			window.location.href="adminProduct_adminFindAll.action?product.p_freeze="+userRoot+"&searchText="+searchText+"&merchant.m_id=0"+"&paging.presentPage=0";
 		});
 	});
 	
@@ -28,11 +28,9 @@
 	<div class="input-group4">
 		<select id="select" class="input-group_select4">
 			<option class="option" value="0">全部</option>
-			<option class="option" value="5">上架商品</option>
-			<option class="option" value="4">下架商品</option>
+			<option class="option" value="1">上架商品</option>
+			<option class="option" value="2">下架商品</option>
 			<option class="option" value="3">申请中商品</option>
-			<option class="option" value="2">商品名称</option>
-			<option class="option" value="1">是否热门</option>
 		</select>
 		<!-- 搜索框 -->
 		<input type="text" name="queryText" id="input" class="input-group_input4" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
@@ -53,23 +51,23 @@
 		</tr>
 		<s:iterator value="productList" var="product"  status="status" >
 			<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-				<td align="center">${product.p_id}</td>
-				<td align="center"><img src='${fileImageAction.urlImage }${product.p_image }' /></td>
-				<td align="center">${product.p_name }</td>
-				<td align="center">${product.p_price }</td>
-				<td align="center">${product.sale_volume }</td>
+				<td align="center"><s:property value="#product.p_id"/></td>
+				<td align="center"><img src='${fileImageAction.urlImage }<s:property value="#product.p_image"/>' /></td>
+				<td align="center"><s:property value="#product.p_name"/></td>
+				<td align="center"><s:property value="#product.p_price"/></td>
+				<td align="center"><s:property value="#product.sale_volume"/></td>
 				<td align="center">
-					<s:if test="product.sale_volume > 500">
+					<s:if test="#product.sale_volume > 500">
 						是
 					</s:if>
 					<s:else>
 						否
 					</s:else>
 				</td>
-				<td align="center"><a href="adminProduct_getProductById.action?product.p_id=${product.p_id }">查看商品</a></td>
+				<td align="center"><a href="adminProduct_getProductById.action?product.p_id=<s:property value="#product.p_id"/>">查看商品</a></td>
 				<td align="center">
 					<s:if test="#product.p_freeze == 1">
-						<a href="adminProduct_adminDeleteProduct.action?updateProduct.p_id=${product.p_id}">
+						<a href="adminProduct_adminDeleteProduct.action?updateProduct.p_id=<s:property value="#product.p_id"/>">
 							<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" class="admin_merchant_pd_immg1">
 						</a>
 					</s:if>
@@ -87,14 +85,10 @@
 	
 	<div id="admin_list_div_page">
 		第<s:property value="#session.paging.presentPage"/>页/<s:property value="#session.paging.page"/>页&nbsp;&nbsp;&nbsp;&nbsp;
-		<s:if test="#session.paging.presentPage != 1">
-			<a href="${pageContext.request.contextPath }/adminProduct_adminFindAll.action?paging.presentPage=1&user.root=${session.userRoot}&searchText=${session.searchText}&merchant.m_id=0">首页</a>
-			<a href="${pageContext.request.contextPath }/adminProduct_adminFindAll.action?paging.presentPage=<s:property value="#session.paging.presentPage-1"/>&user.root=${session.userRoot}&searchText=${session.searchText}&merchant.m_id=0">上一页</a>
-		</s:if>
-		<s:if test="#session.paging.presentPage != #session.paging.page">
-			<a href="${pageContext.request.contextPath }/adminProduct_adminFindAll.action?paging.presentPage=<s:property value="#session.paging.presentPage+1"/>&user.root=${session.userRoot}&searchText=${session.searchText}&merchant.m_id=0">下一页</a>
-			<a href="${pageContext.request.contextPath }/adminProduct_adminFindAll.action?paging.presentPage=<s:property value="#session.paging.page"/>&user.root=${session.userRoot}&searchText=${session.searchText}&merchant.m_id=0">尾页</a>
-		</s:if>
+		<a href="${pageContext.request.contextPath }/adminProduct_adminFindAll.action?paging.presentPage=0&product.p_freeze=${product.p_freeze}&searchText=${session.searchText}&merchant.m_id=0">首页</a>
+		<a href="${pageContext.request.contextPath }/adminProduct_adminFindAll.action?paging.presentPage=<s:property value="#session.paging.presentPage-1"/>&product.p_freeze=${product.p_freeze}&searchText=${session.searchText}&merchant.m_id=0">上一页</a>
+		<a href="${pageContext.request.contextPath }/adminProduct_adminFindAll.action?paging.presentPage=<s:property value="#session.paging.presentPage+1"/>&product.p_freeze=${product.p_freeze}&searchText=${session.searchText}&merchant.m_id=0">下一页</a>
+		<a href="${pageContext.request.contextPath }/adminProduct_adminFindAll.action?paging.presentPage=<s:property value="#session.paging.page"/>&product.p_freeze=${product.p_freeze}&searchText=${session.searchText}&merchant.m_id=0">尾页</a>
 		&nbsp;共<s:property value="#session.paging.totalNumber"/>条
 	</div>
 	

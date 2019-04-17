@@ -11,7 +11,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/admin-jQuery-js.js"></script>
 <script type="text/javascript">
 	function addCategory(){
-		window.location.href = "${pageContext.request.contextPath}/merchant/merchants/edit.jsp";
+		var m_id = '${m_id }';
+		window.location.href = "Merchant_skipUpdateMerchantList?method=post&m_id="+m_id;
 	}
 </script>
 </head>
@@ -27,14 +28,13 @@
 	<div id="admin_add_div_top">
 		店铺信息
 	</div>
-	<s:debug/>
 	<form class="admin_form1" action="" method="post">
 		
 		<table class="admin_form1_table" id="admin_list_table" cellspacing="0" cellpadding="0" rules="all" width="100%" border="1" bordercolor="#EEEEEE">
 			<tr id="admin_list_tr2">
 				<td class="admin_form1_table_tr_td1" align="center">头像</td>
 				<td class="admin_form1_table_tr_td2" align="center">
-					<img alt="店铺头像" src="${pageContext.request.contextPath }/images/merchant/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100px;" height="100px;">
+					<img alt="店铺头像" src="${fileImageAction.urlImage }${merchant.m_image}" width="100px;" height="100px;">
 				</td>
 				<td class="admin_form1_table_tr_td6" colspan="2" align="center"></td>
 			</tr>

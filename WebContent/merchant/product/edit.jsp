@@ -14,13 +14,15 @@
 		编辑商品
 	</div>
 	
-	<form class="admin_form1" action="MerchantProduct_updateProduct.action" method="post">
+	<form class="admin_form1" action="MerchantProduct_updateProduct.action" method="post"  enctype="multipart/form-data">
 		<div class="admin_add_div_middle">
 			<div class="admin_merchant_d1">
 				商品名称：
 			</div>
 			<div class="admin_merchant_d2">
-				<input type="text" name="product.p_name" />
+				<input type="hidden" name="merchant.m_id" value="${merchant.m_id }" />
+				<input type="hidden" name="product.p_id" value="${product.p_id }" />
+				<input type="text" name="product.p_name" value="${product.p_name }" />
 			</div>
 		</div>
 		
@@ -29,9 +31,14 @@
 				所属的二级分类：
 			</div>
 			<div class="admin_merchant_d2">
-				<select name="categorySecond.cs_id">
+				<select id="csSelect" name="categorySecond.cs_id">
 					<s:iterator var="cs" value="csList">
-						<option value="<s:property value="#cs.cs_id"/>"><s:property value="#cs.cs_name"/></option>
+						<s:if test="product.categorySecond.cs_id == #cs.cs_id">
+							<option value="<s:property value="#cs.cs_id"/>" selected="selected"><s:property value="#cs.cs_name"/></option>
+						</s:if>
+						<s:else>
+							<option value="<s:property value="#cs.cs_id"/>"><s:property value="#cs.cs_name"/></option>
+						</s:else>
 					</s:iterator>
 				</select>
 			</div>
@@ -42,7 +49,7 @@
 				商品市场价格：
 			</div>
 			<div class="admin_merchant_d2">
-				<input type="text" name="product.market">
+				<input type="text" name="product.market" value="${product.p_price }">
 			</div>
 		</div>
 		
@@ -51,7 +58,7 @@
 				商品商场价格：
 			</div>
 			<div class="admin_merchant_d2">
-				<input type="text" name="product.p_price" class="bg"/>
+				<input type="text" name="product.p_price" class="bg" value="${product.market }"/>
 			</div>
 		</div>
 		
@@ -60,7 +67,7 @@
 				商品图片：
 			</div>
 			<div class="admin_merchant_d2">
-				<input type="file" name="myFile">
+				<input type="file" name="fileImageAction.fileImage" value="null">
 			</div>
 		</div>
 		
@@ -69,7 +76,7 @@
 				商品描述：
 			</div>
 			<div class="admin_merchant_d2">
-				<textarea rows="5" cols="30" name="product.p_desc"></textarea>
+				<textarea rows="5" cols="30" name="product.p_desc" >${product.p_desc }</textarea>
 			</div>
 		</div>
 		
@@ -79,6 +86,5 @@
 			<input type="button" onclick="history.go(-1)" value="返回" />
 		</div>
 	</form>
-	
 </body>
 </html>

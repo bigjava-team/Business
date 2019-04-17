@@ -35,6 +35,19 @@
 		}
 	}
 	
+	function loginMerchant() {
+		var username = '${loginUser.username}'
+		var userMerchant = '${loginUser.merchant.m_is_freeze}';
+		if (userMerchant == 1) {
+			alert("店铺申请中");
+			return;
+		} else if (userMerchant == 3) {
+			alert("店铺冻结中");
+			return;
+		}
+		window.location.href="Merchant_gotoMerchant.action?method=post&loginUser.username="+username;
+	}
+	
 	</script>
 	<style type="text/css" >
 		a {
@@ -67,7 +80,7 @@
 			</s:if>
 			
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
-				<a href="Merchant_gotoMerchant.action?method=post&loginUser.username=${loginUser.username }">我的店铺</a>
+				<a href="javascript:;" onclick="loginMerchant()">我的店铺</a>
 			</s:if>
 			<a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presenetPage=0">我的订单</a> 
 			<a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0">购物车</a> 

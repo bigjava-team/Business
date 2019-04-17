@@ -1,5 +1,6 @@
 package org.bigjava.product.action;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -190,7 +191,7 @@ public class MerchantProductAction extends ActionSupport {
 			searchText = "";
 		}
 		// 根据搜索的内容与权限查询可搜索的总条数
-		int totalNumber = productBiz.queryProductNumber(searchText, merchant.getM_id(), 0);
+		int totalNumber = productBiz.queryProductNumber(searchText, merchant.getM_id(), product.getP_freeze());
 		// 当前页数
 		int presentPage = paging.getPresentPage();
 		System.out.println("当前页" + presentPage);
@@ -198,7 +199,7 @@ public class MerchantProductAction extends ActionSupport {
 		paging = new Paging(presentPage, totalNumber, 2);
 
 		// 接收搜索到的商品列表
-		productList = productBiz.queryAllProduct(searchText, paging, merchant.getM_id(), 0);
+		productList = productBiz.queryAllProduct(searchText, paging, merchant.getM_id(), product.getP_freeze());
 
 		// 将参数存入session中
 		System.out.println(productList);
@@ -242,21 +243,37 @@ public class MerchantProductAction extends ActionSupport {
 	// 根据ID获取商品信息
 	public String getProductById() {
 		System.out.println("进入MerchantProductAction...getProductById");
-		System.out.println("p_id" + product.getP_id());
-		productBiz.queryProduct_id(product.getP_id());
+		product = productBiz.queryProduct_id(product.getP_id());
+		
+		// 查询所有的二级分类:
+		List<CategorySecond> csList = categorySecondBiz.showAllCategorySecond();
+		// 将二级分类的数据显示到页面上
+		ActionContext.getContext().getValueStack().set("csList", csList);
 		return "getProductByIdSuccess";
 	}
 
 	// 修改商品的方法
-	public String updateProduct() {
-		System.out.println("进入MerchantProductAction....updateProduct()");
+	public String updateProduct() throws IOException {
+		System.out.println("进入MerchantProductAction....updateProduct()" + fileImageAction.getFileImage());
 		// 查询数据库中商品的信息
-		product = productBiz.queryProduct_id(product.getP_id());
-
-		Product updateProduct = null; // 修改的二级分类
-
-		productBiz.updateProduct(product, updateProduct);
+		Product products = productBiz.queryProduct_id(product.getP_id());
+		if (fileImageAction.getFileImage() != null) {
+			fileImageAction.fileImage();
+			String imageUrl = "E:\\Img\\"+products.getP_image();
+			File fileDelete = new File(imageUrl);
+			fileDelete.delete();
+			product.setP_image(fileImageAction.getFileImageFileName());
+		}
+		product.setP_freeze(3);
+		productBiz.updateProduct(products, product);
 		return "updateProductSuccess";
 	}
 
+	// 下架商品
+	public String soldOutProduct() {
+		Product products = productBiz.queryProduct_id(product.getP_id());
+		products.setP_freeze(2);
+		productBiz.deleteProduct(products);
+		return "soldOutProduct";
+	}
 }

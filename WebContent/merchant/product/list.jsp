@@ -16,10 +16,9 @@
 	$(document).ready(function() {
 		$("#search").click(function() {
 			var searchText = $("#input").val();// 获取搜索文本框的值
-			var selected = $("#select option:selected").val();// 获取下拉列表的值
-			alert(searchText);
+			var selected = $("#selectFreeze option:selected").val();// 获取下拉列表的值
 			var merchantId = '${merchant.m_id}';
-			window.location.href="MerchantProduct_findAll?method=post&searchText="+searchText+"&merchant.m_id="+merchantId+"&paging.presentPage=0";
+			window.location.href="MerchantProduct_findAll?method=post&searchText="+searchText+"&merchant.m_id="+merchantId+"&paging.presentPage=1&product.p_freeze="+selected;
 		});
 	});
 </script>
@@ -35,13 +34,11 @@
 	<div class="admin_merchant_pd_l_d1">
 		<!-- 根据姓名查询，若不输入，则查询全部 -->
 		<div class="input-group5">
-			<select class="input-group_select5">
+			<select id="selectFreeze" class="input-group_select5">
 				<option class="option" value="0">全部</option>
-				<option class="option" value="5">名称</option>
-				<option class="option" value="4">上架商品</option>
-				<option class="option" value="3">申请中商品</option>
+				<option class="option" value="1">上架商品</option>
 				<option class="option" value="2">下架商品</option>
-				<option class="option" value="1">热门商品</option>
+				<option class="option" value="3">申请中商品</option>
 			</select>
 			<!-- 搜索框 -->
 			<input type="text" name="queryText" id="input" class="input-group_input7" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
@@ -74,13 +71,13 @@
 		<!-- 迭代器 -->
 		<s:iterator value="productList" status="status" var="product">
 		<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
-			<td align="center">${product.p_id}</td>
-			<td align="center"><img src='<s:property value='fileImageAction.urlImage'/>${product.p_image }' height="40px" /></td>
-			<td align="center">${product.p_name }</td>
-			<td align="center">${product.p_price }</td>
-			<td align="center">${product.market }</td>
-			<td align="center">${product.sale_volume }</td>
-			<td align="center">${product.p_desc }</td>
+			<td align="center"><s:property value="#product.p_id"/></td>
+			<td align="center"><img src='<s:property value='fileImageAction.urlImage'/><s:property value="#product.p_image"/>' height="40px" /></td>
+			<td align="center"><s:property value="#product.p_name"/></td>
+			<td align="center"><s:property value="#product.p_price"/></td>
+			<td align="center"><s:property value="#product.market"/></td>
+			<td align="center"><s:property value="#product.sale_volume"/></td>
+			<td align="center"><s:property value="#product.p_desc"/></td>
 			<td align="center">
 				<s:if test="product.sale_volume > 2">
 					是
@@ -89,26 +86,25 @@
 					否
 				</s:else>
 			</td>
-			<td align="center">${product.p_date }</td>
+			<td align="center"><s:property value="#product.p_date"/></td>
 			<td align="center">
-				<s:if test="product.p_freeze ==1">
+				<s:if test="#product.p_freeze ==1">
 					已上架
 				</s:if>
-				<s:elseif test="product.p_freeze ==2">
+				<s:elseif test="#product.p_freeze == 2">
 					已下架
 				</s:elseif>
 				<s:else>
 					申请中
 				</s:else>
-			
 			</td>
 			<td align="center">
-				<a href="${pageContext.request.contextPath}/MerchantProduct_getProductById.action?product.p_id=${product.p_id}">
+				<a href="${pageContext.request.contextPath}/MerchantProduct_getProductById.action?product.p_id=<s:property value="#product.p_id"/>&merchant.m_id=${merchant.m_id }">
 					<img class="admin_merchant_pd_immg1" src="${pageContext.request.contextPath}/images/i_edit.gif" border="0">
 				</a>
 			</td>
 			<td align="center">
-				<a>
+				<a href="${pageContext.request.contextPath}/MerchantProduct_soldOutProduct.action?product.p_id=<s:property value="#product.p_id"/>&merchant.m_id=${merchant.m_id }">
 					<img class="admin_merchant_pd_immg1" src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0">
 				</a>
 			</td>
@@ -119,14 +115,10 @@
 	
 	<div id="admin_list_div_page">
 		第<s:property value="#session.paging.presentPage"/>页/<s:property value="#session.paging.page"/>页&nbsp;&nbsp;&nbsp;&nbsp;
-		<s:if test="#session.paging.presentPage != 1">
-			<a href="${pageContext.request.contextPath }/MerchantProduct_findAll.action?paging.presentPage=1&searchText=${session.searchText}&merchant.m_id=${merchant.m_id}">首页</a>
-			<a href="${pageContext.request.contextPath }/MerchantProduct_findAll.action?paging.presentPage=<s:property value="#session.paging.presentPage-1"/>&searchText=${session.searchText}&merchant.m_id=${merchant.m_id}">上一页</a>
-		</s:if>
-		<s:if test="#session.paging.presentPage != #session.paging.page">
-			<a href="${pageContext.request.contextPath }/MerchantProduct_findAll.action?paging.presentPage=<s:property value="#session.paging.presentPage+1"/>&searchText=${session.searchText}&merchant.m_id=${merchant.m_id}">下一页</a>
-			<a href="${pageContext.request.contextPath }/MerchantProduct_findAll.action?paging.presentPage=<s:property value="#session.paging.page"/>&searchText=${session.searchText}&merchant.m_id=${merchant.m_id}">尾页</a>
-		</s:if>
+		<a href="${pageContext.request.contextPath }/MerchantProduct_findAll.action?method=post&paging.presentPage=1&merchant.m_id=${sessionScope.merchant.m_id }&product.p_freeze=${product.p_freeze }&searchText=${sessionScope.searchText}">首页</a>
+		<a href="${pageContext.request.contextPath }/MerchantProduct_findAll.action?paging.presentPage=${paging.presentPage-1 }&searchText=${sessionScope.searchText}&product.p_freeze=${product.p_freeze }&merchant.m_id=${merchant.m_id}">上一页</a>
+		<a href="${pageContext.request.contextPath }/MerchantProduct_findAll.action?paging.presentPage=${paging.presentPage+1 }&searchText=${sessionScope.searchText}&product.p_freeze=${product.p_freeze }&merchant.m_id=${merchant.m_id}">下一页</a>
+		<a href="${pageContext.request.contextPath }/MerchantProduct_findAll.action?paging.presentPage=${paging.page }&searchText=${sessionScope.searchText}&product.p_freeze=${product.p_freeze }&merchant.m_id=${merchant.m_id}">尾页</a>
 		&emsp;共<s:property value="#session.paging.totalNumber"/>条
 	</div>
 	

@@ -34,11 +34,9 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 	// 通过商品id查询商品
 	@Override
 	public Product queryProduct_id(int p_id) {
-		// TODO Auto-generated method stub
-		System.out.println("开始执行queryProduct_id方法");
-		Product product = this.getHibernateTemplate().get(Product.class, p_id);// 通过商品id查询商品内容
-		System.out.println(product);
-		return product;
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		Query query = session.createQuery("from Product where p_id=?").setInteger(0, p_id);// 通过商品id查询商品内容
+		return (Product) query.list().get(0);
 	}
 	
 	/**
@@ -46,7 +44,7 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 	 */
 	public void deleteProduct(Product product) {
 		System.out.println("开始执行下架商品deleteProduct方法");
-		this.getHibernateTemplate().delete(product);
+		this.getHibernateTemplate().merge(product);
 	}
 
 	// 修改商品内容
@@ -84,13 +82,18 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 		} else {
 			product.setP_date(updateProduct.getP_date());// 将修改的商品上架时间替换数据库中的商品上架时间
 		}
+		
+		if (updateProduct.getP_image() == null || updateProduct.getP_image().equals("")) {// 判断修改的商品上架时间不能为空
+		} else {
+			product.setP_image(updateProduct.getP_image());// 将修改的商品上架时间替换数据库中的商品上架时间
+		}
 
 		if (updateProduct.getP_freeze() == 0) {// 判断修改的商品上架状态不能为空
 		} else {
 			product.setP_freeze(updateProduct.getP_freeze());// 将修改的状态
 		}
 
-		this.getHibernateTemplate().update(product);
+		this.getHibernateTemplate().merge(product);
 	}
 
 	// 模糊分页查询所有商品
@@ -104,14 +107,17 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 				// TODO Auto-generated method stub
 				String hql = "from Product where p_name like ? ";
 				Query query = null;
-				if (m_id!=0) {
+				if (m_id != 0 && p_freeze != 0) {
+					hql += " and m_id=? and p_freeze=?";
+					query = session.createQuery(hql).setString(0, searchProduct + "%").setInteger(1, m_id).setInteger(2, p_freeze);
+				} else if (m_id!=0) {
 					hql += "and m_id = ?";
-					query = session.createQuery(hql).setString(0, searchProduct + "%").setInteger(1, m_id);// 模糊查询
+					query = session.createQuery(hql).setString(0, "%"+searchProduct + "%").setInteger(1, m_id);// 模糊查询
 				} else if (p_freeze!=0) {
 					hql += "and p_freeze = ?";
-					query = session.createQuery(hql).setString(0, searchProduct + "%").setInteger(1, p_freeze);
+					query = session.createQuery(hql).setString(0, "%"+searchProduct + "%").setInteger(1, p_freeze);
 				} else {
-					query = session.createQuery(hql).setString(0, searchProduct + "%");// 模糊查询
+					query = session.createQuery(hql).setString(0, "%"+searchProduct + "%");// 模糊查询
 				}
 				query.setFirstResult(page.getStart());// 分页查询从哪一条开始查
 				query.setMaxResults(page.getPagesize());// 分页查询查多少条
@@ -131,7 +137,10 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 		int totalNumber = 0;
 		String hql = "select count(*) from Product where p_name like ?";
 		List<Long> list = null;
-		if (m_id != 0) {
+		if (m_id != 0 && p_freeze != 0) {
+			hql += " and m_id=? and p_freeze=?";
+			list = this.getHibernateTemplate().find(hql,new Object[]{'%'+searchProduct+'%', m_id, p_freeze});
+		} else if (m_id != 0) {
 			hql += " and m_id = ?";
 			list = this.getHibernateTemplate().find(hql,
 					new Object[]{searchProduct + '%', m_id});// 模糊查询一共有多少条数据
@@ -200,5 +209,18 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 		// TODO Auto-generated method stub
 		List<Product> setProduct = this.getHibernateTemplate().find("from Product where m_id=?", m_id);
 		return setProduct;
+	}
+
+	// 通过二级分类查询商品
+	@Override
+	public Product csIdQueryProduct(int cs_id) {
+		List<Product> list = this.getHibernateTemplate().find("from Product where cs_id=?", cs_id);
+		return list.size()>0 ? list.get(0) : null;
+	}
+
+	// 购买商品减少库存、增加月销量
+	@Override
+	public void payProductUpdateVolumeRepertory(Product product) {
+		this.getHibernateTemplate().update(product);
 	}
 }

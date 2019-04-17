@@ -51,7 +51,7 @@ public class MerchantBizImpl implements MerchantBiz {
 		merchantDao.addNotice(merchant);
 	}
 
-	// 删除店铺公告
+	// 修改店铺公告
 	@Override
 	public void updateNotice(Merchant merchant) {
 		merchantDao.updateNotice(merchant);
@@ -89,16 +89,16 @@ public class MerchantBizImpl implements MerchantBiz {
 
 	// 店长名模糊搜索店铺
 	@Override
-	public List<Merchant> likeQueryM_name(Paging paging, String searchText) {
+	public List<Merchant> likeQueryM_name(Paging paging, String searchText, int m_is_freeze) {
 		// TODO Auto-generated method stub
-		return merchantDao.likeQueryM_name(paging, searchText);
+		return merchantDao.likeQueryM_name(paging, searchText, m_is_freeze);
 	}
 
 	// 店长名模糊搜索店铺数
 	@Override
-	public int likeQueryM_nameNumber(String searchText) {
+	public int likeQueryM_nameNumber(String searchText,int m_is_freeze) {
 		// TODO Auto-generated method stub
-		return merchantDao.likeQueryM_nameNumber(searchText);
+		return merchantDao.likeQueryM_nameNumber(searchText,m_is_freeze);
 	}
 
 	// 通过店铺id获取对应商品
@@ -111,6 +111,13 @@ public class MerchantBizImpl implements MerchantBiz {
 	@Override
 	public int mIdQueryAllProductNumber(String searchText, int m_id) {
 		return merchantDao.mIdQueryAllProductNumber(searchText, m_id);
+	}
+
+	// 店铺用户名模糊分页查询订单
+	@Override
+	public List<Orders> merchantLikeUsernameLimitQueryOrders(int m_id, String searchUsername) {
+		// TODO Auto-generated method stub
+		return merchantDao.merchantLikeUsernameLimitQueryOrders(m_id, searchUsername);
 	}
 
 }

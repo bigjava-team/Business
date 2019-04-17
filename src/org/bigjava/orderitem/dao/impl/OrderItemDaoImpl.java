@@ -128,7 +128,8 @@ public class OrderItemDaoImpl extends HibernateDaoSupport implements OrderItemDa
 	@Override
 	public List<Orderitem> queryAllOrderitem_o_id(int o_id) {
 		// TODO Auto-generated method stub
-		return this.getHibernateTemplate().find("from Orderitem where o_id = ?", o_id);
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		return session.createQuery("from Orderitem where o_id = ?").setInteger(0, o_id).list();
 	}
 
 }

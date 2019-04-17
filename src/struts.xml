@@ -20,6 +20,7 @@
 			<result name="login">/user/login.jsp</result>
 			<result name="ERROR">/user/login.jsp</result>
 			<result name="loginError">/user/login.jsp</result>
+			<result name="addMerchant">/user/shangpingzhuce.jsp</result>
 		</global-results>
 
 		<!-- 用户模块 action -->
@@ -124,30 +125,36 @@
 			<result name="userGotoMerchant">/merchant/home.jsp</result>
 			<!-- 用户还没有开店 -->
 			<result name="userGotoMerchantError">/user/shangpingzhuce.jsp</result>
-			<result name="saveSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0&amp;merchant.m_id=${merchant.m_id}
+			<result name="saveSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0&amp;merchant.m_id=${merchant.m_id}&amp;product.p_freeze=0
 			</result>
-			<result name="updateProductSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0
+			<result name="updateProductSuccess" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0&amp;merchant.m_id=${merchant.m_id }&amp;product.p_freeze=0
 			</result>
 			<result name="addPageSuccess">/merchant/product/add.jsp</result>
 			<result name="getProductByIdSuccess">/merchant/product/edit.jsp</result>
 			<result name="findAll">/merchant/product/list.jsp</result>
+			<result name="soldOutProduct" type="redirectAction">MerchantProduct_findAll?paging.presentPage=0&amp;merchant.m_id=${merchant.m_id }&amp;product.p_freeze=0</result>
 		</action>
 
 		<!-- 店铺的action -->
 		<action name="Merchant_*" class="merchantAction" method="{1}">
 			<!-- 跳转到店铺首页 -->
 			<result name="gotoMerchant">/user/dianpuzhiye.jsp</result>
-			<result name="registerMerchantSuccess">/user/dianpuzhiye.jsp</result>
+			<result name="registerMerchantSuccess" type="redirectAction">index_showAll.action?method=post&amp;loginUser.username=${loginUser.username}</result>
+			<result name="merchantLoginError" type="redirectAction">index_showAll.action?method=post&amp;loginUser.username=${loginUser.username}</result>
 			<!-- 根据店铺ID查询店铺信息，拿出店铺公告 -->
 			<result name="getMerchantNotice">/merchant/notice/list.jsp</result>
 			<!-- 添加公告 ，将原有的空的，修改成有值的-->
-			<result name="updateNotice" type="redirectAction">Merchant_getMerchantNotice.action?m_id=${merchant.m_id}</result>
+			<result name="updateNotice" type="redirectAction">Merchant_getMerchantNotice.action?method=post&amp;m_id=${m_id }</result>
 			
-			<result name="getMerchantById">/merchant/merchants/list.jsp</result>
+			<result name="queryMerchantById">/merchant/merchants/list.jsp</result>
+			<result name="skipUpdateMerchantList">/merchant/merchants/edit.jsp</result>
+			<result name="updateMerchantNameOrMerchantImage" type="redirectAction">Merchant_queryMerchantById?method=post&amp;m_id=${m_id}</result>
 			<result name="queryMerchantOrders">/merchant/order/list.jsp</result>
 			<result name="updateMerchantOrdersState" type="redirectAction">Merchant_queryMerchantOrders?method=post&amp;m_id=${merchant_id }&amp;paging.presentPage=2</result>
 			<result name="likeQueryMname">/admin/merchant/list.jsp</result>
 			<result name="mIdQueryAllProduct">/admin/merchant/m_product.jsp</result>
+			<result name="updateMerchantSuccess" type="redirectAction">Merchant_likeQueryMname?method=post&amp;loginUser.username=${loginUser.username }&amp;paging.presentPage=1&amp;searchText=${searchText}</result>
+			<result name="merchantLikeUsernameLimitQueryOrders">/merchant/order/list.jsp</result>
 		</action>
 
 		<!-- 商品的action -->
@@ -175,7 +182,7 @@
 		<action name="adminOrders_*" class="adminOrdersAction"
 			method="{1}">
 			<result name="showAllOrders">/admin/order/list.jsp</result>
-			<result name="oIdQueryOrdersProduct">/admin/order/list.jsp</result>
+			<result name="oIdQueryOrdersProduct">/admin/order/ordersList.jsp</result>
 			<result name=""></result>
 		</action>
 

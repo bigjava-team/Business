@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.bigjava.function.FileImageAction;
 import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
 import org.bigjava.orderitem.biz.OrderItemBiz;
@@ -31,27 +32,32 @@ public class AdminOrdersAction extends ActionSupport {
 	// 控制分页的类
 	private Paging paging;
 	private String searchText; // 搜索的参数值
+	private FileImageAction fileImageAction;
+	
 	private OrdersBiz ordersBiz;
 	private OrderItemBiz orderItemBiz;
-	private ProductBiz productBiz;
 	private UserBiz userBiz;
 	
-	private List<Product> listProduct;// 订单对应的商品
+	private List<Orderitem> listOrderItem;// 订单对应的商品
 
-	public List<Product> getListProduct() {
-		return listProduct;
+	public FileImageAction getFileImageAction() {
+		return fileImageAction;
 	}
 
-	public void setListProduct(List<Product> listProduct) {
-		this.listProduct = listProduct;
+	public void setFileImageAction(FileImageAction fileImageAction) {
+		this.fileImageAction = fileImageAction;
+	}
+
+	public List<Orderitem> getListOrderItem() {
+		return listOrderItem;
+	}
+
+	public void setListOrderItem(List<Orderitem> listOrderItem) {
+		this.listOrderItem = listOrderItem;
 	}
 
 	public void setOrderItemBiz(OrderItemBiz orderItemBiz) {
 		this.orderItemBiz = orderItemBiz;
-	}
-
-	public void setProductBiz(ProductBiz productBiz) {
-		this.productBiz = productBiz;
 	}
 
 	public User getLoginUser() {
@@ -166,16 +172,11 @@ public class AdminOrdersAction extends ActionSupport {
 		return "showAllOrders";
 	}
 
-	// 查询一级分类对应的审商品
+	// 查询一级分类对应的商品
 	public String oIdQueryOrdersProduct() {
-		listProduct = new ArrayList<Product>();
 		orders = ordersBiz.queryOrders_id(orders.getO_id());
-		List<Orderitem> listOrderItem = orderItemBiz.queryAllOrderitem_o_id(orders.getO_id());
-		for (int i=0; i<listOrderItem.size(); i++) {
-			Product product = productBiz.queryProduct_id(listOrderItem.get(i).getProduct().getP_id());
-			listProduct.add(product);
-		}
-		System.out.println("订单商品"+listProduct);
+		listOrderItem = orderItemBiz.queryAllOrderitem_o_id(orders.getO_id());
+		System.out.println(listOrderItem.size());
 		return "oIdQueryOrdersProduct";
 	}
 }

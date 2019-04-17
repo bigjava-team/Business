@@ -20,6 +20,7 @@ import org.bigjava.function.queryCategorySecond.QueryCategorySecond;
 import org.bigjava.merchant.entity.Merchant;
 import org.bigjava.product.biz.ProductBiz;
 import org.bigjava.product.entity.Product;
+import org.bigjava.user.biz.UserBiz;
 import org.bigjava.user.entity.User;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -47,11 +48,12 @@ public class ProductAction extends ActionSupport {
 
 	private String searchText;// 搜索的值
 
+	private UserBiz userBiz;
 	private ProductBiz productBiz;
 	private CommentBiz commentBiz;
 	private CategoryBiz categoryBiz;// 一级分类
 	private CategorySecondBiz categorySecondBiz;// 二级分类
-
+	
 	/* 查询最新的商品 */
 	private List<Product> listProductTime;
 	/* 查询最热的商品 */
@@ -72,6 +74,10 @@ public class ProductAction extends ActionSupport {
 	private List<Product> listCategorySecondProduct;
 
 	private FileImageAction fileImageAction;
+	
+	public void setUserBiz(UserBiz userBiz) {
+		this.userBiz = userBiz;
+	}
 
 	public String getSearchText() {
 		return searchText;
@@ -291,6 +297,9 @@ public class ProductAction extends ActionSupport {
 
 	public String showAll() {
 		System.out.println("进入首页index" + loginUser);
+		if (loginUser!=null) {
+			loginUser = userBiz.queryUsernameUser(loginUser.getUsername());
+		}
 		/* 查询最新的商品 */
 		listProductTime = productBiz.queryProduct_time();
 		listProductTime = listProductTime.subList(0, 6);

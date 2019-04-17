@@ -1,10 +1,16 @@
 
 package org.bigjava.orders.action;
 
+import java.util.List;
+
 import org.bigjava.addr.entity.Addr;
 import org.bigjava.function.Alipay;
+import org.bigjava.orderitem.biz.OrderItemBiz;
+import org.bigjava.orderitem.entity.Orderitem;
 import org.bigjava.orders.biz.OrdersBiz;
 import org.bigjava.orders.entity.Orders;
+import org.bigjava.product.biz.ProductBiz;
+import org.bigjava.product.entity.Product;
 import org.bigjava.user.entity.User;
 
 import com.alipay.api.AlipayApiException;
@@ -22,12 +28,20 @@ public class PaymentOrders extends ActionSupport {
 	private String result;// 付款请求
 	
 	private OrdersBiz ordersBiz;
+	private ProductBiz productBiz;
+	private OrderItemBiz orderItemBiz;
 	
 	private Orders orders;// 订单
 	
 	private Addr addr;// 收货地址
 	private User loginUser;
 	
+	public void setOrderItemBiz(OrderItemBiz orderItemBiz) {
+		this.orderItemBiz = orderItemBiz;
+	}
+	public void setProductBiz(ProductBiz productBiz) {
+		this.productBiz = productBiz;
+	}
 	public User getLoginUser() {
 		return loginUser;
 	}
@@ -101,6 +115,15 @@ public class PaymentOrders extends ActionSupport {
 		orders.setState(2);
 		orders.setAddr(addr);
 		ordersBiz.updateOrdersState(orders);
+		
+		List<Orderitem> listOrderitem = orderItemBiz.queryAllOrderitem_o_id(orders.getO_id());
+		for (int i=0; i<listOrderitem.size(); i++) {
+			int item_id = listOrderitem.get(i).getItem_id();
+			Product product = productBiz.csIdQueryProduct(item_id);
+			product.setSale_volume(product.getSale_volume()-1);
+			product.setP_repertory(product.getP_repertory()+1);
+			productBiz.payProductUpdateVolumeRepertory(product);
+		}
 		return "payOrders";
 	}
 }

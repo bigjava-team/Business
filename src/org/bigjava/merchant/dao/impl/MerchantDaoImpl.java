@@ -69,15 +69,7 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 			}
 		}
 
-		if (updateMerchant.getM_is_freeze() == 0) {// 判断修改的店铺状态不能为0
-
-		} else {
-			if (updateMerchant.getM_is_freeze() != merchant.getM_is_freeze()) {// 如果修改的店铺状态与数据库中的店铺状态不一样将其保存至merchant中
-				merchant.setM_is_freeze(updateMerchant.getM_is_freeze());
-			}
-		}
-
-		this.getHibernateTemplate().update(merchant);// 修改数据库中店铺的内容
+		this.getHibernateTemplate().merge(merchant);// 修改数据库中店铺的内容
 
 	}
 
@@ -86,10 +78,10 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 	 */
 	@Override
 	public void addNotice(Merchant merchant) {
-		this.getHibernateTemplate().save(merchant);
+		this.getHibernateTemplate().merge(merchant);
 	}
 
-	// 删除店铺公告
+	// 修改店铺公告
 	@Override
 	public void updateNotice(Merchant merchant) {
 		this.getHibernateTemplate().update(merchant);
@@ -129,7 +121,7 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 	@Override
 	public void updateOrdersState(Orders orders) {
 		System.out.println("修改买家的订单的状态");
-		this.getHibernateTemplate().update(orders);
+		this.getHibernateTemplate().merge(orders);
 	}
 
 	// 通过用户id查询店铺
@@ -168,10 +160,17 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 	 * 店长名模糊搜索店铺
 	 */
 	@Override
-	public List<Merchant> likeQueryM_name(Paging paging, String searchText) {
+	public List<Merchant> likeQueryM_name(Paging paging, String searchText, int m_is_freeze) {
 		// TODO Auto-generated method stub
 		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
-		Query query = session.createQuery("from Merchant where m_name like ?").setString(0, "%"+searchText+"%");
+		String hql = "from Merchant where m_name like ?";
+		Query query = null;
+		if (m_is_freeze != 0) {
+			hql += " and m_is_freeze=?";
+			query = session.createQuery(hql).setString(0, "%"+searchText+"%").setInteger(1, m_is_freeze);
+		} else {
+			query = session.createQuery(hql).setString(0, "%"+searchText+"%");
+		}
 		query.setFirstResult(paging.getStart());
 		query.setMaxResults(paging.getPagesize());
 		return query.list();
@@ -181,10 +180,17 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 	 * 店长名模糊搜索店铺数
 	 */
 	@Override
-	public int likeQueryM_nameNumber(String searchText) {
+	public int likeQueryM_nameNumber(String searchText,int m_is_freeze) {
 		// TODO Auto-generated method stub
 		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
-		Query query = session.createQuery("from Merchant where m_name like ?").setString(0, "%"+searchText+"%");
+		String hql = "from Merchant where m_name like ?";
+		Query query = null;
+		if (m_is_freeze != 0) {
+			hql += " and m_is_freeze=?";
+			query = session.createQuery(hql).setString(0, "%"+searchText+"%").setInteger(1, m_is_freeze);
+		} else {
+			query = session.createQuery(hql).setString(0, "%"+searchText+"%");
+		}
 		return query.list().size();
 	}
 
@@ -203,5 +209,45 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 	public int mIdQueryAllProductNumber(String searchText, int m_id) {
 		List<Long> listNumber = this.getHibernateTemplate().find("select count(*) from Product where p_name like ? and m_id=?", new Object[]{"%"+searchText+"%", m_id});
 		return listNumber.size()>0 ? listNumber.get(0).intValue() : null;
+	}
+
+	// 店铺用户名模糊分页查询订单
+	@Override
+	public List<Orders> merchantLikeUsernameLimitQueryOrders(int m_id, String searchUsername) {
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		List<Orders> listOrders = new ArrayList<Orders>();
+		List<Orderitem> listOrderitem = new ArrayList<Orderitem>();
+		List<User> listUser = session.createQuery("from User where username like ?").setString(0, "%"+searchUsername+"%").list();
+		List<Product> listProduct = session.createQuery("from Product where m_id=?").setInteger(0, m_id).list();
+		System.out.println("查询到的用户" + listUser);
+		if (listProduct.size() != 0) {
+			for (int i = 0; i < listProduct.size(); i++) {
+				int numberP_id = listProduct.get(i).getP_id();
+				for (int z=0; z<listUser.size(); z++) {
+					int u_id = listUser.get(z).getU_id();
+					List<Orderitem> listOrderitems = session.createQuery("from Orderitem where p_id=? and u_id=?").setInteger(0, numberP_id).setInteger(1, u_id).list();
+					System.out.println("查询到的订单列"+listOrderitems);
+					for (int s=0; s<listOrderitems.size(); s++) {
+						listOrderitem.add(listOrderitems.get(s));
+					}
+				}
+				List<Orders> LOS = session.createQuery("from Orders where a_id!=null").list();
+				System.out.println(LOS);
+				for (int j = 0; j < LOS.size(); j++) {
+					int o_id = LOS.get(j).getO_id();
+					for (int z = 0; z < listOrderitem.size(); z++) {
+						Orders orders = listOrderitem.get(z).getOrders();
+						if (orders == null) {
+							System.out.println("该商品没有订单");
+						} else if (o_id == orders.getO_id()) {
+							listOrders.add(orders);
+							break;
+						}
+					}
+				}
+			}
+		}
+		System.out.println("订单"+listOrders);
+		return listOrders;
 	}
 }

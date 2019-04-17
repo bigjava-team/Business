@@ -13,13 +13,14 @@
 		编辑店铺信息
 	</div>
 	
-	<form class="admin_form1" action="" method="post">
+	<form class="admin_form1" action="Merchant_updateMerchantNameOrMerchantImage" enctype="multipart/form-data" method="post">
 		<div class="admin_add_div_middle">
+			<input type="hidden" name="m_id" value="${merchant.m_id }" />
 			<div class="admin_merchant_d1">
 				店铺名称：
 			</div>
 			<div class="admin_merchant_d2">
-				<input type="text" name="mname" />
+				<input type="text" name="m_name" value="${merchant.m_name }" />
 			</div>
 		</div>
 		
@@ -28,18 +29,18 @@
 				店铺头像：
 			</div>
 			<div class="admin_merchant_d2">
-				<input type="file" name="upmload">
+				<input type="file" name="fileImageAction.fileImage">
 			</div>
 		</div>
 		
-		<div class="admin_add_div_middle admin_merchant_pd_a_e_d2">
+		<%-- <div class="admin_add_div_middle admin_merchant_pd_a_e_d2">
 			<div class="admin_merchant_d3">
 				店铺描述：
 			</div>
 			<div class="admin_merchant_d2">
-				<textarea rows="5" cols="30" name="pdesc"></textarea>
+				<textarea rows="5" cols="30" name="pdesc" value=${merchant.notice }></textarea>
 			</div>
-		</div>
+		</div> --%>
 		
 		<div id="admin_add_div_bottom">
 			<input type="submit" value="确定" style="margin-right: 80px;" />

@@ -67,18 +67,5 @@
 			</tr>
 		</s:iterator>
 	</table>
-	
-	<div id="admin_list_div_page">
-		第<s:property value="#session.paging.presentPage"/>页/<s:property value="#session.paging.page"/>页&nbsp;&nbsp;&nbsp;&nbsp;
-		<s:if test="#session.paging.presentPage != 1">
-			<a href="${pageContext.request.contextPath }/MerchantProduct_findAll.action?paging.presentPage=1&searchText=${session.searchText}&merchant.m_id=${merchant.m_id}">首页</a>
-			<a href="${pageContext.request.contextPath }/MerchantProduct_findAll.action?paging.presentPage=<s:property value="#session.paging.presentPage-1"/>&searchText=${session.searchText}&merchant.m_id=${merchant.m_id}">上一页</a>
-		</s:if>
-		<s:if test="#session.paging.presentPage != #session.paging.page">
-			<a href="${pageContext.request.contextPath }/MerchantProduct_findAll.action?paging.presentPage=<s:property value="#session.paging.presentPage+1"/>&searchText=${session.searchText}&merchant.m_id=${merchant.m_id}">下一页</a>
-			<a href="${pageContext.request.contextPath }/MerchantProduct_findAll.action?paging.presentPage=<s:property value="#session.paging.page"/>&searchText=${session.searchText}&merchant.m_id=${merchant.m_id}">尾页</a>
-		</s:if>
-	</div>
-	
 </body>
 </html>

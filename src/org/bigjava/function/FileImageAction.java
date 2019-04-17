@@ -47,7 +47,7 @@ public class FileImageAction {
 	public void setFileImageContentType(String fileImageContentType) {
 		this.fileImageContentType = fileImageContentType;
 	}
-	public List<String> fileImage() throws IOException {
+	public void fileImage() throws IOException {
 		List<String> listFileImageFileName = new ArrayList<String>();// 上传多张图片时用于存储图片名
 		String[] listImageSuffix = fileImageFileName.split(",");
 		for (int i=0; i<fileImage.size(); i++) {
@@ -78,7 +78,6 @@ public class FileImageAction {
 			fos.close();
 			fis.close();
 		}
-		return listFileImageFileName;
 	}
 	@Override
 	public String toString() {

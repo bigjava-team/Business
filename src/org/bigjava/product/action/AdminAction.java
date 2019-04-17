@@ -147,19 +147,11 @@ public class AdminAction extends ActionSupport {
 		System.out.println("AdminAction....adminFindAll().");
 		session = ActionContext.getContext().getSession();
 
-		int u_root = 0;
-		if (user.getRoot() != 0) {
-			u_root = user.getRoot();
-		}
-
-		System.out.println("用户权限为：" + u_root);
-		System.out.println("搜索的值" + searchText);
-
 		if (isEmpty.isEmpty(searchText)) {
 			searchText = "";
 		}
 		// 根据搜索的内容与权限查询可搜索的总条数
-		int totalNumber = productBiz.queryProductNumber(searchText, merchant.getM_id(), 0);
+		int totalNumber = productBiz.queryProductNumber(searchText, merchant.getM_id(), product.getP_freeze());
 
 		// 当前页数
 		int presentPage = paging.getPresentPage();
@@ -167,10 +159,11 @@ public class AdminAction extends ActionSupport {
 
 		paging = new Paging(presentPage, totalNumber, 5);
 
-		productList = productBiz.queryAllProduct(searchText, paging, merchant.getM_id(), 0);
+		productList = productBiz.queryAllProduct(searchText, paging, merchant.getM_id(), product.getP_freeze());
 
 		// 将参数存入session中
-		System.out.println(productList);
+		System.out.println(paging.getPage());
+		System.out.println(paging.getPresentPage());
 		session.put("paging", paging);
 		session.put("searchText", searchText);
 

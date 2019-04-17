@@ -80,7 +80,7 @@
 			</td>
 			<td align="center">${listOrder.user.username}</td>
 			<td align="center">
-				<a href="${pageContext.request.contextPath }/admin/order/ordersList.jsp" onclick="showDetail(${listOrder.o_id})">订单详情</a>
+				<a href="javascript:;" onclick="showDetail(${listOrder.o_id})">订单详情</a>
 			</td>
 			<td align="center">
 				<s:if test="#listOrder.state == 1">

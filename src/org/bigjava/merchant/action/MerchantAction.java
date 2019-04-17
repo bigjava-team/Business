@@ -1,5 +1,6 @@
 package org.bigjava.merchant.action;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -169,16 +170,20 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 		merchant.setM_is_freeze(1);// 店铺状态
 		merchant.setM_image(fileImageAction.getFileImageFileName());
 		merchantBiz.registerMerchant(merchant, user);
+		
+		User users = user;
+		users.setRoot(2);
+		userBiz.updateUser(user, users);
 		return "registerMerchantSuccess";
 	}
 
 	/**
 	 * 通过店铺ID查询店铺
 	 */
-	public String getMerchantById() {
+	public String queryMerchantById() {
 		merchant = merchantBiz.queryMerchant(merchant.getM_id());
 		ActionContext.getContext().getSession().put("merchant", merchant);
-		return "getMerchantById";
+		return "queryMerchantById";
 	}
 
 	/**
@@ -193,8 +198,16 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	 * 修改店铺
 	 */
 	public String updateMerchant() {
-//		Merchant updateMerchant ;
-//		merchantBiz.updateMerchant(merchant, updateMerchant);
+		merchant = merchantBiz.queryMerchant(merchant.getM_id());
+		Merchant updateMerchant = merchant;
+		if (merchant.getM_is_freeze() == 1) {
+			updateMerchant.setM_is_freeze(2);
+		} else if(merchant.getM_is_freeze() == 2) {
+			updateMerchant.setM_is_freeze(3);
+		} else if(merchant.getM_is_freeze() == 3) {
+			updateMerchant.setM_is_freeze(2);
+		}
+		merchantBiz.updateMerchant(merchant, updateMerchant);
 		return "updateMerchantSuccess";
 	}
 
@@ -209,7 +222,13 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 		Merchant m  = u.getMerchant();
 		System.out.println("m"+m);
 		if (m == null) {
-			return "loginError";
+			return "addMerchant";
+		} else if(m.getM_is_freeze() == 1) {
+			System.out.println("店铺申请中");
+			return "merchantLoginError";
+		} else if(m.getM_is_freeze() == 3) {
+			System.out.println("店铺已冻结");
+			return "merchantLoginError";
 		}
 		return "gotoMerchant";
 	}
@@ -228,8 +247,10 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	 */
 	public String addNotice() {
 		System.out.println("MerchantAction.....addNotice().");
-		merchantBiz.addNotice(merchant);
-		return "addNotice";
+		Merchant merchants = merchantBiz.queryMerchant(merchant.getM_id());
+		merchants.setNotice(merchant.getNotice());
+		merchantBiz.addNotice(merchants);
+		return "updateMerchantOrdersState";
 	}
 
 	/**
@@ -238,7 +259,7 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 	public String updateNotice() {
 		System.out.println("修改店铺公告");
 		Merchant updateMerchantNotice = merchantBiz.queryMerchant(merchant.getM_id());
-//		updateMerchantNotice.setNotice(notice);
+		updateMerchantNotice.setNotice(merchant.getNotice());
 		merchantBiz.updateNotice(updateMerchantNotice);
 		return "updateNotice";
 	}
@@ -251,18 +272,7 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 		listOrders = merchantBiz.queryListOrders(merchant.getM_id());
 		int divisor = listOrders.size() / 2;
 		int remainder = listOrders.size() % 2;
-		if (remainder == 0) {
-			paging.setPage(divisor);// 最大页数
-		} else if (remainder != 0) {
-			paging.setPage(divisor + 1);// 最大页数
-		}
-		if (paging.getPresentPage() <= 0) {
-			paging.setPresentPage(1);
-		} else if (paging.getPresentPage() > paging.getPage() && paging.getPage() > 0) {
-			paging.setPresentPage(paging.getPage());
-		} else {
-			paging.setPresentPage(1);
-		}
+		paging = new Paging(paging.getPresentPage(), listOrders.size(), 2);
 
 		if (listOrders.size() != 0) {
 			if (divisor < paging.getPresentPage() && remainder != 0) {
@@ -313,10 +323,10 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 			searchText = "";
 		}
 		System.out.println(searchText);
-		int number = merchantBiz.likeQueryM_nameNumber(searchText);
+		int number = merchantBiz.likeQueryM_nameNumber(searchText.trim(), merchant.getM_is_freeze());
 		System.out.println(number);
 		paging = new Paging(paging.getPresentPage(), number, 10);
-		listAllMerchant = merchantBiz.likeQueryM_name(paging, searchText.trim());
+		listAllMerchant = merchantBiz.likeQueryM_name(paging, searchText.trim(), merchant.getM_is_freeze());
 		System.out.println(listAllMerchant);
 		return "likeQueryMname";
 	}
@@ -335,5 +345,44 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 		listMerchantProduct = merchantBiz.mIdQueryAllProduct(paging, searchText, merchant.getM_id());
 		System.out.println(listMerchantProduct);
 		return "mIdQueryAllProduct";
+	}
+	
+	// 跳转到修改店铺的页面
+	public String skipUpdateMerchantList() {
+		merchant = merchantBiz.queryMerchant(merchant.getM_id());
+		return "skipUpdateMerchantList";
+	}
+	
+	// 修改店铺内容
+	public String updateMerchantNameOrMerchantImage() throws IOException{
+		Merchant merchants = merchantBiz.queryMerchant(merchant.getM_id());
+		if (fileImageAction.getFileImage() != null) {
+			fileImageAction.fileImage();
+			String imageUrl = "E:\\Img\\"+merchants.getM_image();
+			File fileDelete = new File(imageUrl);
+			fileDelete.delete();
+			merchant.setM_image(fileImageAction.getFileImageFileName());
+		}
+		merchantBiz.updateMerchant(merchants, merchant);
+		return "updateMerchantNameOrMerchantImage";
+	}
+	
+	// 店铺用户名模糊分页查询订单
+	public String merchantLikeUsernameLimitQueryOrders() {
+		System.out.println("开始查询");
+		listOrders = merchantBiz.merchantLikeUsernameLimitQueryOrders(merchant.getM_id(), searchText);
+		int divisor = listOrders.size() / 2;
+		int remainder = listOrders.size() % 2;
+		paging = new Paging(paging.getPresentPage(), listOrders.size(), 2);
+
+		if (listOrders.size() != 0) {
+			if (divisor < paging.getPresentPage() && remainder != 0) {
+				listOrders = listOrders.subList((paging.getPresentPage() - 1) * 2, remainder + (divisor * 2));
+			} else {
+				listOrders = listOrders.subList((paging.getPresentPage() - 1) * 2, paging.getPresentPage() * 2);
+			}
+		}
+		System.out.println("订单详情" + listOrders);
+		return "merchantLikeUsernameLimitQueryOrders";
 	}
 }

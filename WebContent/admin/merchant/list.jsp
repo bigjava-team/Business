@@ -7,11 +7,13 @@
 <meta charset="UTF-8">
 <link href="${pageContext.request.contextPath}/css/admin.css" rel="stylesheet" type="text/css"/>
 
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	function searchText() {
 		var searchText = document.getElementById("input").value;
+		var searchFreeze = $("#select option:selected").val();
 		var username = '${loginUser.username }';
-		window.location.href="Merchant_likeQueryMname?method=post&loginUser.username="+username+"&paging.presentPage=1&searchText="+searchText;
+		window.location.href="Merchant_likeQueryMname?method=post&loginUser.username="+username+"&paging.presentPage=1&searchText="+searchText+"&m_is_freeze="+searchFreeze;
 	}
 </script>
 </head>
@@ -20,21 +22,9 @@
 		店铺列表
 	</div>
 	
-	<%-- <div class="admin_list_div_moddle2">
-		<!-- 根据查询值，若不输入，则查询全部 -->
-		<div class="input-group2">
-			<!-- 搜索框 -->
-			<input type="text" id="input" class="input-group_input2" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入店铺名进行查询' " value="${searchCategorySecond}">
-			<!-- placeholder的点击消失及为空时点击其他继续显示提示  -->
-			<button id="button" class="input-group_button2" onclick="searchText()">搜索</button>
-		</div>
-	</div>
-	 --%>
-	 
 	<div class="input-group4">
 		<select id="select" class="input-group_select4" style="width: 90px;">
 			<option class="option" value="0">全部</option>
-			<option class="option" value="4">名称</option>
 			<option class="option" value="3">冻结状态</option>
 			<option class="option" value="2">未冻结状态</option>
 			<option class="option" value="1">申请状态</option>
@@ -42,7 +32,7 @@
 		<!-- 搜索框 -->
 		<input type="text" name="queryText" id="input" class="input-group_input4" placeholder="查询全部" onfocus="this.placeholder=' ' " onblur=" this.placeholder='请输入代理人姓名进行查询' " value="${searchText}">
 		
-		<button id="search" class="input-group_button4">搜索</button>
+		<button id="search" class="input-group_button4" onclick="searchText()">搜索</button>
 	</div>
 		
 	<form action="" method="post">
@@ -61,7 +51,7 @@
 				<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
 					<td align="center">${listAllMerchants.m_id }</td>
 					<td align="center">
-						<%-- <img width="40" height="45" src="${fileImageAction.urlImage }${listAllMerchants.m_image }"/> --%>
+						<img width="40" height="45" src="${fileImageAction.urlImage }${listAllMerchants.m_image }"/>
 					</td>
 					<td align="center">${listAllMerchants.m_name }</td>
 					<td align="center">${listAllMerchants.m_time }</td>
@@ -72,13 +62,13 @@
 					</td>
 					<td align="center">
 						<s:if test="#listAllMerchants.m_is_freeze == 1">
-							同意申请
+							<a href="Merchant_updateMerchant?method=post&m_id=${listAllMerchants.m_id }">同意申请</a>
 						</s:if>
 						<s:elseif test="#listAllMerchants.m_is_freeze == 2">
-							冻结
+							<a href="Merchant_updateMerchant?method=post&m_id=${listAllMerchants.m_id }">冻结</a>
 						</s:elseif>
 						<s:elseif test="#listAllMerchants.m_is_freeze == 3">
-							解冻
+							<a href="Merchant_updateMerchant?method=post&m_id=${listAllMerchants.m_id }">解冻</a>
 						</s:elseif>
 					</td>
 				</tr>
@@ -87,10 +77,10 @@
 		
 		<div id="admin_list_div_page">
 			第${paging.presentPage }页/${paging.page }页&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="Merchant_likeQueryMname?method=post&loginUser.username=${loginUser.username }&paging.presentPage=1&searchText=${searchText }">首页</a>
-			<a href="Merchant_likeQueryMname?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage-1 }&searchText=${searchText }">上一页</a>
-			<a href="Merchant_likeQueryMname?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage+1 }&searchText=${searchText }">下一页</a>
-			<a href="Merchant_likeQueryMname?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.page }&searchText=${searchText }">尾页</a>
+			<a href="Merchant_likeQueryMname?method=post&loginUser.username=${loginUser.username }&paging.presentPage=1&searchText=${searchText }&m_is_freeze=${m_is_freeze}">首页</a>
+			<a href="Merchant_likeQueryMname?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage-1 }&searchText=${searchText }&m_is_freeze=${m_is_freeze}">上一页</a>
+			<a href="Merchant_likeQueryMname?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage+1 }&searchText=${searchText }&m_is_freeze=${m_is_freeze}">下一页</a>
+			<a href="Merchant_likeQueryMname?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.page }&searchText=${searchText }&m_is_freeze=${m_is_freeze}">尾页</a>
 		</div>
 	</form>
 </body>

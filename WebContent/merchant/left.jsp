@@ -16,10 +16,10 @@
 			d.add('01',-1,'光光商城店铺管理');
 			
 			d.add('0101','01','店铺管理');
-			d.add('010101','0101','店铺信息','${pageContext.request.contextPath}/Merchant_getMerchantById?method=post&m_id=${sessionScope.merchant.m_id}','','mainFrame');
+			d.add('010101','0101','店铺信息','${pageContext.request.contextPath}/Merchant_queryMerchantById?method=post&m_id=${sessionScope.merchant.m_id}','','mainFrame');
 			
 			d.add('0102','01','商品管理');
-			d.add('010201','0102','商品信息','${pageContext.request.contextPath}/MerchantProduct_findAll.action?method=post&paging.presentPage=0&merchant.m_id=${sessionScope.merchant.m_id }','','mainFrame');
+			d.add('010201','0102','商品信息','${pageContext.request.contextPath}/MerchantProduct_findAll.action?method=post&paging.presentPage=0&merchant.m_id=${sessionScope.merchant.m_id }&product.p_freeze=0','','mainFrame');
 			d.add('010202','0102','添加商品','${pageContext.request.contextPath}/MerchantProduct_addPage.action','','mainFrame');
 
 			d.add('0103','01','订单管理');
