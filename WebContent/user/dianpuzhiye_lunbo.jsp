@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,15 +27,14 @@ transform:scale(3) rotate(360deg) !important;
 <body>
 
 <div id="cubeTransition">
-<div class="page1"></div>
-<div class="page2"></div>
-<div class="page3"></div>
-<div class="page4"></div>
-<div class="page5"></div>
+	<s:iterator value="listHotProduct" var="listHotProducts">
+		<div class="page1">
+			<img src="${fileImageAction.urlImage}${listHotProducts.p_image }">
+		</div>
+	</s:iterator>
 </div>
 
 <ul id="bullets"></ul>
-
 
 <script>
 function animationIn(i){

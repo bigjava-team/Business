@@ -53,7 +53,23 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 				user.setSex(users.getSex());
 			}
 		}
-		this.getHibernateTemplate().update(users);// 将user中的值对比数据库中的值进行修改
+		
+		if (users.getU_name() == null || users.getU_name().equals("")) {
+
+		} else {
+			if (!users.getU_name().equals(user.getU_name())) {
+				user.setU_name(users.getU_name());
+			}
+		}
+		
+		if (users.getPhone() == null || users.getPhone().equals("")) {
+
+		} else {
+			if (!users.getPhone().equals(user.getPhone())) {
+				user.setPhone(users.getPhone());
+			}
+		}
+		this.getHibernateTemplate().merge(user);// 将user中的值对比数据库中的值进行修改
 	}
 
 	// 通过id查询用户
@@ -153,11 +169,13 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	// 通过用户名获取用户信息
 	@Override
 	public User queryUsernameUser(String username) {
-		List<User> listUser = this.getHibernateTemplate().find("from User where username = ?", username);
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		List<User> listUser = session.createQuery("from User where username = ?").setString(0, username).list();
 		if (listUser.size() == 0) {
 			System.out.println("没有此用户");
 			return null;
 		}
+		session.close();
 		return listUser.get(0);
 	}
 

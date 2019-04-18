@@ -28,9 +28,34 @@ public class AddrAction extends ActionSupport implements ModelDriven<Addr> {
 	private UserBiz userBiz;
 	// 注入addrBiz
 	private AddrBiz addrBiz;
+	private ProductBiz productBiz;
+	
+	private FileImageAction fileImageAction;
 
 	private List<Addr> listAddr;
 	private int number;
+	
+	private List<Product> listProduct;
+	
+	public List<Product> getListProduct() {
+		return listProduct;
+	}
+
+	public void setListProduct(List<Product> listProduct) {
+		this.listProduct = listProduct;
+	}
+
+	public void setProductBiz(ProductBiz productBiz) {
+		this.productBiz = productBiz;
+	}
+
+	public FileImageAction getFileImageAction() {
+		return fileImageAction;
+	}
+
+	public void setFileImageAction(FileImageAction fileImageAction) {
+		this.fileImageAction = fileImageAction;
+	}
 
 	public int getNumber() {
 		return number;
@@ -72,6 +97,10 @@ public class AddrAction extends ActionSupport implements ModelDriven<Addr> {
 
 	public void setAddrBiz(AddrBiz addrBiz) {
 		this.addrBiz = addrBiz;
+	}
+
+	public User getUser() {
+		return user;
 	}
 
 	public void setUser(User user) {
@@ -131,11 +160,13 @@ public class AddrAction extends ActionSupport implements ModelDriven<Addr> {
 	 */
 	public String findAllAddr() {
 		System.out.println("开始分页查询");
-		user = userBiz.queryUsernameUser(loginUser.getUsername());
-		number = addrBiz.queryAllAddrNumber(user);
+		loginUser = userBiz.queryUsernameUser(loginUser.getUsername());
+		System.out.println(loginUser);
+		number = addrBiz.queryAllAddrNumber(loginUser);
 		paging = new Paging(paging.getPresentPage(), number, 5);
-		listAddr = addrBiz.queryAllAddr(paging, user);
+		listAddr = addrBiz.queryAllAddr(paging, loginUser);
 
+		listProduct = productBiz.queryProduct_hot().subList(0, 6);
 		return "findAllAddrSuccess";
 	}
 

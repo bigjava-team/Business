@@ -34,6 +34,16 @@ public class CollectMerchantAction extends ActionSupport {
 	private List<CollectMerchant> listCollectMerchant;
 	private List<Product> listProduct;
 	
+	private String checkCollect;// 返回收藏效果
+	
+	public String getCheckCollect() {
+		return checkCollect;
+	}
+
+	public void setCheckCollect(String checkCollect) {
+		this.checkCollect = checkCollect;
+	}
+
 	public List<QueryListProduct> getListQueryListProduct() {
 		return listQueryListProduct;
 	}
@@ -119,12 +129,13 @@ public class CollectMerchantAction extends ActionSupport {
 		System.out.println("开始收藏店铺"+loginUser + "," + merchant);
 		boolean flag = collectMerchantBiz.queryUserMerchantCollectMerchant(loginUser.getU_id(), merchant.getM_id());
 		if (flag) {
-			System.out.println("该店铺已收藏");
+			checkCollect = "已收藏该店铺";
 			return SUCCESS;
 		}
 		loginUser = userBiz.query(loginUser.getU_id());
 		collectMerchant = new CollectMerchant(loginUser, merchant);
 		collectMerchantBiz.addCollectMerchant(collectMerchant);
+		checkCollect = "收藏成功";
 		return SUCCESS;
 	}
 	

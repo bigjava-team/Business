@@ -250,4 +250,24 @@ public class MerchantDaoImpl extends HibernateDaoSupport implements MerchantDao 
 		System.out.println("订单"+listOrders);
 		return listOrders;
 	}
+
+	// 查询店铺内最热的5个商品
+	@Override
+	public List<Product> queryHotFiveProduct(int m_id) {
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		Query query = session.createQuery("from Product where m_id = ? order by sale_volume desc").setInteger(0, m_id);
+		query.setFirstResult(0);
+		query.setMaxResults(5);
+		return query.list();
+	}
+
+	//  查询最新的6个商品
+	@Override
+	public List<Product> queryTimeSixProduct(int m_id) {
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		Query query = session.createQuery("from Product where m_id = ? order by p_date desc").setInteger(0, m_id);
+		query.setFirstResult(0);
+		query.setMaxResults(6);
+		return query.list();
+	}
 }

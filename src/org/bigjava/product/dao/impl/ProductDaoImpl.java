@@ -163,7 +163,7 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 	public List<Product> queryProduct_time() {
 		System.out.println("查询最新的商品");
 		
-		String hql = "from Product order by p_date desc";
+		String hql = "from Product order by p_date desc where p_freeze = 1";
 		List<Product> list = new ArrayList<Product>();
 		list = this.getHibernateTemplate().find(hql);
 		
@@ -175,7 +175,7 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 	public List<Product> queryProduct_hot() {
 		System.out.println("查询最热的商品");
 		
-		String hql = "from Product order by sale_volume desc";
+		String hql = "from Product order by sale_volume desc where p_freeze = 1";
 		List<Product> list = new ArrayList<Product>();
 		list = this.getHibernateTemplate().find(hql);
 		
@@ -185,7 +185,7 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 	// 查询全部的商品
 	@Override
 	public List<Product> queryAllCommentProduct() {
-		return this.getHibernateTemplate().find("from Product");
+		return this.getHibernateTemplate().find("from Product where p_freeze = 1");
 	}
 
 	// 查询店铺内最新的商品

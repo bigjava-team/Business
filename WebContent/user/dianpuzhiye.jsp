@@ -114,11 +114,14 @@ body {
 }
 
 .two {
-	background-color: yellow;
-	padding-bottom: 6%;
-	padding-top: 6%;
+	background-color: black;
+	padding-bottom: 4.2%;
+	padding-top: 4.2%;
 	width: 100%;
 	text-align: center;
+	color:white;
+	font-family: cursive;
+	font-size: 48px;
 }
 
 .headcenter {
@@ -347,7 +350,7 @@ ol .current {
 			return document.getElementById(id);
 		}
 	
-		//获取各元素，方便操作
+		/* //获取各元素，方便操作
 		var box = my$("box");
 		var inner = box.children[0];
 		var ulObj = inner.children[0];
@@ -377,9 +380,9 @@ ol .current {
 				animate(ulObj, -pic * imgWidth);
 			}
 
-		}
+		} */
 
-		//设置ol中第一个li有背景颜色
+	/* 	//设置ol中第一个li有背景颜色
 		olObj.children[0].className = "current";
 		//克隆一个ul中第一个li,加入到ul中的最后=====克隆
 		ulObj.appendChild(ulObj.children[0].cloneNode(true));
@@ -432,9 +435,9 @@ ol .current {
 			}
 			//当前的pic索引对应的按钮设置颜色
 			olObj.children[pic].className = "current";
-		};
+		}; */
 
-		//设置任意的一个元素,移动到指定的目标位置
+		/* //设置任意的一个元素,移动到指定的目标位置
 		function animate(element, target) {
 			clearInterval(element.timeId);
 			//定时器的id值存储到对象的一个属性中
@@ -473,9 +476,9 @@ ol .current {
 				var xx1 = document.getElementById("dg1");
 				xx1.style.display = 'none'
 			}
-		}
+		} */
 	function CollectMerchant() {
-		var merchant_id = '${merchant.m_id}';
+		var merchant_id = '${model.m_id}';
 		var loginUser_id = '${loginUser.u_id}';
 		var params = {
 			"merchant.m_id": merchant_id,
@@ -487,11 +490,25 @@ ol .current {
 			data: params,
 			dataType: "json",
 			success:function(data, textStatus) {
-				alert("收藏成功");
+				alert(data.checkCollect);
 			},error:function(data, textStatus) {
-				return;
+				alert("错误");
+				return false;
 			}
 		});
+	}
+		
+	function queryProduct(id) {
+		var username = '${loginUser.username }';
+		window.open("Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0");
+	}
+	
+	function mouseOver(id) {
+		$("#"+id).css("cursor", "pointer");
+	}
+	
+	function mouseOut(id) {
+		$("#"+id).css("cursor", "none");
 	}
 </script>
 
@@ -509,7 +526,7 @@ ol .current {
 			</div>
 			<div
 				style="float: left; border-right: 1px solid #d2c8c8; padding-top: 1%; padding-bottom: 0.5%; padding-right: 2%; padding-left: 2%;">
-				${merchant.m_name} </div>
+				店名：${model.m_name} </div>
 				<div
 				style="float: left; border-right: 1px solid #d2c8c8; padding-right: 1%; padding-left: 1%;width: 8%">
 				<input type="button" class="dianpuzhuye_button" onclick="CollectMerchant()" value="收藏店铺"></div>
@@ -532,7 +549,7 @@ ol .current {
 		</div>
 		<div class="headcenter">
 			<div class="one">店铺首页</div>
-			<div class="two">#店铺图片</div>
+			<div class="two">${model.m_name}</div>
 		</div>
 		<div class="head2">
 			<div class="head2di"></div>
@@ -541,13 +558,17 @@ ol .current {
 	</div>
 
 	<div class="kongge">
-		<div class="one" style="width: 66.8%; margin: 0 auto">商品轮播</div>
+		<div class="one" style="width: 59.2%; margin: 0 auto">商品轮播</div>
 		<div class="carousel content-main">
 			<ul class="list">
-				<s:iterator value="merchantProductTime" var="merchantProductTimes">
-					<li>
-						<img src='${fileImageAction.urlImage }${merchantProductTimes.p_image }'  style="width: 100%; height: 100%;"/> 
-					</li>
+				<s:iterator value="listTiemProduct" var="listTiemProducts" status="status">
+					<s:if test="#status == 6" >
+					</s:if>
+					<s:else>
+						<li>
+							<img onmouseover="mouseOver(this.id)" onmouseout="mouseOut(this.id)" id="lTP_${listTiemProducts.p_id }" onclick="queryProduct(${listTiemProducts.p_id })" src='${fileImageAction.urlImage }${listTiemProducts.p_image }'  style="width: 100%; height: 100%;"/> 
+						</li>
+					</s:else>
 				</s:iterator>
 			</ul>
 		</div>
@@ -568,7 +589,6 @@ ol .current {
 			Carousel.init($(".carousel"))
 
 			function animationIn(i) {
-				console.log(i, 'i\'m in')
 				switch (i) {
 				case 1:
 					$('.page2 h2').fadeIn();
@@ -582,7 +602,6 @@ ol .current {
 				case 3:
 					setTimeout(function() {
 						$('.page4 h2').addClass('ani')
-						console.log('hhh')
 					}, 0)
 					break;
 				default:
@@ -617,7 +636,7 @@ ol .current {
 		</div>
 
 		<div class="kongge">
-			<div class="center3">
+			<%-- <div class="center3">
 				<div class="one">商品列表</div>
 				<div class="three">
 					<div style="float: left;">
@@ -637,167 +656,50 @@ ol .current {
 					</div>
 					<iframe frameborder="0" scrolling="no" src="${pageContext.request.contextPath }/user/dianpuzhiye_lunbo.jsp" width="100%"
 						height="500px"></iframe>
-
+					
 				</div>
-			</div>
+			</div> --%>
 
 			<div class="center4">
 				<div id="left" class="left">
 					<div class="one">宝贝排行榜</div>
 					<div style="padding-bottom: 20%">
-						<div style="background-color: #EEE; width: 100%;">
-							<div class="as" id="as">销售量</div>
-							<div class="bs" id="bs">收藏数</div>
-							<div class="clear"></div>
-						</div>
 						<div class="dj1" id="dg1">
-							<div class="shangping">
-								<div >
-									<div style="border: #eee 1px solid;height: 76px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-										<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+							<s:iterator value="listHotProduct" var="listHotProducts" status="status">
+								<s:if test="#status == 5 || #status == 6">
+								
+								</s:if>
+								<s:else>
+									<div onmouseover="mouseOver(this.id)" onmouseout="mouseOut(this.id)" id="lhp_${listHotProducts.p_id }" class="shangping" onclick="queryProduct(${listHotProducts.p_id })">
+										<div >
+											<div style="border: #eee 1px solid;height: 76px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+												<img alt="" src="${fileImageAction.urlImage }${listHotProducts.p_image}" height="70%">
+											</div>
+										</div>
+										<div style="text-align: center;">
+											<a href="***">${listHotProducts.p_name}</a> <font color="red">¥${listHotProducts.p_price}</font><br />
+											已售出<font color="red">${listHotProducts.sale_volume}</font>件
+										</div>
+										<div class="clear"></div>
 									</div>
-								</div>
-								<div style="text-align: center;">
-									<a href="***">#商品名称</a> <font color="red">¥#商品价格</font><br />
-									已售出<font color="red">#商品出售量</font>件
-								</div>
-								<div class="clear"></div>
-							</div>
-							<div class="shangping">
-								<div >
-									<div style="border: #eee 1px solid;height: 76px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-										<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
-									</div>
-								</div>
-								<div style="text-align: center;">
-									<a href="***">#商品名称</a> <font color="red">¥#商品价格</font><br />
-									已售出<font color="red">#商品出售量</font>件
-								</div>
-								<div class="clear"></div>
-							</div>
-							<div class="shangping">
-								<div >
-									<div style="border: #eee 1px solid;height: 76px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-										<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
-									</div>
-								</div>
-								<div style="text-align: center;">
-									<a href="***">#商品名称</a> <font color="red">¥#商品价格</font><br />
-									已售出<font color="red">#商品出售量</font>件
-								</div>
-								<div class="clear"></div>
-							</div>
-							<div class="shangping">
-								<div >
-									<div style="border: #eee 1px solid;height: 76px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-										<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
-									</div>
-								</div>
-								<div style="text-align: center;">
-									<a href="***">#商品名称</a> <font color="red">¥#商品价格</font><br />
-									已售出<font color="red">#商品出售量</font>件
-								</div>
-								<div class="clear"></div>
-							</div>
+								</s:else>
+							</s:iterator>
 						</div>
-						<div class="dj2" id="dg2">
-							<div class="shangping">
-								<div style="float: left">#背景图片</div>
-								<div style="float: right">
-									<a href="***">#商品名称</a><br /> <font color="red">¥#商品价格</font><br />
-									已收藏<font color="red">#商品收藏量</font>件
-								</div>
-								<div class="clear"></div>
-							</div>
-
-							<div class="shangping">
-								<div style="float: left">#背景图片</div>
-								<div style="float: right">
-									<a href="***">#商品名称</a><br /> <font color="red">¥#商品价格</font><br />
-									已收藏<font color="red">#商品收藏量</font>件
-								</div>
-								<div class="clear"></div>
-							</div>
-							<div class="shangping">
-								<div style="float: left">#背景图片</div>
-								<div style="float: right">
-									<a href="***">#商品名称</a><br /> <font color="red">¥#商品价格</font><br />
-									已收藏<font color="red">#商品收藏量</font>件
-								</div>
-								<div class="clear"></div>
-							</div>
-							<div class="shangping">
-								<div style="float: left">#背景图片</div>
-								<div style="float: right">
-									<a href="***">#商品名称</a><br /> <font color="red">¥#商品价格</font><br />
-									已收藏<font color="red">#商品收藏量</font>件
-								</div>
-								<div class="clear"></div>
-							</div>
-						</div>
-
-
 					</div>
 				</div>
 				<div class="right" id="right">
 					<div class="one">宝贝推荐</div>
-
-					<div class="shangping2">
-						<div style="border: #eee 1px solid;height: 136px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-							<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
+					<s:iterator value="listTiemProduct" var="listTiemProducts">
+						<div onmouseover="mouseOver(this.id)" onmouseout="mouseOut(this.id)" id="ltp2_${listTiemProducts.p_id }" class="shangping2" onclick="queryProduct(${listTiemProducts.p_id })">
+							<div style="border: #eee 1px solid;height: 136px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
+								<img alt="" src="${fileImageAction.urlImage }${listTiemProducts.p_image}" height="70%">
+							</div>
+							<br /> <a href="***">${listTiemProducts.p_name}</a> <font color="red">${listTiemProducts.p_price}</font><br />
+							<div style="float: right">
+								<font color="#595959">月销:${listTiemProducts.sale_volume}</font>
+							</div>
 						</div>
-						<br /> <a href="***">#商品名称</a> <font color="red">#商品价格</font><br />
-						<div style="float: right">
-							<font color="#595959">月销:#商品销量</font>
-						</div>
-					</div>
-
-
-					<div class="shangping2">
-						<div style="border: #eee 1px solid;height: 136px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-							<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
-						</div>
-						<br /> <a href="***">#商品名称</a> <font color="red">#商品价格</font><br />
-						<div style="float: right">
-							<font color="#595959">月销:#商品销量</font>
-						</div>
-					</div>
-					<div class="shangping2">
-						<div style="border: #eee 1px solid;height: 136px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-							<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
-						</div>
-						<br /> <a href="***">#商品名称</a> <font color="red">#商品价格</font><br />
-						<div style="float: right">
-							<font color="#595959">月销:#商品销量</font>
-						</div>
-					</div>
-					<div class="shangping2">
-						<div style="border: #eee 1px solid;height: 136px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-							<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
-						</div>
-						<br /> <a href="***">#商品名称</a> <font color="red">#商品价格</font><br />
-						<div style="float: right">
-							<font color="#595959">月销:#商品销量</font>
-						</div>
-					</div>
-					<div class="shangping2">
-						<div style="border: #eee 1px solid;height: 136px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-							<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
-						</div>
-						<br /> <a href="***">#商品名称</a> <font color="red">#商品价格</font><br />
-						<div style="float: right">
-							<font color="#595959">月销:#商品销量</font>
-						</div>
-					</div>
-					<div class="shangping2">
-						<div style="border: #eee 1px solid;height: 136px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
-							<img alt="" src="${pageContext.request.contextPath }/images/products/ccc001.jpg" height="70%">
-						</div>
-						<br /> <a href="***">#商品名称</a> <font color="red">#商品价格</font><br />
-						<div style="float: right">
-							<font color="#595959">月销:#商品销量</font>
-						</div>
-					</div>
+					</s:iterator>
 					<div class="clear"></div>
 
 				</div>
