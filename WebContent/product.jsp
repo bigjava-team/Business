@@ -275,7 +275,7 @@
 		</div>
 		
 		<div class="product_div1_div3">
-			<div class="product_div1_div3_div1">
+			<div class="product_div1_div3_div1" style="cursor: pointer;">
 				<div class="product_div1_div3_div1_div1">
 					${merchant.m_name }
 				</div>
