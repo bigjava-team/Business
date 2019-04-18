@@ -72,9 +72,20 @@ public class ProductAction extends ActionSupport {
 	private List<Product> listCategoryProduct;
 	// 查询出二级分类的商品
 	private List<Product> listCategorySecondProduct;
+	
+	// 查询出的二级分类
+	private List<CategorySecond> listCategorySecond;
 
 	private FileImageAction fileImageAction;
 	
+	public List<CategorySecond> getListCategorySecond() {
+		return listCategorySecond;
+	}
+
+	public void setListCategorySecond(List<CategorySecond> listCategorySecond) {
+		this.listCategorySecond = listCategorySecond;
+	}
+
 	public void setUserBiz(UserBiz userBiz) {
 		this.userBiz = userBiz;
 	}
@@ -421,6 +432,9 @@ public class ProductAction extends ActionSupport {
 	public String queryAllCategory() {
 		System.out.println("通过一级分类查询商品");
 		listCategoryProduct = categoryBiz.queryC_idCategoryProduct(category.getC_id(), paging.getPresentPage());
+		category = categoryBiz.queryCategoryById(category.getC_id());
+		
+		listCategorySecond = categorySecondBiz.cIdQueryCategorySecond(category.getC_id());
 		if (listCategoryProduct == null) {
 			System.out.println("没有此类审商品");
 		}
@@ -432,6 +446,10 @@ public class ProductAction extends ActionSupport {
 		System.out.println("通过二级分类查询商品");
 		listCategoryProduct = categorySecondBiz.cs_idQueryAllCategorySecondProduct(categorySecond.getCs_id(),
 				paging.getPresentPage());
+		CategorySecond categorySeconds = categorySecondBiz.queryCategorySecond(categorySecond.getCs_id());
+		
+		category = categoryBiz.queryCategoryById(categorySeconds.getCategory().getC_id());
+		listCategorySecond = categorySecondBiz.cIdQueryCategorySecond(category.getC_id());
 		return "cs_idQueryAllCategorySecond";
 	}
 
