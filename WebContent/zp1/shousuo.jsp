@@ -257,8 +257,7 @@
 	
 	<!--板块2-->
 	<div id="d" class="contenttwo">
-		<img src="${pageContext.request.contextPath }/zp1/images/logo.png"
-			height="100%" width="13%" align="left"> <img
+		<a href="index_showAll.action?method=post&loginUser.username=${loginUser.username }"><img src="${pageContext.request.contextPath }/images/logo.jpg" height="60px" width="240px" align="left"></a> <img
 			src="${pageContext.request.contextPath }/zp/images/5.png"
 			height="100%" width="13%" align="right"> <img
 			src="${pageContext.request.contextPath }/zp/images/6.png"

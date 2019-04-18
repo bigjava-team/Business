@@ -140,8 +140,7 @@
 	</div>
 	
 	<!--板块2-->
-    <div class="contenttwo" style="margin-left: 13%; margin-right: 13%;">
-		<img src="${pageContext.request.contextPath }/images/logo.jpg" height="60px" width="240px" align="left">
+    <div class="contenttwo" style="margin-left: 13%; margin-right: 13%;"><a href="index_showAll.action?method=post&loginUser.username=${loginUser.username }"><img src="${pageContext.request.contextPath }/images/logo.jpg" height="60px" width="240px" align="left"></a><img src="${pageContext.request.contextPath }/images/logo.jpg" height="60px" width="240px" align="left">
 		<div class="search bar7">
 			<form id="contenttwo_form" action="index_searchTextQueryProduct?paging.presentPage=1"
 				method="post">
