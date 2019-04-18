@@ -253,8 +253,7 @@
 			src="${pageContext.request.contextPath }/zp/images/6.png"
 			height="100%" width="13%" align="right">
 		<div class="search bar7">
-			<form action="index_searchTextQueryProduct?paging.presentPage=1"
-				method="post">
+			<form action="index_searchTextQueryProduct?paging.presentPage=1" method="post">
 				<input type="hidden" name="loginUser.username"
 					value="${loginUser.username }" /> <input name="searchText"
 					type="text" placeh5older="欢迎来到光光网...">

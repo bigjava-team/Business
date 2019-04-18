@@ -141,4 +141,11 @@ public class CategorySecondDaoImpl extends HibernateDaoSupport implements Catego
 		return query.list();
 	}
 
+	// 通过一级分类id查询所有二级分类
+	@Override
+	public List<CategorySecond> cIdQueryCategorySecond(int c_id) {
+		List<CategorySecond> listCategory = this.getHibernateTemplate().find("from CategorySecond where c_id = ?", c_id);
+		return listCategory;
+	}
+
 }

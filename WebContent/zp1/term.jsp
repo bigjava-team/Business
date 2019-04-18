@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
  <html>
  
   <style type="text/css">
@@ -13,28 +14,11 @@
  </style>
  
 <div id="c" class="wenziz11">
-<div class="contentone68" >分类</div>
+<div class="contentone68" >${category.c_name }</div>
 <div class="title" style="width:90%;" >
-<a class="contentone69" href="#">男衣</a>
-<a class="contentone69" href="#">男鞋</a>
-<a class="contentone69" href="#">男裤</a>
-<a class="contentone69" href="#">男士外套</a>
-<a class="contentone69" href="#">男士西装</a>
-<a class="contentone69" href="#">男士内裤</a>
-<a class="contentone69" href="#">男士袜子</a>
-<a class="contentone69" href="#">  </a>
-<a class="contentone69" href="#">  </a>
-<a class="contentone69" href="#">  </a>
-<a class="contentone69" href="#">女衣</a>
-<a class="contentone69" href="#">女鞋</a>
-<a class="contentone69" href="#">女裤</a>
-<a class="contentone69" href="#">女士外套</a>
-<a class="contentone69" href="#">女士裙子</a>
-<a class="contentone69" href="#">女士内裤</a>
-<a class="contentone69" href="#">女士袜子</a>
-<a class="contentone69" href="#">  </a>
-<a class="contentone69" href="#">  </a>
-<a class="contentone69" href="#">  </a>
+	<s:iterator value="listCategorySecond" var="LCS">
+		<a class="contentone69" href="#"><s:property value="#LCS.cs_name" /></a>
+	</s:iterator>
 </div>
 </div>
 	

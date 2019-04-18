@@ -64,4 +64,9 @@ public interface CategorySecondDao {
 	 * 模糊分页查询商品内容
 	 */
 	public List<Product> searchTextQueryProduct(String searchText,int presentPage);
+	
+	/**
+	 * 通过一级分类id查询所有二级分类
+	 */
+	public List<CategorySecond> cIdQueryCategorySecond(int c_id);
 }

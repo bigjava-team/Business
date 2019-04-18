@@ -88,4 +88,11 @@ public class CategorySecondBizImpl implements CategorySecondBiz {
 		return categorySecondDao.searchTextQueryProduct(searchText, presentPage);
 	}
 
+	// 通过一级分类id查询所有二级分类
+	@Override
+	public List<CategorySecond> cIdQueryCategorySecond(int c_id) {
+		// TODO Auto-generated method stub
+		return categorySecondDao.cIdQueryCategorySecond(c_id);
+	}
+
 }
