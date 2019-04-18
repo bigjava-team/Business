@@ -221,6 +221,6 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
 	// 购买商品减少库存、增加月销量
 	@Override
 	public void payProductUpdateVolumeRepertory(Product product) {
-		this.getHibernateTemplate().update(product);
+		this.getHibernateTemplate().merge(product);
 	}
 }

@@ -35,7 +35,13 @@
 			return false;
 		}
 		var username = "${loginUser.username }";
-		window.location.href = "paymentOrders_payOrders?method=post&out_trade_no="+orderNumber+"&total_amount="+total+"&subject="+productName+"&addr.a_id="+addrId+"&loginUser.username="+username;
+		
+		var buy = '${buy}';
+		if (buy == "立即购买") {
+			window.location.href="";
+		} else {
+			window.location.href="paymentOrders_payOrders.action?method=post&out_trade_no="+orderNumber+"&total_amount="+total+"&subject="+productName+"&addr.a_id="+addrId+"&loginUser.username="+username;
+		}
 	}
 	
 	$(function(){
@@ -49,6 +55,30 @@
 	function remove() {
 		window.location.href = "User_close.action";
 	}
+	
+	// 选择收货地址
+	function selectAddr() {
+		var dizhi = $("input[name='dizhi']:checked").val();
+		var address = $("#address_"+dizhi).html();
+		var username = $("#username_"+dizhi).html();
+		var phone = $("#phone_"+dizhi).html();
+		$("#shipping_address").text(address);
+		$("#consignee_phone").text(username+" "+phone);
+	}
+	
+	$(function() {
+		var dizhi = $("input[name='dizhi']:checked").val();
+		var address = $("#address_"+dizhi).html();
+		var username = $("#username_"+dizhi).html();
+		var phone = $("#phone_"+dizhi).html();
+		if (dizhi != null) {
+			$("#shipping_address").text(address);
+			$("#consignee_phone").text(username+" "+phone);
+			return;
+		}
+		$("#shipping_address").hide();
+		$("#consignee_phone").hide();
+	});
 </script>
 </head>
 <body id="cart_body">
@@ -190,8 +220,13 @@
 				寄送至：
 			</div>
 			<div style="color: #3C3C3C; margin-left: 8%; padding-bottom: 8px;">
-				<s:iterator value="listAddr" var="listAddrs">
-					<input type="radio" name="dizhi" value="${listAddrs.a_id }">${listAddrs.address } (${listAddrs.a_name } 收) ${listAddrs.a_phone }<br />
+				<s:iterator value="listAddr" var="listAddrs" status="status">
+					<s:if test="#status.first">
+						<input checked="checked" onclick="selectAddr()" type="radio" name="dizhi" value="${listAddrs.a_id }" /><span id="address_${listAddrs.a_id }">${listAddrs.address }</span> (<span id="username_${listAddrs.a_id }">${listAddrs.a_name }</span> 收) <span id="phone_${listAddrs.a_id }">${listAddrs.a_phone }</span><br />
+					</s:if>
+					<s:else>
+						<input onclick="selectAddr('${listAddrs.address }')" type="radio" name="dizhi" value="${listAddrs.a_id }"><span id="address_${listAddrs.a_id }">${listAddrs.address }</span> (<span id="username_${listAddrs.a_id }">${listAddrs.a_name }</span> 收) <span id="phone_${listAddrs.a_id }">${listAddrs.a_phone }</span><br />
+					</s:else>
 				</s:iterator>
 			</div>
 		</div>
@@ -249,11 +284,11 @@
 				</div>
 				<div>
 					<font style="font-size: 14px; font-weight: bold;">寄送至：</font>
-					<font style="font-size: 14px; font-weight: normal;">江西省 南昌市 南昌县 昌东镇 紫阳大道318号江西制造职业技术学院</font>
+					<font style="font-size: 14px; font-weight: normal;" id="shipping_address"></font>
 				</div>
 				<div>
 					<font style="font-size: 14px; font-weight: bold;">收货人：</font>
-					<font style="font-size: 14px; font-weight: normal;">${orders.user.username } ${orders.user.phone } </font>
+					<font style="font-size: 14px; font-weight: normal;" id="consignee_phone"></font>
 				</div>
 			</div>
 		</div>

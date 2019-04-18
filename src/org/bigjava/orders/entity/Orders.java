@@ -29,6 +29,18 @@ public class Orders {
 	private User user;// 多对一指向用户类
 	
 	private Set<Orderitem> setOrderItem = new HashSet<Orderitem>();
+	
+	public Orders() {
+		super();
+	}
+
+	public Orders(int o_id, String orderNumber, double total, Date ordertime, int state) {
+		this.o_id = o_id;
+		this.orderNumber = orderNumber;
+		this.total = total;
+		this.ordertime = ordertime;
+		this.state = state;
+	}
 
 	public String getOrderNumber() {
 		return orderNumber;

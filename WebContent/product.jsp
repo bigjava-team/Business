@@ -34,7 +34,13 @@
 	/* 立即购买 */
 	function lijigoumai(){
 		var f = document.getElementById("product_div1_div2_form");
-		f.action = "order.jsp";
+		var username = '${loginUser.username}';
+		var p_id = '${product.p_id }';
+		if (username == null || username == "") {
+			alert("请先登录账号");
+			return false;
+		}
+		f.action = "orders_goBuy?loginUser.username="+username+"&product.p_id="+p_id+"&paging.presentPage=1";
 	}
 	
 	/* 加入购物车 */
@@ -43,9 +49,10 @@
 		var p_id = '${product.p_id }';
 		if (username == null || username == "") {
 			alert("请先登录账号");
+			return false;
 		}
 		var f = document.getElementById("product_div1_div2_form");
-		f.action =  f.action + "?loginUser.username="+username+"&product.p_id="+ p_id +"&orderitem.count=1"+"&paging.presentPage=0";
+		f.action =  f.action + "?loginUser.username="+username+"&product.p_id="+ p_id +"&orderitem.count=1"+"&paging.presentPage=1";
 	}
 	
 	/* 点击小图片，小图片显示到商品大图片区域 */

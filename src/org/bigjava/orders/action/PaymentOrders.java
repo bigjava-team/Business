@@ -118,11 +118,10 @@ public class PaymentOrders extends ActionSupport {
 		
 		List<Orderitem> listOrderitem = orderItemBiz.queryAllOrderitem_o_id(orders.getO_id());
 		for (int i=0; i<listOrderitem.size(); i++) {
-			int item_id = listOrderitem.get(i).getItem_id();
-			Product product = productBiz.csIdQueryProduct(item_id);
-			product.setSale_volume(product.getSale_volume()-1);
-			product.setP_repertory(product.getP_repertory()+1);
-			productBiz.payProductUpdateVolumeRepertory(product);
+			Product products = listOrderitem.get(i).getProduct();
+			products.setSale_volume(products.getSale_volume()+1);
+			products.setP_repertory(products.getP_repertory()-1);
+			productBiz.payProductUpdateVolumeRepertory(products);
 		}
 		return "payOrders";
 	}
