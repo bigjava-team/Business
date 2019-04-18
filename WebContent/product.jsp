@@ -348,7 +348,7 @@
 			<hr />
 			<div class="product_div2_leftDiv_d5">
 				<s:iterator value="listProductTime" var="listProductTimes">
-					<div class="product_div2_leftDiv_d5_d1" style="padding-bottom: 12px;" onclick="queryProduct('${listProductTimes.p_id }')">
+					<div class="product_div2_leftDiv_d5_d1" style="padding-bottom: 12px; cursor: pointer;" onclick="queryProduct('${listProductTimes.p_id }')">
 						<div class="product_div2_leftDiv_d5_d1_d1" style="height: 70px;">
 							<img alt="${listProductTimes.p_image }"  src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="60%" style="position: relative; top: 50%; left: 30%; transform: translate(-50%,-50%);">
 						</div>
@@ -372,7 +372,7 @@
 			
 			<div class="product_div2_leftDiv_d5">
 				<s:iterator value="listProductHot" var="listProductHots" >
-					<div class="product_div2_leftDiv_d5_d1" style="padding-bottom: 12px;" onclick="queryProduct('${listProductHots.p_id }')">
+					<div class="product_div2_leftDiv_d5_d1" style="padding-bottom: 12px; cursor: pointer;" onclick="queryProduct('${listProductHots.p_id }')">
 						<div class="product_div2_leftDiv_d5_d1_d1" style="height: 65px;">
 							<img alt="${listProductHots.p_image }"  src="${fileImageAction.urlImage }${listProductHots.p_image }" width="70%">
 						</div>

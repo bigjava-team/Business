@@ -52,7 +52,7 @@
 		<s:iterator value="productList" var="product"  status="status" >
 			<tr id="admin_list_tr2" onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
 				<td align="center"><s:property value="#product.p_id"/></td>
-				<td align="center"><img src='${fileImageAction.urlImage }<s:property value="#product.p_image"/>' /></td>
+				<td align="center"><img src='${fileImageAction.urlImage }<s:property value="#product.p_image"/>' height="50px"/></td>
 				<td align="center"><s:property value="#product.p_name"/></td>
 				<td align="center"><s:property value="#product.p_price"/></td>
 				<td align="center"><s:property value="#product.sale_volume"/></td>

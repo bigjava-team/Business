@@ -634,7 +634,7 @@ function hideDiv(){
 						</form>
 						</div>
 						<div class="cc">
-							<br /> 您已绑定邮箱:<font color="red">${sessionScope.loginUser.email}</font><br /> <br />
+							<br /> 您已绑定邮箱:<font color="red">${loginUser.email}</font><br /> <br />
 							开店类型必须与邮箱认证类型一致，否则可能无法创建店铺。<br /> <br />
 						</div>
 
@@ -660,13 +660,6 @@ function hideDiv(){
 									</font></td>
 									<td>登录成功</td>
 									<td>${loginUser.email}</td>
-								</tr>
-
-								<tr>
-									<td class="tr1">店铺类型认证</td>
-									<td class="tr1">#后台状况</td>
-									<td class="tr1">#审核君审核中 or <font color="green">#已通过</font></td>
-									<td class="tr1">个人店铺</td>
 								</tr>
 
 							</table>

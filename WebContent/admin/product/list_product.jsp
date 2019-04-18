@@ -57,7 +57,13 @@
 				<td class="admin_form1_table_tr_td1" align="center">月销售量</td>
 				<td class="admin_form1_table_tr_td3" align="center"><s:property value="product.sale_volume"/> </td>
 				<td class="admin_form1_table_tr_td7" align="center">是否热门</td>
-				<td class="admin_form1_table_tr_td3" align="center">是</td>
+				<td class="admin_form1_table_tr_td3" align="center">
+
+				<s:if test="#product.sale_volume >100">
+					是
+				</s:if>
+				<s:else>否</s:else>
+				</td>
 			</tr>
 			
 			<tr id="admin_list_tr3">
@@ -65,7 +71,7 @@
 				<td class="admin_form1_table_tr_td5" colspan="3" align="center"><s:property value="product.p_desc"/> </td>
 			</tr>
 			
-			<tr id="admin_list_tr2">
+			<%-- <tr id="admin_list_tr2">
 				<td class="admin_form1_table_tr_td1" align="center">商品详情图片</td>
 				<td class="admin_form1_table_tr_td8" colspan="3" align="center">
 					<img alt="商品图片"  src="${pageContext.request.contextPath }/images/merchant/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100px;" height="100px;">
@@ -75,7 +81,7 @@
 					<img alt="商品图片"  src="${pageContext.request.contextPath }/images/merchant/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100px;" height="100px;">
 					<img alt="商品图片"  src="${pageContext.request.contextPath }/images/merchant/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" width="100px;" height="100px;">
 				</td>
-			</tr>
+			</tr> --%>
 		</table>
 	</form>
 	
