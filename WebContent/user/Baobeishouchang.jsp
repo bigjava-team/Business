@@ -90,11 +90,15 @@
 					<div style="height: 200px;width: 80%;margin: 0 auto;text-align: center;" >
 						<img alt="" src="${fileImageAction.urlImage }${LCPs.product.p_image }" height="80%">
 					</div>
-					<div style="float: left;margin-left: 13%;">
-				商品名字:${LCPs.product.p_name }<br/>
+					
+					<div style="float: left;margin-left: 13%;font-family: cursive;line-height: 180%;width: 95%">
+					<div style="height: 58px;">
+				商品名字:${LCPs.product.p_name }shouji手机shouji手机shouji手机shouji手机<br/>
+					</div>
 				<font color="red">商品价格:${LCPs.product.p_price }</font>
 					</div>
-					<div style="float: right;margin-right: 9%;">
+					<div style="clear: both;"></div> 
+					<div style="float: right;margin-right: 9%;font-family: cursive;line-height: 180%">
 				商品销量:${LCPs.product.sale_volume }
 				</div>
 				<div style="clear: both;"></div> 

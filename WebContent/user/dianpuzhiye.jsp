@@ -230,7 +230,7 @@ body {
 }
 
 .shangping2 a {
-	color: black;
+	color: #7B7B7B;
 	text-decoration: none;
 }
 
@@ -694,7 +694,7 @@ ol .current {
 							<div style="border: #eee 1px solid;height: 136px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
 								<img alt="" src="${fileImageAction.urlImage }${listTiemProducts.p_image}" height="70%">
 							</div>
-							<br /> <a href="***">${listTiemProducts.p_name}</a> <font color="red">${listTiemProducts.p_price}</font><br />
+							<br /> <a href="***">${listTiemProducts.p_name}</a> <font color="red" size="5px">￥${listTiemProducts.p_price}</font><br />
 							<div style="float: right">
 								<font color="#595959">月销:${listTiemProducts.sale_volume}</font>
 							</div>

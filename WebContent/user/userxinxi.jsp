@@ -864,8 +864,8 @@ function show1(id){
 								<div style="border: #eee 1px solid;height: 200px;width: 80%;margin: 0 auto;display: flex;justify-content: center;align-items: center;" >
 									<img alt="" src="${fileImageAction.urlImage }<s:property value='#listProducts.p_image'/>" height="100%" width="100%">
 								</div>
-								<font><s:property value='#listProducts.p_name'/></font><br /> 
-								<font color="red"><s:property value='#listProducts.p_price'/></font><br /> 
+								<font color="#7B7B7B"><s:property value='#listProducts.p_name'/></font><br /> 
+								<font color="red" size="5px">￥<s:property value='#listProducts.p_price'/></font><br /> 
 								<div style="float: right">
 									<font color="#595959">月销:<s:property value='#listProducts.sale_volume'/></font>
 								</div>
