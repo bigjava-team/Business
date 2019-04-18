@@ -83,7 +83,7 @@ public class CategoryDaoImpl extends HibernateDaoSupport implements CategoryDao 
 			return null;
 		}
 		System.out.println("查询到的商品" + listProduct);
-		Paging paging = new Paging(presentPage, listProduct.size(), 10);
+		Paging paging = new Paging(presentPage, listProduct.size(), 12);
 		int chu = listProduct.size()/paging.getPagesize();
 		int yu = listProduct.size()%paging.getPagesize();
 		if (yu==0) {

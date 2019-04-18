@@ -3,6 +3,7 @@ package org.bigjava.category.biz;
 import java.util.List;
 
 import org.bigjava.category.entity.Category;
+import org.bigjava.function.Paging;
 import org.bigjava.product.entity.Product;
 
 /**
@@ -41,5 +42,5 @@ public interface CategoryBiz {
 	 * 通过一级分类id分页查询一级分类商品
 	 */
 	public List<Product> queryC_idCategoryProduct(int c_id,int presentPage);
-
+	
 }

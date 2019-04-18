@@ -17,7 +17,7 @@
 <div class="contentone68" >${category.c_name }</div>
 <div class="title" style="width:90%;" >
 	<s:iterator value="listCategorySecond" var="LCS">
-		<a class="contentone69" href="#"><s:property value="#LCS.cs_name" /></a>
+		<a class="contentone69" href="index_cs_idQueryAllCategorySecond.action?method=post&categorySecond.cs_id=<s:property value='#LCS.cs_id' />&paging.presentPage=1&loginUser.username=${loginUser.username}" id="CS_<s:property value='#LCS.cs_id'/>"><s:property value="#LCS.cs_name" /></a>
 	</s:iterator>
 </div>
 </div>

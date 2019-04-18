@@ -38,6 +38,7 @@
 		var p_id = '${product.p_id }';
 		if (username == null || username == "") {
 			alert("请先登录账号");
+			f.action = "user/login.jsp";
 			return false;
 		}
 		f.action = "orders_goBuy?loginUser.username="+username+"&product.p_id="+p_id+"&paging.presentPage=1";
@@ -47,11 +48,12 @@
 	function jiarucar(){
 		var username = '${loginUser.username}';
 		var p_id = '${product.p_id }';
+		var f = document.getElementById("product_div1_div2_form");
 		if (username == null || username == "") {
 			alert("请先登录账号");
+			f.action = "user/login.jsp";
 			return false;
 		}
-		var f = document.getElementById("product_div1_div2_form");
 		f.action =  f.action + "?loginUser.username="+username+"&product.p_id="+ p_id +"&orderitem.count=1"+"&paging.presentPage=1";
 	}
 	

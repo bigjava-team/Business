@@ -117,25 +117,30 @@ public class CategorySecondDaoImpl extends HibernateDaoSupport implements Catego
 	
 	// 分页查询二级分类对应的商品
 	@Override
-	public List<Product> cs_idQueryAllCategorySecondProduct(int cs_id,int presentPage) {
+	public List<Product> cs_idQueryAllCategorySecondProduct(int cs_id, Paging paging) {
 		// TODO Auto-generated method stub
 		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
 		Query query = session.createQuery("from Product where cs_id=?").setInteger(0, cs_id);
 		System.out.println("数量"+query.list().size());
-		Paging paging = new Paging(presentPage, query.list().size(), 10);
 		query.setFirstResult(paging.getStart());
 		query.setMaxResults(paging.getPagesize());
 		return query.list();
 	}
+	
+	// 分页查询二级分类对应的商品数量
+	@Override
+	public int cs_idQueryAllCategorySecondProductNumber(int cs_id) {
+		List<Long> listNumber = this.getHibernateTemplate().find("select count(*) from Product where cs_id=?", cs_id);
+		return listNumber.size()!=0 ? listNumber.get(0).intValue() : 0;
+	}
 
 	// 模糊分页查询商品信息
 	@Override
-	public List<Product> searchTextQueryProduct(String searchText, int presentPage) {
+	public List<Product> searchTextQueryProduct(String searchText, Paging paging) {
 		// TODO Auto-generated method stub
 		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
 		Query query = session.createQuery("from Product where p_name like ?").setString(0, "%"+searchText+"%");
 		System.out.println("数量"+query.list().size());
-		Paging paging = new Paging(presentPage, query.list().size(), 10);
 		query.setFirstResult(paging.getStart());
 		query.setMaxResults(paging.getPagesize());
 		return query.list();
@@ -146,6 +151,13 @@ public class CategorySecondDaoImpl extends HibernateDaoSupport implements Catego
 	public List<CategorySecond> cIdQueryCategorySecond(int c_id) {
 		List<CategorySecond> listCategory = this.getHibernateTemplate().find("from CategorySecond where c_id = ?", c_id);
 		return listCategory;
+	}
+
+	@Override
+	public int searchTextQueryProductNumber(String searchText) {
+		// TODO Auto-generated method stub
+		List<Long> listNumber = this.getHibernateTemplate().find("select count(*) from Product where p_name like ?", "%"+searchText+"%");
+		return listNumber.size()!=0 ? listNumber.get(0).intValue() : 0;
 	}
 
 }
