@@ -523,7 +523,7 @@
 							猜你喜欢
 						</div>
 						<s:iterator value="listAllLikeProduct" var="listAllLikeProducts">
-							<div class="cainilike" style="background: #FFF; width: 50%;border: 1px solid blue; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
+							<div class="cainilike" style="background: #FFF; width: 50%;border: 1px solid #E0E0E0; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-left: -1px; margin-bottom: 12%; cursor: pointer;">
 								<div style="margin-left: 12%; margin-top: 6%; margin-right: 6%; height: 103px;">
 									<img alt="商品图片"  src="${fileImageAction.urlImage }${listAllLikeProducts.p_image }" width="100%">
 								</div>
