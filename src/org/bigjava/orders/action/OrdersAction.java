@@ -3,7 +3,9 @@ package org.bigjava.orders.action;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.bigjava.addr.biz.AddrBiz;
 import org.bigjava.addr.entity.Addr;
@@ -36,15 +38,42 @@ public class OrdersAction {
 	private FileImageAction fileImageAction;
 	// 模糊搜索的值
 	private String searchText;
+	// 商品类
+	private Product product;
+	// 订单项类
+	private Orderitem orderitem;
 	
 	private OrdersBiz ordersBiz;
 	private OrderItemBiz orderItemBiz;
 	private UserBiz userBiz;
 	private AddrBiz addrBiz;
+	private ProductBiz productBiz;
 	
 	private List<Orders> listOrders;// 订单表内容
 	private List<Addr> listAddr;// 用户的收货地址
 	
+	private String buy;// 判定为立即购买
+	
+	public String getBuy() {
+		return buy;
+	}
+
+	public void setBuy(String buy) {
+		this.buy = buy;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public void setProductBiz(ProductBiz productBiz) {
+		this.productBiz = productBiz;
+	}
+
 	public String getSearchText() {
 		return searchText;
 	}
@@ -199,6 +228,7 @@ public class OrdersAction {
 	
 	// 通过订单id获取订单信息，进行付款
 	public String idQueryOrdersPayment() {
+		buy = "";
 		orders = ordersBiz.queryOrders_id(orders.getO_id());
 		loginUser = userBiz.queryUsernameUser(loginUser.getUsername());
 		int number = addrBiz.queryAllAddrNumber(loginUser);
@@ -207,4 +237,41 @@ public class OrdersAction {
 		return "idQueryOrdersPayment";
 	}
 	
+	
+	// 立即购买
+	public String goBuy() {
+		System.out.println("立即购买");
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		String orderNumber = sdf.format(date) + System.currentTimeMillis();// 订单编号
+		
+		orders = new Orders(0, orderNumber, 0, new Date(), 0);
+		
+		product = productBiz.queryProduct_id(product.getP_id());
+		loginUser = userBiz.queryUsernameUser(loginUser.getUsername());
+		orders.setUser(loginUser);
+		
+		// 订单项的内容
+		orderitem = new Orderitem(loginUser, product, null);
+		orderitem.setCount(1);
+		orderitem.setSubtotal(product.getP_price()*orderitem.getCount());
+		Set<Orderitem> setOrderItem = new HashSet<Orderitem>();
+		setOrderItem.add(orderitem);
+		// 订单的内容
+		orders.setSetOrderItem(setOrderItem);
+		orders.setTotal(orderitem.getSubtotal());
+		
+		int number = addrBiz.queryAllAddrNumber(loginUser);
+		paging = new Paging(paging.getPresentPage(), number, 5);
+		listAddr = addrBiz.queryAllAddr(paging, loginUser);
+		
+		buy = "立即购买";
+		return "goBuy";
+	}
+	
+	// 立即购买添加至订单项、订单
+	public String addOrderitemOrders() {
+		
+		return "addOrderitemOrders";
+	}
 }
