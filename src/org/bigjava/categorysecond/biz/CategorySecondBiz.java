@@ -55,12 +55,22 @@ public interface CategorySecondBiz {
 	/**
 	 * 分页查询二级分类对应的商品
 	 */
-	public List<Product> cs_idQueryAllCategorySecondProduct(int cs_id,int presentPage);
+	public List<Product> cs_idQueryAllCategorySecondProduct(int cs_id,Paging paging);
+	
+	/**
+	 * 分页查询二级分类对应的商品数量
+	 */
+	public int cs_idQueryAllCategorySecondProductNumber(int cs_id);
 	
 	/**
 	 * 模糊分页查询商品内容
 	 */
-	public List<Product> searchTextQueryProduct(String searchText,int presentPage);
+	public List<Product> searchTextQueryProduct(String searchText,Paging paging);
+	
+	/**
+	 * 模糊分页查询商品内容数量
+	 */
+	public int searchTextQueryProductNumber(String searchText);
 	
 	/**
 	 * 通过一级分类id查询所有二级分类

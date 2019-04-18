@@ -76,23 +76,35 @@ public class CategorySecondBizImpl implements CategorySecondBiz {
 
 	// 分页查询二级分类对应的商品
 	@Override
-	public List<Product> cs_idQueryAllCategorySecondProduct(int cs_id, int presentPage) {
+	public List<Product> cs_idQueryAllCategorySecondProduct(int cs_id, Paging paging) {
 		// TODO Auto-generated method stub
-		return categorySecondDao.cs_idQueryAllCategorySecondProduct(cs_id, presentPage);
+		return categorySecondDao.cs_idQueryAllCategorySecondProduct(cs_id, paging);
 	}
 
 	// 模糊分页查询商品内容
 	@Override
-	public List<Product> searchTextQueryProduct(String searchText, int presentPage) {
+	public List<Product> searchTextQueryProduct(String searchText,Paging paging) {
 		// TODO Auto-generated method stub
-		return categorySecondDao.searchTextQueryProduct(searchText, presentPage);
+		return categorySecondDao.searchTextQueryProduct(searchText, paging);
 	}
 
+	// 模糊分页查询商品内容数量
+	@Override
+	public int searchTextQueryProductNumber(String searchText) {
+		return categorySecondDao.searchTextQueryProductNumber(searchText);
+	}
+	
 	// 通过一级分类id查询所有二级分类
 	@Override
 	public List<CategorySecond> cIdQueryCategorySecond(int c_id) {
 		// TODO Auto-generated method stub
 		return categorySecondDao.cIdQueryCategorySecond(c_id);
+	}
+
+	@Override
+	public int cs_idQueryAllCategorySecondProductNumber(int cs_id) {
+		// TODO Auto-generated method stub
+		return categorySecondDao.cs_idQueryAllCategorySecondProductNumber(cs_id);
 	}
 
 }

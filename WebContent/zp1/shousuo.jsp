@@ -198,7 +198,7 @@
 	
 	function queryProduct(id) {
 		var username = '${loginUser.username }';
-		window.open("Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0");
+		window.open("Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=1");
 	}
 	
 	$(function(){
@@ -207,7 +207,18 @@
 		}, function(){
 			 $(this).removeClass("cainilikeJQuery01");
 		})
-	})
+		
+		var cs_id = '${categorySecond.cs_id}';
+		$("#CS_"+cs_id).css({
+			"background-color": "rgba(247,129,125,0.6)",
+		});
+		
+		var searchText = '${searchText}';
+		if (searchText!="") {
+			$("#q").hide();
+			$("#br").hide();
+		}
+	});
 </script>
 <body style="margin: 0px; padding: 0px;">
 
@@ -263,7 +274,7 @@
 	<!--板块3-->
 	<div style="height: 3%; border-top: 1px solid #d0d0d0;"></div>
 	<div class="main">
-		<div id="q" class="contentthree ">
+		<div id="q" class="contentthree">
 			<%@ include file="term.jsp"%>
 			<br class="clear" />
 		</div>
@@ -272,12 +283,11 @@
 		<img src="${pageContext.request.contextPath }/zp1/images/55.png" height="10%" width="100%" />
 	</div> --%>
 
-	<div style="height:3%; border-top: 1px solid #d0d0d0;"></div>
+	<div style="height:3%; border-top: 1px solid #d0d0d0;" id="br"></div>
 	
 	<!--板块5-->
 	
 	<div class="content5">
-		
 		<div class="content">
 			<div class="aa">
 			<!--1-->
@@ -296,38 +306,40 @@
 						<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
 							销量:${listCategoryProducts.sale_volume }
 						</div>
-				</div>
-			</s:iterator>
+					</div>
+				</s:iterator>
+			</div>
 		</div>
-		<div class="aa">
-		</div>
-		<div class="aa">男裤</div>
-		<div class="aa">男士外套 </div>
-		<div class="aa">男士西装 </div>
-		<div class="aa">男士内裤 </div>
-		<div class="aa">男士袜子 </div>
-		<div class="aa"></div>
-		<div class="aa"></div>
-		<div class="aa"></div>
-		<div class="aa">女衣     </div>
-		<div class="aa">女鞋     </div>
-		<div class="aa">女裤     </div>
-		<div class="aa">女士外套 </div>
-		<div class="aa">女士裙子 </div>
-		<div class="aa">女士内裤 </div>
-		<div class="aa">女士袜子 </div>
-		<div class="aa"></div>
-		<div class="aa"></div>
-	</div>
 </div>
 <br class="clear">
 </div>
 	<div id="admin_list_div_page" style="width: 100%; font-size: 15px; text-align: center; padding: 8px 0px 0px 0px;">
-		第<s:property value="pageBean.page"/>页/<s:property value="pageBean.totalPage"/>页&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="${pageContext.request.contextPath }/">首页</a>
-		<a href="${pageContext.request.contextPath }/">上一页</a>
-		<a href="${pageContext.request.contextPath }/">下一页</a>
-		<a href="${pageContext.request.contextPath }/">尾页</a>
+		<s:if test="paging.page != 0">
+			<s:if test="checkPage == 1">
+				第${paging.presentPage }页/2页&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="${pageContext.request.contextPath }/index_cs_idQueryAllCategorySecond?method=post&loginUser.username=${loginUser.username }&paging.presentPage=1&categorySecond.cs_id=${categorySecond.cs_id }">首页</a>
+				<a href="${pageContext.request.contextPath }/index_cs_idQueryAllCategorySecond?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage-1 }&categorySecond.cs_id=${categorySecond.cs_id }">上一页</a>
+				<a href="${pageContext.request.contextPath }/index_cs_idQueryAllCategorySecond?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage+1 }&categorySecond.cs_id=${categorySecond.cs_id }">下一页</a>
+				<a href="${pageContext.request.contextPath }/index_cs_idQueryAllCategorySecond?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.page }&categorySecond.cs_id=${categorySecond.cs_id }">尾页</a>
+			</s:if>
+			<s:elseif test="checkPage == 2">
+				第${paging.presentPage }页/${paging.page }页&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="${pageContext.request.contextPath }/index_cs_idQueryAllCategorySecond?method=post&loginUser.username=${loginUser.username }&paging.presentPage=1&categorySecond.cs_id=${categorySecond.cs_id }">首页</a>
+				<a href="${pageContext.request.contextPath }/index_cs_idQueryAllCategorySecond?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage-1 }&categorySecond.cs_id=${categorySecond.cs_id }">上一页</a>
+				<a href="${pageContext.request.contextPath }/index_cs_idQueryAllCategorySecond?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage+1 }&categorySecond.cs_id=${categorySecond.cs_id }">下一页</a>
+				<a href="${pageContext.request.contextPath }/index_cs_idQueryAllCategorySecond?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.page }&categorySecond.cs_id=${categorySecond.cs_id }">尾页</a>
+			</s:elseif>
+			<s:elseif test="checkPage == 3">
+				第${paging.presentPage }页/${paging.page }页&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="${pageContext.request.contextPath }/index_searchTextQueryProduct?method=post&loginUser.username=${loginUser.username }&paging.presentPage=1&searchText=${searchText }">首页</a>
+				<a href="${pageContext.request.contextPath }/index_searchTextQueryProduct?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage-1 }&searchText=${searchText }">上一页</a>
+				<a href="${pageContext.request.contextPath }/index_searchTextQueryProduct?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage+1 }&searchText=${searchText }">下一页</a>
+				<a href="${pageContext.request.contextPath }/index_searchTextQueryProduct?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.page }&searchText=${searchText }">尾页</a>
+			</s:elseif>
+		</s:if>
+		<s:else>
+			没有此类商品
+		</s:else>
 	</div>
 		<%@include file="menu_bottom.jsp"%>
 </body>

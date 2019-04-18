@@ -5,6 +5,7 @@ import java.util.List;
 import org.bigjava.category.biz.CategoryBiz;
 import org.bigjava.category.dao.CategoryDao;
 import org.bigjava.category.entity.Category;
+import org.bigjava.function.Paging;
 import org.bigjava.product.entity.Product;
 
 public class CategoryBizImpl implements CategoryBiz {
@@ -50,5 +51,4 @@ public class CategoryBizImpl implements CategoryBiz {
 		// TODO Auto-generated method stub
 		return categoryDao.queryC_idCategoryProduct(c_id, presentPage);
 	}
-
 }
