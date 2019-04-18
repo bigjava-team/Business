@@ -201,7 +201,6 @@
 		
 		var checkEmail = document.getElementById("checkEmail").value;
 		var text_email = $("#emailpassword").val();// 文本框中输入的验证码
-		alert(checkEmail);
 		
 		if (username == null || username == "") {
 			alert("请输入用户名!");
@@ -211,12 +210,6 @@
 			return false;
 		} else if (yanzheng == null || yanzheng == "") {
 			alert("请输入邮箱验证码!");
-			return false;
-		} else if (password.length < 5) {
-			alert("密码最少为五位数！");
-			return false;
-		} else if (password.length > 20) {
-			alert("密码最多为二十位数！");
 			return false;
 		} else if (email.value == "") {
 			alert("请输入电子邮件");
@@ -258,10 +251,8 @@
 				dataType: "json",
 				success:function(data, textStatus) {
 					$("#checkEmail").val(data.checkEmail);
-					alert("成功");
-					
 				},error:function(data, textStatus) {
-					alert("错误");
+					alert("发送失败");
 					return;
 				}
 			});
@@ -288,7 +279,6 @@
 				dataType: "json",
 				success:function(data, textStatus) {
 					$("#checkUsername").text(data.check);
-					
 				},error:function(data, textStatus) {
 					alert("错误");
 					return;

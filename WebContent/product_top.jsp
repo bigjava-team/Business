@@ -82,10 +82,14 @@
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<a href="javascript:;" onclick="loginMerchant()">我的店铺</a>
 			</s:if>
+			
 			<a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presenetPage=0">我的订单</a> 
+			
 			<a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0">购物车</a> 
 			<a href="javascript:;" onclick="collect()">收藏夹</a> 
-			<a href="User_SetUpShop.action?method=post&loginUser.username=${loginUser.username }">我要开店</a> 
+			<s:if test="">
+				<a href="User_SetUpShop.action?method=post&loginUser.username=${loginUser.username }">我要开店</a> 
+			</s:if>
 			<s:if test='loginUser.username != null && loginUser.username != ""'>
 				<a href="#" onclick="remove()">退出</a>
 			</s:if>
