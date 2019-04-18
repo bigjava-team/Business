@@ -255,9 +255,8 @@
 		<div class="search bar7">
 			<form action="index_searchTextQueryProduct?paging.presentPage=1"
 				method="post">
-				<input type="hidden" name="loginUser.username"
-					value="${loginUser.username }" /> <input name="searchText"
-					type="text" placeh5older="欢迎来到光光网...">
+				<input type="hidden" name="loginUser.username" value="${loginUser.username }" /> 
+				<input name="searchText" type="text" placeh5older="欢迎来到光光网...">
 				<button type="submit"></button>
 			</form>
 		</div>
