@@ -287,7 +287,7 @@
 						<img src="${fileImageAction.urlImage }${listCategoryProducts.p_image }" height="68%" width="100%" />
 					</div>
 					<!--栏目内容-->
-						<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
+						<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
 							${listCategoryProducts.p_name }
 						</div>
 						<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
