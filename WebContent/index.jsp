@@ -29,13 +29,13 @@
 		
 		$(".newestProduct a,.ishotProduct a,.likeProduct a").css({
 			"text-decoration": "none",
-			"color": "black"
+			"color": "#7B7B7B"
 		});
 		
 		$(".newestProduct a,.ishotProduct a,.likeProduct a").hover(function() {
 			$(this).css("color", "red");
 		},function() {
-			$(this).css("color", "black");
+			$(this).css("color", "#7B7B7B");
 		});
 		
 	});
