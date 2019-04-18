@@ -187,6 +187,10 @@ public class OrdersAction {
 		System.out.println("开始查询订单");
 		loginUser = userBiz.queryUsernameUser(loginUser.getUsername());
 		
+		if(loginUser == null) {
+			return "loginError";
+		}
+		
 		int number = ordersBiz.queryAllOrdersNumber(loginUser);// 查询到的订单数
 		paging = new Paging(paging.getPresentPage(), number, 5);// 分页页面
 		listOrders = ordersBiz.queryAllOrders(paging, loginUser);// 查询到的订单内容
