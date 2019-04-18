@@ -575,7 +575,7 @@
 							<div style="text-align: center; height: 183px; overflow: hidden;">
 								<img alt="商品图片" src="${fileImageAction.urlImage }${listProductHots.p_image }" height="80%" style="margin-top: 6%; border-radius: 5px;">
 							</div>
-							<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
+							<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
 								<a href="javascript:;" >${listProductHots.p_name }</a>
 							</div>
 							<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
@@ -601,7 +601,7 @@
 					<div style="text-align: center; height: 183px; overflow: hidden;">
 						<img alt="商品图片" src="${fileImageAction.urlImage }${listAllCommentProducts.p_image}" height="80%" style="margin-top: 6%; border-radius: 5px;">
 					</div>
-					<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
+					<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
 						${listAllCommentProducts.p_name}
 					</div>
 					<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
