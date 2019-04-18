@@ -143,8 +143,10 @@
     <div class="contenttwo" style="margin-left: 13%; margin-right: 13%;">
 		<img src="${pageContext.request.contextPath }/images/logo.jpg" height="60px" width="240px" align="left">
 		<div class="search bar7">
-			<form id="contenttwo_form">
-				<input class="contenttwo_input" type="text" placeholder="欢迎来到光光网...">
+			<form id="contenttwo_form" action="index_searchTextQueryProduct?paging.presentPage=1"
+				method="post">
+				<input type="hidden" name="loginUser.username" value="${loginUser.username }" />
+				<input class="contenttwo_input" type="text" name="searchText" placeholder="欢迎来到光光网...">
 				<button class="contenttwo_button" type="submit"></button>
 			</form>
 		</div>
