@@ -441,7 +441,9 @@ public class ProductAction extends ActionSupport {
 	// 通过一级分类查询商品
 	public String queryAllCategory() {
 		System.out.println("通过一级分类查询商品");
-		listCategoryProduct = categoryBiz.queryC_idCategoryProduct(category.getC_id(), paging.getPresentPage());
+		int number = categoryBiz.queryC_idCategoryProductNumber(category.getC_id());
+		paging = new Paging(paging.getPresentPage(), number, 5);
+		listCategoryProduct = categoryBiz.queryC_idCategoryProduct(category.getC_id(), paging);
 		category = categoryBiz.queryCategoryById(category.getC_id());
 		
 		listCategorySecond = categorySecondBiz.cIdQueryCategorySecond(category.getC_id());

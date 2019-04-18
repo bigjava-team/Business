@@ -166,15 +166,11 @@
 		</s:iterator>
 		
 		<div id="admin_list_div_page" style="width: 100%; font-size: 15px; text-align: center; padding: 8px 0px 0px 0px;">
-			第<s:property value="pageBean.page"/>页/<s:property value="pageBean.totalPage"/>页&nbsp;&nbsp;&nbsp;&nbsp;
-			<%-- <s:if test="pageBean.page != 1"> --%>
-				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=1">首页</a>
-				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page-1"/>">上一页</a>
-			<%-- </s:if>
-			<s:if test="pageBean.page != pageBean.totalPage"> --%>
-				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.page+1"/>">下一页</a>
-				<a href="${pageContext.request.contextPath }/adminCategorySecond_findAll.action?page=<s:property value="pageBean.totalPage"/>">尾页</a>
-			<%-- </s:if> --%>
+			第${paging.presentPage }页/${paging.page }页&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presentPage=1">首页</a>
+			<a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage-1}">上一页</a>
+			<a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage+1}">下一页</a>
+			<a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.page}">尾页</a>
 		</div>
 		
 	</s:else>

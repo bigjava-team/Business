@@ -316,11 +316,11 @@
 	<div id="admin_list_div_page" style="width: 100%; font-size: 15px; text-align: center; padding: 8px 0px 0px 0px;">
 		<s:if test="paging.page != 0">
 			<s:if test="checkPage == 1">
-				第${paging.presentPage }页/2页&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="${pageContext.request.contextPath }/index_cs_idQueryAllCategorySecond?method=post&loginUser.username=${loginUser.username }&paging.presentPage=1&categorySecond.cs_id=${categorySecond.cs_id }">首页</a>
-				<a href="${pageContext.request.contextPath }/index_cs_idQueryAllCategorySecond?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage-1 }&categorySecond.cs_id=${categorySecond.cs_id }">上一页</a>
-				<a href="${pageContext.request.contextPath }/index_cs_idQueryAllCategorySecond?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage+1 }&categorySecond.cs_id=${categorySecond.cs_id }">下一页</a>
-				<a href="${pageContext.request.contextPath }/index_cs_idQueryAllCategorySecond?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.page }&categorySecond.cs_id=${categorySecond.cs_id }">尾页</a>
+				第${paging.presentPage }页/${paging.page }页&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="${pageContext.request.contextPath }/index_queryAllCategory?method=post&loginUser.username=${loginUser.username }&paging.presentPage=1&category.c_id=${category.c_id }">首页</a>
+				<a href="${pageContext.request.contextPath }/index_queryAllCategory?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage-1 }&category.c_id=${category.c_id }">上一页</a>
+				<a href="${pageContext.request.contextPath }/index_queryAllCategory?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.presentPage+1 }&category.c_id=${category.c_id }">下一页</a>
+				<a href="${pageContext.request.contextPath }/index_queryAllCategory?method=post&loginUser.username=${loginUser.username }&paging.presentPage=${paging.page }&category.c_id=${category.c_id }">尾页</a>
 			</s:if>
 			<s:elseif test="checkPage == 2">
 				第${paging.presentPage }页/${paging.page }页&nbsp;&nbsp;&nbsp;&nbsp;

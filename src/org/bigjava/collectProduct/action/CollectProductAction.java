@@ -2,6 +2,7 @@ package org.bigjava.collectProduct.action;
 
 import java.util.List;
 
+import org.apache.struts2.json.annotations.JSON;
 import org.bigjava.collectProduct.biz.CollectProductBiz;
 import org.bigjava.collectProduct.entity.CollectProduct;
 import org.bigjava.function.FileImageAction;
@@ -90,19 +91,20 @@ public class CollectProductAction extends ActionSupport {
 	/**
 	 * 收藏商品
 	 */
-	public String collectProduct() {
+	@JSON(serialize=false)
+	public String userCollectProduct() {
 		System.out.println("收藏商品" + product.getP_id());
 		loginUser = userBiz.queryUsernameUser(loginUser.getUsername());
 		boolean flag = collectProductBiz.queryCollectUser_id(loginUser.getU_id(), product.getP_id());
 		if (flag) {
-			System.out.println("已收藏此用户");
 			check = "已收藏此用户";
+			return SUCCESS;
 		} else {
 			CollectProduct collectProduct = new CollectProduct(loginUser, product);
 			collectProductBiz.addCollectProduct(collectProduct);// 收藏商品
 			check = "收藏成功";
+			return SUCCESS;
 		}
-		return SUCCESS;
 	}
 	
 	/**
