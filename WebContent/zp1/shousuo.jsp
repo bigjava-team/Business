@@ -291,21 +291,21 @@
 		<div class="content">
 			<div class="aa">
 			<!--1-->
-				<s:iterator value="listCategoryProduct" var="listCategoryProducts">
-					<div class="lanmusi" onclick="queryProduct(${listCategoryProducts.p_id })">
-						<div class="juzhong">
-							<img src="${fileImageAction.urlImage }${listCategoryProducts.p_image }" height="68%" width="100%" />
+			<s:iterator value="listCategoryProduct" var="listCategoryProducts">
+				<div class="lanmusi" onclick="queryProduct(${listCategoryProducts.p_id })">
+					<div class="juzhong">
+						<img src="${fileImageAction.urlImage }${listCategoryProducts.p_image }" height="68%" width="100%" />
+					</div>
+					<!--栏目内容-->
+						<div style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
+							${listCategoryProducts.p_name }
 						</div>
-						<!--栏目内容-->
-							<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-								${listCategoryProducts.p_name }
-							</div>
-							<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
-								¥<font style="font-size: 22px; font-weight: bold;">${listCategoryProducts.p_price }</font>
-							</div>
-							<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
-								销量:${listCategoryProducts.sale_volume }
-							</div>
+						<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
+							¥<font style="font-size: 22px; font-weight: bold;">${listCategoryProducts.p_price }</font>
+						</div>
+						<div style="color: #9CA0AA; font-size: 12px; text-align: right; padding-bottom: 10px; padding-right: 5%;">
+							销量:${listCategoryProducts.sale_volume }
+						</div>
 					</div>
 				</s:iterator>
 			</div>

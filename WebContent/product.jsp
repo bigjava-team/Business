@@ -277,21 +277,20 @@
 		</div>
 		
 		<div class="product_div1_div3">
-			<div class="product_div1_div3_div1">
+			<div class="product_div1_div3_div1" style="cursor: pointer;">
 				<div class="product_div1_div3_div1_div1">
-					店铺名称
+					${merchant.m_name }
 				</div>
 				<div class="product_div1_div3_div1_div2">
 					<h3>店铺详情</h3>
 					<div style="width: 80%; height: 121px; margin-top: 10%; margin-left: 9.5%; overflow: hidden; text-align: center;">
-						<img alt="${merchant.m_image }" src="" height="80%" style="border-radius: 10px; margin-top: 8%; border: 1px solid #E0E0E0;">
-						<img alt="${merchant.m_image }" src="images/products/bbb006.jpg" height="80%" style="border-radius: 10px; margin-top: 8%; border: 1px solid #E0E0E0;">
+						<img alt="${merchant.m_image }" src="${fileImageAction.urlImage }${merchant.m_image }" height="80%" style="border-radius: 10px; margin-top: 8%; border: 1px solid #E0E0E0;">
 					</div>
 					<div style="font-size: 14px; margin-left: 9.5%; color: #3C3C3C; margin-top: 3%;">
 						本店掌柜: 
 					</div>
 					<div style="font-size: 14px; margin-left: 45%; color: #FD5809; font-weight: bold;">
-						${user.u_name }
+						${merchant.user.username }
 					</div>
 					<div style="font-size: 14px; margin-left: 9.5%; color: #3C3C3C; margin-top: 2%;">
 						开店时间:

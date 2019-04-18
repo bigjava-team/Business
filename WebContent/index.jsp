@@ -23,19 +23,19 @@
 	});
 	
 	$(function() {
-		$(".newestProduct,.ishotProduct").mouseover(function() {
+		$(".newestProduct,.ishotProduct,.likeProduct").mouseover(function() {
 			$(this).css("cursor", "pointer");
 		});
 		
-		$(".newestProduct,.ishotProduct a").css({
+		$(".newestProduct a,.ishotProduct a,.likeProduct a").css({
 			"text-decoration": "none",
-			"color": "black"
+			"color": "#7B7B7B"
 		});
 		
-		$(".newestProduct,.ishotProduct a").hover(function() {
+		$(".newestProduct a,.ishotProduct a,.likeProduct a").hover(function() {
 			$(this).css("color", "red");
 		},function() {
-			$(this).css("color", "black");
+			$(this).css("color", "#7B7B7B");
 		});
 		
 	});
@@ -523,7 +523,7 @@
 							猜你喜欢
 						</div>
 						<s:iterator value="listAllLikeProduct" var="listAllLikeProducts">
-							<div class="cainilike" style="background: #FFF; width: 50%;border: 1px solid blue; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-bottom: 12%; cursor: pointer;">
+							<div class="cainilike" style="background: #FFF; width: 50%;border: 1px solid #E0E0E0; height: 79%; font-size: 12px; overflow: hidden; float: left; margin-left: -1px; margin-bottom: 12%; cursor: pointer;">
 								<div style="margin-left: 12%; margin-top: 6%; margin-right: 6%; height: 103px;">
 									<img alt="商品图片"  src="${fileImageAction.urlImage }${listAllLikeProducts.p_image }" width="100%">
 								</div>
@@ -550,7 +550,7 @@
 							<%-- <img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" height="84%"> --%>
 							<img alt="商品图片" src="${fileImageAction.urlImage }${listProductTimes.p_image }" height="80%" style="margin-top: 6%; border-radius: 5px;">
 						</div>
-						<div class="product_name" style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden; color: black;" value="${listProductTimes.p_id }">
+						<div title="${listProductTimes.p_name }" class="product_name" style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden; color: black;" value="${listProductTimes.p_id }">
 							<a href="javascript:;" >${listProductTimes.p_name }</a>
 						</div>
 						<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
@@ -575,7 +575,7 @@
 							<div style="text-align: center; height: 183px; overflow: hidden;">
 								<img alt="商品图片" src="${fileImageAction.urlImage }${listProductHots.p_image }" height="80%" style="margin-top: 6%; border-radius: 5px;">
 							</div>
-							<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
+							<div title="${listProductHots.p_name }" style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
 								<a href="javascript:;" >${listProductHots.p_name }</a>
 							</div>
 							<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
@@ -601,8 +601,8 @@
 					<div style="text-align: center; height: 183px; overflow: hidden;">
 						<img alt="商品图片" src="${fileImageAction.urlImage }${listAllCommentProducts.p_image}" height="80%" style="margin-top: 6%; border-radius: 5px;">
 					</div>
-					<div style="font-size: 14px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
-						${listAllCommentProducts.p_name}
+					<div title="${listAllCommentProducts.p_name}" style="font-size: 12px; padding-left: 5%; padding-right: 5%; height: 32px; overflow: hidden;">
+						<a href="javascript:;" >${listAllCommentProducts.p_name}</a>
 					</div>
 					<div style="color: #FF4400; padding-left: 5%; padding-right: 5%; overflow: hidden;">
 						¥<font style="font-size: 22px; font-weight: bold;">${listAllCommentProducts.p_price}</font>
