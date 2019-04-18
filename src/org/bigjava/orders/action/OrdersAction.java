@@ -1,8 +1,10 @@
 package org.bigjava.orders.action;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Formatter;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -42,6 +44,8 @@ public class OrdersAction {
 	private Product product;
 	// 订单项类
 	private Orderitem orderitem;
+	// 收货地址类
+	private Addr addr;
 	
 	private OrdersBiz ordersBiz;
 	private OrderItemBiz orderItemBiz;
@@ -54,6 +58,14 @@ public class OrdersAction {
 	
 	private String buy;// 判定为立即购买
 	
+	public Addr getAddr() {
+		return addr;
+	}
+
+	public void setAddr(Addr addr) {
+		this.addr = addr;
+	}
+
 	public String getBuy() {
 		return buy;
 	}
@@ -235,7 +247,7 @@ public class OrdersAction {
 	
 	
 	// 立即购买
-	public String goBuy() {
+	public String goBuy() throws ParseException {
 		System.out.println("立即购买");
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -267,6 +279,19 @@ public class OrdersAction {
 	
 	// 立即购买添加至订单项、订单
 	public String addOrderitemOrders() {
+		System.out.println("订单"+orders);
+		System.out.println("用户"+loginUser);
+		System.out.println("收货地址"+addr);
+		System.out.println("订单项"+orderitem);
+		loginUser = userBiz.queryUsernameUser(loginUser.getUsername());
+		orderitem.setProduct(product);// 连接商品类
+		orderitem.setUser(loginUser);// 连接用户类
+		orderItemBiz.addOrderItem(orderitem);
+		
+		orders.setState(2);// 支付状态
+		ordersBiz.addOrders(orders, loginUser, addr);// 添加订单
+		
+		orders = ordersBiz.orderNumberQueryOrders(orders.getOrderNumber());
 		
 		return "addOrderitemOrders";
 	}

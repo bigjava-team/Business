@@ -285,7 +285,6 @@ body {
 	height: 20px;
 	text-align: center;
 	padding-bottom: 1%;
-	padding-top: 1%;
 	float: left;
 }
 

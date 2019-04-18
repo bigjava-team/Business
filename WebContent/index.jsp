@@ -319,7 +319,7 @@
 			<s:iterator value="listIndexCategory" var="listIndexCategorys" status="status">
 				<div class="categoryCss" id="aaa_d<s:property value='#status.count' />" onmouseover="categoryOver(this.id,<s:property value='#status.count' />)" onmouseout="categoryOut(this.id,<s:property value='#status.count' />)" style="font-size: 15px; padding: 6px 0px 6px 13%; color: black;">
 					<s:iterator value="#listIndexCategorys.listCategory" var="lists" status="aStatus">
-						<a href=javascript:;" onclick="queryCategoryProduct(${lists.c_id })" onmouseover="aOver(this.id,<s:property value='#status.count' />)" onmouseout="aOut(this.id,<s:property value='#status.count' />)" id="a<s:property value='#status.count' /><s:property value='#aStatus.count' />"><s:property value="#lists.c_name" /></a>
+						<a href="javascript:;" onclick="queryCategoryProduct(${lists.c_id })" onmouseover="aOver(this.id,<s:property value='#status.count' />)" onmouseout="aOut(this.id,<s:property value='#status.count' />)" id="a<s:property value='#status.count' /><s:property value='#aStatus.count' />"><s:property value="#lists.c_name" /></a>
 						<s:if test="#lists.c_id%3 != 0">
 						/
 						</s:if>
@@ -511,7 +511,7 @@
 							</div>
 							<div style="background: #FFF; width: 100%; height: 79%; color: red; font-size: 12px; padding-right: 2%; overflow: hidden;">
 								<s:iterator value="#listCategorySeconds.listCategorySecond" var="cs">
-									<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"><a href="javascript:;" onclick="queryCategorySecond(${cs.cs_id})" class="hideCategorysecond"><s:property value="#cs.cs_name"/></a> </div>
+									<div style="float: left; margin-right: 3.92%; padding-bottom: 2.4%;"><a href="javascript:;" onclick="queryCategorySecond(${cs.cs_id})" class="hideCategorysecond"><s:property value="#cs.cs_name"/></a></div>
 								</s:iterator>
 							</div>
 						</div>

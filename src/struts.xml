@@ -178,6 +178,7 @@
 			<result name="idQueryOrdersPayment">/order.jsp</result>
 			<result name="usernameQueryOrders">/admin/order/list.jsp</result>
 			<result name="goBuy">/order.jsp</result>
+			<result name="addOrderitemOrders" type="redirectAction">paymentOrders_payOrders.action?method=post&amp;out_trade_no=${orders.orderNumber}&amp;total_amount=${orders.total }&amp;subject=${product.p_name}&amp;addr.a_id=${addr.a_id}&amp;loginUser.username=${loginUser.username }</result>
 		</action>
 
 		<!-- 管理员管理订单action -->

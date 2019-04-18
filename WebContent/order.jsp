@@ -35,10 +35,14 @@
 			return false;
 		}
 		var username = "${loginUser.username }";
-		
 		var buy = '${buy}';
 		if (buy == "立即购买") {
-			window.location.href="";
+			var p_id = '${product.p_id}';// 商品id
+			var count = '${orderitem.count}';// 购买商品数量
+			var subtotal = '${orderitem.subtotal}';// 商品小计
+			var ordertime = '${orders.ordertime}';// 订单时间
+			
+			window.location.href="orders_addOrderitemOrders?method=post&loginUser.username="+username+"&product.p_id="+p_id+"&orderitem.count="+count+"&orderitem.subtotal="+subtotal+"&orders.total="+subtotal+"orders.orderNumber="+orderNumber+"&addr.a_id="+addrId;
 		} else {
 			window.location.href="paymentOrders_payOrders.action?method=post&out_trade_no="+orderNumber+"&total_amount="+total+"&subject="+productName+"&addr.a_id="+addrId+"&loginUser.username="+username;
 		}
