@@ -412,6 +412,7 @@ public class ProductAction extends ActionSupport {
 		System.out.println("进入商品详情");
 		product = productBiz.queryProduct_id(product.getP_id());
 		merchant = product.getMerchant();
+		System.out.println("店铺" + merchant);
 		user = merchant.getUser();
 
 		// 查询店铺中最新的商品
