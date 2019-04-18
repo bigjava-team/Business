@@ -32,7 +32,7 @@
 				hibernate.dialect=org.hibernate.dialect.MySQL5Dialect<!-- 设置数据库方言 -->
 				hibernate.show_sql=true<!-- 显示数据库语句 -->
 				hibernate.format_sql=true<!-- 使数据库语句自动换行 -->
-				<!-- hibernate.hbm2ddl.auto=update --><!-- 自动建表时变为修改表 -->
+				<!-- hibernate.hbm2ddl.auto=create --> <!-- 自动建表时变为修改表 -->
 			</value>
 		</property>
 	</bean>
@@ -76,13 +76,13 @@
 	<!-- 订单项 -->
 	<bean name="orderItemDao" class="org.bigjava.orderitem.dao.impl.OrderItemDaoImpl" autowire="byName" />
 	<bean name="orderItemBiz" class="org.bigjava.orderitem.biz.impl.OrderItemBizImpl" autowire="byName" />
-	<bean name="orderItemAction" class="org.bigjava.orderitem.action.OrderItemAction" autowire="byName" />
+	<bean name="orderItemAction" class="org.bigjava.orderitem.action.OrderItemAction" autowire="byName" scope="prototype" />
 	
 	<!-- 订单 -->
 	<bean name="ordersDao" class="org.bigjava.orders.dao.impl.OrdersDaoImpl" autowire="byName" />
 	<bean name="ordersBiz" class="org.bigjava.orders.biz.impl.OrdersBizImpl" autowire="byName" />
 	<bean name="ordersAction" class="org.bigjava.orders.action.OrdersAction" autowire="byName" />
-	<bean name="adminOrdersAction" class="org.bigjava.orders.action.AdminOrdersAction" autowire="byName"/>
+	<bean name="adminOrdersAction" class="org.bigjava.orders.action.AdminOrdersAction" autowire="byName" scope="prototype"/>
 	
 	<!-- 评论 -->
 	<bean name="commentDao" class="org.bigjava.comment.dao.impl.CommentDaoImpl" autowire="byName" />
@@ -95,20 +95,20 @@
 	<!-- 收藏店铺 -->
 	<bean name="collectMerchantDao" class="org.bigjava.collectMerchant.dao.impl.CollectMerchantDaoImpl" autowire="byName" />
 	<bean name="collectMerchantBiz" class="org.bigjava.collectMerchant.biz.impl.CollectMerchantBizImpl" autowire="byName" />
-	<bean name="collectMerchantAction" class="org.bigjava.collectMerchant.action.CollectMerchantAction" autowire="byName" />
+	<bean name="collectMerchantAction" class="org.bigjava.collectMerchant.action.CollectMerchantAction" autowire="byName" scope="prototype" />
 	
 	<!-- 收藏商品 -->
 	<bean name="collectProductDao" class="org.bigjava.collectProduct.dao.impl.CollectProductDaoImpl" autowire="byName" />
 	<bean name="collectProductBiz" class="org.bigjava.collectProduct.biz.impl.CollectProductBizImpl" autowire="byName" />
-	<bean name="collectProductAction" class="org.bigjava.collectProduct.action.CollectProductAction" autowire="byName" />
+	<bean name="collectProductAction" class="org.bigjava.collectProduct.action.CollectProductAction" scope="prototype" autowire="byName" />
 	
 	<bean name="indexNoticeDao" class="org.bigjava.notice.dao.impl.IndexNoticeDaoImpl" autowire="byName" />
 	<bean name="indexNoticeBiz" class="org.bigjava.notice.biz.impl.IndexNoticeBizImpl" autowire="byName" />
-	<bean name="indexNoticeAction" class="org.bigjava.notice.action.IndexNoticeAction" autowire="byName" />
+	<bean name="indexNoticeAction" class="org.bigjava.notice.action.IndexNoticeAction" autowire="byName" scope="prototype" />
 	
 	<bean name="paymentOrders" class="org.bigjava.orders.action.PaymentOrders" autowire="byName" />
 	
-	<bean name="fileImageAction" class="org.bigjava.function.FileImageAction" autowire="byName" />
+	<bean name="fileImageAction" class="org.bigjava.function.FileImageAction" autowire="byName" scope="prototype" />
 	
 	<bean name="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>

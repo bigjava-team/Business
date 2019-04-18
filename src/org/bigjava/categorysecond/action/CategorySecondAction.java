@@ -156,5 +156,4 @@ public class CategorySecondAction extends ActionSupport implements ModelDriven<C
 
 		return "findAllBySearchNameSuccess";
 	}
-
 }

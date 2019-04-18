@@ -38,6 +38,7 @@
 		var p_id = '${product.p_id }';
 		if (username == null || username == "") {
 			alert("请先登录账号");
+			f.action = "user/login.jsp";
 			return false;
 		}
 		f.action = "orders_goBuy?loginUser.username="+username+"&product.p_id="+p_id+"&paging.presentPage=1";
@@ -47,11 +48,12 @@
 	function jiarucar(){
 		var username = '${loginUser.username}';
 		var p_id = '${product.p_id }';
+		var f = document.getElementById("product_div1_div2_form");
 		if (username == null || username == "") {
 			alert("请先登录账号");
+			f.action = "user/login.jsp";
 			return false;
 		}
-		var f = document.getElementById("product_div1_div2_form");
 		f.action =  f.action + "?loginUser.username="+username+"&product.p_id="+ p_id +"&orderitem.count=1"+"&paging.presentPage=1";
 	}
 	
@@ -94,18 +96,22 @@
 		
 		var params = {
 			"loginUser.username": username,
-			"product.p_id": p_id
+			"product.p_id": p_id,
+		}
+		
+		if (username == "") {
+			window.location.href="user/login.jsp";
+			return;
 		}
 		
 		$.ajax({
-			url: "ajaxCP_collectProduct",
+			url: "ajaxCP_userCollectProduct",
 			type: "post",
 			data: params,
 			dataType: "json",
 			success:function(data, textStatus) {
 				alert(data.check);
 			},error:function(data, textStatus) {
-				alert("错误");
 				return;
 			}
 		});
@@ -130,8 +136,21 @@
 	    })
 	})
 	
+	function queryProduct(id) {
+		var username = '${loginUser.username }';
+		window.open("Product_idQueryProduct?method=post&loginUser.username="+username+"&product.p_id="+id+"&paging.presentPage=0");
+	}
 	
-	
+	function enterAddress() {
+		var username = '${loginUser.username }';
+		var m_id = '${merchant.m_id }';
+		if (username == "") {
+			alert("请先去登录用户");
+			window.location.href="user/login.jsp";
+			return;
+		}
+		window.location.href="merchant_enteryMerchant?method=post&loginUser.username="+username+"&merchant.m_id="+m_id;
+	}
 </script>
 
 <style type="text/css">
@@ -212,10 +231,7 @@
 				<img alt="${product.p_image }" src="${fileImageAction.urlImage }${product.p_image }" height="90%" style="padding-top: 6%;"><br/>
 			</div>
 			<div id="product_div1_div1_div2">
-				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;"></div>
-				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img alt="图片名称" src="images/products/aaa002.jpg" height="90%" style="padding-top: 6%;"></div>
-				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img alt="图片名称" src="images/products/bbb006.jpg" height="90%" style="padding-top: 6%;"></div>
-				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img alt="图片名称" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="90%" style="padding-top: 6%;"></div>
+				<div class="123" style="float: left; height: 60px; overflow: hidden;"><img alt="图片名称" src="${fileImageAction.urlImage }${product.p_image}" height="90%" style="padding-top: 6%;"></div>
 			</div>
 		</div>
 		
@@ -246,10 +262,7 @@
 			<div id="product_div1_div2_div3">
 				<div class="product_div1_div2_div3_div1">颜色: </div>
 				<div class="product_div1_div2_div3_div2">
-					<img alt="图片名称" class="colorProduct" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="50px;">
-					<img alt="图片名称" class="colorProduct" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="50px;">
-					<img alt="图片名称" class="colorProduct" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="50px;">
-					<img alt="图片名称" class="colorProduct" src="images/products/O1CN01zkfIXV27fRJRSdEC8_!!2574467824.jpg" height="50px;">
+					<img alt="图片名称" class="colorProduct" src="${fileImageAction.urlImage }${product.p_image}" height="50px;">
 				</div>
 			</div>
 			
@@ -279,7 +292,7 @@
 				<div class="product_div1_div3_div1_div1">
 					${merchant.m_name }
 				</div>
-				<div class="product_div1_div3_div1_div2">
+				<div class="product_div1_div3_div1_div2" onclick="enterAddress()">
 					<h3>店铺详情</h3>
 					<div style="width: 80%; height: 121px; margin-top: 10%; margin-left: 9.5%; overflow: hidden; text-align: center;">
 						<img alt="${merchant.m_image }" src="${fileImageAction.urlImage }${merchant.m_image }" height="80%" style="border-radius: 10px; margin-top: 8%; border: 1px solid #E0E0E0;">
@@ -335,7 +348,7 @@
 			<hr />
 			<div class="product_div2_leftDiv_d5">
 				<s:iterator value="listProductTime" var="listProductTimes">
-					<div class="product_div2_leftDiv_d5_d1" style="padding-bottom: 12px;">
+					<div class="product_div2_leftDiv_d5_d1" style="padding-bottom: 12px;" onclick="queryProduct('${listProductTimes.p_id }')">
 						<div class="product_div2_leftDiv_d5_d1_d1" style="height: 70px;">
 							<img alt="${listProductTimes.p_image }"  src="${fileImageAction.urlImage }${listProductTimes.p_image }" width="60%" style="position: relative; top: 50%; left: 30%; transform: translate(-50%,-50%);">
 						</div>
@@ -359,7 +372,7 @@
 			
 			<div class="product_div2_leftDiv_d5">
 				<s:iterator value="listProductHot" var="listProductHots" >
-					<div class="product_div2_leftDiv_d5_d1" style="padding-bottom: 12px;">
+					<div class="product_div2_leftDiv_d5_d1" style="padding-bottom: 12px;" onclick="queryProduct('${listProductHots.p_id }')">
 						<div class="product_div2_leftDiv_d5_d1_d1" style="height: 65px;">
 							<img alt="${listProductHots.p_image }"  src="${fileImageAction.urlImage }${listProductHots.p_image }" width="70%">
 						</div>

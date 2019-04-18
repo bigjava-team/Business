@@ -21,7 +21,8 @@ public class CollectProductDaoImpl extends HibernateDaoSupport implements Collec
 	public void addCollectProduct(CollectProduct collectProduct) {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行addCollectProduct方法");
-		this.getHibernateTemplate().save(collectProduct);// 将collectProduct添加进数据库
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		session.save(collectProduct);// 将collectProduct添加进数据库
 	}
 
 	// 删除收藏的商品
@@ -40,7 +41,6 @@ public class CollectProductDaoImpl extends HibernateDaoSupport implements Collec
 		System.out.println("开始执行queryCollectUser_id方法");
 		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
 		List<CollectProduct> list = session.createQuery("from CollectProduct where u_id=? and p_id=?").setInteger(0, u_id).setInteger(1, p_id).list();
-		session.close();
 		return list.size()>0 ? true : false;
 	}
 

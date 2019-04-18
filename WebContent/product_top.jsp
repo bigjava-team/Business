@@ -48,6 +48,16 @@
 		window.location.href="Merchant_gotoMerchant.action?method=post&loginUser.username="+username;
 	}
 	
+	function checkOrders() {
+		var username = '${loginUser.username}';
+		alert(username);
+		if (username == null || username == "") {
+			window.location.href="user/login.jsp";
+			return;
+		}
+		window.location.href="orders_queryUserAllOrders?method=post&loginUser.username="+username+"&paging.presentPage=1";
+	}
+	
 	</script>
 	<style type="text/css" >
 		a {
@@ -83,9 +93,9 @@
 				<a href="javascript:;" onclick="loginMerchant()">我的店铺</a>
 			</s:if>
 			
-			<a href="orders_queryUserAllOrders?method=post&loginUser.username=${loginUser.username }&paging.presenetPage=0">我的订单</a> 
+			<a href="javascript:;" onclick="checkOrders()">我的订单</a> 
 			
-			<a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=0">购物车</a> 
+			<a href="orderitem_queryUserOrderitem?method=post&loginUser.username=${loginUser.username }&paging.presentPage=1">购物车</a> 
 			<a href="javascript:;" onclick="collect()">收藏夹</a> 
 			<s:if test="">
 				<a href="User_SetUpShop.action?method=post&loginUser.username=${loginUser.username }">我要开店</a> 

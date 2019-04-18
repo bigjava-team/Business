@@ -740,7 +740,7 @@ function YZ_phone(){
 			 div1.innerHTML="电话号码不能为空!";
 			 return false;
 		  }
-	  if (!(/^1[34578]\d{9}$/.test(text))) {
+	  if (!(/^1[345789]\d{9}$/.test(text))) {
 			  user.className="red";
 			 div1.innerHTML="电话号码格式错误!";
 			return false;

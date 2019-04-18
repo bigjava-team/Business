@@ -64,7 +64,7 @@ public class CategoryDaoImpl extends HibernateDaoSupport implements CategoryDao 
 
 	// 查询一级分类对应的商品
 	@Override
-	public List<Product> queryC_idCategoryProduct(int c_id, int presentPage) {
+	public List<Product> queryC_idCategoryProduct(int c_id, Paging paging) {
 		// TODO Auto-generated method stub
 		System.out.println("开始执行queryC_idCategoryProduct方法");
 		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
@@ -79,22 +79,34 @@ public class CategoryDaoImpl extends HibernateDaoSupport implements CategoryDao 
 				}
 			}
 		}
-		if (listProduct.size() == 0) {
-			return null;
-		}
-		System.out.println("查询到的商品" + listProduct);
-		Paging paging = new Paging(presentPage, listProduct.size(), 10);
-		int chu = listProduct.size()/paging.getPagesize();
-		int yu = listProduct.size()%paging.getPagesize();
-		if (yu==0) {
-			listProduct = listProduct.subList((paging.getPresentPage()-1)*paging.getPagesize(), paging.getPresentPage()*paging.getPagesize());
-		} else if(presentPage == paging.getPage() && yu>0) {
-			listProduct = listProduct.subList((paging.getPresentPage()-1)*paging.getPagesize(), yu);
+		
+		if (paging.getPresentPage() == paging.getPage() && paging.getTotalNumber()%paging.getPagesize()!=0) {
+			listProduct = listProduct.subList((paging.getPresentPage()-1)*paging.getPagesize(), (paging.getPresentPage()-1)*paging.getPagesize()+paging.getTotalNumber()%paging.getPagesize());
 		} else {
 			listProduct = listProduct.subList((paging.getPresentPage()-1)*paging.getPagesize(), paging.getPresentPage()*paging.getPagesize());
 		}
 		System.out.println("商品"+listProduct);
-		return listProduct;
+		return listProduct.size()!=0 ? listProduct : null;
+	}
+
+	// 查询一级分类对应的商品数量
+	@Override
+	public int queryC_idCategoryProductNumber(int c_id) {
+		Session session = this.getHibernateTemplate().getSessionFactory().openSession();
+		List<Long> listProduct;
+		int number = 0;
+		List<CategorySecond> listProductSecond = session.createQuery("from CategorySecond where c_id=?").setInteger(0, c_id).list();
+		for (int i=0; i<listProductSecond.size(); i++) {
+			int numbers= listProductSecond.get(i).getCs_id();
+			listProduct = session.createQuery("select count(*) from Product where cs_id=?").setInteger(0, numbers).list();
+			if (listProduct.size()!=0) {
+				for (int j=0; j<listProduct.size(); j++) {
+					number += listProduct.get(0).intValue();
+				}
+			}
+		}
+		System.out.println("商品数"+number);
+		return number;
 	}
 
 }

@@ -47,6 +47,7 @@ public class ProductAction extends ActionSupport {
 	private CategorySecond categorySecond;
 
 	private String searchText;// 搜索的值
+	private int checkPage;// 校验搜索分页
 
 	private UserBiz userBiz;
 	private ProductBiz productBiz;
@@ -78,6 +79,14 @@ public class ProductAction extends ActionSupport {
 
 	private FileImageAction fileImageAction;
 	
+	public int getCheckPage() {
+		return checkPage;
+	}
+
+	public void setCheckPage(int checkPage) {
+		this.checkPage = checkPage;
+	}
+
 	public List<CategorySecond> getListCategorySecond() {
 		return listCategorySecond;
 	}
@@ -432,32 +441,40 @@ public class ProductAction extends ActionSupport {
 	// 通过一级分类查询商品
 	public String queryAllCategory() {
 		System.out.println("通过一级分类查询商品");
-		listCategoryProduct = categoryBiz.queryC_idCategoryProduct(category.getC_id(), paging.getPresentPage());
+		int number = categoryBiz.queryC_idCategoryProductNumber(category.getC_id());
+		paging = new Paging(paging.getPresentPage(), number, 5);
+		listCategoryProduct = categoryBiz.queryC_idCategoryProduct(category.getC_id(), paging);
 		category = categoryBiz.queryCategoryById(category.getC_id());
 		
 		listCategorySecond = categorySecondBiz.cIdQueryCategorySecond(category.getC_id());
 		if (listCategoryProduct == null) {
 			System.out.println("没有此类审商品");
 		}
+		checkPage = 1;
 		return "queryAllCategory";
 	}
 
 	// 通过二级分类查询商品
 	public String cs_idQueryAllCategorySecond() {
 		System.out.println("通过二级分类查询商品");
-		listCategoryProduct = categorySecondBiz.cs_idQueryAllCategorySecondProduct(categorySecond.getCs_id(),
-				paging.getPresentPage());
-		CategorySecond categorySeconds = categorySecondBiz.queryCategorySecond(categorySecond.getCs_id());
+		int number = categorySecondBiz.cs_idQueryAllCategorySecondProductNumber(categorySecond.getCs_id());
+		paging = new Paging(paging.getPresentPage(), number, 12);
+		listCategoryProduct = categorySecondBiz.cs_idQueryAllCategorySecondProduct(categorySecond.getCs_id(),paging);
+		categorySecond = categorySecondBiz.queryCategorySecond(categorySecond.getCs_id());
 		
-		category = categoryBiz.queryCategoryById(categorySeconds.getCategory().getC_id());
+		category = categoryBiz.queryCategoryById(categorySecond.getCategory().getC_id());
 		listCategorySecond = categorySecondBiz.cIdQueryCategorySecond(category.getC_id());
+		checkPage = 2;
 		return "cs_idQueryAllCategorySecond";
 	}
 
 	// 通过搜索的值查询商品
 	public String searchTextQueryProduct() {
 		System.out.println("模糊搜索商品");
-		listCategoryProduct = categorySecondBiz.searchTextQueryProduct(searchText, paging.getPresentPage());
+		int number = categorySecondBiz.searchTextQueryProductNumber(searchText);
+		paging = new Paging(paging.getPresentPage(), number, 12);
+		listCategoryProduct = categorySecondBiz.searchTextQueryProduct(searchText, paging);
+		checkPage = 3;
 		return "searchTextQueryProduct";
 	}
 
