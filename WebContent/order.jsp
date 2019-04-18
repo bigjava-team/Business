@@ -213,7 +213,7 @@
 		<div style="margin-left: 13%; margin-right: 13%; padding-left: 5%;">
 			确认收货地址
 			<div style="text-align: right; float: right; font-size: 12px; margin-top: 4px;">
-				<a href="#" style="text-decoration: none;">管理收货地址</a>
+				<a href="User_gotoUserIndex.action?method=post&loginUser.username=${loginUser.username }" style="text-decoration: none;">管理收货地址</a>
 			</div>
 		</div>
 	</div>

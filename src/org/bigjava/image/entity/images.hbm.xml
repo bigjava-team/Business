@@ -8,7 +8,7 @@
 		<id name="img_id" type="java.lang.Integer">
 			<generator class="native" />
 		</id>
-		<property name="img_path" not-null="true" />
+		<property name="img_path" not-null="true" type="string" />
 		
 		<many-to-one name="product" column="p_id" class="org.bigjava.product.entity.Product"  />
 		

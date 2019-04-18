@@ -9,7 +9,7 @@ $(function() {
 	var navDiv = document.getElementById("navDiv");
 	var outer = document.getElementById("carousel");
 	
-	console.log(parseInt(middle_carousel.offsetHeight));
+	/*console.log(parseInt(middle_carousel.offsetHeight));*/
 	
 	/* 动态生成ul宽度 */
 	carousel_ul.style.width = outer.offsetWidth*imgArr.length+"px";
@@ -95,6 +95,6 @@ $(function() {
 				setA();
 			});
 			
-		},1000) 
+		},5000) 
 	}
 });

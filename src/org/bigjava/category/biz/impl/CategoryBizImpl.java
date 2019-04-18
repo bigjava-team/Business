@@ -47,8 +47,14 @@ public class CategoryBizImpl implements CategoryBiz {
 
 	// 查询一级分类对应的商品
 	@Override
-	public List<Product> queryC_idCategoryProduct(int c_id, int presentPage) {
+	public List<Product> queryC_idCategoryProduct(int c_id, Paging paging) {
 		// TODO Auto-generated method stub
-		return categoryDao.queryC_idCategoryProduct(c_id, presentPage);
+		return categoryDao.queryC_idCategoryProduct(c_id, paging);
+	}
+
+	// 查询用户收藏的商品数
+	@Override
+	public int queryC_idCategoryProductNumber(int c_id) {
+		return categoryDao.queryC_idCategoryProductNumber(c_id);
 	}
 }

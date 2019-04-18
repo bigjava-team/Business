@@ -12,6 +12,7 @@ import java.util.Set;
 import org.bigjava.addr.biz.AddrBiz;
 import org.bigjava.addr.entity.Addr;
 import org.bigjava.function.FileImageAction;
+import org.bigjava.function.IsEmpty;
 import org.bigjava.function.Paging;
 import org.bigjava.orderitem.biz.OrderItemBiz;
 import org.bigjava.orderitem.entity.Orderitem;
@@ -46,6 +47,8 @@ public class OrdersAction {
 	private Orderitem orderitem;
 	// 收货地址类
 	private Addr addr;
+	// 异步校验
+	private IsEmpty isEmpty;
 	
 	private OrdersBiz ordersBiz;
 	private OrderItemBiz orderItemBiz;
@@ -58,6 +61,14 @@ public class OrdersAction {
 	
 	private String buy;// 判定为立即购买
 	
+	public IsEmpty getIsEmpty() {
+		return isEmpty;
+	}
+
+	public void setIsEmpty(IsEmpty isEmpty) {
+		this.isEmpty = isEmpty;
+	}
+
 	public Addr getAddr() {
 		return addr;
 	}
@@ -227,10 +238,6 @@ public class OrdersAction {
 	public String queryUserAllOrders() {
 		System.out.println("开始查询订单");
 		loginUser = userBiz.queryUsernameUser(loginUser.getUsername());
-		
-		if(loginUser == null) {
-			return "loginError";
-		}
 		
 		int number = ordersBiz.queryAllOrdersNumber(loginUser);// 查询到的订单数
 		paging = new Paging(paging.getPresentPage(), number, 5);// 分页页面

@@ -41,6 +41,10 @@ public interface CategoryBiz {
 	/**
 	 * 通过一级分类id分页查询一级分类商品
 	 */
-	public List<Product> queryC_idCategoryProduct(int c_id,int presentPage);
-	
+	public List<Product> queryC_idCategoryProduct(int c_id, Paging paging);
+
+	/**
+	 *  查询一级分类对应的商品
+	 */
+	public int queryC_idCategoryProductNumber(int c_id);
 }

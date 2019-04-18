@@ -408,4 +408,26 @@ public class MerchantAction extends ActionSupport implements ModelDriven<Merchan
 		System.out.println("订单详情" + listOrders);
 		return "merchantLikeUsernameLimitQueryOrders";
 	}
+	
+	// 用户进入店铺
+	public String enteryMerchant() {
+		System.out.println("开始进入店铺");
+		merchant = merchantBiz.queryMerchant(merchant.getM_id());
+		if (merchant == null) {
+			return "addMerchant";
+		} else if(merchant.getM_is_freeze() == 1) {
+			System.out.println("店铺申请中");
+			return "merchantLoginError";
+		} else if(merchant.getM_is_freeze() == 3) {
+			System.out.println("店铺已冻结");
+			return "merchantLoginError";
+		} else {
+			// 查询最新的6个商品
+			listTiemProduct = merchantBiz.queryTimeSixProduct(merchant.getM_id());
+			
+			// 查询最热的5个商品
+			listHotProduct = merchantBiz.queryHotFiveProduct(merchant.getM_id());
+		}
+		return "enteryMerchant";
+	}
 }
